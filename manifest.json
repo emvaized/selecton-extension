@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+  "name": "Selection Actions",
+  "version": "1.0",
+  "description": "__MSG_extensionDescription__",
+  "icons": {
+    "48": "icons/new-icon-48.png",
+    "96": "icons/new-icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "selection_action@emvaized.com"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "parser.js"
+      ],
+      "css": [
+        "parser.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+  "permissions": [
+    "storage"
+  ]
+}

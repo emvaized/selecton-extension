@@ -1,0 +1,70 @@
+.selection-tooltip, .arrow:after {
+    background: #3B3B3B;
+  }
+  
+  .selection-tooltip {
+    opacity: 0;
+    display: inline-block;
+    position: absolute;
+    padding: 3px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    font-stretch: condensed;
+    text-decoration: none;
+    text-transform: uppercase;
+    z-index: 999 !important;
+    /* box-shadow: 0 0 7px rgba(0,0,0,0.5); */
+  }
+
+  .arrow {
+    z-index:999 !important;
+    width: 50px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+  }
+  .arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    transform:      rotate(45deg);
+    /* box-shadow: 6px 5px 9px -9px rgba(0,0,0,0.5),
+                5px 6px 9px -9px rgba(0,0,0,0.5); */
+  }
+
+  .selection-tooltip.active {
+    opacity: 1;
+    margin-top: 5px;
+    transition: all 0.2s ease;
+  }
+  .selection-tooltip.out {
+    opacity: 0;
+    margin-top: -20px;
+  }
+
+  .selection-popup-button {
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    padding: 6px 12px;
+    z-index: 999 !important;
+    }
+    
+  .selection-popup-button:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+   }
+
+  .button-with-border {
+    border-left: 1px solid grey;
+  }

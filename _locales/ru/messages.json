@@ -1,0 +1,93 @@
+{
+    "extensionDescription": {
+        "message": "Добавляет всплывающую панель с действиями при выделении текста, на манер используемой в браузере Опера"
+    },
+    "copyLabel": {
+        "message": "Копировать",
+        "description": "Label for copy text action"
+    },
+    "searchLabel": {
+        "message": "Искать",
+        "description": "Label for search text action"
+    },
+    "openLinkLabel": {
+        "message": "Открыть",
+        "description": "Label for open link action"
+    },
+    "appearanceHeader": {
+        "message": "Внешний вид и поведение",
+        "description": "Header for appearance category in settings"
+    },
+    "convertionHeader": {
+        "message": "Конвертирование",
+        "description": "Header for convertion category in settings"
+    },
+    "currencyConversionApiKey": {
+        "message": "Ключ API для CurrConv",
+        "description": "Label for field in settings"
+    },
+    "currencyConversionApiKeyDescription": {
+        "message": "Чтобы конвертирование валют работало более стабильно, создайте собственный бесплатный ключ на <a target='_blank' href='https://free.currencyconverterapi.com'>https://free.currencyconverterapi.com/</a> и вставьте ниже:",
+        "description": "Explanation for field in settings"
+    },
+    "animationDuration": {
+        "message": "Продолжительность анимации (мс)",
+        "description": "Label for field in settings"
+    },
+    "convertToCurrency": {
+        "message": "Конвертировать в валютy (<a target='_blank' href='https://www.iban.ru/currency-codes#'>Узнать код</a>)",
+        "description": "Label for field in settings"
+    },
+    "convertToCurrencyHint": {
+        "message": "См. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>здесь</a>",
+        "description": "Currency code hint for 'convert to currency' field in settings"
+    },
+    "hideOnScroll": {
+        "message": "Прятать при прокрутке",
+        "description": "Label for field in settings"
+    },
+    "convertMetrics": {
+        "message": "Конвертировать длину/массу",
+        "description": "Label for field in settings"
+    },
+    "addOpenLinks": {
+        "message": "Добавить кнопку открытия ссылки",
+        "description": "Label for field in settings"
+    },
+    "convertCurrencies": {
+        "message": "Конвертировать валюту",
+        "description": "Label for field in settings"
+    },
+    "performSimpleMathOperations": {
+        "message": "Выполнять простые математические расчеты",
+        "description": "Label for field in settings"
+    },
+    "preferredMetricsSystem": {
+        "message": "Предпочитаемая система мер",
+        "description": "Label for field in settings"
+    },
+    "metric": {
+        "message": "Метрическая",
+        "description": "Variant of metrics system for dropdown"
+    },
+    "imperial": {
+        "message": "Английская",
+        "description": "Variant of metrics system for dropdown"
+    },
+    "resetDefaults": {
+        "message": "Сбросить настройки",
+        "description": ""
+    },
+    "buyMeCoffee": {
+        "message": "Купить автору кофе",
+        "description": ""
+    },
+    "visitGithub": {
+        "message": "Посетить страницу на GitHub",
+        "description": ""
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Настройки сохраняются автоматически. <br /> Обновите страницу, чтобы увидеть изменения",
+        "description": ""
+    }
+}

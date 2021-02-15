@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css" />
+</head>
+
+<body>
+
+    <form>
+
+        <h3 id='appearanceHeader'></h3>
+
+        <div class='option'> <label><input type="checkbox" id="hideOnScroll">
+            </label></div>
+
+        <div class='option'> <label><input type="number" min="0" max="1500" id="animationDuration">
+            </label></div>
+
+
+
+        <h3 id='convertionHeader'></h3>
+
+        <div class='option'> <label><input type="checkbox" id="convertMetrics"> </label></div>
+
+        <div class='option'><label><select id="preferredMetricsSystem">
+                    <option value="metric">metric</option>
+                    <option value="imperial">imperial</option>
+                </select>
+            </label>
+        </div>
+
+        <div class='option'> <label><input type="checkbox" id="performSimpleMathOperations"> </label></div>
+        <div class='option'> <label><input type="checkbox" id="addOpenLinks"> </label></div>
+        <div class='option'> <label><input type="checkbox" id="convertCurrencies"> </label></div>
+        <div class='option'> <label><input type="text" id="convertToCurrency"> </label></div>
+        <div>
+            <p id='currencyConversionApiKeyDescription'></p>
+        </div>
+        <div class='option'> <label><input type="text" id="currencyConversionApiKey"> </label></div>
+
+
+        <h4 id='allChangesSavedAutomaticallyHeader'></h4>
+
+        <!-- Footer buttons -->
+        <div id='footer-buttons'>
+
+            <button id='resetButton' type="reset">Restore
+                defaults</button>
+
+            <button id='donateButton'> <img height='18px' width='18px' style="position: relative; left: 3px; top: 3px;"
+                    src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
+
+            <button id='githubButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
+                    src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
+
+        </div>
+
+
+
+    </form>
+
+    <script src="options.js"></script>
+
+</body>
+
+</html>

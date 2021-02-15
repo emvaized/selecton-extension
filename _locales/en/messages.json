@@ -1,0 +1,93 @@
+{
+  "extensionDescription": {
+    "message": "Adds actions pop-up on text selection, similar to the one in Opera browser"
+  },
+  "copyLabel": {
+    "message": "Copy",
+    "description": "Label for copy text action"
+  },
+  "searchLabel": {
+    "message": "Search",
+    "description": "Label for search text action"
+  },
+  "openLinkLabel": {
+    "message": "Open",
+    "description": "Label for open link action"
+  },
+  "appearanceHeader": {
+    "message": "Appearance and behaviour",
+    "description": "Header for appearance category in settings"
+  },
+  "convertionHeader": {
+    "message": "Convertion",
+    "description": "Header for convertion category in settings"
+  },
+  "currencyConversionApiKey": {
+    "message": "CurrConv API key",
+    "description": "Label for field in settings"
+  },
+  "currencyConversionApiKeyDescription": {
+    "message": "To get more stable currency conversions, please create your free API key at <a target='_blank' href='https://free.currencyconverterapi.com'>https://free.currencyconverterapi.com/</a> and paste it below:",
+    "description": "Explanation for field in settings"
+  },
+  "animationDuration": {
+    "message": "Animation duration (ms)",
+    "description": "Label for field in settings"
+  },
+  "convertToCurrency": {
+    "message": "Convert to currency (<a target='_blank' href='https://www.iban.com/currency-codes'>See codes</a>)",
+    "description": "Label for field in settings"
+  },
+  "convertToCurrencyHint": {
+    "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference",
+    "description": "Currency code hint for 'convert to currency' field in settings"
+  },
+  "hideOnScroll": {
+    "message": "Hide tooltip on scroll",
+    "description": "Label for field in settings"
+  },
+  "convertMetrics": {
+    "message": "Convert metrics",
+    "description": "Label for field in settings"
+  },
+  "addOpenLinks": {
+    "message": "Add button to open link",
+    "description": "Label for field in settings"
+  },
+  "convertCurrencies": {
+    "message": "Convert currencies",
+    "description": "Label for field in settings"
+  },
+  "performSimpleMathOperations": {
+    "message": "Do simple math calculations",
+    "description": "Label for field in settings"
+  },
+  "preferredMetricsSystem": {
+    "message": "Preferred metrics system",
+    "description": "Label for field in settings"
+  },
+  "metric": {
+    "message": "Metric",
+    "description": "Vareint of metrics system for dropdown"
+  },
+  "imperial": {
+    "message": "Imperial",
+    "description": "Variant of metrics system for dropdown"
+  },
+  "resetDefaults": {
+    "message": "Restore defaults",
+    "description": ""
+  },
+  "buyMeCoffee": {
+    "message": "Buy author a coffee",
+    "description": ""
+  },
+  "visitGithub": {
+    "message": "Visit GitHub page",
+    "description": ""
+  },
+  "allChangesSavedAutomatically": {
+    "message": "Settings are saved automatically. <br /> Update page to see changes",
+    "description": ""
+  }
+}
