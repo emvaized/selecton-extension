@@ -6,7 +6,7 @@ var animationDuration = 300;
 /// API key for https://www.currencyconverterapi.com/
 var currencyConversionApiKey = '3af8bf98aa005167fd3d';
 var convertToCurrency = 'USD';
-var hideOnScroll = true;
+var hideOnScroll;
 var tooltipMaxWidth = 700;
 
 // Possible values: 'imperial', 'metric';
