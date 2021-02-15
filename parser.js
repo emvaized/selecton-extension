@@ -62,10 +62,9 @@ function init() {
   tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out; `);
   tooltip.setAttribute('class', `selection-tooltip`);
 
-
   var searchButton = document.createElement('button');
   searchButton.setAttribute('class', `selection-popup-button`);
-  searchButton.textContent = 'Copy';
+  searchButton.textContent = searchLabel;
   searchButton.addEventListener("mouseup", function (e) {
     hideTooltip();
     var selectedText = selection.toString();
@@ -75,26 +74,14 @@ function init() {
 
   tooltip.appendChild(searchButton);
 
-  // var searchButton = document.createElement('button');
-  // searchButton.setAttribute('class', `selection-popup-button`);
-  // searchButton.textContent = searchLabel;
-  // searchButton.addEventListener("mouseup", function (e) {
-  //   hideTooltip();
-  //   var selectedText = selection.toString();
-  //   /// Search text
-  //   window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
-  // });
-
-  // tooltip.appendChild(searchButton);
-
-  // var copyButton = document.createElement('button');
-  // copyButton.setAttribute('class', `selection-popup-button button-with-border`);
-  // copyButton.textContent = copyLabel;
-  // copyButton.addEventListener("mouseup", function (e) {
-  //   document.execCommand('copy');
-  //   hideTooltip();
-  // });
-  // tooltip.appendChild(copyButton);
+  var copyButton = document.createElement('button');
+  copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+  copyButton.textContent = copyLabel;
+  copyButton.addEventListener("mouseup", function (e) {
+    document.execCommand('copy');
+    hideTooltip();
+  });
+  tooltip.appendChild(copyButton);
 }
 
 
