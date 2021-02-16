@@ -14,6 +14,10 @@
     "message": "Open",
     "description": "Label for open link action"
   },
+  "translateLabel": {
+    "message": "Translate",
+    "description": "Label for translate action"
+  },
   "appearanceHeader": {
     "message": "Appearance and behaviour",
     "description": "Header for appearance category in settings"
@@ -35,7 +39,7 @@
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
-    "message": "Convert to currency (<a target='_blank' href='https://www.iban.com/currency-codes'>See codes</a>)",
+    "message": "Currency to convert to (<a target='_blank' href='https://www.iban.com/currency-codes'>Find code</a>)",
     "description": "Label for field in settings"
   },
   "convertToCurrencyHint": {
@@ -88,6 +92,14 @@
   },
   "allChangesSavedAutomatically": {
     "message": "Settings are saved automatically. <br /> Update page to see changes",
+    "description": ""
+  },
+  "showTranslateButton": {
+    "message": "Show translate button",
+    "description": ""
+  },
+  "languageToTranslate": {
+    "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Find code</a> - see 639-1)",
     "description": ""
   }
 }

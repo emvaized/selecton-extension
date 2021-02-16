@@ -10,6 +10,10 @@
         "message": "Искать",
         "description": "Label for search text action"
     },
+    "translateLabel": {
+        "message": "Перевести",
+        "description": "Label for translate action"
+    },
     "openLinkLabel": {
         "message": "Открыть",
         "description": "Label for open link action"
@@ -35,7 +39,7 @@
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
-        "message": "Конвертировать в валютy (<a target='_blank' href='https://www.iban.ru/currency-codes#'>Узнать код</a>)",
+        "message": "Валюта для конвертации (<a target='_blank' href='https://www.iban.ru/currency-codes#'>Узнать код</a>)",
         "description": "Label for field in settings"
     },
     "convertToCurrencyHint": {
@@ -88,6 +92,14 @@
     },
     "allChangesSavedAutomatically": {
         "message": "Настройки сохраняются автоматически. <br /> Обновите страницу, чтобы увидеть изменения",
+        "description": ""
+    },
+    "showTranslateButton": {
+        "message": "Показывать кнопку перевода",
+        "description": ""
+    },
+    "languageToTranslate": {
+        "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Узнать код</a> - см. 639-1)",
         "description": ""
     }
 }

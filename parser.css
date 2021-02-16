@@ -67,4 +67,6 @@
 
   .button-with-border {
     border-left: 1px solid grey;
+    flex: 1;
+
   }

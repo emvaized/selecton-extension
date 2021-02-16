@@ -1,13 +1,13 @@
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 form {
-    padding: 0px 15px;
+  padding: 0px 15px;
 }
 
 .option {
-    padding: 4px;
+  padding: 4px;
   cursor: pointer;
 }
 
@@ -17,7 +17,6 @@ form {
   border-radius: 4px;
   transition: all 200ms ease-in-out;
 }
-
 
 label {
   cursor: pointer;
@@ -52,8 +51,8 @@ hr {
 
 
 h3 {
-    color: grey;
-    padding-top: 10px;
+  color: grey;
+  padding-top: 10px;
 }
 
 h4 {
@@ -65,7 +64,7 @@ h4 {
 }
 
 button {
-    margin: 3px !important;
-    width: 100%;
-    text-align: center;
+  margin: 3px !important;
+  width: 100%;
+  text-align: center;
 }

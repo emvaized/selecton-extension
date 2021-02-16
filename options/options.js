@@ -9,6 +9,8 @@ var options = new Map([
     ['convertCurrencies', true],
     ['performSimpleMathOperations', true],
     ['preferredMetricsSystem', 'metric'],
+    ['showTranslateButton', true],
+    ['languageToTranslate', 'en'],
 ]);
 
 var keys = [...options.keys()];
@@ -77,6 +79,7 @@ function updateDisabledOptions() {
     document.querySelector("#currencyConversionApiKey").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#currencyConversionApiKeyDescription").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function saveAllOptions() {
