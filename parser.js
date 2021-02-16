@@ -189,8 +189,6 @@ document.addEventListener("mouseup", function (e) {
 
       if (convertMetrics)
         outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-          // if (selectedText.includes(key) || selectedText.includes(value['convertsTo'])) {
-          // if (selectedText.includes(key)) {
           var nonConvertedUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
           if (selectedText.includes(nonConvertedUnit)) {
 
@@ -226,11 +224,7 @@ document.addEventListener("mouseup", function (e) {
                   numberToConvert = numberToConvert.join("");
               }
 
-              console.log('numberToConvert');
-              console.log(numberToConvert);
-
               if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-                // numberToConvert = numberToConvert.join("");
 
                 var fromUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                 var convertedUnit = preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
@@ -243,8 +237,6 @@ document.addEventListener("mouseup", function (e) {
                 }
 
                 /// Round doubles to the first 2 symbols after dot
-                // if (numberToConvert.toString().includes('.'))
-                //   numberToConvert = numberToConvert.foFixed(2);
                 convertedNumber = convertedNumber.toFixed(2);
 
                 /// Add unit converter button
@@ -280,7 +272,6 @@ document.addEventListener("mouseup", function (e) {
       if (numberToConvert == null && performSimpleMathOperations) {
         try {
           var calculatedExpression = calculateString(selectedText.trim());
-
           if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
             var number;
@@ -319,13 +310,12 @@ document.addEventListener("mouseup", function (e) {
         var amount;
 
         for (const [key, value] of Object.entries(currenciesList['results'])) {
+          console.log(selectedText);
+          console.log(value["currencySymbol"]);
           // if (selectedText.toLowerCase().includes(value["id"].toLowerCase()) || selectedText.includes(value["currencySymbol"])) {
           if (selectedText.includes(value["currencySymbol"])) {
-            currency = key;
-            // try {
-            //   amount = calculateString(selectedText);
-            // } catch (e) { }
-            // amount = selectedText.match(/\d/g);
+            // currency = key;
+            currency = value["id"];
             amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
             if (amount !== null)
               amount = amount.join("");
@@ -338,7 +328,6 @@ document.addEventListener("mouseup", function (e) {
 
         // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
         if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
-          // convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
           convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
             console.log('convertedAmount');
             console.log(convertedAmount);
@@ -652,15 +641,21 @@ var currenciesList = {
   "results":
   {
     "USD": { "currencyName": "United States Dollar", "currencySymbol": "$", "id": "USD" },
-    "USD": { "currencyName": "United States Dollar", "currencySymbol": "dollar", "id": "USD" },
+    "USD1": { "currencyName": "United States Dollar", "currencySymbol": "dollar", "id": "USD" },
     "EUR": { "currencyName": "Euro", "currencySymbol": "€", "id": "EUR" },
-    "EUR": { "currencyName": "Euro", "currencySymbol": "euro", "id": "EUR" },
+    "EUR1": { "currencyName": "Euro", "currencySymbol": "euro", "id": "EUR" },
     "CNY": { "currencyName": "Chinese Yuan", "currencySymbol": "¥", "id": "CNY" },
+    "CNY1": { "currencyName": "Chinese Yuan", "currencySymbol": "yuan", "id": "CNY" },
+    "JPY": { "currencyName": "Japanese Yen", "currencySymbol": "¥", "id": "JPY" },
+    "JPY1": { "currencyName": "Japanese Yen", "currencySymbol": "yen", "id": "JPY" },
+    "RUB": { "currencyName": "Russian Ruble", "currencySymbol": "₽", "id": "RUB" },
+    "RUB1": { "currencyName": "Russian Ruble", "currencySymbol": "rubles", "id": "RUB" },
     "UAH": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "₴", "id": "UAH" },
-    "руб": { "currencyName": "Russian Ruble", "currencySymbol": "₽", "id": "RUB" },
     "BTC": { "currencyName": "Bitcoin", "currencySymbol": "BTC", "id": "BTC" },
+    "BTC1": { "currencyName": "Bitcoin", "currencySymbol": "bitcoins", "id": "BTC" },
     "GBP": { "currencyName": "British Pound", "currencySymbol": "£", "id": "GBP" },
     "INR": { "currencyName": "Indian Rupee", "currencySymbol": "₹", "id": "INR" },
+    "INR1": { "currencyName": "Indian Rupee", "currencySymbol": "rupees", "id": "INR" },
     "IRR": { "currencyName": "Iranian Rial", "currencySymbol": "﷼", "id": "IRR" },
     "ILS": { "currencyName": "Israeli New Sheqel", "currencySymbol": "₪", "id": "ILS" },
     "CZK": { "currencyName": "Czech Koruna", "currencySymbol": "Kč", "id": "CZK" },
@@ -671,18 +666,18 @@ var currenciesList = {
     "DKK": { "currencyName": "Danish Krone", "currencySymbol": "kr", "id": "DKK" },
     "MNT": { "currencyName": "Mongolian Tugrik", "currencySymbol": "₮", "id": "MNT" },
     "VND": { "currencyName": "Vietnamese Dong", "currencySymbol": "₫", "id": "VND" },
-    "JPY": { "currencyName": "Japanese Yen", "currencySymbol": "¥", "id": "JPY" },
     "KPW": { "currencyName": "North Korean Won", "currencySymbol": "₩", "id": "KPW" },
     "SAR": { "currencyName": "Saudi Riyal", "currencySymbol": "﷼", "id": "SAR" },
     "BGN": { "currencyName": "Bulgarian Lev", "currencySymbol": "лв", "id": "BGN" },
 
     /// Russian labels
-    "EUR": { "currencyName": "Euro", "currencySymbol": "евро", "id": "EUR" },
-    "USD": { "currencyName": "United States Dollar", "currencySymbol": "доллар", "id": "USD" },
-    "CNY": { "currencyName": "Chinese Yuan", "currencySymbol": "юаней", "id": "CNY" },
-    "RUB": { "currencyName": "Russian Ruble", "currencySymbol": "рублей", "id": "RUB" },
-    "UAH": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "гривен", "id": "UAH" },
-    "KZT": { "currencyName": "Kazakhstani Tenge", "currencySymbol": "тенге", "id": "KZT" },
+    "EUR3": { "currencyName": "Euro", "currencySymbol": "евро", "id": "EUR" },
+    "USD3": { "currencyName": "United States Dollar", "currencySymbol": "доллар", "id": "USD" },
+    "CNY3": { "currencyName": "Chinese Yuan", "currencySymbol": "юаней", "id": "CNY" },
+    "RUB2": { "currencyName": "Russian Ruble", "currencySymbol": "рублей", "id": "RUB" },
+    "UAH2": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "гривен", "id": "UAH" },
+    "KZT1": { "currencyName": "Kazakhstani Tenge", "currencySymbol": "тенге", "id": "KZT" },
+    "JPY2": { "currencyName": "Japanese Yen", "currencySymbol": "йен", "id": "JPY" },
   }
 }
 
