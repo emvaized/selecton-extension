@@ -102,7 +102,7 @@ function init() {
   });
 }
 
-// init();
+init();
 
 
 function calculateString(fn) {
@@ -112,7 +112,7 @@ function calculateString(fn) {
 
 
 document.addEventListener("mouseup", function (e) {
-  if (tooltip == null) init();
+  // if (tooltip == null) init();
 
   if (window.getSelection) {
     selection = window.getSelection();
@@ -310,8 +310,6 @@ document.addEventListener("mouseup", function (e) {
         var amount;
 
         for (const [key, value] of Object.entries(currenciesList['results'])) {
-          console.log(selectedText);
-          console.log(value["currencySymbol"]);
           // if (selectedText.toLowerCase().includes(value["id"].toLowerCase()) || selectedText.includes(value["currencySymbol"])) {
           if (selectedText.includes(value["currencySymbol"])) {
             // currency = key;
@@ -323,14 +321,9 @@ document.addEventListener("mouseup", function (e) {
           }
         }
 
-        console.log(currency);
-        console.log(amount);
-
         // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
         if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
           convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
-            console.log('convertedAmount');
-            console.log(convertedAmount);
             if (convertedAmount !== 'NaN' && convertedAmount !== undefined) {
 
               /// Separate resulting numbers in groups of 3 digits
