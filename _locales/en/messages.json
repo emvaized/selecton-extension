@@ -99,7 +99,7 @@
     "description": ""
   },
   "languageToTranslate": {
-    "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Find code</a> - see 639-1)",
+    "message": "Language to translate - ISO 639-1 (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Find code</a>)",
     "description": ""
   }
 }
