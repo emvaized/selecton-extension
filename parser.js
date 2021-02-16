@@ -54,11 +54,7 @@ function init() {
       preferredMetricsSystem = value.preferredMetricsSystem || 'metric';
       showTranslateButton = value.showTranslateButton ?? true;
       languageToTranslate = value.languageToTranslate || 'en';
-
-      console.log('languageToTranslate');
-      console.log(languageToTranslate);
     });
-
 
 
   copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -96,9 +92,17 @@ function init() {
   });
   tooltip.appendChild(copyButton);
 
+  document.addEventListener("scroll", function (e) {
+    if (hideOnScroll)
+      hideTooltip();
+  });
+
+  document.addEventListener("mousedown", function (e) {
+    hideTooltip();
+  });
 }
 
-init();
+// init();
 
 
 function calculateString(fn) {
@@ -106,16 +110,10 @@ function calculateString(fn) {
 }
 
 
-document.addEventListener("scroll", function (e) {
-  if (hideOnScroll)
-    hideTooltip();
-});
-
-document.addEventListener("mousedown", function (e) {
-  hideTooltip();
-});
 
 document.addEventListener("mouseup", function (e) {
+  if (tooltip == null) init();
+
   if (window.getSelection) {
     selection = window.getSelection();
   } else if (document.selection) {
@@ -335,21 +333,34 @@ document.addEventListener("mouseup", function (e) {
           }
         }
 
-        if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
+        console.log(currency);
+        console.log(amount);
+
+        // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
+        if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
+          // convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
           convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
-            if (convertedAmount !== 'NaN') {
+            console.log('convertedAmount');
+            console.log(convertedAmount);
+            if (convertedAmount !== 'NaN' && convertedAmount !== undefined) {
+
+              /// Separate resulting numbers in groups of 3 digits
+              var convertedAmountString = convertedAmount.toString();
+              var parts = convertedAmountString.split('.');
+              parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+              convertedAmountString = parts.join('.');
+
+              /// Create and add button with result
               var interactiveButton = document.createElement('button');
               interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
               interactiveButton.textContent = amount + ' ' + currency + ' →';
-
               var converted = document.createElement('span');
-              converted.textContent = ` ${convertedAmount} ${convertToCurrency}`;
+              converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
               converted.setAttribute('style', `color: ${secondaryColor}`);
               interactiveButton.appendChild(converted);
 
               interactiveButton.addEventListener("mouseup", function (e) {
                 hideTooltip();
-
                 /// Search for conversion on Google
                 window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
                 ;
@@ -368,7 +379,9 @@ document.addEventListener("mouseup", function (e) {
     }
     /// Show Translate button when enabled, and no other buttons were added 
     if (tooltip.children.length < 4 && showTranslateButton) {
-      addTranslateButton();
+      try {
+        addTranslateButton();
+      } catch (e) { }
     }
 
     /// If tooltip is going to be placed too much on top, make it visible
@@ -391,34 +404,40 @@ document.addEventListener("mouseup", function (e) {
 
 
 async function addTranslateButton() {
-  var detectingLanguages = await chrome.i18n.detectLanguage(
-    selection.toString()                  // string
-  );
+  var detectingLanguages;
+  try {
+    detectingLanguages = await chrome.i18n.detectLanguage(
+      selection.toString()                  // string
+    );
+  } catch (e) { }
 
-  var langs = detectingLanguages.languages;
-  var shouldTranslate = true;
-  if (langs !== []) {
-    langs.forEach(function (lang) {
-      /// Don't show translate button if selected language is the same as desired
-      if (lang.language == languageToTranslate) shouldTranslate = false;
-    })
-  }
 
-  if (shouldTranslate) {
-    translateLabel = chrome.i18n.getMessage("translateLabel");
-    var translateButton = document.createElement('button');
-    translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-    translateButton.textContent = translateLabel;
-    translateButton.addEventListener("mouseup", function (e) {
-      hideTooltip();
+  if (detectingLanguages !== null && detectingLanguages !== undefined) {
+    var langs = detectingLanguages.languages;
+    var shouldTranslate = true;
+    if (langs !== []) {
+      langs.forEach(function (lang) {
+        /// Don't show translate button if selected language is the same as desired
+        if (lang.language == languageToTranslate) shouldTranslate = false;
+      })
+    }
 
-      var selectedText = selection.toString();
-      /// Open google translator
-      window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${selectedText.trim()}`, '_blank');
-    });
-    tooltip.appendChild(translateButton);
-    /// Correct tooltip's dx
-    tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+    if (shouldTranslate) {
+      translateLabel = chrome.i18n.getMessage("translateLabel");
+      var translateButton = document.createElement('button');
+      translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+      translateButton.textContent = translateLabel;
+      translateButton.addEventListener("mouseup", function (e) {
+        hideTooltip();
+
+        var selectedText = selection.toString();
+        /// Open google translator
+        window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${selectedText.trim()}`, '_blank');
+      });
+      tooltip.appendChild(translateButton);
+      /// Correct tooltip's dx
+      tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+    }
   }
 }
 
@@ -499,6 +518,8 @@ async function convertCurrency(amount, fromCurrency, toCurrency, cb) {
   var url = 'https://free.currconv.com/api/v7/convert?q='
     + query + '&compact=ultra&apiKey=' + currencyConversionApiKey;
 
+  console.log(url);
+
   try {
     const apiCall = await fetch(
       url
@@ -512,11 +533,15 @@ async function convertCurrency(amount, fromCurrency, toCurrency, cb) {
     } else {
       var err = new Error("Value not found for " + query);
       console.log(err);
-      cb(err);
+      // cb(err);
     }
   } catch (e) {
     console.log("Currency conversion error: ", e);
-    cb(e);
+    if (e instanceof NetworkError) {
+      console.log(e.message);
+      console.log(e.getMessage);
+    }
+    // cb(e);
   }
 }
 
@@ -554,6 +579,10 @@ const convertionUnits = {
     "convertsTo": "km/h",
     "ratio": 1.60934,
   },
+  "miles": {
+    "convertsTo": "km",
+    "ratio": 1.60934,
+  },
   "mile": {
     "convertsTo": "km",
     "ratio": 1.60934,
@@ -579,7 +608,7 @@ const convertionUnits = {
     "ratio": -272.15,
   },
 
-  /// Russian translations
+  /// Russian variants
   " миль": {
     "convertsTo": "км",
     "ratio": 1.60934,
@@ -604,11 +633,15 @@ const convertionUnits = {
     "convertsTo": "см",
     "ratio": 2.54,
   },
-  "фунт": {
+  "фунтов": {
     "convertsTo": "кг",
     "ratio": 0.453592,
   },
-  " унци": {
+  " унций": {
+    "convertsTo": "грамм",
+    "ratio": 28.3495,
+  },
+  " унции": {
     "convertsTo": "грамм",
     "ratio": 28.3495,
   },
@@ -619,7 +652,9 @@ var currenciesList = {
   "results":
   {
     "USD": { "currencyName": "United States Dollar", "currencySymbol": "$", "id": "USD" },
+    "USD": { "currencyName": "United States Dollar", "currencySymbol": "dollar", "id": "USD" },
     "EUR": { "currencyName": "Euro", "currencySymbol": "€", "id": "EUR" },
+    "EUR": { "currencyName": "Euro", "currencySymbol": "euro", "id": "EUR" },
     "CNY": { "currencyName": "Chinese Yuan", "currencySymbol": "¥", "id": "CNY" },
     "UAH": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "₴", "id": "UAH" },
     "руб": { "currencyName": "Russian Ruble", "currencySymbol": "₽", "id": "RUB" },
@@ -636,11 +671,24 @@ var currenciesList = {
     "DKK": { "currencyName": "Danish Krone", "currencySymbol": "kr", "id": "DKK" },
     "MNT": { "currencyName": "Mongolian Tugrik", "currencySymbol": "₮", "id": "MNT" },
     "VND": { "currencyName": "Vietnamese Dong", "currencySymbol": "₫", "id": "VND" },
-    "JPY": { "currencyName": "Japanese Yen", "currencySymbol": "¥", "id": "JPY" }, "KPW": { "currencyName": "North Korean Won", "currencySymbol": "₩", "id": "KPW" },
+    "JPY": { "currencyName": "Japanese Yen", "currencySymbol": "¥", "id": "JPY" },
+    "KPW": { "currencyName": "North Korean Won", "currencySymbol": "₩", "id": "KPW" },
     "SAR": { "currencyName": "Saudi Riyal", "currencySymbol": "﷼", "id": "SAR" },
     "BGN": { "currencyName": "Bulgarian Lev", "currencySymbol": "лв", "id": "BGN" },
+
+    /// Russian labels
+    "EUR": { "currencyName": "Euro", "currencySymbol": "евро", "id": "EUR" },
+    "USD": { "currencyName": "United States Dollar", "currencySymbol": "доллар", "id": "USD" },
+    "CNY": { "currencyName": "Chinese Yuan", "currencySymbol": "юаней", "id": "CNY" },
+    "RUB": { "currencyName": "Russian Ruble", "currencySymbol": "рублей", "id": "RUB" },
+    "UAH": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "гривен", "id": "UAH" },
+    "KZT": { "currencyName": "Kazakhstani Tenge", "currencySymbol": "тенге", "id": "KZT" },
   }
 }
+
+// async function updateCurrencies() {
+//   var keys = [...currenciesList['results'].keys()];
+// }
 
 
 
