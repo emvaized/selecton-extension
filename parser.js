@@ -89,9 +89,6 @@ function init() {
     tooltip.style.background = tooltipBackground;
     arrowChild.style.background = tooltipBackground;
 
-    tooltip.style.opacity = tooltipOpacity;
-    arrowChild.style.opacity = tooltipOpacity;
-
     if (addTooltipShadow) {
       tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
       arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
@@ -540,7 +537,7 @@ function showTooltip(dx, dy) {
   tooltip.style.pointerEvents = 'auto';
   tooltip.style.top = `${dy}px`;
   tooltip.style.left = `${dx}px`;
-  tooltip.style.opacity = 1.0;
+  tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
 }
 
 
