@@ -1,8 +1,9 @@
-.selection-tooltip, .arrow:after {
+/* .selection-tooltip, .arrow:after {
     background: #3B3B3B;
-  }
+  } */
   
   .selection-tooltip {
+    background: #3B3B3B;
     opacity: 0;
     display: inline-block;
     position: absolute;
@@ -15,10 +16,9 @@
     text-decoration: none;
     text-transform: uppercase;
     z-index: 999 !important;
-    /* box-shadow: 0 0 7px rgba(0,0,0,0.5); */
   }
 
-  .arrow {
+  .selection-tooltip-arrow {
     z-index:999 !important;
     width: 50px;
     height: 16px;
@@ -28,7 +28,8 @@
     margin-left: -35px;
     bottom: -16px;
   }
-  .arrow:after {
+
+  .selection-tooltip-arrow-child {
     content: "";
     position: absolute;
     left: 20px;
@@ -36,6 +37,7 @@
     width: 25px;
     height: 25px;
     transform: rotate(45deg);
+    background: #3B3B3B;
     /* box-shadow: 6px 5px 9px -9px rgba(0,0,0,0.5),
                 5px 6px 9px -9px rgba(0,0,0,0.5); */
   }

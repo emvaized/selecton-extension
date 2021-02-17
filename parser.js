@@ -8,7 +8,6 @@ var animationDuration = 300;
 var currencyConversionApiKey = '3af8bf98aa005167fd3d';
 var convertToCurrency = 'USD';
 var hideOnScroll;
-var tooltipMaxWidth = 700;
 
 // Possible values: 'imperial', 'metric';
 var preferredMetricsSystem;
@@ -19,8 +18,17 @@ var addOpenLinks = true;
 var convertCurrencies = true;
 var performSimpleMathOperations = true;
 
+/// Appearance configs
+var useCustomStyle = true;
+var tooltipBackground = '3B3B3B';
+var tooltipOpacity = 1.0;
+var addTooltipShadow = false;
+var shadowOpacity = 0.5;
+var borderRadius = 3;
+
 var convertOnlyFewWordsSelected = true;
 var secondaryColor = 'lightBlue';
+var tooltipMaxWidth = 700;
 
 var tooltip;
 var arrow;
@@ -54,6 +62,7 @@ function init() {
       preferredMetricsSystem = value.preferredMetricsSystem || 'metric';
       showTranslateButton = value.showTranslateButton ?? true;
       languageToTranslate = value.languageToTranslate || 'en';
+
     });
 
 
@@ -62,12 +71,32 @@ function init() {
   openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
 
   arrow = document.createElement('div');
-  arrow.setAttribute('class', `arrow`);
+  arrow.setAttribute('class', `selection-tooltip-arrow`);
+
+  var arrowChild = document.createElement('div');
+  arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
+  arrow.appendChild(arrowChild);
+
   tooltip = document.createElement('div');
   tooltip.appendChild(arrow);
   document.body.appendChild(tooltip);
   tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
   tooltip.setAttribute('class', `selection-tooltip`);
+
+  if (useCustomStyle) {
+    tooltip.style.borderRadius = `${borderRadius}px`;
+
+    tooltip.style.background = tooltipBackground;
+    arrowChild.style.background = tooltipBackground;
+
+    tooltip.style.opacity = tooltipOpacity;
+    arrowChild.style.opacity = tooltipOpacity;
+
+    if (addTooltipShadow) {
+      tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
+      arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
+    }
+  }
 
   /// Search button creation
   var searchButton = document.createElement('button');
@@ -108,7 +137,6 @@ init();
 function calculateString(fn) {
   return new Function('return ' + fn)();
 }
-
 
 
 document.addEventListener("mouseup", function (e) {
@@ -266,8 +294,6 @@ document.addEventListener("mouseup", function (e) {
           }
         }
 
-
-
         // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
         if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
           convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
@@ -298,6 +324,11 @@ document.addEventListener("mouseup", function (e) {
               tooltip.appendChild(interactiveButton);
               /// Correct tooltip's dx
               tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+
+              /// Correct last button's border radius
+              tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+              tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
             }
 
           });
@@ -305,7 +336,6 @@ document.addEventListener("mouseup", function (e) {
 
           /// Add 'open link' button for each found link
           if (addOpenLinks)
-            // if (selectedText.includes('http') || selectedText.includes('www.') || (selectedText.includes('.') && selectedText.includes('/'))) {
             if (tooltip.children.length < 4 && selectedText.includes('.')) {
               var words = selectedText.split(' ');
               for (i in words) {
@@ -331,7 +361,6 @@ document.addEventListener("mouseup", function (e) {
                   if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
                     link = link.substring(0, link.length - 1);
 
-
                   /// Handle when resulting link has spaces
                   if (link.includes(' ')) {
                     var urlWords = link.split(' ');
@@ -348,7 +377,7 @@ document.addEventListener("mouseup", function (e) {
                   interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
                   var linkText = document.createElement('span');
                   // linkText.textContent = ' ' + link;
-                  linkText.textContent = ' ' + (link.length > 42 ? link.substring(0, 42) + '...' : link);
+                  linkText.textContent = ' ' + (link.length > 33 ? link.substring(0, 33) + '...' : link);
                   linkText.setAttribute('style', `color: ${secondaryColor}`);
                   interactiveButton.innerHTML = openLinkLabel + '';
                   interactiveButton.appendChild(linkText);
@@ -387,9 +416,11 @@ document.addEventListener("mouseup", function (e) {
 
     /// Check if resulting tooltip's dx is out of view (doesn't work because of postpone added translate and currency buttons)
     var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
-    // var windowWidth = (window.innerWidth || document.documentElement.clientWidth);
-    // var horizOutOfView = resultingDx + tooltip.clientWidth > windowWidth;
-    // if (horizOutOfView) resultingDx = resultingDx - ((resultingDx + tooltip.clientWidth) - windowWidth);
+
+
+    /// Set border radius for buttons
+    tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
     /// Show tooltip on top of selection
     showTooltip(resultingDx, resultingDy);
@@ -398,6 +429,8 @@ document.addEventListener("mouseup", function (e) {
   else hideTooltip();
 });
 
+var firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
+var lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
 
 async function addTranslateButton() {
   var detectingLanguages;
@@ -433,6 +466,11 @@ async function addTranslateButton() {
       tooltip.appendChild(translateButton);
       /// Correct tooltip's dx
       tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+
+      /// Correct last button's border radius
+      tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+      tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
     }
   }
 }
