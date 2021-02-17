@@ -255,8 +255,8 @@ document.addEventListener("mouseup", function (e) {
         var amount;
 
         for (const [key, value] of Object.entries(currenciesList['results'])) {
-          // if (selectedText.toLowerCase().includes(value["id"].toLowerCase()) || selectedText.includes(value["currencySymbol"])) {
-          if (selectedText.includes(value["currencySymbol"])) {
+          if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
+            // if (selectedText.includes(value["currencySymbol"])) {
             // currency = key;
             currency = value["id"];
             amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
@@ -265,6 +265,8 @@ document.addEventListener("mouseup", function (e) {
             break;
           }
         }
+
+
 
         // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
         if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
@@ -299,80 +301,76 @@ document.addEventListener("mouseup", function (e) {
             }
 
           });
-        }
-      }
+        } else {
+
+          /// Add 'open link' button for each found link
+          if (addOpenLinks)
+            // if (selectedText.includes('http') || selectedText.includes('www.') || (selectedText.includes('.') && selectedText.includes('/'))) {
+            if (tooltip.children.length < 4 && selectedText.includes('.')) {
+              var words = selectedText.split(' ');
+              for (i in words) {
+                var link = words[i];
+                // if (tooltip.clientWidth < tooltipMaxWidth && !link.includes(' ') && link.length > 6 && (link.includes('http') || link.includes('www.') || (link.includes('.') && link.includes('/')))) {
+                if (link.includes('.')) {
+                  link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
+                  var lastSymbol = link[link.length - 1];
+
+                  if (lastSymbol == '.' || lastSymbol == ',')
+                    link = link.substring(0, link.length - 1);
+
+                  /// Remove '/' on the end of link, just for better looks in pop-up
+                  var lastSymbol = link[link.length - 1];
+                  if (lastSymbol == '/')
+                    link = link.substring(0, link.length - 1);
+
+                  /// Remove quotes in start and end of the link
+                  var firstSymbol = link[0];
+                  var lastSymbol = link[link.length - 1];
+                  if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
+                    link = link.substring(1, link.length);
+                  if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
+                    link = link.substring(0, link.length - 1);
 
 
-      /// Add 'open link' button for each found link
-      if (addOpenLinks)
-        // if (selectedText.includes('http') || selectedText.includes('www.') || (selectedText.includes('.') && selectedText.includes('/'))) {
-        if (tooltip.children.length < 4 && selectedText.includes('.')) {
-          var words = selectedText.split(' ');
-          for (i in words) {
-            var link = words[i];
-            // if (tooltip.clientWidth < tooltipMaxWidth && !link.includes(' ') && link.length > 6 && (link.includes('http') || link.includes('www.') || (link.includes('.') && link.includes('/')))) {
-            if (link.includes('.')) {
-              link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-              var lastSymbol = link[link.length - 1];
-
-              if (lastSymbol == '.' || lastSymbol == ',')
-                link = link.substring(0, link.length - 1);
-
-              /// Remove '/' on the end of link, just for better looks in pop-up
-              var lastSymbol = link[link.length - 1];
-              if (lastSymbol == '/')
-                link = link.substring(0, link.length - 1);
-
-              /// Remove quotes in start and end of the link
-              var firstSymbol = link[0];
-              var lastSymbol = link[link.length - 1];
-              if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
-                link = link.substring(1, link.length);
-              if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
-                link = link.substring(0, link.length - 1);
-
-
-              /// Handle when resulting link has spaces
-              if (link.includes(' ')) {
-                var urlWords = link.split(' ');
-                for (i in urlWords) {
-                  var word = urlWords[i];
-                  if (word.includes('.') || word.includes('/')) {
-                    link = word;
+                  /// Handle when resulting link has spaces
+                  if (link.includes(' ')) {
+                    var urlWords = link.split(' ');
+                    for (i in urlWords) {
+                      var word = urlWords[i];
+                      if (word.includes('.') || word.includes('/')) {
+                        link = word;
+                      }
+                    }
                   }
+
+                  /// Adding button
+                  var interactiveButton = document.createElement('button');
+                  interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                  var linkText = document.createElement('span');
+                  // linkText.textContent = ' ' + link;
+                  linkText.textContent = ' ' + (link.length > 42 ? link.substring(0, 42) + '...' : link);
+                  linkText.setAttribute('style', `color: ${secondaryColor}`);
+                  interactiveButton.innerHTML = openLinkLabel + '';
+                  interactiveButton.appendChild(linkText);
+                  interactiveButton.addEventListener("mouseup", function (e) {
+                    hideTooltip();
+                    /// Open link
+                    var url = link.trim();
+
+                    if (!url.includes('http://') && !url.includes('https://'))
+                      url = 'https://' + url;
+                    window.open(`${url}`, '_blank');
+                  });
+
+                  tooltip.appendChild(interactiveButton);
+                  break;
                 }
               }
-
-              if (link.length > 42)
-
-
-                /// Adding button
-                var interactiveButton = document.createElement('button');
-              interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-              var linkText = document.createElement('span');
-              // linkText.textContent = ' ' + link;
-              linkText.textContent = ' ' + (link.length > 42 ? link.substring(0, 42) + '...' : link);
-              linkText.setAttribute('style', `color: ${secondaryColor}`);
-              interactiveButton.innerHTML = openLinkLabel + '';
-              interactiveButton.appendChild(linkText);
-              interactiveButton.addEventListener("mouseup", function (e) {
-                hideTooltip();
-                /// Open link
-                var url = link.trim();
-
-                if (!url.includes('http://') && !url.includes('https://'))
-                  url = 'https://' + url;
-                window.open(`${url}`, '_blank');
-              });
-
-              tooltip.appendChild(interactiveButton);
-              break;
             }
-          }
+
         }
-
+      }
     }
-
 
 
     /// Show Translate button when enabled, and no other buttons were added 
