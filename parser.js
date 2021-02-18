@@ -24,7 +24,7 @@ var textSelectionColor;
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
-var debugMode = true;
+var debugMode = false;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
@@ -594,10 +594,10 @@ function createTooltip() {
   }
 
   /// Get translated button labels
-  // copyLabel = chrome.i18n.getMessage("copyLabel");
-  // searchLabel = chrome.i18n.getMessage("searchLabel");
-  // openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
-  // translateLabel = chrome.i18n.getMessage("translateLabel");
+  copyLabel = chrome.i18n.getMessage("copyLabel");
+  searchLabel = chrome.i18n.getMessage("searchLabel");
+  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+  translateLabel = chrome.i18n.getMessage("translateLabel");
 
   /// Add search button
   var searchButton = document.createElement('button');
