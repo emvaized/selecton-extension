@@ -8,11 +8,11 @@ form {
 
 .option {
   padding: 4px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .option:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
   background-color: rgb(0, 0, 0, 0.1);
   border-radius: 4px;
   transition: all 200ms ease-in-out;
@@ -67,4 +67,12 @@ button {
   margin: 3px !important;
   width: 100%;
   text-align: center;
+}
+
+
+#customStylesSection {
+  border: solid 1px grey;
+  border-radius: 8px;
+  padding: 3px;
+  margin: 3px;
 }

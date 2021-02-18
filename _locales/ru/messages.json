@@ -87,7 +87,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически. <br /> Обновите страницу, чтобы увидеть изменения",
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "showTranslateButton": {
@@ -96,6 +96,30 @@
     },
     "languageToTranslate": {
         "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
+        "description": ""
+    },
+    "useCustomStyle": {
+        "message": "Изменить стиль панели",
+        "description": ""
+    },
+    "tooltipBackground": {
+        "message": "Цвет фона",
+        "description": ""
+    },
+    "tooltipOpacity": {
+        "message": "Прозрачность панели",
+        "description": ""
+    },
+    "addTooltipShadow": {
+        "message": "Использовать тень",
+        "description": ""
+    },
+    "shadowOpacity": {
+        "message": "Прозрачность тени",
+        "description": ""
+    },
+    "borderRadius": {
+        "message": "Закругление углов (px)",
         "description": ""
     }
 }

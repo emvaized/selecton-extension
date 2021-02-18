@@ -10,6 +10,12 @@ var options = new Map([
     ['preferredMetricsSystem', 'metric'],
     ['showTranslateButton', true],
     ['languageToTranslate', 'en'],
+    ['useCustomStyle', false],
+    ['tooltipBackground', '#3B3B3B'],
+    ['tooltipOpacity', 1.0],
+    ['addTooltipShadow', false],
+    ['shadowOpacity', 0.5],
+    ['borderRadius', 3],
 ]);
 
 var keys = [...options.keys()];
@@ -69,6 +75,9 @@ function restoreOptions() {
         document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
+        /// Add top padding for 'custom styles' toggle
+        document.getElementById('useCustomStyle').parentNode.parentNode.style.paddingTop = '15px';
+
         updateDisabledOptions();
     }
 }
@@ -77,6 +86,9 @@ function updateDisabledOptions() {
     document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+
+    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#shadowOpacity").className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function saveAllOptions() {

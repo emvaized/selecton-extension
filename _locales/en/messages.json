@@ -87,7 +87,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically. <br /> Update page to see changes",
+    "message": "Settings are saved automatically <br /> Update page to see changes",
     "description": ""
   },
   "showTranslateButton": {
@@ -96,6 +96,30 @@
   },
   "languageToTranslate": {
     "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
+    "description": ""
+  },
+  "useCustomStyle": {
+    "message": "Use custom style for tooltip",
+    "description": ""
+  },
+  "tooltipBackground": {
+    "message": "Background color",
+    "description": ""
+  },
+  "tooltipOpacity": {
+    "message": "Tooltip opacity",
+    "description": ""
+  },
+  "addTooltipShadow": {
+    "message": "Add shadow",
+    "description": ""
+  },
+  "shadowOpacity": {
+    "message": "Shadow opacity",
+    "description": ""
+  },
+  "borderRadius": {
+    "message": "Border radius",
     "description": ""
   }
 }
