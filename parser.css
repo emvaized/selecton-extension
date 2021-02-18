@@ -18,6 +18,7 @@
     z-index: 999 !important;
   }
 
+
   .selection-tooltip-arrow {
     z-index:999 !important;
     width: 50px;
@@ -71,4 +72,8 @@
     border-left: 1px solid grey;
     flex: 1;
 
+  }
+
+  button {
+    outline: none !important;
   }

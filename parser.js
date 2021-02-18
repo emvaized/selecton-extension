@@ -1,16 +1,8 @@
-var copyLabel = 'Copy';
-var searchLabel = 'Search';
-var openLinkLabel = 'Open';
-var translateLabel = 'Translate';
+/// Configs
 var animationDuration = 300;
-
-/// API key for https://www.currencyconverterapi.com/
-var currencyConversionApiKey = '3af8bf98aa005167fd3d';
 var convertToCurrency = 'USD';
 var hideOnScroll;
-
-// Possible values: 'imperial', 'metric';
-var preferredMetricsSystem;
+var preferredMetricsSystem; /// Possible values: 'imperial', 'metric';
 var showTranslateButton;
 var languageToTranslate;
 var convertMetrics = true;
@@ -26,20 +18,32 @@ var addTooltipShadow = false;
 var shadowOpacity = 0.5;
 var borderRadius = 3;
 
-var convertOnlyFewWordsSelected = true;
+/// Non user-configurable settings 
+var debugMode = false;
+var convertWhenOnlyFewWordsSelected = true;
+var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
-var tooltipMaxWidth = 700;
+var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
+var updateRatesEveryDays = 14;
+var wordsLimitToProccessText = 3;
 
+/// Variables for work
+var copyLabel = 'Copy';
+var searchLabel = 'Search';
+var openLinkLabel = 'Open';
+var translateLabel = 'Translate';
+var ratesLastFetchedDate;
 var tooltip;
 var arrow;
 var selection;
 var tooltipIsShown = false;
+firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
+lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
 
 function init() {
-  /// Restore user's settings
+  /// Restore user settings
   chrome.storage.local.get(
     [
-      'currencyConversionApiKey',
       'animationDuration',
       'convertToCurrency',
       'hideOnScroll',
@@ -50,8 +54,8 @@ function init() {
       'preferredMetricsSystem',
       'showTranslateButton',
       'languageToTranslate',
+      'ratesLastFetchedDate',
     ], function (value) {
-      currencyConversionApiKey = value.currencyConversionApiKey || '3af8bf98aa005167fd3d';
       animationDuration = value.animationDuration || 300;
       convertToCurrency = value.convertToCurrency || 'USD';
       hideOnScroll = value.hideOnScroll ?? true;
@@ -62,40 +66,60 @@ function init() {
       preferredMetricsSystem = value.preferredMetricsSystem || 'metric';
       showTranslateButton = value.showTranslateButton ?? true;
       languageToTranslate = value.languageToTranslate || 'en';
+      ratesLastFetchedDate = value.ratesLastFetchedDate;
 
+      firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
+      lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
+
+      if (debugMode)
+        console.log('Loaded SelectionActions settings from memory');
+
+      /// If initial launch, update currency rates
+      if (convertCurrencies) {
+        if (ratesLastFetchedDate == null)
+          fetchCurrencyRates();
+        else loadCurrencyRatesFromMemory();
+      }
+
+      if (loadTooltipOnPageLoad)
+        createTooltip();
     });
+}
 
+init();
 
-  copyLabel = chrome.i18n.getMessage("copyLabel");
-  searchLabel = chrome.i18n.getMessage("searchLabel");
-  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+function createTooltip() {
+  /// Create tooltip and it's arrow
+  tooltip = document.createElement('div');
+  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
+  tooltip.setAttribute('class', `selection-tooltip`);
 
   arrow = document.createElement('div');
   arrow.setAttribute('class', `selection-tooltip-arrow`);
-
   var arrowChild = document.createElement('div');
   arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
   arrow.appendChild(arrowChild);
 
-  tooltip = document.createElement('div');
   tooltip.appendChild(arrow);
   document.body.appendChild(tooltip);
-  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
-  tooltip.setAttribute('class', `selection-tooltip`);
 
+  /// Apply custom stylings
   if (useCustomStyle) {
     tooltip.style.borderRadius = `${borderRadius}px`;
-
     tooltip.style.background = tooltipBackground;
     arrowChild.style.background = tooltipBackground;
-
     if (addTooltipShadow) {
       tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
       arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
     }
   }
 
-  /// Search button creation
+  /// Get translated button labels
+  copyLabel = chrome.i18n.getMessage("copyLabel");
+  searchLabel = chrome.i18n.getMessage("searchLabel");
+  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+
+  /// Add search button
   var searchButton = document.createElement('button');
   searchButton.setAttribute('class', `selection-popup-button`);
   searchButton.textContent = searchLabel;
@@ -108,7 +132,7 @@ function init() {
 
   tooltip.appendChild(searchButton);
 
-  /// Copy button creation 
+  /// Add copy button 
   var copyButton = document.createElement('button');
   copyButton.setAttribute('class', `selection-popup-button button-with-border`);
   copyButton.textContent = copyLabel;
@@ -118,26 +142,21 @@ function init() {
   });
   tooltip.appendChild(copyButton);
 
-  document.addEventListener("scroll", function (e) {
-    if (hideOnScroll)
-      hideTooltip();
-  });
+  if (debugMode)
+    console.log('SelectionActions tooltip was created');
+}
 
-  document.addEventListener("mousedown", function (e) {
+
+document.addEventListener("scroll", function (e) {
+  if (hideOnScroll)
     hideTooltip();
-  });
-}
+});
+document.addEventListener("mousedown", function (e) {
+  hideTooltip();
+});
 
-init();
-
-
-function calculateString(fn) {
-  return new Function('return ' + fn)();
-}
-
-
-document.addEventListener("mouseup", function (e) {
-  // if (tooltip == null) init();
+document.addEventListener("mouseup", async function (e) {
+  if (tooltip == null) createTooltip();
 
   if (window.getSelection) {
     selection = window.getSelection();
@@ -153,7 +172,7 @@ document.addEventListener("mouseup", function (e) {
     var selectedText = selection.toString();
     var wordsCount = selectedText.split(' ').length;
 
-    if (convertOnlyFewWordsSelected == false || wordsCount < 3) {
+    if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
       /// Convert units
       var numberToConvert;
 
@@ -230,7 +249,10 @@ document.addEventListener("mouseup", function (e) {
                   tooltip.appendChild(interactiveButton);
                   try {
                     tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                  } catch (e) { console.log(e) }
+                  } catch (e) {
+                    if (debugMode)
+                      console.log(e);
+                  }
                   break outerloop;
                 }
               }
@@ -240,50 +262,62 @@ document.addEventListener("mouseup", function (e) {
 
       /// Do simple math calculations
       if (numberToConvert == null && performSimpleMathOperations) {
-        try {
-          var calculatedExpression = calculateString(selectedText.trim());
-          if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
+        if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
+          try {
+            // var calculatedExpression = calculateString(selectedText.trim());
+            var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
+            if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
-            var number;
-            var numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
-            number = numbersArray[0];
+              var number;
+              var numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
+              number = numbersArray[0];
 
-            if (number !== null) {
-              var interactiveButton = document.createElement('button');
-              interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-              interactiveButton.textContent = selectedText + ' →';
+              if (number !== null) {
+                var interactiveButton = document.createElement('button');
+                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                interactiveButton.textContent = selectedText + ' →';
 
-              var converted = document.createElement('span');
-              converted.textContent = ` ${calculatedExpression}`;
-              converted.setAttribute('style', `color: ${secondaryColor}`);
-              interactiveButton.appendChild(converted);
+                var converted = document.createElement('span');
+                converted.textContent = ` ${calculatedExpression}`;
+                converted.setAttribute('style', `color: ${secondaryColor}`);
+                interactiveButton.appendChild(converted);
 
-              interactiveButton.addEventListener("mouseup", function (e) {
-                hideTooltip();
-                /// Search for conversion on Google
-                window.open(`https://www.google.com/search?q=${selectedText}`, '_blank');
-                ;
-              });
+                interactiveButton.addEventListener("mouseup", function (e) {
+                  hideTooltip();
+                  /// Search for conversion on Google
+                  window.open(`https://www.google.com/search?q=${selectedText.replaceAll('+', '%2B')}`, '_blank');
+                  ;
+                });
 
-              tooltip.appendChild(interactiveButton);
-              try {
-                tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-              } catch (e) { console.log(e) }
+                tooltip.appendChild(interactiveButton);
+                try {
+                  tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                } catch (e) {
+                  if (debugMode)
+                    console.log(e);
+                }
+              }
             }
+          } catch (e) {
+            if (debugMode)
+              console.log(e);
           }
-        } catch (e) { }
       }
 
       /// Convert currencies
       if (convertCurrencies) {
         var currency;
         var amount;
+        var currencyRate;
 
-        for (const [key, value] of Object.entries(currenciesList['results'])) {
+        for (const [key, value] of Object.entries(currenciesList)) {
           if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
             // if (selectedText.includes(value["currencySymbol"])) {
             // currency = key;
+
             currency = value["id"];
+            currencyRate = value["rate"];
+
             amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
             if (amount !== null)
               amount = amount.join("");
@@ -291,44 +325,79 @@ document.addEventListener("mouseup", function (e) {
           }
         }
 
-        // if (currency !== undefined && currency !== convertToCurrency && amount !== null && amount.split('.').length < 3) {
         if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
-          convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
-            if (convertedAmount !== 'NaN' && convertedAmount !== undefined) {
 
-              /// Separate resulting numbers in groups of 3 digits
-              var convertedAmountString = convertedAmount.toString();
-              var parts = convertedAmountString.split('.');
-              parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-              convertedAmountString = parts.join('.');
+          /// Update currency rates in case they are old (will be used for next conversions)
+          if (ratesLastFetchedDate !== null) {
+            var today = new Date();
+            var dayOfNextFetch = new Date(ratesLastFetchedDate);
+            dayOfNextFetch.setDate(dayOfNextFetch.getDate() + updateRatesEveryDays);
 
-              /// Create and add button with result
-              var interactiveButton = document.createElement('button');
-              interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-              interactiveButton.textContent = amount + ' ' + currency + ' →';
-              var converted = document.createElement('span');
-              converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
-              converted.setAttribute('style', `color: ${secondaryColor}`);
-              interactiveButton.appendChild(converted);
+            if (today >= dayOfNextFetch) {
+              fetchCurrencyRates();
+            }
+          }
 
-              interactiveButton.addEventListener("mouseup", function (e) {
-                hideTooltip();
-                /// Search for conversion on Google
-                window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
-                ;
-              });
+          /// Rates are already locally stored (should be initially)
+          if (currencyRate !== null && currencyRate !== undefined) {
+            if (debugMode)
+              console.log(`Found local rate for currency ${currency}`);
 
-              tooltip.appendChild(interactiveButton);
-              /// Correct tooltip's dx
-              tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+            for (const [key, value] of Object.entries(currenciesList)) {
+              if (value["id"] == convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
+                var rateOfDesiredCurrency = value['rate'];
 
-              /// Correct last button's border radius
-              tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-              tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+                var resultingRate = rateOfDesiredCurrency / currencyRate;
+                var convertedAmount = amount * resultingRate;
 
+                if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN') {
+                  console.log(convertedAmount);
+                  /// Round result
+                  try {
+                    convertedAmount = parseFloat(convertedAmount);
+                    convertedAmount = convertedAmount.toFixed(2);
+                  } catch (e) { console.log(e); }
+
+                  /// Separate resulting numbers in groups of 3 digits
+                  var convertedAmountString = convertedAmount.toString();
+                  var parts = convertedAmountString.split('.');
+                  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                  convertedAmountString = parts.join('.');
+
+                  /// Create and add currency button with result of conversion
+                  var interactiveButton = document.createElement('button');
+                  interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                  interactiveButton.textContent = amount + ' ' + currency + ' →';
+                  var converted = document.createElement('span');
+                  converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
+                  converted.setAttribute('style', `color: ${secondaryColor}`);
+                  interactiveButton.appendChild(converted);
+
+                  interactiveButton.addEventListener("mouseup", function (e) {
+                    hideTooltip();
+                    /// Search for conversion on Google
+                    window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
+                    ;
+                  });
+
+                  tooltip.appendChild(interactiveButton);
+
+                  /// Correct tooltip's dx
+                  tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+
+                  /// Correct last button's border radius
+                  tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+                  tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                  break;
+                }
+              }
             }
 
-          });
+            /// Fetch rates from server
+          } else
+            fetchCurrencyRates();
+
         } else {
 
           /// Add 'open link' button for each found link
@@ -369,27 +438,42 @@ document.addEventListener("mouseup", function (e) {
                     }
                   }
 
-                  /// Adding button
-                  var interactiveButton = document.createElement('button');
-                  interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                  var linkText = document.createElement('span');
-                  // linkText.textContent = ' ' + link;
-                  linkText.textContent = ' ' + (link.length > 33 ? link.substring(0, 33) + '...' : link);
-                  linkText.setAttribute('style', `color: ${secondaryColor}`);
-                  interactiveButton.innerHTML = openLinkLabel + '';
-                  interactiveButton.appendChild(linkText);
-                  interactiveButton.addEventListener("mouseup", function (e) {
-                    hideTooltip();
-                    /// Open link
-                    var url = link.trim();
+                  try {
+                    link = link.trim();
 
-                    if (!url.includes('http://') && !url.includes('https://'))
-                      url = 'https://' + url;
-                    window.open(`${url}`, '_blank');
-                  });
+                    /// Filtering out non-links
+                    var splittedByDots = link.split('.');
+                    var lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
-                  tooltip.appendChild(interactiveButton);
-                  break;
+                    if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                      /// Adding button
+                      var interactiveButton = document.createElement('button');
+                      interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                      var linkText = document.createElement('span');
+                      // linkText.textContent = ' ' + link;
+                      linkText.textContent = ' ' + (link.length > 30 ? link.substring(0, 30) + '...' : link);
+                      linkText.setAttribute('style', `color: ${secondaryColor}`);
+
+                      /// Add tooltip with full website on hover
+                      if (link.length > 30)
+                        interactiveButton.setAttribute('title', link);
+
+                      interactiveButton.innerHTML = openLinkLabel + ' ';
+                      interactiveButton.appendChild(linkText);
+                      interactiveButton.addEventListener("mouseup", function (e) {
+                        hideTooltip();
+                        /// Open link
+
+                        if (!link.includes('http://') && !link.includes('https://'))
+                          link = 'https://' + link;
+                        window.open(`${link}`, '_blank');
+                      });
+
+                      tooltip.appendChild(interactiveButton);
+                      break;
+                    }
+                  } catch (e) { console.log(e) }
+
                 }
               }
             }
@@ -426,14 +510,86 @@ document.addEventListener("mouseup", function (e) {
   else hideTooltip();
 });
 
-var firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
-var lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
+
+/// Service methods
+
+function hideTooltip() {
+  if (tooltipIsShown) {
+    tooltip.style.opacity = 0.0;
+    setTimeout(function () {
+      tooltipIsShown = false;
+
+      /// Ignore clicks on tooltip
+      tooltip.style.pointerEvents = 'none';
+
+      /// Remove all added link button
+      var linkButtons = tooltip.querySelectorAll('.open-link-button');
+      if (linkButtons !== null)
+        linkButtons.forEach(function (button) {
+          button.remove();
+        });
+      if (debugMode)
+        console.log('SelectionActions tooltip was hidden');
+    }, animationDuration);
+  }
+}
+
+function showTooltip(dx, dy) {
+  tooltipIsShown = true;
+  tooltip.style.pointerEvents = 'auto';
+  tooltip.style.top = `${dy}px`;
+  tooltip.style.left = `${dx}px`;
+  tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
+  if (debugMode)
+    console.log('SelectionActions tooltip is shown');
+}
+
+function fetchCurrencyRates() {
+  fetch(urlToLoadCurrencyRates).then(function (val) {
+    return val.json();
+  }).then(function (jsonObj) {
+    var date = jsonObj['date'];
+    var val = jsonObj['rates'];
+    var ratesObject = {};
+
+    Object.keys(currenciesList).forEach(function (key) {
+      currenciesList[key]['rate'] = val[currenciesList[key]['id']];
+      ratesObject[key] = val[currenciesList[key]['id']];
+    });
+
+    /// Save rates to memory
+    chrome.storage.local.set({
+      'ratesLastFetchedDate': date,
+      'rates': ratesObject
+    });
+
+    if (debugMode)
+      console.log('Updated currency rates for SelectionActions');
+  });
+}
+
+function loadCurrencyRatesFromMemory() {
+  chrome.storage.local.get('rates', function (val) {
+    var loadedRates = val['rates'];
+
+    Object.keys(currenciesList).forEach(function (key) {
+      var id = currenciesList[key]['id'];
+      var rate = loadedRates[id];
+      if (rate !== null && rate !== undefined)
+        currenciesList[key]['rate'] = rate;
+    });
+
+    if (debugMode)
+      console.log('SelectionActions currency rates were successfully loaded from memory');
+  });
+}
+
 
 async function addTranslateButton() {
   var detectingLanguages;
   try {
     detectingLanguages = await chrome.i18n.detectLanguage(
-      selection.toString()                  // string
+      selection.toString()
     );
   } catch (e) { }
 
@@ -470,6 +626,10 @@ async function addTranslateButton() {
 
     }
   }
+}
+
+function calculateString(fn) {
+  return new Function('return ' + fn)();
 }
 
 function getSelectionDimensions() {
@@ -513,69 +673,8 @@ async function copyText() {
   hideTooltip();
 }
 
-function hideTooltip() {
-  if (tooltipIsShown) {
-    tooltip.style.opacity = 0.0;
-    setTimeout(function () {
-      tooltipIsShown = false;
 
-      /// Ignore clicks on tooltip
-      tooltip.style.pointerEvents = 'none';
-
-      /// Remove all added link button
-      var linkButtons = tooltip.querySelectorAll('.open-link-button');
-      if (linkButtons !== null)
-        linkButtons.forEach(function (button) {
-          button.remove();
-        });
-    }, animationDuration);
-  }
-}
-
-function showTooltip(dx, dy) {
-  tooltipIsShown = true;
-  tooltip.style.pointerEvents = 'auto';
-  tooltip.style.top = `${dy}px`;
-  tooltip.style.left = `${dx}px`;
-  tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
-}
-
-
-async function convertCurrency(amount, fromCurrency, toCurrency, cb) {
-  fromCurrency = encodeURIComponent(fromCurrency);
-  toCurrency = encodeURIComponent(toCurrency);
-  var query = fromCurrency + '_' + toCurrency;
-
-  var url = 'https://free.currconv.com/api/v7/convert?q='
-    + query + '&compact=ultra&apiKey=' + currencyConversionApiKey;
-
-  console.log(url);
-
-  try {
-    const apiCall = await fetch(
-      url
-    );
-    const jsonObj = await apiCall.json();
-
-    var val = jsonObj[query];
-    if (val) {
-      var total = val * amount;
-      cb(null, Math.round(total * 100) / 100);
-    } else {
-      var err = new Error("Value not found for " + query);
-      console.log(err);
-      // cb(err);
-    }
-  } catch (e) {
-    console.log("Currency conversion error: ", e);
-    if (e instanceof NetworkError) {
-      console.log(e.message);
-      console.log(e.getMessage);
-    }
-    // cb(e);
-  }
-}
-
+/// Big variables
 
 const convertionUnits = {
   "inch": {
@@ -679,55 +778,124 @@ const convertionUnits = {
 };
 
 
+/// List of currencies with various literal labels on English and russians
 var currenciesList = {
-  "results":
-  {
-    "USD": { "currencyName": "United States Dollar", "currencySymbol": "$", "id": "USD" },
-    "USD1": { "currencyName": "United States Dollar", "currencySymbol": "dollar", "id": "USD" },
-    "EUR": { "currencyName": "Euro", "currencySymbol": "€", "id": "EUR" },
-    "EUR1": { "currencyName": "Euro", "currencySymbol": "euro", "id": "EUR" },
-    "CNY": { "currencyName": "Chinese Yuan", "currencySymbol": "¥", "id": "CNY" },
-    "CNY1": { "currencyName": "Chinese Yuan", "currencySymbol": "yuan", "id": "CNY" },
-    "JPY": { "currencyName": "Japanese Yen", "currencySymbol": "¥", "id": "JPY" },
-    "JPY1": { "currencyName": "Japanese Yen", "currencySymbol": "yen", "id": "JPY" },
-    "RUB": { "currencyName": "Russian Ruble", "currencySymbol": "₽", "id": "RUB" },
-    "RUB1": { "currencyName": "Russian Ruble", "currencySymbol": "rubles", "id": "RUB" },
-    "UAH": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "₴", "id": "UAH" },
-    "BTC": { "currencyName": "Bitcoin", "currencySymbol": "BTC", "id": "BTC" },
-    "BTC1": { "currencyName": "Bitcoin", "currencySymbol": "bitcoins", "id": "BTC" },
-    "GBP": { "currencyName": "British Pound", "currencySymbol": "£", "id": "GBP" },
-    "INR": { "currencyName": "Indian Rupee", "currencySymbol": "₹", "id": "INR" },
-    "INR1": { "currencyName": "Indian Rupee", "currencySymbol": "rupees", "id": "INR" },
-    "IRR": { "currencyName": "Iranian Rial", "currencySymbol": "﷼", "id": "IRR" },
-    "ILS": { "currencyName": "Israeli New Sheqel", "currencySymbol": "₪", "id": "ILS" },
-    "CZK": { "currencyName": "Czech Koruna", "currencySymbol": "Kč", "id": "CZK" },
-    "NGN": { "currencyName": "Nigerian Naira", "currencySymbol": "₦", "id": "NGN" },
-    "KZT": { "currencyName": "Kazakhstani Tenge", "currencySymbol": "лв", "id": "KZT" },
-    "ANG": { "currencyName": "Netherlands Antillean Gulden", "currencySymbol": "ƒ", "id": "ANG" },
-    "CRC": { "currencyName": "Costa Rican Colon", "currencySymbol": "₡", "id": "CRC" },
-    "DKK": { "currencyName": "Danish Krone", "currencySymbol": "kr", "id": "DKK" },
-    "MNT": { "currencyName": "Mongolian Tugrik", "currencySymbol": "₮", "id": "MNT" },
-    "VND": { "currencyName": "Vietnamese Dong", "currencySymbol": "₫", "id": "VND" },
-    "KPW": { "currencyName": "North Korean Won", "currencySymbol": "₩", "id": "KPW" },
-    "SAR": { "currencyName": "Saudi Riyal", "currencySymbol": "﷼", "id": "SAR" },
-    "BGN": { "currencyName": "Bulgarian Lev", "currencySymbol": "лв", "id": "BGN" },
-
-    /// Russian labels
-    "EUR3": { "currencyName": "Euro", "currencySymbol": "евро", "id": "EUR" },
-    "USD3": { "currencyName": "United States Dollar", "currencySymbol": "доллар", "id": "USD" },
-    "CNY3": { "currencyName": "Chinese Yuan", "currencySymbol": "юаней", "id": "CNY" },
-    "RUB2": { "currencyName": "Russian Ruble", "currencySymbol": "рублей", "id": "RUB" },
-    "UAH2": { "currencyName": "Ukrainian Hryvnia", "currencySymbol": "гривен", "id": "UAH" },
-    "KZT1": { "currencyName": "Kazakhstani Tenge", "currencySymbol": "тенге", "id": "KZT" },
-    "JPY2": { "currencyName": "Japanese Yen", "currencySymbol": "йен", "id": "JPY" },
-  }
+  "ANG": { currencyName: "Netherlands Antillean Gulden", currencySymbol: "ƒ", id: "ANG", rate: 1.79495 },
+  "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 0.78 },
+  "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.617811 },
+  "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 0.18 },
+  "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.00002 },
+  "BTC1": { currencyName: "Bitcoin", currencySymbol: "bitcoins", id: "BTC", rate: 0.00002 },
+  "AUD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "AUD", rate: 0.79 },
+  "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 1.11 },
+  "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.458503 },
+  "CNY1": { currencyName: "Chinese Yuan", currencySymbol: "yuan", id: "CNY", rate: 6.458503 },
+  "CNY3": { currencyName: "Chinese Yuan", currencySymbol: "юаней", id: "CNY", rate: 6.458503 },
+  "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 609.471406 },
+  "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.377709 },
+  "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.149902 },
+  "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.827006 },
+  "EUR1": { currencyName: "Euro", currencySymbol: "euro", id: "EUR", rate: 0.827006 },
+  "EUR3": { currencyName: "Euro", currencySymbol: "евро", id: "EUR", rate: 0.827006 },
+  "GBP": { currencyName: "British Pound", currencySymbol: "£", id: "GBP", rate: 0.719877 },
+  "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", id: "HKD", rate: 0.13 },
+  "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", id: "ILS", rate: 3.239771 },
+  "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", id: "INR", rate: 72.87103 },
+  "INR1": { currencyName: "Indian Rupee", currencySymbol: "rupees", id: "INR", rate: 72.87103 },
+  "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", id: "IRR", rate: 42105.017329 },
+  "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", id: "JPY", rate: 105.857044 },
+  "JPY1": { currencyName: "Japanese Yen", currencySymbol: "yen", id: "JPY", rate: 105.857044 },
+  "JPY2": { currencyName: "Japanese Yen", currencySymbol: "йен", id: "JPY", rate: 105.857044 },
+  "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", id: "KPW", rate: 900.00037 },
+  "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "лв", id: "KZT", rate: 419.32476 },
+  "KZT1": { currencyName: "Kazakhstani Tenge", currencySymbol: "тенге", id: "KZT", rate: 419.32476 },
+  "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2854.959219 },
+  "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 0.050 },
+  "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 380.000156 },
+  "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 0.27 },
+  "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 73.68413 },
+  "RUB1": { currencyName: "Russian Ruble", currencySymbol: "rubles", id: "RUB", rate: 73.68413 },
+  "RUB2": { currencyName: "Russian Ruble", currencySymbol: "рублей", id: "RUB", rate: 73.68413 },
+  "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },
+  "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 0.12 },
+  "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", id: "TRY", rate: 0.14 },
+  "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", id: "UAH", rate: 27.852288 },
+  "UAH2": { currencyName: "Ukrainian Hryvnia", currencySymbol: "гривен", id: "UAH", rate: 27.852288 },
+  "USD": { currencyName: "United States Dollar", currencySymbol: "$", id: "USD", rate: 1 },
+  "USD1": { currencyName: "United States Dollar", currencySymbol: "dollar", id: "USD", rate: 1 },
+  "USD3": { currencyName: "United States Dollar", currencySymbol: "доллар", id: "USD", rate: 1 },
+  "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", id: "VND", rate: 23155.531116 },
 }
 
-// async function updateCurrencies() {
-//   var keys = [...currenciesList['results'].keys()];
+
+/// Deprecated currency fetch methods from CurrConv
+
+// convertCurrency(amount, currency, convertToCurrency, function (err, convertedAmount) {
+//   console.log('fetched currency rates from currconv server');
+//   if (convertedAmount !== 'NaN' && convertedAmount !== undefined) {
+
+//     /// Separate resulting numbers in groups of 3 digits
+//     var convertedAmountString = convertedAmount.toString();
+//     var parts = convertedAmountString.split('.');
+//     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+//     convertedAmountString = parts.join('.');
+
+//     /// Create and add button with result
+//     var interactiveButton = document.createElement('button');
+//     interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+//     interactiveButton.textContent = amount + ' ' + currency + ' →';
+//     var converted = document.createElement('span');
+//     converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
+//     converted.setAttribute('style', `color: ${secondaryColor}`);
+//     interactiveButton.appendChild(converted);
+
+//     interactiveButton.addEventListener("mouseup", function (e) {
+//       hideTooltip();
+//       /// Search for conversion on Google
+//       window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
+//       ;
+//     });
+
+//     tooltip.appendChild(interactiveButton);
+//     /// Correct tooltip's dx
+//     tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+
+//     /// Correct last button's border radius
+//     tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+//     tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+//   }
+// });
+
+// async function convertCurrency(amount, fromCurrency, toCurrency, cb) {
+//   fromCurrency = encodeURIComponent(fromCurrency);
+//   toCurrency = encodeURIComponent(toCurrency);
+//   var query = fromCurrency + '_' + toCurrency;
+
+//   var url = 'https://free.currconv.com/api/v7/convert?q='
+//     + query + '&compact=ultra&apiKey=' + currencyConversionApiKey;
+
+//   console.log(url);
+
+//   try {
+//     const apiCall = await fetch(
+//       url
+//     );
+//     const jsonObj = await apiCall.json();
+
+//     var val = jsonObj[query];
+//     if (val) {
+//       var total = val * amount;
+//       cb(null, Math.round(total * 100) / 100);
+//     } else {
+//       var err = new Error("Value not found for " + query);
+//       console.log(err);
+//       // cb(err);
+//     }
+//   } catch (e) {
+//     console.log("Currency conversion error: ", e);
+//     if (e instanceof NetworkError) {
+//       console.log(e.message);
+//       console.log(e.getMessage);
+//     }
+//   }
 // }
-
-
-
-
-

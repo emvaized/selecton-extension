@@ -26,16 +26,12 @@
         "message": "Конвертирование",
         "description": "Header for convertion category in settings"
     },
-    "currencyConversionApiKey": {
-        "message": "Ключ API для CurrConv",
-        "description": "Label for field in settings"
-    },
-    "currencyConversionApiKeyDescription": {
-        "message": "Чтобы конвертирование валют работало более стабильно, создайте собственный бесплатный ключ на <a target='_blank' href='https://free.currencyconverterapi.com'>https://free.currencyconverterapi.com/</a> и вставьте ниже:",
-        "description": "Explanation for field in settings"
+    "actionButtonsHeader": {
+        "message": "Кнопки действий",
+        "description": "Header for action buttons category in settings"
     },
     "animationDuration": {
-        "message": "Продолжительность анимации (мс)",
+        "message": "Продолжительность анимаций (мс)",
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
@@ -99,7 +95,7 @@
         "description": ""
     },
     "languageToTranslate": {
-        "message": "Язык для перевода - ISO 639-1 (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Узнать код</a>)",
+        "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
     }
 }

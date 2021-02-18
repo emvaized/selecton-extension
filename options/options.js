@@ -1,6 +1,5 @@
 
 var options = new Map([
-    ['currencyConversionApiKey', '3af8bf98aa005167fd3d'],
     ['animationDuration', 300],
     ['convertToCurrency', 'USD'],
     ['hideOnScroll', true],
@@ -62,7 +61,7 @@ function restoreOptions() {
         /// Set translated headers
         document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
         document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
-        document.querySelector("#currencyConversionApiKeyDescription").innerHTML = chrome.i18n.getMessage("currencyConversionApiKeyDescription");
+        document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("actionButtonsHeader");
         document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
         /// Translate footer buttons
@@ -76,8 +75,6 @@ function restoreOptions() {
 
 function updateDisabledOptions() {
     document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#currencyConversionApiKey").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#currencyConversionApiKeyDescription").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
 }
