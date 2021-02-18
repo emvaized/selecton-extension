@@ -10,4 +10,4 @@ Download for Firefox:
 https://addons.mozilla.org/ru/firefox/addon/selection-actions/
 
 Download for Chrome:
-*waiting for verification*
+https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
