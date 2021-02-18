@@ -40,6 +40,8 @@
     background: #3B3B3B;
     /* box-shadow: 6px 5px 9px -9px rgba(0,0,0,0.5),
                 5px 6px 9px -9px rgba(0,0,0,0.5); */
+    backdrop-filter: blur(20px);
+
   }
 
   .selection-tooltip.active {
@@ -75,3 +77,16 @@
   button {
     outline: none !important;
   }
+
+
+::selection {
+    color: var(--selection-text-color);
+    background:  var(--selection-background);
+    /* text-shadow: 1px 1px 2px #b040b0; */
+}
+/* For Mozilla Firefox */
+::-moz-selection {
+    color: var(--selection-text-color);
+    background: var(--selection-background);
+    /* text-shadow: 1px 1px 2px #b040b0; */
+}

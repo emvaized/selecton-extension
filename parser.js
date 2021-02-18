@@ -18,7 +18,12 @@ var addTooltipShadow = false;
 var shadowOpacity = 0.5;
 var borderRadius = 3;
 
+var changeTextSelectionColor = false;
+var textSelectionBackground;
+var textSelectionColor;
+
 /// Non user-configurable settings 
+var ignoreWhenTextFieldFocused = true;
 var debugMode = false;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
@@ -62,6 +67,10 @@ function init() {
       'addTooltipShadow',
       'shadowOpacity',
       'borderRadius',
+
+      'changeTextSelectionColor',
+      'textSelectionBackground',
+      'textSelectionColor',
     ], function (value) {
       animationDuration = value.animationDuration || 300;
       convertToCurrency = value.convertToCurrency || 'USD';
@@ -72,7 +81,7 @@ function init() {
       performSimpleMathOperations = value.performSimpleMathOperations ?? true;
       preferredMetricsSystem = value.preferredMetricsSystem || 'metric';
       showTranslateButton = value.showTranslateButton ?? true;
-      languageToTranslate = value.languageToTranslate || 'en';
+      languageToTranslate = value.languageToTranslate || navigator.language || navigator.userLanguage || 'en';
       ratesLastFetchedDate = value.ratesLastFetchedDate;
 
       useCustomStyle = value.useCustomStyle ?? false;
@@ -81,6 +90,11 @@ function init() {
       addTooltipShadow = value.addTooltipShadow ?? false;
       shadowOpacity = value.shadowOpacity || 0.5;
       borderRadius = value.borderRadius || 3;
+
+      changeTextSelectionColor = value.changeTextSelectionColor ?? false;
+      // textSelectionBackground = value.textSelectionBackground || '#808080';
+      textSelectionBackground = value.textSelectionBackground || '#338FFF';
+      textSelectionColor = value.textSelectionColor || '#ffffff';
 
       if (debugMode)
         console.log('Loaded SelectionActions settings from memory');
@@ -94,6 +108,19 @@ function init() {
 
       if (loadTooltipOnPageLoad)
         createTooltip();
+
+
+      /// Change text selection color
+      if (changeTextSelectionColor) {
+        document.body.style.setProperty('--selection-background', textSelectionBackground);
+        document.body.style.setProperty('--selection-text-color', textSelectionColor);
+      }
+      else {
+        /// Set the default blue-white colors
+        /// Not a great solution, since it will override any website's custom selection colors
+        document.body.style.setProperty('--selection-background', '#338FFF');
+        document.body.style.setProperty('--selection-text-color', '#ffffff');
+      }
     });
 }
 
@@ -171,6 +198,14 @@ document.addEventListener("mousedown", function (e) {
 });
 
 document.addEventListener("mouseup", async function (e) {
+  /// Don't open tooltip when any textfield is focused
+  if (ignoreWhenTextFieldFocused &&
+    (
+      document.activeElement.tagName === "INPUT" ||
+      document.activeElement.tagName === "TEXTAREA"
+    )
+  ) return;
+
   if (tooltip == null) createTooltip();
 
   if (window.getSelection) {
@@ -597,11 +632,13 @@ function loadCurrencyRatesFromMemory() {
 
 
 function addTranslateButton() {
-  console.log('Checking if its needed to add Translate button...');
+  if (debugMode)
+    console.log('Checking if its needed to add Translate button...');
 
   var selectedText = selection.toString();
 
-  console.log(`Selected text is: ${selectedText}`);
+  if (debugMode)
+    console.log(`Selected text is: ${selectedText}`);
   try {
     chrome.i18n.detectLanguage(selectedText, function (result) {
       var detectedLanguages = result;

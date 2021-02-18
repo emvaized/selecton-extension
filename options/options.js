@@ -9,13 +9,18 @@ var options = new Map([
     ['performSimpleMathOperations', true],
     ['preferredMetricsSystem', 'metric'],
     ['showTranslateButton', true],
-    ['languageToTranslate', 'en'],
+    // ['languageToTranslate', 'en'],
+    ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
     ['useCustomStyle', false],
     ['tooltipBackground', '#3B3B3B'],
     ['tooltipOpacity', 1.0],
     ['addTooltipShadow', false],
     ['shadowOpacity', 0.5],
     ['borderRadius', 3],
+
+    ['changeTextSelectionColor', false],
+    ['textSelectionBackground', '#338FFF'],
+    ['textSelectionColor', '#ffffff'],
 ]);
 
 var keys = [...options.keys()];
@@ -36,7 +41,8 @@ function restoreOptions() {
             if (input !== null && input !== undefined) {
                 if (input.type == 'checkbox') {
                     if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
-                        input.setAttribute('checked', 0)
+                        input.setAttribute('checked', 0);
+                    else input.removeAttribute('checked', 0);
                 } else if (input.tagName == 'SELECT') {
                     var options = input.querySelectorAll('option');
                     if (options !== null)
@@ -89,6 +95,9 @@ function updateDisabledOptions() {
 
     document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#shadowOpacity").className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
+
+    document.querySelector("#textSelectionBackground").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionColor").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function saveAllOptions() {
@@ -110,7 +119,31 @@ function resetOptions() {
     });
 
     chrome.storage.local.set(dataToSave);
-    restoreOptions();
+
+    // restoreOptions();
+    options.forEach(function (value, key) {
+        var input = document.getElementById(key);
+
+        /// Set input value
+        if (input !== null && input !== undefined) {
+            if (input.type == 'checkbox') {
+                if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
+                    input.setAttribute('checked', 0);
+                else input.removeAttribute('checked', 0);
+            } else if (input.tagName == 'SELECT') {
+                var options = input.querySelectorAll('option');
+                if (options !== null)
+                    options.forEach(function (option) {
+                        var selectedValue = result[key] ?? value;
+                        option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                        if (option.value == selectedValue) option.setAttribute('selected', true);
+                    });
+            }
+            else {
+                input.setAttribute('value', result[key] ?? value);
+            }
+        }
+    });
 }
 
 

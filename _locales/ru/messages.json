@@ -121,5 +121,17 @@
     "borderRadius": {
         "message": "Закругление углов (px)",
         "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Изменить цвет выделения",
+        "description": ""
+    },
+    "textSelectionBackground": {
+        "message": "Цвет фона выделения",
+        "description": ""
+    },
+    "textSelectionColor": {
+        "message": "Цвет текста",
+        "description": ""
     }
 }

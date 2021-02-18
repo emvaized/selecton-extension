@@ -121,5 +121,17 @@
   "borderRadius": {
     "message": "Border radius",
     "description": ""
+  },
+  "changeTextSelectionColor": {
+    "message": "Change selection color",
+    "description": ""
+  },
+  "textSelectionBackground": {
+    "message": "Selection background color",
+    "description": ""
+  },
+  "textSelectionColor": {
+    "message": "Text color",
+    "description": ""
   }
 }
