@@ -24,7 +24,7 @@ var textSelectionColor;
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
-var debugMode = false;
+var debugMode = true;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
@@ -44,6 +44,10 @@ var selection;
 var tooltipIsShown = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
+
+var browserLanguage;
+var browserCurrency;
+var browserMetricSystem;
 
 function init() {
   /// Restore user settings
@@ -72,16 +76,26 @@ function init() {
       'textSelectionBackground',
       'textSelectionColor',
     ], function (value) {
+
+      if (debugMode) {
+        console.log('Loaded SelectionActions settings from memory:');
+        console.log(value);
+      }
+
+      if (value.preferredMetricsSystem == null || value.preferredMetricsSystem == undefined) {
+        setDefaultLocales();
+      }
+
       animationDuration = value.animationDuration || 300;
-      convertToCurrency = value.convertToCurrency || 'USD';
+      convertToCurrency = value.convertToCurrency || browserCurrency || 'USD';
       hideOnScroll = value.hideOnScroll ?? true;
       convertMetrics = value.convertMetrics ?? true;
       addOpenLinks = value.addOpenLinks ?? true;
       convertCurrencies = value.convertCurrencies ?? true;
       performSimpleMathOperations = value.performSimpleMathOperations ?? true;
-      preferredMetricsSystem = value.preferredMetricsSystem || 'metric';
+      preferredMetricsSystem = value.preferredMetricsSystem || browserMetricSystem || 'metric';
       showTranslateButton = value.showTranslateButton ?? true;
-      languageToTranslate = value.languageToTranslate || navigator.language || navigator.userLanguage || 'en';
+      languageToTranslate = value.languageToTranslate || browserLanguage || 'en';
       ratesLastFetchedDate = value.ratesLastFetchedDate;
 
       useCustomStyle = value.useCustomStyle ?? false;
@@ -96,8 +110,6 @@ function init() {
       textSelectionBackground = value.textSelectionBackground || '#338FFF';
       textSelectionColor = value.textSelectionColor || '#ffffff';
 
-      if (debugMode)
-        console.log('Loaded SelectionActions settings from memory');
 
       /// If initial launch, update currency rates
       if (convertCurrencies) {
@@ -126,66 +138,58 @@ function init() {
 
 init();
 
-function createTooltip() {
-  /// Create tooltip and it's arrow
-  tooltip = document.createElement('div');
-  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
-  tooltip.setAttribute('class', `selection-tooltip`);
+function setDefaultLocales() {
 
-  arrow = document.createElement('div');
-  arrow.setAttribute('class', `selection-tooltip-arrow`);
-  var arrowChild = document.createElement('div');
-  arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
-  arrow.appendChild(arrowChild);
+  /// Set default currency and language according to browser's locale
+  var browserLocale = navigator.language || navigator.userLanguage;
+  var browserCountry;
 
-  tooltip.appendChild(arrow);
-  document.body.appendChild(tooltip);
-
-  /// Apply custom stylings
-  if (useCustomStyle) {
-    tooltip.style.borderRadius = `${borderRadius}px`;
-    tooltip.style.background = tooltipBackground;
-    arrowChild.style.background = tooltipBackground;
-
-    if (addTooltipShadow) {
-      tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
-      arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
-    }
-    /// Set rounded corners for buttons
-    firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
-    lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
+  if (debugMode) {
+    console.log('Browser locale is: ' + browserLocale);
+    console.log('Configuring default locale settings...');
   }
 
-  /// Get translated button labels
-  copyLabel = chrome.i18n.getMessage("copyLabel");
-  searchLabel = chrome.i18n.getMessage("searchLabel");
-  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+  if (browserLocale.includes('-')) {
+    var parts = browserLocale.split('-');
+    browserLanguage = parts[0];
+    browserCountry = parts[1];
+  } else {
+    browserLanguage = browserLocale;
+    browserCountry = browserLocale.toUpperCase();
+  }
 
-  /// Add search button
-  var searchButton = document.createElement('button');
-  searchButton.setAttribute('class', `selection-popup-button`);
-  searchButton.textContent = searchLabel;
-  searchButton.addEventListener("mouseup", function (e) {
-    hideTooltip();
-    var selectedText = selection.toString();
-    /// Search text
-    window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
+  if (browserCountry !== null && browserCountry !== undefined && browserCountry !== '') {
+
+    /// Set default metric system
+    if (browserCountry == 'US')
+      browserMetricSystem = 'imperial';
+    else browserMetricSystem = 'metric';
+
+
+    /// Set default currency
+    Object.keys(currenciesList).forEach(function (key) {
+      var id = currenciesList[key]['id'];
+      if (id.includes(browserCountry)) {
+        browserCurrency = id;
+      }
+    });
+    if (debugMode) {
+      console.log(`Default browser language: ${browserLanguage}`);
+      console.log(`Default browser metrics: ${browserMetricSystem}`);
+      console.log(`Default browser currency: ${browserCurrency}`);
+      console.log('Saved default locales to memory');
+
+    }
+  }
+
+
+  /// Save rates to memory
+  chrome.storage.local.set({
+    'convertToCurrency': browserCurrency || 'USD',
+    'languageToTranslate': browserLanguage || 'en',
+    'preferredMetricsSystem': browserMetricSystem || 'metric',
   });
 
-  tooltip.appendChild(searchButton);
-
-  /// Add copy button 
-  var copyButton = document.createElement('button');
-  copyButton.setAttribute('class', `selection-popup-button button-with-border`);
-  copyButton.textContent = copyLabel;
-  copyButton.addEventListener("mouseup", function (e) {
-    document.execCommand('copy');
-    hideTooltip();
-  });
-  tooltip.appendChild(copyButton);
-
-  if (debugMode)
-    console.log('SelectionActions tooltip was created');
 }
 
 
@@ -559,6 +563,79 @@ document.addEventListener("mouseup", async function (e) {
 
 /// Service methods
 
+function createTooltip() {
+  /// Create tooltip and it's arrow
+  tooltip = document.createElement('div');
+  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
+  tooltip.setAttribute('class', `selection-tooltip`);
+
+  arrow = document.createElement('div');
+  arrow.setAttribute('class', `selection-tooltip-arrow`);
+  var arrowChild = document.createElement('div');
+  arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
+  arrow.appendChild(arrowChild);
+
+  tooltip.appendChild(arrow);
+  document.body.appendChild(tooltip);
+
+  /// Apply custom stylings
+  if (useCustomStyle) {
+    tooltip.style.borderRadius = `${borderRadius}px`;
+    tooltip.style.background = tooltipBackground;
+    arrowChild.style.background = tooltipBackground;
+
+    if (addTooltipShadow) {
+      tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
+      arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
+    }
+    /// Set rounded corners for buttons
+    firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
+    lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
+  }
+
+  /// Get translated button labels
+  // copyLabel = chrome.i18n.getMessage("copyLabel");
+  // searchLabel = chrome.i18n.getMessage("searchLabel");
+  // openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+  // translateLabel = chrome.i18n.getMessage("translateLabel");
+
+  /// Add search button
+  var searchButton = document.createElement('button');
+  searchButton.setAttribute('class', `selection-popup-button`);
+  searchButton.textContent = searchLabel;
+  searchButton.addEventListener("mouseup", function (e) {
+    hideTooltip();
+    var selectedText = selection.toString();
+    /// Search text
+    window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
+  });
+
+  tooltip.appendChild(searchButton);
+
+  /// Add copy button 
+  var copyButton = document.createElement('button');
+  copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+  copyButton.textContent = copyLabel;
+  copyButton.addEventListener("mouseup", function (e) {
+    document.execCommand('copy');
+    hideTooltip();
+  });
+  tooltip.appendChild(copyButton);
+
+  if (debugMode)
+    console.log('SelectionActions tooltip was created');
+}
+
+function showTooltip(dx, dy) {
+  tooltipIsShown = true;
+  tooltip.style.pointerEvents = 'auto';
+  tooltip.style.top = `${dy}px`;
+  tooltip.style.left = `${dx}px`;
+  tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
+  if (debugMode)
+    console.log('SelectionActions tooltip shown');
+}
+
 function hideTooltip() {
   if (tooltipIsShown) {
     tooltip.style.opacity = 0.0;
@@ -578,16 +655,6 @@ function hideTooltip() {
         console.log('SelectionActions tooltip hidden');
     }, animationDuration);
   }
-}
-
-function showTooltip(dx, dy) {
-  tooltipIsShown = true;
-  tooltip.style.pointerEvents = 'auto';
-  tooltip.style.top = `${dy}px`;
-  tooltip.style.left = `${dx}px`;
-  tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
-  if (debugMode)
-    console.log('SelectionActions tooltip shown');
 }
 
 function fetchCurrencyRates() {
@@ -671,7 +738,6 @@ function addTranslateButton() {
         console.log(`Should translate: ${shouldTranslate}`);
 
       if (shouldTranslate == true) {
-        translateLabel = chrome.i18n.getMessage("translateLabel");
         var translateButton = document.createElement('button');
         translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
         translateButton.textContent = translateLabel;
@@ -689,10 +755,7 @@ function addTranslateButton() {
         /// Correct last button's border radius
         tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
         tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
       }
-
-
     });
   } catch (e) {
     if (debugMode)
@@ -742,7 +805,7 @@ async function copyText() {
   catch (err) {
     console.error('Failed to copy: ', err);
   }
-  hideTooltip();
+  // hideTooltip();
 }
 
 

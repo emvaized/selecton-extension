@@ -4,12 +4,11 @@ Get a nice looking pop-up with action buttons on text selection!
 * Adds 'Open link' and 'Translate' buttons depending on selected text
 * Currency converter (supports 30+ currencies)
 * Basic unit converter (metric/imperial)
-* Customizable style and behaviour
+* Fully customizable appearance
 
 
-Notes:
-1) In current version extension does not automatically configures your currency, preferred unit system and default language for translation, so you have to set it all up on your own after installation.
-2) Currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
+Note:
+In order to make extension more autonomous, currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
 
 
 Download for Firefox:

@@ -92,10 +92,8 @@ function updateDisabledOptions() {
     document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-
     document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#shadowOpacity").className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
-
     document.querySelector("#textSelectionBackground").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#textSelectionColor").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
 }
