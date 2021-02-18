@@ -11,7 +11,7 @@ var convertCurrencies = true;
 var performSimpleMathOperations = true;
 
 /// Appearance configs
-var useCustomStyle = true;
+var useCustomStyle = false;
 var tooltipBackground = '3B3B3B';
 var tooltipOpacity = 1.0;
 var addTooltipShadow = false;
@@ -178,7 +178,6 @@ function setDefaultLocales() {
       console.log(`Default browser metrics: ${browserMetricSystem}`);
       console.log(`Default browser currency: ${browserCurrency}`);
       console.log('Saved default locales to memory');
-
     }
   }
 
