@@ -5,3 +5,9 @@ Get a nice looking pop-up with action buttons on text selection!
 * Currency converter (supports 30+ currencies)
 * Basic unit converter (metric/imperial)
 * Customizable style and behaviour
+
+Download for Firefox:
+https://addons.mozilla.org/ru/firefox/addon/selection-actions/
+
+Download for Chrome:
+*waiting for verification*
