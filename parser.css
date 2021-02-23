@@ -14,6 +14,7 @@
     font-stretch: condensed;
     text-decoration: none;
     z-index: 9999 !important;
+    line-height: 18px;
   }
 
 
@@ -44,15 +45,25 @@
   }
 
   .selection-popup-button {
+    /* display: block; */
     color: white;
-    background-color: transparent;
+    background-color: transparent !important;
     cursor: pointer;
-    border: none;
-    box-shadow: none;
+    border: none !important;
+    box-shadow: none !important;
     z-index: 9999 !important;
     padding:  var(--selection-button-padding) !important;
     text-align: center !important;
-    vertical-align: center !important;
+    vertical-align: middle !important;
+    /* font: 1.0em "Arial", sans-serif !important; */
+    font-family: Arial, Helvetica, sans-serif !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    line-height: 100% !important;
+    margin: 0px !important;
+    transition: background-color 25ms ease-in-out !important;
+    text-transform: none !important;
+    outline: none !important;
 
     /* align-items: center !important; */
     }
@@ -65,24 +76,6 @@
   .button-with-border {
     border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
   }
-
-  button {
-    background-color: transparent !important;
-    outline: none !important;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: none;
-    /* padding: 6px 12px !important; */
-    transition: background-color 25ms ease-in-out !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    line-height: 100% !important;
-    margin: 0px !important;
-  }
-
-  button:hover {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    cursor: pointer;
- }
 
 
 ::selection {
