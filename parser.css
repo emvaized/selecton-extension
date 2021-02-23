@@ -16,6 +16,8 @@
     text-decoration: none;
     z-index: 9999 !important;
     max-height: 24px !important;
+    margin: 0px !important;
+
   }
 
 
@@ -55,9 +57,10 @@
     border: none !important;
     box-shadow: none !important;
     z-index: 9999 !important;
-    padding:  var(--selection-button-padding) !important;
+    /* padding:  var(--selection-button-padding) !important; */
+    padding:  4px 12px !important;
     /* text-align: center !important; */
-    /* vertical-align: middle !important; */
+    vertical-align: top !important;
     /* font: 1.0em "Arial", sans-serif !important; */
     font-family: Arial, Helvetica, sans-serif !important;
     height: 100% !important;
@@ -68,7 +71,7 @@
     text-transform: none !important;
     outline: none !important;
 
-    /* align-items: center !important; */
+    align-items: top !important;
     }
     
   .selection-popup-button:hover {

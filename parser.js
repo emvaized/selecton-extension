@@ -39,7 +39,6 @@ var wordsLimitToProccessText = 3;
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 
-
 /// Variables for work
 var copyLabel = 'Copy';
 var searchLabel = 'Search';
@@ -250,6 +249,7 @@ document.addEventListener("mouseup", async function (e) {
   if (isDraggingTooltip) return;
 
   hideTooltip();
+
   /// Old text input handling
   /// Don't open tooltip when any textfield is focused
   // if (ignoreWhenTextFieldFocused &&
@@ -865,7 +865,7 @@ function createTooltip(type) {
 }
 
 function createImageIcon(url, opacity = 0.5) {
-  return `<img src="${url}" style="all: revert; opacity: ${opacity}; filter: invert(100%);    vertical-align: top !important;  transform: translate(0px,-1.5px);  max-height:18px !important;display: unset !important;  padding-right: 5px;"" />`;
+  return `<img src="${url}" style="all: revert; opacity: ${opacity}; filter: invert(100%);    vertical-align: top !important;  transform: translate(0px,-1px);  max-height:18px !important;display: unset !important;  padding-right: 5px;"" />`;
 }
 
 function removeSelection() {
