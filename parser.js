@@ -620,7 +620,7 @@ document.addEventListener("mouseup", async function (e) {
                         interactiveButton.setAttribute('title', link);
 
                       if (addButtonIcons)
-                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.7);
+                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5);
                       else
                         interactiveButton.innerHTML = openLinkLabel + ' ';
 
