@@ -21,6 +21,12 @@ var options = new Map([
     ['changeTextSelectionColor', false],
     ['textSelectionBackground', '#338FFF'],
     ['textSelectionColor', '#ffffff'],
+
+    ['shiftTooltipWhenWebsiteHasOwn', true],
+    ['addActionButtonsForTextFields', false],
+    ['removeSelectionOnActionButtonClick', true],
+    ['draggableTooltip', true],
+    ['addButtonIcons', false],
 ]);
 
 var keys = [...options.keys()];
@@ -72,6 +78,7 @@ function restoreOptions() {
 
         /// Set translated headers
         document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
+        document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
         document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
         document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("actionButtonsHeader");
         document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
@@ -82,7 +89,7 @@ function restoreOptions() {
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
         /// Add top padding for 'custom styles' toggle
-        document.getElementById('useCustomStyle').parentNode.parentNode.style.paddingTop = '15px';
+        // document.getElementById('useCustomStyle').parentNode.parentNode.style.paddingTop = '15px';
 
         updateDisabledOptions();
     }

@@ -10,7 +10,6 @@ var addOpenLinks = true;
 var convertCurrencies = true;
 var performSimpleMathOperations = true;
 
-/// Appearance configs
 var useCustomStyle = false;
 var tooltipBackground = '3B3B3B';
 var tooltipOpacity = 1.0;
@@ -21,6 +20,11 @@ var borderRadius = 3;
 var changeTextSelectionColor = false;
 var textSelectionBackground;
 var textSelectionColor;
+var shiftTooltipWhenWebsiteHasOwn = true;
+var addActionButtonsForTextFields = true;
+var removeSelectionOnActionButtonClick = true;
+var draggableTooltip = true;
+var addButtonIcons = false;
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
@@ -32,22 +36,31 @@ var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 var updateRatesEveryDays = 14;
 var wordsLimitToProccessText = 3;
 
+var addSelectionTextShadow = false;
+var selectionTextShadowOpacity = 0.75;
+
+
 /// Variables for work
 var copyLabel = 'Copy';
 var searchLabel = 'Search';
 var openLinkLabel = 'Open';
 var translateLabel = 'Translate';
+var cutLabel = 'Cut';
+var pasteLabel = 'Paste';
 var ratesLastFetchedDate;
 var tooltip;
 var arrow;
 var selection;
-var tooltipIsShown = false;
+var selectedText;
+var dontShowTooltip = false;
+var isDraggingTooltip = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
 
 var browserLanguage;
 var browserCurrency;
 var browserMetricSystem;
+
 
 function init() {
   /// Restore user settings
@@ -75,6 +88,12 @@ function init() {
       'changeTextSelectionColor',
       'textSelectionBackground',
       'textSelectionColor',
+
+      'shiftTooltipWhenWebsiteHasOwn',
+      'addActionButtonsForTextFields',
+      'removeSelectionOnActionButtonClick',
+      'draggableTooltip',
+      'addButtonIcons',
     ], function (value) {
 
       if (debugMode) {
@@ -104,11 +123,24 @@ function init() {
       addTooltipShadow = value.addTooltipShadow ?? false;
       shadowOpacity = value.shadowOpacity || 0.5;
       borderRadius = value.borderRadius || 3;
+      shiftTooltipWhenWebsiteHasOwn = value.shiftTooltipWhenWebsiteHasOwn ?? true;
+      addActionButtonsForTextFields = value.addActionButtonsForTextFields ?? false;
+      removeSelectionOnActionButtonClick = value.removeSelectionOnActionButtonClick ?? true;
+      draggableTooltip = value.draggableTooltip ?? true;
+      addButtonIcons = value.addButtonIcons ?? false;
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
       // textSelectionBackground = value.textSelectionBackground || '#808080';
       textSelectionBackground = value.textSelectionBackground || '#338FFF';
       textSelectionColor = value.textSelectionColor || '#ffffff';
+
+      /// Get translated button labels
+      copyLabel = chrome.i18n.getMessage("copyLabel");
+      searchLabel = chrome.i18n.getMessage("searchLabel");
+      openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+      translateLabel = chrome.i18n.getMessage("translateLabel");
+      cutLabel = chrome.i18n.getMessage("cutLabel");
+      pasteLabel = chrome.i18n.getMessage("pasteLabel");
 
 
       /// If initial launch, update currency rates
@@ -126,6 +158,8 @@ function init() {
       if (changeTextSelectionColor) {
         document.body.style.setProperty('--selection-background', textSelectionBackground);
         document.body.style.setProperty('--selection-text-color', textSelectionColor);
+
+        document.body.style.setProperty('--selection-text-shadow', addSelectionTextShadow ? `1.5px 1.5px 2px rgba(0,0,0,${selectionTextShadowOpacity})` : 'none');
       }
       else {
         /// Set the default blue-white colors
@@ -133,6 +167,10 @@ function init() {
         document.body.style.setProperty('--selection-background', '#338FFF');
         document.body.style.setProperty('--selection-text-color', '#ffffff');
       }
+      // document.body.style.setProperty('--selection-button-padding', addButtonIcons ? '6px 12px 0px 12px' : '6px 12px');
+      document.body.style.setProperty('--selection-button-padding', '6px 12px');
+
+
     });
 }
 
@@ -196,20 +234,34 @@ document.addEventListener("scroll", function (e) {
   if (hideOnScroll)
     hideTooltip();
 });
+
 document.addEventListener("mousedown", function (e) {
+  if (isDraggingTooltip) return;
+  selection = null;
+  removeSelection();
+
   hideTooltip();
 });
 
-document.addEventListener("mouseup", async function (e) {
-  /// Don't open tooltip when any textfield is focused
-  if (ignoreWhenTextFieldFocused &&
-    (
-      document.activeElement.tagName === "INPUT" ||
-      document.activeElement.tagName === "TEXTAREA"
-    )
-  ) return;
 
-  if (tooltip == null) createTooltip();
+document.onkeyup = hideTooltip;
+
+document.addEventListener("mouseup", async function (e) {
+  if (isDraggingTooltip) return;
+
+  hideTooltip();
+  /// Old text input handling
+  /// Don't open tooltip when any textfield is focused
+  // if (ignoreWhenTextFieldFocused &&
+  //   (
+  //     document.activeElement.tagName === "INPUT" ||
+  //     document.activeElement.tagName === "TEXTAREA"
+  //   )
+  // )
+  //   return;
+  // if (tooltip == null) createTooltip();
+
+  /// Clear previously stored selection value
 
   if (window.getSelection) {
     selection = window.getSelection();
@@ -218,10 +270,53 @@ document.addEventListener("mouseup", async function (e) {
   }
 
   var selDimensions = getSelectionDimensions();
-  var selectedText = selection.toString();
+  selectedText = selection.toString();
+  console.log('selectedText:');
+  console.log(selectedText);
 
-  if (tooltipIsShown == false && selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
+  /// Experimental handling of text fields
+  if (
+    document.activeElement.tagName === "INPUT" ||
+    document.activeElement.tagName === "TEXTAREA" ||
+    document.activeElement.getAttribute('contenteditable') !== null
+  ) {
+    if (addActionButtonsForTextFields == false) return;
 
+    /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
+    if (selectedText == '') {
+      var ta = document.querySelector(':focus');
+      selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+      selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+    }
+
+    /// Ignore single click on text field with inputted value
+    if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+
+    /// Create text field tooltip
+    createTooltip('textfield');
+
+    /// Check resulting DY to be out of view
+    var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+    var vertOutOfView = resultDy <= window.scrollY;
+    if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
+
+    showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
+
+    return;
+  }
+
+
+  if (tooltip !== null && tooltip !== undefined) {
+    hideTooltip();
+  }
+  createTooltip();
+  // console.log(selection.clientWidth);
+
+  if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
+    // if (selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
+
+    if (debugMode)
+      console.log('Creating regular tooltip...');
     var selectedText = selection.toString();
     var wordsCount = selectedText.split(' ').length;
 
@@ -239,8 +334,11 @@ document.addEventListener("mouseup", async function (e) {
               var word = words[i];
 
               /// Feet/inches ' "" handling
-              // if (word.includes("'") || word.includes('"')) {
+              // if (word.includes("'") && word.includes("''")) {
               //   var numbers = word.split("'");
+              //   return;
+              //   // var feets  = calculateString(numbers[0]);
+              //   // var inches = calculateString(numbers[1]);
               // }
 
               // numberToConvert = word.match(/[+-]?\d+(\.\d) ? /g);
@@ -292,8 +390,9 @@ document.addEventListener("mouseup", async function (e) {
                   converted.setAttribute('style', `color: ${secondaryColor}`);
                   interactiveButton.appendChild(converted);
 
-                  interactiveButton.addEventListener("mouseup", function (e) {
+                  interactiveButton.addEventListener("mousedown", function (e) {
                     hideTooltip();
+                    removeSelection();
                     /// Search for conversion on Google
                     window.open(`https://www.google.com/search?q=${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`, '_blank');
                     ;
@@ -335,9 +434,10 @@ document.addEventListener("mouseup", async function (e) {
                 converted.setAttribute('style', `color: ${secondaryColor}`);
                 interactiveButton.appendChild(converted);
 
-                interactiveButton.addEventListener("mouseup", function (e) {
+                interactiveButton.addEventListener("mousedown", function (e) {
                   hideTooltip();
-                  /// Search for conversion on Google
+                  removeSelection();
+                  /// Do calculation on Google
                   window.open(`https://www.google.com/search?q=${selectedText.replaceAll('+', '%2B')}`, '_blank');
                   ;
                 });
@@ -420,14 +520,19 @@ document.addEventListener("mouseup", async function (e) {
                   /// Create and add currency button with result of conversion
                   var interactiveButton = document.createElement('button');
                   interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                  // if (addButtonIcons)
+                  //   interactiveButton.innerHTML = createImageIcon(currencyButtonIcon, 0.7) + `${amount + ' ' + currency + ' →'}`;
+                  // else
                   interactiveButton.textContent = amount + ' ' + currency + ' →';
                   var converted = document.createElement('span');
+
                   converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
                   converted.setAttribute('style', `color: ${secondaryColor}`);
                   interactiveButton.appendChild(converted);
 
                   interactiveButton.addEventListener("mouseup", function (e) {
                     hideTooltip();
+                    removeSelection();
                     /// Search for conversion on Google
                     window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
                     ;
@@ -455,12 +560,13 @@ document.addEventListener("mouseup", async function (e) {
 
           /// Add 'open link' button for each found link
           if (addOpenLinks)
-            if (tooltip.children.length < 4 && selectedText.includes('.')) {
+            // if (tooltip.children.length < 4 && selectedText.includes('.')) {
+            if (tooltip.children.length < 4 && (selectedText.includes('.') || selectedText.includes('/'))) {
               var words = selectedText.split(' ');
               for (i in words) {
                 var link = words[i];
-                // if (tooltip.clientWidth < tooltipMaxWidth && !link.includes(' ') && link.length > 6 && (link.includes('http') || link.includes('www.') || (link.includes('.') && link.includes('/')))) {
-                if (link.includes('.')) {
+                // if (link.includes('.')) {
+                if (link.includes('.') || link.includes('/')) {
                   link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
                   var lastSymbol = link[link.length - 1];
 
@@ -504,16 +610,22 @@ document.addEventListener("mouseup", async function (e) {
                       interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
                       var linkText = document.createElement('span');
                       // linkText.textContent = ' ' + link;
-                      linkText.textContent = ' ' + (link.length > 30 ? link.substring(0, 30) + '...' : link);
+
+                      var linkToDisplay = link.length > 30 ? link.substring(0, 30) + '...' : link;
+                      linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
                       linkText.setAttribute('style', `color: ${secondaryColor}`);
 
                       /// Add tooltip with full website on hover
                       if (link.length > 30)
                         interactiveButton.setAttribute('title', link);
 
-                      interactiveButton.innerHTML = openLinkLabel + ' ';
+                      if (addButtonIcons)
+                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.7);
+                      else
+                        interactiveButton.innerHTML = openLinkLabel + ' ';
+
                       interactiveButton.appendChild(linkText);
-                      interactiveButton.addEventListener("mouseup", function (e) {
+                      interactiveButton.addEventListener("mousedown", function (e) {
                         hideTooltip();
                         /// Open link
 
@@ -552,20 +664,33 @@ document.addEventListener("mouseup", async function (e) {
     tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
     tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
-    /// Show tooltip on top of selection
-    showTooltip(resultingDx, resultingDy);
 
+    /// Show tooltip on top of selection
+    showTooltip(resultingDx, resultingDy + (addButtonIcons ? 2.5 : 5));
   }
   else hideTooltip();
 });
 
 
+function addTooltipButton(label, icon, callback) {
+  var button = document.createElement('button');
+  button.setAttribute('class', `selection-popup-button button-with-border`);
+  if (icon)
+    button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
+  else
+    button.textContent = label;
+  button.addEventListener("mousedown", callback);
+  tooltip.appendChild(button);
+}
+
 /// Service methods
 
-function createTooltip() {
+function createTooltip(type) {
+  init();
+
   /// Create tooltip and it's arrow
   tooltip = document.createElement('div');
-  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out;`);
+  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out !important;`);
   tooltip.setAttribute('class', `selection-tooltip`);
 
   arrow = document.createElement('div');
@@ -577,6 +702,47 @@ function createTooltip() {
   tooltip.appendChild(arrow);
   document.body.appendChild(tooltip);
 
+  // Make the DIV element draggable:
+  // tooltip.addEventListener('onmousemove', function (e) {
+  //   console.log('dragging panel...');
+  //   console.log(e);
+  // });
+
+  if (draggableTooltip) {
+    arrowChild.style.cursor = 'move';
+    arrowChild.onmousedown = function (e) {
+      isDraggingTooltip = true;
+      e.preventDefault();
+      if (debugMode)
+        console.log('Started dragging tooltip...');
+
+      document.onmousemove = function (e) {
+        e.preventDefault();
+
+        /// More slow top/left approach
+        // tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
+        // tooltip.style.top = `${e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight}px`;
+        tooltip.style.left = `0px`;
+        tooltip.style.top = `0px`;
+        tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px )`;
+
+
+        document.body.style.cursor = 'move';
+      };
+
+      document.onmouseup = function (e) {
+        e.preventDefault();
+        document.onmousemove = null;
+        document.onmouseup = null;
+        isDraggingTooltip = false;
+        document.body.style.cursor = 'unset';
+
+        if (debugMode)
+          console.log('Dragging tooltip finished');
+      };
+    }
+  }
+
   /// Apply custom stylings
   if (useCustomStyle) {
     tooltip.style.borderRadius = `${borderRadius}px`;
@@ -584,76 +750,233 @@ function createTooltip() {
     arrowChild.style.background = tooltipBackground;
 
     if (addTooltipShadow) {
-      tooltip.style.boxShadow = `0 0 7px rgba(0,0,0,${shadowOpacity})`;
-      arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
+      tooltip.style.boxShadow = `0 2px 7px rgba(0,0,0,${shadowOpacity})`;
+      // arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
+      arrowChild.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
     }
     /// Set rounded corners for buttons
     firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
     lastButtonBorderRadius = `0px ${borderRadius - 3}px ${borderRadius - 3}px 0px`;
   }
 
-  /// Get translated button labels
-  copyLabel = chrome.i18n.getMessage("copyLabel");
-  searchLabel = chrome.i18n.getMessage("searchLabel");
-  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
-  translateLabel = chrome.i18n.getMessage("translateLabel");
+  if (type == 'textfield') {
+    var textField = document.activeElement;
+    if (selection.toString() !== '') {
 
-  /// Add search button
-  var searchButton = document.createElement('button');
-  searchButton.setAttribute('class', `selection-popup-button`);
-  searchButton.textContent = searchLabel;
-  searchButton.addEventListener("mouseup", function (e) {
-    hideTooltip();
-    var selectedText = selection.toString();
-    /// Search text
-    window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
-  });
+      try { /// Add a cut button 
+        var cutButton = document.createElement('button');
+        cutButton.setAttribute('class', `selection-popup-button`);
+        if (addButtonIcons)
+          cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + cutLabel;
+        else
+          cutButton.textContent = cutLabel;
+        cutButton.setAttribute('style', `border-radius: ${firstButtonBorderRadius}`);
+        cutButton.addEventListener("mousedown", function (e) {
+          document.execCommand('cut');
+          hideTooltip();
+          removeSelection();
+        });
+        tooltip.appendChild(cutButton);
 
-  tooltip.appendChild(searchButton);
+        /// Add copy button 
+        var copyButton = document.createElement('button');
+        copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+        if (addButtonIcons)
+          copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.7) + copyLabel;
+        else
+          copyButton.textContent = copyLabel;
+        copyButton.setAttribute('style', `border-radius: ${lastButtonBorderRadius}`);
 
-  /// Add copy button 
-  var copyButton = document.createElement('button');
-  copyButton.setAttribute('class', `selection-popup-button button-with-border`);
-  copyButton.textContent = copyLabel;
-  copyButton.addEventListener("mouseup", function (e) {
-    document.execCommand('copy');
-    hideTooltip();
-  });
-  tooltip.appendChild(copyButton);
+        copyButton.addEventListener("mousedown", function (e) {
+          try {
+            textField.focus();
+            document.execCommand('bold');
+
+          } catch (e) { console.log(e); }
+
+          // document.execCommand('copy');
+          // hideTooltip();
+          // removeSelection();
+        });
+        tooltip.appendChild(copyButton);
+      } catch (e) { console.log(e) }
+
+      /// Set border radius for buttons
+      // tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+      // tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+    } else {
+      /// Add only paste button 
+      var pasteButton = document.createElement('button');
+      pasteButton.setAttribute('class', `selection-popup-button`);
+      pasteButton.setAttribute('style', `border-radius: ${borderRadius - 3}px`);
+      if (addButtonIcons)
+        pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + pasteLabel;
+      else
+        pasteButton.textContent = pasteLabel;
+      pasteButton.addEventListener("mousedown", function (e) {
+        textField.focus();
+        document.execCommand('paste');
+        removeSelection();
+
+      });
+      tooltip.appendChild(pasteButton);
+    }
+
+
+  } else {
+    /// Add search button
+    var searchButton = document.createElement('button');
+    searchButton.setAttribute('class', `selection-popup-button`);
+
+    if (addButtonIcons)
+      searchButton.innerHTML = createImageIcon(searchButtonIcon) + searchLabel;
+    else
+      searchButton.textContent = searchLabel;
+
+    searchButton.addEventListener("mousedown", function (e) {
+      hideTooltip();
+      var selectedText = selection.toString();
+      removeSelection();
+      /// Search text
+      window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
+    });
+
+    tooltip.appendChild(searchButton);
+
+    /// Add copy button 
+    var copyButton = document.createElement('button');
+    copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+    if (addButtonIcons)
+      copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.7) + copyLabel;
+    else
+      copyButton.textContent = copyLabel;
+    copyButton.addEventListener("mousedown", function (e) {
+      document.execCommand('copy');
+      hideTooltip();
+      removeSelection();
+    });
+    tooltip.appendChild(copyButton);
+  }
+
 
   if (debugMode)
     console.log('SelectionActions tooltip was created');
 }
 
+function createImageIcon(url, opacity = 0.5) {
+  return `<img src="${url}" style="opacity: ${opacity}; filter: invert(100%);   vertical-align: middle !important;  transform: translate(0px,-1.5px);  max-height:20px !important;max-width:20px !important; display: unset !important;  padding-right: 5px;"" />`;
+}
+
+function removeSelection() {
+  if (removeSelectionOnActionButtonClick) {
+    var sel = window.getSelection ? window.getSelection() : document.selection;
+    if (sel) {
+      if (sel.removeAllRanges) {
+        sel.removeAllRanges();
+      } else if (sel.empty) {
+        sel.empty();
+      }
+    }
+  } else {
+    dontShowTooltip = true;
+    setTimeout(function () {
+      dontShowTooltip = false;
+    }, animationDuration);
+  }
+
+
+}
+
 function showTooltip(dx, dy) {
-  tooltipIsShown = true;
+  // dontShowTooltip = true;
   tooltip.style.pointerEvents = 'auto';
   tooltip.style.top = `${dy}px`;
   tooltip.style.left = `${dx}px`;
   tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
   if (debugMode)
     console.log('SelectionActions tooltip shown');
+
+  if (shiftTooltipWhenWebsiteHasOwn)
+    setTimeout(function () {
+      /// Experimental code to determine website's own selection tooltip
+      /// Implemented as a fix for Medium.com article view, and all websites that use the same styles tooltip
+
+      // var websiteTooltips = document.querySelectorAll(`[style*='position: absolute']`);
+      var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform']`);
+
+      var websiteTooltip;
+      if (websiteTooltips !== null && websiteTooltips !== undefined)
+        for (i in websiteTooltips) {
+          var el = websiteTooltips[i];
+          if (el.style !== undefined) {
+            var elStyle = el.style.transform.toString();
+            if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
+              if (debugMode)
+                console.log('Detected selection tooltip on the website');
+              websiteTooltip = el;
+              break;
+            }
+          }
+        };
+
+      if (websiteTooltip !== null && websiteTooltip !== undefined) {
+        tooltip.style.top = `${dy - websiteTooltip.clientHeight + 7.5}px`;
+        arrow.style.opacity = 0.0;
+      } else {
+        arrow.style.opacity = 1.0;
+      }
+
+    }, 50);
 }
 
 function hideTooltip() {
-  if (tooltipIsShown) {
-    tooltip.style.opacity = 0.0;
-    setTimeout(function () {
-      tooltipIsShown = false;
+  /// Old approach
+  // if (tooltip !== null) {
+  //   /// Ignore clicks on tooltip
+  //   tooltip.style.pointerEvents = 'none';
 
-      /// Ignore clicks on tooltip
-      tooltip.style.pointerEvents = 'none';
+  //   /// Remove all added link button
+  //   var linkButtons = tooltip.querySelectorAll('.open-link-button');
+  //   if (linkButtons !== null)
+  //     linkButtons.forEach(function (button) {
+  //       button.remove();
+  //     })
+  // }
 
-      /// Remove all added link button
-      var linkButtons = tooltip.querySelectorAll('.open-link-button');
-      if (linkButtons !== null)
-        linkButtons.forEach(function (button) {
-          button.remove();
-        });
-      if (debugMode)
-        console.log('SelectionActions tooltip hidden');
-    }, animationDuration);
+  var oldTooltips = document.querySelectorAll('.selection-tooltip');
+  if (debugMode) {
+    console.log('All found tooltips:');
+    console.log(oldTooltips);
   }
+  if (oldTooltips !== null)
+    oldTooltips.forEach(function (oldTooltip) {
+      tooltip.style.opacity = 0.0;
+
+      setTimeout(function () {
+        // dontShowTooltip = false;
+
+        // if (oldTooltip !== null) {
+        //   /// Ignore clicks on tooltip
+        //   oldTooltip.style.pointerEvents = 'none';
+
+        //   /// Remove all added link button
+        //   var linkButtons = oldTooltip.querySelectorAll('.open-link-button');
+        //   if (linkButtons !== null)
+        //     linkButtons.forEach(function (button) {
+        //       button.remove();
+        //     })
+        // }
+
+        oldTooltip.parentNode.removeChild(oldTooltip);
+        // oldTooltip = null;
+
+        if (debugMode)
+          console.log('SelectionActions tooltip hidden');
+
+      }, animationDuration);
+    })
+
 }
 
 function fetchCurrencyRates() {
@@ -696,12 +1019,21 @@ function loadCurrencyRatesFromMemory() {
   });
 }
 
-
 function addTranslateButton() {
   if (debugMode)
     console.log('Checking if its needed to add Translate button...');
 
   var selectedText = selection.toString();
+
+  // fetch(`https://translation.googleapis.com/language/translate/v2/detect`, {
+  //   method: 'POST',
+  //   body: {
+  //     'q': selectedText
+  //   }
+  // }).then(function (res) {
+  //   console.log('server response');
+  //   console.log(res);
+  // })
 
   if (debugMode)
     console.log(`Selected text is: ${selectedText}`);
@@ -739,11 +1071,16 @@ function addTranslateButton() {
       if (shouldTranslate == true) {
         var translateButton = document.createElement('button');
         translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-        translateButton.textContent = translateLabel;
+        if (addButtonIcons)
+          translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + translateLabel;
+        else
+          translateButton.textContent = translateLabel;
         translateButton.addEventListener("mouseup", function (e) {
           hideTooltip();
 
-          var selectedText = selection.toString();
+          // var selectedText = selection.toString();
+          removeSelection();
+
           /// Open google translator
           window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${selectedText.trim()}`, '_blank');
         });
@@ -796,19 +1133,18 @@ function getSelectionDimensions() {
 }
 
 
-async function copyText() {
-  try {
-    await navigator.clipboard.writeText(selection);
-    console.log(selection + ' copied');
-  }
-  catch (err) {
-    console.error('Failed to copy: ', err);
-  }
-  // hideTooltip();
-}
-
 
 /// Big variables
+
+// var translateButtonIcon = 'https://icons-for-free.com/iconfiles/png/512/brands+google+logo+logos+translate+icon-1320184730729535400.png';
+var translateButtonIcon = 'https://cdn0.iconfinder.com/data/icons/web-apps/128/11-512.png';
+var searchButtonIcon = 'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png';
+var copyButtonIcon = 'https://image.flaticon.com/icons/png/512/88/88026.png';
+var cutButtonIcon = 'https://cdn2.iconfinder.com/data/icons/mosaicon-11/512/cut-512.png';
+var pasteButtonIcon = 'https://icons-for-free.com/iconfiles/png/512/content+paste+48px-131985189900342274.png';
+var openLinkButtonIcon = 'https://nbtas.no/wp-content/themes/nbt/assets/icons/iu.png';
+var currencyButtonIcon = 'https://img2.freepng.ru/20180406/izq/kisspng-currency-exchange-rate-foreign-exchange-market-uni-rate-5ac76a4c1cd464.6574766915230183161181.jpg';
+
 
 const convertionUnits = {
   "inch": {

@@ -14,12 +14,24 @@
     "message": "Open",
     "description": "Label for open link action"
   },
+  "cutLabel": {
+    "message": "Cut",
+    "description": "Label for cut action"
+  },
+  "pasteLabel": {
+    "message": "Paste",
+    "description": "Label for paste action"
+  },
   "translateLabel": {
     "message": "Translate",
     "description": "Label for translate action"
   },
   "appearanceHeader": {
-    "message": "Appearance and behaviour",
+    "message": "Appearance",
+    "description": "Header for appearance category in settings"
+  },
+  "behaviorHeader": {
+    "message": "Behavior",
     "description": "Header for appearance category in settings"
   },
   "convertionHeader": {
@@ -68,7 +80,7 @@
   },
   "metric": {
     "message": "Metric",
-    "description": "Vareint of metrics system for dropdown"
+    "description": "Variant of metrics system for dropdown"
   },
   "imperial": {
     "message": "Imperial",
@@ -87,7 +99,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically <br /> Update page to see changes",
+    "message": "Settings are saved automatically",
     "description": ""
   },
   "showTranslateButton": {
@@ -111,7 +123,7 @@
     "description": ""
   },
   "addTooltipShadow": {
-    "message": "Add shadow",
+    "message": "Add tooltip shadow",
     "description": ""
   },
   "shadowOpacity": {
@@ -123,15 +135,35 @@
     "description": ""
   },
   "changeTextSelectionColor": {
-    "message": "Change selection color",
+    "message": "Customize text selection",
     "description": ""
   },
   "textSelectionBackground": {
-    "message": "Selection background color",
+    "message": "Selection color",
     "description": ""
   },
   "textSelectionColor": {
     "message": "Text color",
+    "description": ""
+  },
+  "shiftTooltipWhenWebsiteHasOwn": {
+    "message": "Try to shift selection tooltip up when website shows it's own",
+    "description": ""
+  },
+  "addActionButtonsForTextFields": {
+    "message": "Use special panel for text fields",
+    "description": ""
+  },
+  "removeSelectionOnActionButtonClick": {
+    "message": "Remove text selection after action",
+    "description": ""
+  },
+  "draggableTooltip": {
+    "message": "Panel can be dragged by the arrow",
+    "description": ""
+  },
+  "addButtonIcons": {
+    "message": "Show icons for buttons",
     "description": ""
   }
 }

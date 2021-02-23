@@ -12,11 +12,6 @@
     <form>
 
         <h3 id='appearanceHeader'></h3>
-        <div class='option'> <label><input type="checkbox" id="hideOnScroll">
-            </label></div>
-        <div class='option'> <label><input type="number" min="0" max="1500" id="animationDuration">
-            </label></div>
-
         <div class='option'> <label><input type="checkbox" id="useCustomStyle"></label></div>
 
         <div id='customStylesSection'>
@@ -32,15 +27,21 @@
             <div class='option'> <label><input type="checkbox" id="changeTextSelectionColor"></label></div>
             <div class='option'> <label><input type="color" id="textSelectionBackground"></label></div>
             <div class='option'> <label><input type="color" id="textSelectionColor"></label></div>
-
-
         </div>
 
+        <br />
+        <hr />
+
+
         <h3 id='actionButtonsHeader'></h3>
+        <div class='option'> <label><input type="checkbox" id="addButtonIcons"> </label></div>
+        <div class='option'> <label><input type="checkbox" id="addActionButtonsForTextFields"> </label></div>
         <div class='option'> <label><input type="checkbox" id="addOpenLinks"> </label></div>
         <div class='option'> <label><input type="checkbox" id="showTranslateButton"> </label></div>
         <div class='option'> <label><input type="text" id="languageToTranslate"> </label></div>
 
+        <br />
+        <hr />
 
         <h3 id='convertionHeader'></h3>
 
@@ -57,14 +58,28 @@
         <div class='option'> <label><input type="checkbox" id="convertCurrencies"> </label></div>
         <div class='option'> <label><input type="text" id="convertToCurrency"> </label></div>
 
+        <br />
+        <hr />
+
+        <h3 id='behaviorHeader'></h3>
+
+        <div class='option'> <label><input type="checkbox" id="hideOnScroll"></label></div>
+        <div class='option'> <label><input type="checkbox" id="draggableTooltip"></label></div>
+        <div class='option'> <label><input type="checkbox" id="shiftTooltipWhenWebsiteHasOwn"></label></div>
+        <div class='option'> <label><input type="checkbox" id="removeSelectionOnActionButtonClick"></label></div>
+        <div class='option'> <label><input type="number" min="0" max="1500" id="animationDuration">
+            </label></div>
+
+
+
+
 
         <h4 id='allChangesSavedAutomaticallyHeader'></h4>
 
         <!-- Footer buttons -->
         <div id='footer-buttons'>
 
-            <button id='resetButton' type="reset">Restore
-                defaults</button>
+            <button id='resetButton' type="reset">Restore defaults</button>
 
             <button id='donateButton'> <img height='18px' width='18px' style="position: relative; left: 3px; top: 3px;"
                     src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
@@ -73,6 +88,8 @@
                     src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
 
         </div>
+
+        <br />
 
 
 

@@ -18,8 +18,20 @@
         "message": "Открыть",
         "description": "Label for open link action"
     },
+    "cutLabel": {
+        "message": "Вырезать",
+        "description": "Label for cut action"
+    },
+    "pasteLabel": {
+        "message": "Вставить",
+        "description": "Label for paste action"
+    },
     "appearanceHeader": {
-        "message": "Внешний вид и поведение",
+        "message": "Внешний вид",
+        "description": "Header for appearance category in settings"
+    },
+    "behaviorHeader": {
+        "message": "Поведение",
         "description": "Header for appearance category in settings"
     },
     "convertionHeader": {
@@ -87,7 +99,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
+        "message": "Настройки сохраняются автоматически",
         "description": ""
     },
     "showTranslateButton": {
@@ -111,7 +123,7 @@
         "description": ""
     },
     "addTooltipShadow": {
-        "message": "Использовать тень",
+        "message": "Показывать тень панели",
         "description": ""
     },
     "shadowOpacity": {
@@ -123,15 +135,35 @@
         "description": ""
     },
     "changeTextSelectionColor": {
-        "message": "Изменить цвет выделения",
+        "message": "Изменить стиль выделения текста",
         "description": ""
     },
     "textSelectionBackground": {
-        "message": "Цвет фона выделения",
+        "message": "Цвет выделения",
         "description": ""
     },
     "textSelectionColor": {
         "message": "Цвет текста",
+        "description": ""
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Попробовать сдвинуть панель действий вверх, когда сайт показывает свою",
+        "description": ""
+    },
+    "addActionButtonsForTextFields": {
+        "message": "Использовать специальную панель для полей ввода",
+        "description": ""
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Убрать выделение после действия",
+        "description": ""
+    },
+    "draggableTooltip": {
+        "message": "Панель можно перетащить за стрелку",
+        "description": ""
+    },
+    "addButtonIcons": {
+        "message": "Показывать иконки кнопок",
         "description": ""
     }
 }

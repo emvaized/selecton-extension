@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Selection Actions",
-  "version": "1.1.5",
+  "name": "Selecton",
+  "version": "2.0",
   "description": "__MSG_extensionDescription__",
   "icons": {
-    "48": "icons/new-icon-48.png",
-    "96": "icons/new-icon-96.png"
+    "48": "icons/logo-48.png",
+    "96": "icons/logo-96.png"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -33,6 +33,12 @@
     "chrome_style": true
   },
   "permissions": [
-    "storage"
-  ]
+    "storage",
+    "clipboardRead"
+  ],
+  "browser_action": {
+    "default_icon": "icons/logo-96.png",
+    "default_title": "Selecton",
+    "default_popup": "options/options.html"
+  }
 }

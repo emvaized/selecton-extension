@@ -1,3 +1,7 @@
+body {
+  min-width: 360px;
+}
+
 button {
   cursor: pointer;
 }
@@ -23,7 +27,7 @@ label {
 }
 
 hr {
-  opacity: 0.2;
+  opacity: 0.1;
   color: grey;
 }
 
@@ -49,7 +53,6 @@ hr {
   transition: all 150ms ease-in-out;
 }
 
-
 h3 {
   color: grey;
   padding-top: 10px;
@@ -59,8 +62,11 @@ h4 {
   color: grey;
   text-align: center;
   opacity: 0.65;
-  padding-top: 15px;
   font-weight: 600;
+}
+
+#allChangesSavedAutomaticallyHeader {
+  padding-top: 21px;
 }
 
 button {
@@ -70,9 +76,9 @@ button {
 }
 
 
-#customStylesSection {
+/* #customStylesSection {
   border: solid 1px grey;
   border-radius: 8px;
   padding: 3px;
   margin: 3px;
-}
+} */
