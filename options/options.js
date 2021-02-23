@@ -158,5 +158,5 @@ document.querySelector("#donateButton").addEventListener("click", function (val)
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });
 document.querySelector("#githubButton").addEventListener("click", function (val) {
-    window.open('https://github.com/emvaized/selection-actions-extension', '_blank');
+    window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
