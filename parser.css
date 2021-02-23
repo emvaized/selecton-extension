@@ -75,8 +75,12 @@
     }
     
   .selection-popup-button:hover {
-      background-color: rgba(255, 255, 255, 0.5) !important;
-      cursor: pointer;
+    all: revert;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    cursor: pointer;
+    color: white;
+    transition: background-color 25ms ease-in-out !important;
+
    }
 
   .button-with-border {
