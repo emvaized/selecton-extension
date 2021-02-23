@@ -672,16 +672,16 @@ document.addEventListener("mouseup", async function (e) {
 });
 
 
-function addTooltipButton(label, icon, callback) {
-  var button = document.createElement('button');
-  button.setAttribute('class', `selection-popup-button button-with-border`);
-  if (icon)
-    button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
-  else
-    button.textContent = label;
-  button.addEventListener("mousedown", callback);
-  tooltip.appendChild(button);
-}
+// function addTooltipButton(label, icon, callback) {
+//   var button = document.createElement('button');
+//   button.setAttribute('class', `selection-popup-button button-with-border`);
+//   if (icon)
+//     button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
+//   else
+//     button.textContent = label;
+//   button.addEventListener("mousedown", callback);
+//   tooltip.appendChild(button);
+// }
 
 /// Service methods
 
@@ -865,7 +865,7 @@ function createTooltip(type) {
 }
 
 function createImageIcon(url, opacity = 0.5) {
-  return `<img src="${url}" style="opacity: ${opacity}; filter: invert(100%);   vertical-align: middle !important;  transform: translate(0px,-1.5px);  max-height:20px !important;max-width:20px !important; display: unset !important;  padding-right: 5px;"" />`;
+  return `<img src="${url}" style="all: revert; opacity: ${opacity}; filter: invert(100%);    vertical-align: top !important;  transform: translate(0px,-1.5px);  max-height:18px !important;display: unset !important;  padding-right: 5px;"" />`;
 }
 
 function removeSelection() {

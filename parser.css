@@ -3,6 +3,7 @@
   } */
   
   .selection-tooltip {
+    all: revert;
     background: #3B3B3B;
     opacity: 0;
     display: inline-block;
@@ -10,11 +11,11 @@
     padding: 3px;
     color: white;
     border-radius: 3px;
-    text-align: center;
+    /* text-align: center; */
     font-stretch: condensed;
     text-decoration: none;
     z-index: 9999 !important;
-    line-height: 18px;
+    max-height: 24px !important;
   }
 
 
@@ -45,6 +46,8 @@
   }
 
   .selection-popup-button {
+    all: revert;
+    max-height: 24px !important;
     /* display: block; */
     color: white;
     background-color: transparent !important;
@@ -53,13 +56,13 @@
     box-shadow: none !important;
     z-index: 9999 !important;
     padding:  var(--selection-button-padding) !important;
-    text-align: center !important;
-    vertical-align: middle !important;
+    /* text-align: center !important; */
+    /* vertical-align: middle !important; */
     /* font: 1.0em "Arial", sans-serif !important; */
     font-family: Arial, Helvetica, sans-serif !important;
     height: 100% !important;
     min-height: 100% !important;
-    line-height: 100% !important;
+    /* line-height: 100% !important; */
     margin: 0px !important;
     transition: background-color 25ms ease-in-out !important;
     text-transform: none !important;
