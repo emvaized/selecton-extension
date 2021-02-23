@@ -1,5 +1,5 @@
 # Selecton (formerly Selection Actions)
-Get a nice looking pop-up with action buttons on text selection!
+Get customizable pop-up with action buttons on text selection
 * Copy any text in one click
 * Adds 'Open link' and 'Translate' buttons depending on selected text
 * Currency converter (supports 30+ currencies)
