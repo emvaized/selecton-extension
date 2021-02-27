@@ -20,3 +20,6 @@ Initial version
 - Added ability to display icons for buttons
 - Implemented pop-up menu with settings
 - Bug fixes and improvements
+
+#2.0.1
+- Bug fixes
