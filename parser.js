@@ -681,18 +681,19 @@ document.addEventListener("mouseup", async function (e) {
 });
 
 
-// function addTooltipButton(label, icon, callback) {
-//   var button = document.createElement('button');
-//   button.setAttribute('class', `selection-popup-button button-with-border`);
-//   if (icon)
-//     button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
-//   else
-//     button.textContent = label;
-//   button.addEventListener("mousedown", callback);
-//   tooltip.appendChild(button);
-// }
+function addTooltipButton(label, icon, callback) {
+  var button = document.createElement('button');
+  button.setAttribute('class', `selection-popup-button button-with-border`);
+  if (icon)
+    button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
+  else
+    button.textContent = label;
+  button.addEventListener("mousedown", callback);
+  tooltip.appendChild(button);
+}
 
 /// Service methods
+
 
 function createTooltip(type) {
   init();
