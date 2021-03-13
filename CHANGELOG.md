@@ -23,3 +23,6 @@ Initial version
 
 #2.0.1
 - Bug fixes
+
+#2.0.2
+- Bug fixes

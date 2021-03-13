@@ -165,5 +165,9 @@
   "addButtonIcons": {
     "message": "Show icons for buttons",
     "description": ""
+  },
+  "enabled": {
+    "message": "Enabled",
+    "description": ""
   }
 }

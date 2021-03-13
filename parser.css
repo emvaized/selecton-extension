@@ -70,8 +70,7 @@
     transition: background-color 25ms ease-in-out !important;
     text-transform: none !important;
     outline: none !important;
-
-    align-items: top !important;
+    /* align-items: top !important; */
     }
     
   .selection-popup-button:hover {

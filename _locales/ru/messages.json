@@ -165,5 +165,9 @@
     "addButtonIcons": {
         "message": "Показывать иконки кнопок",
         "description": ""
+    },
+    "enabled": {
+        "message": "Включено",
+        "description": ""
     }
 }

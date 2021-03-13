@@ -27,6 +27,7 @@ var options = new Map([
     ['removeSelectionOnActionButtonClick', true],
     ['draggableTooltip', true],
     ['addButtonIcons', false],
+    ['enabled', true],
 ]);
 
 var keys = [...options.keys()];
