@@ -1,0 +1,182 @@
+{
+    "extensionDescription": {
+        "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
+        "description": "Description de l'extension"
+    },
+    "copyLabel": {
+        "message": "Copier",
+        "description": "Libellé pour l'action de copie de texte"
+    },
+    "searchLabel": {
+        "message": "Rechercher",
+        "description": "Libellé de l'action de texte de recherche"
+    },
+    "openLinkLabel": {
+        "message": "Ouvrir",
+        "description": "Libellé pour l'action de lien ouvert"
+    },
+    "cutLabel": {
+        "message": "Couper",
+        "description": "Libellé pour l'action de coupe"
+    },
+    "pasteLabel": {
+        "message": "Coller",
+        "description": "Libellé pour l'action de collage"
+    },
+    "translateLabel": {
+        "message": "Traduire",
+        "description": "Libellé de l'action de traduction"
+    },
+    "appearanceHeader": {
+        "message": "Apparence",
+        "description": "En-tête de la catégorie d'apparence dans les paramètres"
+    },
+    "behaviorHeader": {
+        "message": "Comportement",
+        "description": "En-tête de la catégorie d'apparence dans les paramètres"
+    },
+    "convertionHeader": {
+        "message": "Conversion",
+        "description": "En-tête de la catégorie de conversion dans les paramètres"
+    },
+    "actionButtonsHeader": {
+        "message": "Boutons d'action",
+        "description": "En-tête de la catégorie des boutons d'action dans les paramètres"
+    },
+    "animationDuration": {
+        "message": "Durée des animations (ms)",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "convertToCurrency": {
+        "message": "Devise à convertir (<a target='_blank' href='https://www.iban.com/currency-codes'> Rechercher le code </a>)",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "convertToCurrencyHint": {
+        "message": "Voir 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'> ici </a> pour référence",
+        "description": "Indice de code de devise pour le champ 'Convertir en devise' dans les paramètres"
+    },
+    "hideOnScroll": {
+        "message": "Masquer l'info-bulle lors du défilement",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "convertMetrics": {
+        "message": "Convertir les statistiques",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addOpenLinks": {
+        "message": "Ajouter un bouton pour ouvrir le lien",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "convertCurrency": {
+        "message": "Convertir les devises",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "performSimpleMathOperations": {
+        "message": "Faites des calculs mathématiques simples",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferredMetricsSystem": {
+        "message": "Système de métriques préféré",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "metric": {
+        "message": "Métrique",
+        "description": "Variante du système de métriques pour le menu déroulant"
+    },
+    "imperial": {
+        "message": "Imperial",
+        "description": "Variante du système de métriques pour le menu déroulant"
+    },
+    "resetDefaults": {
+        "message": "Restaurer les paramètres par défaut",
+        "description": "Libellé du bouton des paramètres pour restaurer les paramètres par défaut"
+    },
+    "buyMeCoffee": {
+        "message": "Acheter un café à l'auteur",
+        "description": "Libellé du bouton des paramètres menant à la page de don"
+    },
+    "visitGithub": {
+        "message": "Visiter la page GitHub",
+        "description": "Libellé du bouton des paramètres menant à la page GitHub"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Les paramètres sont enregistrés automatiquement <br /> Mettre à jour la page pour voir les modifications",
+        "description": "Petite note d'information à la fin des réglages"
+    },
+    "showTranslateButton": {
+        "message": "Afficher le bouton de traduction",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "languageToTranslate": {
+        "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> code ISO 639-1 </a>)",
+        "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
+    },
+    "useCustomStyle": {
+        "message": "Utiliser un style personnalisé pour l'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipBackground": {
+        "message": "Couleur d'arrière-plan",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipOpacity": {
+        "message": "Opacité de l'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addTooltipShadow": {
+        "message": "Ajouter une ombre d'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "shadowOpacity": {
+        "message": "Opacité de l'ombre",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "borderRadius": {
+        "message": "Rayon de la bordure",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "changeTextSelectionColor": {
+        "message": "Personnaliser la sélection de texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "textSelectionBackground": {
+        "message": "Couleur de sélection",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "textSelectionColor": {
+        "message": "Couleur du texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Essayez de déplacer l'info-bulle de sélection vers le haut lorsque le site Web affiche sa propre",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addActionButtonsForTextFields": {
+        "message": "Utiliser le panneau spécial pour les champs de texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "removeSelectionOnActionButtonClick ": {
+        "message": "Supprimer la sélection de texte après action",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "draggableTooltip": {
+        "message": "Le panneau peut être déplacé par la flèche",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addButtonIcons": {
+        "message": "Afficher les icônes des boutons",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "enabled": {
+        "message": "Activé",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferredSearchEngine": {
+        "message": "Moteur de recherche",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "hideOnKeypress": {
+        "message": "Masquer à la pression d'une touche",
+        "description": "Libellé du champ dans les paramètres"
+    }
+}

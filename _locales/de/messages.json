@@ -1,0 +1,182 @@
+{
+    "extensionDescription": {
+        "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
+        "description": "Erweiterungsbeschreibung"
+    },
+    "copyLabel": {
+        "message": "Kopieren",
+        "description": "Beschriftung für Kopiertextaktion"
+    },
+    "searchLabel": {
+        "message": "Suche",
+        "description": "Bezeichnung für Suchtextaktion"
+    },
+    "openLinkLabel": {
+        "message": "Öffnen",
+        "description": "Label für Open Link-Aktion"
+    },
+    "cutLabel": {
+        "message": "Schnitt",
+        "description": "Label for cut action"
+    },
+    "pasteLabel": {
+        "message": "Einfügen",
+        "description": "Beschriftung für Einfügemaßnahme"
+    },
+    "translateLabel": {
+        "message": "Übersetzen",
+        "description": "Bezeichnung für Übersetzungsaktion"
+    },
+    "appearanceHeader": {
+        "message": "Aussehen",
+        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+    },
+    "behaviourHeader": {
+        "message": "Verhalten",
+        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+    },
+    "convertionHeader": {
+        "message": "Umrechnung",
+        "description": "Header für Konvertierungskategorie in Einstellungen"
+    },
+    "actionButtonsHeader": {
+        "message": "Aktionsschaltflächen",
+        "description": "Header für die Kategorie der Aktionsschaltflächen in den Einstellungen"
+    },
+    "animationDuration": {
+        "message": "Animationsdauer (ms)",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "convertToCurrency": {
+        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://www.iban.com/currency-codes'> Code suchen </a>)",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "convertToCurrencyHint": {
+        "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'> hier </a> als Referenz",
+        "description": "Währungscode-Hinweis für das Feld 'In Währung konvertieren' in den Einstellungen"
+    },
+    "hideOnScroll": {
+        "message": "Tooltip beim Scrollen ausblenden",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "convertMetrics": {
+        "message": "Metriken konvertieren",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addOpenLinks": {
+        "message": "Schaltfläche zum Öffnen des Links hinzufügen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "convertCurrencies": {
+        "message": "Währungen umrechnen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "performSimpleMathOperations": {
+        "message": "Einfache mathematische Berechnungen durchführen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredMetricsSystem": {
+        "message": "Bevorzugtes Metriksystem",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "metric": {
+        "message": "Metrisch",
+        "description": "Variante des Metriksystems für Dropdown"
+    },
+    "imperial": {
+        "message": "Kaiserliche",
+        "description": "Variante des Metriksystems für Dropdown"
+    },
+    "resetDefaults": {
+        "message": "Standardeinstellungen wiederherstellen",
+        "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
+    },
+    "buyMeCoffee": {
+        "message": "Autor einen Kaffee kaufen",
+        "description": "Schaltfläche 'Beschriftung für Einstellungen', die zur Spendenseite führt"
+    },
+    "visitGithub": {
+        "message": "Besuchen Sie die GitHub-Seite",
+        "description": "Schaltfläche für die Beschriftung der Einstellungen, die zur GitHub-Seite führt"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Einstellungen werden automatisch gespeichert <br /> Seite aktualisieren, um Änderungen zu sehen",
+        "description": "Kleiner Info-Hinweis am Ende der Einstellungen"
+    },
+    "showTranslateButton": {
+        "message": "Schaltfläche zum Übersetzen anzeigen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "languageToTranslate": {
+        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> ISO 639-1-Code </a>)",
+        "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
+    },
+    "useCustomStyle": {
+        "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "tooltipBackground": {
+        "message": "Hintergrundfarbe",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "tooltipOpacity": {
+        "message": "Tooltip-Deckkraft",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addTooltipShadow": {
+        "message": "Tooltip-Schatten hinzufügen",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "shadowOpacity": {
+        "message": "Schattenopazität",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "borderRadius": {
+        "message": "Randradius",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "changeTextSelectionColor": {
+        "message": "Textauswahl anpassen",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "textSelectionBackground": {
+        "message": "Auswahlfarbe",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "textSelectionColor": {
+        "message": "Textfarbe",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Versuchen Sie, den Auswahl-Tooltip nach oben zu verschieben, wenn die Website ihre eigene anzeigt",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addActionButtonsForTextFields": {
+        "message": "Spezialbedienfeld für Textfelder verwenden",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": " Textauswahl nach Aktion entfernen ",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "draggableTooltip": {
+        "message": "Panel kann durch den Pfeil gezogen werden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addButtonIcons": {
+        "message": "Symbole für Schaltflächen anzeigen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "enabled": {
+        "message": "Aktiviert",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredSearchEngine": {
+        "message": "Suchmaschine",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "hideOnKeypress": {
+        "message": "Bei Tastendruck ausblenden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    }
+}

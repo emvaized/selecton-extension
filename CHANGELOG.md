@@ -40,3 +40,8 @@ Initial version
 - Fixed wrong currency rates for some currencies
 - Centered arrow horizontally more precisely
 - Added more search engines
+
+#2.0.7
+- Added German, French and Spanish translations (via Google Translate)
+- Possible fix for bug on Jira when tickets were not open on click
+- Added option to disable hiding tooltip on key press

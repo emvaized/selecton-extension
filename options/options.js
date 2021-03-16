@@ -9,7 +9,6 @@ var options = new Map([
     ['performSimpleMathOperations', true],
     ['preferredMetricsSystem', 'metric'],
     ['showTranslateButton', true],
-    // ['languageToTranslate', 'en'],
     ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
     ['useCustomStyle', false],
     ['tooltipBackground', '#3B3B3B'],
@@ -28,6 +27,7 @@ var options = new Map([
     ['draggableTooltip', true],
     ['addButtonIcons', false],
     ['enabled', true],
+    ['hideOnKeypress', true],
     ['preferredSearchEngine', 'google'],
 ]);
 
@@ -119,7 +119,6 @@ function saveAllOptions() {
     chrome.storage.local.set(dataToSave);
 }
 
-
 function resetOptions() {
     var dataToSave = {};
     options.forEach(function (value, key) {
@@ -153,7 +152,6 @@ function resetOptions() {
         }
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);

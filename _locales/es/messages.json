@@ -1,0 +1,182 @@
+{
+    "extensionDescription": {
+        "message": "Ventana emergente personalizable con acciones en la selección de texto",
+        "description": "Descripción de la extensión"
+    },
+    "copyLabel": {
+        "message": "Copiar",
+        "description": "Etiqueta para la acción de copiar texto"
+    },
+    "searchLabel": {
+        "message": "Buscar",
+        "description": "Etiqueta para la acción de texto de búsqueda"
+    },
+    "openLinkLabel": {
+        "message": "Abrir",
+        "description": "Etiqueta para acción de enlace abierto"
+    },
+    "cutLabel": {
+        "message": "Cortar",
+        "description": "Etiqueta para la acción de corte"
+    },
+    "pasteLabel": {
+        "message": "Pegar",
+        "description": "Etiqueta para la acción de pegar"
+    },
+    "translateLabel": {
+        "message": "Traducir",
+        "description": "Etiqueta para la acción de traducción"
+    },
+    "appearanceHeader": {
+        "message": "Apariencia",
+        "description": "Encabezado de la categoría de apariencia en la configuración"
+    },
+    "behaviorHeader": {
+        "message": "Comportamiento",
+        "description": "Encabezado de la categoría de apariencia en la configuración"
+    },
+    "convertionHeader": {
+        "message": "Conversión",
+        "description": "Encabezado de la categoría de conversión en la configuración"
+    },
+    "actionButtonsHeader": {
+        "message": "Botones de acción",
+        "description": "Encabezado de la categoría de botones de acción en la configuración"
+    },
+    "animationDurationn": {
+        "message": "Duración de las animaciones (ms)",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "convertToCurrency": {
+        "message": "Moneda para convertir a (<a target='_blank' href='https://www.iban.com/currency-codes'> Buscar código </a>)",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "convertToCurrencyHint": {
+        "message": "Consulte 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'> aquí </a> como referencia",
+        "description": "Sugerencia de código de moneda para el campo 'convertir a moneda' en la configuración"
+    },
+    "hideOnScroll": {
+        "message": "Ocultar información sobre herramientas en el desplazamiento",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "convertMetrics": {
+        "message": "Convertir métricas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "addOpenLinks": {
+        "message": "Agregar botón para abrir enlace",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "convertCurrencies": {
+        "message": "Convertir monedas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "performSimpleMathOperations": {
+        "message": "Realiza cálculos matemáticos sencillos",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "preferredMetricsSystem": {
+        "message": "Sistema de métricas preferido",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "metric": {
+        "message": "Métrica",
+        "description": "Variante del sistema de métricas para el menú desplegable"
+    },
+    "imperial": {
+        "message": "Imperial",
+        "description": "Variante del sistema de métricas para el menú desplegable"
+    },
+    "resetDefaults": {
+        "message": "Restaurar valores predeterminados",
+        "description": "Etiqueta del botón de configuración para restaurar la configuración predeterminada"
+    },
+    "buyMeCoffee": {
+        "message": "Cómprale un café al autor",
+        "description": "Etiqueta para el botón de configuración que conduce a la página de donación"
+    },
+    "visitGithub": {
+        "message": "Visita la página de GitHub",
+        "description": "Etiqueta para el botón de configuración que lleva a la página de GitHub"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "La configuración se guarda automáticamente <br /> Actualiza la página para ver los cambios",
+        "description": "Pequeña nota de información al final de la configuración"
+    },
+    "showTranslateButton": {
+        "message": "Mostrar botón de traducción",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "languageToTranslate": {
+        "message": "Idioma para traducir (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> código ISO 639-1 </a>)",
+        "description": "Etiqueta para el campo en la configuración, incorporando un enlace en línea"
+    },
+    "useCustomStyle": {
+        "message": "Usar estilo personalizado para la información sobre herramientas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "tooltipBackground": {
+        "message": "Color de fondo",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "tooltipOpacity": {
+        "message": "Opacidad de la información sobre herramientas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "addTooltipShadow": {
+        "message": "Agregar sombra de información sobre herramientas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "shadowOpacity": {
+        "message": "Opacidad de la sombra",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "borderRadius": {
+        "message": "Radio del borde",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "changeTextSelectionColor": {
+        "message": "Personalizar la selección de texto",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "textSelectionBackground": {
+        "message": "Color de selección",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "textSelectionColor": {
+        "message": "Color del texto",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Intente desplazar la información sobre herramientas de selección hacia arriba cuando el sitio web muestre que es suyo",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "addActionButtonsForTextFields": {
+        "message": "Usar un panel especial para campos de texto",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Eliminar la selección de texto después de la acción",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "draggableTooltip": {
+        "message": "El panel se puede arrastrar con la flecha",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "addButtonIcons": {
+        "message": "Mostrar iconos para botones",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "enabled": {
+        "message": "Habilitado",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "preferredSearchEngine": {
+        "message": "Motor de búsqueda",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "hideOnKeypress": {
+        "message": "Ocultar al presionar una tecla",
+        "description": "Etiqueta para el campo en la configuración"
+    }
+}

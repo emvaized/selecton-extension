@@ -1,6 +1,7 @@
 {
     "extensionDescription": {
-        "message": "Всплывающая панель с действиями при выделении текста"
+        "message": "Всплывающая панель с действиями при выделении текста",
+        "description": "Описание расширения"
     },
     "copyLabel": {
         "message": "Копировать",
@@ -173,5 +174,9 @@
     "preferredSearchEngine": {
         "message": "Поисковая система",
         "description": ""
+    },
+    "hideOnKeypress": {
+        "message": "Прятать при нажатии кнопок клавиатуры",
+        "description": "Label for field in settings"
     }
 }

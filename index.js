@@ -27,10 +27,11 @@ var draggableTooltip = true;
 var addButtonIcons = false;
 var enabled = true;
 var preferredSearchEngine = 'google';
+var hideOnKeypress = true;
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
-var debugMode = true;
+var debugMode = false;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
@@ -58,6 +59,7 @@ var isDraggingTooltip = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
 var isDarkBackground = true;
+var linkSymbolsToShow = 20;
 
 var browserLanguage;
 var browserCurrency;
@@ -98,14 +100,12 @@ function init() {
       'addButtonIcons',
       'enabled',
       'preferredSearchEngine',
+      'hideOnKeypress',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
-
-      // textSelectionBackground = value.textSelectionBackground || '#808080';
       textSelectionBackground = value.textSelectionBackground || '#338FFF';
       textSelectionColor = value.textSelectionColor || '#ffffff';
-
 
       /// Change text selection color
       if (changeTextSelectionColor) {
@@ -119,7 +119,6 @@ function init() {
         document.body.style.setProperty('--selection-background', '#338FFF');
         document.body.style.setProperty('--selection-text-color', '#ffffff');
       }
-      // document.body.style.setProperty('--selection-button-padding', addButtonIcons ? '6px 12px 0px 12px' : '6px 12px');
       document.body.style.setProperty('--selection-button-padding', '6px 12px');
 
       enabled = value.enabled ?? true;
@@ -156,6 +155,7 @@ function init() {
         addActionButtonsForTextFields = value.addActionButtonsForTextFields ?? false;
         removeSelectionOnActionButtonClick = value.removeSelectionOnActionButtonClick ?? true;
         draggableTooltip = value.draggableTooltip ?? true;
+        hideOnKeypress = value.hideOnKeypress ?? true;
         addButtonIcons = value.addButtonIcons ?? false;
         preferredSearchEngine = value.preferredSearchEngine || 'google';
 
@@ -174,7 +174,7 @@ function init() {
 
         /// If initial launch, update currency rates
         if (convertCurrencies) {
-          if (ratesLastFetchedDate == null)
+          if (ratesLastFetchedDate == (null || undefined))
             fetchCurrencyRates();
           else loadCurrencyRatesFromMemory();
         }
@@ -262,165 +262,211 @@ function setPageListeners() {
   });
 
   /// Hide tooltip when any key is pressed
-  // if (addActionButtonsForTextFields)
-  document.onkeyup = hideTooltip;
+  if (hideOnKeypress)
+    document.onkeydown = hideTooltip;
 
   document.addEventListener("mouseup", async function (e) {
+
     if (isDraggingTooltip) return;
-    if (dontShowTooltip) return;
 
-    setTimeout(
-      function () {
-        if ("buttons" in evt) {
-          if (evt.buttons == 1) {
+    // if (dontShowTooltip) return;
+    if (dontShowTooltip !== true)
+      setTimeout(
+        function () {
+          if ("buttons" in evt) {
+            if (evt.buttons == 1) {
 
-            hideTooltip();
+              hideTooltip();
 
-            /// Old text input handling
-            /// Don't open tooltip when any textfield is focused
-            // if (ignoreWhenTextFieldFocused &&
-            //   (
-            //     document.activeElement.tagName === "INPUT" ||
-            //     document.activeElement.tagName === "TEXTAREA"
-            //   )
-            // )
-            //   return;
-            // if (tooltip == null) createTooltip();
+              /// Old text input handling
+              /// Don't open tooltip when any textfield is focused
+              // if (ignoreWhenTextFieldFocused &&
+              //   (
+              //     document.activeElement.tagName === "INPUT" ||
+              //     document.activeElement.tagName === "TEXTAREA"
+              //   )
+              // )
+              //   return;
+              // if (tooltip == null) createTooltip();
 
-            /// Clear previously stored selection value
+              /// Clear previously stored selection value
 
-            if (window.getSelection) {
-              selection = window.getSelection();
-            } else if (document.selection) {
-              selection = document.selection.createRange();
-            }
-
-            var selDimensions = getSelectionDimensions();
-            selectedText = selection.toString();
-            console.log('selectedText:');
-            console.log(selectedText);
-
-            /// Experimental handling of text fields
-            if (
-              document.activeElement.tagName === "INPUT" ||
-              document.activeElement.tagName === "TEXTAREA" ||
-              document.activeElement.getAttribute('contenteditable') !== null
-            ) {
-              if (addActionButtonsForTextFields == false) return;
-
-              /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
-              if (selectedText == '') {
-                var ta = document.querySelector(':focus');
-                selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-                selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+              if (window.getSelection) {
+                selection = window.getSelection();
+              } else if (document.selection) {
+                selection = document.selection.createRange();
               }
 
-              /// Ignore single click on text field with inputted value
-              if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+              var selDimensions = getSelectionDimensions();
+              selectedText = selection.toString();
+              console.log('selectedText:');
+              console.log(selectedText);
 
-              /// Create text field tooltip
-              createTooltip('textfield');
+              /// Experimental handling of text fields
+              if (
+                document.activeElement.tagName === "INPUT" ||
+                document.activeElement.tagName === "TEXTAREA" ||
+                document.activeElement.getAttribute('contenteditable') !== null
+              ) {
+                if (addActionButtonsForTextFields == false) return;
 
-              /// Check resulting DY to be out of view
-              var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
-              var vertOutOfView = resultDy <= window.scrollY;
-              if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
+                /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
+                if (selectedText == '') {
+                  var ta = document.querySelector(':focus');
+                  selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                  selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                }
 
-              showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
+                /// Ignore single click on text field with inputted value
+                if (document.activeElement.value.trim() !== '' && selectedText == '') return;
 
-              return;
-            }
+                /// Create text field tooltip
+                createTooltip('textfield');
+
+                /// Check resulting DY to be out of view
+                var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+                var vertOutOfView = resultDy <= window.scrollY;
+                if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
+
+                showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
+
+                return;
+              }
 
 
-            if (tooltip !== null && tooltip !== undefined) {
-              hideTooltip();
-            }
-            createTooltip();
-            // console.log(selection.clientWidth);
+              if (tooltip !== null && tooltip !== undefined) {
+                hideTooltip();
+              }
+              createTooltip();
+              // console.log(selection.clientWidth);
 
-            if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
-              // if (selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
+              if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
+                // if (selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
 
-              if (debugMode)
-                console.log('Creating regular tooltip...');
-              var selectedText = selection.toString();
-              var wordsCount = selectedText.split(' ').length;
+                if (debugMode)
+                  console.log('Creating regular tooltip...');
+                var selectedText = selection.toString();
+                var wordsCount = selectedText.split(' ').length;
 
-              if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
-                /// Convert units
-                var numberToConvert;
+                if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
+                  /// Convert units
+                  var numberToConvert;
 
-                if (convertMetrics)
-                  outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-                    var nonConvertedUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                    if (selectedText.includes(nonConvertedUnit)) {
+                  if (convertMetrics)
+                    outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+                      var nonConvertedUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                      if (selectedText.includes(nonConvertedUnit)) {
 
-                      var words = selectedText.split(' ');
-                      for (i in words) {
-                        var word = words[i];
+                        var words = selectedText.split(' ');
+                        for (i in words) {
+                          var word = words[i];
 
-                        /// Feet/inches ' "" handling
-                        // if (word.includes("'") && word.includes("''")) {
-                        //   var numbers = word.split("'");
-                        //   return;
-                        //   // var feets  = calculateString(numbers[0]);
-                        //   // var inches = calculateString(numbers[1]);
-                        // }
+                          /// Feet/inches ' "" handling
+                          // if (word.includes("'") && word.includes("''")) {
+                          //   var numbers = word.split("'");
+                          //   return;
+                          //   // var feets  = calculateString(numbers[0]);
+                          //   // var inches = calculateString(numbers[1]);
+                          // }
 
-                        // numberToConvert = word.match(/[+-]?\d+(\.\d) ? /g);
-                        try {
-                          numberToConvert = calculateString(word.trim());
-                        } catch (e) { }
+                          // numberToConvert = word.match(/[+-]?\d+(\.\d) ? /g);
+                          try {
+                            numberToConvert = calculateString(word.trim());
+                          } catch (e) { }
 
-                        if (numberToConvert == null || numberToConvert == undefined || numberToConvert == '' || numberToConvert == NaN) {
-                          var previousWord = words[i - 1];
-                          if (previousWord !== undefined)
-                            // numberToConvert = previousWord.match(/[+-]?\d+(\.\d) ? /g);
-                            try {
-                              numberToConvert = calculateString(selectedText.trim());
-                              // numberToConvert = calculateString(previousWord.trim());
-                            } catch (e) { }
-                        }
-
-                        if (numberToConvert == undefined) {
-                          numberToConvert = selectedText.match(/[+-]?\d+(\.\d)?/g);
-                          if (previousWord !== undefined && (numberToConvert == null || numberToConvert == undefined))
-                            numberToConvert = previousWord.match(/[+-]?\d+(\.\d)?/g);
-                          if (numberToConvert !== undefined && numberToConvert !== null)
-                            numberToConvert = numberToConvert.join("");
-                        }
-
-                        if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-
-                          var fromUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                          var convertedUnit = preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
-                          var convertedNumber;
-
-                          if (fromUnit.includes('°')) {
-                            convertedNumber = value['convertFunction'](numberToConvert);
-                          } else {
-                            convertedNumber = preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
+                          if (numberToConvert == null || numberToConvert == undefined || numberToConvert == '' || numberToConvert == NaN) {
+                            var previousWord = words[i - 1];
+                            if (previousWord !== undefined)
+                              // numberToConvert = previousWord.match(/[+-]?\d+(\.\d) ? /g);
+                              try {
+                                numberToConvert = calculateString(selectedText.trim());
+                                // numberToConvert = calculateString(previousWord.trim());
+                              } catch (e) { }
                           }
 
-                          /// Round doubles to the first 2 symbols after dot
-                          convertedNumber = convertedNumber.toFixed(2);
+                          if (numberToConvert == undefined) {
+                            numberToConvert = selectedText.match(/[+-]?\d+(\.\d)?/g);
+                            if (previousWord !== undefined && (numberToConvert == null || numberToConvert == undefined))
+                              numberToConvert = previousWord.match(/[+-]?\d+(\.\d)?/g);
+                            if (numberToConvert !== undefined && numberToConvert !== null)
+                              numberToConvert = numberToConvert.join("");
+                          }
 
-                          /// Add unit converter button
-                          if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
+                          if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+
+                            var fromUnit = preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                            var convertedUnit = preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+                            var convertedNumber;
+
+                            if (fromUnit.includes('°')) {
+                              convertedNumber = value['convertFunction'](numberToConvert);
+                            } else {
+                              convertedNumber = preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
+                            }
+
+                            /// Round doubles to the first 2 symbols after dot
+                            convertedNumber = convertedNumber.toFixed(2);
+
+                            /// Add unit converter button
+                            if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
+                              var interactiveButton = document.createElement('button');
+                              interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                              interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
+
+                              var converted = document.createElement('span');
+                              converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                              converted.setAttribute('style', `color: ${secondaryColor}`);
+                              interactiveButton.appendChild(converted);
+
+                              interactiveButton.addEventListener("mousedown", function (e) {
+                                hideTooltip();
+                                removeSelection();
+                                /// Search for conversion on Google
+                                window.open(`https://www.google.com/search?q=${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`, '_blank');
+                                ;
+                              });
+
+                              tooltip.appendChild(interactiveButton);
+                              try {
+                                tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                              } catch (e) {
+                                if (debugMode)
+                                  console.log(e);
+                              }
+                              break outerloop;
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                  /// Do simple math calculations
+                  if (numberToConvert == null && performSimpleMathOperations) {
+                    if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
+                      try {
+                        // var calculatedExpression = calculateString(selectedText.trim());
+                        var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
+                        if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
+
+                          var number;
+                          var numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
+                          number = numbersArray[0];
+
+                          if (number !== null) {
                             var interactiveButton = document.createElement('button');
                             interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                            interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
+                            interactiveButton.textContent = selectedText + ' →';
 
                             var converted = document.createElement('span');
-                            converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                            converted.textContent = ` ${calculatedExpression}`;
                             converted.setAttribute('style', `color: ${secondaryColor}`);
                             interactiveButton.appendChild(converted);
 
                             interactiveButton.addEventListener("mousedown", function (e) {
                               hideTooltip();
                               removeSelection();
-                              /// Search for conversion on Google
-                              window.open(`https://www.google.com/search?q=${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`, '_blank');
+                              /// Do calculation on Google
+                              window.open(`https://www.google.com/search?q=${selectedText.replaceAll('+', '%2B')}`, '_blank');
                               ;
                             });
 
@@ -431,283 +477,235 @@ function setPageListeners() {
                               if (debugMode)
                                 console.log(e);
                             }
-                            break outerloop;
                           }
                         }
+                      } catch (e) {
+                        if (debugMode)
+                          console.log(e);
                       }
-                    }
                   }
 
-                /// Do simple math calculations
-                if (numberToConvert == null && performSimpleMathOperations) {
-                  if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
-                    try {
-                      // var calculatedExpression = calculateString(selectedText.trim());
-                      var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
-                      if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
+                  /// Convert currencies
+                  if (convertCurrencies) {
+                    var currency;
+                    var amount;
+                    var currencyRate;
 
-                        var number;
-                        var numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
-                        number = numbersArray[0];
+                    for (const [key, value] of Object.entries(currenciesList)) {
+                      if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
+                        // if (selectedText.includes(value["currencySymbol"])) {
+                        // currency = key;
 
-                        if (number !== null) {
-                          var interactiveButton = document.createElement('button');
-                          interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                          interactiveButton.textContent = selectedText + ' →';
+                        currency = value["id"];
+                        currencyRate = value["rate"];
 
-                          var converted = document.createElement('span');
-                          converted.textContent = ` ${calculatedExpression}`;
-                          converted.setAttribute('style', `color: ${secondaryColor}`);
-                          interactiveButton.appendChild(converted);
+                        amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
+                        if (amount !== null)
+                          amount = amount.join("");
+                        break;
+                      }
+                    }
 
-                          interactiveButton.addEventListener("mousedown", function (e) {
-                            hideTooltip();
-                            removeSelection();
-                            /// Do calculation on Google
-                            window.open(`https://www.google.com/search?q=${selectedText.replaceAll('+', '%2B')}`, '_blank');
-                            ;
-                          });
+                    if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
 
-                          tooltip.appendChild(interactiveButton);
-                          try {
-                            tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                          } catch (e) {
-                            if (debugMode)
-                              console.log(e);
-                          }
+                      /// Update currency rates in case they are old (will be used for next conversions)
+                      if (ratesLastFetchedDate !== null) {
+                        var today = new Date();
+                        var dayOfNextFetch = new Date(ratesLastFetchedDate);
+                        dayOfNextFetch.setDate(dayOfNextFetch.getDate() + updateRatesEveryDays);
+
+                        if (today >= dayOfNextFetch) {
+                          fetchCurrencyRates();
                         }
                       }
-                    } catch (e) {
-                      if (debugMode)
-                        console.log(e);
-                    }
-                }
 
-                /// Convert currencies
-                if (convertCurrencies) {
-                  var currency;
-                  var amount;
-                  var currencyRate;
+                      /// Rates are already locally stored (should be initially)
+                      if (currencyRate !== null && currencyRate !== undefined) {
+                        if (debugMode)
+                          console.log(`Found local rate for currency ${currency}`);
 
-                  for (const [key, value] of Object.entries(currenciesList)) {
-                    if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
-                      // if (selectedText.includes(value["currencySymbol"])) {
-                      // currency = key;
+                        for (const [key, value] of Object.entries(currenciesList)) {
+                          if (value["id"] == convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
+                            var rateOfDesiredCurrency = value['rate'];
+                            console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
-                      currency = value["id"];
-                      currencyRate = value["rate"];
+                            var resultingRate = rateOfDesiredCurrency / currencyRate;
+                            var convertedAmount = amount * resultingRate;
 
-                      amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
-                      if (amount !== null)
-                        amount = amount.join("");
-                      break;
-                    }
-                  }
+                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN') {
+                              console.log(convertedAmount);
+                              /// Round result
+                              try {
+                                convertedAmount = parseFloat(convertedAmount);
+                                convertedAmount = convertedAmount.toFixed(2);
+                              } catch (e) { console.log(e); }
 
-                  if (currency !== undefined && currency !== convertToCurrency && amount !== null) {
+                              /// Separate resulting numbers in groups of 3 digits
+                              var convertedAmountString = convertedAmount.toString();
+                              var parts = convertedAmountString.split('.');
+                              parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                              convertedAmountString = parts.join('.');
 
-                    /// Update currency rates in case they are old (will be used for next conversions)
-                    if (ratesLastFetchedDate !== null) {
-                      var today = new Date();
-                      var dayOfNextFetch = new Date(ratesLastFetchedDate);
-                      dayOfNextFetch.setDate(dayOfNextFetch.getDate() + updateRatesEveryDays);
+                              /// Create and add currency button with result of conversion
+                              var interactiveButton = document.createElement('button');
+                              interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                              // if (addButtonIcons)
+                              //   interactiveButton.innerHTML = createImageIcon(currencyButtonIcon, 0.7) + `${amount + ' ' + currency + ' →'}`;
+                              // else
+                              interactiveButton.textContent = amount + ' ' + currency + ' →';
+                              var converted = document.createElement('span');
 
-                      if (today >= dayOfNextFetch) {
+                              converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
+                              converted.setAttribute('style', `color: ${secondaryColor}`);
+                              interactiveButton.appendChild(converted);
+
+                              interactiveButton.addEventListener("mouseup", function (e) {
+                                hideTooltip();
+                                removeSelection();
+                                /// Search for conversion on Google
+                                window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
+                                ;
+                              });
+
+                              tooltip.appendChild(interactiveButton);
+
+                              /// Correct tooltip's dx
+                              tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+
+                              /// Correct last button's border radius
+                              tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+                              tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                              break;
+                            }
+                          }
+                        }
+
+                        /// Fetch rates from server
+                      } else
                         fetchCurrencyRates();
-                      }
-                    }
 
-                    /// Rates are already locally stored (should be initially)
-                    if (currencyRate !== null && currencyRate !== undefined) {
-                      if (debugMode)
-                        console.log(`Found local rate for currency ${currency}`);
+                    } else {
 
-                      for (const [key, value] of Object.entries(currenciesList)) {
-                        if (value["id"] == convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                          var rateOfDesiredCurrency = value['rate'];
-                          console.log(`Rate is: ${rateOfDesiredCurrency}`);
+                      /// Add 'open link' button for each found link
+                      if (addOpenLinks)
+                        // if (tooltip.children.length < 4 && selectedText.includes('.')) {
+                        if (tooltip.children.length < 4 && (selectedText.includes('.') || selectedText.includes('/'))) {
+                          var words = selectedText.split(' ');
+                          for (i in words) {
+                            var link = words[i];
+                            // if (link.includes('.')) {
+                            if (link.includes('.') || link.includes('/')) {
+                              link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
+                              var lastSymbol = link[link.length - 1];
 
-                          var resultingRate = rateOfDesiredCurrency / currencyRate;
-                          var convertedAmount = amount * resultingRate;
+                              if (lastSymbol == '.' || lastSymbol == ',')
+                                link = link.substring(0, link.length - 1);
 
-                          if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN') {
-                            console.log(convertedAmount);
-                            /// Round result
-                            try {
-                              convertedAmount = parseFloat(convertedAmount);
-                              convertedAmount = convertedAmount.toFixed(2);
-                            } catch (e) { console.log(e); }
+                              /// Remove '/' on the end of link, just for better looks in pop-up
+                              var lastSymbol = link[link.length - 1];
+                              if (lastSymbol == '/')
+                                link = link.substring(0, link.length - 1);
 
-                            /// Separate resulting numbers in groups of 3 digits
-                            var convertedAmountString = convertedAmount.toString();
-                            var parts = convertedAmountString.split('.');
-                            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                            convertedAmountString = parts.join('.');
+                              /// Remove quotes in start and end of the link
+                              var firstSymbol = link[0];
+                              var lastSymbol = link[link.length - 1];
+                              if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
+                                link = link.substring(1, link.length);
+                              if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
+                                link = link.substring(0, link.length - 1);
 
-                            /// Create and add currency button with result of conversion
-                            var interactiveButton = document.createElement('button');
-                            interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                            // if (addButtonIcons)
-                            //   interactiveButton.innerHTML = createImageIcon(currencyButtonIcon, 0.7) + `${amount + ' ' + currency + ' →'}`;
-                            // else
-                            interactiveButton.textContent = amount + ' ' + currency + ' →';
-                            var converted = document.createElement('span');
-
-                            converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
-                            converted.setAttribute('style', `color: ${secondaryColor}`);
-                            interactiveButton.appendChild(converted);
-
-                            interactiveButton.addEventListener("mouseup", function (e) {
-                              hideTooltip();
-                              removeSelection();
-                              /// Search for conversion on Google
-                              window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
-                              ;
-                            });
-
-                            tooltip.appendChild(interactiveButton);
-
-                            /// Correct tooltip's dx
-                            tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
-
-                            /// Correct last button's border radius
-                            tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                            break;
-                          }
-                        }
-                      }
-
-                      /// Fetch rates from server
-                    } else
-                      fetchCurrencyRates();
-
-                  } else {
-
-                    /// Add 'open link' button for each found link
-                    if (addOpenLinks)
-                      // if (tooltip.children.length < 4 && selectedText.includes('.')) {
-                      if (tooltip.children.length < 4 && (selectedText.includes('.') || selectedText.includes('/'))) {
-                        var words = selectedText.split(' ');
-                        for (i in words) {
-                          var link = words[i];
-                          // if (link.includes('.')) {
-                          if (link.includes('.') || link.includes('/')) {
-                            link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                            var lastSymbol = link[link.length - 1];
-
-                            if (lastSymbol == '.' || lastSymbol == ',')
-                              link = link.substring(0, link.length - 1);
-
-                            /// Remove '/' on the end of link, just for better looks in pop-up
-                            var lastSymbol = link[link.length - 1];
-                            if (lastSymbol == '/')
-                              link = link.substring(0, link.length - 1);
-
-                            /// Remove quotes in start and end of the link
-                            var firstSymbol = link[0];
-                            var lastSymbol = link[link.length - 1];
-                            if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
-                              link = link.substring(1, link.length);
-                            if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
-                              link = link.substring(0, link.length - 1);
-
-                            /// Handle when resulting link has spaces
-                            if (link.includes(' ')) {
-                              var urlWords = link.split(' ');
-                              for (i in urlWords) {
-                                var word = urlWords[i];
-                                if (word.includes('.') || word.includes('/')) {
-                                  link = word;
+                              /// Handle when resulting link has spaces
+                              if (link.includes(' ')) {
+                                var urlWords = link.split(' ');
+                                for (i in urlWords) {
+                                  var word = urlWords[i];
+                                  if (word.includes('.') || word.includes('/')) {
+                                    link = word;
+                                  }
                                 }
                               }
+
+                              try {
+                                link = link.trim();
+
+                                /// Filtering out non-links
+                                var splittedByDots = link.split('.');
+                                var lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+
+                                if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                  /// Adding button
+                                  var interactiveButton = document.createElement('button');
+                                  interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                                  var linkText = document.createElement('span');
+                                  // linkText.textContent = ' ' + link;
+
+                                  var linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                                  linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
+                                  linkText.setAttribute('style', `color: ${secondaryColor}`);
+
+                                  /// Add tooltip with full website on hover
+                                  if (link.length > linkSymbolsToShow)
+                                    interactiveButton.setAttribute('title', link);
+
+                                  if (addButtonIcons)
+                                    interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5);
+                                  else
+                                    interactiveButton.innerHTML = openLinkLabel + ' ';
+
+                                  interactiveButton.appendChild(linkText);
+                                  interactiveButton.addEventListener("mousedown", function (e) {
+                                    hideTooltip();
+                                    /// Open link
+
+                                    if (!link.includes('http://') && !link.includes('https://'))
+                                      link = 'https://' + link;
+                                    window.open(`${link}`, '_blank');
+                                  });
+
+                                  tooltip.appendChild(interactiveButton);
+                                  break;
+                                }
+                              } catch (e) { console.log(e) }
+
                             }
-
-                            try {
-                              link = link.trim();
-
-                              /// Filtering out non-links
-                              var splittedByDots = link.split('.');
-                              var lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
-
-                              if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                /// Adding button
-                                var interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                                var linkText = document.createElement('span');
-                                // linkText.textContent = ' ' + link;
-
-                                var linkToDisplay = link.length > 30 ? link.substring(0, 30) + '...' : link;
-                                linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
-                                linkText.setAttribute('style', `color: ${secondaryColor}`);
-
-                                /// Add tooltip with full website on hover
-                                if (link.length > 30)
-                                  interactiveButton.setAttribute('title', link);
-
-                                if (addButtonIcons)
-                                  interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5);
-                                else
-                                  interactiveButton.innerHTML = openLinkLabel + ' ';
-
-                                interactiveButton.appendChild(linkText);
-                                interactiveButton.addEventListener("mousedown", function (e) {
-                                  hideTooltip();
-                                  /// Open link
-
-                                  if (!link.includes('http://') && !link.includes('https://'))
-                                    link = 'https://' + link;
-                                  window.open(`${link}`, '_blank');
-                                });
-
-                                tooltip.appendChild(interactiveButton);
-                                break;
-                              }
-                            } catch (e) { console.log(e) }
-
                           }
                         }
-                      }
 
+                    }
                   }
                 }
+
+                /// Show Translate button when enabled, and no other buttons were added 
+                if (tooltip.children.length < 4 && showTranslateButton) {
+                  addTranslateButton();
+                }
+
+                /// If tooltip is going to be placed too much on top, make it visible
+                var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+                var vertOutOfView = resultingDy <= window.scrollY;
+                if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
+
+                /// Check if resulting tooltip's dx is out of view (doesn't work because of postpone added translate and currency buttons)
+                var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+
+                /// Set border radius for buttons
+                tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                /// Show tooltip on top of selection
+                showTooltip(resultingDx, resultingDy + (addButtonIcons ? 2.5 : 5));
               }
+              else hideTooltip();
 
-              /// Show Translate button when enabled, and no other buttons were added 
-              if (tooltip.children.length < 4 && showTranslateButton) {
-                addTranslateButton();
-              }
-
-              /// If tooltip is going to be placed too much on top, make it visible
-              var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
-              var vertOutOfView = resultingDy <= window.scrollY;
-              if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
-
-              /// Check if resulting tooltip's dx is out of view (doesn't work because of postpone added translate and currency buttons)
-              var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
-
-              /// Set border radius for buttons
-              tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-              tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-
-              /// Show tooltip on top of selection
-              showTooltip(resultingDx, resultingDy + (addButtonIcons ? 2.5 : 5));
             }
-            else hideTooltip();
-
           }
-        }
-      }, 1
-    );
-
-
+        }, 1
+      );
   });
 }
 
 /// Service methods
-
 
 function createTooltip(type) {
   // init();
@@ -733,12 +731,7 @@ function createTooltip(type) {
   tooltip.appendChild(arrow);
   document.body.appendChild(tooltip);
 
-  // Make the DIV element draggable:
-  // tooltip.addEventListener('onmousemove', function (e) {
-  //   console.log('dragging panel...');
-  //   console.log(e);
-  // });
-
+  // Make the tooltip draggable by arrow
   if (draggableTooltip) {
     arrowChild.style.cursor = 'move';
     arrowChild.onmousedown = function (e) {
@@ -753,6 +746,8 @@ function createTooltip(type) {
         /// More slow top/left approach
         // tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
         // tooltip.style.top = `${e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight}px`;
+
+        /// More performant 'transform' approach
         tooltip.style.left = `0px`;
         tooltip.style.top = `0px`;
         tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px )`;
@@ -886,6 +881,8 @@ function createTooltip(type) {
       document.execCommand('copy');
       hideTooltip();
       removeSelection();
+
+
     });
     tooltip.appendChild(copyButton);
   }
@@ -901,6 +898,7 @@ function createImageIcon(url, opacity = 0.5) {
 function removeSelection() {
   if (removeSelectionOnActionButtonClick) {
     var sel = window.getSelection ? window.getSelection() : document.selection;
+
     if (sel) {
       if (sel.removeAllRanges) {
         sel.removeAllRanges();
@@ -974,27 +972,15 @@ function hideTooltip() {
 
   var oldTooltips = document.querySelectorAll('.selection-tooltip');
   if (debugMode) {
-    console.log('All found tooltips:');
+    console.log(`Found ${oldTooltips.length} tooltips:`);
     console.log(oldTooltips);
   }
-  if (oldTooltips !== null)
+  if (oldTooltips !== null && oldTooltips.length !== 0)
     oldTooltips.forEach(function (oldTooltip) {
       tooltip.style.opacity = 0.0;
 
       setTimeout(function () {
         // dontShowTooltip = false;
-
-        // if (oldTooltip !== null) {
-        //   /// Ignore clicks on tooltip
-        //   oldTooltip.style.pointerEvents = 'none';
-
-        //   /// Remove all added link button
-        //   var linkButtons = oldTooltip.querySelectorAll('.open-link-button');
-        //   if (linkButtons !== null)
-        //     linkButtons.forEach(function (button) {
-        //       button.remove();
-        //     })
-        // }
 
         oldTooltip.parentNode.removeChild(oldTooltip);
         // oldTooltip = null;

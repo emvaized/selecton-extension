@@ -1,6 +1,7 @@
 {
   "extensionDescription": {
-    "message": "Customizable pop-up with actions on text selection"
+    "message": "Customizable pop-up with actions on text selection",
+    "description": "Extension description"
   },
   "copyLabel": {
     "message": "Copy",
@@ -35,7 +36,7 @@
     "description": "Header for appearance category in settings"
   },
   "convertionHeader": {
-    "message": "Convertion",
+    "message": "Conversion",
     "description": "Header for convertion category in settings"
   },
   "actionButtonsHeader": {
@@ -88,94 +89,94 @@
   },
   "resetDefaults": {
     "message": "Restore defaults",
-    "description": ""
+    "description": "Label for settings button to restore default settings"
   },
   "buyMeCoffee": {
     "message": "Buy author a coffee",
-    "description": ""
+    "description": "Label for settings button leading to donate page"
   },
   "visitGithub": {
     "message": "Visit GitHub page",
-    "description": ""
+    "description": "Label for settings button leading to GitHub page"
   },
   "allChangesSavedAutomatically": {
     "message": "Settings are saved automatically <br /> Update page to see changes",
-    "description": ""
+    "description": "Small info note in the end of settings"
   },
   "showTranslateButton": {
     "message": "Show translate button",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "languageToTranslate": {
     "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
-    "description": ""
+    "description": "Label for field in settings, incorporating inline link"
   },
   "useCustomStyle": {
     "message": "Use custom style for tooltip",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "tooltipBackground": {
     "message": "Background color",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "tooltipOpacity": {
     "message": "Tooltip opacity",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "addTooltipShadow": {
     "message": "Add tooltip shadow",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "shadowOpacity": {
     "message": "Shadow opacity",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "borderRadius": {
     "message": "Border radius",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "changeTextSelectionColor": {
     "message": "Customize text selection",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "textSelectionBackground": {
     "message": "Selection color",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "textSelectionColor": {
     "message": "Text color",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "shiftTooltipWhenWebsiteHasOwn": {
     "message": "Try to shift selection tooltip up when website shows it's own",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "addActionButtonsForTextFields": {
     "message": "Use special panel for text fields",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "removeSelectionOnActionButtonClick": {
     "message": "Remove text selection after action",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "draggableTooltip": {
     "message": "Panel can be dragged by the arrow",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "addButtonIcons": {
     "message": "Show icons for buttons",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "enabled": {
     "message": "Enabled",
-    "description": ""
+    "description": "Label for field in settings"
   },
   "preferredSearchEngine": {
     "message": "Search engine",
-    "description": ""
+    "description": "Label for field in settings"
   },
-  "Google": {
-    "message": "Google",
-    "description": ""
+  "hideOnKeypress": {
+    "message": "Hide on key press",
+    "description": "Label for field in settings"
   }
 }
