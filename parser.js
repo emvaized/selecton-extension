@@ -174,7 +174,7 @@ function init() {
         if (loadTooltipOnPageLoad)
           createTooltip();
 
-        setListeners();
+        setPageListeners();
       }
     });
 }
@@ -234,7 +234,7 @@ function setDefaultLocales() {
 
 }
 
-function setListeners() {
+function setPageListeners() {
 
   document.addEventListener("scroll", function (e) {
     if (hideOnScroll)
@@ -254,11 +254,12 @@ function setListeners() {
   });
 
   /// Hide tooltip when any key is pressed
-  if (addActionButtonsForTextFields)
-    document.onkeyup = hideTooltip;
+  // if (addActionButtonsForTextFields)
+  document.onkeyup = hideTooltip;
 
   document.addEventListener("mouseup", async function (e) {
     if (isDraggingTooltip) return;
+    if (dontShowTooltip) return;
 
     setTimeout(
       function () {
@@ -717,6 +718,13 @@ function createTooltip(type) {
   tooltip = document.createElement('div');
   tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out !important;`);
   tooltip.setAttribute('class', `selection-tooltip`);
+
+  tooltip.onmouseover = function (event) {
+    this.style.opacity = 1.0;
+  }
+  tooltip.onmouseout = function () {
+    this.style.opacity = tooltipOpacity;
+  }
 
   arrow = document.createElement('div');
   arrow.setAttribute('class', `selection-tooltip-arrow`);

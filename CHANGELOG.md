@@ -26,3 +26,7 @@ Initial version
 
 #2.0.2
 - Bug fixes
+
+#2.0.3
+- Tooltip now gets hidden on any key strokes
+- Mouse hover always brings tooltip opacity to 1.0
