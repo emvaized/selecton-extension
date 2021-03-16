@@ -21,15 +21,13 @@ Initial version
 - Implemented pop-up menu with settings
 - Bug fixes and improvements
 
-#2.0.1
-- Bug fixes
-
-#2.0.2
+#2.0.1 - 2.0.2
 - Bug fixes
 
 #2.0.3
-- Tooltip now gets hidden on any key strokes
+- Tooltip now gets hidden on any keystrokes
 - Mouse hover always brings tooltip opacity to 1.0
 
 #2.0.4
 - Implemented dynamic light/dark foreground
+- Bug fixes
