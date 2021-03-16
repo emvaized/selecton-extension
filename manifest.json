@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Selecton",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",
@@ -19,10 +19,10 @@
         "<all_urls>"
       ],
       "js": [
-        "parser.js"
+        "index.js"
       ],
       "css": [
-        "parser.css"
+        "index.css"
       ],
       "run_at": "document_end"
     }

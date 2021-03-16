@@ -30,3 +30,6 @@ Initial version
 #2.0.3
 - Tooltip now gets hidden on any key strokes
 - Mouse hover always brings tooltip opacity to 1.0
+
+#2.0.4
+- Implemented dynamic light/dark foreground

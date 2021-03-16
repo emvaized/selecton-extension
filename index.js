@@ -29,7 +29,7 @@ var enabled = true;
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
-var debugMode = true;
+var debugMode = false;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
@@ -56,6 +56,7 @@ var dontShowTooltip = false;
 var isDraggingTooltip = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
+var isDarkBackground = true;
 
 var browserLanguage;
 var browserCurrency;
@@ -162,6 +163,10 @@ function init() {
         translateLabel = chrome.i18n.getMessage("translateLabel");
         cutLabel = chrome.i18n.getMessage("cutLabel");
         pasteLabel = chrome.i18n.getMessage("pasteLabel");
+
+        /// Set dynamic color for foreground
+        document.body.style.setProperty('--selection-button-foreground', getTextColor(tooltipBackground.toLowerCase()));
+        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)');
 
 
         /// If initial launch, update currency rates
@@ -891,16 +896,16 @@ function createTooltip(type) {
     tooltip.appendChild(copyButton);
   }
 
-
   if (debugMode)
     console.log('SelectionActions tooltip was created');
 }
 
 function createImageIcon(url, opacity = 0.5) {
-  return `<img src="${url}" style="all: revert; opacity: ${opacity}; filter: invert(100%);vertical-align: top !important;  max-height:16px !important;display: unset !important;  padding-right: 5px;"" />`;
+  return `<img src="${url}" style="all: revert; opacity: ${opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;  padding-right: 5px;"" />`;
 }
 
 function removeSelection() {
+  /// Caused problems with text field buttons (like 'Add link')
   // if (removeSelectionOnActionButtonClick) {
   //   var sel = window.getSelection ? window.getSelection() : document.selection;
   //   if (sel) {
@@ -916,8 +921,6 @@ function removeSelection() {
     dontShowTooltip = false;
   }, animationDuration);
   // }
-
-
 }
 
 function showTooltip(dx, dy) {
@@ -1162,6 +1165,37 @@ function getSelectionDimensions() {
     }
   }
   return { width: width, height: height, dx: dx, dy: dy };
+}
+
+function getTextColor(color) {
+  var c = hexToRgb(color);
+
+  var d = 0;
+  var luminance =
+    (0.299 * c.red + 0.587 * c.green + 0.114 * c.blue) / 255;
+  if (luminance > 0.5) {
+    isDarkBackground = false;
+    d = 0; // bright colors - black font
+  }
+  else {
+    d = 255; // dark colors - white font
+    isDarkBackground = true;
+  }
+
+  return rgbToHex(d, d, d);
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    red: parseInt(result[1], 16),
+    green: parseInt(result[2], 16),
+    blue: parseInt(result[3], 16)
+  } : null;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
 

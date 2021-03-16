@@ -49,8 +49,7 @@
   .selection-popup-button {
     all: revert;
     max-height: 24px !important;
-    /* display: block; */
-    color: white;
+    color: var(--selection-button-foreground);
     background-color: transparent !important;
     cursor: pointer;
     border: none !important;
@@ -74,7 +73,8 @@
     
   .selection-popup-button:hover {
     all: revert;
-    background-color: rgba(255, 255, 255, 0.5) !important;
+    /* background-color: rgba(255, 255, 255, 0.5) !important; */
+    background-color: var(--selection-button-background-hover) !important;
     cursor: pointer;
     color: white;
     transition: background-color 25ms ease-in-out !important;
@@ -95,6 +95,6 @@
 /* For Mozilla Firefox */
 ::-moz-selection {
     color: var(--selection-text-color);
-    background: var(--selection-background);
+    background: var(--selection-background) !important;
     text-shadow:var( --selection-text-shadow);
 }
