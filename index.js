@@ -30,7 +30,7 @@ var preferredSearchEngine = 'google';
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
-var debugMode = false;
+var debugMode = true;
 var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var secondaryColor = 'lightBlue';
@@ -525,6 +525,7 @@ function setPageListeners() {
                       for (const [key, value] of Object.entries(currenciesList)) {
                         if (value["id"] == convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
                           var rateOfDesiredCurrency = value['rate'];
+                          console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
                           var resultingRate = rateOfDesiredCurrency / currencyRate;
                           var convertedAmount = amount * resultingRate;
@@ -703,17 +704,6 @@ function setPageListeners() {
 
 
   });
-}
-
-function addTooltipButton(label, icon, callback) {
-  var button = document.createElement('button');
-  button.setAttribute('class', `selection-popup-button button-with-border`);
-  if (icon)
-    button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
-  else
-    button.textContent = label;
-  button.addEventListener("mousedown", callback);
-  tooltip.appendChild(button);
 }
 
 /// Service methods
@@ -1052,8 +1042,10 @@ function loadCurrencyRatesFromMemory() {
         currenciesList[key]['rate'] = rate;
     });
 
-    if (debugMode)
+    if (debugMode) {
       console.log('SelectionActions currency rates were successfully loaded from memory');
+      console.log(loadedRates);
+    }
   });
 }
 
@@ -1062,16 +1054,6 @@ function addTranslateButton() {
     console.log('Checking if its needed to add Translate button...');
 
   var selectedText = selection.toString();
-
-  // fetch(`https://translation.googleapis.com/language/translate/v2/detect`, {
-  //   method: 'POST',
-  //   body: {
-  //     'q': selectedText
-  //   }
-  // }).then(function (res) {
-  //   console.log('server response');
-  //   console.log(res);
-  // })
 
   if (debugMode)
     console.log(`Selected text is: ${selectedText}`);
@@ -1206,17 +1188,26 @@ function getSearchUrl(query) {
     case 'google': return `https://www.google.com/search?q=${query}`; break;
     case 'duckduckgo': return `https://duckduckgo.com/?q=${query}`; break;
     case 'bing': return `https://www.bing.com/search?q=${query}`; break;
+    case 'yandex': return `https://yandex.ru/search/?text=${query}`; break;
+    case 'baidu': return `http://www.baidu.com/s?wd=${query}`; break;
+    case 'yahoo': return `https://search.yahoo.com/search?p=${query}`; break;
   }
 }
 
 
-/// Big variables
+// function addTooltipButton(label, icon, callback) {
+//   var button = document.createElement('button');
+//   button.setAttribute('class', `selection-popup-button button-with-border`);
+//   if (icon)
+//     button.innerHTML = createImageIcon(copyButtonIcon, 0.7) + label;
+//   else
+//     button.textContent = label;
+//   button.addEventListener("mousedown", callback);
+//   tooltip.appendChild(button);
+// }
 
-// var translateButtonIcon = 'https://cdn0.iconfinder.com/data/icons/web-apps/128/11-512.png';
-// var copyButtonIcon = 'https://image.flaticon.com/icons/png/512/88/88026.png';
-// var openLinkButtonIcon = 'https://nbtas.no/wp-content/themes/nbt/assets/icons/iu.png';
-// var cutButtonIcon = 'https://cdn2.iconfinder.com/data/icons/mosaicon-11/512/cut-512.png';
-// var pasteButtonIcon = 'https://icons-for-free.com/iconfiles/png/512/content+paste+48px-131985189900342274.png';
+
+/// Big variables
 var currencyButtonIcon = 'https://img2.freepng.ru/20180406/izq/kisspng-currency-exchange-rate-foreign-exchange-market-uni-rate-5ac76a4c1cd464.6574766915230183161181.jpg';
 
 /// Base-64 encoded
@@ -1332,51 +1323,51 @@ const convertionUnits = {
 
 /// List of currencies with various literal labels on English and russians
 var currenciesList = {
-  "ANG": { currencyName: "Netherlands Antillean Gulden", currencySymbol: "ƒ", id: "ANG", rate: 1.79495 },
-  "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 0.78 },
-  "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.617811 },
-  "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 0.18 },
-  "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.00002 },
-  "BTC1": { currencyName: "Bitcoin", currencySymbol: "bitcoins", id: "BTC", rate: 0.00002 },
-  "AUD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "AUD", rate: 0.79 },
-  "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 1.11 },
-  "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.458503 },
-  "CNY1": { currencyName: "Chinese Yuan", currencySymbol: "yuan", id: "CNY", rate: 6.458503 },
-  "CNY3": { currencyName: "Chinese Yuan", currencySymbol: "юаней", id: "CNY", rate: 6.458503 },
-  "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 609.471406 },
-  "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.377709 },
-  "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.149902 },
-  "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.827006 },
-  "EUR1": { currencyName: "Euro", currencySymbol: "euro", id: "EUR", rate: 0.827006 },
-  "EUR3": { currencyName: "Euro", currencySymbol: "евро", id: "EUR", rate: 0.827006 },
-  "GBP": { currencyName: "British Pound", currencySymbol: "£", id: "GBP", rate: 0.719877 },
-  "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", id: "HKD", rate: 0.13 },
-  "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", id: "ILS", rate: 3.239771 },
-  "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", id: "INR", rate: 72.87103 },
-  "INR1": { currencyName: "Indian Rupee", currencySymbol: "rupees", id: "INR", rate: 72.87103 },
+  "ANG": { currencyName: "Netherlands Antillean Gulden", currencySymbol: "ƒ", id: "ANG", rate: 1.794168 },
+  "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 1.29009 },
+  "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.640562 },
+  "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 5.616101 },
+  "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.000018 },
+  "BTC1": { currencyName: "Bitcoin", currencySymbol: "bitcoins", id: "BTC", rate: 0.000018 },
+  "CAD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "AUD", rate: 1.247715 },
+  "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 0.926525 },
+  "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.497301 },
+  "CNY1": { currencyName: "Chinese Yuan", currencySymbol: "yuan", id: "CNY", rate: 6.497301 },
+  "CNY3": { currencyName: "Chinese Yuan", currencySymbol: "юаней", id: "CNY", rate: 6.497301 },
+  "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 610.339772 },
+  "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.936455 },
+  "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.229502 },
+  "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.8378 },
+  "EUR1": { currencyName: "Euro", currencySymbol: "euro", id: "EUR", rate: 0.8378 },
+  "EUR3": { currencyName: "Euro", currencySymbol: "евро", id: "EUR", rate: 0.8378 },
+  "GBP": { currencyName: "British Pound", currencySymbol: "£", id: "GBP", rate: 0.721124 },
+  "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", id: "HKD", rate: 7.765632 },
+  "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", id: "ILS", rate: 3.310401 },
+  "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", id: "INR", rate: 72.452006 },
+  "INR1": { currencyName: "Indian Rupee", currencySymbol: "rupees", id: "INR", rate: 72.452006 },
   "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", id: "IRR", rate: 42105.017329 },
-  "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", id: "JPY", rate: 105.857044 },
+  "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", id: "JPY", rate: 109.188027 },
   "JPY1": { currencyName: "Japanese Yen", currencySymbol: "yen", id: "JPY", rate: 105.857044 },
   "JPY2": { currencyName: "Japanese Yen", currencySymbol: "йен", id: "JPY", rate: 105.857044 },
-  "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", id: "KPW", rate: 900.00037 },
-  "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "лв", id: "KZT", rate: 419.32476 },
-  "KZT1": { currencyName: "Kazakhstani Tenge", currencySymbol: "тенге", id: "KZT", rate: 419.32476 },
-  "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2854.959219 },
-  "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 0.050 },
-  "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 380.000156 },
-  "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 0.27 },
-  "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 73.68413 },
-  "RUB1": { currencyName: "Russian Ruble", currencySymbol: "rubles", id: "RUB", rate: 73.68413 },
-  "RUB2": { currencyName: "Russian Ruble", currencySymbol: "рублей", id: "RUB", rate: 73.68413 },
+  "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", id: "KPW", rate: 900.00022 },
+  "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "лв", id: "KZT", rate: 418.821319 },
+  "KZT1": { currencyName: "Kazakhstani Tenge", currencySymbol: "тенге", id: "KZT", rate: 418.821319 },
+  "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2849.930035 },
+  "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
+  "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
+  "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
+  "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
+  "RUB1": { currencyName: "Russian Ruble", currencySymbol: "rubles", id: "RUB", rate: 72.880818 },
+  "RUB2": { currencyName: "Russian Ruble", currencySymbol: "рублей", id: "RUB", rate: 72.880818 },
   "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },
-  "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 0.12 },
+  "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 8.514027 },
   "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", id: "TRY", rate: 0.14 },
   "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", id: "UAH", rate: 27.852288 },
   "UAH2": { currencyName: "Ukrainian Hryvnia", currencySymbol: "гривен", id: "UAH", rate: 27.852288 },
   "USD": { currencyName: "United States Dollar", currencySymbol: "$", id: "USD", rate: 1 },
   "USD1": { currencyName: "United States Dollar", currencySymbol: "dollar", id: "USD", rate: 1 },
   "USD3": { currencyName: "United States Dollar", currencySymbol: "доллар", id: "USD", rate: 1 },
-  "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", id: "VND", rate: 23155.531116 },
+  "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", id: "VND", rate: 23054.385489 },
 }
 
 

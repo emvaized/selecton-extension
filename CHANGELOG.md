@@ -35,3 +35,8 @@ Initial version
 #2.0.5
 - Added ability to change search engine
 - Fixed 'Remove selection on button click' not working
+
+#2.0.6
+- Fixed wrong currency rates for some currencies
+- Centered arrow horizontally more precisely
+- Added more search engines

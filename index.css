@@ -27,7 +27,8 @@
     overflow: hidden;
     position: absolute;
     left: 50%;
-    margin-left: -35px;
+    /* margin-left: -35px; */
+    margin-left: -32.5px;
     bottom: -16px;
   }
 
