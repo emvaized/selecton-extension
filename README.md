@@ -1,4 +1,4 @@
-# Selecton (formerly Selection Actions)
+# Selecton - text selection tooltip
 Get customizable pop-up with action buttons on text selection
 * Copy any text in one click
 * Adds 'Open link' and 'Translate' buttons depending on selected text
