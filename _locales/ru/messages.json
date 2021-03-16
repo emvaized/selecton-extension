@@ -99,7 +99,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически",
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "showTranslateButton": {
@@ -168,6 +168,10 @@
     },
     "enabled": {
         "message": "Включено",
+        "description": ""
+    },
+    "preferredSearchEngine": {
+        "message": "Поисковая система",
         "description": ""
     }
 }

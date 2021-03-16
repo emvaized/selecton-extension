@@ -26,6 +26,7 @@ var removeSelectionOnActionButtonClick = true;
 var draggableTooltip = true;
 var addButtonIcons = false;
 var enabled = true;
+var preferredSearchEngine = 'google';
 
 /// Non user-configurable settings 
 var ignoreWhenTextFieldFocused = true;
@@ -96,6 +97,7 @@ function init() {
       'draggableTooltip',
       'addButtonIcons',
       'enabled',
+      'preferredSearchEngine',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
@@ -155,6 +157,7 @@ function init() {
         removeSelectionOnActionButtonClick = value.removeSelectionOnActionButtonClick ?? true;
         draggableTooltip = value.draggableTooltip ?? true;
         addButtonIcons = value.addButtonIcons ?? false;
+        preferredSearchEngine = value.preferredSearchEngine || 'google';
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -166,7 +169,7 @@ function init() {
 
         /// Set dynamic color for foreground
         document.body.style.setProperty('--selection-button-foreground', getTextColor(tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)');
+        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.4)');
 
 
         /// If initial launch, update currency rates
@@ -876,7 +879,8 @@ function createTooltip(type) {
       var selectedText = selection.toString();
       removeSelection();
       /// Search text
-      window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
+      // window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
+      window.open(getSearchUrl(selectedText.trim()), '_blank');
     });
 
     tooltip.appendChild(searchButton);
@@ -905,22 +909,21 @@ function createImageIcon(url, opacity = 0.5) {
 }
 
 function removeSelection() {
-  /// Caused problems with text field buttons (like 'Add link')
-  // if (removeSelectionOnActionButtonClick) {
-  //   var sel = window.getSelection ? window.getSelection() : document.selection;
-  //   if (sel) {
-  //     if (sel.removeAllRanges) {
-  //       sel.removeAllRanges();
-  //     } else if (sel.empty) {
-  //       sel.empty();
-  //     }
-  //   }
-  // } else {
+  if (removeSelectionOnActionButtonClick) {
+    var sel = window.getSelection ? window.getSelection() : document.selection;
+    if (sel) {
+      if (sel.removeAllRanges) {
+        sel.removeAllRanges();
+      } else if (sel.empty) {
+        sel.empty();
+      }
+    }
+  }
+
   dontShowTooltip = true;
   setTimeout(function () {
     dontShowTooltip = false;
   }, animationDuration);
-  // }
 }
 
 function showTooltip(dx, dy) {
@@ -1198,6 +1201,13 @@ function rgbToHex(r, g, b) {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
+function getSearchUrl(query) {
+  switch (preferredSearchEngine) {
+    case 'google': return `https://www.google.com/search?q=${query}`; break;
+    case 'duckduckgo': return `https://duckduckgo.com/?q=${query}`; break;
+    case 'bing': return `https://www.bing.com/search?q=${query}`; break;
+  }
+}
 
 
 /// Big variables

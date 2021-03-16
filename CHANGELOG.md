@@ -31,3 +31,7 @@ Initial version
 #2.0.4
 - Implemented dynamic light/dark foreground
 - Bug fixes
+
+#2.0.5
+- Added ability to change search engine
+- Fixed 'Remove selection on button click' not working

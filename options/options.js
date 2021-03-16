@@ -28,6 +28,7 @@ var options = new Map([
     ['draggableTooltip', true],
     ['addButtonIcons', false],
     ['enabled', true],
+    ['preferredSearchEngine', 'google'],
 ]);
 
 var keys = [...options.keys()];
@@ -55,7 +56,8 @@ function restoreOptions() {
                     if (options !== null)
                         options.forEach(function (option) {
                             var selectedValue = result[key] ?? value;
-                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                            if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
+                                option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
                             if (option.value == selectedValue) option.setAttribute('selected', true);
                         });
                 }

@@ -99,7 +99,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically",
+    "message": "Settings are saved automatically <br /> Update page to see changes",
     "description": ""
   },
   "showTranslateButton": {
@@ -168,6 +168,14 @@
   },
   "enabled": {
     "message": "Enabled",
+    "description": ""
+  },
+  "preferredSearchEngine": {
+    "message": "Search engine",
+    "description": ""
+  },
+  "Google": {
+    "message": "Google",
     "description": ""
   }
 }
