@@ -7,10 +7,6 @@ Get customizable pop-up with action buttons on text selection
 * Fully customizable appearance for tooltip and text selection colors
 
 
-*Note*:
-In order to make extension more autonomous, currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
-
-
 Download for Firefox:
 https://addons.mozilla.org/ru/firefox/addon/selection-actions/
 
@@ -20,6 +16,8 @@ https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcdda
 ____
 
 ### Currently supported currencies
+*Note*:
+In order to make extension more autonomous, currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
 ```
 ANG — Netherlands Antillean Gulden
 AUD — Australian Dollar
