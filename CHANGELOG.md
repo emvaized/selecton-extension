@@ -44,4 +44,5 @@ Initial version
 #2.0.7
 - Added German, French and Spanish translations (via Google Translate)
 - Possible fix for bug on Jira when tickets were not open on click
-- Added option to disable hiding tooltip on key press
+- Added option to hide tooltip on key press
+- Small fixes and code cleanup

@@ -92,7 +92,7 @@
     "description": "Label for settings button to restore default settings"
   },
   "buyMeCoffee": {
-    "message": "Buy author a coffee",
+    "message": "Buy coffee for the author",
     "description": "Label for settings button leading to donate page"
   },
   "visitGithub": {

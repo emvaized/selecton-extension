@@ -12,11 +12,9 @@ form {
 
 .option {
   padding: 4px;
-  /* cursor: pointer; */
 }
 
 .option:hover {
-  /* cursor: pointer; */
   background-color: rgb(0, 0, 0, 0.1);
   border-radius: 4px;
   transition: all 200ms ease-in-out;
@@ -36,21 +34,23 @@ hr {
     margin-right: 6px;
 }
 
+.option select {
+  margin-right: 6px;
+}
+
 .option input[type="checkbox"]  {
   cursor: pointer;
-  position: relative;
-  vertical-align: middle;
 }
 
 .disabled-option {
   opacity: 0.5;
-  transition: all 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
   pointer-events: none;
 }
 
 .enabled-option {
   opacity: 1.0;
-  transition: all 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
 }
 
 h3 {
@@ -74,11 +74,3 @@ button {
   width: 100%;
   text-align: center;
 }
-
-
-/* #customStylesSection {
-  border: solid 1px grey;
-  border-radius: 8px;
-  padding: 3px;
-  margin: 3px;
-} */

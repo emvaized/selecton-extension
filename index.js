@@ -9,14 +9,12 @@ var convertMetrics = true;
 var addOpenLinks = true;
 var convertCurrencies = true;
 var performSimpleMathOperations = true;
-
 var useCustomStyle = false;
 var tooltipBackground = '3B3B3B';
 var tooltipOpacity = 1.0;
 var addTooltipShadow = false;
 var shadowOpacity = 0.5;
 var borderRadius = 3;
-
 var changeTextSelectionColor = false;
 var textSelectionBackground;
 var textSelectionColor;
@@ -26,18 +24,18 @@ var removeSelectionOnActionButtonClick = true;
 var draggableTooltip = true;
 var addButtonIcons = false;
 var enabled = true;
-var preferredSearchEngine = 'google';
+var preferredSearchEngine = 'google'; /// Possible values listed in 'returnSearchUrl' method
 var hideOnKeypress = true;
 
 /// Non user-configurable settings 
-var ignoreWhenTextFieldFocused = true;
 var debugMode = false;
-var convertWhenOnlyFewWordsSelected = true;
-var loadTooltipOnPageLoad = false;
-var secondaryColor = 'lightBlue';
-var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 var updateRatesEveryDays = 14;
 var wordsLimitToProccessText = 3;
+var secondaryColor = 'lightBlue';
+var ignoreWhenTextFieldFocused = true;
+var convertWhenOnlyFewWordsSelected = true;
+var loadTooltipOnPageLoad = false;
+var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
@@ -169,8 +167,8 @@ function init() {
 
         /// Set dynamic color for foreground
         document.body.style.setProperty('--selection-button-foreground', getTextColor(tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.6)');
-
+        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
+        secondaryColor = isDarkBackground ? 'lightBlue' : 'blue';
 
         /// If initial launch, update currency rates
         if (convertCurrencies) {
@@ -705,6 +703,7 @@ function setPageListeners() {
   });
 }
 
+
 /// Service methods
 
 function createTooltip(type) {
@@ -865,7 +864,7 @@ function createTooltip(type) {
       removeSelection();
       /// Search text
       // window.open(`https://www.google.com/search?q=${selectedText.trim()}`, '_blank');
-      window.open(getSearchUrl(selectedText.trim()), '_blank');
+      window.open(returnSearchUrl(selectedText.trim()), '_blank');
     });
 
     tooltip.appendChild(searchButton);
@@ -1169,7 +1168,7 @@ function rgbToHex(r, g, b) {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
-function getSearchUrl(query) {
+function returnSearchUrl(query) {
   switch (preferredSearchEngine) {
     case 'google': return `https://www.google.com/search?q=${query}`; break;
     case 'duckduckgo': return `https://duckduckgo.com/?q=${query}`; break;
@@ -1179,7 +1178,6 @@ function getSearchUrl(query) {
     case 'yahoo': return `https://search.yahoo.com/search?p=${query}`; break;
   }
 }
-
 
 // function addTooltipButton(label, icon, callback) {
 //   var button = document.createElement('button');

@@ -1,7 +1,4 @@
-/* .selection-tooltip, .arrow:after {
-    background: #3B3B3B;
-  } */
-  
+/* Tooltip */
   .selection-tooltip {
     all: revert;
     background: #3B3B3B;
@@ -11,7 +8,6 @@
     padding: 3px;
     color: white;
     border-radius: 3px;
-    /* text-align: center; */
     font-stretch: condensed;
     text-decoration: none;
     z-index: 9999 !important;
@@ -19,7 +15,7 @@
     margin: 0px !important;
   }
 
-
+/* Arrow */
   .selection-tooltip-arrow {
     z-index:9999 !important;
     width: 50px;
@@ -27,8 +23,7 @@
     overflow: hidden;
     position: absolute;
     left: 50%;
-    /* margin-left: -35px; */
-    margin-left: -32.5px;
+    margin-left: -33px;
     bottom: -16px;
   }
 
@@ -41,12 +36,9 @@
     height: 25px;
     transform: rotate(45deg);
     background: #3B3B3B;
-    /* box-shadow: 6px 5px 9px -9px rgba(0,0,0,0.5),
-                5px 6px 9px -9px rgba(0,0,0,0.5); */
-    /* backdrop-filter: blur(20px); */
-
   }
 
+/* Buttons */
   .selection-popup-button {
     all: revert;
     max-height: 24px !important;
@@ -56,45 +48,41 @@
     border: none !important;
     box-shadow: none !important;
     z-index: 9999 !important;
-    /* padding:  var(--selection-button-padding) !important; */
     padding:  4px 12px !important;
-    /* text-align: center !important; */
     vertical-align: top !important;
-    /* font: 1.0em "Arial", sans-serif !important; */
     font-family: Arial, Helvetica, sans-serif !important;
     height: 100% !important;
     min-height: 100% !important;
-    /* line-height: 100% !important; */
     margin: 0px !important;
     transition: background-color 25ms ease-in-out !important;
     text-transform: none !important;
     outline: none !important;
     /* align-items: top !important; */
+    /* line-height: 100% !important; */
+    /* padding:  var(--selection-button-padding) !important; */
+    /* font: 1.0em "Arial", sans-serif !important; */
+    /* text-align: center !important; */
     }
     
   .selection-popup-button:hover {
     all: revert;
-    /* background-color: rgba(255, 255, 255, 0.5) !important; */
     background-color: var(--selection-button-background-hover) !important;
     cursor: pointer;
     color: white;
     transition: background-color 25ms ease-in-out !important;
-
    }
 
   .button-with-border {
-    /* border-left: 1px solid rgba(255, 255, 255, 0.3) !important; */
     border-left: 1px solid var(--selection-button-background-hover) !important;
   }
 
-
+/* Text selection */
 ::selection {
     color: var(--selection-text-color);
     background:  var(--selection-background);
-    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.5); */
     text-shadow: var( --selection-text-shadow);
 }
-/* For Mozilla Firefox */
+/* for Mozilla Firefox */
 ::-moz-selection {
     color: var(--selection-text-color);
     background: var(--selection-background) !important;

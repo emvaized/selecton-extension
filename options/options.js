@@ -16,11 +16,9 @@ var options = new Map([
     ['addTooltipShadow', false],
     ['shadowOpacity', 0.5],
     ['borderRadius', 3],
-
     ['changeTextSelectionColor', false],
     ['textSelectionBackground', '#338FFF'],
     ['textSelectionColor', '#ffffff'],
-
     ['shiftTooltipWhenWebsiteHasOwn', true],
     ['addActionButtonsForTextFields', false],
     ['removeSelectionOnActionButtonClick', true],
@@ -33,7 +31,7 @@ var options = new Map([
 
 var keys = [...options.keys()];
 
-function restoreOptions() {
+function loadSettings() {
     var ids = [];
     keys.forEach(function (key) {
         ids.push('#' + key);
@@ -74,7 +72,7 @@ function restoreOptions() {
         var inputs = document.querySelectorAll(ids.join(','));
         inputs.forEach(function (input) {
             input.addEventListener("input", function (e) {
-                saveAllOptions();
+                saveAllSettings();
                 updateDisabledOptions();
             });
         });
@@ -91,9 +89,6 @@ function restoreOptions() {
         document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
-        /// Add top padding for 'custom styles' toggle
-        // document.getElementById('useCustomStyle').parentNode.parentNode.style.paddingTop = '15px';
-
         updateDisabledOptions();
     }
 }
@@ -103,12 +98,12 @@ function updateDisabledOptions() {
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shadowOpacity").className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionBackground").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionColor").className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
 }
 
-function saveAllOptions() {
+function saveAllSettings() {
     var dataToSave = {};
 
     keys.forEach(function (key) {
@@ -119,7 +114,7 @@ function saveAllOptions() {
     chrome.storage.local.set(dataToSave);
 }
 
-function resetOptions() {
+function resetSettings() {
     var dataToSave = {};
     options.forEach(function (value, key) {
         dataToSave[key] = value;
@@ -127,7 +122,6 @@ function resetOptions() {
 
     chrome.storage.local.set(dataToSave);
 
-    // restoreOptions();
     options.forEach(function (value, key) {
         var input = document.getElementById(key);
 
@@ -153,8 +147,8 @@ function resetOptions() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", restoreOptions);
-document.querySelector("form").addEventListener("reset", resetOptions);
+document.addEventListener("DOMContentLoaded", loadSettings);
+document.querySelector("form").addEventListener("reset", resetSettings);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });

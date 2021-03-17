@@ -15,8 +15,8 @@
         <div class='option'> <label><input type="checkbox" id="useCustomStyle"></label></div>
 
         <div id='customStylesSection'>
-            <div class='option'> <label><input type="number" min='0' max='50' step='1' id="borderRadius"></label></div>
             <div class='option'> <label><input type="color" id="tooltipBackground"></label></div>
+            <div class='option'> <label><input type="number" min='0' max='50' step='1' id="borderRadius"></label></div>
             <div class='option'> <label><input type="number" min='0.05' max='1.0' step='0.05'
                         id="tooltipOpacity"></label></div>
             <div class='option'> <label><input type="checkbox" id="addTooltipShadow"></label></div>
@@ -72,13 +72,14 @@
 
         <h3 id='behaviorHeader'></h3>
 
+        <div class='option'> <label><input type="number" min="0" max="1500" id="animationDuration">
+            </label></div>
         <div class='option'> <label><input type="checkbox" id="hideOnScroll"></label></div>
         <div class='option'> <label><input type="checkbox" id="hideOnKeypress"></label></div>
         <div class='option'> <label><input type="checkbox" id="draggableTooltip"></label></div>
         <div class='option'> <label><input type="checkbox" id="shiftTooltipWhenWebsiteHasOwn"></label></div>
         <div class='option'> <label><input type="checkbox" id="removeSelectionOnActionButtonClick"></label></div>
-        <div class='option'> <label><input type="number" min="0" max="1500" id="animationDuration">
-            </label></div>
+
 
 
         <h4 id='allChangesSavedAutomaticallyHeader'></h4>
@@ -86,12 +87,10 @@
         <!-- Footer buttons -->
         <div id='footer-buttons'>
             <button id='resetButton' type="reset">Restore defaults</button>
-
-            <button id='donateButton'> <img height='18px' width='18px' style="position: relative; left: 3px; top: 3px;"
-                    src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
-
             <button id='githubButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
                     src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
+            <button id='donateButton'> <img height='18px' width='18px' style="position: relative; left: 3px; top: 3px;"
+                    src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
 
         </div>
         <br />

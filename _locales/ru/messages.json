@@ -148,7 +148,7 @@
         "description": ""
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Попробовать сдвинуть панель действий вверх, когда сайт показывает свою",
+        "message": "Попробовать сдвинуть панель вверх, когда сайт показывает свою",
         "description": ""
     },
     "addActionButtonsForTextFields": {
