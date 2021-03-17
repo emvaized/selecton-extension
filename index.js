@@ -166,9 +166,9 @@ function init() {
         pasteLabel = chrome.i18n.getMessage("pasteLabel");
 
         /// Set dynamic color for foreground
-        document.body.style.setProperty('--selection-button-foreground', getTextColor(tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        secondaryColor = isDarkBackground ? 'lightBlue' : 'blue';
+        document.body.style.setProperty('--selection-button-foreground', useCustomStyle == false ? '#ffffff' : getTextColor(tooltipBackground.toLowerCase()));
+        document.body.style.setProperty('--selection-button-background-hover', useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
+        secondaryColor = useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'blue';
 
         /// If initial launch, update currency rates
         if (convertCurrencies) {
