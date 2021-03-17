@@ -32,7 +32,7 @@ var preferredNewEmailMethod = 'mailto';
 var customSearchUrl;
 
 /// Non user-configurable settings 
-var debugMode = true;
+var debugMode = false;
 var updateRatesEveryDays = 14;
 var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
