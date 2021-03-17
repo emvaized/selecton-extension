@@ -178,5 +178,13 @@
     "hideOnKeypress": {
         "message": "Ocultar al presionar una tecla",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "showOnMap": {
+        "message": "Mostrar en el mapa",
+        "description": "Etiqueta para mostrar en la acción del mapa"
+    },
+    "showOnMapButtonEnabled": {
+        "message": "Agregar botón para mostrar en el mapa",
+        "description": "Etiqueta para el campo en la configuración"
     }
 }

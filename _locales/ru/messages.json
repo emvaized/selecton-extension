@@ -178,5 +178,13 @@
     "hideOnKeypress": {
         "message": "Прятать при нажатии кнопок клавиатуры",
         "description": "Label for field in settings"
+    },
+    "showOnMap": {
+        "message": "Показать на карте",
+        "description": "Label for show on map action"
+    },
+    "showOnMapButtonEnabled": {
+        "message": "Добавить кнопку 'Показать на карте'",
+        "description": "Label for field in settings"
     }
 }

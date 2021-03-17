@@ -178,5 +178,13 @@
     "hideOnKeypress": {
         "message": "Bei Tastendruck ausblenden",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "showOnMap": {
+        "message": "Auf Karte anzeigen",
+        "description": "Beschriftung für Aktion auf Karte anzeigen"
+    },
+    "showOnMapButtonEnabled": {
+        "message": "Schaltfläche Hinzufügen, um auf der Karte angezeigt zu werden",
+        "description": "Beschriftung für Feld in Einstellungen"
     }
 }

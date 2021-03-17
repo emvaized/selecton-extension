@@ -27,6 +27,7 @@ var options = new Map([
     ['enabled', true],
     ['hideOnKeypress', true],
     ['preferredSearchEngine', 'google'],
+    ['showOnMapButtonEnabled', true],
 ]);
 
 var keys = [...options.keys()];

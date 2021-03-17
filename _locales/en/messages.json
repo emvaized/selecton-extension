@@ -178,5 +178,13 @@
   "hideOnKeypress": {
     "message": "Hide on key press",
     "description": "Label for field in settings"
+  },
+  "showOnMap": {
+    "message": "Show on map",
+    "description": "Label for show on map action"
+  },
+  "showOnMapButtonEnabled": {
+    "message": "Add button to show on map",
+    "description": "Label for field in settings"
   }
 }

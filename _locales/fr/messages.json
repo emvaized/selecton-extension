@@ -178,5 +178,13 @@
     "hideOnKeypress": {
         "message": "Masquer à la pression d'une touche",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "showOnMap": {
+        "message": "Afficher sur la carte",
+        "description": "Libellé pour l'action Afficher sur la carte"
+    },
+    "showOnMapButtonEnabled": {
+        "message": "Ajouter un bouton à afficher sur la carte",
+        "description": "Libellé du champ dans les paramètres"
     }
 }

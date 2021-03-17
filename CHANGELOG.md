@@ -46,3 +46,7 @@ Initial version
 - Possible fix for bug on Jira when tickets were not open on click
 - Added option to hide tooltip on key press
 - Small fixes and code cleanup
+
+#2.0.8
+- Implemented button 'show on map' (Google Maps)
+- Improvements for 'open link' button
