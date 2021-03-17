@@ -186,5 +186,29 @@
     "showOnMapButtonEnabled": {
         "message": "Добавить кнопку 'Показать на карте'",
         "description": "Label for field in settings"
+    },
+    "showEmailButton": {
+        "message": "Добавить кнопку электронной почты",
+        "description": "Label for field in settings"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Способ создания нового письма",
+        "description": "Label for field in settings"
+    },
+    "gmail": {
+        "message": "Новое письмо Gmail",
+        "description": "Option label for new email method setting"
+    },
+    "mailto": {
+        "message": "Открыть почтовый клиент",
+        "description": "Option label for new email method setting"
+    },
+    "contextualButtonsHeader": {
+        "message": "Контекстные кнопки",
+        "description": "Header for contextual buttons category in settings"
+    },
+    "customSearchUrl": {
+        "message": "URL поиска <br />(используйте %s в качестве плейсхолдера для запроса)",
+        "description": "Ярлык для поля в настройках"
     }
 }

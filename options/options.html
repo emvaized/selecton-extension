@@ -12,6 +12,7 @@
         <div class='option'> <label><input type="checkbox" id="enabled"> </label></div>
 
         <h3 id='appearanceHeader'></h3>
+        <div class='option'> <label><input type="checkbox" id="addButtonIcons"> </label></div>
         <div class='option'> <label><input type="checkbox" id="useCustomStyle"></label></div>
 
         <div id='customStylesSection'>
@@ -31,7 +32,6 @@
         <hr />
 
         <h3 id='actionButtonsHeader'></h3>
-        <div class='option'> <label><input type="checkbox" id="addButtonIcons"> </label></div>
         <div class='option'><label><select id="preferredSearchEngine">
                     <option value="google">Google</option>
                     <option value="duckduckgo">DuckDuckGo</option>
@@ -39,16 +39,23 @@
                     <option value="yahoo">Yahoo</option>
                     <option value="baidu">Baidu</option>
                     <option value="yandex">Yandex</option>
+                    <option value="custom">Custom</option>
                 </select>
             </label>
         </div>
+        <div class='option'> <label><input type="text" id="customSearchUrl"> </label></div>
         <div class='option'> <label><input type="checkbox" id="addActionButtonsForTextFields"> </label></div>
         <div class='option'> <label><input type="checkbox" id="addOpenLinks"> </label></div>
         <div class='option'> <label><input type="checkbox" id="showOnMapButtonEnabled"> </label></div>
+        <div class='option'> <label><input type="checkbox" id="showEmailButton"> </label></div>
+        <div class='option'><label><select id="preferredNewEmailMethod">
+                    <option value="mailto">Desktop email client</option>
+                    <option value="gmail">Gmail new email</option>
+                </select>
+            </label>
+        </div>
         <div class='option'> <label><input type="checkbox" id="showTranslateButton"> </label></div>
         <div class='option'> <label><input type="text" id="languageToTranslate"> </label></div>
-
-
 
         <br />
         <hr />

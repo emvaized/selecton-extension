@@ -50,3 +50,9 @@ Initial version
 #2.0.8
 - Implemented button 'show on map' (Google Maps)
 - Improvements for 'open link' button
+
+#2.0.9
+- Implemented email button
+- Implemented 'Custom' search engine option
+- Created list of currently supported currencies in README
+- Updated translations

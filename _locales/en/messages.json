@@ -186,5 +186,29 @@
   "showOnMapButtonEnabled": {
     "message": "Add button to show on map",
     "description": "Label for field in settings"
+  },
+  "showEmailButton": {
+    "message": "Add email button",
+    "description": "Label for field in settings"
+  },
+  "preferredNewEmailMethod": {
+    "message": "Preferred method for creating new email",
+    "description": "Label for field in settings"
+  },
+  "gmail": {
+    "message": "Gmail new email",
+    "description": "Option label for new email method setting"
+  },
+  "mailto": {
+    "message": "Desktop email client",
+    "description": "Option label for new email method setting"
+  },
+  "contextualButtonsHeader": {
+    "message": "Contextual buttons",
+    "description": "Header for contextual buttons category in settings"
+  },
+  "customSearchUrl": {
+    "message": "Custom search URL <br />(use %s as a placeholder for query)",
+    "description": "Label for field in settings"
   }
 }

@@ -30,8 +30,12 @@ hr {
 }
 
 .option input {
-    max-width: 65px;
-    margin-right: 6px;
+  max-width: 65px;
+  margin-right: 6px;
+}
+
+#customSearchUrl {
+  max-width: 100%;
 }
 
 .option select {
@@ -51,6 +55,14 @@ hr {
 .enabled-option {
   opacity: 1.0;
   transition: opacity 150ms ease-in-out;
+}
+
+.visible-option {
+  opacity: 1.0;
+}
+
+.hidden-option {
+  display: none;
 }
 
 h3 {

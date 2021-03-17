@@ -186,5 +186,29 @@
     "showOnMapButtonEnabled": {
         "message": "Agregar botón para mostrar en el mapa",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "showEmailButton": {
+        "message": "Botón Agregar correo electrónico",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Método preferido para crear un nuevo correo electrónico",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "gmail": {
+        "message": "Nuevo correo electrónico de Gmail",
+        "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"
+    },
+    "mailto": {
+        "message": "Cliente de correo electrónico de escritorio",
+        "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"
+    },
+    "contextualButtonsHeader": {
+        "message": "Botones contextuales",
+        "description": "Encabezado de la categoría de botones contextuales en la configuración"
+    },
+    "customSearchUrl": {
+        "message": "URL de búsqueda personalizada <br />(utilice %s como marcador de posición para la consulta)",
+        "description": "Etiqueta para el campo en la configuración"
     }
 }

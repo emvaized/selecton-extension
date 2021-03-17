@@ -186,5 +186,29 @@
     "showOnMapButtonEnabled": {
         "message": "Schaltfläche Hinzufügen, um auf der Karte angezeigt zu werden",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "showEmailButton": {
+        "message": "E-Mail-Schaltfläche hinzufügen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Bevorzugte Methode zum Erstellen neuer E-Mails",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "gmail": {
+        "message": "Google Mail neue E-Mail",
+        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+    },
+    "mailto": {
+        "message": "Desktop-E-Mail-Client",
+        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+    },
+    "contextualButtonsHeader": {
+        "message": "Kontextschaltflächen",
+        "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
+    },
+    "customSearchUrl": {
+        "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)",
+        "description": "Beschriftung für Feld in Einstellungen"
     }
 }

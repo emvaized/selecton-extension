@@ -28,6 +28,9 @@ var options = new Map([
     ['hideOnKeypress', true],
     ['preferredSearchEngine', 'google'],
     ['showOnMapButtonEnabled', true],
+    ['showEmailButton', true],
+    ['preferredNewEmailMethod', 'mailto'],
+    ['customSearchUrl', ''],
 ]);
 
 var keys = [...options.keys()];
@@ -57,6 +60,8 @@ function loadSettings() {
                             var selectedValue = result[key] ?? value;
                             if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
                                 option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                            else if (chrome.i18n.getMessage(option['value']) !== (null || undefined || ''))
+                                option.innerHTML = chrome.i18n.getMessage(option['value']);
                             if (option.value == selectedValue) option.setAttribute('selected', true);
                         });
                 }
@@ -82,7 +87,7 @@ function loadSettings() {
         document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
         document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
         document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
-        document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("actionButtonsHeader");
+        document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
         document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
         /// Translate footer buttons
@@ -102,6 +107,8 @@ function updateDisabledOptions() {
     document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
 }
 
 function saveAllSettings() {
