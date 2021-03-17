@@ -17,9 +17,9 @@ https://addons.mozilla.org/ru/firefox/addon/selection-actions/
 Download for Chrome:
 https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
 
+____
 
-
-## Currently supported currencies
+### Currently supported currencies
 ```
 ANG — Netherlands Antillean Gulden,
 AUD — Australian Dollar,
