@@ -15,9 +15,11 @@ https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcdda
 
 ____
 
-### Currently supported currencies
+### Currency converter
 *Note*:
 In order to make extension more autonomous, currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
+Rates get fetched from [exchangerate.host](https://exchangerate.host/#/)
+
 ```
 ANG — Netherlands Antillean Gulden
 AUD — Australian Dollar
