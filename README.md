@@ -21,41 +21,41 @@ ____
 
 ### Currently supported currencies
 ```
-ANG — Netherlands Antillean Gulden,
-AUD — Australian Dollar,
-BGN — Bulgarian Lev,
-BRL — Brazilian real,
-BTC — Bitcoin,
-CAD — Canadian Dollar,
-CHF — Swiss Franc,
-CNY — Chinese Yuan,
-CRC — Costa Rican Colon, 
-CZK — Czech Koruna, 
-DKK — Danish Krone, 
-EUR — Euro, 
-GBP — British Pound, 
-HKD — Hong Kong dollar,
-ILS — Israeli New Sheqel,
-INR — Indian Rupee, 
-IRR — Iranian Rial, 
-JPY — Japanese Yen, 
-KPW — North Korean Won,
-KZT — Kazakhstani Tenge,
-MNT — Mongolian Tugrik, 
-MXN — Mexican Peso, 
-NGN — Nigerian Naira,
-PLN — Polish złoty, 
-RUB — Russian Ruble,
-SAR — Saudi Riyal, 
-SEK — Swedish Krona,
-TRY — Turkish Lira, 
-UAH — Ukrainian Hryvnia, 
-USD — United States Dollar, 
-VND — Vietnamese Dong, 
+ANG — Netherlands Antillean Gulden
+AUD — Australian Dollar
+BGN — Bulgarian Lev
+BRL — Brazilian real
+BTC — Bitcoin
+CAD — Canadian Dollar
+CHF — Swiss Franc
+CNY — Chinese Yuan
+CRC — Costa Rican Colon 
+CZK — Czech Koruna
+DKK — Danish Krone 
+EUR — Euro
+GBP — British Pound 
+HKD — Hong Kong dollar
+ILS — Israeli New Sheqel
+INR — Indian Rupee
+IRR — Iranian Rial
+JPY — Japanese Yen
+KPW — North Korean Won
+KZT — Kazakhstani Tenge
+MNT — Mongolian Tugrik 
+MXN — Mexican Peso
+NGN — Nigerian Naira
+PLN — Polish złoty
+RUB — Russian Ruble
+SAR — Saudi Riyal
+SEK — Swedish Krona
+TRY — Turkish Lira 
+UAH — Ukrainian Hryvnia
+USD — United States Dollar
+VND — Vietnamese Dong
 ZAR — Rand
 ```
 
-*If you can't find your currency in the list, create issue here on GitHub so that I can implement it in future updates*
+If you can't find your currency in the list, create issue here on GitHub so that I can implement it in future updates
 
 
 
