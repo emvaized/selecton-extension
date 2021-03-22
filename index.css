@@ -88,3 +88,35 @@
     background: var(--selection-background) !important;
     text-shadow:var( --selection-text-shadow);
 }
+
+
+/* Secondary tooltip (custom search options) */
+.secondary-selection-tooltip {
+  transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+  opacity: 0.0;
+  top: 0px;
+  left: 0px;
+  z-index: 9998 !important;
+  position: absolute;
+  /* vertical-align: middle;
+  align-items: center; */
+}
+
+.image-button {
+  all: revert;
+  /* transform: scale(1.0); */
+  /* transition: transform 100ms ease-in-out; */
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+.image-button:hover {
+  /* transform: scale(1.5); */
+  /* transition: transform 100ms ease-in-out; */
+  cursor: pointer;
+  background-color: var(--selection-button-background-hover) !important;
+}
+
+.selection-popup-color-preview-circle {
+  max-width: 9px; max-height: 9px; padding: 0px 8px; margin: 9px 3px; border-radius: 50%; border:solid 1px var(--selection-button-background-hover); display: inline;
+}

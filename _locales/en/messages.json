@@ -48,7 +48,7 @@
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
-    "message": "Currency to convert to (<a target='_blank' href='https://www.iban.com/currency-codes'>Find code</a>)",
+    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Find code</a>)",
     "description": "Label for field in settings"
   },
   "convertToCurrencyHint": {
@@ -200,7 +200,7 @@
     "description": "Option label for new email method setting"
   },
   "mailto": {
-    "message": "Desktop email client",
+    "message": "Email client",
     "description": "Option label for new email method setting"
   },
   "contextualButtonsHeader": {
@@ -210,5 +210,41 @@
   "customSearchUrl": {
     "message": "Custom search URL <br />(use %s as a placeholder for query)",
     "description": "Label for field in settings"
+  },
+  "addColorPreviewButton": {
+    "message": "Add color preview button (for css colors like #ffffff)",
+    "description": "Label for field in settings"
+  },
+  "customSearchTooltip": {
+    "message": "Custom search tooltip",
+    "description": "Label for field in settings"
+  },
+  "customSearchTooltipHint": {
+    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for query",
+    "description": "Label for field in settings"
+  },
+  "deleteLabel": {
+    "message": "Delete",
+    "description": "Label for the delete button"
+  },
+  "addNewSearchOption": {
+    "message": "Add new search option",
+    "description": "Label for add new search option button"
+  },
+  "secondaryTooltipIconSize": {
+    "message": "Button size (px)",
+    "description": "Label for add new search option button"
+  },
+  "secondaryTooltipEnabled": {
+    "message": "Tooltip enabled",
+    "description": "Label for add new search option button"
+  },
+  "moveUpLabel": {
+    "message": "Move up",
+    "description": "Tooltip for 'move button up' button"
+  },
+  "moveDownLabel": {
+    "message": "Move down",
+    "description": "Tooltip for 'move button down' button"
   }
 }

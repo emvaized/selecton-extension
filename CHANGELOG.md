@@ -48,7 +48,7 @@ Initial version
 - Small fixes and code cleanup
 
 #2.0.8
-- Implemented button 'show on map' (Google Maps)
+- Implemented button 'Show on map' (Google Maps)
 - Improvements for 'open link' button
 
 #2.0.9
@@ -56,3 +56,12 @@ Initial version
 - Implemented 'Custom' search engine option
 - Created list of currently supported currencies in README
 - Updated translations
+
+#2.1.0
+- (!) Implemented custom search buttons feature (revealed on hover over Search button)
+- Added CSS color preview contextual button
+- Added ability to change maps service for 'Show on map' contextual button
+- Tooltip is now shifted if being open too close to the screen edge
+- Fixes for 'Restore defaults' button
+- Fix for 'Translate' button being added twice sometimes
+- Small bug fixes and improvements

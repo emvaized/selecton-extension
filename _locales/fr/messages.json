@@ -48,7 +48,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrency": {
-        "message": "Devise à convertir (<a target='_blank' href='https://www.iban.com/currency-codes'> Rechercher le code </a>)",
+        "message": "Devise à convertir (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Rechercher le code </a>)",
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrencyHint": {
@@ -210,5 +210,45 @@
     "customSearchUrl": {
         "message": "URL de recherche personnalisée <br />(utilisez %s comme espace réservé pour la requête)",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "addColorPreviewButton": {
+        "message": "Ajouter un bouton de couleur (pour les couleurs css comme #ffffff)",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferredMapsService": {
+        "message": "Service de cartes préféré",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "customSearchTooltip": {
+        "message": "Info-bulle de recherche personnalisée",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "customSearchTooltipHint": {
+        "message": "S'affiche en survolant le bouton 'Rechercher'. <br/>Utilisez %s comme espace réservé pour la requête",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "deleteLabel": {
+        "message": "Supprimer",
+        "description": "Libellé du bouton de suppression"
+    },
+    "addNewSearchOption": {
+        "message": "Ajouter une nouvelle option de recherche",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Taille du bouton (px)",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Info-bulle activée",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "moveUpLabel": {
+        "message": "Monter",
+        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le haut'"
+    },
+    "moveDownLabel": {
+        "message": "Descendre",
+        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le bas'"
     }
 }

@@ -55,7 +55,7 @@ VND — Vietnamese Dong
 ZAR — Rand
 ```
 
-If you can't find your currency in the list, create issue here on GitHub so that I can implement it in future updates
+If you can't find your currency in the list, please create the issue here on GitHub so that I can implement it in future updates
 
 
 

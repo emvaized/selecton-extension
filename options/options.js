@@ -1,6 +1,6 @@
 
 var options = new Map([
-    ['animationDuration', 300],
+    // ['animationDuration', 300],
     ['convertToCurrency', 'USD'],
     ['hideOnScroll', true],
     ['convertMetrics', true],
@@ -31,6 +31,10 @@ var options = new Map([
     ['showEmailButton', true],
     ['preferredNewEmailMethod', 'mailto'],
     ['customSearchUrl', ''],
+    ['addColorPreviewButton', true],
+    ['preferredMapsService', 'google'],
+    ['secondaryTooltipEnabled', true],
+    ['secondaryTooltipIconSize', 15],
 ]);
 
 var keys = [...options.keys()];
@@ -88,6 +92,8 @@ function loadSettings() {
         document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
         document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
         document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
+        document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
+        document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
         document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
         /// Translate footer buttons
@@ -95,11 +101,187 @@ function loadSettings() {
         document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
+        /// Reduce opacity for not available options
         updateDisabledOptions();
+
+        loadCustomSearchButtons();
     }
+
+}
+
+var customSearchButtonsList;
+
+function loadCustomSearchButtons() {
+    chrome.storage.local.get(['customSearchButtons'], function (value) {
+        customSearchButtonsList = value.customSearchButtons ?? [
+            {
+                'url': 'https://www.youtube.com/results?search_query=%s',
+                'title': 'YouTube',
+                'enabled': true
+            },
+            {
+                'url': 'https://open.spotify.com/search/%s',
+                'title': 'Spotify',
+                'enabled': true
+            },
+            {
+                'url': 'https://aliexpress.com/wholesale?SearchText=%s',
+                'title': 'Aliexpress',
+                'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+                'enabled': true
+            },
+            {
+                'url': 'https://www.amazon.com/s?k=%s',
+                'title': 'Amazon',
+                'enabled': true
+            },
+            {
+                'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+                'title': 'Wikipedia',
+                'enabled': false
+            },
+            {
+                'url': 'https://www.imdb.com/find?s=alt&q=%s',
+                'title': 'IMDB',
+                'enabled': false
+            },
+        ];
+
+        generateCustomSearchButtonsList();
+    });
+}
+
+function generateCustomSearchButtonsList() {
+    var container = document.getElementById('customSearchButtonsContainer');
+    container.innerHTML = '';
+
+    for (var i = 0; i < customSearchButtonsList.length; i++) {
+        var item = customSearchButtonsList[i];
+
+        var entry = document.createElement('div');
+        entry.setAttribute('class', 'option');
+
+        /// Enabled checkbox
+        var checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('style', 'pointer: cursor');
+        checkbox.value = item['enabled'];
+        if (item['enabled'])
+            checkbox.setAttribute('checked', 0);
+        else checkbox.removeAttribute('checked', 0);
+        checkbox.setAttribute('id', 'checkbox' + i.toString());
+        checkbox.addEventListener("input", function (e) {
+            customSearchButtonsList[parseInt(this.id.replaceAll('checkbox', ''))]['enabled'] = this.checked;
+            saveCustomSearchButtons();
+        });
+        entry.appendChild(checkbox);
+
+        /// Create favicon preview
+        var imgButton = document.createElement('img');
+        imgButton.setAttribute('src', 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
+        imgButton.setAttribute('width', '18px');
+        imgButton.setAttribute('height', '18px');
+        imgButton.setAttribute('style', 'margin-left: 6px');
+        entry.appendChild(imgButton);
+
+        /// Title field
+        // var title = document.createElement('input');
+        // title.setAttribute('type', 'text');
+        // title.setAttribute('placeholder', 'Title');
+        // title.setAttribute('style', 'max-width: 90px; margin: 0px 6px;');
+        // title.value = item['title'];
+        // title.setAttribute('id', 'title' + i.toString());
+        // title.addEventListener("input", function (e) {
+        //     // alert(this.id.replaceAll('title', ''));
+        //     customSearchButtonsList[parseInt(this.id.replaceAll('title', ''))]['title'] = this.value;
+        //     saveCustomSearchButtons();
+        // });
+        // entry.appendChild(title);
+
+        /// URL field
+        var urlInput = document.createElement('input');
+        urlInput.setAttribute('type', 'text');
+        urlInput.setAttribute('placeholder', 'URL');
+        urlInput.setAttribute('style', ' min-width: 320px; max-width: 320px !important;  margin: 0px 6px;');
+        urlInput.value = item['url'];
+        urlInput.setAttribute('id', 'url' + i.toString());
+        urlInput.addEventListener("input", function (e) {
+            customSearchButtonsList[parseInt(this.id.replaceAll('url', ''))]['url'] = this.value;
+            saveCustomSearchButtons();
+        });
+        entry.appendChild(urlInput);
+
+        /// Move up/down buttons
+        var moveButtonsContainer = document.createElement('div');
+        moveButtonsContainer.setAttribute('style', 'display: inline');
+
+        var moveUpButton = document.createElement('button');
+        moveUpButton.textContent = 'ᐱ';
+        moveUpButton.setAttribute('style', 'max-width: 1px; padding: 1px; align-items: center');
+        moveUpButton.setAttribute('id', 'moveup' + i.toString());
+        moveUpButton.setAttribute('title', chrome.i18n.getMessage("moveUpLabel"));
+        moveUpButton.onmouseup = function () {
+            var currentIndex = parseInt(this.id.replaceAll('moveup', ''), 10);
+            if (currentIndex > 0) {
+                var movedItem = customSearchButtonsList[currentIndex];
+                customSearchButtonsList.splice(currentIndex, 1);
+                customSearchButtonsList.splice(currentIndex - 1, 0, movedItem);
+                saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            }
+        };
+
+        var moveDownButton = document.createElement('button');
+        moveDownButton.textContent = 'ᐯ';
+        moveDownButton.setAttribute('style', 'max-width: 1px; padding: 1px; align-items: center');
+        moveDownButton.setAttribute('id', 'movedown' + i.toString());
+        moveDownButton.setAttribute('title', chrome.i18n.getMessage("moveDownLabel"));
+        moveDownButton.onmouseup = function () {
+            var currentIndex = parseInt(this.id.replaceAll('movedown', ''), 10);
+            if (currentIndex < customSearchButtonsList.length) {
+                var movedItem = customSearchButtonsList[currentIndex];
+                customSearchButtonsList.splice(currentIndex, 1);
+                customSearchButtonsList.splice(currentIndex + 1, 0, movedItem);
+                saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            }
+        };
+
+        moveButtonsContainer.appendChild(moveUpButton);
+        moveButtonsContainer.appendChild(moveDownButton);
+        entry.appendChild(moveButtonsContainer);
+
+        /// Delete button
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = chrome.i18n.getMessage("deleteLabel");
+        deleteButton.setAttribute('style', 'display: inline-block; max-width: 100px;');
+        deleteButton.setAttribute('id', 'delete' + i.toString());
+        deleteButton.onmouseup = function () {
+            customSearchButtonsList.splice(parseInt(this.id.replaceAll('delete', ''), 10), 1);
+            saveCustomSearchButtons();
+            generateCustomSearchButtonsList();
+        };
+        entry.appendChild(deleteButton);
+
+        container.appendChild(entry);
+    }
+
+    var addButton = document.createElement('button');
+    addButton.textContent = chrome.i18n.getMessage("addNewSearchOption") + ' ＋';
+    addButton.onmouseup = function () {
+        customSearchButtonsList.push({
+            'url': '',
+            'title': '',
+            'enabled': true
+        });
+        saveCustomSearchButtons();
+        generateCustomSearchButtonsList();
+    };
+    container.appendChild(addButton);
 }
 
 function updateDisabledOptions() {
+    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
@@ -108,7 +290,10 @@ function updateDisabledOptions() {
     document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
+    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function saveAllSettings() {
@@ -122,7 +307,52 @@ function saveAllSettings() {
     chrome.storage.local.set(dataToSave);
 }
 
+function saveCustomSearchButtons() {
+    chrome.storage.local.set({ 'customSearchButtons': customSearchButtonsList });
+}
+
 function resetSettings() {
+    /// Reset custom search engines
+    customSearchButtonsList = [
+        {
+            'url': 'https://www.youtube.com/results?search_query=%s',
+            'title': 'YouTube',
+            'enabled': true
+        },
+        {
+            'url': 'https://open.spotify.com/search/%s',
+            'title': 'Spotify',
+            'enabled': true
+        },
+        {
+            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
+            'title': 'Aliexpress',
+            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+            'enabled': true
+        },
+        {
+            'url': 'https://www.amazon.com/s?k=%s',
+            'title': 'Amazon',
+            'enabled': true
+        },
+        {
+            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+            'title': 'Wikipedia',
+            'enabled': false
+        },
+        {
+            'url': 'https://www.imdb.com/find?s=alt&q=%s',
+            'title': 'IMDB',
+            'enabled': false
+        },
+    ];
+    saveCustomSearchButtons();
+    setTimeout(function () {
+        generateCustomSearchButtonsList();
+    }, 50);
+
+
+    /// Reset regular options
     var dataToSave = {};
     options.forEach(function (value, key) {
         dataToSave[key] = value;
@@ -136,23 +366,26 @@ function resetSettings() {
         /// Set input value
         if (input !== null && input !== undefined) {
             if (input.type == 'checkbox') {
-                if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
+                if ((value !== null && value == true) || (value == null && value == true))
                     input.setAttribute('checked', 0);
                 else input.removeAttribute('checked', 0);
             } else if (input.tagName == 'SELECT') {
                 var options = input.querySelectorAll('option');
                 if (options !== null)
                     options.forEach(function (option) {
-                        var selectedValue = result[key] ?? value;
-                        option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                        var selectedValue = value;
+                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
+                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
                         if (option.value == selectedValue) option.setAttribute('selected', true);
+                        else option.setAttribute('selected', false);
                     });
             }
             else {
-                input.setAttribute('value', result[key] ?? value);
+                input.setAttribute('value', value);
             }
         }
     });
+
 }
 
 document.addEventListener("DOMContentLoaded", loadSettings);

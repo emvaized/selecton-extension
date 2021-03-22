@@ -48,7 +48,7 @@
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертации (<a target='_blank' href='https://www.iban.ru/currency-codes#'>Узнать код</a>)",
+        "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать код</a>)",
         "description": "Label for field in settings"
     },
     "convertToCurrencyHint": {
@@ -210,5 +210,45 @@
     "customSearchUrl": {
         "message": "URL поиска <br />(используйте %s в качестве плейсхолдера для запроса)",
         "description": "Ярлык для поля в настройках"
+    },
+    "addColorPreviewButton": {
+        "message": "Добавить кнопку цвета (для css цветов вроде #ffffff)",
+        "description": "Label for field in settings"
+    },
+    "preferredMapsService": {
+        "message": "Предпочитаемый сервис карт",
+        "description": "Label for field in settings"
+    },
+    "customSearchTooltip": {
+        "message": "Панель дополнительных вариантов поиска",
+        "description": "Ярлык для поля в настройках"
+    },
+    "customSearchTooltipHint": {
+        "message": "Открывается при наведении курсора на кнопку 'Поиск'. <br/>Используйте %s в качестве плейсхолдера для запроса",
+        "description": "Ярлык для поля в настройках"
+    },
+    "deleteLabel": {
+        "message": "Удалить",
+        "description": "Ярлык для кнопки удаления"
+    },
+    "addNewSearchOption": {
+        "message": "Добавить новую опцию поиска",
+        "description": "Ярлык для кнопки добавления нового поиска"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Размер кнопок (px)",
+        "description": "Label for add new search option button"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Панель активирована",
+        "description": "Label for add new search option button"
+    },
+    "moveUpLabel": {
+        "message": "Поднять",
+        "description": "Tooltip for 'move button up' button"
+    },
+    "moveDownLabel": {
+        "message": "Опустить",
+        "description": "Tooltip for 'move button down' button"
     }
 }

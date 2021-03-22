@@ -48,7 +48,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "convertToCurrency": {
-        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://www.iban.com/currency-codes'> Code suchen </a>)",
+        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Code suchen </a>)",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "convertToCurrencyHint": {
@@ -210,5 +210,45 @@
     "customSearchUrl": {
         "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addColorPreviewButton": {
+        "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "preferredMapsService": {
+        "message": "Bevorzugter Kartendienst",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "customSearchTooltip": {
+        "message": "Tooltip für benutzerdefinierte Suche",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "customSearchTooltipHint": {
+        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. <br/>%s als Platzhalter für Abfragen verwenden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "deleteLabel": {
+        "message": "Löschen",
+        "description": "Bezeichnung für die Schaltfläche 'Löschen'"
+    },
+    "addNewSearchOption": {
+        "message": "Neue Suchoption hinzufügen",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Knopfgröße (px)",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Tooltip aktiviert",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "moveUpLabel": {
+        "message": "Rücken",
+        "description": "Tooltip für die Schaltfläche 'Schaltfläche nach oben verschieben'"
+    },
+    "moveDownLabel": {
+        "message": "Absteigen",
+        "description": "Tooltip für 'move button down' button"
     }
 }

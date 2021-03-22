@@ -48,7 +48,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "convertToCurrency": {
-        "message": "Moneda para convertir a (<a target='_blank' href='https://www.iban.com/currency-codes'> Buscar código </a>)",
+        "message": "Moneda para convertir a (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Buscar código </a>)",
         "description": "Etiqueta para el campo en la configuración"
     },
     "convertToCurrencyHint": {
@@ -210,5 +210,45 @@
     "customSearchUrl": {
         "message": "URL de búsqueda personalizada <br />(utilice %s como marcador de posición para la consulta)",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "addColorPreviewButton": {
+        "message": "Botón Agregar color (para colores CSS como #ffffff)",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "preferredMapsService": {
+        "message": "Servicio de mapas preferido",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "customSearchTooltip": {
+        "message": "Información sobre herramientas de búsqueda personalizada",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "customSearchTooltipHint": {
+        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. <br/>Utilice %s como marcador de posición para la consulta",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "deleteLabel": {
+        "message": "Eliminar",
+        "description": "Etiqueta para el botón de eliminación"
+    },
+    "addNewSearchOption": {
+        "message": "Agregar nueva opción de búsqueda",
+        "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Tamaño del botón (px)",
+        "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Tooltip habilitado",
+        "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
+    },
+    "moveUpLabel": {
+        "message": "Hacer sitio",
+        "description": "Información sobre herramientas para el botón 'mover botón hacia arriba'"
+    },
+    "moveDownLabel": {
+        "message": "Mover hacia abajo",
+        "description": "Descripción emergente para el botón 'mover botón hacia abajo'"
     }
 }

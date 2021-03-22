@@ -42,7 +42,7 @@ hr {
   margin-right: 6px;
 }
 
-.option input[type="checkbox"]  {
+input[type="checkbox"]  {
   cursor: pointer;
 }
 
@@ -72,17 +72,23 @@ h3 {
 
 h4 {
   color: grey;
-  text-align: center;
   opacity: 0.65;
   font-weight: 600;
 }
 
 #allChangesSavedAutomaticallyHeader {
   padding-top: 21px;
+  text-align: center;
 }
 
 button {
   margin: 3px !important;
   width: 100%;
   text-align: center;
+}
+
+#customSearchButtonsContainer {
+  /* background: lightgrey;
+  border-radius: 6px; */
+  margin-top: 15px;
 }
