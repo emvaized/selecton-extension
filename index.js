@@ -1193,7 +1193,8 @@ function hideTooltip() {
   }
   if (oldTooltips !== null && oldTooltips.length !== 0)
     oldTooltips.forEach(function (oldTooltip) {
-      tooltip.style.opacity = 0.0;
+      // tooltip.style.opacity = 0.0;
+      oldTooltip.style.opacity = 0.0;
 
       setTimeout(function () {
         // dontShowTooltip = false;
@@ -1260,7 +1261,6 @@ function checkTooltipForBeingOffScreen() {
 
       /// Shift the arrow to match new position
       var newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
-      // var arrow = document.querySelector('.selection-tooltip-arrow');
       arrow.style.left = `${50 + newLeftPercentForArrow}%`;
     }
   }
