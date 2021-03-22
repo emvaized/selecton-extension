@@ -151,6 +151,110 @@ function loadCustomSearchButtons() {
     });
 }
 
+function updateDisabledOptions() {
+    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
+    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+}
+
+function saveAllSettings() {
+    var dataToSave = {};
+
+    keys.forEach(function (key) {
+        var input = document.querySelector(`#${key}`);
+        dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
+    });
+
+    chrome.storage.local.set(dataToSave);
+}
+
+function resetSettings() {
+    /// Reset custom search engines
+    customSearchButtonsList = [
+        {
+            'url': 'https://www.youtube.com/results?search_query=%s',
+            'title': 'YouTube',
+            'enabled': true
+        },
+        {
+            'url': 'https://open.spotify.com/search/%s',
+            'title': 'Spotify',
+            'enabled': true
+        },
+        {
+            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
+            'title': 'Aliexpress',
+            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+            'enabled': true
+        },
+        {
+            'url': 'https://www.amazon.com/s?k=%s',
+            'title': 'Amazon',
+            'enabled': true
+        },
+        {
+            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+            'title': 'Wikipedia',
+            'enabled': false
+        },
+        {
+            'url': 'https://www.imdb.com/find?s=alt&q=%s',
+            'title': 'IMDB',
+            'enabled': false
+        },
+    ];
+    saveCustomSearchButtons();
+    setTimeout(function () {
+        generateCustomSearchButtonsList();
+    }, 50);
+
+
+    /// Reset regular options
+    var dataToSave = {};
+    options.forEach(function (value, key) {
+        dataToSave[key] = value;
+    });
+
+    chrome.storage.local.set(dataToSave);
+
+    options.forEach(function (value, key) {
+        var input = document.getElementById(key);
+
+        /// Set input value
+        if (input !== null && input !== undefined) {
+            if (input.type == 'checkbox') {
+                if ((value !== null && value == true) || (value == null && value == true))
+                    input.setAttribute('checked', 0);
+                else input.removeAttribute('checked', 0);
+            } else if (input.tagName == 'SELECT') {
+                var options = input.querySelectorAll('option');
+                if (options !== null)
+                    options.forEach(function (option) {
+                        var selectedValue = value;
+                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
+                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                        if (option.value == selectedValue) option.setAttribute('selected', true);
+                        else option.setAttribute('selected', false);
+                    });
+            }
+            else {
+                input.setAttribute('value', value);
+            }
+        }
+    });
+
+}
+
 function generateCustomSearchButtonsList() {
     var container = document.getElementById('customSearchButtonsContainer');
     container.innerHTML = '';
@@ -164,7 +268,7 @@ function generateCustomSearchButtonsList() {
         /// Enabled checkbox
         var checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
-        checkbox.setAttribute('style', 'pointer: cursor');
+        checkbox.setAttribute('style', 'pointer: cursor; vertical-align: middle !important;');
         checkbox.value = item['enabled'];
         if (item['enabled'])
             checkbox.setAttribute('checked', 0);
@@ -181,7 +285,7 @@ function generateCustomSearchButtonsList() {
         imgButton.setAttribute('src', 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
         imgButton.setAttribute('width', '18px');
         imgButton.setAttribute('height', '18px');
-        imgButton.setAttribute('style', 'margin-left: 6px');
+        imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
         entry.appendChild(imgButton);
 
         /// Title field
@@ -280,112 +384,8 @@ function generateCustomSearchButtonsList() {
     container.appendChild(addButton);
 }
 
-function updateDisabledOptions() {
-    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
-    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-}
-
-function saveAllSettings() {
-    var dataToSave = {};
-
-    keys.forEach(function (key) {
-        var input = document.querySelector(`#${key}`);
-        dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
-    });
-
-    chrome.storage.local.set(dataToSave);
-}
-
 function saveCustomSearchButtons() {
     chrome.storage.local.set({ 'customSearchButtons': customSearchButtonsList });
-}
-
-function resetSettings() {
-    /// Reset custom search engines
-    customSearchButtonsList = [
-        {
-            'url': 'https://www.youtube.com/results?search_query=%s',
-            'title': 'YouTube',
-            'enabled': true
-        },
-        {
-            'url': 'https://open.spotify.com/search/%s',
-            'title': 'Spotify',
-            'enabled': true
-        },
-        {
-            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
-            'title': 'Aliexpress',
-            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
-            'enabled': true
-        },
-        {
-            'url': 'https://www.amazon.com/s?k=%s',
-            'title': 'Amazon',
-            'enabled': true
-        },
-        {
-            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
-            'title': 'Wikipedia',
-            'enabled': false
-        },
-        {
-            'url': 'https://www.imdb.com/find?s=alt&q=%s',
-            'title': 'IMDB',
-            'enabled': false
-        },
-    ];
-    saveCustomSearchButtons();
-    setTimeout(function () {
-        generateCustomSearchButtonsList();
-    }, 50);
-
-
-    /// Reset regular options
-    var dataToSave = {};
-    options.forEach(function (value, key) {
-        dataToSave[key] = value;
-    });
-
-    chrome.storage.local.set(dataToSave);
-
-    options.forEach(function (value, key) {
-        var input = document.getElementById(key);
-
-        /// Set input value
-        if (input !== null && input !== undefined) {
-            if (input.type == 'checkbox') {
-                if ((value !== null && value == true) || (value == null && value == true))
-                    input.setAttribute('checked', 0);
-                else input.removeAttribute('checked', 0);
-            } else if (input.tagName == 'SELECT') {
-                var options = input.querySelectorAll('option');
-                if (options !== null)
-                    options.forEach(function (option) {
-                        var selectedValue = value;
-                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
-                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
-                        if (option.value == selectedValue) option.setAttribute('selected', true);
-                        else option.setAttribute('selected', false);
-                    });
-            }
-            else {
-                input.setAttribute('value', value);
-            }
-        }
-    });
-
 }
 
 document.addEventListener("DOMContentLoaded", loadSettings);
