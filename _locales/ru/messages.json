@@ -250,5 +250,9 @@
     "moveDownLabel": {
         "message": "Опустить",
         "description": "Tooltip for 'move button down' button"
+    },
+    "showSecondaryTooltipTitleOnHover": {
+        "message": "Показывать домен при наведении",
+        "description": "Label for option in settings"
     }
 }

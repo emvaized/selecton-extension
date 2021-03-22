@@ -250,5 +250,9 @@
     "moveDownLabel": {
         "message": "Descendre",
         "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le bas'"
+    },
+    "showSecondaryTooltipTitleOnHover": {
+        "message": "Afficher le domaine en survol",
+        "description": "Libellé de l'option dans les paramètres"
     }
 }

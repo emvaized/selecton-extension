@@ -250,5 +250,9 @@
     "moveDownLabel": {
         "message": "Mover hacia abajo",
         "description": "Descripción emergente para el botón 'mover botón hacia abajo'"
+    },
+    "showSecondaryTooltipTitleOnHover": {
+        "message": "Mostrar dominio al pasar el mouse",
+        "description": "Etiqueta para la opción en la configuración"
     }
 }

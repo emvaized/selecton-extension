@@ -35,6 +35,7 @@ var options = new Map([
     ['preferredMapsService', 'google'],
     ['secondaryTooltipEnabled', true],
     ['secondaryTooltipIconSize', 15],
+    ['showSecondaryTooltipTitleOnHover', false],
 ]);
 
 var keys = [...options.keys()];

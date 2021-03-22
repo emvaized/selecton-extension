@@ -246,5 +246,9 @@
   "moveDownLabel": {
     "message": "Move down",
     "description": "Tooltip for 'move button down' button"
+  },
+  "showSecondaryTooltipTitleOnHover": {
+    "message": "Show domain on hover",
+    "description": "Label for option in settings"
   }
 }

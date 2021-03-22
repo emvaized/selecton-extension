@@ -42,6 +42,7 @@ var preferredMapsService = 'google'; /// Possible values listed in 'returnOpenMa
 var addColorPreviewButton = true;
 var secondaryTooltipEnabled = true;
 var secondaryTooltipIconSize = 15;
+var showSecondaryTooltipTitleOnHover = false;
 var customSearchButtons = [
   {
     'url': 'https://www.youtube.com/results?search_query=%s',
@@ -88,8 +89,6 @@ var loadTooltipOnPageLoad = false;
 var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
-var showSecondaryTooltipTitleOnHover = false;
-
 
 /// Variables for work
 var copyLabel = 'Copy';
@@ -159,6 +158,7 @@ function init() {
       'customSearchButtons',
       'secondaryTooltipEnabled',
       'secondaryTooltipIconSize',
+      'showSecondaryTooltipTitleOnHover',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
@@ -224,6 +224,7 @@ function init() {
         customSearchButtons = value.customSearchButtons ?? customSearchButtons;
         secondaryTooltipEnabled = value.secondaryTooltipEnabled ?? true;
         secondaryTooltipIconSize = value.secondaryTooltipIconSize || 15;
+        showSecondaryTooltipTitleOnHover = value.showSecondaryTooltipTitleOnHover ?? false;
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -1519,8 +1520,29 @@ function createSecondaryTooltip() {
 
       imgButton.style.maxHeight = `${secondaryTooltipIconSize}px`;
 
-      if (showSecondaryTooltipTitleOnHover && title !== null && title !== undefined)
-        imgButton.setAttribute('title', title);
+      /// Add title tooltip on hover
+
+      /// Manual title approach
+      // if (showSecondaryTooltipTitleOnHover && title !== null && title !== undefined)
+      //   imgButton.setAttribute('title', title);
+
+      /// Automatic title based on url
+      if (showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '') {
+        var titleText;
+        var domainContent = url.split('.');
+
+        if (domainContent.length == 2) {
+          titleText = domainContent[0];
+        } else if (domainContent.length == 3) {
+          titleText = domainContent[1];
+
+        } else {
+          titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
+        }
+        titleText = titleText.replaceAll('https://', '');
+
+        imgButton.setAttribute('title', titleText.charAt(0).toUpperCase() + titleText.slice(1));
+      }
 
       /// Set border radius for first and last buttons
       if (i == 0) {

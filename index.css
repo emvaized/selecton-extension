@@ -98,6 +98,9 @@
   left: 0px;
   z-index: 9998 !important;
   position: absolute;
+  margin: 0px !important;
+  padding: 0px !important;
+  display: inline-block;
   /* vertical-align: middle;
   align-items: center; */
 }

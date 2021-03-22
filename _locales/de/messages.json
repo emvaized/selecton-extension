@@ -250,5 +250,9 @@
     "moveDownLabel": {
         "message": "Absteigen",
         "description": "Tooltip für 'move button down' button"
+    },
+    "showSecondaryTooltipTitleOnHover": {
+        "message": "Domain beim Hover anzeigen",
+        "description": "Bezeichnung für Option in Einstellungen"
     }
 }
