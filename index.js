@@ -1,9 +1,8 @@
 /// TODOs:
 /// 1. Refactor the code for creating new buttons for main tooltip, so that it will not be duplicated everywhere but has one consistent method 
 /// 2. Split index.js in multiple files - especially big image variables on the bottom
-/// 3. Refactor tooltip creation proccess, so that it will be shown in the browser, and not appended to the website's DOM
+/// 3. Refactor tooltip creation proccess, so that it will be shown in the browser, and not appended to the website's DOM (if it's possible)
 /// 4. Ability to open link in a background tab on middle click (for search buttons, translate, convertion result buttons etc.)
-/// 5. Blacklist implementation
 
 
 /// Configs
@@ -43,6 +42,7 @@ var addColorPreviewButton = true;
 var secondaryTooltipEnabled = true;
 var secondaryTooltipIconSize = 15;
 var showSecondaryTooltipTitleOnHover = false;
+var excludedDomains = '';
 var customSearchButtons = [
   {
     'url': 'https://www.youtube.com/results?search_query=%s',
@@ -159,14 +159,28 @@ function init() {
       'secondaryTooltipEnabled',
       'secondaryTooltipIconSize',
       'showSecondaryTooltipTitleOnHover',
+      'excludedDomains',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
       textSelectionBackground = value.textSelectionBackground || '#338FFF';
       textSelectionColor = value.textSelectionColor || '#ffffff';
 
+      enabled = value.enabled ?? true;
+
+      /// Check for domain to be in black list
+      excludedDomains = value.excludedDomains || '';
+      var domainIsBlacklisted = false;
+
+      if (excludedDomains !== null && excludedDomains !== undefined && excludedDomains !== '')
+        excludedDomains.split(',').forEach(function (domain) {
+          if (window.location.href.includes(domain.trim())) {
+            domainIsBlacklisted = true;
+          }
+        });
+
       /// Change text selection color
-      if (changeTextSelectionColor) {
+      if (changeTextSelectionColor && enabled && domainIsBlacklisted == false) {
         document.body.style.setProperty('--selection-background', textSelectionBackground);
         document.body.style.setProperty('--selection-text-color', textSelectionColor);
         document.body.style.setProperty('--selection-text-shadow', addSelectionTextShadow ? `1.5px 1.5px 2px rgba(0,0,0,${selectionTextShadowOpacity})` : 'none');
@@ -179,9 +193,7 @@ function init() {
       }
       document.body.style.setProperty('--selection-button-padding', '6px 12px');
 
-      enabled = value.enabled ?? true;
-
-      if (enabled) {
+      if (enabled && domainIsBlacklisted == false) {
         if (debugMode) {
           console.log('Loaded Selecton settings from memory:');
           console.log(value);
@@ -1200,7 +1212,8 @@ function hideTooltip() {
       setTimeout(function () {
         // dontShowTooltip = false;
 
-        oldTooltip.parentNode.removeChild(oldTooltip);
+        if (oldTooltip.parentNode !== null)
+          oldTooltip.parentNode.removeChild(oldTooltip);
         // oldTooltip = null;
 
         if (debugMode)
@@ -1220,7 +1233,8 @@ function hideTooltip() {
       oldSecondaryTooltip.style.opacity = 0.0;
 
       setTimeout(function () {
-        oldSecondaryTooltip.parentNode.removeChild(oldSecondaryTooltip);
+        if (oldSecondaryTooltip.parentNode !== null)
+          oldSecondaryTooltip.parentNode.removeChild(oldSecondaryTooltip);
 
         if (debugMode)
           console.log('Selecton secondary secondary tooltip hidden');

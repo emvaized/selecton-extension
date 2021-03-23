@@ -254,5 +254,9 @@
     "showSecondaryTooltipTitleOnHover": {
         "message": "Mostrar dominio al pasar el mouse",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "excludedDomains": {
+        "message": "Dominios excluidos",
+        "description": "Etiqueta para la opción en la configuración"
     }
 }

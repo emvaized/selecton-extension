@@ -65,3 +65,8 @@ Initial version
 - Fixes for 'Restore defaults' button
 - Fix for 'Translate' button being added twice sometimes
 - Small bug fixes and improvements
+
+#2.1.1
+- Layout improvements on some websites
+- Implemented 'Excluded domains' option in settings for blacklisting websites
+- Small bug fixes

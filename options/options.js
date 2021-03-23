@@ -1,3 +1,6 @@
+/// TODO: 
+/// 1. Collapsible sections
+/// 2. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
 
 var options = new Map([
     // ['animationDuration', 300],
@@ -36,6 +39,7 @@ var options = new Map([
     ['secondaryTooltipEnabled', true],
     ['secondaryTooltipIconSize', 15],
     ['showSecondaryTooltipTitleOnHover', false],
+    ['excludedDomains', ''],
 ]);
 
 var keys = [...options.keys()];
@@ -101,6 +105,13 @@ function loadSettings() {
         document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
         document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
+
+
+        /// Set custom style for 'Excluded domains' textfield
+        var excludedDomainsTextfield = document.querySelector("#excludedDomains");
+        excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
+        excludedDomainsTextfield.style.maxWidth = '200px';
+
 
         /// Reduce opacity for not available options
         updateDisabledOptions();

@@ -254,5 +254,9 @@
     "showSecondaryTooltipTitleOnHover": {
         "message": "Показывать домен при наведении",
         "description": "Label for option in settings"
+    },
+    "excludedDomains": {
+        "message": "Исключенные домены",
+        "description": "Label for option in settings"
     }
 }

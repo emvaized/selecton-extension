@@ -250,5 +250,9 @@
   "showSecondaryTooltipTitleOnHover": {
     "message": "Show domain on hover",
     "description": "Label for option in settings"
+  },
+  "excludedDomains": {
+    "message": "Excluded domains",
+    "description": "Label for option in settings"
   }
 }
