@@ -43,7 +43,7 @@
         "message": "Botones de acción",
         "description": "Encabezado de la categoría de botones de acción en la configuración"
     },
-    "animationDurationn": {
+    "animationDuration": {
         "message": "Duración de las animaciones (ms)",
         "description": "Etiqueta para el campo en la configuración"
     },
