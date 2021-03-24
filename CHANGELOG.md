@@ -69,4 +69,5 @@ Initial version
 #2.1.1
 - Layout improvements on some websites
 - Implemented 'Excluded domains' option in settings for blacklisting websites
-- Small bug fixes
+- Fixed French translation file causing extension to fail during installation
+- Other small bug fixes

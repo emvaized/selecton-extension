@@ -156,7 +156,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": " Textauswahl nach Aktion entfernen ",
+        "message": "Textauswahl nach Aktion entfernen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "draggableTooltip": {

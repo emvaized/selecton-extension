@@ -155,7 +155,7 @@
         "message": "Utiliser le panneau spécial pour les champs de texte",
         "description": "Libellé du champ dans les paramètres"
     },
-    "removeSelectionOnActionButtonClick ": {
+    "removeSelectionOnActionButtonClick": {
         "message": "Supprimer la sélection de texte après action",
         "description": "Libellé du champ dans les paramètres"
     },
