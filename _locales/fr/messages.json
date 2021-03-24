@@ -191,7 +191,7 @@
         "message": "Ajouter un bouton e-mail",
         "description": "Libellé du champ dans les paramètres"
     },
-    "PreferredNewEmailMethod": {
+    "preferredNewEmailMethod": {
         "message": "Méthode préférée pour créer un nouvel e-mail",
         "description": "Libellé du champ dans les paramètres"
     },
