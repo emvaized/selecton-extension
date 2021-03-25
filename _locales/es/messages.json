@@ -258,5 +258,17 @@
     "excludedDomains": {
         "message": "Dominios excluidos",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "customIconUrl": {
+        "message": "URL del icono personalizado",
+        "description": "Etiqueta para la opción en la configuración"
+    },
+    "removeCustomIcon": {
+        "message": "Eliminar icono personalizado",
+        "description": "Descripción emergente del botón para eliminar el icono personalizado"
+    },
+    "customIcon": {
+        "message": "Icono personalizado",
+        "description": "Etiqueta para el botón en la configuración"
     }
 }

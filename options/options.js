@@ -129,17 +129,17 @@ function loadCustomSearchButtons() {
             {
                 'url': 'https://www.youtube.com/results?search_query=%s',
                 'title': 'YouTube',
-                'enabled': true
+                'enabled': true,
             },
             {
                 'url': 'https://open.spotify.com/search/%s',
                 'title': 'Spotify',
-                'enabled': true
+                'enabled': true,
             },
             {
                 'url': 'https://aliexpress.com/wholesale?SearchText=%s',
                 'title': 'Aliexpress',
-                'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+                // 'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
                 'enabled': true
             },
             {
@@ -295,7 +295,8 @@ function generateCustomSearchButtonsList() {
 
         /// Create favicon preview
         var imgButton = document.createElement('img');
-        imgButton.setAttribute('src', 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
+        var icon = item['icon'];
+        imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
         imgButton.setAttribute('width', '18px');
         imgButton.setAttribute('height', '18px');
         imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
@@ -319,7 +320,8 @@ function generateCustomSearchButtonsList() {
         var urlInput = document.createElement('input');
         urlInput.setAttribute('type', 'text');
         urlInput.setAttribute('placeholder', 'URL');
-        urlInput.setAttribute('style', ' min-width: 320px; max-width: 320px !important;  margin: 0px 6px;');
+        // urlInput.setAttribute('style', 'min-width: 320px; max-width: 320px !important;  margin: 0px 6px;');
+        urlInput.setAttribute('style', 'display: block; min-width: 99%; max-width: 99% !important;  margin: 0px 3px;');
         urlInput.value = item['url'];
         urlInput.setAttribute('id', 'url' + i.toString());
         urlInput.addEventListener("input", function (e) {
@@ -327,6 +329,40 @@ function generateCustomSearchButtonsList() {
             saveCustomSearchButtons();
         });
         entry.appendChild(urlInput);
+
+        /// Custom icon URL field
+        if (item['icon'] !== null && item['icon'] !== undefined) {
+
+            var iconInputDiv = document.createElement('div');
+
+            /// Custom icon URL field
+            var iconInput = document.createElement('input');
+            iconInput.setAttribute('type', 'text');
+            iconInput.setAttribute('placeholder', chrome.i18n.getMessage("customIconUrl"));
+            iconInput.setAttribute('style', 'min-width: 80%; max-width: 80% !important;  margin: 0px 3px;');
+            iconInput.setAttribute('id', 'icon' + i.toString());
+            iconInput.value = item['icon'];
+            iconInput.addEventListener("input", function (e) {
+                customSearchButtonsList[parseInt(this.id.replaceAll('icon', ''))]['icon'] = this.value;
+                saveCustomSearchButtons();
+            });
+            iconInputDiv.appendChild(iconInput);
+
+            /// Remove custom icon button
+            var removeCustomIconButton = document.createElement('button');
+            removeCustomIconButton.textContent = '✕';
+            removeCustomIconButton.setAttribute('title', chrome.i18n.getMessage("removeCustomIcon"));
+            removeCustomIconButton.setAttribute('style', ' max-width: 1px !important;  margin: 0px 6px;padding: 1px; align-items: center');
+            removeCustomIconButton.setAttribute('id', 'useCustomIcon' + i.toString());
+            removeCustomIconButton.onmouseup = function () {
+                customSearchButtonsList[parseInt(this.id.replaceAll('useCustomIcon', ''))]['icon'] = null;
+                saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            };
+            iconInputDiv.appendChild(removeCustomIconButton);
+
+            entry.appendChild(iconInputDiv);
+        }
 
         /// Move up/down buttons
         var moveButtonsContainer = document.createElement('div');
@@ -363,10 +399,23 @@ function generateCustomSearchButtonsList() {
                 generateCustomSearchButtonsList();
             }
         };
-
         moveButtonsContainer.appendChild(moveUpButton);
         moveButtonsContainer.appendChild(moveDownButton);
         entry.appendChild(moveButtonsContainer);
+
+        /// 'Use custom icon' button
+        if (item['icon'] == null || item['icon'] == undefined) {
+            var useCustomIconButton = document.createElement('button');
+            useCustomIconButton.textContent = chrome.i18n.getMessage("customIcon");
+            useCustomIconButton.setAttribute('style', 'display: inline-block; max-width: 150px;');
+            useCustomIconButton.setAttribute('id', 'useCustomIcon' + i.toString());
+            useCustomIconButton.onmouseup = function () {
+                customSearchButtonsList[parseInt(this.id.replaceAll('useCustomIcon', ''))]['icon'] = '';
+                // saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            };
+            entry.appendChild(useCustomIconButton);
+        }
 
         /// Delete button
         var deleteButton = document.createElement('button');
@@ -389,7 +438,8 @@ function generateCustomSearchButtonsList() {
         customSearchButtonsList.push({
             'url': '',
             'title': '',
-            'enabled': true
+            'enabled': true,
+            'icon': ''
         });
         saveCustomSearchButtons();
         generateCustomSearchButtonsList();

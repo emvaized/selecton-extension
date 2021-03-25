@@ -254,5 +254,17 @@
   "excludedDomains": {
     "message": "Excluded domains",
     "description": "Label for option in settings"
+  },
+  "customIconUrl": {
+    "message": "Custom icon URL",
+    "description": "Label for option in settings"
+  },
+  "customIcon": {
+    "message": "Icône personnalisée",
+    "description": "Libellé du bouton dans les paramètres"
+  },
+  "removeCustomIcon": {
+    "message": "Remove custom icon",
+    "description": "Tooltip for button to remove custom icon"
   }
 }

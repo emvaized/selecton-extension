@@ -258,5 +258,17 @@
     "excludedDomains": {
         "message": "Ausgeschlossene Domains",
         "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "customIconUrl": {
+        "message": "Benutzerdefinierte Symbol-URL",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "removeCustomIcon": {
+        "message": "Benutzerdefiniertes Symbol entfernen",
+        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
+    },
+    "customIcon": {
+        "message": "Benutzerdefiniertes Symbol",
+        "description": "Bezeichnung für Schaltfläche in Einstellungen"
     }
 }

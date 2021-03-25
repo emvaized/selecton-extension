@@ -258,5 +258,17 @@
     "excludedDomains": {
         "message": "Исключенные домены",
         "description": "Label for option in settings"
+    },
+    "customIconUrl": {
+        "message": "URL иконки",
+        "description": "Label for option in settings"
+    },
+    "removeCustomIcon": {
+        "message": "Убрать свою иконку",
+        "description": "Tooltip for button to remove custom icon"
+    },
+    "customIcon": {
+        "message": "Своя иконка",
+        "description": "Label for button in settings"
     }
 }

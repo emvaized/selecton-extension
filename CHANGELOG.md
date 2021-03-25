@@ -1,3 +1,6 @@
+#2.1.2
+- Implemented custom icon field for the custom search buttons
+
 #2.1.1
 - Layout improvements on some websites
 - Implemented 'Excluded domains' option in settings for blacklisting websites

@@ -1527,11 +1527,10 @@ function createSecondaryTooltip() {
 
     if (optionEnabled) {
       var imgButton = document.createElement('img');
-      imgButton.setAttribute('src', icon !== null && icon !== undefined ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
+      imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
       imgButton.setAttribute('class', 'image-button');
       imgButton.setAttribute('width', `${secondaryTooltipIconSize}px`);
       imgButton.setAttribute('height', `${secondaryTooltipIconSize}px`);
-
       imgButton.style.maxHeight = `${secondaryTooltipIconSize}px`;
 
       /// Add title tooltip on hover
@@ -1554,7 +1553,6 @@ function createSecondaryTooltip() {
           titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
         }
         titleText = titleText.replaceAll('https://', '');
-
         imgButton.setAttribute('title', titleText.charAt(0).toUpperCase() + titleText.slice(1));
       }
 
