@@ -40,6 +40,7 @@ var options = new Map([
     ['secondaryTooltipIconSize', 15],
     ['showSecondaryTooltipTitleOnHover', false],
     ['excludedDomains', ''],
+    ['addPhoneButton', true],
 ]);
 
 var keys = [...options.keys()];

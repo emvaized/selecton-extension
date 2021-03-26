@@ -1,5 +1,7 @@
 #2.1.2
 - Implemented custom icon field for the custom search buttons
+- Added 'Phone' button for phone numbers, which triggers default call handler in system on click
+- Impovements for buttons appearance
 
 #2.1.1
 - Layout improvements on some websites

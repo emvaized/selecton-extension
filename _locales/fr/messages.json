@@ -270,5 +270,9 @@
     "customIcon": {
         "message": "Icône personnalisée",
         "description": "Libellé du bouton dans les paramètres"
+    },
+    "addPhoneButton": {
+        "message": "Bouton Ajouter un numéro de téléphone",
+        "description": "Libellé de l'option dans les paramètres"
     }
 }

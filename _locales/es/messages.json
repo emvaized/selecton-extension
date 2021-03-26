@@ -270,5 +270,9 @@
     "customIcon": {
         "message": "Icono personalizado",
         "description": "Etiqueta para el botón en la configuración"
+    },
+    "addPhoneButton": {
+        "message": "Botón para agregar número de teléfono",
+        "description": "Etiqueta para la opción en la configuración"
     }
 }

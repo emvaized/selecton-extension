@@ -62,7 +62,7 @@
     /* line-height: 100% !important; */
     /* padding:  var(--selection-button-padding) !important; */
     /* font: 1.0em "Arial", sans-serif !important; */
-    font-size: 12px !important;
+    font-size: 12.5px !important;
     }
     
   .selection-popup-button:hover {
@@ -130,5 +130,5 @@
 }
 
 .selection-popup-color-preview-circle {
-  max-width: 9px; max-height: 9px; padding: 0px 8px; margin: 9px 3px; border-radius: 50%; border:solid 1px var(--selection-button-background-hover); display: inline;
+  max-width: 9px; max-height: 9px; padding: 0px 7.5px; margin: 9px 3px; border-radius: 50%; border:solid 1px var(--selection-button-background-hover); display: inline;
 }

@@ -270,5 +270,9 @@
     "customIcon": {
         "message": "Benutzerdefiniertes Symbol",
         "description": "Bezeichnung für Schaltfläche in Einstellungen"
+    },
+    "addPhoneButton": {
+        "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
+        "description": "Bezeichnung für Option in Einstellungen"
     }
 }

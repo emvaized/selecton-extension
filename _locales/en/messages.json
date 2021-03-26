@@ -266,5 +266,9 @@
   "removeCustomIcon": {
     "message": "Remove custom icon",
     "description": "Tooltip for button to remove custom icon"
+  },
+  "addPhoneButton": {
+    "message": "Add phone number button",
+    "description": "Label for option in settings"
   }
 }

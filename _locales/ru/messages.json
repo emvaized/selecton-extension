@@ -270,5 +270,9 @@
     "customIcon": {
         "message": "Своя иконка",
         "description": "Label for button in settings"
+    },
+    "addPhoneButton": {
+        "message": "Добавить кнопку номера телефона",
+        "description": "Label for option in settings"
     }
 }
