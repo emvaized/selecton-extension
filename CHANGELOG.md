@@ -1,3 +1,11 @@
+#2.1.3
+- Added scale-up animation on tooltip reveal (can be disabled in settings)
+- Implemented ability to disable showing unconverted value in convert buttons
+- Implemented currency selection dropdown in settings
+- Improved currency recognition for some currencies
+- Implemented special handling for prices where coma separates fractional digits instead of thousandths
+- Added Portuguese translation (from Google Translate)
+
 #2.1.2
 - Implemented custom icon field for the custom search buttons
 - Added 'Phone' button for phone numbers, which triggers default call handler in system on click

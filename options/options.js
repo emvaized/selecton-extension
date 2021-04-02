@@ -4,7 +4,7 @@
 
 var options = new Map([
     // ['animationDuration', 300],
-    ['convertToCurrency', 'USD'],
+    // ['convertToCurrency', 'USD'],
     ['hideOnScroll', true],
     ['convertMetrics', true],
     ['addOpenLinks', true],
@@ -41,6 +41,8 @@ var options = new Map([
     ['showSecondaryTooltipTitleOnHover', false],
     ['excludedDomains', ''],
     ['addPhoneButton', true],
+    ['showUnconvertedValue', true],
+    ['addScaleUpEffect', true],
 ]);
 
 var keys = [...options.keys()];
@@ -80,8 +82,13 @@ function loadSettings() {
                 }
 
                 /// Set translated label for input
-                if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
-                    input.parentNode.innerHTML += chrome.i18n.getMessage(key);
+                if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key))) {
+                    if (input.tagName == 'SELECT' || input.id == 'excludedDomains')
+                        input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
+                    else
+                        input.parentNode.innerHTML += chrome.i18n.getMessage(key);
+
+                }
             }
         });
 
@@ -107,7 +114,6 @@ function loadSettings() {
         document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
         document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
-
         /// Set custom style for 'Excluded domains' textfield
         var excludedDomainsTextfield = document.querySelector("#excludedDomains");
         excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
@@ -118,7 +124,39 @@ function loadSettings() {
         updateDisabledOptions();
 
         loadCustomSearchButtons();
+
+        setCurrenciesDropdown();
     }
+
+}
+
+function setCurrenciesDropdown() {
+    chrome.storage.local.get(['convertToCurrency'], function (result) {
+
+        var initialValue = result.convertToCurrency || 'USD';
+
+        var select = document.getElementById('convertToCurrencyDropdown');
+
+        Object.keys(availableCurrencies).forEach((function (key) {
+            var option = document.createElement('option');
+            option.innerHTML = key + ' — ' + availableCurrencies[key]['currencyName'];
+            option.setAttribute('value', key);
+            select.appendChild(option);
+
+            if (option.value == initialValue) option.setAttribute('selected', true);
+        }));
+
+        select.parentNode.innerHTML = chrome.i18n.getMessage('convertToCurrency') + '<br />' + select.parentNode.innerHTML;
+
+
+        setTimeout(function () {
+            document.getElementById('convertToCurrencyDropdown').addEventListener("input", function (e) {
+                var selectInput = document.getElementById('convertToCurrencyDropdown');
+                chrome.storage.local.set({ 'convertToCurrency': selectInput.value.split(' — ')[0] });
+            });
+        }, 300);
+    });
+
 
 }
 
@@ -166,7 +204,8 @@ function loadCustomSearchButtons() {
 
 function updateDisabledOptions() {
     document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    // document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#convertToCurrencyDropdown").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
@@ -424,9 +463,13 @@ function generateCustomSearchButtonsList() {
         deleteButton.setAttribute('style', 'display: inline-block; max-width: 100px;');
         deleteButton.setAttribute('id', 'delete' + i.toString());
         deleteButton.onmouseup = function () {
-            customSearchButtonsList.splice(parseInt(this.id.replaceAll('delete', ''), 10), 1);
-            saveCustomSearchButtons();
-            generateCustomSearchButtonsList();
+            var index = parseInt(this.id.replaceAll('delete', ''));
+            if (customSearchButtonsList[index] !== null && customSearchButtonsList[index] !== undefined) {
+                customSearchButtonsList.splice(parseInt(this.id.replaceAll('delete', ''), 10), 1);
+                saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            }
+
         };
         entry.appendChild(deleteButton);
 
@@ -440,7 +483,7 @@ function generateCustomSearchButtonsList() {
             'url': '',
             'title': '',
             'enabled': true,
-            'icon': ''
+            // 'icon': ''
         });
         saveCustomSearchButtons();
         generateCustomSearchButtonsList();
@@ -460,3 +503,42 @@ document.querySelector("#donateButton").addEventListener("click", function (val)
 document.querySelector("#githubButton").addEventListener("click", function (val) {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
+
+
+
+
+
+var availableCurrencies = {
+    "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 1.29009 },
+    "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.640562 },
+    "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 5.616101 },
+    "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.000018 },
+    "BYN": { currencyName: "Belarussian Ruble", currencySymbol: "белорусских рублей", id: "BYN", rate: 2.596137 },
+    "CAD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "CAD", rate: 1.269384 },
+    "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 0.926525 },
+    "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.497301 },
+    "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 610.339772 },
+    "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.936455 },
+    "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.229502 },
+    "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.8378 },
+    "GBP": { currencyName: "British Pound", currencySymbol: "£", id: "GBP", rate: 0.721124 },
+    "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", id: "HKD", rate: 7.765632 },
+    "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", id: "ILS", rate: 3.310401 },
+    "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", id: "INR", rate: 72.452006 },
+    "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", id: "IRR", rate: 42105.017329 },
+    "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", id: "JPY", rate: 109.188027 },
+    "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", id: "KPW", rate: 900.00022 },
+    "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "лв", id: "KZT", rate: 418.821319 },
+    "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2849.930035 },
+    "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
+    "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
+    "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
+    "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
+    "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },
+    "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 8.514027 },
+    "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", id: "TRY", rate: 0.14 },
+    "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", id: "UAH", rate: 27.852288 },
+    "USD": { currencyName: "United States Dollar", currencySymbol: "$", id: "USD", rate: 1 },
+    "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", id: "VND", rate: 23054.385489 },
+    "ZAR": { currencyName: "Rand", currencySymbol: "ZAR", id: "ZAR", rate: 14.856969 },
+}

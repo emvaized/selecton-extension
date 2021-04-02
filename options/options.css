@@ -92,3 +92,7 @@ button {
   border-radius: 6px; */
   margin-top: 15px;
 }
+
+select {
+  margin: 5px 0px;
+}

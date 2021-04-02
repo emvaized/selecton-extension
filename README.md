@@ -21,7 +21,6 @@ In order to make extension more autonomous, currency rates get updated every 2 w
 Rates are fetched from [exchangerate.host](https://exchangerate.host/#/)
 
 ```
-ANG — Netherlands Antillean Gulden
 AUD — Australian Dollar
 BGN — Bulgarian Lev
 BRL — Brazilian real

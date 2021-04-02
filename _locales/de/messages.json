@@ -48,7 +48,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "convertToCurrency": {
-        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Code suchen </a>)",
+        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "convertToCurrencyHint": {
@@ -273,6 +273,14 @@
     },
     "addPhoneButton": {
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "showUnconvertedValue": {
+        "message": "Nicht konvertierten Wert anzeigen",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "addScaleUpEffect": {
+        "message": "Scale-up-Effekt bei Enthüllung hinzufügen",
         "description": "Bezeichnung für Option in Einstellungen"
     }
 }

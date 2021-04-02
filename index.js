@@ -6,7 +6,6 @@
 
 
 /// Configs
-var animationDuration = 300;
 var convertToCurrency = 'USD';
 var hideOnScroll;
 var preferredMetricsSystem; /// Possible values: 'imperial', 'metric';
@@ -44,7 +43,8 @@ var secondaryTooltipIconSize = 15;
 var showSecondaryTooltipTitleOnHover = false;
 var addPhoneButton = true;
 var excludedDomains = '';
-
+var showUnconvertedValue = true;
+var addScaleUpEffect = true;
 var customSearchButtons = [
   {
     'url': 'https://www.youtube.com/results?search_query=%s',
@@ -59,7 +59,6 @@ var customSearchButtons = [
   {
     'url': 'https://aliexpress.com/wholesale?SearchText=%s',
     'title': 'Aliexpress',
-    // 'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
     'enabled': true
   },
   {
@@ -79,7 +78,6 @@ var customSearchButtons = [
   },
 ];
 
-
 /// Currently non user-configurable settings 
 var debugMode = false;
 var updateRatesEveryDays = 14;
@@ -91,8 +89,9 @@ var loadTooltipOnPageLoad = false;
 var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
+var animationDuration = 300;
 
-/// Variables for work
+/// Service variables
 var copyLabel = 'Copy';
 var searchLabel = 'Search';
 var openLinkLabel = 'Open';
@@ -113,7 +112,6 @@ var lastButtonBorderRadius = `0px 3px 3px 0px`;
 var isDarkBackground = true;
 var linkSymbolsToShow = 20;
 var searchButton;
-
 var browserLanguage;
 var browserCurrency;
 var browserMetricSystem;
@@ -163,6 +161,8 @@ function init() {
       'showSecondaryTooltipTitleOnHover',
       'excludedDomains',
       'addPhoneButton',
+      'showUnconvertedValue',
+      'addScaleUpEffect',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
@@ -241,6 +241,8 @@ function init() {
         secondaryTooltipIconSize = value.secondaryTooltipIconSize || 15;
         showSecondaryTooltipTitleOnHover = value.showSecondaryTooltipTitleOnHover ?? false;
         addPhoneButton = value.addPhoneButton ?? true;
+        showUnconvertedValue = value.showUnconvertedValue ?? true;
+        addScaleUpEffect = value.addScaleUpEffect ?? true;
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -479,7 +481,8 @@ function setPageListeners() {
                             if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
                               var interactiveButton = document.createElement('button');
                               interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                              interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
+                              if (showUnconvertedValue)
+                                interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
 
                               var converted = document.createElement('span');
                               converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
@@ -541,7 +544,8 @@ function setPageListeners() {
                             if (number !== null) {
                               var interactiveButton = document.createElement('button');
                               interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                              interactiveButton.textContent = selectedText + ' →';
+                              if (showUnconvertedValue)
+                                interactiveButton.textContent = selectedText + ' →';
 
                               var converted = document.createElement('span');
                               converted.textContent = ` ${calculatedExpression}`;
@@ -712,14 +716,26 @@ function setPageListeners() {
                     var currencyRate;
 
                     for (const [key, value] of Object.entries(currenciesList)) {
-                      if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
-                        // if (selectedText.includes(value["currencySymbol"])) {
-                        // currency = key;
+                      // if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
+                      if (selectedText.includes(value["id"]) || selectedText.toLowerCase().includes(value["currencySymbol"]) || selectedText.includes(value["currencySymbol"])) {
 
                         currency = value["id"];
                         currencyRate = value["rate"];
 
-                        amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
+                        var text = selectedText;
+
+                        /// Special handling for prices where coma separates fractional digits instead of thousandths
+                        if (text.includes(',')) {
+                          var parts = text.split(',');
+                          if (parts.length == 2) {
+                            if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
+                              text = text.replaceAll(',', '.');
+                            }
+                          }
+                        }
+
+                        /// Remove all non-number symbols (except dots)
+                        amount = text.match(/[+-]?\d+(\.\d)?/g);
                         if (amount !== null)
                           amount = amount.join("");
                         break;
@@ -772,7 +788,9 @@ function setPageListeners() {
                               // if (addButtonIcons)
                               //   interactiveButton.innerHTML = createImageIcon(currencyButtonIcon, 0.7) + `${amount + ' ' + currency + ' →'}`;
                               // else
-                              interactiveButton.textContent = amount + ' ' + currency + ' →';
+
+                              if (showUnconvertedValue)
+                                interactiveButton.textContent = amount + ' ' + currency + ' →';
                               var converted = document.createElement('span');
 
                               converted.textContent = ` ${convertedAmountString} ${convertToCurrency}`;
@@ -783,7 +801,6 @@ function setPageListeners() {
                                 hideTooltip();
                                 removeSelection();
                                 /// Search for conversion result
-                                // window.open(`https://www.google.com/search?q=${amount + ' ' + currency} to ${convertToCurrency}`, '_blank');
                                 window.open(returnSearchUrl(`${amount + ' ' + currency} to ${convertToCurrency}`), '_blank');
                                 ;
                               });
@@ -919,7 +936,7 @@ function setPageListeners() {
                 var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
 
                 /// Show tooltip on top of selection
-                showTooltip(resultingDx, resultingDy + (addButtonIcons ? 2.5 : 5));
+                showTooltip(resultingDx, resultingDy + 2.7);
               }
               else hideTooltip();
             }
@@ -937,7 +954,7 @@ function createTooltip(type) {
 
   /// Create tooltip and it's arrow
   tooltip = document.createElement('div');
-  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out !important;`);
+  tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform 200ms ease-out; ${addScaleUpEffect ? `transform: scale(0.0);transform-origin: bottom;` : ''}`);
   tooltip.setAttribute('class', `selection-tooltip`);
 
   tooltip.onmouseover = function (event) {
@@ -972,6 +989,8 @@ function createTooltip(type) {
         tooltip.style.left = `0px`;
         tooltip.style.top = `0px`;
         tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px )`;
+
+        tooltip.style.transition = `opacity ${animationDuration}ms ease-in-out`;
 
         document.body.style.cursor = 'move';
       };
@@ -1171,6 +1190,10 @@ function showTooltip(dx, dy) {
   tooltip.style.top = `${dy}px`;
   tooltip.style.left = `${dx}px`;
   tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
+
+  if (addScaleUpEffect)
+    tooltip.style.transform = 'scale(1.0)';
+
   if (debugMode)
     console.log('Selecton tooltip shown');
 
@@ -1777,13 +1800,18 @@ const convertionUnits = {
 
 /// List of currencies with various literal labels on English and russians
 var currenciesList = {
-  "ANG": { currencyName: "Netherlands Antillean Gulden", currencySymbol: "ƒ", id: "ANG", rate: 1.794168 },
   "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 1.29009 },
+  "AUD2": { currencyName: "Australian Dollar", currencySymbol: "australian dollar", id: "AUD", rate: 1.29009 },
+  "AUD3": { currencyName: "Australian Dollar", currencySymbol: "австралийских доллар", id: "AUD", rate: 1.29009 },
   "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.640562 },
   "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 5.616101 },
   "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.000018 },
   "BTC1": { currencyName: "Bitcoin", currencySymbol: "bitcoins", id: "BTC", rate: 0.000018 },
-  "CAD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "AUD", rate: 1.247715 },
+  "BTC2": { currencyName: "Bitcoin", currencySymbol: "биткоин", id: "BTC", rate: 0.000018 },
+  "BYN": { currencyName: "Belarussian Ruble", currencySymbol: "белорусских рублей", id: "BYN", rate: 2.596137 },
+  "CAD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "CAD", rate: 1.269384 },
+  "CAD2": { currencyName: "Canadian Dollar", currencySymbol: "canadian dollar", id: "CAD", rate: 1.269384 },
+  "CAD3": { currencyName: "Canadian Dollar", currencySymbol: "канадских доллар", id: "CAD", rate: 1.269384 },
   "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 0.926525 },
   "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.497301 },
   "CNY1": { currencyName: "Chinese Yuan", currencySymbol: "yuan", id: "CNY", rate: 6.497301 },
@@ -1808,16 +1836,20 @@ var currenciesList = {
   "KZT1": { currencyName: "Kazakhstani Tenge", currencySymbol: "тенге", id: "KZT", rate: 418.821319 },
   "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2849.930035 },
   "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
+  "MXN1": { currencyName: "Mexican Peso", currencySymbol: "песо", id: "MXN", rate: 20.655212 },
   "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
   "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
   "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
   "RUB1": { currencyName: "Russian Ruble", currencySymbol: "rubles", id: "RUB", rate: 72.880818 },
   "RUB2": { currencyName: "Russian Ruble", currencySymbol: "рублей", id: "RUB", rate: 72.880818 },
+  "RUB3": { currencyName: "Russian Ruble", currencySymbol: "руб", id: "RUB", rate: 72.880818 },
+  "RUB4": { currencyName: "Russian Ruble", currencySymbol: "р.", id: "RUB", rate: 72.880818 },
   "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },
   "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 8.514027 },
   "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", id: "TRY", rate: 0.14 },
   "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", id: "UAH", rate: 27.852288 },
   "UAH2": { currencyName: "Ukrainian Hryvnia", currencySymbol: "гривен", id: "UAH", rate: 27.852288 },
+  "UAH3": { currencyName: "Ukrainian Hryvnia", currencySymbol: "грн", id: "UAH", rate: 27.852288 },
   "USD": { currencyName: "United States Dollar", currencySymbol: "$", id: "USD", rate: 1 },
   "USD1": { currencyName: "United States Dollar", currencySymbol: "dollar", id: "USD", rate: 1 },
   "USD3": { currencyName: "United States Dollar", currencySymbol: "доллар", id: "USD", rate: 1 },

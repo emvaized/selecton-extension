@@ -48,7 +48,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrency": {
-        "message": "Devise à convertir (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Rechercher le code </a>)",
+        "message": "Devise à convertir (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Voir info</a>)",
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrencyHint": {
@@ -273,6 +273,14 @@
     },
     "addPhoneButton": {
         "message": "Bouton Ajouter un numéro de téléphone",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "showUnconvertedValue": {
+        "message": "Afficher la valeur non convertie",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "addScaleUpEffect": {
+        "message": "Ajouter un effet de mise à l'échelle lors de la révélation",
         "description": "Libellé de l'option dans les paramètres"
     }
 }

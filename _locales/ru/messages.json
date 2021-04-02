@@ -48,7 +48,7 @@
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать код</a>)",
+        "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать больше</a>)",
         "description": "Label for field in settings"
     },
     "convertToCurrencyHint": {
@@ -274,5 +274,13 @@
     "addPhoneButton": {
         "message": "Добавить кнопку номера телефона",
         "description": "Label for option in settings"
+    },
+    "showUnconvertedValue": {
+        "message": "Показывать изначальное значение",
+        "description": "Label for button in settings"
+    },
+    "addScaleUpEffect": {
+        "message": "Добавить эффект увеличения при появлении",
+        "description": "Label for button in settings"
     }
 }

@@ -48,7 +48,7 @@
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
-    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Find code</a>)",
+    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See info</a>)",
     "description": "Label for field in settings"
   },
   "convertToCurrencyHint": {
@@ -269,6 +269,14 @@
   },
   "addPhoneButton": {
     "message": "Add phone number button",
+    "description": "Label for option in settings"
+  },
+  "showUnconvertedValue": {
+    "message": "Show unconverted value",
+    "description": "Label for option in settings"
+  },
+  "addScaleUpEffect": {
+    "message": "Add scale-up effect on reveal",
     "description": "Label for option in settings"
   }
 }
