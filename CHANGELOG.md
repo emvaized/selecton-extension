@@ -1,3 +1,8 @@
+#2.1.4
+- Fix for moving tooltip up on some websites (Pikabu)
+- Attempt to fix UTF-8 encoding issue for some users
+- Small translation improvements
+
 #2.1.3
 - Added scale-up animation on tooltip reveal (can be disabled in settings)
 - Implemented ability to disable showing unconverted value in convert buttons

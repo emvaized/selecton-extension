@@ -355,7 +355,6 @@ function setPageListeners() {
 
     if (isDraggingTooltip) return;
 
-    // if (dontShowTooltip) return;
     if (dontShowTooltip !== true)
       setTimeout(
         function () {
@@ -373,6 +372,12 @@ function setPageListeners() {
 
               var selDimensions = getSelectionDimensions();
               selectedText = selection.toString().trim();
+
+              /// Special handling for non UTF-8 ecoded websites
+              // if (selectedText.includes('�')) {
+              selectedText = encodeURI(selectedText);
+              selectedText = decodeURI(selectedText);
+              // }
 
               /// Experimental handling of text fields
               if (
@@ -827,8 +832,7 @@ function setPageListeners() {
 
                       /// Add 'open link' button for each found link
                       if (addOpenLinks)
-                        // if (tooltip.children.length < 4 && selectedText.includes('.')) {
-                        if (tooltip.children.length < 4 && (selectedText.includes('.') || selectedText.includes('/'))) {
+                        if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.') || selectedText.includes('/'))) {
                           var words = selectedText.split(' ');
                           for (i in words) {
                             var link = words[i];
@@ -988,8 +992,7 @@ function createTooltip(type) {
         /// Move main tooltip
         tooltip.style.left = `0px`;
         tooltip.style.top = `0px`;
-        tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px )`;
-
+        tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
         tooltip.style.transition = `opacity ${animationDuration}ms ease-in-out`;
 
         document.body.style.cursor = 'move';
@@ -1201,31 +1204,46 @@ function showTooltip(dx, dy) {
     setTimeout(function () {
       /// Experimental code to determine website's own selection tooltip
       /// Implemented as a fix for Medium.com article view, and all websites that use the same styles tooltip
-      var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform']`);
+      // var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform']`);
+      var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[style*='left'][style*='top']`);
 
       var websiteTooltip;
       if (websiteTooltips !== null && websiteTooltips !== undefined)
         for (i in websiteTooltips) {
           var el = websiteTooltips[i];
           if (el.style !== undefined) {
-            var elStyle = el.style.transform.toString();
-            if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
+            var transformStyle;
+
+            try {
+              transformStyle = el.style.transform.toString();
+            } catch (e) { }
+
+            // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
+            if ((transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate3d')) ||
+              (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%' && el.style.top !== '0px' && el.getAttribute('style').toString().includes('left') && el.getAttribute('style').toString().includes('top'))) {
               if (debugMode)
                 console.log('Detected selection tooltip on the website');
+
               websiteTooltip = el;
               break;
             }
           }
         };
 
-      if (websiteTooltip !== null && websiteTooltip !== undefined) {
-        tooltip.style.top = `${dy - websiteTooltip.clientHeight + 7.5}px`;
-        arrow.style.opacity = 0.0;
+      if (websiteTooltip !== null && websiteTooltip !== undefined && websiteTooltip.clientHeight > 1) {
+        tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
+
+        /// Animated approach
+        // tooltip.style.left = `0px`;
+        // tooltip.style.top = `0px`;
+        // tooltip.style.transform = `translate(${dx}px, ${dy - websiteTooltip.clientHeight + 5}px)`;
+        // arrow.style.opacity = 0.0;
+        arrow.parentNode.removeChild(arrow);
       } else {
         arrow.style.opacity = 1.0;
       }
 
-    }, 50);
+    }, 300);
 
   /// Create secondary tooltip (for custom search options)
   /// Add a delay to be sure currency and translate buttons were already added
@@ -1553,7 +1571,6 @@ function createSecondaryTooltip() {
   //   // secondaryTooltip.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
   // }
 
-
   var dx = tooltip.style.left;
   var dy = tooltip.style.top;
   secondaryTooltip.style.left = dx;
@@ -1689,6 +1706,7 @@ const addressMarkers = [
   'пр.',
   'проспект ',
   'улица',
+  'вулиця',
   ' street',
   'broadway',
   ' st',

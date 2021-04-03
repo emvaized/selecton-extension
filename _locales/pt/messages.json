@@ -208,7 +208,7 @@
         "description": "Cabeçalho para a categoria de botões contextuais nas configurações"
     },
     "customSearchUrl": {
-        "message": "URL de pesquisa personalizado <br /> (use% s como espaço reservado para consulta)",
+        "message": "URL de pesquisa personalizado <br /> (use %s como espaço reservado para consulta)",
         "description": "Rótulo para o campo nas configurações"
     },
     "addColorPreviewButton": {
@@ -220,7 +220,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
-        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/> Use% s como um marcador de posição para a consulta",
+        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/> Use %s como um marcador de posição para a consulta",
         "description": "Rótulo para o campo nas configurações"
     },
     "deleteLabel": {

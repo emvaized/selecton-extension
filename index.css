@@ -10,7 +10,7 @@
     border-radius: 3px;
     font-stretch: condensed;
     text-decoration: none;
-    z-index: 9999 !important;
+    z-index: 10000 !important;
     max-height: 24px !important;
     margin: 0px !important;
     line-height: 1.0 !important; 
@@ -18,7 +18,7 @@
 
 /* Arrow */
   .selection-tooltip-arrow {
-    z-index:9999 !important;
+    z-index:10000 !important;
     width: 50px;
     height: 16px;
     overflow: hidden;
@@ -48,7 +48,7 @@
     cursor: pointer;
     border: none !important;
     box-shadow: none !important;
-    z-index: 9999 !important;
+    z-index: 10000 !important;
     padding:  4px 12px !important;
     vertical-align: top !important;
     font-family: Arial, Helvetica, sans-serif !important;
@@ -58,6 +58,7 @@
     transition: background-color 25ms ease-in-out !important;
     text-transform: none !important;
     outline: none !important;
+    text-align: center !important;
     /* align-items: top !important; */
     /* line-height: 100% !important; */
     /* padding:  var(--selection-button-padding) !important; */
@@ -97,7 +98,7 @@
   opacity: 0.0;
   top: 0px;
   left: 0px;
-  z-index: 9998 !important;
+  z-index: 9999 !important;
   position: absolute;
   margin: 0px !important;
   padding: 0px !important;
@@ -110,7 +111,7 @@
   bottom: -5px;
   position: absolute;
   height: 5px;
-  z-index: 9999 !important;
+  z-index: 9998 !important;
   background: transparent !important;
 }
 
