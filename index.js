@@ -918,7 +918,8 @@ function setPageListeners() {
 
                 /// Show Translate button when enabled, and no other buttons were added 
                 // if (tooltip.children.length < 4 && showTranslateButton && document.getElementById('selecton-translate-button') == null) {
-                if (tooltip.children.length < 4 && showTranslateButton && (document.getElementById('selecton-translate-button') == null || document.getElementById('selecton-translate-button') == undefined)) {
+                // if (tooltip.children.length < 4 && showTranslateButton && (document.getElementById('selecton-translate-button') == null || document.getElementById('selecton-translate-button') == undefined)) {
+                if (tooltip.children.length < 4 && showTranslateButton) {
                   addTranslateButton();
                 } else {
                   setTimeout(function () {
@@ -1284,10 +1285,13 @@ function hideTooltip() {
   }
 
   /// Remove all translate buttons
-  var translateButtons = document.querySelectorAll('#selecton-translate-button');
-  translateButtons.forEach(function (button) {
-    button.parentNode.removeChild(button);
-  });
+  // setTimeout(function () {
+  //   var translateButtons = document.querySelectorAll('#selecton-translate-button');
+  //   translateButtons.forEach(function (button) {
+  //     button.parentNode.removeChild(button);
+  //   });
+  // }, animationDuration);
+
 
   /// Hide all secondary tooltips
   var oldSecondaryTooltips = document.querySelectorAll('.secondary-selection-tooltip');
