@@ -1439,8 +1439,6 @@ function addTranslateButton() {
           translateButton.textContent = translateLabel;
         translateButton.addEventListener("mousedown", function (e) {
           hideTooltip();
-
-          // var selectedText = selection.toString();
           removeSelection();
 
           /// Open google translator
