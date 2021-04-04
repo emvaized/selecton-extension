@@ -1,7 +1,7 @@
 #2.1.4
-- Fix for moving tooltip up on some websites (Pikabu)
-- Attempt to fix UTF-8 encoding issue for some users
-- Small translation improvements
+- Fix moving tooltip up on some websites (Pikabu)
+- Possible fix for UTF-8 encoding (Google Translate)
+- Added Ukrainian translation and small translation fixes for other languages
 
 #2.1.3
 - Added scale-up animation on tooltip reveal (can be disabled in settings)

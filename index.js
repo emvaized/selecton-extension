@@ -79,7 +79,7 @@ var customSearchButtons = [
 ];
 
 /// Currently non user-configurable settings 
-var debugMode = false;
+var debugMode = true;
 var updateRatesEveryDays = 14;
 var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
@@ -341,7 +341,6 @@ function setPageListeners() {
       if (evt.buttons == 1) {
         if (isDraggingTooltip) return;
         selection = null;
-        // removeSelection();
         hideTooltip();
       }
     }
@@ -713,7 +712,6 @@ function setPageListeners() {
                     }
                   }
 
-
                   /// Convert currencies
                   if (convertCurrencies) {
                     var currency;
@@ -916,11 +914,11 @@ function setPageListeners() {
 
                     }
                   }
-
                 }
 
                 /// Show Translate button when enabled, and no other buttons were added 
-                if (tooltip.children.length < 4 && showTranslateButton && document.getElementById('selecton-translate-button') == null) {
+                // if (tooltip.children.length < 4 && showTranslateButton && document.getElementById('selecton-translate-button') == null) {
+                if (tooltip.children.length < 4 && showTranslateButton && (document.getElementById('selecton-translate-button') == null || document.getElementById('selecton-translate-button') == undefined)) {
                   addTranslateButton();
                 } else {
                   setTimeout(function () {
@@ -940,7 +938,8 @@ function setPageListeners() {
                 var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
 
                 /// Show tooltip on top of selection
-                showTooltip(resultingDx, resultingDy + 2.7);
+                // showTooltip(resultingDx, resultingDy + 2.7);
+                showTooltip(resultingDx, resultingDy + 4);
               }
               else hideTooltip();
             }
@@ -1155,7 +1154,6 @@ function createTooltip(type) {
       hideTooltip();
       removeSelection();
 
-
     });
     tooltip.appendChild(copyButton);
   }
@@ -1265,7 +1263,8 @@ function hideTooltip() {
     console.log(`Found ${oldTooltips.length} Selecton tooltips:`);
     console.log(oldTooltips);
   }
-  if (oldTooltips !== null && oldTooltips.length !== 0)
+
+  if (oldTooltips !== null && oldTooltips.length !== 0) {
     oldTooltips.forEach(function (oldTooltip) {
       // tooltip.style.opacity = 0.0;
       oldTooltip.style.opacity = 0.0;
@@ -1281,7 +1280,14 @@ function hideTooltip() {
           console.log('Selecton tooltip hidden');
 
       }, animationDuration);
-    })
+    });
+  }
+
+  /// Remove all translate buttons
+  var translateButtons = document.querySelectorAll('#selecton-translate-button');
+  translateButtons.forEach(function (button) {
+    button.parentNode.removeChild(button);
+  });
 
   /// Hide all secondary tooltips
   var oldSecondaryTooltips = document.querySelectorAll('.secondary-selection-tooltip');
@@ -1431,14 +1437,20 @@ function addTranslateButton() {
           translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + translateLabel;
         else
           translateButton.textContent = translateLabel;
-        translateButton.addEventListener("mouseup", function (e) {
+        translateButton.addEventListener("mousedown", function (e) {
           hideTooltip();
 
           // var selectedText = selection.toString();
           removeSelection();
 
           /// Open google translator
-          window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${selectedText.trim()}`, '_blank');
+          // window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${selectedText.trim()}`, '_blank');
+
+          try {
+            window.open(`https://translate.google.com/?sl=auto&tl=${languageToTranslate}&text=${encodeURI(selectedText.trim())}`, '_blank');
+          } catch (e) {
+            console.log(e);
+          }
         });
         tooltip.appendChild(translateButton);
         /// Correct tooltip's dx
@@ -1709,7 +1721,7 @@ const addressMarkers = [
   'вулиця',
   ' street',
   'broadway',
-  ' st',
+  ' st.',
 ];
 
 
