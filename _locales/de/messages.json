@@ -52,7 +52,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "convertToCurrencyHint": {
-        "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'> hier </a> als Referenz",
+        "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>hier</a> als Referenz",
         "description": "Währungscode-Hinweis für das Feld 'In Währung konvertieren' in den Einstellungen"
     },
     "hideOnScroll": {
@@ -108,7 +108,7 @@
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "languageToTranslate": {
-        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> ISO 639-1-Code </a>)",
+        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
         "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
     },
     "useCustomStyle": {

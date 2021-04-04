@@ -52,7 +52,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "convertToCurrencyHint": {
-        "message": "Veja 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'> aqui </a> para referência",
+        "message": "Veja 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'>aqui</a> para referência",
         "description": "Dica de código de moeda para o campo 'converter em moeda' nas configurações"
     },
     "hideOnScroll": {
@@ -108,7 +108,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "languageToTranslate": {
-        "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> código ISO 639-1 </a>)",
+        "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Rótulo para campo nas configurações, incorporando link embutido"
     },
     "useCustomStyle": {
@@ -220,7 +220,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
-        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/> Use %s como um marcador de posição para a consulta",
+        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta",
         "description": "Rótulo para o campo nas configurações"
     },
     "deleteLabel": {

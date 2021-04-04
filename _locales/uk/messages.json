@@ -48,11 +48,11 @@
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'> Дізнатися більше </a>)",
+        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Дізнатися більше</a>)",
         "description": "Label for field in settings"
     },
     "convertToCurrencyHint": {
-        "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'> тут </a>",
+        "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>",
         "description": "Currency code hint for 'convert to currency' field in settings"
     },
     "hideOnScroll": {

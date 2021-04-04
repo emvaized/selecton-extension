@@ -52,7 +52,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "convertToCurrencyHint": {
-        "message": "Consulte 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'> aquí </a> como referencia",
+        "message": "Consulte 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'>aquí</a> como referencia",
         "description": "Sugerencia de código de moneda para el campo 'convertir a moneda' en la configuración"
     },
     "hideOnScroll": {
@@ -108,7 +108,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "languageToTranslate": {
-        "message": "Idioma para traducir (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> código ISO 639-1 </a>)",
+        "message": "Idioma para traducir (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Etiqueta para el campo en la configuración, incorporando un enlace en línea"
     },
     "useCustomStyle": {

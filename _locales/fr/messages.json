@@ -52,7 +52,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrencyHint": {
-        "message": "Voir 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'> ici </a> pour référence",
+        "message": "Voir 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>ici</a> pour référence",
         "description": "Indice de code de devise pour le champ 'Convertir en devise' dans les paramètres"
     },
     "hideOnScroll": {
@@ -100,7 +100,7 @@
         "description": "Libellé du bouton des paramètres menant à la page GitHub"
     },
     "allChangesSavedAutomatically": {
-        "message": "Les paramètres sont enregistrés automatiquement <br /> Mettre à jour la page pour voir les modifications",
+        "message": "Les paramètres sont enregistrés automatiquement <br />Mettre à jour la page pour voir les modifications",
         "description": "Petite note d'information à la fin des réglages"
     },
     "showTranslateButton": {
@@ -108,7 +108,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "languageToTranslate": {
-        "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'> code ISO 639-1 </a>)",
+        "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
         "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
     },
     "useCustomStyle": {
