@@ -80,16 +80,15 @@
 
 /* Text selection */
 ::selection {
-    color: var(--selection-text-color);
-    background:  var(--selection-background);
-    text-shadow: var( --selection-text-shadow);
+  background:  var(--selection-background);
+  color: var(--selection-text-color);
+  text-shadow: var( --selection-text-shadow);
 }
 /* for Mozilla Firefox */
 ::-moz-selection {
-    color: var(--selection-text-color);
-    /* background: var(--selection-background) !important; */
-    background: var(--selection-background);
-    text-shadow:var( --selection-text-shadow);
+  background: var(--selection-background);
+  color: var(--selection-text-color);
+  text-shadow:var( --selection-text-shadow);
 }
 
 

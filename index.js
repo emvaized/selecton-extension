@@ -90,6 +90,7 @@ var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 var animationDuration = 300;
+var allowWebsitesOverrideSelectionColor = true;
 
 /// Service variables
 var copyLabel = 'Copy';
@@ -184,6 +185,7 @@ function init() {
 
       /// Change text selection color
       if (changeTextSelectionColor && enabled && domainIsBlacklisted == false) {
+        // document.body.style.setProperty('--selection-background', textSelectionBackground + (allowWebsitesOverrideSelectionColor ? ' !important' : ''));
         document.body.style.setProperty('--selection-background', textSelectionBackground);
         document.body.style.setProperty('--selection-text-color', textSelectionColor);
         document.body.style.setProperty('--selection-text-shadow', addSelectionTextShadow ? `1.5px 1.5px 2px rgba(0,0,0,${selectionTextShadowOpacity})` : 'none');
