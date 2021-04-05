@@ -1,4 +1,4 @@
-#2.1.5
+#2.1.6
 - Quick fix for tooltip being invisible on some websites (such as Reddit)
 
 #2.1.4
