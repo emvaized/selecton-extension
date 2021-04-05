@@ -131,5 +131,7 @@
 }
 
 .selection-popup-color-preview-circle {
-  max-width: 9px; max-height: 9px; padding: 0px 7.5px; margin: 9px 3px; border-radius: 50%; border:solid 1px var(--selection-button-background-hover); display: inline;
+  max-width: 9px; max-height: 9px; padding: 0px 7.5px; margin: 9px 3px; border-radius: 50%; 
+  /* border:solid 1px var(--selection-button-background-hover);  */
+  display: inline;
 }

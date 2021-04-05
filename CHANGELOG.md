@@ -1,3 +1,6 @@
+#2.1.5
+- Quick fix for tooltip being invisible hidden on Reddit
+
 #2.1.4
 - Fix moving tooltip up on some websites (Pikabu)
 - Possible fix for UTF-8 encoding (Google Translate)

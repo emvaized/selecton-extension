@@ -1204,8 +1204,6 @@ function showTooltip(dx, dy) {
   if (shiftTooltipWhenWebsiteHasOwn)
     setTimeout(function () {
       /// Experimental code to determine website's own selection tooltip
-      /// Implemented as a fix for Medium.com article view, and all websites that use the same styles tooltip
-      // var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform']`);
       var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[style*='left'][style*='top']`);
 
       var websiteTooltip;
@@ -1221,9 +1219,13 @@ function showTooltip(dx, dy) {
 
             // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
             if ((transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate3d')) ||
-              (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%' && el.style.top !== '0px' && el.getAttribute('style').toString().includes('left') && el.getAttribute('style').toString().includes('top'))) {
-              if (debugMode)
-                console.log('Detected selection tooltip on the website');
+              (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%'
+                && el.style.top !== '0px' && el.style.top !== '0' && !el.getAttribute('style').toString().includes('margin')
+                && el.getAttribute('style').toString().includes('left:') && el.getAttribute('style').toString().includes('top:'))) {
+              if (debugMode) {
+                console.log('Detected selection tooltip on the website with following style:');
+                console.log(el.getAttribute('style').toString());
+              }
 
               websiteTooltip = el;
               break;
@@ -1232,7 +1234,7 @@ function showTooltip(dx, dy) {
         };
 
       if (websiteTooltip !== null && websiteTooltip !== undefined && websiteTooltip.clientHeight > 1) {
-        tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
+        tooltip.style.top = `${dy - websiteTooltip.clientHeight - 4}px`;
 
         /// Animated approach
         // tooltip.style.left = `0px`;
