@@ -1,5 +1,6 @@
 #2.1.6
 - Quick fix for tooltip being invisible on some websites (such as Reddit)
+- More UTF-8 encoding fixes (happens with Chrome on Windows)
 
 #2.1.4
 - Fix moving tooltip up on some websites (Pikabu)

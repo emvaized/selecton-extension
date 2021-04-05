@@ -1545,33 +1545,39 @@ function rgbToHex(r, g, b) {
 }
 
 function returnSearchUrl(query) {
+  var encodedQuery = encodeURI(query);
+
   switch (preferredSearchEngine) {
-    case 'google': return `https://www.google.com/search?q=${query}`; break;
-    case 'duckduckgo': return `https://duckduckgo.com/?q=${query}`; break;
-    case 'bing': return `https://www.bing.com/search?q=${query}`; break;
-    case 'yandex': return `https://yandex.ru/search/?text=${query}`; break;
-    case 'baidu': return `http://www.baidu.com/s?wd=${query}`; break;
-    case 'yahoo': return `https://search.yahoo.com/search?p=${query}`; break;
-    case 'custom': return customSearchUrl.replaceAll('%s', query); break;
+    case 'google': return `https://www.google.com/search?q=${encodedQuery}`; break;
+    case 'duckduckgo': return `https://duckduckgo.com/?q=${encodedQuery}`; break;
+    case 'bing': return `https://www.bing.com/search?q=${encodedQuery}`; break;
+    case 'yandex': return `https://yandex.ru/search/?text=${encodedQuery}`; break;
+    case 'baidu': return `http://www.baidu.com/s?wd=${encodedQuery}`; break;
+    case 'yahoo': return `https://search.yahoo.com/search?p=${encodedQuery}`; break;
+    case 'custom': return customSearchUrl.replaceAll('%s', encodedQuery); break;
   }
 }
 
 function returnNewEmailUrl(query) {
+  var encodedQuery = encodeURI(query);
+
   switch (preferredNewEmailMethod) {
     case 'mailto': return `mailto:${query}`; break;
-    case 'gmail': return `https://mail.google.com/mail/?view=cm&fs=1&to=${query}`; break;
-    case 'yahoo': return `https://compose.mail.yahoo.com/?to=${query}`; break;
-    case 'outlook': return `https://outlook.com/?path=/mail/action/compose&to=${query}`; break;
+    case 'gmail': return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedQuery}`; break;
+    case 'yahoo': return `https://compose.mail.yahoo.com/?to=${encodedQuery}`; break;
+    case 'outlook': return `https://outlook.com/?path=/mail/action/compose&to=${encodedQuery}`; break;
   }
 }
 
 function returnShowOnMapUrl(query) {
+  var encodedQuery = encodeURI(query);
+
   switch (preferredMapsService) {
-    case 'google': return `https://www.google.com/maps/place/${query}`; break;
-    case 'waze': return `https://www.waze.com/ru/live-map?q=kharkiv${query}`; break;
-    case 'mapquest': return `https://www.mapquest.com/search/results?query=${query}`; break;
-    case '2gis': return `https://2gis.ua/kharkov/search/${query}`; break;
-    case 'yandexmaps': return `https://yandex.ru/maps/geo/${query}`; break;
+    case 'google': return `https://www.google.com/maps/place/${encodedQuery}`; break;
+    case 'waze': return `https://www.waze.com/ru/live-map?q=kharkiv${encodedQuery}`; break;
+    case 'mapquest': return `https://www.mapquest.com/search/results?query=${encodedQuery}`; break;
+    case '2gis': return `https://2gis.ua/kharkov/search/${encodedQuery}`; break;
+    case 'yandexmaps': return `https://yandex.ru/maps/geo/${encodedQuery}`; break;
   }
 }
 
