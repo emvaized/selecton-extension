@@ -1,5 +1,6 @@
-#2.1.6
+#2.1.7
 - Quick fix for tooltip being invisible on some websites (such as Reddit)
+- Improved moving up tooltip when website has it's own
 - More UTF-8 encoding fixes (happens with Chrome on Windows)
 
 #2.1.4

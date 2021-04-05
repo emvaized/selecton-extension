@@ -1221,23 +1221,26 @@ function showTooltip(dx, dy) {
             var elementStyle = el.getAttribute('style').toString();
 
             // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
-            if ((transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate3d')) ||
-              (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%'
+            if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate')) ||
+              (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%' && el.style.width !== '0px'
                 && el.style.top !== '0px' && el.style.top !== '0' && !elementStyle.includes('margin') && !elementStyle.includes('padding')
                 && elementStyle.includes('left:') && elementStyle.includes('top:'))) {
-              if (debugMode) {
-                console.log('Detected selection tooltip on the website with following style:');
-                console.log(elementStyle);
+              if (el.clientHeight < 100) {
+                if (debugMode) {
+                  console.log('Detected selection tooltip on the website with following style:');
+                  console.log(elementStyle);
+                }
+
+                websiteTooltip = el;
+                break;
               }
 
-              websiteTooltip = el;
-              break;
             }
           }
         };
 
       if (websiteTooltip !== null && websiteTooltip !== undefined && websiteTooltip.clientHeight > 1) {
-        tooltip.style.top = `${dy - websiteTooltip.clientHeight - 4}px`;
+        tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
 
         /// Animated approach
         // tooltip.style.left = `0px`;
