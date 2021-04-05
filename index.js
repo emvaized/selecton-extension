@@ -1217,14 +1217,17 @@ function showTooltip(dx, dy) {
               transformStyle = el.style.transform.toString();
             } catch (e) { }
 
+
+            var elementStyle = el.getAttribute('style').toString();
+
             // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
             if ((transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate3d')) ||
               (!el.className.includes('selection-tooltip') && el.style.visibility !== 'hidden' && el.style.width !== '100%'
-                && el.style.top !== '0px' && el.style.top !== '0' && !el.getAttribute('style').toString().includes('margin')
-                && el.getAttribute('style').toString().includes('left:') && el.getAttribute('style').toString().includes('top:'))) {
+                && el.style.top !== '0px' && el.style.top !== '0' && !elementStyle.includes('margin') && !elementStyle.includes('padding')
+                && elementStyle.includes('left:') && elementStyle.includes('top:'))) {
               if (debugMode) {
                 console.log('Detected selection tooltip on the website with following style:');
-                console.log(el.getAttribute('style').toString());
+                console.log(elementStyle);
               }
 
               websiteTooltip = el;
