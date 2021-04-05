@@ -1,5 +1,5 @@
 #2.1.5
-- Quick fix for tooltip being invisible hidden on Reddit
+- Quick fix for tooltip being invisible on some websites (such as Reddit)
 
 #2.1.4
 - Fix moving tooltip up on some websites (Pikabu)
