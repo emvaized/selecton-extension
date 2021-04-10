@@ -4,6 +4,7 @@
 - Fixed bug with tooltip blinking when clicked on 'Copy' too fast
 - Implemented collapsible headers in settings
 - Added settings switch for debug mode
+- Small bug fixes
 
 #2.1.7
 - Quick fix for tooltip being invisible on some websites (such as Reddit)

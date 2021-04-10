@@ -46,6 +46,7 @@ var excludedDomains = '';
 var showUnconvertedValue = true;
 var addScaleUpEffect = true;
 var debugMode = false;
+var buttonsStyle = 'onlylabel'; /// Possible values: 'onlylabel, onlyicon', iconlabel'
 var customSearchButtons = [
   {
     'url': 'https://www.youtube.com/results?search_query=%s',
@@ -78,7 +79,6 @@ var customSearchButtons = [
     'enabled': false
   },
 ];
-var buttonsStyle = 'onlylabel'; /// Possible values: 'onlylabel, onlyicon', iconlabel'
 
 /// Currently non user-configurable settings 
 var updateRatesEveryDays = 14;
