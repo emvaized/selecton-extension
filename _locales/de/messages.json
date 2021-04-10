@@ -220,7 +220,7 @@
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "customSearchTooltip": {
-        "message": "Tooltip für benutzerdefinierte Suche",
+        "message": "Tooltip für Suche",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "customSearchTooltipHint": {
@@ -282,5 +282,25 @@
     "addScaleUpEffect": {
         "message": "Scale-up-Effekt bei Enthüllung hinzufügen",
         "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "debugMode": {
+        "message": "Debug mode",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "buttonStyle": {
+        "message": "Buttons Stil",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "onlyicon": {
+        "message": "Nur Symbol",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "onlylabel": {
+        "message": "Nur Etikett",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "iconlabel": {
+        "message": "Symbol und Etikett",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     }
 }

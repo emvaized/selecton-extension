@@ -59,6 +59,7 @@
     text-transform: none !important;
     outline: none !important;
     text-align: center !important;
+    /* align-items: center; */
     /* align-items: top !important; */
     /* line-height: 100% !important; */
     /* padding:  var(--selection-button-padding) !important; */

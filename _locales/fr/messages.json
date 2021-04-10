@@ -220,7 +220,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchTooltip": {
-        "message": "Info-bulle de recherche personnalisée",
+        "message": "Info-bulle de recherche",
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchTooltipHint": {
@@ -282,5 +282,25 @@
     "addScaleUpEffect": {
         "message": "Ajouter un effet de mise à l'échelle lors de la révélation",
         "description": "Libellé de l'option dans les paramètres"
+    },
+    "debugMode": {
+        "message": "Mode débogage",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "buttonsStyle": {
+        "message": "Style des boutons",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "onlyicon": {
+        "message": "Icône uniquement",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "onlylabel": {
+        "message": "Seulement étiquette",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "iconlabel": {
+        "message": "Icône et étiquette",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
     }
 }

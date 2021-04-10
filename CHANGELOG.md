@@ -1,3 +1,10 @@
+#2.1.8
+- Fix for tooltip being moved up on some websites
+- Added only-icon button style in settings
+- Fixed bug with tooltip blinking when clicked on 'Copy' too fast
+- Implemented collapsible headers in settings
+- Added settings switch for debug mode
+
 #2.1.7
 - Quick fix for tooltip being invisible on some websites (such as Reddit)
 - Improved moving up tooltip when website has it's own

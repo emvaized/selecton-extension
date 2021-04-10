@@ -278,5 +278,25 @@
   "addScaleUpEffect": {
     "message": "Add scale-up effect on reveal",
     "description": "Label for option in settings"
+  },
+  "debugMode": {
+    "message": "Debug mode",
+    "description": "Label for option in settings"
+  },
+  "buttonsStyle": {
+    "message": "Buttons style",
+    "description": "Label for option in settings"
+  },
+  "onlyicon": {
+    "message": "Only icon",
+    "description": "Label for buttons style option in settings"
+  },
+  "onlylabel": {
+    "message": "Only label",
+    "description": "Label for buttons style option in settings"
+  },
+  "iconlabel": {
+    "message": "Icon and label",
+    "description": "Label for buttons style option in settings"
   }
 }

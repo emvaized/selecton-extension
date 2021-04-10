@@ -220,7 +220,7 @@
         "description": "Label for field in settings"
     },
     "customSearchTooltip": {
-        "message": "Панель додаткових варіантів пошуку",
+        "message": "Панель варіантів пошуку",
         "description": "Ярлик для поля в настройках"
     },
     "customSearchTooltipHint": {
@@ -282,5 +282,25 @@
     "addScaleUpEffect": {
         "message": "Додати ефект збільшення при появі",
         "description": "Label for button in settings"
+    },
+    "debugMode": {
+        "message": "Режим відлагодження",
+        "description": "Мітка для опції в налаштуваннях"
+    },
+    "buttonStyle": {
+        "message": "Стиль кнопок",
+        "description": "Мітка для опції в налаштуваннях"
+    },
+    "onlyicon": {
+        "message": "Тільки іконка",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "onlylabel": {
+        "message": "Тільки текст",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "iconlabel": {
+        "message": "Іконка та текст",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     }
 }

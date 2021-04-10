@@ -26,7 +26,6 @@ var options = new Map([
     ['addActionButtonsForTextFields', false],
     ['removeSelectionOnActionButtonClick', true],
     ['draggableTooltip', true],
-    ['addButtonIcons', false],
     ['enabled', true],
     ['hideOnKeypress', true],
     ['preferredSearchEngine', 'google'],
@@ -43,6 +42,9 @@ var options = new Map([
     ['addPhoneButton', true],
     ['showUnconvertedValue', true],
     ['addScaleUpEffect', true],
+    ['debugMode', false],
+    // ['addButtonIcons', false],
+    ['buttonsStyle', 'onlylabel'],
 ]);
 
 var keys = [...options.keys()];
@@ -126,6 +128,8 @@ function loadSettings() {
         loadCustomSearchButtons();
 
         setCurrenciesDropdown();
+
+        setCollapsibleHeaders();
     }
 
 }
@@ -218,6 +222,25 @@ function updateDisabledOptions() {
     document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+}
+
+function setCollapsibleHeaders() {
+    var coll = document.getElementsByClassName("collapsible-header");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                // content.style.border = 'none';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                // content.style.border = '1px solid #444';
+            }
+        });
+    }
 }
 
 function saveAllSettings() {

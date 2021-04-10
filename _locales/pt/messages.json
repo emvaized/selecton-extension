@@ -216,7 +216,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltip": {
-        "message": "Dica de ferramenta de pesquisa personalizada",
+        "message": "Painel de pesquisa",
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
@@ -278,5 +278,25 @@
     "addScaleUpEffect": {
         "message": "Adicionar efeito de aumento de escala ao revelar",
         "description": "Rótulo para opção nas configurações"
+    },
+    "debugMode": {
+        "message": "Modo de depuração",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "buttonsStyle": {
+        "message": "Estilo dos botões",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "onlyicon": {
+        "message": "Somente ícone",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "onlylabel": {
+        "message": "Apenas rótulo",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "iconlabel": {
+        "message": "Ícone e rótulo",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
     }
 }
