@@ -1,6 +1,6 @@
 #2.1.8
 - Fix for tooltip being moved up on some websites
-- Added only-icon button style in settings
+- Added only-icon button style in settings + changed map icon
 - Fixed bug with tooltip blinking when clicked on 'Copy' too fast
 - Implemented collapsible headers in settings
 - Added settings switch for debug mode
