@@ -1492,7 +1492,6 @@ function checkToRemovePageSelection() {
   }, animationDuration);
 }
 
-
 function fetchCurrencyRates() {
   fetch(urlToLoadCurrencyRates).then(function (val) {
     return val.json();
@@ -1536,7 +1535,7 @@ function loadCurrencyRatesFromMemory() {
 }
 
 
-
+/// Experimental drag handles code
 function setDragHandles(initialDimensions) {
   try {
     var currentWindowSelection;
@@ -1680,130 +1679,130 @@ function setDragHandles(initialDimensions) {
 
 
     /// Left drag handle
-    console.log('Adding left drag handle...');
+    // console.log('Adding left drag handle...');
 
-    var leftDragHandle = document.createElement('div');
-    leftDragHandle.setAttribute('class', 'selection-tooltip-draghandle-right');
-    leftDragHandle.setAttribute('style', ` transform: translate(${leftDx}px, ${dy + window.scrollY + selDimensions.height - 20}px); border-radius: 24px !important;transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: 35px; width: 2.5px; opacity:0; background: ${tooltipBackground};`);
-    document.body.appendChild(leftDragHandle);
+    // var leftDragHandle = document.createElement('div');
+    // leftDragHandle.setAttribute('class', 'selection-tooltip-draghandle-right');
+    // leftDragHandle.setAttribute('style', ` transform: translate(${leftDx}px, ${dy + window.scrollY + selDimensions.height - 20}px); border-radius: 24px !important;transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: 35px; width: 2.5px; opacity:0; background: ${tooltipBackground};`);
+    // document.body.appendChild(leftDragHandle);
 
-    var circleDiv = document.createElement('div');
-    circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: 15px; width: 15px; position: relative; bottom: -30px; left: -6.5px;`);
-    // circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-    leftDragHandle.appendChild(circleDiv);
-    leftDragHandle.style.cursor = 'grab';
-    setTimeout(function () {
-      leftDragHandle.style.opacity = 1.0;
-    }, 1);
+    // var circleDiv = document.createElement('div');
+    // circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: 15px; width: 15px; position: relative; bottom: -30px; left: -6.5px;`);
+    // // circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
+    // leftDragHandle.appendChild(circleDiv);
+    // leftDragHandle.style.cursor = 'grab';
+    // setTimeout(function () {
+    //   leftDragHandle.style.opacity = 1.0;
+    // }, 1);
 
-    var windowSelection;
-    if (window.getSelection) {
-      windowSelection = window.getSelection();
-    } else if (document.selection) {
-      windowSelection = document.selection.createRange();
-    }
+    // var windowSelection;
+    // if (window.getSelection) {
+    //   windowSelection = window.getSelection();
+    // } else if (document.selection) {
+    //   windowSelection = document.selection.createRange();
+    // }
 
-    leftDragHandle.onmousedown = function (e) {
-      hideTooltip();
-      isDraggingTooltip = true;
-      e.preventDefault();
+    // leftDragHandle.onmousedown = function (e) {
+    //   hideTooltip();
+    //   isDraggingTooltip = true;
+    //   e.preventDefault();
 
-      document.body.style.cursor = 'grabbing';
-      leftDragHandle.style.cursor = 'grabbing';
+    //   document.body.style.cursor = 'grabbing';
+    //   leftDragHandle.style.cursor = 'grabbing';
 
-      var currentWindowSelection;
-      if (window.getSelection) {
-        currentWindowSelection = window.getSelection();
-      } else if (document.selection) {
-        currentWindowSelection = document.selection.createRange();
-      }
+    //   var currentWindowSelection;
+    //   if (window.getSelection) {
+    //     currentWindowSelection = window.getSelection();
+    //   } else if (document.selection) {
+    //     currentWindowSelection = document.selection.createRange();
+    //   }
 
-      if (debugMode)
-        console.log('Started changing selection...');
+    //   if (debugMode)
+    //     console.log('Started changing selection...');
 
-      document.onmousemove = function (e) {
-        try {
-          e.preventDefault();
+    //   document.onmousemove = function (e) {
+    //     try {
+    //       e.preventDefault();
 
-          // var deltaXFromInitial = e.clientX - (selDimensions.dx + selDimensions.width);
-          var deltaXFromInitial = (selDimensions.dx - e.clientX);
-          var deltaYFromInitial = selDimensions.dy - e.clientY;
+    //       // var deltaXFromInitial = e.clientX - (selDimensions.dx + selDimensions.width);
+    //       var deltaXFromInitial = (selDimensions.dx - e.clientX);
+    //       var deltaYFromInitial = selDimensions.dy - e.clientY;
 
-          /// Move drag handle
-          leftDragHandle.style.transition = '';
-          leftDragHandle.style.transform = `translate(${e.clientX}px, ${dy + window.scrollY - 20 - deltaYFromInitial}px)`;
+    //       /// Move drag handle
+    //       leftDragHandle.style.transition = '';
+    //       leftDragHandle.style.transform = `translate(${e.clientX}px, ${dy + window.scrollY - 20 - deltaYFromInitial}px)`;
 
-          var windowSelection;
-          if (window.getSelection) {
-            windowSelection = window.getSelection();
-          } else if (document.selection) {
-            windowSelection = document.selection.createRange();
-          }
+    //       var windowSelection;
+    //       if (window.getSelection) {
+    //         windowSelection = window.getSelection();
+    //       } else if (document.selection) {
+    //         windowSelection = document.selection.createRange();
+    //       }
 
-          /// Move selection
-          console.log('e.movementX');
-          console.log(e.movementX);
+    //       /// Move selection
+    //       console.log('e.movementX');
+    //       console.log(e.movementX);
 
-          if (windowSelection !== null && windowSelection !== undefined) {
-            try {
-              createSelectionFromPoint(
-                selDimensions.dx + selDimensions.width,
-                selDimensions.dy + selDimensions.height,
-                selDimensions.dx - deltaXFromInitial - 0.05,
-                selDimensions.dy - deltaYFromInitial
-              );
-            } catch (e) {
-              if (debugMode) {
-                console.log('Error while creating selection range:');
-                console.log(e);
-              }
-            }
+    //       if (windowSelection !== null && windowSelection !== undefined) {
+    //         try {
+    //           createSelectionFromPoint(
+    //             selDimensions.dx + selDimensions.width,
+    //             selDimensions.dy + selDimensions.height,
+    //             selDimensions.dx - deltaXFromInitial - 0.05,
+    //             selDimensions.dy - deltaYFromInitial
+    //           );
+    //         } catch (e) {
+    //           if (debugMode) {
+    //             console.log('Error while creating selection range:');
+    //             console.log(e);
+    //           }
+    //         }
 
-          }
-        } catch (e) {
-          if (debugMode) {
-            console.log('Error while moving the right drag handle:');
-            console.log(e);
-          }
-        }
-      };
+    //       }
+    //     } catch (e) {
+    //       if (debugMode) {
+    //         console.log('Error while moving the right drag handle:');
+    //         console.log(e);
+    //       }
+    //     }
+    //   };
 
-      document.onmouseup = function (e) {
-        e.preventDefault();
-        document.onmousemove = null;
-        document.onmouseup = null;
-        isDraggingTooltip = false;
-        document.body.style.cursor = 'unset';
-        leftDragHandle.style.cursor = 'grab';
+    //   document.onmouseup = function (e) {
+    //     e.preventDefault();
+    //     document.onmousemove = null;
+    //     document.onmouseup = null;
+    //     isDraggingTooltip = false;
+    //     document.body.style.cursor = 'unset';
+    //     leftDragHandle.style.cursor = 'grab';
 
-        /// If selection not changed (single click on handle), increase selection by one word
-        var windowSelection;
-        if (window.getSelection) {
-          windowSelection = window.getSelection();
-        } else if (document.selection) {
-          windowSelection = document.selection.createRange();
-        }
+    //     /// If selection not changed (single click on handle), increase selection by one word
+    //     var windowSelection;
+    //     if (window.getSelection) {
+    //       windowSelection = window.getSelection();
+    //     } else if (document.selection) {
+    //       windowSelection = document.selection.createRange();
+    //     }
 
-        if (windowSelection.toString() == currentWindowSelection.toString()) {
-          windowSelection.modify('move', 'forward', 'word');
-        }
+    //     if (windowSelection.toString() == currentWindowSelection.toString()) {
+    //       windowSelection.modify('move', 'forward', 'word');
+    //     }
 
-        /// Animate left drag handle to the new place
-        selDimensions = getSelectionDimensions();
-        leftDx = selDimensions.dx;
-        dy = selDimensions.dy;
-        leftDragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
-        leftDragHandle.style.transform = `translate(${leftDx - 1}px, ${dy + window.scrollY + selDimensions.height - 20}px)`;
-        setTimeout(function () {
-          leftDragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
-        }, 200);
+    //     /// Animate left drag handle to the new place
+    //     selDimensions = getSelectionDimensions();
+    //     leftDx = selDimensions.dx;
+    //     dy = selDimensions.dy;
+    //     leftDragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
+    //     leftDragHandle.style.transform = `translate(${leftDx - 1}px, ${dy + window.scrollY + selDimensions.height - 20}px)`;
+    //     setTimeout(function () {
+    //       leftDragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
+    //     }, 200);
 
-        createTooltip(e);
+    //     createTooltip(e);
 
-        if (debugMode)
-          console.log('Changing selection finished');
-      };
-    }
+    //     if (debugMode)
+    //       console.log('Changing selection finished');
+    //   };
+    // }
 
 
   } catch (e) {
@@ -2055,7 +2054,7 @@ function createSecondaryTooltip() {
 }
 
 
-/// Set selection from offset
+/// Set selection from offset (experimental code for drag handles)
 //// https://stackoverflow.com/a/11336426/11381400
 function getNodeIndex(node) {
   var i = 0;
