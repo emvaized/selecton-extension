@@ -280,7 +280,7 @@
         "description": "Label for button in settings"
     },
     "addScaleUpEffect": {
-        "message": "Добавить эффект увеличения при появлении",
+        "message": "Использовать эффект увеличения при появлении",
         "description": "Label for button in settings"
     },
     "debugMode": {
@@ -301,6 +301,10 @@
     },
     "iconlabel": {
         "message": "Иконка и текст",
+        "description": "Label for buttons style option in settings"
+    },
+    "addDragHandles": {
+        "message": "Добавить маркеры выделения (beta)",
         "description": "Label for buttons style option in settings"
     }
 }

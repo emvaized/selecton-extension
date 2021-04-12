@@ -43,6 +43,7 @@ var options = new Map([
     ['showUnconvertedValue', true],
     ['addScaleUpEffect', true],
     ['debugMode', false],
+    ['addDragHandles', false],
     // ['addButtonIcons', false],
     ['buttonsStyle', 'onlylabel'],
 ]);
@@ -555,6 +556,7 @@ var availableCurrencies = {
     "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2849.930035 },
     "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
     "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
+    "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", id: "NOK", rate: 8.51191 },
     "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
     "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
     "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },

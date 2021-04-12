@@ -276,7 +276,7 @@
     "description": "Label for option in settings"
   },
   "addScaleUpEffect": {
-    "message": "Add scale-up effect on reveal",
+    "message": "Use scale-up effect on reveal",
     "description": "Label for option in settings"
   },
   "debugMode": {
@@ -297,6 +297,10 @@
   },
   "iconlabel": {
     "message": "Icon and label",
+    "description": "Label for buttons style option in settings"
+  },
+  "addDragHandles": {
+    "message": "Add selection handles (beta)",
     "description": "Label for buttons style option in settings"
   }
 }

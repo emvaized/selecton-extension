@@ -43,6 +43,7 @@ KZT — Kazakhstani Tenge
 MNT — Mongolian Tugrik 
 MXN — Mexican Peso
 NGN — Nigerian Naira
+NOK — Norwegian krone
 PLN — Polish złoty
 RUB — Russian Ruble
 SAR — Saudi Riyal

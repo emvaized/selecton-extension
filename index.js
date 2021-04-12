@@ -1,3 +1,4 @@
+
 /// TODOs:
 /// 1. Refactor the code for creating new buttons for main tooltip, so that it will not be duplicated everywhere but has one consistent method 
 /// 2. Split index.js in multiple files - especially big image variables on the bottom
@@ -47,6 +48,7 @@ var showUnconvertedValue = true;
 var addScaleUpEffect = true;
 var debugMode = false;
 var buttonsStyle = 'onlylabel'; /// Possible values: 'onlylabel, onlyicon', iconlabel'
+var addDragHandles = false;  /// Experimental drag handles
 var customSearchButtons = [
   {
     'url': 'https://www.youtube.com/results?search_query=%s',
@@ -92,7 +94,6 @@ var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 var animationDuration = 300;
 var allowWebsitesOverrideSelectionColor = true;
-var addDragHandles = false;  /// Experimental drag handles
 
 /// Service variables
 var copyLabel = 'Copy';
@@ -168,6 +169,7 @@ function init() {
       'addScaleUpEffect',
       'debugMode',
       'buttonsStyle',
+      'addDragHandles',
     ], function (value) {
 
       changeTextSelectionColor = value.changeTextSelectionColor ?? false;
@@ -251,7 +253,7 @@ function init() {
         addScaleUpEffect = value.addScaleUpEffect ?? true;
         buttonsStyle = value.buttonsStyle || 'onlylabel';
         addButtonIcons = buttonsStyle == 'onlyicon' || buttonsStyle == 'iconlabel';
-
+        addDragHandles = value.addDragHandles ?? false;
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -402,8 +404,6 @@ function prepareGenericTooltip(type) {
   tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform 200ms ease-out; ${addScaleUpEffect ? `transform: scale(0.0);transform-origin: bottom;` : ''}`);
   tooltip.setAttribute('class', `selection-tooltip`);
 
-
-
   if (useCustomStyle && tooltipOpacity !== 1.0 && tooltipOpacity !== 1) {
     tooltip.onmouseover = function (event) {
       setTimeout(function () {
@@ -502,7 +502,7 @@ function prepareGenericTooltip(type) {
         var cutButton = document.createElement('button');
         cutButton.setAttribute('class', `selection-popup-button`);
         if (addButtonIcons)
-          cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + cutLabel;
+          cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + (buttonsStyle == 'onlyicon' ? '' : cutLabel);
         else
           cutButton.textContent = cutLabel;
         cutButton.setAttribute('style', `border-radius: ${firstButtonBorderRadius}`);
@@ -517,7 +517,7 @@ function prepareGenericTooltip(type) {
         var copyButton = document.createElement('button');
         copyButton.setAttribute('class', `selection-popup-button button-with-border`);
         if (addButtonIcons)
-          copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + copyLabel;
+          copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (buttonsStyle == 'onlyicon' ? '' : copyLabel);
         else
           copyButton.textContent = copyLabel;
         copyButton.setAttribute('style', `border-radius: ${lastButtonBorderRadius}`);
@@ -546,7 +546,7 @@ function prepareGenericTooltip(type) {
       pasteButton.setAttribute('class', `selection-popup-button`);
       pasteButton.setAttribute('style', `border-radius: ${borderRadius - 3}px`);
       if (addButtonIcons)
-        pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + pasteLabel;
+        pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (buttonsStyle == 'onlyicon' ? '' : pasteLabel);
       else
         pasteButton.textContent = pasteLabel;
       pasteButton.addEventListener("mousedown", function (e) {
@@ -642,7 +642,7 @@ function createTooltip(e) {
               selection = document.selection.createRange();
             }
 
-            var selDimensions = getSelectionDimensions();
+            var selDimensions = getSelectionRectDimensions();
             selectedText = selection.toString().trim();
 
             /// Experimental handling of text fields
@@ -658,6 +658,8 @@ function createTooltip(e) {
                 var ta = document.querySelector(':focus');
                 selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
                 selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+
+                if (selection == null || selection == undefined || selection.toString().trim() == '') return;
               }
 
               /// Ignore single click on text field with inputted value
@@ -889,9 +891,9 @@ function createTooltip(e) {
                     var emailButton = document.createElement('button');
                     emailButton.setAttribute('class', `selection-popup-button button-with-border`);
                     // if (addButtonIcons)
-                    emailButton.innerHTML = createImageIcon(emailButtonIcon, 0.65) + (buttonsStyle == 'onlyicon' ? '  ' : '') + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
-                    // else
-                    //   emailButton.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
+                    emailButton.innerHTML = createImageIcon(emailButtonIcon, buttonsStyle == 'onlyicon' ? 0.4 : 0.65) + (buttonsStyle == 'onlyicon' ? '  ' : '') + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
+                    // emailButton.style.color = secondaryColor;
+
                     emailButton.addEventListener("mouseup", function (e) {
                       hideTooltip();
                       checkToRemovePageSelection();
@@ -947,6 +949,7 @@ function createTooltip(e) {
 
                     colorButton.appendChild(colorCircle);
                     colorButton.innerHTML += ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText);
+                    colorButton.style.color = secondaryColor;
 
                     colorButton.addEventListener("mouseup", function (e) {
                       hideTooltip();
@@ -1200,8 +1203,6 @@ function createTooltip(e) {
                 var vertOutOfView = resultingDy <= window.scrollY;
                 if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
 
-                console.log('tooltip.clientWidth:');
-                console.log(tooltip.clientWidth);
                 var resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
 
                 /// Show tooltip on top of selection
@@ -1245,18 +1246,20 @@ function addTranslateButton() {
       if (detectedLanguages !== null && detectedLanguages !== undefined) {
         var langs = detectedLanguages.languages;
 
-        if (debugMode)
-          console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
-
         if (langs !== []) {
+          if (debugMode)
+            console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
           langs.forEach(function (lang) {
             if (debugMode) {
-              console.log('Detected language:');
-              console.log(langs[0]);
+              console.log('Detected language: ' + langs[0].language);
             }
             /// Don't show translate button if selected language is the same as desired
             if (lang.language == languageToTranslate) shouldTranslate = false;
           })
+        } else {
+          if (debugMode) {
+            console.log('Selecton failed to detect selected text language');
+          }
         }
       }
 
@@ -1432,7 +1435,7 @@ function hideTooltip() {
   /// Hide all main tooltips
   var oldTooltips = document.querySelectorAll('.selection-tooltip');
   if (debugMode) {
-    console.log(`Found ${oldTooltips.length} Selecton tooltips`);
+    console.log(`Found ${oldTooltips.length} Selecton tooltips:`);
     if (oldTooltips.length !== 0)
       console.log(oldTooltips);
   }
@@ -1530,304 +1533,13 @@ function loadCurrencyRatesFromMemory() {
     });
 
     if (debugMode) {
-      console.log('Selecton currency rates were successfully loaded from memory');
+      console.log('Selecton currency rates were successfully loaded from memory:');
       console.log(loadedRates);
     }
   });
 }
 
 
-/// Experimental drag handles code
-function setDragHandles(initialDimensions) {
-  try {
-    var currentWindowSelection;
-
-    /// Check for selected text to be <p>
-    // var selectedTextTag = currentWindowSelection.anchorNode.parentNode.tagName;
-    // if (debugMode)
-    //   console.log('Selected text tag name is: ' + selectedText);
-
-    // if (selectedTextTag !== 'P') return;
-
-    var existingDragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle'`);
-    if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
-
-    console.log('Adding right drag handle...');
-
-    var selDimensions = initialDimensions;
-    var leftDx = selDimensions.dx;
-    var dy = selDimensions.dy;
-
-    var righttDragHandle = document.createElement('div');
-    righttDragHandle.setAttribute('class', 'selection-tooltip-draghandle-right');
-    righttDragHandle.setAttribute('style', `border-radius: 24px !important;transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: 35px; width: 2.5px; opacity:0; background: ${tooltipBackground}; transform: translate(${leftDx + selDimensions.width}px, ${dy + window.scrollY + selDimensions.height - 20}px)`);
-    document.body.appendChild(righttDragHandle);
-
-    var circleDiv = document.createElement('div');
-    circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: 15px; width: 15px; position: relative; bottom: -30px; left: -6.5px;`);
-    // circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-    righttDragHandle.appendChild(circleDiv);
-    righttDragHandle.style.cursor = 'grab';
-    setTimeout(function () {
-      righttDragHandle.style.opacity = 1.0;
-    }, 1);
-
-    righttDragHandle.onmousedown = function (e) {
-      hideTooltip();
-      isDraggingTooltip = true;
-      e.preventDefault();
-
-      if (window.getSelection) {
-        currentWindowSelection = window.getSelection();
-      } else if (document.selection) {
-        currentWindowSelection = document.selection.createRange();
-      }
-
-      document.body.style.cursor = 'grabbing';
-      righttDragHandle.style.cursor = 'grabbing';
-
-      if (debugMode)
-        console.log('Started changing selection...');
-
-      document.onmousemove = function (e) {
-        try {
-          e.preventDefault();
-
-          document.body.style.cursor = 'grabbing';
-          righttDragHandle.style.cursor = 'grabbing';
-
-          // var deltaXFromInitial = e.clientX - (selDimensions.dx + selDimensions.width);
-          var deltaXFromInitial = (selDimensions.dx - e.clientX);
-          var deltaYFromInitial = e.clientY - ((selDimensions.dy) + selDimensions.height);
-
-          /// Move drag handle
-          righttDragHandle.style.transition = '';
-          righttDragHandle.style.transform = `translate(${e.clientX}px, ${dy + window.scrollY + selDimensions.height - 20 + deltaYFromInitial}px)`;
-
-          /// Move selection
-          if (windowSelection !== null && windowSelection !== undefined) {
-
-            /// Create selection from rect
-
-            try {
-              // createSelectionFromPoint(selDimensions.dx + selDimensions.width - deltaXFromInitial - (selDimensions.width - 3), selDimensions.dy + selDimensions.height, selDimensions.dx, selDimensions.dy);
-              createSelectionFromPoint(
-                selDimensions.dx - deltaXFromInitial - 0.05,
-                selDimensions.dy + selDimensions.height + deltaYFromInitial,
-                selDimensions.dx,
-                selDimensions.dy
-              );
-            } catch (e) {
-              if (debugMode) {
-                console.log('Error while creating selection range:');
-                console.log(e);
-              }
-            }
-
-          }
-        } catch (e) {
-          if (debugMode) {
-            console.log('Error while moving the right drag handle:');
-            console.log(e);
-          }
-        }
-      };
-
-      document.onmouseup = function (e) {
-        e.preventDefault();
-        document.onmousemove = null;
-        document.onmouseup = null;
-        isDraggingTooltip = false;
-        document.body.style.cursor = 'unset';
-        righttDragHandle.style.cursor = 'grab';
-
-        /// If selection not changed (single click on handle), increase selection by one word
-        var windowSelection;
-        if (window.getSelection) {
-          windowSelection = window.getSelection();
-        } else if (document.selection) {
-          windowSelection = document.selection.createRange();
-        }
-
-        if (windowSelection.toString() == currentWindowSelection.toString()) {
-          console.log(`${windowSelection.toString()} == ${currentWindowSelection.toString()}`)
-          windowSelection.modify('extend', 'forward', 'word');
-
-          selDimensions = getSelectionDimensions();
-          leftDx = selDimensions.dx;
-          dy = selDimensions.dy;
-
-          righttDragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
-          righttDragHandle.style.transform = `translate(${leftDx + selDimensions.width}px, ${dy + window.scrollY + selDimensions.height - 20}px)`;
-          setTimeout(function () {
-            righttDragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
-          }, 200);
-        }
-
-        /// Animate drag handle to the new place
-
-        // righttDragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
-        // righttDragHandle.style.transform = `translate(${leftDx + selDimensions.width}px, ${dy + window.scrollY + selDimensions.height - 20}px)`;
-        // setTimeout(function () {
-        //   righttDragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
-        // }, 200);
-
-        createTooltip(e);
-
-        if (debugMode)
-          console.log('Changing selection finished');
-      };
-    }
-
-
-    /// Left drag handle
-    // console.log('Adding left drag handle...');
-
-    // var leftDragHandle = document.createElement('div');
-    // leftDragHandle.setAttribute('class', 'selection-tooltip-draghandle-right');
-    // leftDragHandle.setAttribute('style', ` transform: translate(${leftDx}px, ${dy + window.scrollY + selDimensions.height - 20}px); border-radius: 24px !important;transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: 35px; width: 2.5px; opacity:0; background: ${tooltipBackground};`);
-    // document.body.appendChild(leftDragHandle);
-
-    // var circleDiv = document.createElement('div');
-    // circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: 15px; width: 15px; position: relative; bottom: -30px; left: -6.5px;`);
-    // // circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-    // leftDragHandle.appendChild(circleDiv);
-    // leftDragHandle.style.cursor = 'grab';
-    // setTimeout(function () {
-    //   leftDragHandle.style.opacity = 1.0;
-    // }, 1);
-
-    // var windowSelection;
-    // if (window.getSelection) {
-    //   windowSelection = window.getSelection();
-    // } else if (document.selection) {
-    //   windowSelection = document.selection.createRange();
-    // }
-
-    // leftDragHandle.onmousedown = function (e) {
-    //   hideTooltip();
-    //   isDraggingTooltip = true;
-    //   e.preventDefault();
-
-    //   document.body.style.cursor = 'grabbing';
-    //   leftDragHandle.style.cursor = 'grabbing';
-
-    //   var currentWindowSelection;
-    //   if (window.getSelection) {
-    //     currentWindowSelection = window.getSelection();
-    //   } else if (document.selection) {
-    //     currentWindowSelection = document.selection.createRange();
-    //   }
-
-    //   if (debugMode)
-    //     console.log('Started changing selection...');
-
-    //   document.onmousemove = function (e) {
-    //     try {
-    //       e.preventDefault();
-
-    //       // var deltaXFromInitial = e.clientX - (selDimensions.dx + selDimensions.width);
-    //       var deltaXFromInitial = (selDimensions.dx - e.clientX);
-    //       var deltaYFromInitial = selDimensions.dy - e.clientY;
-
-    //       /// Move drag handle
-    //       leftDragHandle.style.transition = '';
-    //       leftDragHandle.style.transform = `translate(${e.clientX}px, ${dy + window.scrollY - 20 - deltaYFromInitial}px)`;
-
-    //       var windowSelection;
-    //       if (window.getSelection) {
-    //         windowSelection = window.getSelection();
-    //       } else if (document.selection) {
-    //         windowSelection = document.selection.createRange();
-    //       }
-
-    //       /// Move selection
-    //       console.log('e.movementX');
-    //       console.log(e.movementX);
-
-    //       if (windowSelection !== null && windowSelection !== undefined) {
-    //         try {
-    //           createSelectionFromPoint(
-    //             selDimensions.dx + selDimensions.width,
-    //             selDimensions.dy + selDimensions.height,
-    //             selDimensions.dx - deltaXFromInitial - 0.05,
-    //             selDimensions.dy - deltaYFromInitial
-    //           );
-    //         } catch (e) {
-    //           if (debugMode) {
-    //             console.log('Error while creating selection range:');
-    //             console.log(e);
-    //           }
-    //         }
-
-    //       }
-    //     } catch (e) {
-    //       if (debugMode) {
-    //         console.log('Error while moving the right drag handle:');
-    //         console.log(e);
-    //       }
-    //     }
-    //   };
-
-    //   document.onmouseup = function (e) {
-    //     e.preventDefault();
-    //     document.onmousemove = null;
-    //     document.onmouseup = null;
-    //     isDraggingTooltip = false;
-    //     document.body.style.cursor = 'unset';
-    //     leftDragHandle.style.cursor = 'grab';
-
-    //     /// If selection not changed (single click on handle), increase selection by one word
-    //     var windowSelection;
-    //     if (window.getSelection) {
-    //       windowSelection = window.getSelection();
-    //     } else if (document.selection) {
-    //       windowSelection = document.selection.createRange();
-    //     }
-
-    //     if (windowSelection.toString() == currentWindowSelection.toString()) {
-    //       windowSelection.modify('move', 'forward', 'word');
-    //     }
-
-    //     /// Animate left drag handle to the new place
-    //     selDimensions = getSelectionDimensions();
-    //     leftDx = selDimensions.dx;
-    //     dy = selDimensions.dy;
-    //     leftDragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
-    //     leftDragHandle.style.transform = `translate(${leftDx - 1}px, ${dy + window.scrollY + selDimensions.height - 20}px)`;
-    //     setTimeout(function () {
-    //       leftDragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
-    //     }, 200);
-
-    //     createTooltip(e);
-
-    //     if (debugMode)
-    //       console.log('Changing selection finished');
-    //   };
-    // }
-
-
-  } catch (e) {
-    if (debugMode) {
-      console.log('Error while adding drag handle:');
-      console.log(e);
-    }
-  }
-}
-
-function hideDragHandles() {
-  /// Remove all drag handles
-  if (addDragHandles) {
-    var dragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle']`);
-    dragHandles.forEach(function (dragHandle) {
-      dragHandle.style.opacity = 0.0;
-      setTimeout(function () {
-        if (dragHandle.parentNode !== null)
-          dragHandle.parentNode.removeChild(dragHandle);
-      }, animationDuration);
-    });
-  }
-}
 
 
 /// Service methods
@@ -1840,7 +1552,7 @@ function calculateString(fn) {
   return new Function('return ' + fn)();
 }
 
-function getSelectionDimensions() {
+function getSelectionRectDimensions() {
   var sel = document.selection, range;
   var width = 0, height = 0;
   var dx = 0, dy = 0;
@@ -1944,6 +1656,7 @@ function createSecondaryTooltip() {
   secondaryTooltip.style.backgroundColor = tooltipBackground;
   secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
   secondaryTooltip.style.borderRadius = `${borderRadius}px`;
+  secondaryTooltip.style.pointerEvents = 'none';
 
   document.body.appendChild(secondaryTooltip);
 
@@ -1976,12 +1689,6 @@ function createSecondaryTooltip() {
       imgButton.style.maxHeight = `${secondaryTooltipIconSize}px`;
 
       /// Add title tooltip on hover
-
-      /// Manual title approach
-      // if (showSecondaryTooltipTitleOnHover && title !== null && title !== undefined)
-      //   imgButton.setAttribute('title', title);
-
-      /// Automatic title based on url
       if (showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '') {
         var titleText;
         var domainContent = url.split('.');
@@ -2025,6 +1732,7 @@ function createSecondaryTooltip() {
   var isSecondaryTooltipHovered = false;
 
   searchButton.onmouseover = function (event) {
+    secondaryTooltip.style.pointerEvents = 'auto';
     secondaryTooltip.style.top = `${parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom}px`;
     secondaryTooltip.style.opacity = 1.0;
   }
@@ -2035,6 +1743,7 @@ function createSecondaryTooltip() {
     }
   }
   secondaryTooltip.onmouseover = function (event) {
+    secondaryTooltip.style.pointerEvents = 'auto';
     secondaryTooltip.style.top = `${parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom}px`;
     secondaryTooltip.style.opacity = 1.0;
     isSecondaryTooltipHovered = true;
@@ -2043,6 +1752,7 @@ function createSecondaryTooltip() {
     isSecondaryTooltipHovered = false;
     secondaryTooltip.style.top = dy;
     secondaryTooltip.style.opacity = 0.0;
+    secondaryTooltip.style.pointerEvents = 'none';
   }
 
 
@@ -2053,6 +1763,224 @@ function createSecondaryTooltip() {
   space.style.height = `${paddingOnBottom * 2}px`;
   space.style.bottom = `-${paddingOnBottom * 2}px`;
   secondaryTooltip.appendChild(space);
+}
+
+
+function setDragHandles(initialDimensions) {
+  /// Dont add drag handles if they are already added
+  var existingDragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle'`);
+  if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
+
+  addDragHandle(0);
+  addDragHandle(1);
+}
+
+/// 0 for first (left) drag handle, 1 for second (right)
+function addDragHandle(dragHandleIndex) {
+  console.log('Adding drag handle ' + dragHandleIndex.toString() + '...');
+
+  var lineHeight = 35;
+  var circleHeight = 15;
+  var verticalOffsetCorrection = -1.5;
+
+  try {
+    var currentWindowSelection;
+    var selStartDimensions = getSelectionCoordinates(true);
+    var selEndDimensions = getSelectionCoordinates(false);
+
+    var dragHandle = document.createElement('div');
+    dragHandle.setAttribute('class', 'selection-tooltip-draghandle-right');
+    dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: 2.5px; opacity:0; background: ${tooltipBackground};`);
+    document.body.appendChild(dragHandle);
+
+    var circleDiv = document.createElement('div');
+    circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - (circleHeight / 2)}px; left: -6.5px;`);
+    dragHandle.appendChild(circleDiv);
+    circleDiv.style.cursor = 'grab';
+    setTimeout(function () {
+      dragHandle.style.opacity = 1.0;
+    }, 1);
+
+    circleDiv.onmousedown = function (e) {
+      hideTooltip();
+      isDraggingTooltip = true;
+      e.preventDefault();
+
+      if (window.getSelection) {
+        currentWindowSelection = window.getSelection().toString();
+      } else if (document.selection) {
+        currentWindowSelection = document.selection.createRange().toString();
+      }
+
+      selStartDimensions = getSelectionCoordinates(true);
+      selEndDimensions = getSelectionCoordinates(false);
+
+      document.body.style.cursor = 'grabbing';
+      circleDiv.style.cursor = 'grabbing';
+
+      document.onmousemove = function (e) {
+        try {
+          e.preventDefault();
+
+          /// Change cursor shape
+          document.body.style.cursor = 'grabbing';
+          circleDiv.style.cursor = 'grabbing';
+
+          /// Calculate deltas
+          var deltaXFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dx - e.clientX) : (selEndDimensions.dx - e.clientX);
+          var deltaYFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dy - e.clientY) : (e.clientY - selEndDimensions.dy);
+
+          /// Move drag handle
+          dragHandle.style.transition = '';
+          if (dragHandleIndex == 0) {
+            dragHandle.style.transform = `translate(${e.clientX}px, ${selStartDimensions.dy + window.scrollY - lineHeight - deltaYFromInitial + verticalOffsetCorrection}px)`;
+          } else {
+            dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy + window.scrollY - lineHeight + deltaYFromInitial + verticalOffsetCorrection}px)`;
+          }
+
+          /// Create selection from rect
+          if (currentWindowSelection !== null && currentWindowSelection !== undefined && currentWindowSelection !== '') {
+
+            try {
+              if (debugMode)
+                console.log(`Create selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
+
+              if (dragHandleIndex == 0) {
+                /// Left handle
+                createSelectionFromPoint(
+                  selEndDimensions.dx + 4, /// DX end of selection (anchorX)
+                  selEndDimensions.dy + 4, /// DY end of selection (anchorY)
+                  selStartDimensions.dx - deltaXFromInitial - 0.05, /// DX beginning of selection (focusX)
+                  selStartDimensions.dy - deltaYFromInitial - lineHeight, /// DY beginning of selection (focusY)
+                );
+              } else {
+                /// Right handle
+                createSelectionFromPoint(
+                  selStartDimensions.dx - 4, /// DX beginning of selection (focusX)
+                  selStartDimensions.dy,  /// DY beginning of selection (focusY)
+                  // selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
+                  // selEndDimensions.dy + deltaYFromInitial,  /// DY end of selection (anchorY)
+
+                  selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
+                  selEndDimensions.dy + deltaYFromInitial - lineHeight,  /// DY end of selection (anchorY)
+                );
+              }
+
+            } catch (e) {
+              if (debugMode) {
+                console.log('Error while creating selection range:');
+                console.log(e);
+              }
+            }
+
+          }
+        } catch (e) {
+          if (debugMode) {
+            console.log('Error while moving the right drag handle:');
+            console.log(e);
+          }
+        }
+      };
+
+      document.onmouseup = function (e) {
+        e.preventDefault();
+        document.onmousemove = null;
+        document.onmouseup = null;
+        isDraggingTooltip = false;
+        document.body.style.cursor = 'unset';
+        circleDiv.style.cursor = 'grab';
+
+        /// If selection not changed (single click on handle), increase selection by one word
+        setTimeout(function () {
+          var windowSelection;
+          if (window.getSelection) {
+            windowSelection = window.getSelection();
+          } else if (document.selection) {
+            windowSelection = document.selection.createRange();
+          }
+
+          /// Single click to expand selection by one word
+          if (windowSelection.toString() == currentWindowSelection.toString()) {
+            if (debugMode)
+              console.log('Single click on drag handle');
+            // if (dragHandleIndex == 0) {
+            //   windowSelection.modify('extend', 'backward', 'word');
+            // } else {
+            //   windowSelection.modify('extend', 'forward', 'word');
+            // }
+          } else {
+          }
+
+          var selStartDimensions = getSelectionCoordinates(true);
+          var selEndDimensions = getSelectionCoordinates(false);
+
+          /// Animate drag handle to the new place
+          dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
+
+          if (dragHandleIndex == 0) {
+            dragHandle.style.transform = `translate(${selStartDimensions.dx - 1}px, ${selStartDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
+          } else {
+            dragHandle.style.transform = `translate(${selEndDimensions.dx}px, ${selEndDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
+          }
+
+          setTimeout(function () {
+            dragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
+          }, 200);
+
+          createTooltip(e);
+        }, 1);
+
+
+        if (debugMode)
+          console.log('Changing selection finished');
+      };
+    }
+
+    if (debugMode) {
+      console.log('Successfully added drag handle ' + dragHandleIndex.toString());
+    }
+  } catch (e) {
+    if (debugMode) {
+      console.log('Failed to configure drag handle ' + dragHandleIndex.toString() + '. Error is: ' + e.toString());
+    }
+  }
+}
+
+function hideDragHandles() {
+  /// Remove all drag handles
+  if (addDragHandles) {
+    var dragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle']`);
+    dragHandles.forEach(function (dragHandle) {
+      dragHandle.style.opacity = 0.0;
+      setTimeout(function () {
+        if (dragHandle.parentNode !== null)
+          dragHandle.parentNode.removeChild(dragHandle);
+      }, animationDuration);
+    });
+  }
+}
+
+/// Code from https://stackoverflow.com/a/66618280/11381400
+// atStart: if true, returns coord of the beginning of the selection,
+//          if false, returns coord of the end of the selection
+function getSelectionCoordinates(atStart) {
+  const sel = window.getSelection();
+
+  // check if selection exists
+  if (!sel.rangeCount) return null;
+
+  // get range
+  let range = sel.getRangeAt(0).cloneRange();
+  if (!range.getClientRects) return null;
+
+  // get client rect
+  range.collapse(atStart);
+  let rects = range.getClientRects();
+  if (rects.length <= 0) return null;
+
+  // return coord
+  let rect = rects[0];
+  return { dx: rect.x, dy: rect.y };
 }
 
 
@@ -2362,7 +2290,7 @@ var currenciesList = {
   "CNY3": { currencyName: "Chinese Yuan", currencySymbol: "юаней", id: "CNY", rate: 6.497301 },
   "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 610.339772 },
   "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.936455 },
-  "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.229502 },
+  "DKK": { currencyName: "Danish Krone", currencySymbol: " kr", id: "DKK", rate: 6.229502 },
   "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.8378 },
   "EUR1": { currencyName: "Euro", currencySymbol: "euro", id: "EUR", rate: 0.8378 },
   "EUR3": { currencyName: "Euro", currencySymbol: "евро", id: "EUR", rate: 0.8378 },
@@ -2382,6 +2310,7 @@ var currenciesList = {
   "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
   "MXN1": { currencyName: "Mexican Peso", currencySymbol: "песо", id: "MXN", rate: 20.655212 },
   "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
+  "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", id: "NOK", rate: 8.51191 },
   "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
   "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
   "RUB1": { currencyName: "Russian Ruble", currencySymbol: "rubles", id: "RUB", rate: 72.880818 },

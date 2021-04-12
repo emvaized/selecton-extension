@@ -1,3 +1,9 @@
+#2.1.9
+- Improvements for secondary search tooltip when 'Icon only' style is activated
+- Other small improvements for 'Icon only' style
+- Added support for NOK (Norwegian krone) currency
+- Added ability to turn on selection handles (experimental)
+
 #2.1.8
 - Fix for tooltip being moved up on some websites
 - Added only-icon button style in settings + changed map icon
