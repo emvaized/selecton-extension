@@ -48,6 +48,7 @@ var defaultConfigs = new Map([
     ['disableWordSnappingOnCtrlKey', true],
     ['shouldOverrideWebsiteSelectionColor', false],
     ['buttonsStyle', 'onlylabel'],
+    ['showButtonLabelOnHover', true],
 ]);
 
 
@@ -161,6 +162,7 @@ function setVersionLabel() {
 }
 
 function updateDisabledOptions() {
+    /// Grey out unavailable optoins
     document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#convertToCurrencyDropdown").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
@@ -172,12 +174,15 @@ function updateDisabledOptions() {
     document.querySelector("#shouldOverrideWebsiteSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+
+    /// Fully hide options unless condition is met
+    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
+    document.querySelector("#showButtonLabelOnHover").parentNode.parentNode.className = document.querySelector("#buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
 }
 
 function setCollapsibleHeaders() {

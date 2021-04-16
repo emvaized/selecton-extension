@@ -271,6 +271,10 @@
         "message": "Reescribir el color de resaltado del sitio",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
+    "showButtonLabelOnHover": {
+        "message": "Mostrar la etiqueta del botón al pasar el mouse",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
     "showEmailButton": {
         "message": "Botón Agregar correo electrónico",
         "description": "Etiqueta para el campo en la configuración"

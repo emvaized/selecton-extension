@@ -78,6 +78,7 @@ function init() {
         snapSelectionToWord = configs.snapSelectionToWord ?? true;
         preferCurrencySymbol = configs.preferCurrencySymbol ?? false;
         disableWordSnappingOnCtrlKey = configs.disableWordSnappingOnCtrlKey ?? true;
+        showButtonLabelOnHover = configs.showButtonLabelOnHover ?? true;
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");

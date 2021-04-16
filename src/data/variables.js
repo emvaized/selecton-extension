@@ -45,6 +45,7 @@ var snapSelectionToWord = true;
 var preferCurrencySymbol = true;
 var shouldOverrideWebsiteSelectionColor = false;
 var disableWordSnappingOnCtrlKey = true;
+var showButtonLabelOnHover = true;
 var customSearchButtons = [
     {
         'url': 'https://www.youtube.com/results?search_query=%s',
@@ -164,6 +165,7 @@ var userSettingsKeys = [
     'preferCurrencySymbol',
     'shouldOverrideWebsiteSelectionColor',
     'disableWordSnappingOnCtrlKey',
+    'showButtonLabelOnHover',
 ];
 
 // /// Those are used on settings page

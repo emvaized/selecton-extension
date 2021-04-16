@@ -267,6 +267,10 @@
         "message": "Reescrever a cor de destaque do site",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "showButtonLabelOnHover": {
+        "message": "Mostrar rótulo do botão ao passar o mouse",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
     "showEmailButton": {
         "message": "Adicionar botão de e-mail",
         "description": "Rótulo para o campo nas configurações"

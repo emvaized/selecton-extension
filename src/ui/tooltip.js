@@ -179,6 +179,9 @@ function addBasicTooltipButtons(layout) {
             try { /// Add a cut button 
                 var cutButton = document.createElement('button');
                 cutButton.setAttribute('class', `selection-popup-button`);
+                if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+                    cutButton.setAttribute('title', cutLabel);
+
                 if (addButtonIcons)
                     cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + (buttonsStyle == 'onlyicon' ? '' : cutLabel);
                 else
@@ -194,6 +197,8 @@ function addBasicTooltipButtons(layout) {
                 /// Add copy button 
                 var copyButton = document.createElement('button');
                 copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+                if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+                    copyButton.setAttribute('title', copyLabel);
                 if (addButtonIcons)
                     copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (buttonsStyle == 'onlyicon' ? '' : copyLabel);
                 else
@@ -222,6 +227,8 @@ function addBasicTooltipButtons(layout) {
             /// Add only paste button 
             var pasteButton = document.createElement('button');
             pasteButton.setAttribute('class', `selection-popup-button`);
+            if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+                pasteButton.setAttribute('title', pasteLabel);
             pasteButton.setAttribute('style', `border-radius: ${borderRadius - 3}px`);
             if (addButtonIcons)
                 pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (buttonsStyle == 'onlyicon' ? '' : pasteLabel);
@@ -263,6 +270,8 @@ function addBasicTooltipButtons(layout) {
         /// Add copy button 
         var copyButton = document.createElement('button');
         copyButton.setAttribute('class', `selection-popup-button button-with-border`);
+        if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+            copyButton.setAttribute('title', copyLabel);
         if (addButtonIcons)
             copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (buttonsStyle == 'onlyicon' ? '' : copyLabel);
         else
@@ -450,6 +459,9 @@ function addContextualButtons() {
             if (containsAddress) {
                 var mapButton = document.createElement('button');
                 mapButton.setAttribute('class', `selection-popup-button button-with-border`);
+                if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+                    mapButton.setAttribute('title', showOnMapLabel);
+
                 if (addButtonIcons)
                     mapButton.innerHTML = createImageIcon(mapButtonIcon, 1.0) + (buttonsStyle == 'onlyicon' ? '' : showOnMapLabel);
                 else
@@ -839,6 +851,8 @@ function addTranslateButton() {
             if (shouldTranslate == true) {
                 var translateButton = document.createElement('button');
                 translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                if (buttonsStyle == 'onlyicon' && showButtonLabelOnHover)
+                    translateButton.setAttribute('title', translateLabel);
                 translateButton.setAttribute('id', 'selecton-translate-button');
                 if (addButtonIcons)
                     translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + (buttonsStyle == 'onlyicon' ? '' : translateLabel);

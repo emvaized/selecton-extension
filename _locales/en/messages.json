@@ -267,6 +267,10 @@
     "message": "Overwrite page's highlight color",
     "description": "Label for buttons style option in settings"
   },
+  "showButtonLabelOnHover": {
+    "message": "Show button label on hover",
+    "description": "Label for buttons style option in settings"
+  },
   "showEmailButton": {
     "message": "Add email button",
     "description": "Label for field in settings"

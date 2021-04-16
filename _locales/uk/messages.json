@@ -271,6 +271,10 @@
         "message": "Переписати колір виділення сайту",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "showButtonLabelOnHover": {
+        "message": "Показати текст кнопки при наведенні",
+        "description": "Label for option in settings"
+    },
     "showEmailButton": {
         "message": "Додати кнопку електронної пошти",
         "description": "Label for field in settings"
