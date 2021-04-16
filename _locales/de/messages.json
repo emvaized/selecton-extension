@@ -1,51 +1,87 @@
 {
-    "extensionDescription": {
-        "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
-        "description": "Erweiterungsbeschreibung"
-    },
-    "copyLabel": {
-        "message": "Kopieren",
-        "description": "Beschriftung für Kopiertextaktion"
-    },
-    "searchLabel": {
-        "message": "Suche",
-        "description": "Bezeichnung für Suchtextaktion"
-    },
-    "openLinkLabel": {
-        "message": "Öffnen",
-        "description": "Label für Open Link-Aktion"
-    },
-    "cutLabel": {
-        "message": "Schnitt",
-        "description": "Label for cut action"
-    },
-    "pasteLabel": {
-        "message": "Einfügen",
-        "description": "Beschriftung für Einfügemaßnahme"
-    },
-    "translateLabel": {
-        "message": "Übersetzen",
-        "description": "Bezeichnung für Übersetzungsaktion"
-    },
-    "appearanceHeader": {
-        "message": "Aussehen",
-        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
-    },
-    "behaviourHeader": {
-        "message": "Verhalten",
-        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
-    },
-    "convertionHeader": {
-        "message": "Umrechnung",
-        "description": "Header für Konvertierungskategorie in Einstellungen"
-    },
     "actionButtonsHeader": {
         "message": "Aktionsschaltflächen",
         "description": "Header für die Kategorie der Aktionsschaltflächen in den Einstellungen"
     },
+    "addActionButtonsForTextFields": {
+        "message": "Spezialbedienfeld für Textfelder verwenden",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "addButtonIcons": {
+        "message": "Symbole für Schaltflächen anzeigen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addColorPreviewButton": {
+        "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "addDragHandles": {
+        "message": "Auswahl-Ziehpunkte hinzufügen",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "addNewSearchOption": {
+        "message": "Neue Suchoption hinzufügen",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "addOpenLinks": {
+        "message": "Schaltfläche zum Öffnen des Links hinzufügen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addPhoneButton": {
+        "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "addScaleUpEffect": {
+        "message": "Scale-up-Effekt bei Enthüllung hinzufügen",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "addTooltipShadow": {
+        "message": "Tooltip-Schatten hinzufügen",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Alle Einstellungen werden automatisch gespeichert",
+        "description": ""
+    },
     "animationDuration": {
         "message": "Animationsdauer (ms)",
         "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "appearanceHeader": {
+        "message": "Panel-Erscheinungsbild",
+        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+    },
+    "behaviourHeader": {
+        "message": "Panel Behaviour",
+        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+    },
+    "borderRadius": {
+        "message": "Randradius",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "buttonStyle": {
+        "message": "Buttons Stil",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "buyMeCoffee": {
+        "message": "Unterstützung Entwicklung",
+        "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Textauswahl anpassen",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "contextualButtonsHeader": {
+        "message": "Kontextschaltflächen",
+        "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
+    },
+    "convertCurrencies": {
+        "message": "Währungen umrechnen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "convertMetrics": {
+        "message": "Metriken konvertieren",
+        "description": "Beschriftung für Feld in Einstellungen"
     },
     "convertToCurrency": {
         "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)",
@@ -55,128 +91,188 @@
         "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>hier</a> als Referenz",
         "description": "Währungscode-Hinweis für das Feld 'In Währung konvertieren' in den Einstellungen"
     },
-    "hideOnScroll": {
-        "message": "Tooltip beim Scrollen ausblenden",
+    "convertionHeader": {
+        "message": "Umrechnung",
+        "description": "Header für Konvertierungskategorie in Einstellungen"
+    },
+    "copyLabel": {
+        "message": "Kopieren",
+        "description": "Beschriftung für Kopiertextaktion"
+    },
+    "customIcon": {
+        "message": "Benutzerdefiniertes Symbol",
+        "description": "Bezeichnung für Schaltfläche in Einstellungen"
+    },
+    "customIconUrl": {
+        "message": "Benutzerdefinierte Symbol-URL",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "customSearchTooltip": {
+        "message": "Tooltip für Suche",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
-    "convertMetrics": {
-        "message": "Metriken konvertieren",
+    "customSearchTooltipHint": {
+        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. <br/>%s als Platzhalter für Abfragen verwenden",
         "description": "Beschriftung für Feld in Einstellungen"
     },
-    "addOpenLinks": {
-        "message": "Schaltfläche zum Öffnen des Links hinzufügen",
+    "customSearchUrl": {
+        "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)",
         "description": "Beschriftung für Feld in Einstellungen"
     },
-    "convertCurrencies": {
-        "message": "Währungen umrechnen",
-        "description": "Beschriftung für Feld in Einstellungen"
+    "cutLabel": {
+        "message": "Schnitt",
+        "description": "Label for cut action"
     },
-    "performSimpleMathOperations": {
-        "message": "Einfache mathematische Berechnungen durchführen",
-        "description": "Beschriftung für Feld in Einstellungen"
+    "debugMode": {
+        "message": "Debug mode",
+        "description": "Bezeichnung für Option in Einstellungen"
     },
-    "preferredMetricsSystem": {
-        "message": "Bevorzugtes Metriksystem",
-        "description": "Beschriftung für Feld in Einstellungen"
+    "deleteLabel": {
+        "message": "Löschen",
+        "description": "Bezeichnung für die Schaltfläche 'Löschen'"
     },
-    "metric": {
-        "message": "Metrisch",
-        "description": "Variante des Metriksystems für Dropdown"
-    },
-    "imperial": {
-        "message": "Kaiserliche",
-        "description": "Variante des Metriksystems für Dropdown"
-    },
-    "resetDefaults": {
-        "message": "Standardeinstellungen wiederherstellen",
-        "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
-    },
-    "buyMeCoffee": {
-        "message": "Autor einen Kaffee kaufen",
-        "description": "Schaltfläche 'Beschriftung für Einstellungen', die zur Spendenseite führt"
-    },
-    "visitGithub": {
-        "message": "Besuchen Sie die GitHub-Seite",
-        "description": "Schaltfläche für die Beschriftung der Einstellungen, die zur GitHub-Seite führt"
-    },
-    "allChangesSavedAutomatically": {
-        "message": "Einstellungen werden automatisch gespeichert <br /> Seite aktualisieren, um Änderungen zu sehen",
-        "description": "Kleiner Info-Hinweis am Ende der Einstellungen"
-    },
-    "showTranslateButton": {
-        "message": "Schaltfläche zum Übersetzen anzeigen",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "languageToTranslate": {
-        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
-        "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
-    },
-    "useCustomStyle": {
-        "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "tooltipBackground": {
-        "message": "Hintergrundfarbe",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "tooltipOpacity": {
-        "message": "Tooltip-Deckkraft",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "addTooltipShadow": {
-        "message": "Tooltip-Schatten hinzufügen",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "shadowOpacity": {
-        "message": "Schattenopazität",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "borderRadius": {
-        "message": "Randradius",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "changeTextSelectionColor": {
-        "message": "Textauswahl anpassen",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "textSelectionBackground": {
-        "message": "Auswahlfarbe",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "textSelectionColor": {
-        "message": "Textfarbe",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Versuchen Sie, den Auswahl-Tooltip nach oben zu verschieben, wenn die Website ihre eigene anzeigt",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "addActionButtonsForTextFields": {
-        "message": "Spezialbedienfeld für Textfelder verwenden",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "removeSelectionOnActionButtonClick": {
-        "message": "Textauswahl nach Aktion entfernen",
-        "description": "Beschriftung für Feld in Einstellungen"
+    "disableWordSnappingOnCtrlKey": {
+        "message": "Nicht mit Worten auswählen, wenn die STRG-Taste gedrückt wird",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
     "draggableTooltip": {
         "message": "Panel kann durch den Pfeil gezogen werden",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "addButtonIcons": {
-        "message": "Symbole für Schaltflächen anzeigen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "enabled": {
         "message": "Aktiviert",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "excludedDomains": {
+        "message": "Ausgeschlossene Domains",
+        "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "extensionDescription": {
+        "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
+        "description": "Erweiterungsbeschreibung"
+    },
+    "gmail": {
+        "message": "Google Mail neue E-Mail",
+        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+    },
+    "hideOnKeypress": {
+        "message": "Bei Tastendruck ausblenden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "hideOnScroll": {
+        "message": "Tooltip beim Scrollen ausblenden",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "iconlabel": {
+        "message": "Icons + text",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "imperial": {
+        "message": "Kaiserliche",
+        "description": "Variante des Metriksystems für Dropdown"
+    },
+    "languageToTranslate": {
+        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
+        "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
+    },
+    "mailto": {
+        "message": "Desktop-E-Mail-Client",
+        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+    },
+    "metric": {
+        "message": "Metrisch",
+        "description": "Variante des Metriksystems für Dropdown"
+    },
+    "moveDownLabel": {
+        "message": "Absteigen",
+        "description": "Tooltip für 'move button down' button"
+    },
+    "moveUpLabel": {
+        "message": "Rücken",
+        "description": "Tooltip für die Schaltfläche 'Schaltfläche nach oben verschieben'"
+    },
+    "onlyicon": {
+        "message": "Nur Symbole",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "onlylabel": {
+        "message": "Nur Text",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "openLinkLabel": {
+        "message": "Öffnen",
+        "description": "Label für Open Link-Aktion"
+    },
+    "pasteLabel": {
+        "message": "Einfügen",
+        "description": "Beschriftung für Einfügemaßnahme"
+    },
+    "performSimpleMathOperations": {
+        "message": "Einfache mathematische Berechnungen durchführen",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredMapsService": {
+        "message": "Bevorzugter Kartendienst",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredMetricsSystem": {
+        "message": "Bevorzugtes Metriksystem",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Bevorzugte Methode zum Erstellen neuer E-Mails",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
     "preferredSearchEngine": {
         "message": "Suchmaschine",
         "description": "Beschriftung für Feld in Einstellungen"
     },
-    "hideOnKeypress": {
-        "message": "Bei Tastendruck ausblenden",
+    "prepareCurrencySymbol": {
+        "message": "Währungssymbole anstelle von Codes bevorzugen",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "removeCustomIcon": {
+        "message": "Benutzerdefiniertes Symbol entfernen",
+        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Auswahl nach ausgeführter Aktion entfernen",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Standardeinstellungen wiederherstellen",
+        "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
+    },
+    "searchLabel": {
+        "message": "Suche",
+        "description": "Bezeichnung für Suchtextaktion"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Tooltip aktiviert",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Knopfgröße (px)",
+        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "selectionHeader": {
+        "message": "Textauswahl",
+        "description": "Header für Kategorie in Einstellungen"
+    },
+    "shadowOpacity": {
+        "message": "Schattenopazität",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Versuchen Sie, den Auswahl-Tooltip nach oben zu verschieben, wenn die Website ihre eigene anzeigt",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "shouldOverrideWebsiteSelectionColor": {
+        "message": "Site-Hervorhebungsfarbe neu schreiben",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "showEmailButton": {
+        "message": "E-Mail-Schaltfläche hinzufügen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "showOnMap": {
@@ -187,120 +283,60 @@
         "message": "Schaltfläche Hinzufügen, um auf der Karte angezeigt zu werden",
         "description": "Beschriftung für Feld in Einstellungen"
     },
-    "showEmailButton": {
-        "message": "E-Mail-Schaltfläche hinzufügen",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "preferredNewEmailMethod": {
-        "message": "Bevorzugte Methode zum Erstellen neuer E-Mails",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "gmail": {
-        "message": "Google Mail neue E-Mail",
-        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
-    },
-    "mailto": {
-        "message": "Desktop-E-Mail-Client",
-        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
-    },
-    "contextualButtonsHeader": {
-        "message": "Kontextschaltflächen",
-        "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
-    },
-    "customSearchUrl": {
-        "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "addColorPreviewButton": {
-        "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "preferredMapsService": {
-        "message": "Bevorzugter Kartendienst",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "customSearchTooltip": {
-        "message": "Tooltip für Suche",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "customSearchTooltipHint": {
-        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. <br/>%s als Platzhalter für Abfragen verwenden",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "deleteLabel": {
-        "message": "Löschen",
-        "description": "Bezeichnung für die Schaltfläche 'Löschen'"
-    },
-    "addNewSearchOption": {
-        "message": "Neue Suchoption hinzufügen",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
-    },
-    "secondaryTooltipIconSize": {
-        "message": "Knopfgröße (px)",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
-    },
-    "secondaryTooltipEnabled": {
-        "message": "Tooltip aktiviert",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
-    },
-    "moveUpLabel": {
-        "message": "Rücken",
-        "description": "Tooltip für die Schaltfläche 'Schaltfläche nach oben verschieben'"
-    },
-    "moveDownLabel": {
-        "message": "Absteigen",
-        "description": "Tooltip für 'move button down' button"
-    },
     "showSecondaryTooltipTitleOnHover": {
         "message": "Domain beim Hover anzeigen",
         "description": "Bezeichnung für Option in Einstellungen"
     },
-    "excludedDomains": {
-        "message": "Ausgeschlossene Domains",
-        "description": "Bezeichnung für Option in Einstellungen"
-    },
-    "customIconUrl": {
-        "message": "Benutzerdefinierte Symbol-URL",
-        "description": "Bezeichnung für Option in Einstellungen"
-    },
-    "removeCustomIcon": {
-        "message": "Benutzerdefiniertes Symbol entfernen",
-        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
-    },
-    "customIcon": {
-        "message": "Benutzerdefiniertes Symbol",
-        "description": "Bezeichnung für Schaltfläche in Einstellungen"
-    },
-    "addPhoneButton": {
-        "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
-        "description": "Bezeichnung für Option in Einstellungen"
+    "showTranslateButton": {
+        "message": "Schaltfläche zum Übersetzen anzeigen",
+        "description": "Beschriftung für Feld in Einstellungen"
     },
     "showUnconvertedValue": {
-        "message": "Nicht konvertierten Wert anzeigen",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Originalwert vor Konvertierung anzeigen",
+        "description": "Bezeichnung für Schaltfläche in Einstellungen"
     },
-    "addScaleUpEffect": {
-        "message": "Scale-up-Effekt bei Enthüllung hinzufügen",
-        "description": "Bezeichnung für Option in Einstellungen"
-    },
-    "debugMode": {
-        "message": "Debug mode",
-        "description": "Bezeichnung für Option in Einstellungen"
-    },
-    "buttonStyle": {
-        "message": "Buttons Stil",
-        "description": "Bezeichnung für Option in Einstellungen"
-    },
-    "onlyicon": {
-        "message": "Nur Symbol",
+    "snapSelectionToWord": {
+        "message": "Textauswahl nach Wort ausrichten",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
-    "onlylabel": {
-        "message": "Nur Etikett",
+    "textSelectionBackground": {
+        "message": "Auswahlfarbe",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "textSelectionColor": {
+        "message": "Textfarbe",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "tooltipBackground": {
+        "message": "Hintergrundfarbe",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "tooltipOpacity": {
+        "message": "Tooltip-Deckkraft",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "translateLabel": {
+        "message": "Übersetzen",
+        "description": "Bezeichnung für Übersetzungsaktion"
+    },
+    "updatePageToSeeChanges": {
+        "message": "Aktualisiere die Seite, um die Änderungen zu sehen",
+        "description": ""
+    },
+    "useCustomStyle": {
+        "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "visitGithub": {
+        "message": "Besuchen Sie die GitHub-Seite",
+        "description": "Schaltfläche für die Beschriftung der Einstellungen, die zur GitHub-Seite führt"
+    },
+    "whatsNew": {
+        "message": "Was ist neu",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
-    "iconlabel": {
-        "message": "Symbol und Etikett",
+    "writeAReview": {
+        "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     }
 }

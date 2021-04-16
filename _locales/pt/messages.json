@@ -1,50 +1,86 @@
 {
-    "extensionDescription": {
-        "message": "Pop-up personalizável com ações na seleção de texto",
-        "description": "description da extensão"
-    },
-    "copyLabel": {
-        "message": "Copiar",
-        "description": "Rótulo para ação de cópia de texto"
-    },
-    "searchLabel": {
-        "message": "Pesquisar",
-        "description": "Rótulo para ação de texto de pesquisa"
-    },
-    "openLinkLabel": {
-        "message": "Abrir",
-        "description": "Rótulo para ação de link aberto"
-    },
-    "cutLabel": {
-        "message": "Cortar",
-        "description": "Rótulo para ação de corte"
-    },
-    "pasteLabel": {
-        "message": "Colar",
-        "description": "Rótulo para colar ação"
-    },
-    "translateLabel": {
-        "message": "Traduzir",
-        "description": "Rótulo para ação de tradução"
-    },
-    "appearanceHeader": {
-        "message": "Aparência",
-        "description": "Cabeçalho da categoria de aparência nas configurações"
-    },
-    "behaviorHeader": {
-        "message": "Behavior",
-        "description": "Cabeçalho da categoria de aparência nas configurações"
-    },
-    "convertionHeader": {
-        "message": "Conversão",
-        "description": "Cabeçalho da categoria de conversão nas configurações"
-    },
     "actionButtonsHeader": {
         "message": "Botões de ação",
         "description": "Cabeçalho para a categoria dos botões de ação nas configurações"
     },
+    "addActionButtonsForTextFields": {
+        "message": "Use painel especial para campos de texto",
+        "description": "Label para o campo nas configurações "
+    },
+    "addButtonIcons": {
+        "message": "Mostrar ícones para botões",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "addColorPreviewButton": {
+        "message": "Adicionar botão de visualização de cores (para cores CSS como #ffffff)",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "addDragHandles": {
+        "message": "Adicionar alças de arrasto de seleção",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "addNewSearchOption": {
+        "message": "Adicionar nova opção de pesquisa",
+        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
+    },
+    "addOpenLinks": {
+        "message": "Adicionar botão para abrir o link",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "addPhoneButton": {
+        "message": "Adicionar botão de número de telefone",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "addScaleUpEffect": {
+        "message": "Adicionar efeito de aumento de escala ao revelar",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "addTooltipShadow": {
+        "message": "Adicionar sombra de dica de ferramenta",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Todas as configurações são salvas automaticamente",
+        "description": ""
+    },
     "animationDuration": {
         "message": "Duração das animações (ms)",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "appearanceHeader": {
+        "message": "Aparência do painel",
+        "description": "Cabeçalho da categoria de aparência nas configurações"
+    },
+    "behaviorHeader": {
+        "message": "Comportamento do painel",
+        "description": "Cabeçalho da categoria de aparência nas configurações"
+    },
+    "borderRadius": {
+        "message": "Border radius",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "buttonsStyle": {
+        "message": "Estilo dos botões",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "buyMeCoffee": {
+        "message": "Apoio ao desenvolvimento",
+        "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Personalizar seleção de texto",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "contextualButtonsHeader": {
+        "message": "Botões contextuais",
+        "description": "Cabeçalho para a categoria de botões contextuais nas configurações"
+    },
+    "convertCurrencies": {
+        "message": "Converter moedas",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "convertMetrics": {
+        "message": "Converter métricas",
         "description": "Rótulo para o campo nas configurações"
     },
     "convertToCurrency": {
@@ -55,128 +91,184 @@
         "message": "Veja 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'>aqui</a> para referência",
         "description": "Dica de código de moeda para o campo 'converter em moeda' nas configurações"
     },
-    "hideOnScroll": {
-        "message": "Ocultar dica de ferramenta na rolagem",
+    "convertionHeader": {
+        "message": "Conversão",
+        "description": "Cabeçalho da categoria de conversão nas configurações"
+    },
+    "copyLabel": {
+        "message": "Copiar",
+        "description": "Rótulo para ação de cópia de texto"
+    },
+    "customIcon": {
+        "message": "Icône personnalisée",
+        "description": "Libellé du bouton dans les paramètres"
+    },
+    "customIconUrl": {
+        "message": "URL do ícone personalizado",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "customSearchTooltip": {
+        "message": "Painel de pesquisa",
         "description": "Rótulo para o campo nas configurações"
     },
-    "convertMetrics": {
-        "message": "Converter métricas",
+    "customSearchTooltipHint": {
+        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta",
         "description": "Rótulo para o campo nas configurações"
     },
-    "addOpenLinks": {
-        "message": "Adicionar botão para abrir o link",
+    "customSearchUrl": {
+        "message": "URL de pesquisa personalizado <br /> (use %s como espaço reservado para consulta)",
         "description": "Rótulo para o campo nas configurações"
     },
-    "convertCurrencies": {
-        "message": "Converter moedas",
-        "description": "Rótulo para o campo nas configurações"
+    "cutLabel": {
+        "message": "Cortar",
+        "description": "Rótulo para ação de corte"
     },
-    "performSimpleMathOperations": {
-        "message": "Faça cálculos matemáticos simples",
-        "description": "Rótulo para o campo nas configurações"
+    "debugMode": {
+        "message": "Modo de depuração",
+        "description": "Rótulo para opção nas configurações"
     },
-    "preferredMetricsSystem": {
-        "message": "Sistema de métricas preferido",
-        "description": "Rótulo para o campo nas configurações"
+    "deleteLabel": {
+        "message": "Excluir",
+        "description": "Rótulo para o botão de exclusão"
     },
-    "metric": {
-        "message": "Métrica",
-        "description": "Variante do sistema de métricas para lista suspensa"
-    },
-    "imperial": {
-        "message": "Imperial",
-        "description": "Variante do sistema de métricas para lista suspensa"
-    },
-    "resetDefaults": {
-        "message": "Restaurar padrões",
-        "description": "Rótulo para o botão de configurações para restaurar as configurações padrão"
-    },
-    "buyMeCoffee": {
-        "message": "Compre café para o autor",
-        "description": "Rótulo para o botão de configurações que leva à página de doação"
-    },
-    "visitGithub": {
-        "message": "Visite a página do GitHub",
-        "description": "Rótulo para o botão de configurações que leva à página do GitHub"
-    },
-    "allChangesSavedAutomatically": {
-        "message": "As configurações são salvas automaticamente <br /> Atualize a página para ver as alterações",
-        "description": "Pequena nota informativa no final das configurações"
-    },
-    "showTranslateButton": {
-        "message": "Mostrar botão de tradução",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "languageToTranslate": {
-        "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
-        "description": "Rótulo para campo nas configurações, incorporando link embutido"
-    },
-    "useCustomStyle": {
-        "message": "Use um estilo personalizado para a dica",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "tooltipBackground": {
-        "message": "Cor de fundo",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "tooltipOpacity": {
-        "message": "Opacidade da dica de ferramenta",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "addTooltipShadow": {
-        "message": "Adicionar sombra de dica de ferramenta",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "shadowOpacity": {
-        "message": "Opacidade da sombra",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "borderRadius": {
-        "message": "Border radius",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "changeTextSelectionColor": {
-        "message": "Personalizar seleção de texto",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "textSelectionBackground": {
-        "message": "Cor de seleção",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "textSelectionColor": {
-        "message": "Cor do texto",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Tente mudar a dica de seleção quando o site mostrar que é próprio",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "addActionButtonsForTextFields": {
-        "message": "Use painel especial para campos de texto",
-        "description": "Label para o campo nas configurações "
-    },
-    "removeSelectionOnActionButtonClick": {
-        "message": "Remover a seleção de texto após a ação",
-        "description": "Rótulo para o campo nas configurações"
+    "disableWordSnappingOnCtrlKey": {
+        "message": "Não selecione por palavras se a tecla CTRL estiver pressionada",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
     },
     "draggableTooltip": {
         "message": "O painel pode ser arrastado pela seta",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "addButtonIcons": {
-        "message": "Mostrar ícones para botões",
         "description": "Rótulo para o campo nas configurações"
     },
     "enabled": {
         "message": "ativado",
         "description": "Rótulo para o campo nas configurações"
     },
+    "excludedDomains": {
+        "message": "Domínios excluídos",
+        "description": "Rótulo para opção nas configurações"
+    },
+    "extensionDescription": {
+        "message": "Pop-up personalizável com ações na seleção de texto",
+        "description": "description da extensão"
+    },
+    "gmail": {
+        "message": "Novo e-mail do Gmail",
+        "description": "Rótulo de opção para a configuração do novo método de e-mail"
+    },
+    "hideOnKeypress": {
+        "message": "Ocultar ao pressionar a tecla",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "hideOnScroll": {
+        "message": "Ocultar dica de ferramenta na rolagem",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "iconlabel": {
+        "message": "Ícones + texto",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "imperial": {
+        "message": "Imperial",
+        "description": "Variante do sistema de métricas para lista suspensa"
+    },
+    "languageToTranslate": {
+        "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
+        "description": "Rótulo para campo nas configurações, incorporando link embutido"
+    },
+    "mailto": {
+        "message": "Cliente de e-mail",
+        "description": "Rótulo de opção para a configuração do novo método de e-mail"
+    },
+    "metric": {
+        "message": "Métrica",
+        "description": "Variante do sistema de métricas para lista suspensa"
+    },
+    "moveDownLabel": {
+        "message": "Mover para baixo",
+        "description": "Dica para o botão 'mover botão para baixo'"
+    },
+    "moveUpLabel": {
+        "message": "Mover para cima",
+        "description": "Dica para o botão 'mover botão para cima'"
+    },
+    "onlyicon": {
+        "message": "Apenas ícones",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "onlylabel": {
+        "message": "Somente texto",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "openLinkLabel": {
+        "message": "Abrir",
+        "description": "Rótulo para ação de link aberto"
+    },
+    "pasteLabel": {
+        "message": "Colar",
+        "description": "Rótulo para colar ação"
+    },
+    "performSimpleMathOperations": {
+        "message": "Faça cálculos matemáticos simples",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "preferCurrencySymbol": {
+        "message": "Prefira símbolos de moeda em vez de códigos",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "preferredMetricsSystem": {
+        "message": "Sistema de métricas preferido",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Método preferido para criar novo e-mail",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "preferredSearchEngine": {
         "message": "Motor de pesquisa",
         "description": "Rótulo para o campo nas configurações"
     },
-    "hideOnKeypress": {
-        "message": "Ocultar ao pressionar a tecla",
+    "removeCustomIcon": {
+        "message": "Remover ícone personalizado",
+        "description": "Dica para o botão para remover o ícone personalizado"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Remover seleção após ação realizada",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Restaurar padrões",
+        "description": "Rótulo para o botão de configurações para restaurar as configurações padrão"
+    },
+    "searchLabel": {
+        "message": "Pesquisar",
+        "description": "Rótulo para ação de texto de pesquisa"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Tooltip enabled",
+        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Tamanho do botão (px)",
+        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
+    },
+    "selectionHeader": {
+        "message": "Seleção de texto",
+        "description": "Cabeçalho para a categoria nas configurações"
+    },
+    "shadowOpacity": {
+        "message": "Opacidade da sombra",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Tente mudar a dica de seleção quando o site mostrar que é próprio",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "shouldOverrideWebsiteSelectionColor": {
+        "message": "Reescrever a cor de destaque do site",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "showEmailButton": {
+        "message": "Adicionar botão de e-mail",
         "description": "Rótulo para o campo nas configurações"
     },
     "showOnMap": {
@@ -187,116 +279,60 @@
         "message": "Adicionar botão para mostrar no mapa",
         "description": "Rótulo para o campo nas configurações"
     },
-    "showEmailButton": {
-        "message": "Adicionar botão de e-mail",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "preferredNewEmailMethod": {
-        "message": "Método preferido para criar novo e-mail",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "gmail": {
-        "message": "Novo e-mail do Gmail",
-        "description": "Rótulo de opção para a configuração do novo método de e-mail"
-    },
-    "mailto": {
-        "message": "Cliente de e-mail",
-        "description": "Rótulo de opção para a configuração do novo método de e-mail"
-    },
-    "contextualButtonsHeader": {
-        "message": "Botões contextuais",
-        "description": "Cabeçalho para a categoria de botões contextuais nas configurações"
-    },
-    "customSearchUrl": {
-        "message": "URL de pesquisa personalizado <br /> (use %s como espaço reservado para consulta)",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "addColorPreviewButton": {
-        "message": "Adicionar botão de visualização de cores (para cores css como #ffffff)",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "customSearchTooltip": {
-        "message": "Painel de pesquisa",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "customSearchTooltipHint": {
-        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "deleteLabel": {
-        "message": "Excluir",
-        "description": "Rótulo para o botão de exclusão"
-    },
-    "addNewSearchOption": {
-        "message": "Adicionar nova opção de pesquisa",
-        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
-    },
-    "secondaryTooltipIconSize": {
-        "message": "Tamanho do botão (px)",
-        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
-    },
-    "secondaryTooltipEnabled": {
-        "message": "Tooltip enabled",
-        "description": "Rótulo para adicionar novo botão de opção de pesquisa"
-    },
-    "moveUpLabel": {
-        "message": "Mover para cima",
-        "description": "Dica para o botão 'mover botão para cima'"
-    },
-    "moveDownLabel": {
-        "message": "Mover para baixo",
-        "description": "Dica para o botão 'mover botão para baixo'"
-    },
     "showSecondaryTooltipTitleOnHover": {
         "message": "Mostrar domínio ao passar o mouse",
         "description": "Rótulo para opção nas configurações"
     },
-    "excludedDomains": {
-        "message": "Domínios excluídos",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "customIconUrl": {
-        "message": "URL do ícone personalizado",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "customIcon": {
-        "message": "Icône personnalisée",
-        "description": "Libellé du bouton dans les paramètres"
-    },
-    "removeCustomIcon": {
-        "message": "Remover ícone personalizado",
-        "description": "Dica para o botão para remover o ícone personalizado"
-    },
-    "addPhoneButton": {
-        "message": "Adicionar botão de número de telefone",
-        "description": "Rótulo para opção nas configurações"
+    "showTranslateButton": {
+        "message": "Mostrar botão de tradução",
+        "description": "Rótulo para o campo nas configurações"
     },
     "showUnconvertedValue": {
-        "message": "Mostrar valor não convertido",
-        "description": "Rótulo para opção nas configurações"
+        "message": "Mostrar valor original antes da conversão",
+        "description": "Rótulo para o botão nas configurações"
     },
-    "addScaleUpEffect": {
-        "message": "Adicionar efeito de aumento de escala ao revelar",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "debugMode": {
-        "message": "Modo de depuração",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "buttonsStyle": {
-        "message": "Estilo dos botões",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "onlyicon": {
-        "message": "Somente ícone",
+    "snapSelectionToWord": {
+        "message": "Seleção de texto por palavra",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
-    "onlylabel": {
-        "message": "Apenas rótulo",
+    "textSelectionBackground": {
+        "message": "Cor de seleção",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "textSelectionColor": {
+        "message": "Cor do texto",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "tooltipBackground": {
+        "message": "Cor de fundo",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "tooltipOpacity": {
+        "message": "Opacidade da dica de ferramenta",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "translateLabel": {
+        "message": "Traduzir",
+        "description": "Rótulo para ação de tradução"
+    },
+    "updatePageToSeeChanges": {
+        "message": "Atualize a página para ver as mudanças",
+        "description": ""
+    },
+    "useCustomStyle": {
+        "message": "Use um estilo personalizado para a dica",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "visitGithub": {
+        "message": "Visite a página do GitHub",
+        "description": "Rótulo para o botão de configurações que leva à página do GitHub"
+    },
+    "whatsNew": {
+        "message": "O que há de novo",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
-    "iconlabel": {
-        "message": "Ícone e rótulo",
+    "writeAReview": {
+        "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     }
 }

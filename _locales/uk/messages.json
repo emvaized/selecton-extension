@@ -1,50 +1,86 @@
 {
-    "extensiondescription": {
-        "message": "Спливаюча панель з кнопками дій при виділенні тексту",
-        "description": "Опис розширення"
-    },
-    "copyLabel": {
-        "message": "Копіювати",
-        "description": "Label for copy text action"
-    },
-    "searchLabel": {
-        "message": "Шукати",
-        "description": "Label for search text action"
-    },
-    "translateLabel": {
-        "message": "Перевести",
-        "description": "Label for translate action"
-    },
-    "openLinkLabel": {
-        "message": "Відкрити",
-        "description": "Label for open link action"
-    },
-    "cutLabel": {
-        "message": "Вирізати",
-        "description": "Label for cut action"
-    },
-    "pasteLabel": {
-        "message": "Вставити",
-        "description": "Label for paste action"
-    },
-    "appearanceHeader": {
-        "message": "Зовнішній вигляд",
-        "description": "Header for appearance category in settings"
-    },
-    "behaviorHeader": {
-        "message": "Поведінка",
-        "description": "Header for appearance category in settings"
-    },
-    "convertionHeader": {
-        "message": "Конвертація",
-        "description": "Header for convertion category in settings"
-    },
     "actionButtonsHeader": {
         "message": "Кнопки дій",
         "description": "Header for action buttons category in settings"
     },
+    "addActionButtonsForTextFields": {
+        "message": "Використовувати спеціальну панель для полів введення",
+        "description": ""
+    },
+    "addButtonIcons": {
+        "message": "Показувати іконки кнопок",
+        "description": ""
+    },
+    "addColorPreviewButton": {
+        "message": "Додати кнопку кольору (для CSS кольорів на кшталт #ffffff)",
+        "description": "Label for field in settings"
+    },
+    "addDragHandles": {
+        "message": "Додати ручки перетягування виділення",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "addNewSearchOption": {
+        "message": "Додати нову опцію пошуку",
+        "description": "Ярлик для кнопки додавання нового пошуку"
+    },
+    "addOpenLinks": {
+        "message": "Додати кнопку відкриття посилання",
+        "description": "Label for field in settings"
+    },
+    "addPhoneButton": {
+        "message": "Додати кнопку номера телефону",
+        "description": "Label for option in settings"
+    },
+    "addScaleUpEffect": {
+        "message": "Додати ефект збільшення при появі",
+        "description": "Label for button in settings"
+    },
+    "addTooltipShadow": {
+        "message": "Показувати тінь панелі",
+        "description": ""
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Усі налаштування зберігаються автоматично",
+        "description": ""
+    },
     "animationDuration": {
         "message": "Тривалість анімацій (мс)",
+        "description": "Label for field in settings"
+    },
+    "appearanceHeader": {
+        "message": "Вигляд панелі",
+        "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
+    },
+    "behaviorHeader": {
+        "message": "Поведінка панелі",
+        "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
+    },
+    "borderRadius": {
+        "message": "Закруглення кутів (px)",
+        "description": ""
+    },
+    "buttonStyle": {
+        "message": "Стиль кнопок",
+        "description": "Мітка для опції в налаштуваннях"
+    },
+    "buyMeCoffee": {
+        "message": "Підтримати розробку",
+        "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Змінити стиль виділення тексту",
+        "description": ""
+    },
+    "contextualButtonsHeader": {
+        "message": "Контекстні кнопки",
+        "description": "Header for contextual buttons category in settings"
+    },
+    "convertCurrencies": {
+        "message": "Конвертувати валюту",
+        "description": "Label for field in settings"
+    },
+    "convertMetrics": {
+        "message": "Конвертувати довжину/масу",
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
@@ -55,128 +91,188 @@
         "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>",
         "description": "Currency code hint for 'convert to currency' field in settings"
     },
-    "hideOnScroll": {
-        "message": "Ховати при прокручуванні",
-        "description": "Label for field in settings"
+    "convertionHeader": {
+        "message": "Конвертація",
+        "description": "Header for convertion category in settings"
     },
-    "convertMetrics": {
-        "message": "Конвертувати довжину/масу",
-        "description": "Label for field in settings"
+    "copyLabel": {
+        "message": "Копіювати",
+        "description": "Label for copy text action"
     },
-    "addOpenLinks": {
-        "message": "Додати кнопку відкриття посилання",
-        "description": "Label for field in settings"
+    "customIcon": {
+        "message": "Своя іконка",
+        "description": "Label for button in settings"
     },
-    "convertCurrencies": {
-        "message": "Конвертувати валюту",
-        "description": "Label for field in settings"
+    "customIconUrl": {
+        "message": "URL іконки",
+        "description": "Label for option in settings"
     },
-    "performSimpleMathOperations": {
-        "message": "Виконувати прості математичні розрахунки",
-        "description": "Label for field in settings"
+    "customSearchTooltip": {
+        "message": "Панель варіантів пошуку",
+        "description": "Ярлик для поля в настройках"
     },
-    "preferredMetricsSystem": {
-        "message": "Бажана система мір",
-        "description": "Label for field in settings"
+    "customSearchTooltipHint": {
+        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. <br/> Використовуйте %s у якості плейсхолдера для запиту",
+        "description": "Ярлик для поля в настройках"
     },
-    "metric": {
-        "message": "Метрична",
-        "description": "Variant of metrics system for dropdown"
+    "customSearchUrl": {
+        "message": "URL пошуку <br /> (використовуйте %s у якості плейсхолдера для запиту)",
+        "description": "Ярлик для поля в настройках"
     },
-    "imperial": {
-        "message": "Англійська",
-        "description": "Variant of metrics system for dropdown"
+    "cutLabel": {
+        "message": "Вирізати",
+        "description": "Label for cut action"
     },
-    "resetDefaults": {
-        "message": "Скинути настройки",
-        "description": ""
+    "debugMode": {
+        "message": "Режим відлагодження",
+        "description": "Мітка для опції в налаштуваннях"
     },
-    "buyMeCoffee": {
-        "message": "Купити автору кави",
-        "description": ""
+    "deleteLabel": {
+        "message": "Видалити",
+        "description": "Ярлик для кнопки видалення"
     },
-    "visitGithub": {
-        "message": "Відвідати сторінку на GitHub",
-        "description": ""
-    },
-    "allChangesSavedAutomatically": {
-        "message": "Налаштування зберігаються автоматично <br />Перезавантажте сторінку, щоб побачити зміни",
-        "description": ""
-    },
-    "showTranslateButton": {
-        "message": "Показувати кнопку перекладу",
-        "description": ""
-    },
-    "languageToTranslate": {
-        "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
-        "description": ""
-    },
-    "useCustomStyle": {
-        "message": "Змінити стиль панелі",
-        "description": ""
-    },
-    "tooltipBackground": {
-        "message": "Колір фону",
-        "description": ""
-    },
-    "tooltipOpacity": {
-        "message": "Прозорість панелі",
-        "description": ""
-    },
-    "addTooltipShadow": {
-        "message": "Показувати тінь панелі",
-        "description": ""
-    },
-    "shadowOpacity": {
-        "message": "Прозорість тіні",
-        "description": ""
-    },
-    "borderRadius": {
-        "message": "Закруглення кутів (px)",
-        "description": ""
-    },
-    "changeTextSelectionColor": {
-        "message": "Змінити стиль виділення тексту",
-        "description": ""
-    },
-    "textSelectionBackground": {
-        "message": "Колір виділення",
-        "description": ""
-    },
-    "textSelectionColor": {
-        "message": "Колір тексту",
-        "description": ""
-    },
-    "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Спробувати зрушити панель вгору, коли сайт показує свою",
-        "description": ""
-    },
-    "addActionButtonsForTextFields": {
-        "message": "Використовувати спеціальну панель для полів введення ",
-        "description": ""
-    },
-    "removeSelectionOnActionButtonClick": {
-        "message": "Прибрати виділення після дії",
-        "description": ""
+    "disableWordSnappingOnCtrlKey": {
+        "message": "Не виділяти по словам, якщо натиснута клавіша CTRL",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
     "draggableTooltip": {
         "message": "Панель можна перетягнути за стрілку",
-        "description": ""
-    },
-    "addButtonIcons": {
-        "message": "Показувати іконки кнопок",
         "description": ""
     },
     "enabled": {
         "message": "Включено",
         "description": ""
     },
+    "excludedDomains": {
+        "message": "Виключені домени",
+        "description": "Label for option in settings"
+    },
+    "extensiondescription": {
+        "message": "Спливаюча панель з кнопками дій при виділенні тексту",
+        "description": "Опис розширення"
+    },
+    "gmail": {
+        "message": "Новий лист Gmail",
+        "description": "Option label for new email method setting"
+    },
+    "hideOnKeypress": {
+        "message": "Ховати при натисканні кнопок клавіатури",
+        "description": "Label for field in settings"
+    },
+    "hideOnScroll": {
+        "message": "Ховати при прокручуванні",
+        "description": "Label for field in settings"
+    },
+    "iconlabel": {
+        "message": "Іконки + текст",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "imperial": {
+        "message": "Англійська",
+        "description": "Variant of metrics system for dropdown"
+    },
+    "languageToTranslate": {
+        "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
+        "description": ""
+    },
+    "mailto": {
+        "message": "Відкрити поштовий клієнт",
+        "description": "Option label for new email method setting"
+    },
+    "metric": {
+        "message": "Метрична",
+        "description": "Variant of metrics system for dropdown"
+    },
+    "moveDownLabel": {
+        "message": "Опустити",
+        "description": "Tooltip for 'move button down' button"
+    },
+    "moveUpLabel": {
+        "message": "Підняти",
+        "description": "Tooltip for 'move button up' button"
+    },
+    "onlyicon": {
+        "message": "Тільки іконки",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "onlylabel": {
+        "message": "Тільки текст",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "openLinkLabel": {
+        "message": "Відкрити",
+        "description": "Label for open link action"
+    },
+    "pasteLabel": {
+        "message": "Вставити",
+        "description": "Label for paste action"
+    },
+    "performSimpleMathOperations": {
+        "message": "Виконувати прості математичні розрахунки",
+        "description": "Label for field in settings"
+    },
+    "preferCurrencySymbol": {
+        "message": "Віддавати перевагу символам валют замість кодів",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "preferredMapsService": {
+        "message": "Бажаний сервіс карт",
+        "description": "Label for field in settings"
+    },
+    "preferredMetricsSystem": {
+        "message": "Бажана система мір",
+        "description": "Label for field in settings"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Спосіб створення імейлу",
+        "description": "Label for field in settings"
+    },
     "preferredSearchEngine": {
         "message": "Пошукова система",
         "description": ""
     },
-    "hideOnKeypress": {
-        "message": "Ховати при натисканні кнопок клавіатури",
+    "removeCustomIcon": {
+        "message": "Прибрати свою іконку",
+        "description": "Tooltip for button to remove custom icon"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Прибрати виділення після виконаної дії",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Скинути настройки",
+        "description": ""
+    },
+    "searchLabel": {
+        "message": "Шукати",
+        "description": "Label for search text action"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Панель активована",
+        "description": "Label for add new search option button"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Розмір кнопок (px)",
+        "description": "Label for add new search option button"
+    },
+    "selectionHeader": {
+        "message": "Виділення тексту",
+        "description": "Заголовок категорії в налаштуваннях"
+    },
+    "shadowOpacity": {
+        "message": "Прозорість тіні",
+        "description": ""
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Спробувати зрушити панель вгору, коли сайт показує свою",
+        "description": ""
+    },
+    "shouldOverrideWebsiteSelectionColor": {
+        "message": "Переписати колір виділення сайту",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "showEmailButton": {
+        "message": "Додати кнопку електронної пошти",
         "description": "Label for field in settings"
     },
     "showOnMap": {
@@ -187,120 +283,60 @@
         "message": "Додати кнопку 'Показати на карті'",
         "description": "Label for field in settings"
     },
-    "showEmailButton": {
-        "message": "Додати кнопку електронної пошти",
-        "description": "Label for field in settings"
-    },
-    "preferredNewEmailMethod": {
-        "message": "Спосіб створення імейлу",
-        "description": "Label for field in settings"
-    },
-    "gmail": {
-        "message": "Новий лист Gmail",
-        "description": "Option label for new email method setting"
-    },
-    "mailto": {
-        "message": "Відкрити поштовий клієнт",
-        "description": "Option label for new email method setting"
-    },
-    "contextualButtonsHeader": {
-        "message": "Контекстні кнопки",
-        "description": "Header for contextual buttons category in settings"
-    },
-    "customSearchUrl": {
-        "message": "URL пошуку <br /> (використовуйте %s у якості плейсхолдера для запиту)",
-        "description": "Ярлик для поля в настройках"
-    },
-    "addColorPreviewButton": {
-        "message": "Додати кнопку кольору (для css кольорів на кшталт #ffffff)",
-        "description": "Label for field in settings"
-    },
-    "preferredMapsService": {
-        "message": "Бажаний сервіс карт",
-        "description": "Label for field in settings"
-    },
-    "customSearchTooltip": {
-        "message": "Панель варіантів пошуку",
-        "description": "Ярлик для поля в настройках"
-    },
-    "customSearchTooltipHint": {
-        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. <br/> Використовуйте %s у якості плейсхолдера для запиту",
-        "description": "Ярлик для поля в настройках"
-    },
-    "deleteLabel": {
-        "message": "Видалити",
-        "description": "Ярлик для кнопки видалення"
-    },
-    "addNewSearchOption": {
-        "message": "Додати нову опцію пошуку",
-        "description": "Ярлик для кнопки додавання нового пошуку"
-    },
-    "secondaryTooltipIconSize": {
-        "message": "Розмір кнопок (px)",
-        "description": "Label for add new search option button"
-    },
-    "secondaryTooltipEnabled": {
-        "message": "Панель активована",
-        "description": "Label for add new search option button"
-    },
-    "moveUpLabel": {
-        "message": "Підняти",
-        "description": "Tooltip for 'move button up' button"
-    },
-    "moveDownLabel": {
-        "message": "Опустити",
-        "description": "Tooltip for 'move button down' button"
-    },
     "showSecondaryTooltipTitleOnHover": {
         "message": "Показати домен при наведенні",
         "description": "Label for option in settings"
     },
-    "excludedDomains": {
-        "message": "Виключені домени",
-        "description": "Label for option in settings"
-    },
-    "customIconUrl": {
-        "message": "URL іконки",
-        "description": "Label for option in settings"
-    },
-    "removeCustomIcon": {
-        "message": "Прибрати свою іконку",
-        "description": "Tooltip for button to remove custom icon"
-    },
-    "customIcon": {
-        "message": "Своя іконка",
-        "description": "Label for button in settings"
-    },
-    "addPhoneButton": {
-        "message": "Додати кнопку номера телефону",
-        "description": "Label for option in settings"
+    "showTranslateButton": {
+        "message": "Показувати кнопку перекладу",
+        "description": ""
     },
     "showUnconvertedValue": {
-        "message": "Показувати початкове значення",
-        "description": "Label for button in settings"
+        "message": "Показати вихідне значення перед перетворенням",
+        "description": "Мітка для кнопки в налаштуваннях"
     },
-    "addScaleUpEffect": {
-        "message": "Додати ефект збільшення при появі",
-        "description": "Label for button in settings"
-    },
-    "debugMode": {
-        "message": "Режим відлагодження",
-        "description": "Мітка для опції в налаштуваннях"
-    },
-    "buttonStyle": {
-        "message": "Стиль кнопок",
-        "description": "Мітка для опції в налаштуваннях"
-    },
-    "onlyicon": {
-        "message": "Тільки іконка",
+    "snapSelectionToWord": {
+        "message": "Прив'язка виділення тексту по слову",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
-    "onlylabel": {
-        "message": "Тільки текст",
+    "textSelectionBackground": {
+        "message": "Колір виділення",
+        "description": ""
+    },
+    "textSelectionColor": {
+        "message": "Колір тексту",
+        "description": ""
+    },
+    "tooltipBackground": {
+        "message": "Колір фону",
+        "description": ""
+    },
+    "tooltipOpacity": {
+        "message": "Прозорість панелі",
+        "description": ""
+    },
+    "translateLabel": {
+        "message": "Перевести",
+        "description": "Label for translate action"
+    },
+    "updatePageToSeeChanges": {
+        "message": "Оновіть сторінку, щоб побачити зміни",
+        "description": ""
+    },
+    "useCustomStyle": {
+        "message": "Змінити стиль панелі",
+        "description": ""
+    },
+    "visitGithub": {
+        "message": "Відвідати сторінку на GitHub",
+        "description": ""
+    },
+    "whatsNew": {
+        "message": "Що нового",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
-    "iconlabel": {
-        "message": "Іконка та текст",
+    "writeAReview": {
+        "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     }
 }

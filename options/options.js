@@ -1,10 +1,9 @@
 /// TODO: 
-/// 1. Collapsible sections
-/// 2. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
+/// 1. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
+/// Those are used on settings page
 
-var options = new Map([
-    // ['animationDuration', 300],
-    // ['convertToCurrency', 'USD'],
+
+var defaultConfigs = new Map([
     ['hideOnScroll', true],
     ['convertMetrics', true],
     ['addOpenLinks', true],
@@ -43,12 +42,19 @@ var options = new Map([
     ['showUnconvertedValue', true],
     ['addScaleUpEffect', true],
     ['debugMode', false],
-    ['addDragHandles', false],
-    // ['addButtonIcons', false],
+    ['addDragHandles', true],
+    ['snapSelectionToWord', true],
+    ['preferCurrencySymbol', false],
+    ['disableWordSnappingOnCtrlKey', true],
+    ['shouldOverrideWebsiteSelectionColor', false],
     ['buttonsStyle', 'onlylabel'],
 ]);
 
-var keys = [...options.keys()];
+
+var keys = [...defaultConfigs.keys()];
+
+/// Init settings
+
 
 function loadSettings() {
     var ids = [];
@@ -59,7 +65,7 @@ function loadSettings() {
     chrome.storage.local.get(keys, setInputs);
 
     function setInputs(result) {
-        options.forEach(function (value, key) {
+        defaultConfigs.forEach(function (value, key) {
             var input = document.getElementById(key);
 
             /// Set input value
@@ -103,27 +109,13 @@ function loadSettings() {
             });
         });
 
-        /// Set translated headers
-        document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
-        document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
-        document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
-        document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
-        document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
-        document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
-        document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
-
-        /// Translate footer buttons
-        document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
-        document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
-        document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
-
         /// Set custom style for 'Excluded domains' textfield
         var excludedDomainsTextfield = document.querySelector("#excludedDomains");
         excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
         excludedDomainsTextfield.style.maxWidth = '200px';
 
+        setTranslatedLabels();
 
-        /// Reduce opacity for not available options
         updateDisabledOptions();
 
         loadCustomSearchButtons();
@@ -131,9 +123,95 @@ function loadSettings() {
         setCurrenciesDropdown();
 
         setCollapsibleHeaders();
+
+        setVersionLabel();
+    }
+}
+
+function setTranslatedLabels() {
+    /// Set translated headers
+    document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
+    document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
+    document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
+    document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
+    document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
+    document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
+    document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
+
+    /// "All changes saved automatically" block
+    var infoCircle = document.createElement('div');
+    infoCircle.textContent = '🛈';
+    infoCircle.setAttribute('style', 'display: inline;position: relative; top: 3px; left: 3px; color: grey; font-size: 18px;');
+    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
+    document.querySelector("#allChangesSavedAutomaticallyHeader").appendChild(infoCircle);
+    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML += '<br />';
+    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
+
+    /// Translate footer buttons
+    // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+    document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
+    document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
+    document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
+}
+
+function setVersionLabel() {
+    let label = document.getElementById('selecton-version');
+    var manifestData = chrome.runtime.getManifest();
+    label.innerHTML = 'Selecton ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/selecton-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
+}
+
+function updateDisabledOptions() {
+    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#convertToCurrencyDropdown").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#shouldOverrideWebsiteSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
+    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+}
+
+function setCollapsibleHeaders() {
+    var coll = document.getElementsByClassName("collapsible-header");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
     }
 
+
+    /// Additional settings button
+    // var showAdditionalSettingsButton = document.getElementById('showAdditionalSettingsButton');
+    // showAdditionalSettingsButton.addEventListener('input', function (e) {
+    //     var additionalSettingsBlock = document.getElementById('additional-settings-block');
+    //     if (additionalSettingsBlock.style.maxHeight) {
+    //         additionalSettingsBlock.style.maxHeight = null;
+    //         additionalSettingsBlock.querySelector('div').style.border = 'none';
+    //     } else {
+    //         additionalSettingsBlock.style.maxHeight = additionalSettingsBlock.scrollHeight + 15 + "px";
+    //         additionalSettingsBlock.querySelector('div').style.border = '1px solid lightGrey';
+    //     }
+    // });
 }
+
+/// Configure additional elements (currencies )
 
 function setCurrenciesDropdown() {
     chrome.storage.local.get(['convertToCurrency'], function (result) {
@@ -142,9 +220,10 @@ function setCurrenciesDropdown() {
 
         var select = document.getElementById('convertToCurrencyDropdown');
 
-        Object.keys(availableCurrencies).forEach((function (key) {
-            var option = document.createElement('option');
-            option.innerHTML = key + ' — ' + availableCurrencies[key]['currencyName'];
+        Object.keys(currenciesList).forEach((function (key) {
+            let option = document.createElement('option');
+            let currencySymbol = currenciesList[key]['currencySymbol'];
+            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + currenciesList[key]['currencyName'];
             option.setAttribute('value', key);
             select.appendChild(option);
 
@@ -152,7 +231,6 @@ function setCurrenciesDropdown() {
         }));
 
         select.parentNode.innerHTML = chrome.i18n.getMessage('convertToCurrency') + '<br />' + select.parentNode.innerHTML;
-
 
         setTimeout(function () {
             document.getElementById('convertToCurrencyDropdown').addEventListener("input", function (e) {
@@ -205,131 +283,6 @@ function loadCustomSearchButtons() {
 
         generateCustomSearchButtonsList();
     });
-}
-
-function updateDisabledOptions() {
-    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
-    // document.querySelector("#convertToCurrency").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#convertToCurrencyDropdown").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
-    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-}
-
-function setCollapsibleHeaders() {
-    var coll = document.getElementsByClassName("collapsible-header");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                // content.style.border = 'none';
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                // content.style.border = '1px solid #444';
-            }
-        });
-    }
-}
-
-function saveAllSettings() {
-    var dataToSave = {};
-
-    keys.forEach(function (key) {
-        var input = document.querySelector(`#${key}`);
-        dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
-    });
-
-    chrome.storage.local.set(dataToSave);
-}
-
-function resetSettings() {
-    /// Reset custom search engines
-    customSearchButtonsList = [
-        {
-            'url': 'https://www.youtube.com/results?search_query=%s',
-            'title': 'YouTube',
-            'enabled': true
-        },
-        {
-            'url': 'https://open.spotify.com/search/%s',
-            'title': 'Spotify',
-            'enabled': true
-        },
-        {
-            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
-            'title': 'Aliexpress',
-            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
-            'enabled': true
-        },
-        {
-            'url': 'https://www.amazon.com/s?k=%s',
-            'title': 'Amazon',
-            'enabled': true
-        },
-        {
-            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
-            'title': 'Wikipedia',
-            'enabled': false
-        },
-        {
-            'url': 'https://www.imdb.com/find?s=alt&q=%s',
-            'title': 'IMDB',
-            'enabled': false
-        },
-    ];
-    saveCustomSearchButtons();
-    setTimeout(function () {
-        generateCustomSearchButtonsList();
-    }, 50);
-
-
-    /// Reset regular options
-    var dataToSave = {};
-    options.forEach(function (value, key) {
-        dataToSave[key] = value;
-    });
-
-    chrome.storage.local.set(dataToSave);
-
-    options.forEach(function (value, key) {
-        var input = document.getElementById(key);
-
-        /// Set input value
-        if (input !== null && input !== undefined) {
-            if (input.type == 'checkbox') {
-                if ((value !== null && value == true) || (value == null && value == true))
-                    input.setAttribute('checked', 0);
-                else input.removeAttribute('checked', 0);
-            } else if (input.tagName == 'SELECT') {
-                var options = input.querySelectorAll('option');
-                if (options !== null)
-                    options.forEach(function (option) {
-                        var selectedValue = value;
-                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
-                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
-                        if (option.value == selectedValue) option.setAttribute('selected', true);
-                        else option.setAttribute('selected', false);
-                    });
-            }
-            else {
-                input.setAttribute('value', value);
-            }
-        }
-    });
-
 }
 
 function generateCustomSearchButtonsList() {
@@ -515,55 +468,107 @@ function generateCustomSearchButtonsList() {
     container.appendChild(addButton);
 }
 
+function saveAllSettings() {
+    var dataToSave = {};
+
+    keys.forEach(function (key) {
+        var input = document.querySelector(`#${key}`);
+        dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
+    });
+
+    chrome.storage.local.set(dataToSave);
+}
+
 function saveCustomSearchButtons() {
     chrome.storage.local.set({ 'customSearchButtons': customSearchButtonsList });
 }
 
+function resetSettings() {
+    /// Reset custom search engines
+    customSearchButtonsList = [
+        {
+            'url': 'https://www.youtube.com/results?search_query=%s',
+            'title': 'YouTube',
+            'enabled': true
+        },
+        {
+            'url': 'https://open.spotify.com/search/%s',
+            'title': 'Spotify',
+            'enabled': true
+        },
+        {
+            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
+            'title': 'Aliexpress',
+            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+            'enabled': true
+        },
+        {
+            'url': 'https://www.amazon.com/s?k=%s',
+            'title': 'Amazon',
+            'enabled': true
+        },
+        {
+            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+            'title': 'Wikipedia',
+            'enabled': false
+        },
+        {
+            'url': 'https://www.imdb.com/find?s=alt&q=%s',
+            'title': 'IMDB',
+            'enabled': false
+        },
+    ];
+    saveCustomSearchButtons();
+    setTimeout(function () {
+        generateCustomSearchButtonsList();
+    }, 50);
+
+    /// Reset regular options
+    var dataToSave = {};
+    defaultConfigs.forEach(function (value, key) {
+        dataToSave[key] = value;
+    });
+
+    chrome.storage.local.set(dataToSave);
+
+    defaultConfigs.forEach(function (value, key) {
+        var input = document.getElementById(key);
+
+        /// Set input value
+        if (input !== null && input !== undefined) {
+            if (input.type == 'checkbox') {
+                if ((value !== null && value == true) || (value == null && value == true))
+                    input.setAttribute('checked', 0);
+                else input.removeAttribute('checked', 0);
+            } else if (input.tagName == 'SELECT') {
+                var options = input.querySelectorAll('option');
+                if (options !== null)
+                    options.forEach(function (option) {
+                        var selectedValue = value;
+                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
+                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                        if (option.value == selectedValue) option.setAttribute('selected', true);
+                        else option.setAttribute('selected', false);
+                    });
+            }
+            else {
+                input.setAttribute('value', value);
+            }
+        }
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", loadSettings);
-document.querySelector("form").addEventListener("reset", resetSettings);
+
+// document.querySelector("form").addEventListener("reset", resetSettings);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });
 document.querySelector("#githubButton").addEventListener("click", function (val) {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
-
-
-
-
-
-var availableCurrencies = {
-    "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", id: "AUD", rate: 1.29009 },
-    "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", id: "BGN", rate: 1.640562 },
-    "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", id: "BRL", rate: 5.616101 },
-    "BTC": { currencyName: "Bitcoin", currencySymbol: "BTC", id: "BTC", rate: 0.000018 },
-    "BYN": { currencyName: "Belarussian Ruble", currencySymbol: "белорусских рублей", id: "BYN", rate: 2.596137 },
-    "CAD": { currencyName: "Canadian Dollar", currencySymbol: "C$", id: "CAD", rate: 1.269384 },
-    "CHF": { currencyName: "Swiss Franc", currencySymbol: "CHF", id: "CHF", rate: 0.926525 },
-    "CNY": { currencyName: "Chinese Yuan", currencySymbol: "¥", id: "CNY", rate: 6.497301 },
-    "CRC": { currencyName: "Costa Rican Colon", currencySymbol: "₡", id: "CRC", rate: 610.339772 },
-    "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", id: "CZK", rate: 21.936455 },
-    "DKK": { currencyName: "Danish Krone", currencySymbol: "kr", id: "DKK", rate: 6.229502 },
-    "EUR": { currencyName: "Euro", currencySymbol: "€", id: "EUR", rate: 0.8378 },
-    "GBP": { currencyName: "British Pound", currencySymbol: "£", id: "GBP", rate: 0.721124 },
-    "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", id: "HKD", rate: 7.765632 },
-    "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", id: "ILS", rate: 3.310401 },
-    "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", id: "INR", rate: 72.452006 },
-    "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", id: "IRR", rate: 42105.017329 },
-    "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", id: "JPY", rate: 109.188027 },
-    "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", id: "KPW", rate: 900.00022 },
-    "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "лв", id: "KZT", rate: 418.821319 },
-    "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", id: "MNT", rate: 2849.930035 },
-    "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", id: "MXN", rate: 20.655212 },
-    "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", id: "NGN", rate: 410.317377 },
-    "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", id: "NOK", rate: 8.51191 },
-    "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", id: "PLN", rate: 3.845051 },
-    "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", id: "RUB", rate: 72.880818 },
-    "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", id: "SAR", rate: 3.750694 },
-    "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", id: "SEK", rate: 8.514027 },
-    "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", id: "TRY", rate: 0.14 },
-    "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", id: "UAH", rate: 27.852288 },
-    "USD": { currencyName: "United States Dollar", currencySymbol: "$", id: "USD", rate: 1 },
-    "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", id: "VND", rate: 23054.385489 },
-    "ZAR": { currencyName: "Rand", currencySymbol: "ZAR", id: "ZAR", rate: 14.856969 },
-}
+document.querySelector("#writeAReviewButton").addEventListener("click", function (val) {
+    let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+    window.open(isFirefox ? 'https://addons.mozilla.org/ru/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
+});

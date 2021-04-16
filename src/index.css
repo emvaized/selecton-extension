@@ -59,11 +59,6 @@
     text-transform: none !important;
     outline: none !important;
     text-align: center !important;
-    /* align-items: center; */
-    /* align-items: top !important; */
-    /* line-height: 100% !important; */
-    /* padding:  var(--selection-button-padding) !important; */
-    /* font: 1.0em "Arial", sans-serif !important; */
     font-size: 12.5px !important;
     }
     
@@ -78,20 +73,6 @@
   .button-with-border {
     border-left: 1px solid var(--selection-button-background-hover) !important;
   }
-
-/* Text selection */
-::selection {
-  background:  var(--selection-background);
-  color: var(--selection-text-color);
-  text-shadow: var( --selection-text-shadow);
-}
-/* for Mozilla Firefox */
-::-moz-selection {
-  background: var(--selection-background);
-  color: var(--selection-text-color);
-  text-shadow:var( --selection-text-shadow);
-}
-
 
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
@@ -116,7 +97,7 @@
   background: transparent !important;
 }
 
-.image-button {
+.custom-search-image-button {
   all: revert;
   /* transform: scale(1.0); */
   /* transition: transform 100ms ease-in-out; */
@@ -124,7 +105,7 @@
   vertical-align: middle;
 }
 
-.image-button:hover {
+.custom-search-image-button:hover {
   /* transform: scale(1.5); */
   /* transition: transform 100ms ease-in-out; */
   cursor: pointer;
@@ -136,3 +117,18 @@
   /* border:solid 1px var(--selection-button-background-hover);  */
   display: inline;
 }
+
+
+/* Text selection */
+/* ::selection {
+  background:  var(--selection-background) var(--selection-colors-importance);
+  color: var(--selection-text-color);
+  text-shadow: var( --selection-text-shadow);
+} */
+
+/* for Mozilla Firefox */
+/* ::-moz-selection {
+  background: var(--selection-background);
+  color: var(--selection-text-color);
+  text-shadow:var( --selection-text-shadow);
+} */

@@ -10,12 +10,13 @@
 <body>
     <form>
         <div class='option'> <label><input type="checkbox" id="enabled"> </label></div>
-
         <div id='all-options-container'>
+            <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
+            <div class='option'> <label><input type="text" id="excludedDomains"> </label></div>
+
 
             <h3 class='collapsible-header' id='appearanceHeader'></h3>
             <div class='collapsible-content'>
-                <div class='option'> <label><input type="checkbox" id="useCustomStyle"></label></div>
                 <div class='option'><label><select id="buttonsStyle">
                             <option value="onlylabel">Only label</option>
                             <option value="onlyicon">Only icon</option>
@@ -23,6 +24,7 @@
                         </select>
                     </label>
                 </div>
+                <div class='option'> <label><input type="checkbox" id="useCustomStyle"></label></div>
                 <div id='customStylesSection'>
                     <div class='option'> <label><input type="color" id="tooltipBackground"></label></div>
                     <div class='option'> <label><input type="number" min='0' max='50' step='1'
@@ -34,9 +36,32 @@
                     <div class='option'> <label><input type="number" min='0.05' max='1.0' step='0.05'
                                 id="shadowOpacity"></label></div>
                 </div>
+            </div>
+
+            <h3 class='collapsible-header' id='behaviorHeader'></h3>
+            <div class='collapsible-content'>
+
+                <div class='option'> <label><input type="checkbox" id="hideOnScroll"></label></div>
+                <div class='option'> <label><input type="checkbox" id="addScaleUpEffect"></label></div>
+                <div class='option'> <label><input type="checkbox" id="hideOnKeypress"></label></div>
+                <div class='option'> <label><input type="checkbox" id="draggableTooltip"></label></div>
+                <div class='option'> <label><input type="checkbox" id="shiftTooltipWhenWebsiteHasOwn"></label></div>
+            </div>
+
+
+            <h3 class='collapsible-header' id='selectionHeader'></h3>
+            <div class='collapsible-content'>
+                <div class='option'> <label><input type="checkbox" id="snapSelectionToWord"></label></div>
+                <div class='option'> <label><input type="checkbox" id="disableWordSnappingOnCtrlKey"></label></div>
+                <div class='option'> <label><input type="checkbox" id="removeSelectionOnActionButtonClick"></label>
+                </div>
+                <div class='option'> <label><input type="checkbox" id="addDragHandles"></label></div>
+                <hr />
                 <div class='option'> <label><input type="checkbox" id="changeTextSelectionColor"></label></div>
                 <div class='option'> <label><input type="color" id="textSelectionBackground"></label></div>
                 <div class='option'> <label><input type="color" id="textSelectionColor"></label></div>
+                <div class='option'> <label><input type="checkbox" id="shouldOverrideWebsiteSelectionColor"></label>
+                </div>
             </div>
 
             <h3 class='collapsible-header' id='actionButtonsHeader'></h3>
@@ -53,9 +78,11 @@
                     </label>
                 </div>
                 <div class='option'> <label><input type="text" id="customSearchUrl"> </label></div>
-                <div class='option'> <label><input type="checkbox" id="addActionButtonsForTextFields"> </label></div>
+                <hr />
                 <div class='option'> <label><input type="checkbox" id="showTranslateButton"> </label></div>
                 <div class='option'> <label><input type="text" id="languageToTranslate"> </label></div>
+                <hr />
+
                 <div class='option'> <label><input type="checkbox" id="showEmailButton"> </label></div>
                 <div class='option'><label><select id="preferredNewEmailMethod">
                             <option value="mailto">Desktop email client</option>
@@ -65,6 +92,8 @@
                         </select>
                     </label>
                 </div>
+                <hr />
+
                 <div class='option'> <label><input type="checkbox" id="showOnMapButtonEnabled"> </label></div>
                 <div class='option'><label><select id="preferredMapsService">
                             <option value="google">Google Maps</option>
@@ -75,15 +104,23 @@
                         </select>
                     </label>
                 </div>
+                <hr />
                 <div class='option'> <label><input type="checkbox" id="addOpenLinks"> </label></div>
                 <div class='option'> <label><input type="checkbox" id="addPhoneButton"> </label></div>
                 <div class='option'> <label><input type="checkbox" id="addColorPreviewButton"> </label></div>
+                <div class='option'> <label><input type="checkbox" id="addActionButtonsForTextFields"> </label></div>
             </div>
+
 
             <h3 class='collapsible-header' id='convertionHeader'></h3>
             <div class='collapsible-content'>
-
-                <div class='option'> <label><input type="checkbox" id="showUnconvertedValue"></label></div>
+                <div class='option'> <label><input type="checkbox" id="convertCurrencies"> </label></div>
+                <div class='option'> <label><input type="checkbox" id="preferCurrencySymbol"> </label></div>
+                <div class='option'><label><select id="convertToCurrencyDropdown">
+                        </select>
+                    </label>
+                </div>
+                <hr />
                 <div class='option'> <label><input type="checkbox" id="convertMetrics"> </label></div>
                 <div class='option'><label><select id="preferredMetricsSystem">
                             <option value="metric">metric</option>
@@ -91,13 +128,12 @@
                         </select>
                     </label>
                 </div>
+                <hr />
                 <div class='option'> <label><input type="checkbox" id="performSimpleMathOperations"> </label></div>
-                <div class='option'> <label><input type="checkbox" id="convertCurrencies"> </label></div>
-                <div class='option'><label><select id="convertToCurrencyDropdown">
-                        </select>
-                    </label>
-                </div>
+                <div class='option'> <label><input type="checkbox" id="showUnconvertedValue"></label></div>
+
             </div>
+
 
             <h3 class='collapsible-header' id='customSearchTooltip'>Custom search tooltip</h3>
             <div class='collapsible-content'>
@@ -105,46 +141,55 @@
                     hovering over the 'Search' button
                 </h4>
                 <div class='option'> <label><input type="checkbox" id="secondaryTooltipEnabled"></label></div>
-                <div class='option'> <label><input type="checkbox" id="showSecondaryTooltipTitleOnHover"></label></div>
+                <div class='option'> <label><input type="checkbox" id="showSecondaryTooltipTitleOnHover"></label>
+                </div>
                 <div class='option'> <label><input type="number" min='0' max='50' step='1'
                             id="secondaryTooltipIconSize"></label></div>
                 <br />
                 <hr />
                 <div id='customSearchButtonsContainer'></div>
+                <br />
+                <hr />
             </div>
-
-            <h3 class='collapsible-header' id='behaviorHeader'></h3>
-            <div class='collapsible-content'>
-
-                <div class='option'> <label><input type="checkbox" id="hideOnScroll"></label></div>
-                <div class='option'> <label><input type="checkbox" id="addScaleUpEffect"></label></div>
-                <div class='option'> <label><input type="checkbox" id="hideOnKeypress"></label></div>
-                <div class='option'> <label><input type="checkbox" id="draggableTooltip"></label></div>
-                <div class='option'> <label><input type="checkbox" id="shiftTooltipWhenWebsiteHasOwn"></label></div>
-                <div class='option'> <label><input type="checkbox" id="removeSelectionOnActionButtonClick"></label>
-                </div>
-                <div class='option'> <label><input type="checkbox" id="addDragHandles"></label></div>
-                <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
-                <div class='option'> <label><input type="text" id="excludedDomains"> </label></div>
-            </div>
-
-            <h4 id='allChangesSavedAutomaticallyHeader'></h4>
-
-            <!-- Footer buttons -->
-            <div id='footer-buttons'>
-                <button id='resetButton' type="reset">Restore defaults</button>
-                <button id='githubButton'> <img height='15px' width='15px'
-                        style="position: relative; left: 3px; top: 3px;"
-                        src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
-                <button id='donateButton'> <img height='18px' width='18px'
-                        style="position: relative; left: 3px; top: 3px;"
-                        src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
-            </div>
-            <br />
         </div>
+
+        <!-- Additional settings block -->
+        <!-- <div id='additional-settings-block' class='collapsible-content'>
+            <br />
+            <div style='padding: 15px;'>
+                <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
+
+                <div class='option'> <label>Custom CSS: <br /><textarea style="width: 100%"
+                            id='customCss'></textarea></label></div>
+            </div>
+        </div>
+        <div class='option' style="float: right;"> <label><input type="checkbox"
+                    id="showAdditionalSettingsButton">Расширенные</label></div>
+        <br />
+        <br /> -->
+
+        <h4 id='allChangesSavedAutomaticallyHeader'></h4>
+
+        <!-- Footer buttons -->
+        <div id='footer-buttons'>
+            <!-- <button id='resetButton' type="reset">Restore defaults</button> -->
+            <button id='writeAReviewButton' type="reset">Write a review</button>
+            <button id='donateButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
+                    src="https://image.flaticon.com/icons/png/128/3037/3037156.png" />
+            </button>
+            <button id='githubButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
+                    src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
+
+        </div>
+        <br />
+        </div>
+
+        <div id='selecton-version'></div>
     </form>
 
     <script src="options.js"></script>
+    <script src="../src/data/currencies.js"></script>
+    <!-- <script src="../src/data/variables.js"></script> -->
 </body>
 
 </html>

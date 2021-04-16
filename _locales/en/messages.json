@@ -1,50 +1,86 @@
 {
-  "extensionDescription": {
-    "message": "Customizable pop-up with actions on text selection",
-    "description": "Extension description"
-  },
-  "copyLabel": {
-    "message": "Copy",
-    "description": "Label for copy text action"
-  },
-  "searchLabel": {
-    "message": "Search",
-    "description": "Label for search text action"
-  },
-  "openLinkLabel": {
-    "message": "Open",
-    "description": "Label for open link action"
-  },
-  "cutLabel": {
-    "message": "Cut",
-    "description": "Label for cut action"
-  },
-  "pasteLabel": {
-    "message": "Paste",
-    "description": "Label for paste action"
-  },
-  "translateLabel": {
-    "message": "Translate",
-    "description": "Label for translate action"
-  },
-  "appearanceHeader": {
-    "message": "Appearance",
-    "description": "Header for appearance category in settings"
-  },
-  "behaviorHeader": {
-    "message": "Behavior",
-    "description": "Header for appearance category in settings"
-  },
-  "convertionHeader": {
-    "message": "Conversion",
-    "description": "Header for convertion category in settings"
-  },
   "actionButtonsHeader": {
     "message": "Action buttons",
     "description": "Header for action buttons category in settings"
   },
+  "addActionButtonsForTextFields": {
+    "message": "Use special panel for text fields",
+    "description": "Label for field in settings"
+  },
+  "addButtonIcons": {
+    "message": "Show icons for buttons",
+    "description": "Label for field in settings"
+  },
+  "addColorPreviewButton": {
+    "message": "Add color preview button (for CSS colors like #ffffff)",
+    "description": "Label for field in settings"
+  },
+  "addDragHandles": {
+    "message": "Add selection drag handles",
+    "description": "Label for buttons style option in settings"
+  },
+  "addNewSearchOption": {
+    "message": "Add new search option",
+    "description": "Label for add new search option button"
+  },
+  "addOpenLinks": {
+    "message": "Add button to open link",
+    "description": "Label for field in settings"
+  },
+  "addPhoneButton": {
+    "message": "Add phone number button",
+    "description": "Label for option in settings"
+  },
+  "addScaleUpEffect": {
+    "message": "Use scale-up effect on reveal",
+    "description": "Label for option in settings"
+  },
+  "addTooltipShadow": {
+    "message": "Add tooltip shadow",
+    "description": "Label for field in settings"
+  },
+  "allChangesSavedAutomatically": {
+    "message": "All settings are saved automatically",
+    "description": ""
+  },
   "animationDuration": {
     "message": "Animations duration (ms)",
+    "description": "Label for field in settings"
+  },
+  "appearanceHeader": {
+    "message": "Panel appearance",
+    "description": "Header for appearance category in settings"
+  },
+  "behaviorHeader": {
+    "message": "Panel behavior",
+    "description": "Header for appearance category in settings"
+  },
+  "borderRadius": {
+    "message": "Border radius",
+    "description": "Label for field in settings"
+  },
+  "buttonsStyle": {
+    "message": "Buttons style",
+    "description": "Label for option in settings"
+  },
+  "buyMeCoffee": {
+    "message": "Support development",
+    "description": ""
+  },
+  "changeTextSelectionColor": {
+    "message": "Customize text selection",
+    "description": "Label for field in settings"
+  },
+  "contextualButtonsHeader": {
+    "message": "Contextual buttons",
+    "description": "Header for contextual buttons category in settings"
+  },
+  "convertCurrencies": {
+    "message": "Convert currencies",
+    "description": "Label for field in settings"
+  },
+  "convertMetrics": {
+    "message": "Convert metrics",
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
@@ -55,128 +91,184 @@
     "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference",
     "description": "Currency code hint for 'convert to currency' field in settings"
   },
-  "hideOnScroll": {
-    "message": "Hide tooltip on scroll",
+  "convertionHeader": {
+    "message": "Conversion",
+    "description": "Header for convertion category in settings"
+  },
+  "copyLabel": {
+    "message": "Copy",
+    "description": "Label for copy text action"
+  },
+  "customIcon": {
+    "message": "Icône personnalisée",
+    "description": "Libellé du bouton dans les paramètres"
+  },
+  "customIconUrl": {
+    "message": "Custom icon URL",
+    "description": "Label for option in settings"
+  },
+  "customSearchTooltip": {
+    "message": "Custom search tooltip",
     "description": "Label for field in settings"
   },
-  "convertMetrics": {
-    "message": "Convert metrics",
+  "customSearchTooltipHint": {
+    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for query",
     "description": "Label for field in settings"
   },
-  "addOpenLinks": {
-    "message": "Add button to open link",
+  "customSearchUrl": {
+    "message": "Custom search URL <br />(use %s as a placeholder for query)",
     "description": "Label for field in settings"
   },
-  "convertCurrencies": {
-    "message": "Convert currencies",
-    "description": "Label for field in settings"
+  "cutLabel": {
+    "message": "Cut",
+    "description": "Label for cut action"
   },
-  "performSimpleMathOperations": {
-    "message": "Do simple math calculations",
-    "description": "Label for field in settings"
+  "debugMode": {
+    "message": "Debug mode",
+    "description": "Label for option in settings"
   },
-  "preferredMetricsSystem": {
-    "message": "Preferred metrics system",
-    "description": "Label for field in settings"
+  "deleteLabel": {
+    "message": "Delete",
+    "description": "Label for the delete button"
   },
-  "metric": {
-    "message": "Metric",
-    "description": "Variant of metrics system for dropdown"
-  },
-  "imperial": {
-    "message": "Imperial",
-    "description": "Variant of metrics system for dropdown"
-  },
-  "resetDefaults": {
-    "message": "Restore defaults",
-    "description": "Label for settings button to restore default settings"
-  },
-  "buyMeCoffee": {
-    "message": "Buy coffee for the author",
-    "description": "Label for settings button leading to donate page"
-  },
-  "visitGithub": {
-    "message": "Visit GitHub page",
-    "description": "Label for settings button leading to GitHub page"
-  },
-  "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically <br /> Update page to see changes",
-    "description": "Small info note in the end of settings"
-  },
-  "showTranslateButton": {
-    "message": "Show translate button",
-    "description": "Label for field in settings"
-  },
-  "languageToTranslate": {
-    "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
-    "description": "Label for field in settings, incorporating inline link"
-  },
-  "useCustomStyle": {
-    "message": "Use custom style for tooltip",
-    "description": "Label for field in settings"
-  },
-  "tooltipBackground": {
-    "message": "Background color",
-    "description": "Label for field in settings"
-  },
-  "tooltipOpacity": {
-    "message": "Tooltip opacity",
-    "description": "Label for field in settings"
-  },
-  "addTooltipShadow": {
-    "message": "Add tooltip shadow",
-    "description": "Label for field in settings"
-  },
-  "shadowOpacity": {
-    "message": "Shadow opacity",
-    "description": "Label for field in settings"
-  },
-  "borderRadius": {
-    "message": "Border radius",
-    "description": "Label for field in settings"
-  },
-  "changeTextSelectionColor": {
-    "message": "Customize text selection",
-    "description": "Label for field in settings"
-  },
-  "textSelectionBackground": {
-    "message": "Selection color",
-    "description": "Label for field in settings"
-  },
-  "textSelectionColor": {
-    "message": "Text color",
-    "description": "Label for field in settings"
-  },
-  "shiftTooltipWhenWebsiteHasOwn": {
-    "message": "Try to shift selection tooltip up when website shows it's own",
-    "description": "Label for field in settings"
-  },
-  "addActionButtonsForTextFields": {
-    "message": "Use special panel for text fields",
-    "description": "Label for field in settings"
-  },
-  "removeSelectionOnActionButtonClick": {
-    "message": "Remove text selection after action",
-    "description": "Label for field in settings"
+  "disableWordSnappingOnCtrlKey": {
+    "message": "Do not select by words if the CTRL key is pressed",
+    "description": "Label for buttons style option in settings"
   },
   "draggableTooltip": {
     "message": "Panel can be dragged by the arrow",
-    "description": "Label for field in settings"
-  },
-  "addButtonIcons": {
-    "message": "Show icons for buttons",
     "description": "Label for field in settings"
   },
   "enabled": {
     "message": "Enabled",
     "description": "Label for field in settings"
   },
+  "excludedDomains": {
+    "message": "Excluded domains",
+    "description": "Label for option in settings"
+  },
+  "extensionDescription": {
+    "message": "Customizable pop-up with actions on text selection",
+    "description": "Extension description"
+  },
+  "gmail": {
+    "message": "Gmail new email",
+    "description": "Option label for new email method setting"
+  },
+  "hideOnKeypress": {
+    "message": "Hide on key press",
+    "description": "Label for field in settings"
+  },
+  "hideOnScroll": {
+    "message": "Hide tooltip on scroll",
+    "description": "Label for field in settings"
+  },
+  "iconlabel": {
+    "message": "Icons + text",
+    "description": "Label for buttons style option in settings"
+  },
+  "imperial": {
+    "message": "Imperial",
+    "description": "Variant of metrics system for dropdown"
+  },
+  "languageToTranslate": {
+    "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
+    "description": "Label for field in settings, incorporating inline link"
+  },
+  "mailto": {
+    "message": "Email client",
+    "description": "Option label for new email method setting"
+  },
+  "metric": {
+    "message": "Metric",
+    "description": "Variant of metrics system for dropdown"
+  },
+  "moveDownLabel": {
+    "message": "Move down",
+    "description": "Tooltip for 'move button down' button"
+  },
+  "moveUpLabel": {
+    "message": "Move up",
+    "description": "Tooltip for 'move button up' button"
+  },
+  "onlyicon": {
+    "message": "Icons only",
+    "description": "Label for buttons style option in settings"
+  },
+  "onlylabel": {
+    "message": "Text only",
+    "description": "Label for buttons style option in settings"
+  },
+  "openLinkLabel": {
+    "message": "Open",
+    "description": "Label for open link action"
+  },
+  "pasteLabel": {
+    "message": "Paste",
+    "description": "Label for paste action"
+  },
+  "performSimpleMathOperations": {
+    "message": "Do simple math calculations",
+    "description": "Label for field in settings"
+  },
+  "preferCurrencySymbol": {
+    "message": "Prefer currency symbols instead of codes",
+    "description": "Label for buttons style option in settings"
+  },
+  "preferredMetricsSystem": {
+    "message": "Preferred metrics system",
+    "description": "Label for field in settings"
+  },
+  "preferredNewEmailMethod": {
+    "message": "Preferred method for creating new email",
+    "description": "Label for field in settings"
+  },
   "preferredSearchEngine": {
     "message": "Search engine",
     "description": "Label for field in settings"
   },
-  "hideOnKeypress": {
-    "message": "Hide on key press",
+  "removeCustomIcon": {
+    "message": "Remove custom icon",
+    "description": "Tooltip for button to remove custom icon"
+  },
+  "removeSelectionOnActionButtonClick": {
+    "message": "Remove text selection after selected action",
+    "description": ""
+  },
+  "resetDefaults": {
+    "message": "Restore defaults",
+    "description": "Label for settings button to restore default settings"
+  },
+  "searchLabel": {
+    "message": "Search",
+    "description": "Label for search text action"
+  },
+  "secondaryTooltipEnabled": {
+    "message": "Tooltip enabled",
+    "description": "Label for add new search option button"
+  },
+  "secondaryTooltipIconSize": {
+    "message": "Button size (px)",
+    "description": "Label for add new search option button"
+  },
+  "selectionHeader": {
+    "message": "Text selection",
+    "description": "Header for category in settings"
+  },
+  "shadowOpacity": {
+    "message": "Shadow opacity",
+    "description": "Label for field in settings"
+  },
+  "shiftTooltipWhenWebsiteHasOwn": {
+    "message": "Try to shift selection tooltip up when website shows it's own",
+    "description": "Label for field in settings"
+  },
+  "shouldOverrideWebsiteSelectionColor": {
+    "message": "Overwrite page's highlight color",
+    "description": "Label for buttons style option in settings"
+  },
+  "showEmailButton": {
+    "message": "Add email button",
     "description": "Label for field in settings"
   },
   "showOnMap": {
@@ -187,120 +279,60 @@
     "message": "Add button to show on map",
     "description": "Label for field in settings"
   },
-  "showEmailButton": {
-    "message": "Add email button",
-    "description": "Label for field in settings"
-  },
-  "preferredNewEmailMethod": {
-    "message": "Preferred method for creating new email",
-    "description": "Label for field in settings"
-  },
-  "gmail": {
-    "message": "Gmail new email",
-    "description": "Option label for new email method setting"
-  },
-  "mailto": {
-    "message": "Email client",
-    "description": "Option label for new email method setting"
-  },
-  "contextualButtonsHeader": {
-    "message": "Contextual buttons",
-    "description": "Header for contextual buttons category in settings"
-  },
-  "customSearchUrl": {
-    "message": "Custom search URL <br />(use %s as a placeholder for query)",
-    "description": "Label for field in settings"
-  },
-  "addColorPreviewButton": {
-    "message": "Add color preview button (for css colors like #ffffff)",
-    "description": "Label for field in settings"
-  },
-  "customSearchTooltip": {
-    "message": "Custom search tooltip",
-    "description": "Label for field in settings"
-  },
-  "customSearchTooltipHint": {
-    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for query",
-    "description": "Label for field in settings"
-  },
-  "deleteLabel": {
-    "message": "Delete",
-    "description": "Label for the delete button"
-  },
-  "addNewSearchOption": {
-    "message": "Add new search option",
-    "description": "Label for add new search option button"
-  },
-  "secondaryTooltipIconSize": {
-    "message": "Button size (px)",
-    "description": "Label for add new search option button"
-  },
-  "secondaryTooltipEnabled": {
-    "message": "Tooltip enabled",
-    "description": "Label for add new search option button"
-  },
-  "moveUpLabel": {
-    "message": "Move up",
-    "description": "Tooltip for 'move button up' button"
-  },
-  "moveDownLabel": {
-    "message": "Move down",
-    "description": "Tooltip for 'move button down' button"
-  },
   "showSecondaryTooltipTitleOnHover": {
     "message": "Show domain on hover",
     "description": "Label for option in settings"
   },
-  "excludedDomains": {
-    "message": "Excluded domains",
-    "description": "Label for option in settings"
-  },
-  "customIconUrl": {
-    "message": "Custom icon URL",
-    "description": "Label for option in settings"
-  },
-  "customIcon": {
-    "message": "Icône personnalisée",
-    "description": "Libellé du bouton dans les paramètres"
-  },
-  "removeCustomIcon": {
-    "message": "Remove custom icon",
-    "description": "Tooltip for button to remove custom icon"
-  },
-  "addPhoneButton": {
-    "message": "Add phone number button",
-    "description": "Label for option in settings"
+  "showTranslateButton": {
+    "message": "Show translate button",
+    "description": "Label for field in settings"
   },
   "showUnconvertedValue": {
-    "message": "Show unconverted value",
-    "description": "Label for option in settings"
+    "message": "Show original value before conversion",
+    "description": "Label for button in settings"
   },
-  "addScaleUpEffect": {
-    "message": "Use scale-up effect on reveal",
-    "description": "Label for option in settings"
-  },
-  "debugMode": {
-    "message": "Debug mode",
-    "description": "Label for option in settings"
-  },
-  "buttonsStyle": {
-    "message": "Buttons style",
-    "description": "Label for option in settings"
-  },
-  "onlyicon": {
-    "message": "Only icon",
+  "snapSelectionToWord": {
+    "message": "Snap text selection by word",
     "description": "Label for buttons style option in settings"
   },
-  "onlylabel": {
-    "message": "Only label",
+  "textSelectionBackground": {
+    "message": "Selection color",
+    "description": "Label for field in settings"
+  },
+  "textSelectionColor": {
+    "message": "Text color",
+    "description": "Label for field in settings"
+  },
+  "tooltipBackground": {
+    "message": "Background color",
+    "description": "Label for field in settings"
+  },
+  "tooltipOpacity": {
+    "message": "Tooltip opacity",
+    "description": "Label for field in settings"
+  },
+  "translateLabel": {
+    "message": "Translate",
+    "description": "Label for translate action"
+  },
+  "updatePageToSeeChanges": {
+    "message": "Refresh the page to see the changes",
+    "description": ""
+  },
+  "useCustomStyle": {
+    "message": "Use custom style for tooltip",
+    "description": "Label for field in settings"
+  },
+  "visitGithub": {
+    "message": "Visit GitHub page",
+    "description": "Label for settings button leading to GitHub page"
+  },
+  "whatsNew": {
+    "message": "What's new",
     "description": "Label for buttons style option in settings"
   },
-  "iconlabel": {
-    "message": "Icon and label",
-    "description": "Label for buttons style option in settings"
-  },
-  "addDragHandles": {
-    "message": "Add selection handles (beta)",
+  "writeAReview": {
+    "message": "Write a review",
     "description": "Label for buttons style option in settings"
   }
 }

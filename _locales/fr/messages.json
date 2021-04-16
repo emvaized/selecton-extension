@@ -1,50 +1,86 @@
 {
-    "extensionDescription": {
-        "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
-        "description": "Description de l'extension"
-    },
-    "copyLabel": {
-        "message": "Copier",
-        "description": "Libellé pour l'action de copie de texte"
-    },
-    "searchLabel": {
-        "message": "Rechercher",
-        "description": "Libellé de l'action de texte de recherche"
-    },
-    "openLinkLabel": {
-        "message": "Ouvrir",
-        "description": "Libellé pour l'action de lien ouvert"
-    },
-    "cutLabel": {
-        "message": "Couper",
-        "description": "Libellé pour l'action de coupe"
-    },
-    "pasteLabel": {
-        "message": "Coller",
-        "description": "Libellé pour l'action de collage"
-    },
-    "translateLabel": {
-        "message": "Traduire",
-        "description": "Libellé de l'action de traduction"
-    },
-    "appearanceHeader": {
-        "message": "Apparence",
-        "description": "En-tête de la catégorie d'apparence dans les paramètres"
-    },
-    "behaviorHeader": {
-        "message": "Comportement",
-        "description": "En-tête de la catégorie d'apparence dans les paramètres"
-    },
-    "convertionHeader": {
-        "message": "Conversion",
-        "description": "En-tête de la catégorie de conversion dans les paramètres"
-    },
     "actionButtonsHeader": {
         "message": "Boutons d'action",
         "description": "En-tête de la catégorie des boutons d'action dans les paramètres"
     },
+    "addActionButtonsForTextFields": {
+        "message": "Utiliser le panneau spécial pour les champs de texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addButtonIcons": {
+        "message": "Afficher les icônes des boutons",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addColorPreviewButton": {
+        "message": "Ajouter un bouton de couleur (pour les couleurs CSS comme #ffffff)",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addDragHandles": {
+        "message": "Ajouter des poignées de sélection",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "addNewSearchOption": {
+        "message": "Ajouter une nouvelle option de recherche",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "addOpenLinks": {
+        "message": "Ajouter un bouton pour ouvrir le lien",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "addPhoneButton": {
+        "message": "Bouton Ajouter un numéro de téléphone",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "addScaleUpEffect": {
+        "message": "Ajouter un effet de mise à l'échelle lors de la révélation",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "addTooltipShadow": {
+        "message": "Ajouter une ombre d'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Tous les paramètres sont enregistrés automatiquement",
+        "description": ""
+    },
     "animationDuration": {
         "message": "Durée des animations (ms)",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "appearanceHeader": {
+        "message": "Apparence du panneau",
+        "description": "En-tête de la catégorie d'apparence dans les paramètres"
+    },
+    "behaviorHeader": {
+        "message": "Comportement du panneau",
+        "description": "En-tête de la catégorie d'apparence dans les paramètres"
+    },
+    "borderRadius": {
+        "message": "Rayon de la bordure",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "buttonsStyle": {
+        "message": "Style des boutons",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "buyMeCoffee": {
+        "message": "Soutenir le développement",
+        "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Personnaliser la sélection de texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "contextualButtonsHeader": {
+        "message": "Boutons contextuels",
+        "description": "En-tête de la catégorie des boutons contextuels dans les paramètres"
+    },
+    "convertCurrency": {
+        "message": "Convertir les devises",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "convertMetrics": {
+        "message": "Convertir les statistiques",
         "description": "Libellé du champ dans les paramètres"
     },
     "convertToCurrency": {
@@ -55,128 +91,188 @@
         "message": "Voir 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>ici</a> pour référence",
         "description": "Indice de code de devise pour le champ 'Convertir en devise' dans les paramètres"
     },
-    "hideOnScroll": {
-        "message": "Masquer l'info-bulle lors du défilement",
+    "convertionHeader": {
+        "message": "Conversion",
+        "description": "En-tête de la catégorie de conversion dans les paramètres"
+    },
+    "copyLabel": {
+        "message": "Copier",
+        "description": "Libellé pour l'action de copie de texte"
+    },
+    "customIcon": {
+        "message": "Icône personnalisée",
+        "description": "Libellé du bouton dans les paramètres"
+    },
+    "customIconUrl": {
+        "message": "URL de l'icône personnalisée",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "customSearchTooltip": {
+        "message": "Info-bulle de recherche",
         "description": "Libellé du champ dans les paramètres"
     },
-    "convertMetrics": {
-        "message": "Convertir les statistiques",
+    "customSearchTooltipHint": {
+        "message": "S'affiche en survolant le bouton 'Rechercher'. <br/>Utilisez %s comme espace réservé pour la requête",
         "description": "Libellé du champ dans les paramètres"
     },
-    "addOpenLinks": {
-        "message": "Ajouter un bouton pour ouvrir le lien",
+    "customSearchUrl": {
+        "message": "URL de recherche personnalisée <br />(utilisez %s comme espace réservé pour la requête)",
         "description": "Libellé du champ dans les paramètres"
     },
-    "convertCurrency": {
-        "message": "Convertir les devises",
-        "description": "Libellé du champ dans les paramètres"
+    "cutLabel": {
+        "message": "Couper",
+        "description": "Libellé pour l'action de coupe"
     },
-    "performSimpleMathOperations": {
-        "message": "Faites des calculs mathématiques simples",
-        "description": "Libellé du champ dans les paramètres"
+    "debugMode": {
+        "message": "Mode débogage",
+        "description": "Libellé de l'option dans les paramètres"
     },
-    "preferredMetricsSystem": {
-        "message": "Système de métriques préféré",
-        "description": "Libellé du champ dans les paramètres"
+    "deleteLabel": {
+        "message": "Supprimer",
+        "description": "Libellé du bouton de suppression"
     },
-    "metric": {
-        "message": "Métrique",
-        "description": "Variante du système de métriques pour le menu déroulant"
-    },
-    "imperial": {
-        "message": "Imperial",
-        "description": "Variante du système de métriques pour le menu déroulant"
-    },
-    "resetDefaults": {
-        "message": "Restaurer les paramètres par défaut",
-        "description": "Libellé du bouton des paramètres pour restaurer les paramètres par défaut"
-    },
-    "buyMeCoffee": {
-        "message": "Acheter un café à l'auteur",
-        "description": "Libellé du bouton des paramètres menant à la page de don"
-    },
-    "visitGithub": {
-        "message": "Visiter la page GitHub",
-        "description": "Libellé du bouton des paramètres menant à la page GitHub"
-    },
-    "allChangesSavedAutomatically": {
-        "message": "Les paramètres sont enregistrés automatiquement <br />Mettre à jour la page pour voir les modifications",
-        "description": "Petite note d'information à la fin des réglages"
-    },
-    "showTranslateButton": {
-        "message": "Afficher le bouton de traduction",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "languageToTranslate": {
-        "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
-        "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
-    },
-    "useCustomStyle": {
-        "message": "Utiliser un style personnalisé pour l'info-bulle",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "tooltipBackground": {
-        "message": "Couleur d'arrière-plan",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "tooltipOpacity": {
-        "message": "Opacité de l'info-bulle",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "addTooltipShadow": {
-        "message": "Ajouter une ombre d'info-bulle",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "shadowOpacity": {
-        "message": "Opacité de l'ombre",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "borderRadius": {
-        "message": "Rayon de la bordure",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "changeTextSelectionColor": {
-        "message": "Personnaliser la sélection de texte",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "textSelectionBackground": {
-        "message": "Couleur de sélection",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "textSelectionColor": {
-        "message": "Couleur du texte",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Essayez de déplacer l'info-bulle de sélection vers le haut lorsque le site Web affiche sa propre",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "addActionButtonsForTextFields": {
-        "message": "Utiliser le panneau spécial pour les champs de texte",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "removeSelectionOnActionButtonClick": {
-        "message": "Supprimer la sélection de texte après action",
-        "description": "Libellé du champ dans les paramètres"
+    "disableWordSnappingOnCtrlKey": {
+        "message": "Ne pas sélectionner par mots si la touche CTRL est enfoncée",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
     "draggableTooltip": {
         "message": "Le panneau peut être déplacé par la flèche",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "addButtonIcons": {
-        "message": "Afficher les icônes des boutons",
         "description": "Libellé du champ dans les paramètres"
     },
     "enabled": {
         "message": "Activé",
         "description": "Libellé du champ dans les paramètres"
     },
+    "excludedDomains": {
+        "message": "Domaines exclus",
+        "description": "Libellé de l'option dans les paramètres"
+    },
+    "extensionDescription": {
+        "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
+        "description": "Description de l'extension"
+    },
+    "gmail": {
+        "message": "Nouvel e-mail Gmail",
+        "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
+    },
+    "hideOnKeypress": {
+        "message": "Masquer à la pression d'une touche",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "hideOnScroll": {
+        "message": "Masquer l'info-bulle lors du défilement",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "iconlabel": {
+        "message": "Icônes + texte",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "imperial": {
+        "message": "Imperial",
+        "description": "Variante du système de métriques pour le menu déroulant"
+    },
+    "languageToTranslate": {
+        "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
+        "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
+    },
+    "mailto": {
+        "message": "Client de messagerie de bureau",
+        "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
+    },
+    "metric": {
+        "message": "Métrique",
+        "description": "Variante du système de métriques pour le menu déroulant"
+    },
+    "moveDownLabel": {
+        "message": "Descendre",
+        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le bas'"
+    },
+    "moveUpLabel": {
+        "message": "Monter",
+        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le haut'"
+    },
+    "onlyicon": {
+        "message": "Icônes uniquement",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "onlylabel": {
+        "message": "Texte uniquement",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "openLinkLabel": {
+        "message": "Ouvrir",
+        "description": "Libellé pour l'action de lien ouvert"
+    },
+    "pasteLabel": {
+        "message": "Coller",
+        "description": "Libellé pour l'action de collage"
+    },
+    "performSimpleMathOperations": {
+        "message": "Faites des calculs mathématiques simples",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferCurrencySymbol": {
+        "message": "Préférez les symboles monétaires au lieu des codes",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "preferredMapsService": {
+        "message": "Service de cartes préféré",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferredMetricsSystem": {
+        "message": "Système de métriques préféré",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "preferredNewEmailMethod": {
+        "message": "Méthode préférée pour créer un nouvel e-mail",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "preferredSearchEngine": {
         "message": "Moteur de recherche",
         "description": "Libellé du champ dans les paramètres"
     },
-    "hideOnKeypress": {
-        "message": "Masquer à la pression d'une touche",
+    "removeCustomIcon": {
+        "message": "Supprimer l'icône personnalisée",
+        "description": "Info-bulle pour le bouton permettant de supprimer l'icône personnalisée"
+    },
+    "removeSelectionOnActionButtonClick": {
+        "message": "Supprimer la sélection après une action effectuée",
+        "la description": ""
+    },
+    "resetDefaults": {
+        "message": "Restaurer les paramètres par défaut",
+        "description": "Libellé du bouton des paramètres pour restaurer les paramètres par défaut"
+    },
+    "searchLabel": {
+        "message": "Rechercher",
+        "description": "Libellé de l'action de texte de recherche"
+    },
+    "secondaryTooltipEnabled": {
+        "message": "Info-bulle activée",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "secondaryTooltipIconSize": {
+        "message": "Taille du bouton (px)",
+        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "selectionHeader": {
+        "message": "Sélection de texte",
+        "description": "En-tête de catégorie dans les paramètres"
+    },
+    "shadowOpacity": {
+        "message": "Opacité de l'ombre",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "shiftTooltipWhenWebsiteHasOwn": {
+        "message": "Essayez de déplacer l'info-bulle de sélection vers le haut lorsque le site Web affiche sa propre",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "shouldOverrideWebsiteSelectionColor": {
+        "message": "Réécrire la couleur de surbrillance du site",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "showEmailButton": {
+        "message": "Ajouter un bouton e-mail",
         "description": "Libellé du champ dans les paramètres"
     },
     "showOnMap": {
@@ -187,120 +283,60 @@
         "message": "Ajouter un bouton à afficher sur la carte",
         "description": "Libellé du champ dans les paramètres"
     },
-    "showEmailButton": {
-        "message": "Ajouter un bouton e-mail",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "preferredNewEmailMethod": {
-        "message": "Méthode préférée pour créer un nouvel e-mail",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "gmail": {
-        "message": "Nouvel e-mail Gmail",
-        "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
-    },
-    "mailto": {
-        "message": "Client de messagerie de bureau",
-        "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
-    },
-    "contextualButtonsHeader": {
-        "message": "Boutons contextuels",
-        "description": "En-tête de la catégorie des boutons contextuels dans les paramètres"
-    },
-    "customSearchUrl": {
-        "message": "URL de recherche personnalisée <br />(utilisez %s comme espace réservé pour la requête)",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "addColorPreviewButton": {
-        "message": "Ajouter un bouton de couleur (pour les couleurs css comme #ffffff)",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "preferredMapsService": {
-        "message": "Service de cartes préféré",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "customSearchTooltip": {
-        "message": "Info-bulle de recherche",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "customSearchTooltipHint": {
-        "message": "S'affiche en survolant le bouton 'Rechercher'. <br/>Utilisez %s comme espace réservé pour la requête",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "deleteLabel": {
-        "message": "Supprimer",
-        "description": "Libellé du bouton de suppression"
-    },
-    "addNewSearchOption": {
-        "message": "Ajouter une nouvelle option de recherche",
-        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
-    },
-    "secondaryTooltipIconSize": {
-        "message": "Taille du bouton (px)",
-        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
-    },
-    "secondaryTooltipEnabled": {
-        "message": "Info-bulle activée",
-        "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
-    },
-    "moveUpLabel": {
-        "message": "Monter",
-        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le haut'"
-    },
-    "moveDownLabel": {
-        "message": "Descendre",
-        "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le bas'"
-    },
     "showSecondaryTooltipTitleOnHover": {
         "message": "Afficher le domaine en survol",
         "description": "Libellé de l'option dans les paramètres"
     },
-    "excludedDomains": {
-        "message": "Domaines exclus",
-        "description": "Libellé de l'option dans les paramètres"
-    },
-    "customIconUrl": {
-        "message": "URL de l'icône personnalisée",
-        "description": "Libellé de l'option dans les paramètres"
-    },
-    "removeCustomIcon": {
-        "message": "Supprimer l'icône personnalisée",
-        "description": "Info-bulle pour le bouton permettant de supprimer l'icône personnalisée"
-    },
-    "customIcon": {
-        "message": "Icône personnalisée",
-        "description": "Libellé du bouton dans les paramètres"
-    },
-    "addPhoneButton": {
-        "message": "Bouton Ajouter un numéro de téléphone",
-        "description": "Libellé de l'option dans les paramètres"
+    "showTranslateButton": {
+        "message": "Afficher le bouton de traduction",
+        "description": "Libellé du champ dans les paramètres"
     },
     "showUnconvertedValue": {
-        "message": "Afficher la valeur non convertie",
-        "description": "Libellé de l'option dans les paramètres"
+        "message": "Afficher la valeur d'origine avant la conversion",
+        "description": "Libellé du bouton dans les paramètres"
     },
-    "addScaleUpEffect": {
-        "message": "Ajouter un effet de mise à l'échelle lors de la révélation",
-        "description": "Libellé de l'option dans les paramètres"
-    },
-    "debugMode": {
-        "message": "Mode débogage",
-        "description": "Libellé de l'option dans les paramètres"
-    },
-    "buttonsStyle": {
-        "message": "Style des boutons",
-        "description": "Libellé de l'option dans les paramètres"
-    },
-    "onlyicon": {
-        "message": "Icône uniquement",
+    "snapSelectionToWord": {
+        "message": "Sélection de texte par mot",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
-    "onlylabel": {
-        "message": "Seulement étiquette",
+    "textSelectionBackground": {
+        "message": "Couleur de sélection",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "textSelectionColor": {
+        "message": "Couleur du texte",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipBackground": {
+        "message": "Couleur d'arrière-plan",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipOpacity": {
+        "message": "Opacité de l'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "translateLabel": {
+        "message": "Traduire",
+        "description": "Libellé de l'action de traduction"
+    },
+    "updatePageToSeeChanges": {
+        "message": "Actualisez la page pour voir les modifications",
+        "description": ""
+    },
+    "useCustomStyle": {
+        "message": "Utiliser un style personnalisé pour l'info-bulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "visitGithub": {
+        "message": "Visiter la page GitHub",
+        "description": "Libellé du bouton des paramètres menant à la page GitHub"
+    },
+    "whatsNew": {
+        "message": "Quoi de neuf",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
-    "iconlabel": {
-        "message": "Icône et étiquette",
+    "writeAReview": {
+        "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     }
 }

@@ -1,10 +1,12 @@
 # Selecton - text selection tooltip
 Get customizable pop-up with action buttons on text selection
-* Copy any text in one click
-* Adds 'Open link' and 'Translate' buttons depending on selected text
+* Customizable appearance for tooltip and text selection color
 * Currency converter (supports 30+ currencies)
 * Basic units converter (metric/imperial)
-* Fully customizable appearance for tooltip and text selection colors
+* Copy any text in one click - especially useful for laptops
+* Contextual buttons depending on selected text, such as 'Open link', 'Translate' and more 
+* Enable snapping selection by words, so you'll never loose that one last letter again
+* Selection handles, which allow to quickly change current selection
 
 
 Download for Firefox:
