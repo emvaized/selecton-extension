@@ -40,7 +40,6 @@ var defaultConfigs = new Map([
     ['excludedDomains', ''],
     ['addPhoneButton', true],
     ['showUnconvertedValue', true],
-    ['addScaleUpEffect', true],
     ['debugMode', false],
     ['addDragHandles', true],
     ['snapSelectionToWord', true],
@@ -49,6 +48,8 @@ var defaultConfigs = new Map([
     ['shouldOverrideWebsiteSelectionColor', false],
     ['buttonsStyle', 'onlylabel'],
     ['showButtonLabelOnHover', true],
+    ['animationDuration', 300],
+    ['tooltipRevealEffect', 'scaleUpTooltipEffect'],
 ]);
 
 

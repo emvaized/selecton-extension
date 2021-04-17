@@ -187,9 +187,21 @@
         "message": "Absteigen",
         "description": "Tooltip für 'move button down' button"
     },
+    "moveDownTooltipEffect": {
+        "message": "Absteigen",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
     "moveUpLabel": {
         "message": "Rücken",
         "description": "Tooltip für die Schaltfläche 'Schaltfläche nach oben verschieben'"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Aufrücken",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "noTooltipEffect": {
+        "message": "Keine Wirkung",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
     "onlyicon": {
         "message": "Nur Symbole",
@@ -242,6 +254,10 @@
     "resetDefaults": {
         "message": "Standardeinstellungen wiederherstellen",
         "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Vergrößern",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
     "searchLabel": {
         "message": "Suche",
@@ -318,6 +334,10 @@
     "tooltipOpacity": {
         "message": "Tooltip-Deckkraft",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "tooltipRevealEffect": {
+        "message": "Tooltip enthüllt Effekt",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
     "translateLabel": {
         "message": "Übersetzen",

@@ -187,9 +187,21 @@
         "message": "Опустить",
         "description": "Tooltip for 'move button down' button"
     },
+    "moveDownTooltipEffect": {
+        "message": "Сверху",
+        "description": "Label for buttons style option in settings"
+    },
     "moveUpLabel": {
         "message": "Поднять",
         "description": "Tooltip for 'move button up' button"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Снизу",
+        "description": "Label for buttons style option in settings"
+    },
+    "noTooltipEffect": {
+        "message": "Без эффекта",
+        "description": "Label for buttons style option in settings"
     },
     "onlyicon": {
         "message": "Только иконки",
@@ -242,6 +254,10 @@
     "resetDefaults": {
         "message": "Сбросить настройки",
         "description": ""
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Увеличение",
+        "description": "Label for buttons style option in settings"
     },
     "searchLabel": {
         "message": "Искать",
@@ -318,6 +334,10 @@
     "tooltipOpacity": {
         "message": "Прозрачность панели",
         "description": ""
+    },
+    "tooltipRevealEffect": {
+        "message": "Эффект появления панели",
+        "description": "Label for buttons style option in settings"
     },
     "translateLabel": {
         "message": "Перевести",

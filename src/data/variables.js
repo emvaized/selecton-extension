@@ -37,7 +37,6 @@ var showSecondaryTooltipTitleOnHover = false;
 var addPhoneButton = true;
 var excludedDomains = '';
 var showUnconvertedValue = true;
-var addScaleUpEffect = true;
 var debugMode = false;
 var buttonsStyle = 'onlylabel'; /// Possible values: 'onlylabel, onlyicon', iconlabel'
 var addDragHandles = true;  /// Experimental drag handles
@@ -46,6 +45,8 @@ var preferCurrencySymbol = true;
 var shouldOverrideWebsiteSelectionColor = false;
 var disableWordSnappingOnCtrlKey = true;
 var showButtonLabelOnHover = true;
+var animationDuration = 300;
+var tooltipRevealEffect = 'scaleUpTooltipEffect';
 var customSearchButtons = [
     {
         'url': 'https://www.youtube.com/results?search_query=%s',
@@ -88,7 +89,6 @@ var convertWhenOnlyFewWordsSelected = true;
 var loadTooltipOnPageLoad = false;
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
-var animationDuration = 300;
 var allowWebsitesOverrideSelectionColor = true;
 
 /// Service variables
@@ -157,7 +157,6 @@ var userSettingsKeys = [
     'excludedDomains',
     'addPhoneButton',
     'showUnconvertedValue',
-    'addScaleUpEffect',
     'debugMode',
     'buttonsStyle',
     'addDragHandles',
@@ -166,6 +165,8 @@ var userSettingsKeys = [
     'shouldOverrideWebsiteSelectionColor',
     'disableWordSnappingOnCtrlKey',
     'showButtonLabelOnHover',
+    'animationDuration',
+    'tooltipRevealEffect',
 ];
 
 // /// Those are used on settings page

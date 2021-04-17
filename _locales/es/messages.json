@@ -187,9 +187,21 @@
         "message": "Mover hacia abajo",
         "description": "Descripción emergente para el botón 'mover botón hacia abajo'"
     },
+    "moveDownTooltipEffect": {
+        "message": "Mover hacia abajo",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
     "moveUpLabel": {
         "message": "Hacer sitio",
         "description": "Información sobre herramientas para el botón 'mover botón hacia arriba'"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Subir",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
+    "noTooltipEffect": {
+        "message": "Sin efecto",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
     "onlyicon": {
         "message": "Solo iconos",
@@ -242,6 +254,10 @@
     "resetDefaults": {
         "message": "Restaurar valores predeterminados",
         "description": "Etiqueta del botón de configuración para restaurar la configuración predeterminada"
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Escalar hacia arriba",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
     "searchLabel": {
         "message": "Buscar",
@@ -318,6 +334,10 @@
     "tooltipOpacity": {
         "message": "Opacidad de la información sobre herramientas",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "tooltipRevealEffect": {
+        "message": "Efecto de revelación de información sobre herramientas",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
     "translateLabel": {
         "message": "Traducir",

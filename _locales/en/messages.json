@@ -187,9 +187,21 @@
     "message": "Move down",
     "description": "Tooltip for 'move button down' button"
   },
+  "moveDownTooltipEffect": {
+    "message": "Move down",
+    "description": "Label for buttons style option in settings"
+  },
   "moveUpLabel": {
     "message": "Move up",
     "description": "Tooltip for 'move button up' button"
+  },
+  "moveUpTooltipEffect": {
+    "message": "Move up",
+    "description": "Label for buttons style option in settings"
+  },
+  "noTooltipEffect": {
+    "message": "No effect",
+    "description": "Label for buttons style option in settings"
   },
   "onlyicon": {
     "message": "Icons only",
@@ -238,6 +250,10 @@
   "resetDefaults": {
     "message": "Restore defaults",
     "description": "Label for settings button to restore default settings"
+  },
+  "scaleUpTooltipEffect": {
+    "message": "Scale up",
+    "description": "Label for buttons style option in settings"
   },
   "searchLabel": {
     "message": "Search",
@@ -314,6 +330,10 @@
   "tooltipOpacity": {
     "message": "Tooltip opacity",
     "description": "Label for field in settings"
+  },
+  "tooltipRevealEffect": {
+    "message": "Tooltip reveal effect",
+    "description": "Label for buttons style option in settings"
   },
   "translateLabel": {
     "message": "Translate",

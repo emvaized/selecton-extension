@@ -187,9 +187,21 @@
         "message": "Mover para baixo",
         "description": "Dica para o botão 'mover botão para baixo'"
     },
+    "moveDownTooltipEffect": {
+        "message": "Mover para baixo",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
     "moveUpLabel": {
         "message": "Mover para cima",
         "description": "Dica para o botão 'mover botão para cima'"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Mover para cima",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "noTooltipEffect": {
+        "message": "Sem efeito",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
     },
     "onlyicon": {
         "message": "Apenas ícones",
@@ -238,6 +250,10 @@
     "resetDefaults": {
         "message": "Restaurar padrões",
         "description": "Rótulo para o botão de configurações para restaurar as configurações padrão"
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Aumentar a escala",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
     },
     "searchLabel": {
         "message": "Pesquisar",
@@ -314,6 +330,10 @@
     "tooltipOpacity": {
         "message": "Opacidade da dica de ferramenta",
         "description": "Rótulo para o campo nas configurações"
+    },
+    "tooltipRevealEffect": {
+        "message": "Efeito de revelação da dica",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
     },
     "translateLabel": {
         "message": "Traduzir",

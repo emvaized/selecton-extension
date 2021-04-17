@@ -71,8 +71,9 @@ function createTooltip(e) {
 function setUpNewTooltip(type) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
-    tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform 200ms ease-out; ${addScaleUpEffect ? `transform: scale(0.0);transform-origin: bottom;` : ''}`);
     tooltip.setAttribute('class', `selection-tooltip`);
+    // tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform ${animationDuration}ms ease-out; ${addScaleUpEffect ? `transform: scale(0.0);transform-origin: 50% 125% 0;` : ''}`);
+    tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform ${animationDuration}ms ease-in-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 125% 0;`);
 
     if (useCustomStyle && tooltipOpacity !== 1.0 && tooltipOpacity !== 1) {
         tooltip.onmouseover = function (event) {
@@ -97,14 +98,13 @@ function setUpNewTooltip(type) {
         }
     }
 
-
     arrow = document.createElement('div');
     arrow.setAttribute('class', `selection-tooltip-arrow`);
     var arrowChild = document.createElement('div');
     arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
     arrow.appendChild(arrowChild);
-
     tooltip.appendChild(arrow);
+
     document.body.appendChild(tooltip);
 
     // Make the tooltip draggable by arrow
@@ -152,12 +152,11 @@ function setUpNewTooltip(type) {
     if (useCustomStyle) {
         tooltip.style.borderRadius = `${borderRadius}px`;
         tooltip.style.background = tooltipBackground;
-        arrowChild.style.background = tooltipBackground;
+        arrow.style.background = tooltipBackground;
 
         if (addTooltipShadow) {
             tooltip.style.boxShadow = `0 2px 7px rgba(0,0,0,${shadowOpacity})`;
-            // arrowChild.style.boxShadow = `6px 5px 9px -9px rgba(0,0,0,${shadowOpacity}),5px 6px 9px -9px rgba(0,0,0,${shadowOpacity})`;
-            arrowChild.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
+            arrow.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
         }
         /// Set rounded corners for buttons
         firstButtonBorderRadius = `${borderRadius - 3}px 0px 0px ${borderRadius - 3}px`;
@@ -931,8 +930,9 @@ function showTooltip(dx, dy) {
     tooltip.style.left = `${dx}px`;
     tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
 
-    if (addScaleUpEffect)
-        tooltip.style.transform = 'scale(1.0)';
+    // if (addScaleUpEffect)
+    //     tooltip.style.transform = 'scale(1.0)';
+    tooltip.style.transform = returnTooltipRevealTransform(true);
 
     if (debugMode)
         console.log('Selecton tooltip shown');
@@ -1108,6 +1108,15 @@ function hideTooltip() {
 
 function createImageIcon(url, opacity = 0.5) {
     return `<img src="${url}" style="all: revert; opacity: ${buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;${buttonsStyle == 'onlyicon' ? '' : 'padding-right: 5px;'}"" />`;
+}
+
+function returnTooltipRevealTransform(onEnd = true) {
+    switch (tooltipRevealEffect) {
+        case 'noTooltipEffect': return ``;
+        case 'moveUpTooltipEffect': return onEnd ? `translate(0,0)` : `translate(0, 100%)`;
+        case 'moveDownTooltipEffect': return onEnd ? `translate(0,0)` : `translate(0, -100%)`;
+        case 'scaleUpTooltipEffect': return onEnd ? `scale(1.0)` : `scale(0.0)`;
+    }
 }
 
 function onTooltipButtonClick(e, url) {

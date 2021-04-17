@@ -2,6 +2,7 @@
 - New approach to horizontally center selection tooltip between selection boundaries, instead of relying on overall selection rect
 - Implemented new "Snap selection by words" functionality (disabled while CTRL key is being held)
 - Added settings toggle to override website's text selection color
+- Implemented 3 options for tooltip reveal animation
 - Restructured settings page for better consistency
 - Improvements for selection handlers - single click now extends selection by one word in direction of handle
 - Fix for Firefox "pop-up was blocked" issue on clicking Search button

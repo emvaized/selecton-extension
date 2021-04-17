@@ -14,7 +14,7 @@ function addDragHandle(dragHandleIndex) {
 
     if (selection == null || selection == undefined) return;
 
-    var lineHeight = 35;
+    var lineHeight = 25;
     var lineWidth = 2.5;
     var circleHeight = 15;
     var verticalOffsetCorrection = -1.5;
@@ -22,13 +22,12 @@ function addDragHandle(dragHandleIndex) {
     /// Try to adapt handle height to selected text's line-height
     try {
         const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
-        // const selectedTextLineHeight = window.getComputedStyle(dragHandleIndex == 0 ? selection.anchorNode.parentElement : selection.focusNode.parentElement, null).getPropertyValue('line-height');
 
         if (debugMode) {
             console.log('Selected text line height: ' + selectedTextLineHeight.toString());
         }
 
-        if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined) {
+        if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px')) {
             lineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
         }
 
@@ -46,18 +45,37 @@ function addDragHandle(dragHandleIndex) {
 
         var dragHandle = document.createElement('div');
         dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
-        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${animationDuration}ms ease-in-out, height ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${tooltipBackground};`);
+        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${tooltipBackground};`);
         document.body.appendChild(dragHandle);
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
         // circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -6.5px;`);
-        circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        circleDiv.setAttribute('style', `transition: opacity ${animationDuration}ms ease-in-out;border-radius: 50%;background: ${tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {
-            dragHandle.style.opacity = 1.0;
+            dragHandle.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
         }, 1);
+
+        if (useCustomStyle && tooltipOpacity !== 1.0 && tooltipOpacity !== 1) {
+            dragHandle.onmouseover = function (event) {
+                setTimeout(function () {
+                    if (dontShowTooltip == true) return;
+                    try {
+                        dragHandle.style.opacity = 1.0;
+                    } catch (e) { }
+                }, 1);
+            }
+            dragHandle.onmouseout = function () {
+                setTimeout(function () {
+                    if (dontShowTooltip == true) return;
+                    try {
+                        dragHandle.style.opacity = tooltipOpacity;
+                    } catch (e) { }
+                }, 1);
+            }
+        }
 
         circleDiv.onmousedown = function (e) {
             hideTooltip();

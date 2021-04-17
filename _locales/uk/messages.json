@@ -187,9 +187,21 @@
         "message": "Опустити",
         "description": "Tooltip for 'move button down' button"
     },
+    "moveDownTooltipEffect": {
+        "message": "Знизу",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
     "moveUpLabel": {
         "message": "Підняти",
         "description": "Tooltip for 'move button up' button"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Зверху",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "noTooltipEffect": {
+        "message": "Без ефекту",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
     "onlyicon": {
         "message": "Тільки іконки",
@@ -242,6 +254,10 @@
     "resetDefaults": {
         "message": "Скинути настройки",
         "description": ""
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Збільшення",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
     "searchLabel": {
         "message": "Шукати",
@@ -318,6 +334,10 @@
     "tooltipOpacity": {
         "message": "Прозорість панелі",
         "description": ""
+    },
+    "tooltipRevealEffect": {
+        "message": "Ефект появи панелі",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
     "translateLabel": {
         "message": "Перевести",

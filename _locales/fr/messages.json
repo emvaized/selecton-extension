@@ -187,9 +187,21 @@
         "message": "Descendre",
         "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le bas'"
     },
+    "moveDownTooltipEffect": {
+        "message": "Descendre",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
     "moveUpLabel": {
         "message": "Monter",
         "description": "Info-bulle pour le bouton 'Déplacer le bouton vers le haut'"
+    },
+    "moveUpTooltipEffect": {
+        "message": "Monter",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "noTooltipEffect": {
+        "message": "Aucun effet",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
     "onlyicon": {
         "message": "Icônes uniquement",
@@ -242,6 +254,10 @@
     "resetDefaults": {
         "message": "Restaurer les paramètres par défaut",
         "description": "Libellé du bouton des paramètres pour restaurer les paramètres par défaut"
+    },
+    "scaleUpTooltipEffect": {
+        "message": "Scale up",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
     "searchLabel": {
         "message": "Rechercher",
@@ -318,6 +334,10 @@
     "tooltipOpacity": {
         "message": "Opacité de l'info-bulle",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipRevealEffect": {
+        "message": "Effet de révélation de l'infobulle",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
     "translateLabel": {
         "message": "Traduire",

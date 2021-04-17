@@ -71,7 +71,6 @@ function init() {
         showSecondaryTooltipTitleOnHover = configs.showSecondaryTooltipTitleOnHover ?? false;
         addPhoneButton = configs.addPhoneButton ?? true;
         showUnconvertedValue = configs.showUnconvertedValue ?? true;
-        addScaleUpEffect = configs.addScaleUpEffect ?? true;
         buttonsStyle = configs.buttonsStyle || 'onlylabel';
         addButtonIcons = buttonsStyle == 'onlyicon' || buttonsStyle == 'iconlabel';
         addDragHandles = configs.addDragHandles ?? true;
@@ -79,6 +78,8 @@ function init() {
         preferCurrencySymbol = configs.preferCurrencySymbol ?? false;
         disableWordSnappingOnCtrlKey = configs.disableWordSnappingOnCtrlKey ?? true;
         showButtonLabelOnHover = configs.showButtonLabelOnHover ?? true;
+        animationDuration = configs.animationDuration || 300;
+        tooltipRevealEffect = configs.tooltipRevealEffect || 'scaleUpTooltipEffect';
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
