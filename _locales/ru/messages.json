@@ -323,6 +323,10 @@
         "message": "Цвет выделения",
         "description": ""
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Прозрачность фона",
+        "description": "Label for field in settings"
+    },
     "textSelectionColor": {
         "message": "Цвет текста",
         "description": ""

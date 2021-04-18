@@ -323,6 +323,10 @@
         "message": "Color de selección",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Opacidad del fondo",
+        "description": "Etiqueta para el campo en la configuración"
+    },
     "textSelectionColor": {
         "message": "Color del texto",
         "description": "Etiqueta para el campo en la configuración"

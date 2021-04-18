@@ -49,6 +49,7 @@ var defaultConfigs = new Map([
     ['buttonsStyle', 'onlylabel'],
     ['showButtonLabelOnHover', true],
     ['animationDuration', 300],
+    ['textSelectionBackgroundOpacity', 1.0],
     ['tooltipRevealEffect', 'scaleUpTooltipEffect'],
 ]);
 

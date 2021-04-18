@@ -323,6 +323,10 @@
         "message": "Couleur de sélection",
         "description": "Libellé du champ dans les paramètres"
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Opacité du fond",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "textSelectionColor": {
         "message": "Couleur du texte",
         "description": "Libellé du champ dans les paramètres"

@@ -323,6 +323,10 @@
         "message": "Auswahlfarbe",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Hintergrundopazität",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
     "textSelectionColor": {
         "message": "Textfarbe",
         "description": "Beschriftung für Feld in Einstellungen"

@@ -319,6 +319,10 @@
         "message": "Cor de seleção",
         "description": "Rótulo para o campo nas configurações"
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Opacidade do fundo",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "textSelectionColor": {
         "message": "Cor do texto",
         "description": "Rótulo para o campo nas configurações"

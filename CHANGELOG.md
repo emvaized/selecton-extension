@@ -1,12 +1,21 @@
 #3.0.0
-- New approach to horizontally center selection tooltip between selection boundaries, instead of relying on overall selection rect
+
+New:
 - Implemented new "Snap selection by words" functionality (disabled while CTRL key is being held)
-- Added settings toggle to override website's text selection color
 - Implemented 3 options for tooltip reveal animation
-- Restructured settings page for better consistency
-- Improvements for selection handlers - single click now extends selection by one word in direction of handle
+- Added settings toggle to override website's text selection color
+- Added setting for text selection background opacity
+
+Bug fixes and improvements:
+- Middle click on any button now will open link in background tab
 - Fix for Firefox "pop-up was blocked" issue on clicking Search button
-- Refactored project files for better readability
+- Improvements for selection handlers - single click now extends selection by one word in direction of handle
+
+General:
+- Refactored project for better readability
+- New approach to horizontally center the selection tooltip between selection boundaries, instead of relying on overall selection rect
+- Restructured settings page for better consistency
+
 
 #2.1.9
 - Improvements for secondary search tooltip when 'Icon only' style is activated

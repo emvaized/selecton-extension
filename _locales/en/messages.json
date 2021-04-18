@@ -319,6 +319,10 @@
     "message": "Selection color",
     "description": "Label for field in settings"
   },
+  "textSelectionBackgroundOpacity": {
+    "message": "Background opacity",
+    "description": "Label for field in settings"
+  },
   "textSelectionColor": {
     "message": "Text color",
     "description": "Label for field in settings"

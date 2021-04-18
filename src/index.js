@@ -5,6 +5,7 @@ function init() {
       changeTextSelectionColor = configs.changeTextSelectionColor ?? false;
       textSelectionBackground = configs.textSelectionBackground || '#338FFF';
       textSelectionColor = configs.textSelectionColor || '#ffffff';
+      textSelectionBackgroundOpacity = configs.textSelectionBackgroundOpacity || 1.0;
       shouldOverrideWebsiteSelectionColor = configs.shouldOverrideWebsiteSelectionColor ?? false;
 
       enabled = configs.enabled ?? true;
@@ -119,8 +120,13 @@ function setTextSelectionColor() {
   let importance = shouldOverrideWebsiteSelectionColor ? '!important' : '';
 
   // CSS rules
-  let rule = `::selection {background-color: ${textSelectionBackground} ${importance}; color: ${textSelectionColor} ${importance}; }`;
-  rule += `::-moz-selection {background-color: ${textSelectionBackground} ${importance}; color: ${textSelectionColor} ${importance};}`;
+  // let rule = `::selection {background-color: ${textSelectionBackground} ${importance}; color: ${textSelectionColor} ${importance}; }`;
+  // rule += `::-moz-selection {background-color: ${textSelectionBackground} ${importance}; color: ${textSelectionColor} ${importance};}`;
+
+  var selectionBackgroundRgb = hexToRgb(textSelectionBackground);
+
+  let rule = `::selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${textSelectionBackgroundOpacity}) ${importance}; color: ${textSelectionColor} ${importance}; }`;
+  rule += `::-moz-selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${textSelectionBackgroundOpacity}) ${importance}; color: ${textSelectionColor} ${importance};}`;
 
   let css = document.createElement('style');
   css.type = 'text/css';

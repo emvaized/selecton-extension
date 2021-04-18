@@ -47,6 +47,7 @@ var disableWordSnappingOnCtrlKey = true;
 var showButtonLabelOnHover = true;
 var animationDuration = 300;
 var tooltipRevealEffect = 'scaleUpTooltipEffect';
+var textSelectionBackgroundOpacity = 1.0;
 var customSearchButtons = [
     {
         'url': 'https://www.youtube.com/results?search_query=%s',
@@ -167,6 +168,7 @@ var userSettingsKeys = [
     'showButtonLabelOnHover',
     'animationDuration',
     'tooltipRevealEffect',
+    'textSelectionBackgroundOpacity',
 ];
 
 // /// Those are used on settings page

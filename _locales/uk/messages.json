@@ -323,6 +323,10 @@
         "message": "Колір виділення",
         "description": ""
     },
+    "textSelectionBackgroundOpacity": {
+        "message": "Прозорість фону",
+        "description": "Мітка для поля в налаштуваннях"
+    },
     "textSelectionColor": {
         "message": "Колір тексту",
         "description": ""
