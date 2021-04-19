@@ -924,14 +924,20 @@ function calculateTooltipPosition() {
 }
 
 function showTooltip(dx, dy) {
-    // dontShowTooltip = true;
     tooltip.style.pointerEvents = 'auto';
     tooltip.style.top = `${dy}px`;
     tooltip.style.left = `${dx}px`;
     tooltip.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
 
-    // if (addScaleUpEffect)
-    //     tooltip.style.transform = 'scale(1.0)';
+    if (tooltipRevealEffect == 'moveUpTooltipEffect') {
+        /// Make tooltip not-interactive in first half of animation
+        tooltip.style.pointerEvents = 'none';
+        setTimeout(function () {
+            tooltip.style.pointerEvents = 'all';
+        }, animationDuration / 2);
+    }
+
+    /// Set reveal animation type
     tooltip.style.transform = returnTooltipRevealTransform(true);
 
     if (debugMode)

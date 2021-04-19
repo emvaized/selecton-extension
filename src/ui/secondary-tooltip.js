@@ -65,7 +65,7 @@ function createSecondaryTooltip() {
             imgButton.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 var selectedText = selection.toString();
-                checkToRemovePageSelection();
+                removeSelectionOnPage();
                 setTimeout(
                     function () {
                         window.open(url.replaceAll('%s', selectedText), '_blank');

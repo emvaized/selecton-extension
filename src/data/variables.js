@@ -46,7 +46,7 @@ var shouldOverrideWebsiteSelectionColor = false;
 var disableWordSnappingOnCtrlKey = true;
 var showButtonLabelOnHover = true;
 var animationDuration = 300;
-var tooltipRevealEffect = 'scaleUpTooltipEffect';
+var tooltipRevealEffect = 'scaleUpTooltipEffect'; /// possible values: noTooltipEffect, scaleUpTooltipEffect, moveUpTooltipEffect, moveDownTooltipEffect
 var textSelectionBackgroundOpacity = 1.0;
 var customSearchButtons = [
     {
@@ -70,7 +70,8 @@ var customSearchButtons = [
         'enabled': true
     },
     {
-        'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+        // 'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+        'url': 'https://wikipedia.org/w/index.php?search=%s',
         'title': 'Wikipedia',
         'enabled': false
     },
