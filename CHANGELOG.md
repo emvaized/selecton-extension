@@ -1,7 +1,7 @@
 #3.0.1
 - Bug fix for custom search buttons
 - Changed default URL for Wikipedia search
-- Bug fix for 'move up' reveal animation - now tooltip is not interactive in first half of animation duration
+- Bug fix for 'move up' reveal animation - now tooltip is not interactive in first half of animation duration (when 'move up' effect is selected)
 
 #3.0.0
 
