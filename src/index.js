@@ -142,10 +142,10 @@ function setPageListeners() {
 
   /// Hide tooltip when any key is pressed
   if (hideOnKeypress)
-    document.onkeydown = function () {
+    document.addEventListener("keydown", function () {
       hideTooltip();
       hideDragHandles();
-    }
+    });
 
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip) return;

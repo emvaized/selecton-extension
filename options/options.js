@@ -277,7 +277,8 @@ function loadCustomSearchButtons() {
                 'enabled': true
             },
             {
-                'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+                // 'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+                'url': 'https://wikipedia.org/w/index.php?search=%s',
                 'title': 'Wikipedia',
                 'enabled': false
             },

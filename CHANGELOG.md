@@ -1,3 +1,7 @@
+#3.0.2
+- Changed keyboard listener so that it will less interfere with website listeners
+- Small improvements for reveal animation
+
 #3.0.1
 - Bug fix for custom search buttons
 - Changed default URL for Wikipedia search
