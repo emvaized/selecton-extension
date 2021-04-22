@@ -8,7 +8,6 @@
 - Bug fix for 'move up' reveal animation - now tooltip is not interactive in first half of animation duration (when 'move up' effect is selected)
 
 #3.0.0
-
 New:
 - Implemented new "Snap selection by words" functionality (disabled while CTRL key is being held)
 - Implemented 3 options for tooltip reveal animation
