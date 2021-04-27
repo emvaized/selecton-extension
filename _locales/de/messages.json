@@ -351,6 +351,10 @@
         "message": "Aktualisiere die Seite, um die Änderungen zu sehen",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Tarifaktualisierungsintervall (Tage)",
+        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
     "useCustomStyle": {
         "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
         "description": "Beschriftung für Feld in Einstellungen"

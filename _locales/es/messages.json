@@ -351,6 +351,10 @@
         "message": "Actualiza la página para ver los cambios",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Intervalo de actualización de tarifas (días)",
+        "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
     "useCustomStyle": {
         "message": "Usar estilo personalizado para la información sobre herramientas",
         "description": "Etiqueta para el campo en la configuración"

@@ -347,6 +347,10 @@
         "message": "Atualize a página para ver as mudanças",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Intervalo de atualização de taxas (dias)",
+        "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
     "useCustomStyle": {
         "message": "Use um estilo personalizado para a dica",
         "description": "Rótulo para o campo nas configurações"

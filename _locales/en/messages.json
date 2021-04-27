@@ -347,6 +347,10 @@
     "message": "Refresh the page to see the changes",
     "description": ""
   },
+  "updateRatesEveryDays": {
+    "message": "Rates update interval (days)",
+    "description": "Label for buttons style option in settings"
+  },
   "useCustomStyle": {
     "message": "Use custom style for tooltip",
     "description": "Label for field in settings"

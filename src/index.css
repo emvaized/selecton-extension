@@ -1,7 +1,7 @@
 /* Tooltip */
   .selection-tooltip {
     all: revert;
-    background: #3B3B3B;
+    background: #4c4c4c;
     opacity: 0;
     display: inline-block;
     position: absolute;
@@ -28,6 +28,8 @@
     /* left: 50%; */
     /* margin-left: -12.5px; */
     /* bottom: -16px; */
+    background: transparent !important;
+    box-shadow: none !important;
     bottom:-50%;
     transform: translate(-12.5px, 0px);
   }
@@ -51,7 +53,7 @@
     width: 15px;
     height: 15px;
     transform: rotate(45deg);
-    background: #3B3B3B;
+    /* background: #3B3B3B; */
   }
 
 /* Buttons */

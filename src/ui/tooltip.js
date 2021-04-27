@@ -72,7 +72,6 @@ function setUpNewTooltip(type) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.setAttribute('class', `selection-tooltip`);
-    // tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform ${animationDuration}ms ease-out; ${addScaleUpEffect ? `transform: scale(0.0);transform-origin: 50% 125% 0;` : ''}`);
     tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${animationDuration}ms ease-in-out, transform ${animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
 
     if (useCustomStyle && tooltipOpacity !== 1.0 && tooltipOpacity !== 1) {
@@ -102,6 +101,8 @@ function setUpNewTooltip(type) {
     arrow.setAttribute('class', `selection-tooltip-arrow`);
     var arrowChild = document.createElement('div');
     arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
+
+    arrowChild.setAttribute('style', `background: ${useCustomStyle ? tooltipBackground : defaultBackgroundColor}`);
     arrow.appendChild(arrowChild);
     tooltip.appendChild(arrow);
 

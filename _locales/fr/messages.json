@@ -351,6 +351,10 @@
         "message": "Actualisez la page pour voir les modifications",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Intervalle de mise à jour des tarifs (jours)",
+        "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
     "useCustomStyle": {
         "message": "Utiliser un style personnalisé pour l'info-bulle",
         "description": "Libellé du champ dans les paramètres"

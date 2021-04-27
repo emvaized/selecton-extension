@@ -351,6 +351,10 @@
         "message": "Оновіть сторінку, щоб побачити зміни",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Інтервал оновлення рейтів (дні)",
+        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
     "useCustomStyle": {
         "message": "Змінити стиль панелі",
         "description": ""

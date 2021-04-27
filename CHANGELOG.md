@@ -1,3 +1,8 @@
+#3.0.3
+- Fixed bugs for custom styling
+- Changed default background color to a lighter one
+- Added option to change currency rates update interval
+
 #3.0.2
 - Changed keyboard listener so that it will less interfere with website listeners
 - Small improvements for reveal animation
@@ -6,6 +11,7 @@
 - Bug fix for custom search buttons
 - Changed default URL for Wikipedia search
 - Bug fix for 'move up' reveal animation - now tooltip is not interactive in first half of animation duration (when 'move up' effect is selected)
+
 
 #3.0.0
 New:

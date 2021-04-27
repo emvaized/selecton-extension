@@ -9,7 +9,7 @@ var addOpenLinks = true;
 var convertCurrencies = true;
 var performSimpleMathOperations = true;
 var useCustomStyle = false;
-var tooltipBackground = '3B3B3B';
+var tooltipBackground = '#4c4c4c';
 var tooltipOpacity = 1.0;
 var addTooltipShadow = false;
 var shadowOpacity = 0.5;
@@ -48,6 +48,7 @@ var showButtonLabelOnHover = true;
 var animationDuration = 300;
 var tooltipRevealEffect = 'scaleUpTooltipEffect'; /// possible values: noTooltipEffect, scaleUpTooltipEffect, moveUpTooltipEffect, moveDownTooltipEffect
 var textSelectionBackgroundOpacity = 1.0;
+var updateRatesEveryDays = 14;
 var customSearchButtons = [
     {
         'url': 'https://www.youtube.com/results?search_query=%s',
@@ -83,7 +84,6 @@ var customSearchButtons = [
 ];
 
 /// Currently non user-configurable settings 
-var updateRatesEveryDays = 14;
 var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
 var ignoreWhenTextFieldFocused = true;
@@ -92,6 +92,7 @@ var loadTooltipOnPageLoad = false;
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 var allowWebsitesOverrideSelectionColor = true;
+var defaultBackgroundColor = '#4c4c4c';
 
 /// Service variables
 var copyLabel = 'Copy';
@@ -170,54 +171,8 @@ var userSettingsKeys = [
     'animationDuration',
     'tooltipRevealEffect',
     'textSelectionBackgroundOpacity',
+    'updateRatesEveryDays',
 ];
-
-// /// Those are used on settings page
-// var defaultConfigs = new Map([
-//     ['hideOnScroll', true],
-//     ['convertMetrics', true],
-//     ['addOpenLinks', true],
-//     ['convertCurrencies', true],
-//     ['performSimpleMathOperations', true],
-//     ['preferredMetricsSystem', 'metric'],
-//     ['showTranslateButton', true],
-//     ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
-//     ['useCustomStyle', false],
-//     ['tooltipBackground', '#3B3B3B'],
-//     ['tooltipOpacity', 1.0],
-//     ['addTooltipShadow', false],
-//     ['shadowOpacity', 0.5],
-//     ['borderRadius', 3],
-//     ['changeTextSelectionColor', false],
-//     ['textSelectionBackground', '#338FFF'],
-//     ['textSelectionColor', '#ffffff'],
-//     ['shiftTooltipWhenWebsiteHasOwn', true],
-//     ['addActionButtonsForTextFields', false],
-//     ['removeSelectionOnActionButtonClick', true],
-//     ['draggableTooltip', true],
-//     ['enabled', true],
-//     ['hideOnKeypress', true],
-//     ['preferredSearchEngine', 'google'],
-//     ['showOnMapButtonEnabled', true],
-//     ['showEmailButton', true],
-//     ['preferredNewEmailMethod', 'mailto'],
-//     ['customSearchUrl', ''],
-//     ['addColorPreviewButton', true],
-//     ['preferredMapsService', 'google'],
-//     ['secondaryTooltipEnabled', true],
-//     ['secondaryTooltipIconSize', 15],
-//     ['showSecondaryTooltipTitleOnHover', false],
-//     ['excludedDomains', ''],
-//     ['addPhoneButton', true],
-//     ['showUnconvertedValue', true],
-//     ['addScaleUpEffect', true],
-//     ['debugMode', false],
-//     ['addDragHandles', false],
-//     ['snapSelectionToWord', false],
-//     // ['preferCurrencySymbol', false],
-//     ['buttonsStyle', 'onlylabel'],
-// ]);
-
 
 /// Look for these words to find that selected text is address
 const addressKeywords = [

@@ -2,7 +2,7 @@
 function createSecondaryTooltip() {
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
-    secondaryTooltip.style.backgroundColor = tooltipBackground;
+    secondaryTooltip.style.backgroundColor = useCustomStyle ? tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${borderRadius}px`;
     secondaryTooltip.style.pointerEvents = 'none';
@@ -10,10 +10,10 @@ function createSecondaryTooltip() {
     document.body.appendChild(secondaryTooltip);
 
     /// Add shadow
-    // if (addTooltipShadow) {
-    //   secondaryTooltip.style.boxShadow = `0 1px 5px rgba(0,0,0,${shadowOpacity / 1.5})`;
-    //   // secondaryTooltip.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
-    // }
+    if (addTooltipShadow) {
+        secondaryTooltip.style.boxShadow = `0 1px 5px rgba(0,0,0,${shadowOpacity / 1.5})`;
+        // secondaryTooltip.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
+    }
 
     var dx = tooltip.style.left;
     var dy = tooltip.style.top;
@@ -103,7 +103,6 @@ function createSecondaryTooltip() {
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
     }
-
 
     /// Add some bottom space to prevent unwanted jumping on moving cursor
     var space = document.createElement('div');

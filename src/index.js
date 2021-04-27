@@ -49,7 +49,7 @@ function init() {
         languageToTranslate = configs.languageToTranslate || browserLanguage || 'en';
         ratesLastFetchedDate = configs.ratesLastFetchedDate;
         useCustomStyle = configs.useCustomStyle ?? false;
-        tooltipBackground = configs.tooltipBackground || '#3B3B3B';
+        tooltipBackground = configs.tooltipBackground || defaultBackgroundColor;
         tooltipOpacity = configs.tooltipOpacity || 1.0;
         addTooltipShadow = configs.addTooltipShadow ?? false;
         shadowOpacity = configs.shadowOpacity || 0.5;
@@ -80,6 +80,7 @@ function init() {
         disableWordSnappingOnCtrlKey = configs.disableWordSnappingOnCtrlKey ?? true;
         showButtonLabelOnHover = configs.showButtonLabelOnHover ?? true;
         animationDuration = configs.animationDuration || 300;
+        updateRatesEveryDays = configs.updateRatesEveryDays || 14;
         tooltipRevealEffect = configs.tooltipRevealEffect || 'scaleUpTooltipEffect';
 
         /// Get translated button labels

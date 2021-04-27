@@ -351,6 +351,10 @@
         "message": "Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
+    "updateRatesEveryDays": {
+        "message": "Интервал обновления курсов (дни)",
+        "description": "Ярлык для опции стиля кнопок в настройках"
+    },
     "useCustomStyle": {
         "message": "Изменить стиль панели",
         "description": ""
