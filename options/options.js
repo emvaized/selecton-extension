@@ -57,9 +57,6 @@ var defaultConfigs = new Map([
 
 var keys = [...defaultConfigs.keys()];
 
-/// Init settings
-
-
 function loadSettings() {
     var ids = [];
     keys.forEach(function (key) {
