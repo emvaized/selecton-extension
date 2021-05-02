@@ -4,6 +4,7 @@
 - Improvements for popup window design
 - Refactored extension configs for better maintainability
 - Custom search options settings redesigned to make it more clear that extension uses Google icons by default
+- Logo became slightly sharper
 - Other small fixes and improvements
 
 #3.0.3
