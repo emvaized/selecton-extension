@@ -211,6 +211,10 @@
     "message": "Text only",
     "description": "Label for buttons style option in settings"
   },
+  "openInNewTab": {
+    "message": "Open in new tab",
+    "description": "Label for open link action"
+  },
   "openLinkLabel": {
     "message": "Open",
     "description": "Label for open link action"
@@ -270,6 +274,10 @@
   "selectionHeader": {
     "message": "Text selection",
     "description": "Header for category in settings"
+  },
+  "selectonSettings": {
+    "message": "Selecton settings",
+    "description": "Label for popup header"
   },
   "shadowOpacity": {
     "message": "Shadow opacity",

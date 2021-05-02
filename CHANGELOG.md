@@ -1,3 +1,9 @@
+#3.0.4
+- Added new vertical mode for custom search options
+- Fix for custom search tooltip 'add new' layout bug
+- Improvements for popup window design
+- Small fixes and improvements
+
 #3.0.3
 - Fixed bugs for custom styling
 - Changed default background color to a lighter one

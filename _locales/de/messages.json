@@ -211,6 +211,10 @@
         "message": "Nur Text",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "openInNewTab": {
+        "message": "Öffnen Sie in der Registerkarte",
+        "description": "Label for open link action"
+    },
     "openLinkLabel": {
         "message": "Öffnen",
         "description": "Label für Open Link-Aktion"
@@ -274,6 +278,10 @@
     "selectionHeader": {
         "message": "Textauswahl",
         "description": "Header für Kategorie in Einstellungen"
+    },
+    "selectonSettings": {
+        "message": "Selecton Einstellungen",
+        "description": "Label for popup header"
     },
     "shadowOpacity": {
         "message": "Schattenopazität",

@@ -1,4 +1,7 @@
 /// Create secondary tooltip for custom search engines
+
+var secondaryTooltipHeight;
+
 function createSecondaryTooltip() {
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
@@ -12,13 +15,7 @@ function createSecondaryTooltip() {
     /// Add shadow
     if (addTooltipShadow) {
         secondaryTooltip.style.boxShadow = `0 1px 5px rgba(0,0,0,${shadowOpacity / 1.5})`;
-        // secondaryTooltip.style.boxShadow = `1px 1px 3px rgba(0,0,0,${shadowOpacity / 1.5})`;
     }
-
-    var dx = tooltip.style.left;
-    var dy = tooltip.style.top;
-    secondaryTooltip.style.left = dx;
-    secondaryTooltip.style.top = dy;
 
     /// Add search buttons
     for (var i = 0; i < customSearchButtons.length; i++) {
@@ -31,7 +28,6 @@ function createSecondaryTooltip() {
 
         if (optionEnabled) {
             var imgButton = document.createElement('img');
-            imgButton.setAttribute('class', 'custom-search-image-button');
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
             imgButton.setAttribute('width', `${secondaryTooltipIconSize}px`);
             imgButton.setAttribute('height', `${secondaryTooltipIconSize}px`);
@@ -45,10 +41,12 @@ function createSecondaryTooltip() {
                 if (domainContent.length == 2) {
                     titleText = domainContent[0];
                 } else if (domainContent.length == 3) {
-                    titleText = domainContent[1];
-
+                    if (domainContent[1].includes('/'))
+                        titleText = domainContent[0];
+                    else
+                        titleText = domainContent[1];
                 } else {
-                    titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
+                    titleText = domain.textContent.split('/')[2].split('.')[0];
                 }
                 titleText = titleText.replaceAll('https://', '');
                 imgButton.setAttribute('title', titleText.charAt(0).toUpperCase() + titleText.slice(1));
@@ -61,47 +59,109 @@ function createSecondaryTooltip() {
                 imgButton.style.borderRadius = lastButtonBorderRadius;
             }
 
+            let container = document.createElement('div');
+
+            /// Add label in vertical style
+            if (verticalSecondaryTooltip) {
+                container.setAttribute('style', `display: ${verticalSecondaryTooltip ? 'block' : 'inline'};`);
+                container.setAttribute('class', 'custom-search-image-button');
+                container.appendChild(imgButton);
+
+                let labelSpan = document.createElement('span');
+                labelSpan.innerHTML = titleText.charAt(0).toUpperCase() + titleText.slice(1);
+                labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
+                container.appendChild(labelSpan);
+                secondaryTooltip.appendChild(container);
+
+            } else {
+                imgButton.setAttribute('class', 'custom-search-image-button');
+                secondaryTooltip.appendChild(imgButton);
+            }
+
             /// Set click listeners
-            imgButton.addEventListener("mousedown", function (e) {
+            (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
+                // container.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 var selectedText = selection.toString();
+                let urlToOpen = url.replaceAll('%s', selectedText);
                 removeSelectionOnPage();
-                setTimeout(
-                    function () {
-                        window.open(url.replaceAll('%s', selectedText), '_blank');
-                    }, 1
-                );
+
+                try {
+                    var evt = e || window.event;
+
+                    if ("buttons" in evt) {
+                        if (evt.buttons == 1) {
+                            /// Left button click
+                            chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: urlToOpen, focused: true });
+                        } else if (evt.buttons == 4) {
+                            /// Middle button click
+                            evt.preventDefault();
+                            chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: urlToOpen, focused: false });
+                        }
+                    }
+                } catch (e) {
+                    window.open(urlToOpen, '_blank');
+                }
             });
-            secondaryTooltip.appendChild(imgButton);
         }
     }
+
 
     var paddingOnBottom = 3;
 
     var isSecondaryTooltipHovered = false;
 
+    var dx = tooltip.style.left;
+    var dy = tooltip.style.top;
+
+    secondaryTooltip.style.left = dx;
+    secondaryTooltip.style.top = verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
+
+    if (verticalSecondaryTooltip)
+        secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
+
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
-        secondaryTooltip.style.top = `${parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom}px`;
+
+        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
+
+        if (verticalSecondaryTooltip)
+            secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
-            secondaryTooltip.style.top = dy;
+            // secondaryTooltip.style.top = dy;
+            let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+            secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
+
+            if (verticalSecondaryTooltip)
+                secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
         }
     }
     secondaryTooltip.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
-        secondaryTooltip.style.top = `${parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom}px`;
+        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
+
+        if (verticalSecondaryTooltip)
+            secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
+
     secondaryTooltip.onmouseout = function () {
         isSecondaryTooltipHovered = false;
-        secondaryTooltip.style.top = dy;
+        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+
+        secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
+
+        if (verticalSecondaryTooltip)
+            secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
     }
 
     /// Add some bottom space to prevent unwanted jumping on moving cursor

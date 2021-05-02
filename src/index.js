@@ -170,9 +170,10 @@ function setPageListeners() {
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
       if (snapSelectionToWord) {
-        if (disableWordSnappingOnCtrlKey && e.ctrlKey == true) { } else {
+        if (disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
           if (debugMode)
-            console.log('Word snapping was rejected due to pressed CTRL key')
+            console.log('Word snapping was rejected due to pressed CTRL key');
+        } else {
           snapSelectionByWords(selection);
         }
       }

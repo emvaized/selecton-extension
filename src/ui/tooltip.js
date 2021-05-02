@@ -141,6 +141,8 @@ function setUpNewTooltip(type) {
                     var secondaryTooltipDx = parseInt(secondaryTooltip.style.left.replaceAll('px', ''));
                     var secondaryTooltipDy = parseInt(secondaryTooltip.style.top.replaceAll('px', ''));
                     secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
+                    // secondaryTooltip.style.left = `${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px;`;
+                    // secondaryTooltip.style.top = ` ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px`;
                 }
 
                 if (debugMode)
@@ -701,7 +703,8 @@ function addContextualButtons() {
 
                 /// Add 'open link' button
                 if (addOpenLinks)
-                    if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.') || selectedText.includes('/'))) {
+                    // if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.') || selectedText.includes('/'))) {
+                    if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.'))) {
                         var words = selectedText.split(' ');
                         for (i in words) {
                             var link = words[i];

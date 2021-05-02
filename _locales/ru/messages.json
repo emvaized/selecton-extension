@@ -211,6 +211,10 @@
         "message": "Только текст",
         "description": "Label for buttons style option in settings"
     },
+    "openInNewTab": {
+        "message": "Открыть в новой вкладке",
+        "description": "Label for open link action"
+    },
     "openLinkLabel": {
         "message": "Открыть",
         "description": "Label for open link action"
@@ -274,6 +278,10 @@
     "selectionHeader": {
         "message": "Выделение текста",
         "description": "Header for category in settings"
+    },
+    "selectonSettings": {
+        "message": "Настройки Selecton",
+        "description": "Label for popup header"
     },
     "shadowOpacity": {
         "message": "Прозрачность тени",

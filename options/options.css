@@ -1,5 +1,5 @@
 body {
-  min-width: 360px;
+  /* min-width: 360px; */
 }
 
 button {
@@ -7,7 +7,7 @@ button {
 }
 
 form {
-  padding: 0px 6px;
+  padding: 0px 12px 0px 0px;
 }
 
 .option {

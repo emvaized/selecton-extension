@@ -94,6 +94,8 @@ var selectionTextShadowOpacity = 0.75;
 var allowWebsitesOverrideSelectionColor = true;
 var defaultBackgroundColor = '#4c4c4c';
 
+var verticalSecondaryTooltip = true;
+
 /// Service variables
 var copyLabel = 'Copy';
 var searchLabel = 'Search';

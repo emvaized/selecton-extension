@@ -211,6 +211,10 @@
         "message": "Somente texto",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "openInNewTab": {
+        "message": "Abrir em nova aba",
+        "description": "Label for open link action"
+    },
     "openLinkLabel": {
         "message": "Abrir",
         "description": "Rótulo para ação de link aberto"
@@ -270,6 +274,10 @@
     "selectionHeader": {
         "message": "Seleção de texto",
         "description": "Cabeçalho para a categoria nas configurações"
+    },
+    "selectonSettings": {
+        "message": "Selecton configurações",
+        "description": "Label for popup header"
     },
     "shadowOpacity": {
         "message": "Opacidade da sombra",

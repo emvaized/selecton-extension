@@ -211,6 +211,10 @@
         "message": "Texte uniquement",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "openInNewTab": {
+        "message": "Ouvrir dans l'onglet",
+        "description": "Label for open link action"
+    },
     "openLinkLabel": {
         "message": "Ouvrir",
         "description": "Libellé pour l'action de lien ouvert"
@@ -274,6 +278,10 @@
     "selectionHeader": {
         "message": "Sélection de texte",
         "description": "En-tête de catégorie dans les paramètres"
+    },
+    "selectonSettings": {
+        "message": "Paramètres de Selecton",
+        "description": "Label for popup header"
     },
     "shadowOpacity": {
         "message": "Opacité de l'ombre",

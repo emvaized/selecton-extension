@@ -470,6 +470,12 @@ function generateCustomSearchButtonsList() {
         });
         saveCustomSearchButtons();
         generateCustomSearchButtonsList();
+
+        /// Increase max height of collapsible section
+        let customSearchConfigs = document.getElementById('customSearchTooltip');
+        let content = customSearchConfigs.nextElementSibling;
+        content.style.maxHeight = content.scrollHeight + "px";
+
     };
     container.appendChild(addButton);
 }

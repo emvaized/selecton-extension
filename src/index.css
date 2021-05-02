@@ -53,7 +53,6 @@
     width: 15px;
     height: 15px;
     transform: rotate(45deg);
-    /* background: #3B3B3B; */
   }
 
 /* Buttons */
@@ -93,9 +92,9 @@
 
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
-  transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: top 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-out;
   opacity: 0.0;
-  top: 0px;
+  /* top: 0px; */
   left: 0px;
   z-index: 9999 !important;
   position: absolute;
@@ -103,6 +102,7 @@
   padding: 0px !important;
   display: inline-block;
   line-height: 1.0 !important; 
+  transform-origin: 25% 100% 0;
 }
 
 .secondary-selection-tooltip-bottom-div {
@@ -116,15 +116,14 @@
 
 .custom-search-image-button {
   all: revert;
-  /* transform: scale(1.0); */
-  /* transition: transform 100ms ease-in-out; */
   padding: 4px 6px;
   vertical-align: middle;
+  font-size: 12.5px !important;
+
+  color: var(--selection-button-foreground);
 }
 
 .custom-search-image-button:hover {
-  /* transform: scale(1.5); */
-  /* transition: transform 100ms ease-in-out; */
   cursor: pointer;
   background-color: var(--selection-button-background-hover) !important;
 }
@@ -135,17 +134,3 @@
   display: inline;
 }
 
-
-/* Text selection */
-/* ::selection {
-  background:  var(--selection-background) var(--selection-colors-importance);
-  color: var(--selection-text-color);
-  text-shadow: var( --selection-text-shadow);
-} */
-
-/* for Mozilla Firefox */
-/* ::-moz-selection {
-  background: var(--selection-background);
-  color: var(--selection-text-color);
-  text-shadow:var( --selection-text-shadow);
-} */

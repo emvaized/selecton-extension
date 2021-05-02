@@ -1,4 +1,5 @@
-# Selecton - text selection tooltip
+# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="38" width="38"></sub>electon - text selection actions
+
 Get customizable pop-up with action buttons on text selection
 * Copy any text in one click - especially useful for laptops
 * Customizable appearance for tooltip and text selection color
