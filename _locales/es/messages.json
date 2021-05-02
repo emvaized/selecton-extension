@@ -367,6 +367,14 @@
         "message": "Usar estilo personalizado para la información sobre herramientas",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "useIconFromGoogle": {
+        "message": "Usar el icono de Google",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Mostrar como lista vertical",
+        "description": "Etiqueta para el botón de configuración que lleva a la página de GitHub"
+    },
     "visitGithub": {
         "message": "Visita la página de GitHub",
         "description": "Etiqueta para el botón de configuración que lleva a la página de GitHub"

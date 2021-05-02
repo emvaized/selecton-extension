@@ -2,7 +2,9 @@
 - Added new vertical mode for custom search options
 - Fix for custom search tooltip 'add new' layout bug
 - Improvements for popup window design
-- Small fixes and improvements
+- Refactored extension configs for better maintainability
+- Custom search options settings redesigned to make it more clear that extension uses Google icons by default
+- Other small fixes and improvements
 
 #3.0.3
 - Fixed bugs for custom styling

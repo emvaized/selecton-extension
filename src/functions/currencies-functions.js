@@ -17,7 +17,7 @@ function fetchCurrencyRates() {
             'rates': ratesObject
         });
 
-        if (debugMode)
+        if (configs.debugMode)
             console.log('Updated currency rates for Selecton');
     });
 }
@@ -33,7 +33,7 @@ function loadCurrencyRatesFromMemory() {
                 currenciesList[key]['rate'] = rate;
         });
 
-        if (debugMode) {
+        if (configs.debugMode) {
             console.log('Selecton currency rates were successfully loaded from memory:');
             console.log(loadedRates);
         }

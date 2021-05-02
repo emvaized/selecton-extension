@@ -9,7 +9,7 @@ function setDragHandles() {
 
 /// 0 for first (left) drag handle, 1 for second (right)
 function addDragHandle(dragHandleIndex) {
-    if (debugMode)
+    if (configs.debugMode)
         console.log('Adding drag handle ' + dragHandleIndex.toString() + '...');
 
     if (selection == null || selection == undefined) return;
@@ -23,7 +23,7 @@ function addDragHandle(dragHandleIndex) {
     try {
         const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
 
-        if (debugMode) {
+        if (configs.debugMode) {
             console.log('Selected text line height: ' + selectedTextLineHeight.toString());
         }
 
@@ -32,7 +32,7 @@ function addDragHandle(dragHandleIndex) {
         }
 
     } catch (e) {
-        if (debugMode)
+        if (configs.debugMode)
             console.log('Selecton failed to compute font size of selected text');
     }
 
@@ -45,20 +45,20 @@ function addDragHandle(dragHandleIndex) {
 
         var dragHandle = document.createElement('div');
         dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
-        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${useCustomStyle ? tooltipBackground : defaultBackgroundColor};`);
+        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor};`);
         document.body.appendChild(dragHandle);
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-        // circleDiv.setAttribute('style', `border-radius: 50%;background: ${tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -6.5px;`);
-        circleDiv.setAttribute('style', `transition: opacity ${animationDuration}ms ease-in-out;border-radius: 50%;background: ${useCustomStyle ? tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        // circleDiv.setAttribute('style', `border-radius: 50%;background: ${configs.tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -6.5px;`);
+        circleDiv.setAttribute('style', `transition: opacity ${configs.animationDuration}ms ease-in-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {
-            dragHandle.style.opacity = useCustomStyle ? tooltipOpacity : 1.0;
+            dragHandle.style.opacity = configs.useCustomStyle ? configs.tooltipOpacity : 1.0;
         }, 1);
 
-        if (useCustomStyle && tooltipOpacity !== 1.0 && tooltipOpacity !== 1) {
+        if (configs.useCustomStyle && configs.tooltipOpacity !== 1.0 && configs.tooltipOpacity !== 1) {
             dragHandle.onmouseover = function (event) {
                 setTimeout(function () {
                     if (dontShowTooltip == true) return;
@@ -71,7 +71,7 @@ function addDragHandle(dragHandleIndex) {
                 setTimeout(function () {
                     if (dontShowTooltip == true) return;
                     try {
-                        dragHandle.style.opacity = tooltipOpacity;
+                        dragHandle.style.opacity = configs.tooltipOpacity;
                     } catch (e) { }
                 }, 1);
             }
@@ -132,7 +132,7 @@ function addDragHandle(dragHandleIndex) {
                     if (currentWindowSelection !== null && currentWindowSelection !== undefined && currentWindowSelection !== '') {
 
                         try {
-                            if (debugMode)
+                            if (configs.debugMode)
                                 console.log(`Creating selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
 
                             if (dragHandleIndex == 0) {
@@ -155,7 +155,7 @@ function addDragHandle(dragHandleIndex) {
                             }
 
                         } catch (e) {
-                            if (debugMode) {
+                            if (configs.debugMode) {
                                 console.log('Error while creating selection range:');
                                 console.log(e);
                             }
@@ -163,7 +163,7 @@ function addDragHandle(dragHandleIndex) {
 
                     }
                 } catch (e) {
-                    if (debugMode) {
+                    if (configs.debugMode) {
                         console.log('Error while moving the right drag handle:');
                         console.log(e);
                     }
@@ -189,7 +189,7 @@ function addDragHandle(dragHandleIndex) {
 
                     /// Single click to expand selection by one word
                     if (windowSelection.toString() == currentWindowSelection.toString()) {
-                        if (debugMode)
+                        if (configs.debugMode)
                             console.log('Single click on drag handle');
 
 
@@ -208,7 +208,7 @@ function addDragHandle(dragHandleIndex) {
                     if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
 
                     /// Animate drag handle to the new place
-                    dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${animationDuration}ms ease-in-out`;
+                    dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${configs.animationDuration}ms ease-in-out`;
 
                     if (dragHandleIndex == 0) {
                         /// Left handle
@@ -219,23 +219,23 @@ function addDragHandle(dragHandleIndex) {
                     }
 
                     setTimeout(function () {
-                        dragHandle.style.transition = `opacity ${animationDuration}ms ease-in-out`;
+                        dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
                     }, 200);
 
                     createTooltip(e);
                 }, 1);
 
 
-                if (debugMode)
+                if (configs.debugMode)
                     console.log('Changing selection finished');
             };
         }
 
-        if (debugMode) {
+        if (configs.debugMode) {
             console.log('Successfully added drag handle ' + dragHandleIndex.toString());
         }
     } catch (e) {
-        if (debugMode) {
+        if (configs.debugMode) {
             console.log('Failed to configure drag handle ' + dragHandleIndex.toString() + '. Error is: ' + e.toString());
         }
     }
@@ -243,14 +243,14 @@ function addDragHandle(dragHandleIndex) {
 
 function hideDragHandles() {
     /// Remove all drag handles
-    if (addDragHandles) {
+    if (configs.addDragHandles) {
         var dragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle']`);
         dragHandles.forEach(function (dragHandle) {
             dragHandle.style.opacity = 0.0;
             setTimeout(function () {
                 if (dragHandle.parentNode !== null)
                     dragHandle.parentNode.removeChild(dragHandle);
-            }, animationDuration);
+            }, configs.animationDuration);
         });
     }
 }

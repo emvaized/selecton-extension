@@ -25,6 +25,7 @@
         "<all_urls>"
       ],
       "js": [
+        "src/data/configs.js",
         "src/data/variables.js",
         "src/data/currencies.js",
         "src/data/measure-units.js",
@@ -48,7 +49,8 @@
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true,
-    "chrome_style": true
+    "chrome_style": true,
+    "open_in_tab": false
   },
   "permissions": [
     "storage",

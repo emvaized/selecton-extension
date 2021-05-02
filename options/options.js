@@ -2,60 +2,61 @@
 /// 1. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
 /// Those are used on settings page
 
+// var defaultConfigs = new Map([
+//     ['hideOnScroll', true],
+//     ['convertMetrics', true],
+//     ['addOpenLinks', true],
+//     ['convertCurrencies', true],
+//     ['performSimpleMathOperations', true],
+//     ['preferredMetricsSystem', 'metric'],
+//     ['showTranslateButton', true],
+//     ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
+//     ['useCustomStyle', false],
+//     ['tooltipBackground', '#3B3B3B'],
+//     ['tooltipOpacity', 1.0],
+//     ['addTooltipShadow', false],
+//     ['shadowOpacity', 0.5],
+//     ['borderRadius', 3],
+//     ['changeTextSelectionColor', false],
+//     ['textSelectionBackground', '#338FFF'],
+//     ['textSelectionColor', '#ffffff'],
+//     ['shiftTooltipWhenWebsiteHasOwn', true],
+//     ['addActionButtonsForTextFields', false],
+//     ['removeSelectionOnActionButtonClick', true],
+//     ['draggableTooltip', true],
+//     ['enabled', true],
+//     ['hideOnKeypress', true],
+//     ['preferredSearchEngine', 'google'],
+//     ['showOnMapButtonEnabled', true],
+//     ['showEmailButton', true],
+//     ['preferredNewEmailMethod', 'mailto'],
+//     ['customSearchUrl', ''],
+//     ['addColorPreviewButton', true],
+//     ['preferredMapsService', 'google'],
+//     ['secondaryTooltipEnabled', true],
+//     ['secondaryTooltipIconSize', 15],
+//     ['showSecondaryTooltipTitleOnHover', false],
+//     ['excludedDomains', ''],
+//     ['addPhoneButton', true],
+//     ['showUnconvertedValue', true],
+//     ['debugMode', false],
+//     ['addDragHandles', true],
+//     ['snapSelectionToWord', true],
+//     ['preferCurrencySymbol', false],
+//     ['disableWordSnappingOnCtrlKey', true],
+//     ['shouldOverrideWebsiteSelectionColor', false],
+//     ['buttonsStyle', 'onlylabel'],
+//     ['showButtonLabelOnHover', true],
+//     ['animationDuration', 300],
+//     ['updateRatesEveryDays', 14],
+//     ['textSelectionBackgroundOpacity', 1.0],
+//     ['tooltipRevealEffect', 'scaleUpTooltipEffect'],
+// ]);
 
-var defaultConfigs = new Map([
-    ['hideOnScroll', true],
-    ['convertMetrics', true],
-    ['addOpenLinks', true],
-    ['convertCurrencies', true],
-    ['performSimpleMathOperations', true],
-    ['preferredMetricsSystem', 'metric'],
-    ['showTranslateButton', true],
-    ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
-    ['useCustomStyle', false],
-    ['tooltipBackground', '#3B3B3B'],
-    ['tooltipOpacity', 1.0],
-    ['addTooltipShadow', false],
-    ['shadowOpacity', 0.5],
-    ['borderRadius', 3],
-    ['changeTextSelectionColor', false],
-    ['textSelectionBackground', '#338FFF'],
-    ['textSelectionColor', '#ffffff'],
-    ['shiftTooltipWhenWebsiteHasOwn', true],
-    ['addActionButtonsForTextFields', false],
-    ['removeSelectionOnActionButtonClick', true],
-    ['draggableTooltip', true],
-    ['enabled', true],
-    ['hideOnKeypress', true],
-    ['preferredSearchEngine', 'google'],
-    ['showOnMapButtonEnabled', true],
-    ['showEmailButton', true],
-    ['preferredNewEmailMethod', 'mailto'],
-    ['customSearchUrl', ''],
-    ['addColorPreviewButton', true],
-    ['preferredMapsService', 'google'],
-    ['secondaryTooltipEnabled', true],
-    ['secondaryTooltipIconSize', 15],
-    ['showSecondaryTooltipTitleOnHover', false],
-    ['excludedDomains', ''],
-    ['addPhoneButton', true],
-    ['showUnconvertedValue', true],
-    ['debugMode', false],
-    ['addDragHandles', true],
-    ['snapSelectionToWord', true],
-    ['preferCurrencySymbol', false],
-    ['disableWordSnappingOnCtrlKey', true],
-    ['shouldOverrideWebsiteSelectionColor', false],
-    ['buttonsStyle', 'onlylabel'],
-    ['showButtonLabelOnHover', true],
-    ['animationDuration', 300],
-    ['updateRatesEveryDays', 14],
-    ['textSelectionBackgroundOpacity', 1.0],
-    ['tooltipRevealEffect', 'scaleUpTooltipEffect'],
-]);
+let userConfigs;
 
 
-var keys = [...defaultConfigs.keys()];
+var keys = Object.keys(configs);
 
 function loadSettings() {
     var ids = [];
@@ -66,13 +67,15 @@ function loadSettings() {
     chrome.storage.local.get(keys, setInputs);
 
     function setInputs(result) {
-        defaultConfigs.forEach(function (value, key) {
+        userConfigs = result;
+
+        keys.forEach(function (key) {
             var input = document.getElementById(key);
 
             /// Set input value
             if (input !== null && input !== undefined) {
                 if (input.type == 'checkbox') {
-                    if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
+                    if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
                         input.setAttribute('checked', 0);
                     else input.removeAttribute('checked', 0);
                 } else if (input.tagName == 'SELECT') {
@@ -105,6 +108,10 @@ function loadSettings() {
         var inputs = document.querySelectorAll(ids.join(','));
         inputs.forEach(function (input) {
             input.addEventListener("input", function (e) {
+                let id = input.getAttribute('id');
+                let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+                userConfigs[id] = inputValue;
+
                 saveAllSettings();
                 updateDisabledOptions();
             });
@@ -300,6 +307,7 @@ function generateCustomSearchButtonsList() {
 
         var entry = document.createElement('div');
         entry.setAttribute('class', 'option');
+        entry.setAttribute('style', 'margin: 8px 0px;');
 
         /// Enabled checkbox
         var checkbox = document.createElement('input');
@@ -325,6 +333,36 @@ function generateCustomSearchButtonsList() {
         imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
         entry.appendChild(imgButton);
 
+        /// 'Use google icon' switch
+        let useGoogleIconSwitch = document.createElement('input');
+        useGoogleIconSwitch.setAttribute('type', 'checkbox');
+        useGoogleIconSwitch.setAttribute('id', 'useCustomIcon' + i.toString());
+
+        let switched = item['icon'] !== null && item['icon'] !== undefined;
+        if (switched == false)
+            useGoogleIconSwitch.setAttribute('checked', 0);
+
+        let label = document.createElement('label');
+        label.appendChild(useGoogleIconSwitch);
+
+        setTimeout(function () {
+            label.addEventListener('change', function (e) {
+                let currentIcon = customSearchButtonsList[parseInt(this.firstChild.id.replaceAll('useCustomIcon', ''))]['icon'];
+
+                if (currentIcon !== null && currentIcon !== undefined) {
+                    customSearchButtonsList[parseInt(this.firstChild.id.replaceAll('useCustomIcon', ''))]['icon'] = null;
+                } else {
+                    customSearchButtonsList[parseInt(this.firstChild.id.replaceAll('useCustomIcon', ''))]['icon'] = '';
+                }
+                saveCustomSearchButtons();
+                generateCustomSearchButtonsList();
+            });
+        }, 1);
+
+        label.innerHTML += ' ' + chrome.i18n.getMessage("useIconFromGoogle");
+        label.setAttribute('style', 'padding-right: 15px; display: inline; float: right;');
+        entry.appendChild(label);
+
         /// Title field
         // var title = document.createElement('input');
         // title.setAttribute('type', 'text');
@@ -339,57 +377,72 @@ function generateCustomSearchButtonsList() {
         // });
         // entry.appendChild(title);
 
+
         /// URL field
+        let urlInputDiv = document.createElement('div');
+
+        let urlLabel = document.createElement('label');
+        urlLabel.setAttribute('style', 'display: inline; opacity: 0.5;');
+        urlLabel.textContent = 'URL ';
+        urlInputDiv.appendChild(urlLabel);
+
         var urlInput = document.createElement('input');
         urlInput.setAttribute('type', 'text');
         urlInput.setAttribute('placeholder', 'URL');
-        // urlInput.setAttribute('style', 'min-width: 320px; max-width: 320px !important;  margin: 0px 6px;');
-        urlInput.setAttribute('style', 'display: block; min-width: 99%; max-width: 99% !important;  margin: 0px 3px;');
+        urlInput.setAttribute('style', 'display: inline; min-width: 90%; max-width: 90% !important;  margin: 0px 0px;');
         urlInput.value = item['url'];
         urlInput.setAttribute('id', 'url' + i.toString());
         urlInput.addEventListener("input", function (e) {
             customSearchButtonsList[parseInt(this.id.replaceAll('url', ''))]['url'] = this.value;
             saveCustomSearchButtons();
         });
-        entry.appendChild(urlInput);
+        urlInputDiv.appendChild(urlInput);
+
+        entry.appendChild(urlInputDiv);
 
         /// Custom icon URL field
         if (item['icon'] !== null && item['icon'] !== undefined) {
-
             var iconInputDiv = document.createElement('div');
+
+            let iconLabel = document.createElement('span');
+            iconLabel.setAttribute('style', 'display: inline;opacity: 0.5;');
+            iconLabel.textContent = 'Icon ';
+            iconInputDiv.appendChild(iconLabel);
 
             /// Custom icon URL field
             var iconInput = document.createElement('input');
             iconInput.setAttribute('type', 'text');
             iconInput.setAttribute('placeholder', chrome.i18n.getMessage("customIconUrl"));
-            iconInput.setAttribute('style', 'min-width: 80%; max-width: 80% !important;  margin: 0px 3px;');
+            iconInput.setAttribute('style', 'min-width: 90%; max-width: 90% !important; margin-top: 3px;');
             iconInput.setAttribute('id', 'icon' + i.toString());
             iconInput.value = item['icon'];
             iconInput.addEventListener("input", function (e) {
                 customSearchButtonsList[parseInt(this.id.replaceAll('icon', ''))]['icon'] = this.value;
                 saveCustomSearchButtons();
+
+                generateCustomSearchButtonsList();
             });
             iconInputDiv.appendChild(iconInput);
 
             /// Remove custom icon button
-            var removeCustomIconButton = document.createElement('button');
-            removeCustomIconButton.textContent = '✕';
-            removeCustomIconButton.setAttribute('title', chrome.i18n.getMessage("removeCustomIcon"));
-            removeCustomIconButton.setAttribute('style', ' max-width: 1px !important;  margin: 0px 6px;padding: 1px; align-items: center');
-            removeCustomIconButton.setAttribute('id', 'useCustomIcon' + i.toString());
-            removeCustomIconButton.onmouseup = function () {
-                customSearchButtonsList[parseInt(this.id.replaceAll('useCustomIcon', ''))]['icon'] = null;
-                saveCustomSearchButtons();
-                generateCustomSearchButtonsList();
-            };
-            iconInputDiv.appendChild(removeCustomIconButton);
+            // var removeCustomIconButton = document.createElement('button');
+            // removeCustomIconButton.textContent = '✕';
+            // removeCustomIconButton.setAttribute('title', chrome.i18n.getMessage("removeCustomIcon"));
+            // removeCustomIconButton.setAttribute('style', ' max-width: 1px !important;  margin: 0px 6px;padding: 1px; align-items: center');
+            // removeCustomIconButton.setAttribute('id', 'useCustomIcon' + i.toString());
+            // removeCustomIconButton.onmouseup = function () {
+            //     customSearchButtonsList[parseInt(this.id.replaceAll('useCustomIcon', ''))]['icon'] = null;
+            //     saveCustomSearchButtons();
+            //     generateCustomSearchButtonsList();
+            // };
+            // iconInputDiv.appendChild(removeCustomIconButton);
 
             entry.appendChild(iconInputDiv);
         }
 
         /// Move up/down buttons
         var moveButtonsContainer = document.createElement('div');
-        moveButtonsContainer.setAttribute('style', 'display: inline');
+        moveButtonsContainer.setAttribute('style', ' display: inline;');
 
         var moveUpButton = document.createElement('button');
         moveUpButton.textContent = 'ᐱ';
@@ -426,24 +479,10 @@ function generateCustomSearchButtonsList() {
         moveButtonsContainer.appendChild(moveDownButton);
         entry.appendChild(moveButtonsContainer);
 
-        /// 'Use custom icon' button
-        if (item['icon'] == null || item['icon'] == undefined) {
-            var useCustomIconButton = document.createElement('button');
-            useCustomIconButton.textContent = chrome.i18n.getMessage("customIcon");
-            useCustomIconButton.setAttribute('style', 'display: inline-block; max-width: 150px;');
-            useCustomIconButton.setAttribute('id', 'useCustomIcon' + i.toString());
-            useCustomIconButton.onmouseup = function () {
-                customSearchButtonsList[parseInt(this.id.replaceAll('useCustomIcon', ''))]['icon'] = '';
-                // saveCustomSearchButtons();
-                generateCustomSearchButtonsList();
-            };
-            entry.appendChild(useCustomIconButton);
-        }
-
         /// Delete button
         var deleteButton = document.createElement('button');
         deleteButton.textContent = chrome.i18n.getMessage("deleteLabel");
-        deleteButton.setAttribute('style', 'display: inline-block; max-width: 100px;');
+        deleteButton.setAttribute('style', ' float: right;display: inline-block; max-width: 100px;');
         deleteButton.setAttribute('id', 'delete' + i.toString());
         deleteButton.onmouseup = function () {
             var index = parseInt(this.id.replaceAll('delete', ''));
@@ -480,19 +519,12 @@ function generateCustomSearchButtonsList() {
     container.appendChild(addButton);
 }
 
-function saveAllSettings() {
-    var dataToSave = {};
-
-    keys.forEach(function (key) {
-        var input = document.querySelector(`#${key}`);
-        dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
-    });
-
-    chrome.storage.local.set(dataToSave);
-}
-
 function saveCustomSearchButtons() {
     chrome.storage.local.set({ 'customSearchButtons': customSearchButtonsList });
+}
+
+function saveAllSettings() {
+    chrome.storage.local.set(userConfigs);
 }
 
 function resetSettings() {

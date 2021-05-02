@@ -367,6 +367,14 @@
         "message": "Utiliser un style personnalisé pour l'info-bulle",
         "description": "Libellé du champ dans les paramètres"
     },
+    "useIconFromGoogle": {
+        "message": "Utiliser l'icône de Google",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Afficher sous forme de liste verticale",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "visitGithub": {
         "message": "Visiter la page GitHub",
         "description": "Libellé du bouton des paramètres menant à la page GitHub"

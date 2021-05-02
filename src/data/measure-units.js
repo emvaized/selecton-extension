@@ -52,7 +52,7 @@ const convertionUnits = {
     "°F": {
         "convertsTo": "°C",
         "convertFunction": function (value) {
-            if (preferredMetricsSystem == 'metric')
+            if (configs.preferredMetricsSystem == 'metric')
                 return (value - 32) * (5 / 9);
             return (value * 9 / 5) + 32;
         },

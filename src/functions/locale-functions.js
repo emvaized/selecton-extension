@@ -4,7 +4,7 @@ function setDefaultLocales() {
     var browserLocale = navigator.language || navigator.userLanguage;
     var browserCountry;
 
-    if (debugMode) {
+    if (configs.debugMode) {
         console.log('Browser locale is: ' + browserLocale);
         console.log('Configuring default locale settings...');
     }
@@ -33,7 +33,7 @@ function setDefaultLocales() {
                 browserCurrency = id;
             }
         });
-        if (debugMode) {
+        if (configs.debugMode) {
             console.log(`Default browser language: ${browserLanguage}`);
             console.log(`Default browser metrics: ${browserMetricSystem}`);
             console.log(`Default browser currency: ${browserCurrency}`);

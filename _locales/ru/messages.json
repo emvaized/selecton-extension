@@ -367,6 +367,14 @@
         "message": "Изменить стиль панели",
         "description": ""
     },
+    "useIconFromGoogle": {
+        "message": "Использовать иконку из Google",
+        "description": "Ярлык для поля в настройках"
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Отображать в виде вертикального списка",
+        "description": "Ярлык для поля в настройках"
+    },
     "visitGithub": {
         "message": "Посетить страницу на GitHub",
         "description": ""

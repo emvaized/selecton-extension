@@ -363,6 +363,14 @@
     "message": "Use custom style for tooltip",
     "description": "Label for field in settings"
   },
+  "useIconFromGoogle": {
+    "message": "Use icon from Google",
+    "description": "Label for field in settings"
+  },
+  "verticalSecondaryTooltip": {
+    "message": "Display as vertical list",
+    "description": "Label for field in settings"
+  },
   "visitGithub": {
     "message": "Visit GitHub page",
     "description": "Label for settings button leading to GitHub page"

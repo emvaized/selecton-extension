@@ -363,6 +363,14 @@
         "message": "Use um estilo personalizado para a dica",
         "description": "Rótulo para o campo nas configurações"
     },
+    "useIconFromGoogle": {
+        "message": "Use o ícone do Google",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Exibir como lista vertical",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "visitGithub": {
         "message": "Visite a página do GitHub",
         "description": "Rótulo para o botão de configurações que leva à página do GitHub"

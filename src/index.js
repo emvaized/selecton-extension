@@ -1,21 +1,24 @@
 function init() {
+
+  let userSettingsKeys = Object.keys(configs);
+
   /// Load user settings
   chrome.storage.local.get(
-    userSettingsKeys, function (configs) {
-      changeTextSelectionColor = configs.changeTextSelectionColor ?? false;
-      textSelectionBackground = configs.textSelectionBackground || '#338FFF';
-      textSelectionColor = configs.textSelectionColor || '#ffffff';
-      textSelectionBackgroundOpacity = configs.textSelectionBackgroundOpacity || 1.0;
-      shouldOverrideWebsiteSelectionColor = configs.shouldOverrideWebsiteSelectionColor ?? false;
+    userSettingsKeys, function (loadedConfigs) {
+      configs.changeTextSelectionColor = loadedConfigs.changeTextSelectionColor ?? false;
+      configs.textSelectionBackground = loadedConfigs.textSelectionBackground || '#338FFF';
+      configs.textSelectionColor = loadedConfigs.textSelectionColor || '#ffffff';
+      configs.textSelectionBackgroundOpacity = loadedConfigs.textSelectionBackgroundOpacity || 1.0;
+      configs.shouldOverrideWebsiteSelectionColor = loadedConfigs.shouldOverrideWebsiteSelectionColor ?? false;
 
-      enabled = configs.enabled ?? true;
+      configs.enabled = loadedConfigs.enabled ?? true;
 
       /// Check for domain to be in black list
-      excludedDomains = configs.excludedDomains || '';
+      configs.excludedDomains = loadedConfigs.excludedDomains || '';
 
       var domainIsBlacklisted = false;
-      if (excludedDomains !== null && excludedDomains !== undefined && excludedDomains !== '')
-        excludedDomains.split(',').forEach(function (domain) {
+      if (configs.excludedDomains !== null && configs.excludedDomains !== undefined && configs.excludedDomains !== '')
+        configs.excludedDomains.split(',').forEach(function (domain) {
           if (window.location.href.includes(domain.trim())) {
             domainIsBlacklisted = true;
           }
@@ -23,65 +26,26 @@ function init() {
 
       document.body.style.setProperty('--selection-button-padding', '6px 12px');
 
-      if (enabled && domainIsBlacklisted == false) {
-        debugMode = configs.debugMode ?? false;
+      if (configs.enabled && domainIsBlacklisted == false) {
+        configs.debugMode = loadedConfigs.debugMode ?? false;
 
-        if (debugMode) {
+        if (configs.debugMode) {
           console.log('Loaded Selecton settings from memory:');
-          console.log(configs);
+          console.log(loadedConfigs);
         }
 
-        if (changeTextSelectionColor)
+        if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 
-        if (configs.preferredMetricsSystem == null || configs.preferredMetricsSystem == undefined) {
+        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
           setDefaultLocales();
         }
 
-        convertToCurrency = configs.convertToCurrency || browserCurrency || 'USD';
-        hideOnScroll = configs.hideOnScroll ?? true;
-        convertMetrics = configs.convertMetrics ?? true;
-        addOpenLinks = configs.addOpenLinks ?? true;
-        convertCurrencies = configs.convertCurrencies ?? true;
-        performSimpleMathOperations = configs.performSimpleMathOperations ?? true;
-        preferredMetricsSystem = configs.preferredMetricsSystem || browserMetricSystem || 'metric';
-        showTranslateButton = configs.showTranslateButton ?? true;
-        languageToTranslate = configs.languageToTranslate || browserLanguage || 'en';
-        ratesLastFetchedDate = configs.ratesLastFetchedDate;
-        useCustomStyle = configs.useCustomStyle ?? false;
-        tooltipBackground = configs.tooltipBackground || defaultBackgroundColor;
-        tooltipOpacity = configs.tooltipOpacity || 1.0;
-        addTooltipShadow = configs.addTooltipShadow ?? false;
-        shadowOpacity = configs.shadowOpacity || 0.5;
-        borderRadius = configs.borderRadius || 3;
-        shiftTooltipWhenWebsiteHasOwn = configs.shiftTooltipWhenWebsiteHasOwn ?? true;
-        addActionButtonsForTextFields = configs.addActionButtonsForTextFields ?? false;
-        removeSelectionOnActionButtonClick = configs.removeSelectionOnActionButtonClick ?? true;
-        draggableTooltip = configs.draggableTooltip ?? true;
-        hideOnKeypress = configs.hideOnKeypress ?? true;
-        preferredSearchEngine = configs.preferredSearchEngine || 'google';
-        showOnMapButtonEnabled = configs.showOnMapButtonEnabled ?? true;
-        showEmailButton = configs.showEmailButton ?? true;
-        preferredNewEmailMethod = configs.preferredNewEmailMethod ?? 'mailto';
-        customSearchUrl = configs.customSearchUrl || '';
-        preferredMapsService = configs.preferredMapsService || 'google';
-        addColorPreviewButton = configs.addColorPreviewButton ?? true;
-        customSearchButtons = configs.customSearchButtons ?? customSearchButtons;
-        secondaryTooltipEnabled = configs.secondaryTooltipEnabled ?? true;
-        secondaryTooltipIconSize = configs.secondaryTooltipIconSize || 15;
-        showSecondaryTooltipTitleOnHover = configs.showSecondaryTooltipTitleOnHover ?? false;
-        addPhoneButton = configs.addPhoneButton ?? true;
-        showUnconvertedValue = configs.showUnconvertedValue ?? true;
-        buttonsStyle = configs.buttonsStyle || 'onlylabel';
-        addButtonIcons = buttonsStyle == 'onlyicon' || buttonsStyle == 'iconlabel';
-        addDragHandles = configs.addDragHandles ?? true;
-        snapSelectionToWord = configs.snapSelectionToWord ?? true;
-        preferCurrencySymbol = configs.preferCurrencySymbol ?? false;
-        disableWordSnappingOnCtrlKey = configs.disableWordSnappingOnCtrlKey ?? true;
-        showButtonLabelOnHover = configs.showButtonLabelOnHover ?? true;
-        animationDuration = configs.animationDuration || 300;
-        updateRatesEveryDays = configs.updateRatesEveryDays || 14;
-        tooltipRevealEffect = configs.tooltipRevealEffect || 'scaleUpTooltipEffect';
+        /// Assign loaded values to a config file
+        Object.keys(loadedConfigs).forEach(function (loadedKey) {
+          if (loadedKey !== null && loadedKey !== undefined)
+            configs[loadedKey] = loadedConfigs[loadedKey];
+        });
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -93,13 +57,13 @@ function init() {
         pasteLabel = chrome.i18n.getMessage("pasteLabel");
 
         /// Set dynamic color for foreground (text and icons)
-        document.body.style.setProperty('--selection-button-foreground', useCustomStyle == false ? '#ffffff' : getTextColorForBackground(tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        secondaryColor = useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+        document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
+        document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
+        secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
 
         /// If initial launch, update currency rates
-        if (convertCurrencies) {
-          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined)
+        if (configs.convertCurrencies) {
+          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
             fetchCurrencyRates();
           else loadCurrencyRatesFromMemory();
         }
@@ -110,7 +74,7 @@ function init() {
         try {
           setPageListeners();
         } catch (e) {
-          if (debugMode)
+          if (configs.debugMode)
             console.log('Error while setting Selecton listeners: ' + e);
         }
       }
@@ -118,13 +82,13 @@ function init() {
 }
 
 function setTextSelectionColor() {
-  let importance = shouldOverrideWebsiteSelectionColor ? '!important' : '';
+  let importance = configs.shouldOverrideWebsiteSelectionColor ? '!important' : '';
 
   // CSS rules
-  var selectionBackgroundRgb = hexToRgb(textSelectionBackground);
+  var selectionBackgroundRgb = hexToRgb(configs.textSelectionBackground);
 
-  let rule = `::selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${textSelectionBackgroundOpacity}) ${importance}; color: ${textSelectionColor} ${importance}; }`;
-  rule += `::-moz-selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${textSelectionBackgroundOpacity}) ${importance}; color: ${textSelectionColor} ${importance};}`;
+  let rule = `::selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${configs.textSelectionBackgroundOpacity}) ${importance}; color: ${configs.textSelectionColor} ${importance}; }`;
+  rule += `::-moz-selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${configs.textSelectionBackgroundOpacity}) ${importance}; color: ${configs.textSelectionColor} ${importance};}`;
 
   let css = document.createElement('style');
   css.type = 'text/css';
@@ -137,12 +101,12 @@ function setPageListeners() {
 
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {
-    if (hideOnScroll)
+    if (configs.hideOnScroll)
       hideTooltip();
   });
 
   /// Hide tooltip when any key is pressed
-  if (hideOnKeypress)
+  if (configs.hideOnKeypress)
     document.addEventListener("keydown", function () {
       hideTooltip();
       hideDragHandles();
@@ -169,9 +133,9 @@ function setPageListeners() {
 
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
-      if (snapSelectionToWord) {
-        if (disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
-          if (debugMode)
+      if (configs.snapSelectionToWord) {
+        if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
+          if (configs.debugMode)
             console.log('Word snapping was rejected due to pressed CTRL key');
         } else {
           snapSelectionByWords(selection);

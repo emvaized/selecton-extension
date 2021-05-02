@@ -27,7 +27,7 @@ function getSelectionCoordinates(atStart) {
 /// When word is selected only partially, this methods selects whole word 
 /// (also trims empty spaces at the start and in the end)
 function snapSelectionByWords(sel) {
-    if (debugMode)
+    if (configs.debugMode)
         console.log('Snap selection by word...');
 
     if (!sel.isCollapsed) {
@@ -142,7 +142,7 @@ function extendSelectionByWord(sel, dragHandleIndex) {
 }
 
 function removeSelectionOnPage() {
-    if (removeSelectionOnActionButtonClick) {
+    if (configs.removeSelectionOnActionButtonClick) {
         var sel = window.getSelection ? window.getSelection() : document.selection;
 
         if (sel) {
@@ -156,7 +156,7 @@ function removeSelectionOnPage() {
         dontShowTooltip = true;
         setTimeout(function () {
             dontShowTooltip = false;
-        }, animationDuration);
+        }, configs.animationDuration);
     }
 }
 

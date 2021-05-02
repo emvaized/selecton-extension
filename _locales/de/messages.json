@@ -367,6 +367,14 @@
         "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "useIconFromGoogle": {
+        "message": "Symbol von Google verwenden",
+        "description": ""
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Als vertikale Liste anzeigen",
+        "description": ""
+    },
     "visitGithub": {
         "message": "Besuchen Sie die GitHub-Seite",
         "description": "Schaltfläche für die Beschriftung der Einstellungen, die zur GitHub-Seite führt"

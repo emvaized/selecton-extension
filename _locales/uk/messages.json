@@ -367,6 +367,14 @@
         "message": "Змінити стиль панелі",
         "description": ""
     },
+    "useIconFromGoogle": {
+        "message": "Використовувати іконку від Google",
+        "description": "Мітка для поля в налаштуваннях"
+    },
+    "verticalSecondaryTooltip": {
+        "message": "Відображати як вертикальний список",
+        "description": "Мітка для поля в налаштуваннях"
+    },
     "visitGithub": {
         "message": "Відвідати сторінку на GitHub",
         "description": ""
