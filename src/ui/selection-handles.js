@@ -100,11 +100,6 @@ function addDragHandle(dragHandleIndex) {
                 try {
                     e.preventDefault();
 
-                    // if (selStartDimensions == null || selEndDimensions == null) {
-                    //     selStartDimensions = getSelectionCoordinates(true);
-                    //     selEndDimensions = getSelectionCoordinates(false);
-                    // }
-
                     /// Dynamically adapt handler height to last selected word
                     // var lastWordLineHeight = window.getComputedStyle(dragHandleIndex == 0 ? selection.anchorNode.parentElement : selection.focusNode.parentElement, null).getPropertyValue('line-height');
                     // lastWordLineHeight = parseInt(lastWordLineHeight.replaceAll('px', '')) + 5;
