@@ -151,6 +151,10 @@
     "message": "Customizable pop-up with actions on text selection",
     "description": "Extension description"
   },
+  "fontSize": {
+    "message": "Font size",
+    "description": "Label for option in settings"
+  },
   "gmail": {
     "message": "Gmail new email",
     "description": "Option label for new email method setting"

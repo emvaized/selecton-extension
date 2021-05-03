@@ -34,6 +34,8 @@ var browserLanguage;
 var browserCurrency;
 var browserMetricSystem;
 
+var addButtonIcons;
+
 
 /// Look for these words to find that selected text is address
 const addressKeywords = [

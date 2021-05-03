@@ -1,3 +1,8 @@
+#3.0.5
+- Fix for settings crash on first install
+- Implemented 'font size' setting
+- Tooltip now gets hidden on url change
+
 #3.0.4
 - Added new vertical mode for custom search options
 - Fix for custom search tooltip 'add new' layout bug

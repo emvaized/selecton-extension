@@ -151,6 +151,10 @@
         "message": "Всплывающая панель с действиями при выделении текста",
         "description": "Описание расширения"
     },
+    "fontSize": {
+        "message": "Размер шрифта",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Новое письмо Gmail",
         "description": "Option label for new email method setting"

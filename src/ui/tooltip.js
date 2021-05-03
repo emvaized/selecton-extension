@@ -69,6 +69,7 @@ function createTooltip(e) {
 }
 
 function setUpNewTooltip(type) {
+
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.setAttribute('class', `selection-tooltip`);
@@ -184,11 +185,11 @@ function addBasicTooltipButtons(layout) {
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     cutButton.setAttribute('title', cutLabel);
 
-                if (configs.addButtonIcons)
+                if (addButtonIcons)
                     cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : cutLabel);
                 else
                     cutButton.textContent = cutLabel;
-                cutButton.setAttribute('style', `border-radius: ${firstButtonBorderRadius}`);
+                cutButton.style.borderRadius = firstButtonBorderRadius;
                 cutButton.addEventListener("mousedown", function (e) {
                     document.execCommand('cut');
                     hideTooltip();
@@ -201,11 +202,11 @@ function addBasicTooltipButtons(layout) {
                 copyButton.setAttribute('class', `selection-popup-button button-with-border`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     copyButton.setAttribute('title', copyLabel);
-                if (configs.addButtonIcons)
+                if (addButtonIcons)
                     copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (configs.buttonsStyle == 'onlyicon' ? '' : copyLabel);
                 else
                     copyButton.textContent = copyLabel;
-                copyButton.setAttribute('style', `border-radius: ${lastButtonBorderRadius}`);
+                copyButton.style.borderRadius = lastButtonBorderRadius;
 
                 copyButton.addEventListener("mousedown", function (e) {
                     try {
@@ -219,20 +220,22 @@ function addBasicTooltipButtons(layout) {
                     // removeSelection();
                 });
                 tooltip.appendChild(copyButton);
-            } catch (e) { console.log(e) }
+            } catch (e) { if (configs.debugMode) console.log(e) }
 
             /// Set border radius for buttons
             // tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
             // tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
+            try { } catch (e) { if (configs.debugMode) console.log(e); }
             /// Add only paste button 
             var pasteButton = document.createElement('button');
             pasteButton.setAttribute('class', `selection-popup-button`);
             if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                 pasteButton.setAttribute('title', pasteLabel);
-            pasteButton.setAttribute('style', `border-radius: ${configs.borderRadius - 3}px`);
-            if (configs.addButtonIcons)
+            copyButton.style.borderRadius = `${configs.borderRadius - 3}px`;
+
+            if (addButtonIcons)
                 pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
             else
                 pasteButton.textContent = pasteLabel;
@@ -251,19 +254,14 @@ function addBasicTooltipButtons(layout) {
         searchButton = document.createElement('button');
         searchButton.setAttribute('class', `selection-popup-button`);
 
-        if (configs.addButtonIcons)
+        if (addButtonIcons)
             searchButton.innerHTML = createImageIcon(searchButtonIcon) + (configs.buttonsStyle == 'onlyicon' ? '' : searchLabel);
         else
             searchButton.textContent = searchLabel;
 
-        /// TODO:
-        /// Implement 'open in background tab on middle click'
         searchButton.addEventListener("mousedown", function (e) {
             var selectedText = selection.toString();
             onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
-
-            /// Search text
-            // window.open(returnSearchUrl(selectedText.trim()), '_blank');
         });
 
         tooltip.appendChild(searchButton);
@@ -274,13 +272,12 @@ function addBasicTooltipButtons(layout) {
         copyButton.setAttribute('class', `selection-popup-button button-with-border`);
         if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
             copyButton.setAttribute('title', copyLabel);
-        if (configs.addButtonIcons)
+        if (addButtonIcons)
             copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (configs.buttonsStyle == 'onlyicon' ? '' : copyLabel);
         else
             copyButton.textContent = copyLabel;
         copyButton.addEventListener("mousedown", function (e) {
             document.execCommand('copy');
-            // hideTooltip();
             removeSelectionOnPage();
         });
         tooltip.appendChild(copyButton);
@@ -464,7 +461,7 @@ function addContextualButtons() {
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     mapButton.setAttribute('title', showOnMapLabel);
 
-                if (configs.addButtonIcons)
+                if (addButtonIcons)
                     mapButton.innerHTML = createImageIcon(mapButtonIcon, 1.0) + (configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel);
                 else
                     mapButton.textContent = showOnMapLabel;
@@ -489,7 +486,7 @@ function addContextualButtons() {
                 var emailText = selectedText.trim().toLowerCase();
                 var emailButton = document.createElement('button');
                 emailButton.setAttribute('class', `selection-popup-button button-with-border`);
-                // if (configs.addButtonIcons)
+                // if (addButtonIcons)
                 emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.4 : 0.65) + (configs.buttonsStyle == 'onlyicon' ? '  ' : '') + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
                 // emailButton.style.color = secondaryColor;
 
@@ -754,14 +751,14 @@ function addContextualButtons() {
                                         var linkText = document.createElement('span');
 
                                         var linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                        linkText.textContent = (configs.addButtonIcons ? '' : ' ') + linkToDisplay;
+                                        linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
                                         linkText.setAttribute('style', `color: ${secondaryColor}`);
 
                                         /// Add tooltip with full website on hover
                                         if (link.length > linkSymbolsToShow)
                                             interactiveButton.setAttribute('title', link);
 
-                                        if (configs.addButtonIcons) {
+                                        if (addButtonIcons) {
                                             if (configs.buttonsStyle == 'onlyicon') {
                                                 interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5) + ' ';
                                             } else {
@@ -857,7 +854,7 @@ function addTranslateButton() {
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     translateButton.setAttribute('title', translateLabel);
                 translateButton.setAttribute('id', 'selecton-translate-button');
-                if (configs.addButtonIcons)
+                if (addButtonIcons)
                     translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + (configs.buttonsStyle == 'onlyicon' ? '' : translateLabel);
                 else
                     translateButton.textContent = translateLabel;

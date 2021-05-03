@@ -19,31 +19,16 @@
 /* Arrow */
   .selection-tooltip-arrow {
     z-index:10000 !important;
-    /* width: 50px; */
     width: 25px;
     height: 16px;
     overflow: hidden;
     position: absolute;
     left:  50%;
-    /* left: 50%; */
-    /* margin-left: -12.5px; */
-    /* bottom: -16px; */
     background: transparent !important;
     box-shadow: none !important;
     bottom:-50%;
     transform: translate(-12.5px, 0px);
   }
-
-  /* .selection-tooltip-arrow-child {
-    content: "";
-    position: absolute;
-    left: 20px;
-    top: -20px;
-    width: 25px;
-    height: 25px;
-    transform: rotate(45deg);
-    background: #3B3B3B;
-  } */
 
   .selection-tooltip-arrow-child {
     content: "";
@@ -75,8 +60,10 @@
     text-transform: none !important;
     outline: none !important;
     text-align: center !important;
-    font-size: 12.5px !important;
+    /* font-size: 12.5px !important; */
+    font-size: var(--selecton-font-size) !important;
     }
+
     
   .selection-popup-button:hover {
     all: revert;
@@ -118,7 +105,7 @@
   all: revert;
   padding: 4px 6px;
   vertical-align: middle;
-  font-size: 12.5px !important;
+  font-size: var(--selecton-font-size) !important;
 
   color: var(--selection-button-foreground);
 }

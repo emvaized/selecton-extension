@@ -31,6 +31,26 @@ var configs = {
     'customSearchUrl': '',
     'preferredMapsService': 'google',
     'addColorPreviewButton': true,
+    'secondaryTooltipEnabled': true,
+    'secondaryTooltipIconSize': 15,
+    'showSecondaryTooltipTitleOnHover': false,
+    'excludedDomains': '',
+    'addPhoneButton': true,
+    'showUnconvertedValue': true,
+    'debugMode': false,
+    'buttonsStyle': 'onlylabel',
+    'addDragHandles': true,
+    'snapSelectionToWord': true,
+    'preferCurrencySymbol': false,
+    'shouldOverrideWebsiteSelectionColor': false,
+    'disableWordSnappingOnCtrlKey': true,
+    'showButtonLabelOnHover': true,
+    'animationDuration': 300,
+    'tooltipRevealEffect': 'scaleUpTooltipEffect',
+    'textSelectionBackgroundOpacity': 1.0,
+    'updateRatesEveryDays': 14,
+    'fontSize': 12.5,
+    'verticalSecondaryTooltip': true,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
@@ -53,7 +73,8 @@ var configs = {
         {
             'url': 'https://www.amazon.com/s?k=%s',
             'title': 'Amazon',
-            'icon': 'https://cdn.icon-icons.com/icons2/1195/PNG/512/1490889698-amazon_82521.png',
+            // 'icon': 'https://cdn.icon-icons.com/icons2/1195/PNG/512/1490889698-amazon_82521.png',
+            'icon': 'https://mapleleafdeals.com/wp-content/uploads/2020/08/amazon.png',
             'enabled': true
         },
         {
@@ -68,24 +89,5 @@ var configs = {
             'icon': 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/171_Imdb_logo_logos-512.png',
             'enabled': false
         },
-    ],
-    'secondaryTooltipEnabled': true,
-    'secondaryTooltipIconSize': 15,
-    'showSecondaryTooltipTitleOnHover': false,
-    'excludedDomains': '',
-    'addPhoneButton': true,
-    'showUnconvertedValue': true,
-    'debugMode': false,
-    'buttonsStyle': 'onlylabel',
-    'addDragHandles': true,
-    'snapSelectionToWord': true,
-    'preferCurrencySymbol': false,
-    'shouldOverrideWebsiteSelectionColor': false,
-    'disableWordSnappingOnCtrlKey': true,
-    'showButtonLabelOnHover': true,
-    'animationDuration': 300,
-    'tooltipRevealEffect': 'scaleUpTooltipEffect',
-    'textSelectionBackgroundOpacity': 1.0,
-    'updateRatesEveryDays': 14,
-    'verticalSecondaryTooltip': true
+    ]
 };

@@ -2,59 +2,7 @@
 /// 1. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
 /// Those are used on settings page
 
-// var defaultConfigs = new Map([
-//     ['hideOnScroll', true],
-//     ['convertMetrics', true],
-//     ['addOpenLinks', true],
-//     ['convertCurrencies', true],
-//     ['performSimpleMathOperations', true],
-//     ['preferredMetricsSystem', 'metric'],
-//     ['showTranslateButton', true],
-//     ['languageToTranslate', navigator.language || navigator.userLanguage || 'en'],
-//     ['useCustomStyle', false],
-//     ['tooltipBackground', '#3B3B3B'],
-//     ['tooltipOpacity', 1.0],
-//     ['addTooltipShadow', false],
-//     ['shadowOpacity', 0.5],
-//     ['borderRadius', 3],
-//     ['changeTextSelectionColor', false],
-//     ['textSelectionBackground', '#338FFF'],
-//     ['textSelectionColor', '#ffffff'],
-//     ['shiftTooltipWhenWebsiteHasOwn', true],
-//     ['addActionButtonsForTextFields', false],
-//     ['removeSelectionOnActionButtonClick', true],
-//     ['draggableTooltip', true],
-//     ['enabled', true],
-//     ['hideOnKeypress', true],
-//     ['preferredSearchEngine', 'google'],
-//     ['showOnMapButtonEnabled', true],
-//     ['showEmailButton', true],
-//     ['preferredNewEmailMethod', 'mailto'],
-//     ['customSearchUrl', ''],
-//     ['addColorPreviewButton', true],
-//     ['preferredMapsService', 'google'],
-//     ['secondaryTooltipEnabled', true],
-//     ['secondaryTooltipIconSize', 15],
-//     ['showSecondaryTooltipTitleOnHover', false],
-//     ['excludedDomains', ''],
-//     ['addPhoneButton', true],
-//     ['showUnconvertedValue', true],
-//     ['debugMode', false],
-//     ['addDragHandles', true],
-//     ['snapSelectionToWord', true],
-//     ['preferCurrencySymbol', false],
-//     ['disableWordSnappingOnCtrlKey', true],
-//     ['shouldOverrideWebsiteSelectionColor', false],
-//     ['buttonsStyle', 'onlylabel'],
-//     ['showButtonLabelOnHover', true],
-//     ['animationDuration', 300],
-//     ['updateRatesEveryDays', 14],
-//     ['textSelectionBackgroundOpacity', 1.0],
-//     ['tooltipRevealEffect', 'scaleUpTooltipEffect'],
-// ]);
-
 let userConfigs;
-
 
 var keys = Object.keys(configs);
 
@@ -82,7 +30,7 @@ function loadSettings() {
                     var options = input.querySelectorAll('option');
                     if (options !== null)
                         options.forEach(function (option) {
-                            var selectedValue = result[key] ?? value;
+                            var selectedValue = result[key] ?? configs[key];
                             if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
                                 option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
                             else if (chrome.i18n.getMessage(option['value']) !== (null || undefined || ''))
@@ -91,7 +39,7 @@ function loadSettings() {
                         });
                 }
                 else {
-                    input.setAttribute('value', result[key] ?? value);
+                    input.setAttribute('value', result[key] ?? configs[key]);
                 }
 
                 /// Set translated label for input
@@ -185,6 +133,7 @@ function updateDisabledOptions() {
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#verticalSecondaryTooltip").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';

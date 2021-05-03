@@ -29,11 +29,6 @@ function init() {
       if (configs.enabled && domainIsBlacklisted == false) {
         configs.debugMode = loadedConfigs.debugMode ?? false;
 
-        if (configs.debugMode) {
-          console.log('Loaded Selecton settings from memory:');
-          console.log(loadedConfigs);
-        }
-
         if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 
@@ -42,10 +37,17 @@ function init() {
         }
 
         /// Assign loaded values to a config file
-        Object.keys(loadedConfigs).forEach(function (loadedKey) {
-          if (loadedKey !== null && loadedKey !== undefined)
-            configs[loadedKey] = loadedConfigs[loadedKey];
+        Object.keys(configs).forEach(function (key) {
+          if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
+            configs[key] = loadedConfigs[key];
         });
+
+        addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
+
+        if (configs.debugMode) {
+          console.log('Loaded Selecton settings from memory:');
+          console.log(configs);
+        }
 
         /// Get translated button labels
         copyLabel = chrome.i18n.getMessage("copyLabel");
@@ -60,6 +62,9 @@ function init() {
         document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
         document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
         secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+
+        /// Set font-size
+        document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
 
         /// If initial launch, update currency rates
         if (configs.convertCurrencies) {
@@ -98,6 +103,17 @@ function setTextSelectionColor() {
 
 
 function setPageListeners() {
+  try {
+    window.addEventListener('popstate', function () {
+      hideTooltip();
+      hideDragHandles();
+      if (configs.debugMode) console.log('Selecton tooltip was hidden on url change');
+    });
+  } catch (error) {
+    if (configs.debugMode)
+      console.log(error);
+  }
+
 
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {

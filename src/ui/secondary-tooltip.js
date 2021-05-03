@@ -34,9 +34,9 @@ function createSecondaryTooltip() {
             imgButton.style.maxHeight = `${configs.secondaryTooltipIconSize}px`;
 
             /// Add title tooltip on hover
-            if (configs.showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '') {
-                var titleText;
+            if (url !== null && url !== undefined && url !== '') {
                 var domainContent = url.split('.');
+                var titleText;
 
                 if (domainContent.length == 2) {
                     titleText = domainContent[0];
@@ -49,6 +49,7 @@ function createSecondaryTooltip() {
                     titleText = domain.textContent.split('/')[2].split('.')[0];
                 }
                 titleText = titleText.replaceAll('https://', '');
+
                 imgButton.setAttribute('title', titleText.charAt(0).toUpperCase() + titleText.slice(1));
             }
 

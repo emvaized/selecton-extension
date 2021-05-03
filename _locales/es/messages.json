@@ -151,6 +151,10 @@
         "message": "Ventana emergente personalizable con acciones en la selección de texto",
         "description": "Descripción de la extensión"
     },
+    "fontSize": {
+        "message": "Tamaño de fuente",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Nuevo correo electrónico de Gmail",
         "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"

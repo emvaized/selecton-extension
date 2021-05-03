@@ -151,6 +151,10 @@
         "message": "Спливаюча панель з кнопками дій при виділенні тексту",
         "description": "Опис розширення"
     },
+    "fontSize": {
+        "message": "Розмір шрифту",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Новий лист Gmail",
         "description": "Option label for new email method setting"
