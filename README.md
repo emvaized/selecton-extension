@@ -8,6 +8,7 @@ Get customizable pop-up with action buttons on text selection
 * Contextual buttons depending on selected text, such as 'Open link', 'Translate' and more 
 * Enable snapping selection by words, so you'll never loose that one last letter again
 * Selection handles, which allow to quickly change current selection
+* Live translation of the selected text (up to 3 words)
 
 
 Download for Firefox:
