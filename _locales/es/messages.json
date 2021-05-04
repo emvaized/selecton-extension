@@ -72,7 +72,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "contextualButtonsHeader": {
-        "message": "Botones contextuales",
+        "message": "Botones",
         "description": "Encabezado de la categoría de botones contextuales en la configuración"
     },
     "convertCurrencies": {
@@ -179,6 +179,10 @@
         "message": "Idioma para traducir (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Etiqueta para el campo en la configuración, incorporando un enlace en línea"
     },
+    "liveTranslation": {
+        "message": "Traducción en vivo (del Traductor de Google)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Cliente de correo electrónico de escritorio",
         "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"
@@ -262,6 +266,10 @@
     "resetDefaults": {
         "message": "Restaurar valores predeterminados",
         "description": "Etiqueta del botón de configuración para restaurar la configuración predeterminada"
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Invertir el orden de los botones",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Escalar hacia arriba",

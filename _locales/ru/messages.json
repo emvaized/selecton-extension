@@ -64,7 +64,7 @@
         "description": "Label for option in settings"
     },
     "buyMeCoffee": {
-        "message": "Поддержать разработку",
+        "message": "Поблагодарить разработчика",
         "description": ""
     },
     "changeTextSelectionColor": {
@@ -72,7 +72,7 @@
         "description": ""
     },
     "contextualButtonsHeader": {
-        "message": "Контекстные кнопки",
+        "message": "Кнопки",
         "description": "Header for contextual buttons category in settings"
     },
     "convertCurrencies": {
@@ -179,6 +179,10 @@
         "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
     },
+    "liveTranslation": {
+        "message": "Живой перевод (Google Translate)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Открыть почтовый клиент",
         "description": "Option label for new email method setting"
@@ -262,6 +266,10 @@
     "resetDefaults": {
         "message": "Сбросить настройки",
         "description": ""
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Обратный порядок кнопок",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Увеличение",

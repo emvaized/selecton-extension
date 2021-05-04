@@ -72,7 +72,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "contextualButtonsHeader": {
-        "message": "Botões contextuais",
+        "message": "Botões",
         "description": "Cabeçalho para a categoria de botões contextuais nas configurações"
     },
     "convertCurrencies": {
@@ -179,6 +179,10 @@
         "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Rótulo para campo nas configurações, incorporando link embutido"
     },
+    "liveTranslation": {
+        "message": "Tradução ao vivo (do Google Translate)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Cliente de e-mail",
         "description": "Rótulo de opção para a configuração do novo método de e-mail"
@@ -258,6 +262,10 @@
     "resetDefaults": {
         "message": "Restaurar padrões",
         "description": "Rótulo para o botão de configurações para restaurar as configurações padrão"
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Inverter a ordem dos botões",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Aumentar a escala",

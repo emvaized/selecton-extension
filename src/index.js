@@ -10,7 +10,6 @@ function init() {
       configs.textSelectionColor = loadedConfigs.textSelectionColor || '#ffffff';
       configs.textSelectionBackgroundOpacity = loadedConfigs.textSelectionBackgroundOpacity || 1.0;
       configs.shouldOverrideWebsiteSelectionColor = loadedConfigs.shouldOverrideWebsiteSelectionColor ?? false;
-
       configs.enabled = loadedConfigs.enabled ?? true;
 
       /// Check for domain to be in black list
@@ -66,6 +65,12 @@ function init() {
         /// Set font-size
         document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
 
+        /// Set pop-up buttons border
+        document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
+        document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+
+        ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
         /// If initial launch, update currency rates
         if (configs.convertCurrencies) {
           if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
@@ -100,7 +105,6 @@ function setTextSelectionColor() {
   css.appendChild(document.createTextNode(rule)); // Support for the rest
   document.getElementsByTagName("head")[0].appendChild(css);
 }
-
 
 function setPageListeners() {
   try {
@@ -149,35 +153,20 @@ function setPageListeners() {
 
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
-      if (configs.snapSelectionToWord) {
-        if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
-          if (configs.debugMode)
-            console.log('Word snapping was rejected due to pressed CTRL key');
-        } else {
-          snapSelectionByWords(selection);
-        }
-      }
+      // if (configs.snapSelectionToWord) {
+      //   if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
+      //     if (configs.debugMode)
+      //       console.log('Word snapping was rejected due to pressed CTRL key');
+      //   } else {
+
+      //     /// TODO: Don't snap when clicked on already selected area
+      //       snapSelectionByWords(selection);
+      //   }
+      // }
 
       createTooltip(e);
     }
   });
-
-  /// Experimental selectionchange listener
-  // document.addEventListener('selectionchange', function (e) {
-  //   if (isDraggingTooltip) return;
-  //   var sel = document.getSelection().toString();
-
-  //   console.log('selection:');
-  //   console.log(sel);
-
-  //   if (sel == null || sel == undefined || sel.trim() == '') {
-  //     // document.removeEventListener('mouseup');
-  //     selection = null;
-  //     hideTooltip();
-  //     hideDragHandles();
-  //   } else {
-  //   }
-  // });
 }
 
 init();

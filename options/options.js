@@ -134,6 +134,8 @@ function updateDisabledOptions() {
     document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#verticalSecondaryTooltip").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
@@ -156,20 +158,6 @@ function setCollapsibleHeaders() {
             }
         });
     }
-
-
-    /// Additional settings button
-    // var showAdditionalSettingsButton = document.getElementById('showAdditionalSettingsButton');
-    // showAdditionalSettingsButton.addEventListener('input', function (e) {
-    //     var additionalSettingsBlock = document.getElementById('additional-settings-block');
-    //     if (additionalSettingsBlock.style.maxHeight) {
-    //         additionalSettingsBlock.style.maxHeight = null;
-    //         additionalSettingsBlock.querySelector('div').style.border = 'none';
-    //     } else {
-    //         additionalSettingsBlock.style.maxHeight = additionalSettingsBlock.scrollHeight + 15 + "px";
-    //         additionalSettingsBlock.querySelector('div').style.border = '1px solid lightGrey';
-    //     }
-    // });
 }
 
 /// Configure additional elements (currencies )

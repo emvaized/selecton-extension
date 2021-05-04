@@ -1,3 +1,10 @@
+#3.0.6
+- Implemented live translation of selected text (up to 3 words)
+- Implemented 'inverse order of the buttons' feature
+- Improved number detection for currency and unit conversion
+- Reduced load on resources
+- Many bug fixes and improvements
+
 #3.0.5
 - Fix for settings crash on first install
 - Implemented 'font size' setting

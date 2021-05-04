@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Selecton",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",
@@ -29,12 +29,14 @@
         "src/data/variables.js",
         "src/data/currencies.js",
         "src/data/measure-units.js",
-        "src/data/urls.js",
+        "src/data/search-urls.js",
         "src/functions/locale-functions.js",
         "src/functions/selection-functions.js",
         "src/functions/currencies-functions.js",
         "src/functions/color-functions.js",
+        "src/functions/conversion-functions.js",
         "src/data/tooltip-icons.js",
+        "src/ui/components/translate-button.js",
         "src/ui/secondary-tooltip.js",
         "src/ui/tooltip.js",
         "src/ui/selection-handles.js",
@@ -53,6 +55,8 @@
     "open_in_tab": false
   },
   "permissions": [
+    "https://translate.googleapis.com/*",
+    "https://api.exchangerate.host/*",
     "storage",
     "clipboardRead"
   ],

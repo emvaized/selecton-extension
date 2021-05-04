@@ -9,6 +9,7 @@ function createSecondaryTooltip() {
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.borderRadius}px`;
     secondaryTooltip.style.pointerEvents = 'none';
+    secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 100% 0' : '25% 100% 0';
 
     document.body.appendChild(secondaryTooltip);
 
@@ -32,6 +33,7 @@ function createSecondaryTooltip() {
             imgButton.setAttribute('width', `${configs.secondaryTooltipIconSize}px`);
             imgButton.setAttribute('height', `${configs.secondaryTooltipIconSize}px`);
             imgButton.style.maxHeight = `${configs.secondaryTooltipIconSize}px`;
+            imgButton.style.filter = 'none';
 
             /// Add title tooltip on hover
             if (url !== null && url !== undefined && url !== '') {
@@ -115,7 +117,8 @@ function createSecondaryTooltip() {
     var dx = tooltip.style.left;
     var dy = tooltip.style.top;
 
-    secondaryTooltip.style.left = dx;
+    // secondaryTooltip.style.left = dx;
+    secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
     secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
 
     if (configs.verticalSecondaryTooltip)

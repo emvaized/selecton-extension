@@ -1,3 +1,5 @@
+const urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
+
 function fetchCurrencyRates() {
     fetch(urlToLoadCurrencyRates).then(function (val) {
         return val.json();
@@ -19,6 +21,9 @@ function fetchCurrencyRates() {
 
         if (configs.debugMode)
             console.log('Updated currency rates for Selecton');
+    }).catch(function (e) {
+        if (configs.debugMode)
+            console.log(e);
     });
 }
 

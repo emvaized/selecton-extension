@@ -72,7 +72,7 @@
     "description": "Label for field in settings"
   },
   "contextualButtonsHeader": {
-    "message": "Contextual buttons",
+    "message": "Buttons",
     "description": "Header for contextual buttons category in settings"
   },
   "convertCurrencies": {
@@ -179,6 +179,10 @@
     "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
     "description": "Label for field in settings, incorporating inline link"
   },
+  "liveTranslation": {
+    "message": "Live translation (from Google Translate)",
+    "description": "Label for field in settings"
+  },
   "mailto": {
     "message": "Email client",
     "description": "Option label for new email method setting"
@@ -258,6 +262,10 @@
   "resetDefaults": {
     "message": "Restore defaults",
     "description": "Label for settings button to restore default settings"
+  },
+  "reverseTooltipButtonsOrder": {
+    "message": "Reverse the order of buttons",
+    "description": "Label for settings button"
   },
   "scaleUpTooltipEffect": {
     "message": "Scale up",

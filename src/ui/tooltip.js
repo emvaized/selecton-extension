@@ -10,6 +10,18 @@ function createTooltip(e) {
 
                         hideTooltip();
 
+                        if (configs.snapSelectionToWord) {
+                            if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
+                                if (configs.debugMode)
+                                    console.log('Word snapping was rejected due to pressed CTRL key');
+                            } else {
+
+                                /// TODO: Don't snap when clicked on already selected area
+                                snapSelectionByWords(selection);
+                            }
+                        }
+
+
                         /// Clear previously stored selection value
                         if (window.getSelection) {
                             selection = window.getSelection();
@@ -227,7 +239,6 @@ function addBasicTooltipButtons(layout) {
             // tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
-            try { } catch (e) { if (configs.debugMode) console.log(e); }
             /// Add only paste button 
             var pasteButton = document.createElement('button');
             pasteButton.setAttribute('class', `selection-popup-button`);
@@ -252,8 +263,7 @@ function addBasicTooltipButtons(layout) {
     } else {
         /// Add search button
         searchButton = document.createElement('button');
-        searchButton.setAttribute('class', `selection-popup-button`);
-
+        searchButton.setAttribute('class', 'selection-popup-button');
         if (addButtonIcons)
             searchButton.innerHTML = createImageIcon(searchButtonIcon) + (configs.buttonsStyle == 'onlyicon' ? '' : searchLabel);
         else
@@ -280,7 +290,11 @@ function addBasicTooltipButtons(layout) {
             document.execCommand('copy');
             removeSelectionOnPage();
         });
-        tooltip.appendChild(copyButton);
+
+        if (configs.reverseTooltipButtonsOrder)
+            tooltip.insertBefore(copyButton, searchButton);
+        else
+            tooltip.appendChild(copyButton);
     }
 }
 
@@ -294,93 +308,56 @@ function addContextualButtons() {
 
         var numberToConvert;
 
-        /// Math calculation of selected string
-        function calculateString(fn) {
-            return new Function('return ' + fn)();
-        }
-
         /// Unit conversion button
         if (configs.convertMetrics)
             outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
                 var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
 
-                    var words = selectedText.split(' ');
-                    for (i in words) {
-                        var word = words[i];
+                    numberToConvert = extractAmountFromSelectedText(selectedText);
 
-                        /// Feet/inches ' " handling
-                        // if (word.includes("'") && word.includes("''")) {
-                        //   var numbers = word.split("'");
-                        //   return;
-                        //   // var feets  = calculateString(numbers[0]);
-                        //   // var inches = calculateString(numbers[1]);
-                        // }
+                    if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                        var fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                        var convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+                        var convertedNumber;
 
-                        // numberToConvert = word.match(/[+-]?\d+(\.\d) ? /g);
-                        try {
-                            numberToConvert = calculateString(word.trim());
-                        } catch (e) { }
-
-                        if (numberToConvert == null || numberToConvert == undefined || numberToConvert == '' || numberToConvert == NaN) {
-                            var previousWord = words[i - 1];
-                            if (previousWord !== undefined)
-                                // numberToConvert = previousWord.match(/[+-]?\d+(\.\d) ? /g);
-                                try {
-                                    numberToConvert = calculateString(selectedText.trim());
-                                    // numberToConvert = calculateString(previousWord.trim());
-                                } catch (e) { }
+                        if (fromUnit.includes('°')) {
+                            convertedNumber = value['convertFunction'](numberToConvert);
+                        } else {
+                            convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
                         }
 
-                        if (numberToConvert == undefined) {
-                            numberToConvert = selectedText.match(/[+-]?\d+(\.\d)?/g);
-                            if (previousWord !== undefined && (numberToConvert == null || numberToConvert == undefined))
-                                numberToConvert = previousWord.match(/[+-]?\d+(\.\d)?/g);
-                            if (numberToConvert !== undefined && numberToConvert !== null)
-                                numberToConvert = numberToConvert.join("");
-                        }
+                        /// Round doubles to the first 2 symbols after dot
+                        convertedNumber = convertedNumber.toFixed(2);
 
-                        if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                        /// Add unit converter button
+                        if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
+                            var interactiveButton = document.createElement('button');
+                            interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                            if (configs.showUnconvertedValue)
+                                interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
 
-                            var fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                            var convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
-                            var convertedNumber;
+                            var converted = document.createElement('span');
+                            converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                            converted.setAttribute('style', `color: ${secondaryColor}`);
+                            interactiveButton.appendChild(converted);
 
-                            if (fromUnit.includes('°')) {
-                                convertedNumber = value['convertFunction'](numberToConvert);
-                            } else {
-                                convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
-                            }
+                            interactiveButton.addEventListener("mousedown", function (e) {
+                                let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
+                                onTooltipButtonClick(e, url);
+                            });
 
-                            /// Round doubles to the first 2 symbols after dot
-                            convertedNumber = convertedNumber.toFixed(2);
-
-                            /// Add unit converter button
-                            if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
-                                var interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                                if (configs.showUnconvertedValue)
-                                    interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
-
-                                var converted = document.createElement('span');
-                                converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
-                                converted.setAttribute('style', `color: ${secondaryColor}`);
-                                interactiveButton.appendChild(converted);
-
-                                interactiveButton.addEventListener("mousedown", function (e) {
-                                    let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
-                                    onTooltipButtonClick(e, url);
-                                });
-
+                            if (configs.reverseTooltipButtonsOrder)
+                                tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                            else
                                 tooltip.appendChild(interactiveButton);
-                                try {
-                                    tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                                } catch (e) {
-                                    if (configs.debugMode)
-                                        console.log(e);
-                                }
-                                break outerloop;
+                            try {
+                                tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                            } catch (e) {
+                                if (configs.debugMode)
+                                    console.log(e);
                             }
+                            break outerloop;
                         }
                     }
                 }
@@ -398,14 +375,16 @@ function addContextualButtons() {
                 /// Open system handler
                 window.open(`tel:${selectedText.trim()}`);
             });
-            tooltip.appendChild(phoneButton);
+            if (configs.reverseTooltipButtonsOrder)
+                tooltip.insertBefore(phoneButton, tooltip.children[1]);
+            else
+                tooltip.appendChild(phoneButton);
         }
 
         /// Do simple math calculations
         if (numberToConvert == null && configs.performSimpleMathOperations) {
             if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
                 try {
-                    // var calculatedExpression = calculateString(selectedText.trim());
                     var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
                     if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
@@ -431,7 +410,10 @@ function addContextualButtons() {
                                 onTooltipButtonClick(e, url);
                             });
 
-                            tooltip.appendChild(interactiveButton);
+                            if (configs.reverseTooltipButtonsOrder)
+                                tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                            else
+                                tooltip.appendChild(interactiveButton);
                             try {
                                 tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
                             } catch (e) {
@@ -470,7 +452,12 @@ function addContextualButtons() {
                     let url = returnShowOnMapUrl(selectedText.trim());
                     onTooltipButtonClick(e, url);
                 });
-                tooltip.appendChild(mapButton);
+
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(mapButton, tooltip.children[1]);
+                else
+                    tooltip.appendChild(mapButton);
+
                 /// Correct tooltip's dx
                 tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (mapButton.clientWidth / 2))}px`;
 
@@ -495,7 +482,11 @@ function addContextualButtons() {
                     onTooltipButtonClick(e, url);
                 });
 
-                tooltip.appendChild(emailButton);
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(emailButton, tooltip.children[1]);
+                else
+                    tooltip.appendChild(emailButton);
+
                 /// Correct tooltip's dx
                 tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (emailButton.clientWidth / 2))}px`;
 
@@ -550,7 +541,10 @@ function addContextualButtons() {
                     onTooltipButtonClick(e, url);
                 });
 
-                tooltip.appendChild(colorButton);
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(colorButton, tooltip.children[1]);
+                else
+                    tooltip.appendChild(colorButton);
 
                 /// Correct tooltip's dx
                 tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (colorButton.clientWidth / 2))}px`;
@@ -589,22 +583,19 @@ function addContextualButtons() {
                     currencyRate = value["rate"];
                     currencySymbol = value["currencySymbol"];
 
-                    var text = selectedText;
-
                     /// Special handling for prices where coma separates fractional digits instead of thousandths
-                    if (text.includes(',')) {
-                        var parts = text.split(',');
+                    if (selectedText.includes(',')) {
+                        var parts = selectedText.split(',');
                         if (parts.length == 2) {
                             if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
-                                text = text.replaceAll(',', '.');
+                                selectedText = selectedText.replaceAll(',', '.');
                             }
                         }
                     }
 
-                    /// Remove all non-number symbols (except dots)
-                    amount = text.match(/[+-]?\d+(\.\d)?/g);
-                    if (amount !== null)
-                        amount = amount.join("");
+                    /// Find the amount
+                    amount = extractAmountFromSelectedText(selectedText);
+
                     break;
                 }
             }
@@ -636,7 +627,7 @@ function addContextualButtons() {
                             var resultingRate = rateOfDesiredCurrency / currencyRate;
                             var convertedAmount = amount * resultingRate;
 
-                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN') {
+                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
                                 /// Round result
                                 try {
                                     convertedAmount = parseFloat(convertedAmount);
@@ -650,15 +641,15 @@ function addContextualButtons() {
                                 convertedAmountString = parts.join('.');
 
                                 /// Create and add currency button with result of conversion
-                                var interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                                let currencyButton = document.createElement('button');
+                                currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
 
                                 /// Show value before convertion
                                 if (configs.showUnconvertedValue) {
                                     if (configs.preferCurrencySymbol && currencySymbol !== undefined)
-                                        interactiveButton.textContent = ` ${amount} ${currencySymbol} →`;
+                                        currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
                                     else
-                                        interactiveButton.textContent = ` ${amount} ${currency} →`;
+                                        currencyButton.textContent = ` ${amount} ${currency} →`;
                                 }
 
                                 /// Show value after converion
@@ -671,17 +662,20 @@ function addContextualButtons() {
                                     converted.textContent = ` ${convertedAmountString} ${configs.convertToCurrency}`;
 
                                 converted.setAttribute('style', `color: ${secondaryColor}`);
-                                interactiveButton.appendChild(converted);
+                                currencyButton.appendChild(converted);
 
-                                interactiveButton.addEventListener("mousedown", function (e) {
+                                currencyButton.addEventListener("mousedown", function (e) {
                                     let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
                                     onTooltipButtonClick(e, url);
                                 });
 
-                                tooltip.appendChild(interactiveButton);
+                                if (configs.reverseTooltipButtonsOrder)
+                                    tooltip.insertBefore(currencyButton, tooltip.children[1]);
+                                else
+                                    tooltip.appendChild(currencyButton);
 
                                 /// Correct tooltip's dx
-                                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (interactiveButton.clientWidth / 2))}px`;
+                                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
 
                                 /// Correct last button's border radius
                                 tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
@@ -778,7 +772,10 @@ function addContextualButtons() {
                                             onTooltipButtonClick(e, link);
                                         });
 
-                                        tooltip.appendChild(interactiveButton);
+                                        if (configs.reverseTooltipButtonsOrder)
+                                            tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                                        else
+                                            tooltip.appendChild(interactiveButton);
                                         break;
                                     }
                                 } catch (e) { console.log(e) }
@@ -807,79 +804,6 @@ function addContextualButtons() {
     }, 1);
 }
 
-function addTranslateButton() {
-    if (configs.debugMode)
-        console.log('Checking if its needed to add Translate button...');
-
-    var selectedText = selection.toString();
-
-    if (configs.debugMode)
-        console.log(`Selected text is: ${selectedText}`);
-    try {
-        chrome.i18n.detectLanguage(selectedText, function (result) {
-            var detectedLanguages = result;
-
-            /// Show Translate button when language was not detected
-            var shouldTranslate = true;
-
-            if (configs.debugMode)
-                console.log(`User language is: ${configs.languageToTranslate}`);
-
-            if (detectedLanguages !== null && detectedLanguages !== undefined) {
-                var langs = detectedLanguages.languages;
-
-                if (langs !== []) {
-                    if (configs.debugMode)
-                        console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
-                    langs.forEach(function (lang) {
-                        if (configs.debugMode) {
-                            console.log('Detected language: ' + langs[0].language);
-                        }
-                        /// Don't show translate button if selected language is the same as desired
-                        if (lang.language == configs.languageToTranslate) shouldTranslate = false;
-                    })
-                } else {
-                    if (configs.debugMode) {
-                        console.log('Selecton failed to detect selected text language');
-                    }
-                }
-            }
-
-            if (configs.debugMode)
-                console.log(`Should translate: ${shouldTranslate}`);
-
-            if (shouldTranslate == true) {
-                var translateButton = document.createElement('button');
-                translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    translateButton.setAttribute('title', translateLabel);
-                translateButton.setAttribute('id', 'selecton-translate-button');
-                if (addButtonIcons)
-                    translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + (configs.buttonsStyle == 'onlyicon' ? '' : translateLabel);
-                else
-                    translateButton.textContent = translateLabel;
-                translateButton.addEventListener("mousedown", function (e) {
-                    let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
-                    onTooltipButtonClick(e, url);
-                });
-                tooltip.appendChild(translateButton);
-                /// Correct tooltip's dx
-                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
-
-                /// Correct last button's border radius
-                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                checkTooltipForCollidingWithSideEdges();
-            } else {
-                checkTooltipForCollidingWithSideEdges();
-            }
-        });
-    } catch (e) {
-        if (configs.debugMode)
-            console.log(e);
-    }
-}
 
 function calculateTooltipPosition() {
     var selDimensions = getSelectionRectDimensions();
@@ -1063,6 +987,7 @@ function checkTooltipForCollidingWithSideEdges() {
 }
 
 function hideTooltip() {
+    if (tooltip == null || tooltip == undefined) return;
 
     if (configs.debugMode)
         console.log('Checking for existing Selecton tooltips...')
@@ -1110,7 +1035,9 @@ function hideTooltip() {
                 //   console.log('Selecton secondary secondary tooltip hidden');
 
             }, configs.animationDuration);
-        })
+        });
+
+    tooltip = null;
 }
 
 function createImageIcon(url, opacity = 0.5) {
@@ -1150,3 +1077,4 @@ function onTooltipButtonClick(e, url) {
         window.open(url, '_blank');
     }
 }
+

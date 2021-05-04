@@ -72,7 +72,7 @@
         "description": ""
     },
     "contextualButtonsHeader": {
-        "message": "Контекстні кнопки",
+        "message": "Кнопки",
         "description": "Header for contextual buttons category in settings"
     },
     "convertCurrencies": {
@@ -179,6 +179,10 @@
         "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
     },
+    "liveTranslation": {
+        "message": "Живий переклад (з Google Translate)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Відкрити поштовий клієнт",
         "description": "Option label for new email method setting"
@@ -262,6 +266,10 @@
     "resetDefaults": {
         "message": "Скинути настройки",
         "description": ""
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Зворотний порядок кнопок",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Збільшення",

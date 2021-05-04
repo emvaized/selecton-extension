@@ -99,4 +99,8 @@ const convertionUnits = {
         "convertsTo": "грамм",
         "ratio": 28.3495,
     },
+    " унция": {
+        "convertsTo": "грамм",
+        "ratio": 28.3495,
+    },
 };

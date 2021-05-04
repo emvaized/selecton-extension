@@ -1,5 +1,3 @@
-var urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
-
 function returnSearchUrl(query, shouldEncode = true) {
     var encodedQuery = query;
 

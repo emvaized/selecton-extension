@@ -9,6 +9,7 @@ function setDefaultLocales() {
         console.log('Configuring default locale settings...');
     }
 
+    browserLocale.replaceAll(' ', '');
     if (browserLocale.includes('-')) {
         var parts = browserLocale.split('-');
         browserLanguage = parts[0];

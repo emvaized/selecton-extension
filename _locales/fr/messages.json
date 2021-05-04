@@ -72,7 +72,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "contextualButtonsHeader": {
-        "message": "Boutons contextuels",
+        "message": "Boutons",
         "description": "En-tête de la catégorie des boutons contextuels dans les paramètres"
     },
     "convertCurrency": {
@@ -179,6 +179,10 @@
         "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
         "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
     },
+    "liveTranslation": {
+        "message": "Traduction en direct (depuis Google Translate)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Client de messagerie de bureau",
         "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
@@ -262,6 +266,10 @@
     "resetDefaults": {
         "message": "Restaurer les paramètres par défaut",
         "description": "Libellé du bouton des paramètres pour restaurer les paramètres par défaut"
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Inverser l'ordre des boutons",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Scale up",

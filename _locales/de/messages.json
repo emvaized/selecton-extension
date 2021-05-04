@@ -72,7 +72,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "contextualButtonsHeader": {
-        "message": "Kontextschaltflächen",
+        "message": "Knöpfe",
         "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
     },
     "convertCurrencies": {
@@ -179,6 +179,10 @@
         "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
         "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
     },
+    "liveTranslation": {
+        "message": "Live-Übersetzung (von Google Translate)",
+        "description": "Label for field in settings"
+    },
     "mailto": {
         "message": "Desktop-E-Mail-Client",
         "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
@@ -262,6 +266,10 @@
     "resetDefaults": {
         "message": "Standardeinstellungen wiederherstellen",
         "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
+    },
+    "reverseTooltipButtonsOrder": {
+        "message": "Kehren Sie die Reihenfolge der Tasten",
+        "description": "Label for settings button"
     },
     "scaleUpTooltipEffect": {
         "message": "Vergrößern",

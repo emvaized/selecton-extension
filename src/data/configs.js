@@ -36,7 +36,7 @@ var configs = {
     'showSecondaryTooltipTitleOnHover': false,
     'excludedDomains': '',
     'addPhoneButton': true,
-    'showUnconvertedValue': true,
+    'showUnconvertedValue': false,
     'debugMode': false,
     'buttonsStyle': 'onlylabel',
     'addDragHandles': true,
@@ -51,6 +51,8 @@ var configs = {
     'updateRatesEveryDays': 14,
     'fontSize': 12.5,
     'verticalSecondaryTooltip': true,
+    'liveTranslation': false,
+    'reverseTooltipButtonsOrder': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

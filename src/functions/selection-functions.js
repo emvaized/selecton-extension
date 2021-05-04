@@ -101,7 +101,6 @@ function getSelectionRectDimensions() {
     return { width: width, height: height, dx: dx, dy: dy };
 }
 
-
 /// Gets called when single click on any selection handle, with no dragging
 function extendSelectionByWord(sel, dragHandleIndex) {
 
