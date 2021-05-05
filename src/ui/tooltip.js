@@ -4,7 +4,6 @@ function createTooltip(e) {
     if (dontShowTooltip !== true)
         setTimeout(
             function () {
-                // var evt = e || window.event;
                 if ("buttons" in evt) {
                     if (evt.buttons == 1) {
 
@@ -20,7 +19,6 @@ function createTooltip(e) {
                                 snapSelectionByWords(selection);
                             }
                         }
-
 
                         /// Clear previously stored selection value
                         if (window.getSelection) {
@@ -189,6 +187,7 @@ function setUpNewTooltip(type) {
 function addBasicTooltipButtons(layout) {
     if (layout == 'textfield') {
         var textField = document.activeElement;
+
         if (selection.toString() !== '') {
 
             try { /// Add a cut button 
@@ -223,20 +222,20 @@ function addBasicTooltipButtons(layout) {
                 copyButton.addEventListener("mousedown", function (e) {
                     try {
                         textField.focus();
-                        document.execCommand('bold');
+                        document.execCommand('copy');
+                        removeSelectionOnPage();
 
                     } catch (e) { console.log(e); }
-
-                    // document.execCommand('copy');
-                    // hideTooltip();
-                    // removeSelection();
                 });
-                tooltip.appendChild(copyButton);
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(copyButton, cutButton);
+                else
+                    tooltip.appendChild(copyButton);
             } catch (e) { if (configs.debugMode) console.log(e) }
 
             /// Set border radius for buttons
-            // tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-            // tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+            tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
             /// Add only paste button 
@@ -1044,37 +1043,5 @@ function createImageIcon(url, opacity = 0.5) {
     return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;${configs.buttonsStyle == 'onlyicon' ? '' : 'padding-right: 5px;'}"" />`;
 }
 
-function returnTooltipRevealTransform(onEnd = true) {
-    switch (configs.tooltipRevealEffect) {
-        case 'noTooltipEffect': return ``;
-        case 'moveUpTooltipEffect': return onEnd ? `translate(0,0)` : `translate(0, 100%)`;
-        case 'moveDownTooltipEffect': return onEnd ? `translate(0,0)` : `translate(0, -100%)`;
-        case 'scaleUpTooltipEffect': return onEnd ? `scale(1.0)` : `scale(0.0)`;
-    }
-}
 
-function onTooltipButtonClick(e, url) {
-    hideTooltip();
-    removeSelectionOnPage();
-    if (configs.addDragHandles)
-        hideDragHandles();
-
-    /// Open new tab with passed url
-    try {
-        var evt = e || window.event;
-
-        if ("buttons" in evt) {
-            if (evt.buttons == 1) {
-                /// Left button click
-                chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: true });
-            } else if (evt.buttons == 4) {
-                /// Middle button click
-                evt.preventDefault();
-                chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: false });
-            }
-        }
-    } catch (e) {
-        window.open(url, '_blank');
-    }
-}
 

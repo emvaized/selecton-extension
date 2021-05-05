@@ -35,24 +35,10 @@ function createSecondaryTooltip() {
             imgButton.style.maxHeight = `${configs.secondaryTooltipIconSize}px`;
             imgButton.style.filter = 'none';
 
-            /// Add title tooltip on hover
+            /// Set title
             if (url !== null && url !== undefined && url !== '') {
-                var domainContent = url.split('.');
-                var titleText;
-
-                if (domainContent.length == 2) {
-                    titleText = domainContent[0];
-                } else if (domainContent.length == 3) {
-                    if (domainContent[1].includes('/'))
-                        titleText = domainContent[0];
-                    else
-                        titleText = domainContent[1];
-                } else {
-                    titleText = domain.textContent.split('/')[2].split('.')[0];
-                }
-                titleText = titleText.replaceAll('https://', '');
-
-                imgButton.setAttribute('title', titleText.charAt(0).toUpperCase() + titleText.slice(1));
+                var titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
+                imgButton.setAttribute('title', titleText);
             }
 
             /// Set border radius for first and last buttons
@@ -83,10 +69,20 @@ function createSecondaryTooltip() {
 
             /// Set click listeners
             (configs.verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
-                // container.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 var selectedText = selection.toString();
                 let urlToOpen = url.replaceAll('%s', selectedText);
+
+                try {
+                    let currentDomain = window.location.href.split('/')[2];
+                    urlToOpen = urlToOpen.replaceAll('%w', currentDomain);
+                } catch (e) {
+                    if (configs.debugMode) console.log(e);
+                }
+
+                urlToOpen = encodeURI(urlToOpen);
+                urlToOpen = urlToOpen.replaceAll('&', '%26');
+
                 removeSelectionOnPage();
 
                 try {

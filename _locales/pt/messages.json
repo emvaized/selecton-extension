@@ -112,7 +112,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
-        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta",
+        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta. <br/>%w é um espaço reservado para o domínio atual (para pesquisa de site).",
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchUrl": {
@@ -280,7 +280,7 @@
         "description": "Rótulo para adicionar novo botão de opção de pesquisa"
     },
     "secondaryTooltipIconSize": {
-        "message": "Tamanho do botão (px)",
+        "message": "Tamanho do ícone (px)",
         "description": "Rótulo para adicionar novo botão de opção de pesquisa"
     },
     "selectionHeader": {

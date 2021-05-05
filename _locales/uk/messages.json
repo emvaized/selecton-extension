@@ -112,7 +112,7 @@
         "description": "Ярлик для поля в настройках"
     },
     "customSearchTooltipHint": {
-        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. <br/> Використовуйте %s у якості плейсхолдера для запиту",
+        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. <br/> Використовуйте %s у якості плейсхолдера для запиту. <br/>%w - плейсхолдер поточного домену (для пошуку по сайту).",
         "description": "Ярлик для поля в настройках"
     },
     "customSearchUrl": {
@@ -284,7 +284,7 @@
         "description": "Label for add new search option button"
     },
     "secondaryTooltipIconSize": {
-        "message": "Розмір кнопок (px)",
+        "message": "Розмір іконок (px)",
         "description": "Label for add new search option button"
     },
     "selectionHeader": {

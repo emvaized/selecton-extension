@@ -161,7 +161,6 @@ function removeSelectionOnPage() {
 
 /// Set selection from offset (used for drag handles)
 //// Source: https://stackoverflow.com/a/11336426/11381400
-
 function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
     var doc = document;
     var start, end, range = null;

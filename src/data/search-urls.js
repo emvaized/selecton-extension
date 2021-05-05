@@ -1,8 +1,8 @@
 function returnSearchUrl(query, shouldEncode = true) {
-    var encodedQuery = query;
-
     if (shouldEncode)
         encodedQuery = encodeURI(query);
+
+    encodedQuery = encodedQuery.replaceAll('&', '%26');
 
     switch (configs.preferredSearchEngine) {
         case 'google': return `https://www.google.com/search?q=${encodedQuery}`; break;
@@ -21,6 +21,8 @@ function returnNewEmailUrl(query, shouldEncode = true) {
     if (shouldEncode)
         encodedQuery = encodeURI(query);
 
+    encodedQuery = encodedQuery.replaceAll('&', '%26');
+
     switch (configs.preferredNewEmailMethod) {
         case 'mailto': return `mailto:${query}`; break;
         case 'gmail': return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedQuery}`; break;
@@ -34,6 +36,8 @@ function returnShowOnMapUrl(query, shouldEncode = true) {
 
     if (shouldEncode)
         encodedQuery = encodeURI(query);
+
+    encodedQuery = encodedQuery.replaceAll('&', '%26');
 
     switch (configs.preferredMapsService) {
         case 'google': return `https://www.google.com/maps/place/${encodedQuery}`; break;

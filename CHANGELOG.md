@@ -1,3 +1,11 @@
+#3.0.7
+- Implemented ability to change custom search engines titles
+- Implemented %w placeholder for current domain (for website search)
+- Fixed bug with search queries ingoring the "&" symbol
+- Fix for tooltip being hidden when CTRL key is pressed to move drag handle precisely
+- Fix for drag handle not adapting to magnetic selection on release
+- Fix for textfield buttons borders in 'reverse buttons order' mode
+
 #3.0.6
 - Implemented live translation of selected text (up to 3 words)
 - Implemented 'inverse order of the buttons' feature

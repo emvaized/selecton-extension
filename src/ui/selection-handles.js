@@ -187,37 +187,38 @@ function addDragHandle(dragHandleIndex) {
                         if (configs.debugMode)
                             console.log('Single click on drag handle');
 
-
                         extendSelectionByWord(windowSelection, dragHandleIndex)
-                        // if (dragHandleIndex == 0) {
-                        //   windowSelection.modify('extend', 'backward', 'word');
-                        // } else {
-                        //   windowSelection.modify('extend', 'forward', 'word');
-                        // }
+
                     } else {
                     }
-
-                    var selStartDimensions = getSelectionCoordinates(true);
-                    var selEndDimensions = getSelectionCoordinates(false);
-
-                    if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
-
-                    /// Animate drag handle to the new place
-                    dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${configs.animationDuration}ms ease-in-out`;
-
-                    if (dragHandleIndex == 0) {
-                        /// Left handle
-                        dragHandle.style.transform = `translate(${selStartDimensions.dx - 1}px, ${selStartDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
-                    } else {
-                        /// Right handle
-                        dragHandle.style.transform = `translate(${selEndDimensions.dx}px, ${selEndDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
-                    }
-
-                    setTimeout(function () {
-                        dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-                    }, 200);
 
                     createTooltip(e);
+
+
+                    setTimeout(function () {
+                        var selStartDimensions = getSelectionCoordinates(true);
+                        var selEndDimensions = getSelectionCoordinates(false);
+
+                        if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
+
+                        /// Animate drag handle to the new place
+                        dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${configs.animationDuration}ms ease-in-out`;
+
+                        if (dragHandleIndex == 0) {
+                            /// Left handle
+                            dragHandle.style.transform = `translate(${selStartDimensions.dx - 1}px, ${selStartDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
+                        } else {
+                            /// Right handle
+                            dragHandle.style.transform = `translate(${selEndDimensions.dx}px, ${selEndDimensions.dy + window.scrollY + verticalOffsetCorrection}px)`;
+                        }
+
+                        setTimeout(function () {
+                            dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
+                        }, 200);
+                    }, 2);
+
+
+                    // createTooltip(e);
                 }, 1);
 
 

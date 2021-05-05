@@ -270,6 +270,19 @@ function generateCustomSearchButtonsList() {
         imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
         entry.appendChild(imgButton);
 
+        /// Title field
+        var title = document.createElement('input');
+        title.setAttribute('type', 'text');
+        title.setAttribute('placeholder', returnDomainFromUrl(item['url']));
+        title.setAttribute('style', 'margin-left: 3px; margin-bottom: 3px; display: inline;');
+        title.value = item['title'];
+        title.setAttribute('id', 'title' + i.toString());
+        title.addEventListener("input", function (e) {
+            customSearchButtonsList[parseInt(this.id.replaceAll('title', ''))]['title'] = this.value;
+            saveCustomSearchButtons();
+        });
+        entry.appendChild(title);
+
         /// 'Use google icon' switch
         let useGoogleIconSwitch = document.createElement('input');
         useGoogleIconSwitch.setAttribute('type', 'checkbox');
@@ -297,23 +310,8 @@ function generateCustomSearchButtonsList() {
         }, 1);
 
         label.innerHTML += ' ' + chrome.i18n.getMessage("useIconFromGoogle");
-        label.setAttribute('style', 'padding-right: 15px; display: inline; float: right;');
+        label.setAttribute('style', 'padding-right: 3px; display: inline; float: right;');
         entry.appendChild(label);
-
-        /// Title field
-        // var title = document.createElement('input');
-        // title.setAttribute('type', 'text');
-        // title.setAttribute('placeholder', 'Title');
-        // title.setAttribute('style', 'max-width: 90px; margin: 0px 6px;');
-        // title.value = item['title'];
-        // title.setAttribute('id', 'title' + i.toString());
-        // title.addEventListener("input", function (e) {
-        //     // alert(this.id.replaceAll('title', ''));
-        //     customSearchButtonsList[parseInt(this.id.replaceAll('title', ''))]['title'] = this.value;
-        //     saveCustomSearchButtons();
-        // });
-        // entry.appendChild(title);
-
 
         /// URL field
         let urlInputDiv = document.createElement('div');

@@ -112,7 +112,7 @@
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "customSearchTooltipHint": {
-        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. <br/>%s als Platzhalter für Abfragen verwenden",
+        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. <br/>%s als Platzhalter für Abfragen verwenden. <br/>%w als Platzhalter für die aktuelle Domain (für die Website-Suche).",
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "customSearchUrl": {
@@ -284,7 +284,7 @@
         "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
     },
     "secondaryTooltipIconSize": {
-        "message": "Knopfgröße (px)",
+        "message": "Symbolgröße (px)",
         "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
     },
     "selectionHeader": {

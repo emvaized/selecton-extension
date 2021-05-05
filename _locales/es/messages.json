@@ -112,7 +112,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchTooltipHint": {
-        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. <br/>Utilice %s como marcador de posición para la consulta",
+        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. <br/>Utilice %s como marcador de posición para la consulta. <br/>%w es un marcador de posición para el dominio actual (para búsqueda en sitios).",
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchUrl": {
@@ -284,7 +284,7 @@
         "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
     },
     "secondaryTooltipIconSize": {
-        "message": "Tamaño del botón (px)",
+        "message": "Tamaño de ícono (px)",
         "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
     },
     "selectionHeader": {
