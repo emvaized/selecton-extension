@@ -1,3 +1,7 @@
+#3.0.8
+- Fix for 'Add new search button' being unaccessible for old users
+- Small fixes for options and popup layout
+
 #3.0.7
 - Implemented ability to change custom search engines titles
 - Implemented %w placeholder for current domain (for website search)

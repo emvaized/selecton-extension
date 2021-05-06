@@ -384,7 +384,7 @@
         "description": ""
     },
     "useIconFromGoogle": {
-        "message": "Использовать иконку из Google",
+        "message": "Использовать иконку от Google",
         "description": "Ярлык для поля в настройках"
     },
     "verticalSecondaryTooltip": {

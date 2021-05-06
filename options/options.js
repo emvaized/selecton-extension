@@ -312,7 +312,7 @@ function generateCustomSearchButtonsList() {
         }, 1);
 
         label.innerHTML += ' ' + chrome.i18n.getMessage("useIconFromGoogle");
-        label.setAttribute('style', 'padding-right: 3px; display: inline; float: right;');
+        label.setAttribute('style', 'padding-right: 3px; display: inline; float: right; max-width: 60%;');
         entry.appendChild(label);
 
         /// URL field
@@ -437,6 +437,7 @@ function generateCustomSearchButtonsList() {
 
     var addButton = document.createElement('button');
     addButton.textContent = chrome.i18n.getMessage("addNewSearchOption") + ' ＋';
+    addButton.setAttribute('style', 'max-width: 99%;')
     addButton.onmouseup = function () {
         customSearchButtonsList.push({
             'url': '',

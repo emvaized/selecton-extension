@@ -34,20 +34,32 @@ function onTooltipButtonClick(e, url) {
 
 
 function returnDomainFromUrl(url, firstLetterIsCapital = true) {
-    let domainContent = url.split('.');
-    let titleText;
 
-    if (domainContent.length == 2) {
-        titleText = domainContent[0];
-    } else if (domainContent.length == 3) {
-        if (domainContent[1].includes('/'))
+    if (url == null || url == undefined || url == '') return '';
+
+    try {
+        let domainContent = url.split('.');
+        let titleText;
+
+        if (domainContent.length == 2) {
             titleText = domainContent[0];
-        else
-            titleText = domainContent[1];
-    } else {
-        titleText = domain.textContent.split('/')[2].split('.')[0];
-    }
-    titleText = titleText.replaceAll('https://', '');
+        } else if (domainContent.length == 3) {
+            if (domainContent[1].includes('/'))
+                titleText = domainContent[0];
+            else
+                titleText = domainContent[1];
+        } else {
+            titleText = url.textContent.split('/')[2].split('.')[0];
+        }
+        titleText = titleText.replaceAll('https://', '');
 
-    return firstLetterIsCapital == false ? titleText : titleText.charAt(0).toUpperCase() + titleText.slice(1);
+        console.log('titleText:');
+        console.log(titleText);
+
+        if (titleText == null || titleText == undefined) return '';
+
+        return firstLetterIsCapital == false ? titleText : titleText.charAt(0).toUpperCase() + titleText.slice(1);
+    } catch (error) {
+        return '';
+    }
 }
