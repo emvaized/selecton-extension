@@ -107,6 +107,10 @@
         "message": "URL иконки",
         "description": "Label for option in settings"
     },
+    "customSearchButtonsHeader": {
+        "message": "Кнопки поиска",
+        "description": "Header for settings section"
+    },
     "customSearchTooltip": {
         "message": "Панель вариантов поиска",
         "description": "Ярлык для поля в настройках"
@@ -324,7 +328,7 @@
         "description": "Label for field in settings"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Показывать домен при наведении",
+        "message": "Показывать заголовок при наведении",
         "description": "Label for option in settings"
     },
     "showTranslateButton": {
@@ -384,7 +388,7 @@
         "description": "Ярлык для поля в настройках"
     },
     "verticalSecondaryTooltip": {
-        "message": "Отображать в виде вертикального списка",
+        "message": "Отображать в виде вертикального списка (отключить для горизонтального)",
         "description": "Ярлык для поля в настройках"
     },
     "visitGithub": {

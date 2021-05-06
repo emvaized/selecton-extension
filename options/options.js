@@ -91,8 +91,9 @@ function setTranslatedLabels() {
     document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
     document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
     document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
-    document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
+    document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
     document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
+    document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader") + ':';
 
     /// "All changes saved automatically" block
     var infoCircle = document.createElement('div');
@@ -136,6 +137,7 @@ function updateDisabledOptions() {
     document.querySelector("#verticalSecondaryTooltip").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#verticalSecondaryTooltip").checked ? 'hidden-option' : 'visible-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';

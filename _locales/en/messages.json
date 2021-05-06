@@ -107,6 +107,10 @@
     "message": "Custom icon URL",
     "description": "Label for option in settings"
   },
+  "customSearchButtonsHeader": {
+    "message": "Search buttons",
+    "description": "Header for settings section"
+  },
   "customSearchTooltip": {
     "message": "Custom search tooltip",
     "description": "Label for field in settings"
@@ -320,7 +324,7 @@
     "description": "Label for field in settings"
   },
   "showSecondaryTooltipTitleOnHover": {
-    "message": "Show domain on hover",
+    "message": "Show title on hover",
     "description": "Label for option in settings"
   },
   "showTranslateButton": {
@@ -380,7 +384,7 @@
     "description": "Label for field in settings"
   },
   "verticalSecondaryTooltip": {
-    "message": "Display as vertical list",
+    "message": "Display as vertical list (disable for horizontal)",
     "description": "Label for field in settings"
   },
   "visitGithub": {

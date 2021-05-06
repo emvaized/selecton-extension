@@ -29,6 +29,15 @@ function createSecondaryTooltip() {
 
         if (optionEnabled) {
             var imgButton = document.createElement('img');
+            imgButton.addEventListener('error', function () {
+                if (configs.debugMode) {
+                    console.log('error loading favicon for: ' + url);
+                    console.log('switching to fallback icon: ' + `https://api.faviconkit.com/${url.split('/')[2]}/16`);
+                }
+
+                /// Reserve service to load favicon
+                favicon.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
+            });
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
             imgButton.setAttribute('width', `${configs.secondaryTooltipIconSize}px`);
             imgButton.setAttribute('height', `${configs.secondaryTooltipIconSize}px`);

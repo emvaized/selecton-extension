@@ -7,7 +7,7 @@ button {
 }
 
 form {
-  padding: 0px 12px 0px 0px;
+  padding: 0px 12px 0px 3px;
 }
 
 .option {
@@ -63,6 +63,7 @@ input[type="checkbox"]  {
 
 .hidden-option {
   display: none;
+  pointer-events: none;
 }
 
 h3 {

@@ -107,6 +107,10 @@
         "message": "Benutzerdefinierte Symbol-URL",
         "description": "Bezeichnung für Option in Einstellungen"
     },
+    "customSearchButtonsHeader": {
+        "message": "Suchschaltflächen",
+        "description": "Header for settings section"
+    },
     "customSearchTooltip": {
         "message": "Tooltip für Suche",
         "description": "Bezeichnung für Feld in Einstellungen"
@@ -324,7 +328,7 @@
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Domain beim Hover anzeigen",
+        "message": "Titel beim Hover anzeigen",
         "description": "Bezeichnung für Option in Einstellungen"
     },
     "showTranslateButton": {
@@ -384,7 +388,7 @@
         "description": ""
     },
     "verticalSecondaryTooltip": {
-        "message": "Als vertikale Liste anzeigen",
+        "message": "Als vertikale Liste anzeigen (für horizontal deaktivieren)",
         "description": ""
     },
     "visitGithub": {

@@ -107,6 +107,10 @@
         "message": "URL do ícone personalizado",
         "description": "Rótulo para opção nas configurações"
     },
+    "customSearchButtonsHeader": {
+        "message": "Botões de pesquisa",
+        "description": "Header for settings section"
+    },
     "customSearchTooltip": {
         "message": "Painel de pesquisa",
         "description": "Rótulo para o campo nas configurações"
@@ -320,7 +324,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Mostrar domínio ao passar o mouse",
+        "message": "Mostrar título ao passar o mouse",
         "description": "Rótulo para opção nas configurações"
     },
     "showTranslateButton": {
@@ -380,7 +384,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "verticalSecondaryTooltip": {
-        "message": "Exibir como lista vertical",
+        "message": "Exibir como lista vertical (desabilitar para horizontal)",
         "description": "Rótulo para o campo nas configurações"
     },
     "visitGithub": {

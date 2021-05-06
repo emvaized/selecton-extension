@@ -107,6 +107,10 @@
         "message": "URL de l'icône personnalisée",
         "description": "Libellé de l'option dans les paramètres"
     },
+    "customSearchButtonsHeader": {
+        "message": "Boutons de recherche",
+        "description": "Header for settings section"
+    },
     "customSearchTooltip": {
         "message": "Info-bulle de recherche",
         "description": "Libellé du champ dans les paramètres"
@@ -324,7 +328,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Afficher le domaine en survol",
+        "message": "Afficher le titre en survol",
         "description": "Libellé de l'option dans les paramètres"
     },
     "showTranslateButton": {
@@ -384,7 +388,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "verticalSecondaryTooltip": {
-        "message": "Afficher sous forme de liste verticale",
+        "message": "Afficher sous forme de liste verticale (désactiver pour l'horizontale)",
         "description": "Libellé du champ dans les paramètres"
     },
     "visitGithub": {

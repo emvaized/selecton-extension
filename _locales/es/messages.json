@@ -107,6 +107,10 @@
         "message": "URL del icono personalizado",
         "description": "Etiqueta para la opción en la configuración"
     },
+    "customSearchButtonsHeader": {
+        "message": "Botones de búsqueda",
+        "description": "Header for settings section"
+    },
     "customSearchTooltip": {
         "message": "Panel de búsqueda",
         "description": "Etiqueta para el campo en la configuración"
@@ -324,7 +328,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Mostrar dominio al pasar el mouse",
+        "message": "Mostrar título al pasar el mouse",
         "description": "Etiqueta para la opción en la configuración"
     },
     "showTranslateButton": {
@@ -384,7 +388,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "verticalSecondaryTooltip": {
-        "message": "Mostrar como lista vertical",
+        "message": "Mostrar como lista vertical (deshabilitar para horizontal)",
         "description": "Etiqueta para el botón de configuración que lleva a la página de GitHub"
     },
     "visitGithub": {

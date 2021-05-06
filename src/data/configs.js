@@ -75,7 +75,6 @@ var configs = {
         {
             'url': 'https://www.amazon.com/s?k=%s',
             'title': 'Amazon',
-            // 'icon': 'https://cdn.icon-icons.com/icons2/1195/PNG/512/1490889698-amazon_82521.png',
             'icon': 'https://mapleleafdeals.com/wp-content/uploads/2020/08/amazon.png',
             'enabled': true
         },
@@ -89,6 +88,11 @@ var configs = {
             'url': 'https://www.imdb.com/find?s=alt&q=%s',
             'title': 'IMDB',
             'icon': 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/171_Imdb_logo_logos-512.png',
+            'enabled': false
+        },
+        {
+            'url': 'https://google.com/search?q=site:%w %s',
+            'title': 'Search on website',
             'enabled': false
         },
     ]
