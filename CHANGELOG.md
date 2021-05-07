@@ -1,3 +1,7 @@
+#3.0.9
+- Fix for search tooltip going off-screen on top when there's no enough space
+- Improvements for links detection
+
 #3.0.8
 - Fix for 'Add new search button' being unaccessible for old users
 - Small fixes for options and popup layout

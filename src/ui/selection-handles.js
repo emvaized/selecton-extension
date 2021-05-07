@@ -45,13 +45,13 @@ function addDragHandle(dragHandleIndex) {
 
         var dragHandle = document.createElement('div');
         dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
-        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-in-out; position: absolute; z-index: 10000; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor};`);
+        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-in-out; position: absolute; z-index: 9998; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor};`);
         document.body.appendChild(dragHandle);
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
         // circleDiv.setAttribute('style', `border-radius: 50%;background: ${configs.tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -6.5px;`);
-        circleDiv.setAttribute('style', `transition: opacity ${configs.animationDuration}ms ease-in-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        circleDiv.setAttribute('style', `z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-in-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {

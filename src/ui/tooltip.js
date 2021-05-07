@@ -698,8 +698,7 @@ function addContextualButtons() {
                         var words = selectedText.split(' ');
                         for (i in words) {
                             var link = words[i];
-                            // if (link.includes('.') || link.includes('/')) {
-                            if ((link.includes('.') || link.includes('/')) && !link.trim().includes(' ') && !link.includes('@') && link.length > 4) {
+                            if ((link.includes('.') || link.includes('/')) && !link.trim().includes(' ') && !link.includes('@') && !link.includes('<') && link.length > 4) {
                                 link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
                                 var lastSymbol = link[link.length - 1];
 
@@ -802,7 +801,6 @@ function addContextualButtons() {
         calculateTooltipPosition();
     }, 1);
 }
-
 
 function calculateTooltipPosition() {
     var selDimensions = getSelectionRectDimensions();
@@ -934,7 +932,7 @@ function showTooltip(dx, dy) {
             } catch (e) {
                 console.log(e);
             }
-        }, 300);
+        }, configs.animationDuration);
 }
 
 function checkTooltipForCollidingWithSideEdges() {

@@ -114,17 +114,36 @@ function createSecondaryTooltip() {
         }
     }
 
+    setTimeout(function () {
+        appendSecondaryTooltip();
+    }, 50);
+}
 
+function appendSecondaryTooltip() {
     var paddingOnBottom = 3;
-
     var isSecondaryTooltipHovered = false;
 
     var dx = tooltip.style.left;
     var dy = tooltip.style.top;
 
-    // secondaryTooltip.style.left = dx;
+    let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+    let initialDy = configs.verticalSecondaryTooltip ? endDy : dy;
+
+    /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
+    let vertOutOfView = endDy <= window.scrollY;
+    if (vertOutOfView) {
+        /// Show secondary tooltip beneath the main one
+        endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
+        initialDy = configs.verticalSecondaryTooltip ? endDy : dy;
+
+        secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
+
+        secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
+    }
+
+    // secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
+    secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
-    secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
 
     if (configs.verticalSecondaryTooltip)
         secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
@@ -132,7 +151,6 @@ function createSecondaryTooltip() {
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
 
-        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
 
@@ -142,7 +160,6 @@ function createSecondaryTooltip() {
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
             // secondaryTooltip.style.top = dy;
-            let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
             secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
 
@@ -152,7 +169,7 @@ function createSecondaryTooltip() {
     }
     secondaryTooltip.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
-        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
@@ -163,7 +180,6 @@ function createSecondaryTooltip() {
 
     secondaryTooltip.onmouseout = function () {
         isSecondaryTooltipHovered = false;
-        let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
 
         secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
@@ -178,6 +194,9 @@ function createSecondaryTooltip() {
     space.setAttribute('class', `secondary-selection-tooltip-bottom-div`);
     space.style.width = `${secondaryTooltip.clientWidth}px`;
     space.style.height = `${paddingOnBottom * 2}px`;
-    space.style.bottom = `-${paddingOnBottom * 2}px`;
+    if (vertOutOfView)
+        space.style.top = `-${paddingOnBottom * 2}px`;
+    else
+        space.style.bottom = `-${paddingOnBottom * 2}px`;
     secondaryTooltip.appendChild(space);
 }
