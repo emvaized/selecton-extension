@@ -1,3 +1,8 @@
+#3.1.1
+- Snapping selection by word now is disabled when selection changed by drag handle
+- Improved stability
+- Added 'bold' and 'italic' buttons for input fields, which should work for inputs on all websites (only latin alphabet supported)
+
 #3.1.0
 - Custom search buttons are now aligned to end when reverse buttons order enabled
 - Added option to change translation service

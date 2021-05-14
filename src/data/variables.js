@@ -17,6 +17,8 @@ var translateLabel = 'Translate';
 var showOnMapLabel = 'Translate';
 var cutLabel = 'Cut';
 var pasteLabel = 'Paste';
+var italicLabel = 'Italic';
+var boldLabel = 'Bold';
 var ratesLastFetchedDate;
 var tooltip;
 var secondaryTooltip;

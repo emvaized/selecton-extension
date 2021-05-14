@@ -53,9 +53,6 @@ function returnDomainFromUrl(url, firstLetterIsCapital = true) {
         }
         titleText = titleText.replaceAll('https://', '');
 
-        console.log('titleText:');
-        console.log(titleText);
-
         if (titleText == null || titleText == undefined) return '';
 
         return firstLetterIsCapital == false ? titleText : titleText.charAt(0).toUpperCase() + titleText.slice(1);

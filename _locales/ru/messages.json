@@ -55,6 +55,10 @@
         "message": "Поведение панели",
         "description": "Header for appearance category in settings"
     },
+    "boldLabel": {
+        "message": "Жирный",
+        "description": ""
+    },
     "borderRadius": {
         "message": "Закругление углов (px)",
         "description": ""
@@ -173,6 +177,10 @@
     },
     "iconlabel": {
         "message": "Иконки + текст",
+        "description": "Label for buttons style option in settings"
+    },
+    "italicLabel": {
+        "message": "Курсив",
         "description": "Label for buttons style option in settings"
     },
     "imperial": {

@@ -55,6 +55,10 @@
     "message": "Panel behavior",
     "description": "Header for appearance category in settings"
   },
+  "boldLabel": {
+    "message": "Bold",
+    "description": "Label for field in settings"
+  },
   "borderRadius": {
     "message": "Border radius",
     "description": "Label for field in settings"
@@ -178,6 +182,10 @@
   "imperial": {
     "message": "Imperial",
     "description": "Variant of metrics system for dropdown"
+  },
+  "italicLabel": {
+    "message": "Italic",
+    "description": "Label for field in settings"
   },
   "languageToTranslate": {
     "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",

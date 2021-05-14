@@ -8,7 +8,6 @@ function createTooltip(e) {
                     if (evt.buttons == 1) {
 
                         hideTooltip();
-                        hideDragHandles();
 
                         if (configs.snapSelectionToWord) {
                             if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
@@ -16,8 +15,8 @@ function createTooltip(e) {
                                     console.log('Word snapping was rejected due to pressed CTRL key');
                             } else {
 
-                                /// TODO: Don't snap when clicked on already selected area
-                                snapSelectionByWords(selection);
+                                if (document.querySelector(`[class*='selection-tooltip-draghandle'`) == null)
+                                    snapSelectionByWords(selection);
                             }
                         }
 
@@ -48,7 +47,9 @@ function createTooltip(e) {
                             }
 
                             /// Ignore single click on text field with inputted value
-                            if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                            try {
+                                if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                            } catch (e) { }
 
                             /// Create text field tooltip
                             setUpNewTooltip('textfield');
@@ -65,6 +66,10 @@ function createTooltip(e) {
 
                         if (tooltip !== null && tooltip !== undefined) {
                             hideTooltip();
+                        }
+
+                        if (selectedText == '') {
+                            hideDragHandles();
                         }
 
                         setUpNewTooltip();
@@ -191,14 +196,15 @@ function addBasicTooltipButtons(layout) {
 
         if (selection.toString() !== '') {
 
-            try { /// Add a cut button 
+            try {
+                /// Add a cut button 
                 var cutButton = document.createElement('button');
                 cutButton.setAttribute('class', `selection-popup-button`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     cutButton.setAttribute('title', cutLabel);
 
                 if (addButtonIcons)
-                    cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : cutLabel);
+                    cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : cutLabel);
                 else
                     cutButton.textContent = cutLabel;
                 cutButton.style.borderRadius = firstButtonBorderRadius;
@@ -218,7 +224,7 @@ function addBasicTooltipButtons(layout) {
                     copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (configs.buttonsStyle == 'onlyicon' ? '' : copyLabel);
                 else
                     copyButton.textContent = copyLabel;
-                copyButton.style.borderRadius = lastButtonBorderRadius;
+                // copyButton.style.borderRadius = lastButtonBorderRadius;
 
                 copyButton.addEventListener("mousedown", function (e) {
                     try {
@@ -232,6 +238,51 @@ function addBasicTooltipButtons(layout) {
                     tooltip.insertBefore(copyButton, cutButton);
                 else
                     tooltip.appendChild(copyButton);
+
+                /// support for cyrillic alphabets
+                /// source: https://stackoverflow.com/a/40503617/11381400
+                const cyrillicPattern = /^[\u0400-\u04FF]+$/;
+                if (!cyrillicPattern.test(selection.toString().replaceAll(' ', ''))) {
+                    /// Add 'bold' button 
+                    var boldButton = document.createElement('button');
+                    boldButton.setAttribute('class', `selection-popup-button button-with-border`);
+                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                        boldButton.setAttribute('title', boldLabel);
+
+                    if (addButtonIcons)
+                        boldButton.innerHTML = createImageIcon(boldTextIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : boldLabel);
+                    else
+                        boldButton.textContent = boldLabel;
+                    boldButton.addEventListener("mousedown", function (e) {
+                        formatSelectedTextForInput(textField, selection, 'bold')
+
+                        hideTooltip();
+                        removeSelectionOnPage();
+                    });
+                    tooltip.appendChild(boldButton);
+
+                    /// Add 'italic' button 
+                    var italicButton = document.createElement('button');
+                    italicButton.setAttribute('class', `selection-popup-button button-with-border`);
+                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                        italicButton.setAttribute('title', italicLabel);
+
+                    if (addButtonIcons)
+                        italicButton.innerHTML = createImageIcon(italicTextIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : italicLabel);
+                    else
+                        italicButton.textContent = italicLabel;
+                    italicButton.style.borderRadius = lastButtonBorderRadius;
+                    italicButton.addEventListener("mousedown", function (e) {
+                        formatSelectedTextForInput(textField, selection, 'italic');
+
+                        hideTooltip();
+                        removeSelectionOnPage();
+                    });
+                    tooltip.appendChild(italicButton);
+                }
+
+
+
             } catch (e) { if (configs.debugMode) console.log(e) }
 
             /// Set border radius for buttons
@@ -239,24 +290,25 @@ function addBasicTooltipButtons(layout) {
             tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
-            /// Add only paste button 
-            var pasteButton = document.createElement('button');
-            pasteButton.setAttribute('class', `selection-popup-button`);
-            if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                pasteButton.setAttribute('title', pasteLabel);
-            copyButton.style.borderRadius = `${configs.borderRadius - 3}px`;
+            try {
+                /// Add only paste button 
+                var pasteButton = document.createElement('button');
+                pasteButton.setAttribute('class', `selection-popup-button`);
+                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                    pasteButton.setAttribute('title', pasteLabel);
+                pasteButton.style.borderRadius = `${configs.borderRadius - 3}px`;
 
-            if (addButtonIcons)
-                pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
-            else
-                pasteButton.textContent = pasteLabel;
-            pasteButton.addEventListener("mousedown", function (e) {
-                textField.focus();
-                document.execCommand('paste');
-                removeSelectionOnPage();
-
-            });
-            tooltip.appendChild(pasteButton);
+                if (addButtonIcons)
+                    pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
+                else
+                    pasteButton.textContent = pasteLabel;
+                pasteButton.addEventListener("mousedown", function (e) {
+                    textField.focus();
+                    document.execCommand('paste');
+                    removeSelectionOnPage();
+                });
+                tooltip.appendChild(pasteButton);
+            } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
 

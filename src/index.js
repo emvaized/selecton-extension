@@ -56,6 +56,8 @@ function init() {
         showOnMapLabel = chrome.i18n.getMessage("showOnMap");
         cutLabel = chrome.i18n.getMessage("cutLabel");
         pasteLabel = chrome.i18n.getMessage("pasteLabel");
+        boldLabel = chrome.i18n.getMessage("boldLabel");
+        italicLabel = chrome.i18n.getMessage("italicLabel");
 
         /// Set dynamic color for foreground (text and icons)
         document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));

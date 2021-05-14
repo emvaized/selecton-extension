@@ -3,6 +3,7 @@
 var secondaryTooltipHeight;
 
 function createSecondaryTooltip() {
+    if (searchButton == null || searchButton == undefined) return;
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
     secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
@@ -117,7 +118,7 @@ function createSecondaryTooltip() {
 
     setTimeout(function () {
         appendSecondaryTooltip();
-    }, 50);
+    }, 100);
 }
 
 function appendSecondaryTooltip() {
