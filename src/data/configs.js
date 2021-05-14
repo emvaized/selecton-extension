@@ -53,6 +53,7 @@ var configs = {
     'verticalSecondaryTooltip': true,
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
+    'preferredTranslateService': 'google',
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

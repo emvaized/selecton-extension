@@ -255,6 +255,10 @@
         "message": "Suchmaschine",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "preferredTranslateService": {
+        "message": "Übersetzungsdienst",
+        "description": "Label for field in settings"
+    },
     "prepareCurrencySymbol": {
         "message": "Währungssymbole anstelle von Codes bevorzugen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"

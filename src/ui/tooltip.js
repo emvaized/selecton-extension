@@ -8,6 +8,7 @@ function createTooltip(e) {
                     if (evt.buttons == 1) {
 
                         hideTooltip();
+                        hideDragHandles();
 
                         if (configs.snapSelectionToWord) {
                             if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
@@ -855,7 +856,8 @@ function showTooltip(dx, dy) {
         /// Make tooltip not-interactive in first half of animation
         tooltip.style.pointerEvents = 'none';
         setTimeout(function () {
-            tooltip.style.pointerEvents = 'all';
+            if (tooltip !== null)
+                tooltip.style.pointerEvents = 'all';
         }, configs.animationDuration / 2);
     }
 
@@ -875,7 +877,14 @@ function showTooltip(dx, dy) {
                 for (i in websiteTooltips) {
                     var el = websiteTooltips[i];
 
-                    if (el.style !== undefined && !el.getAttribute('class').toString().includes('selection-tooltip')) {
+                    let elementClass;
+                    try {
+                        elementClass = el.getAttribute('class');
+                    } catch (e) { }
+
+                    if (elementClass !== null && elementClass !== undefined && elementClass.toString().includes('selection-tooltip')) {
+
+                    } else if (el.style !== undefined) {
                         var transformStyle;
 
                         try {
@@ -890,10 +899,11 @@ function showTooltip(dx, dy) {
                         if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate') && transformStyle !== 'translateY(0px)' && transformStyle !== 'translate(0px, 0px)')
                             || (elementStyle.includes('left:') && elementStyle.includes('top:'))
                         ) {
-                            if (el.clientHeight < 100) {
+                            if (el.getAttribute('id') !== 'cmg-fullscreen-image' && el.clientHeight < 100) {
                                 if (configs.debugMode) {
                                     console.log('Detected selection tooltip on the website with following style:');
                                     console.log(elementStyle);
+                                    console.log(el.getAttribute('id'));
                                 }
 
                                 websiteTooltip = el;

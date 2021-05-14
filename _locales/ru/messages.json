@@ -259,6 +259,10 @@
         "message": "Поисковая система",
         "description": ""
     },
+    "preferredTranslateService": {
+        "message": "Сервис перевода",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Убрать свою иконку",
         "description": "Tooltip for button to remove custom icon"

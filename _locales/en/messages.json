@@ -251,6 +251,10 @@
     "message": "Preferred method for creating new email",
     "description": "Label for field in settings"
   },
+  "preferredTranslateService": {
+    "message": "Translation service",
+    "description": "Label for field in settings"
+  },
   "preferredSearchEngine": {
     "message": "Search engine",
     "description": "Label for field in settings"

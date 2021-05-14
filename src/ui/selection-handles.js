@@ -50,7 +50,6 @@ function addDragHandle(dragHandleIndex) {
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-        // circleDiv.setAttribute('style', `border-radius: 50%;background: ${configs.tooltipBackground}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -6.5px;`);
         circleDiv.setAttribute('style', `z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-in-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';

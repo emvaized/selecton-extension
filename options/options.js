@@ -138,6 +138,8 @@ function updateDisabledOptions() {
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#verticalSecondaryTooltip").checked ? 'hidden-option' : 'visible-option';
+    document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';

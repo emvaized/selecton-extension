@@ -62,6 +62,7 @@ function createSecondaryTooltip() {
             /// Add label in vertical style
             if (configs.verticalSecondaryTooltip) {
                 container.setAttribute('style', `display: ${configs.verticalSecondaryTooltip ? 'block' : 'inline'};`);
+                container.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
                 container.setAttribute('class', 'custom-search-image-button');
                 container.appendChild(imgButton);
 
@@ -120,6 +121,8 @@ function createSecondaryTooltip() {
 }
 
 function appendSecondaryTooltip() {
+    if (tooltip == null) return;
+
     var paddingOnBottom = 3;
     var isSecondaryTooltipHovered = false;
 

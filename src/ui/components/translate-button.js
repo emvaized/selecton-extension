@@ -51,11 +51,12 @@ function addTranslateButton() {
                     tooltip.appendChild(translateButton);
 
                 translateButton.addEventListener("mousedown", function (e) {
-                    let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
+                    // let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
+                    let url = returnTranslateUrl(selectedText);
                     onTooltipButtonClick(e, url);
                 });
 
-                if (configs.liveTranslation && selectedText.split(' ').length <= 3) {
+                if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
                     try {
                         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
                     } catch (e) {
@@ -103,6 +104,10 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     /// Simplified version of Simple Translate extension request (as per 4 May 21) 
     /// https://github.com/sienori/simple-translate/blob/f8ec34e1b17635c0b03d8fbbc64562ca5534acca/src/common/translate.js#L26
 
+    translateButton.style.color = secondaryColor;
+    translateButton.innerHTML = '...'; /// Placeholder while loading
+    let translateButtonWidthBeforeResult = translateButton.clientWidth;
+
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(
         word
     )}`;
@@ -145,16 +150,15 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
             console.log(resultOfLiveTranslation);
         }
 
-        translateButton.style.color = secondaryColor;
         translateButton.innerHTML = resultOfLiveTranslation;
 
         /// Create origin language label
 
         let originLabelWidth = configs.fontSize / 1.5;
         let originLabelPadding = 3.5;
-
+        let langLabel;
         if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
-            let langLabel = document.createElement('span');
+            langLabel = document.createElement('span');
             langLabel.textContent = originLanguage;
             langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;`)
             langLabel.style.color = getTextColorForBackground(configs.tooltipBackground.toLowerCase());
@@ -163,8 +167,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
 
         /// Correct tooltip's dx
         setTimeout(function () {
-            let correctionForOriginLabel = originLanguage !== null && originLanguage !== undefined && originLanguage !== '' ? originLabelWidth - originLabelPadding : 0.0;
-            tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2) + correctionForOriginLabel)}px`;
+            tooltip.style.left = `${parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - ((translateButton.clientWidth - translateButtonWidthBeforeResult) / 2)}px`;
 
             /// Correct last button's border radius
             tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';

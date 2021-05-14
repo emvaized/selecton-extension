@@ -1,3 +1,9 @@
+#3.1.0
+- Custom search buttons are now aligned to end when reverse buttons order enabled
+- Added option to change translation service
+- Small layout fixes and improvements
+- Improved overall extension stability
+
 #3.0.9
 - Fix for search tooltip going off-screen on top when there's no enough space
 - Improvements for links detection

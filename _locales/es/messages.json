@@ -259,6 +259,10 @@
         "message": "Motor de búsqueda",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "preferredTranslateService": {
+        "message": "Servicio de traduccion",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Eliminar icono personalizado",
         "description": "Descripción emergente del botón para eliminar el icono personalizado"

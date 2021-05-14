@@ -259,6 +259,10 @@
         "message": "Moteur de recherche",
         "description": "Libellé du champ dans les paramètres"
     },
+    "preferredTranslateService": {
+        "message": "Service de traduction",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Supprimer l'icône personnalisée",
         "description": "Info-bulle pour le bouton permettant de supprimer l'icône personnalisée"
