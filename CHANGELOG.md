@@ -3,6 +3,7 @@
 - Selecton is capable now of converting astrix punctuation for feet/inches (like 6'5")
 - Now code to check selected text for matches will run asynchronously, which should improve overall snapiness of the tooltip
 - "Live translation" button no longer breaks code to shift tooltip when colliding with side edges
+- All Selecton overlays are now hidden when whole window is resized, because old dx/dy positions for them loose any sense - better solution would be to recalculate them
 - Small layout fixes and improvements
 
 #3.1.1

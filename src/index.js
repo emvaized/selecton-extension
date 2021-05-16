@@ -157,19 +157,17 @@ function setPageListeners() {
 
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
-      // if (configs.snapSelectionToWord) {
-      //   if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
-      //     if (configs.debugMode)
-      //       console.log('Word snapping was rejected due to pressed CTRL key');
-      //   } else {
-
-      //     /// TODO: Don't snap when clicked on already selected area
-      //       snapSelectionByWords(selection);
-      //   }
-      // }
-
       createTooltip(e);
     }
+  });
+
+  window.addEventListener('resize', function (e) {
+    /// TODO: 
+    /// Recaclulate dx/dy for tooltip, secondary tooltip and drag handles
+    if (configs.debugMode)
+      console.log('hide all Selecton overlays on window resize');
+    hideTooltip();
+    hideDragHandles();
   });
 }
 
