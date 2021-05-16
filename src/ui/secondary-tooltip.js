@@ -70,7 +70,11 @@ function createSecondaryTooltip() {
                 let labelSpan = document.createElement('span');
                 labelSpan.innerHTML = titleText.charAt(0).toUpperCase() + titleText.slice(1);
                 labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
-                container.appendChild(labelSpan);
+                if (configs.reverseTooltipButtonsOrder)
+                    container.insertBefore(labelSpan, imgButton);
+                else
+                    container.appendChild(labelSpan);
+
                 secondaryTooltip.appendChild(container);
 
             } else {

@@ -76,6 +76,14 @@ function createTooltip(e) {
 
                         if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
                             addContextualButtons();
+
+                            setTimeout(function () {
+                                /// Set border radius for first and last buttons
+                                tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+                                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                                calculateTooltipPosition();
+                            }, 1);
                         }
                         else hideTooltip();
                     }
@@ -939,9 +947,6 @@ function addContextualButtons() {
                                 console.log('converted time:');
                                 console.log(convertedTime);
                             }
-
-                            // console.log(today.getDay())
-                            // console.log(new Date(d.toString()).getDay())
                         }
                     }
                     break;
@@ -1006,13 +1011,13 @@ function addContextualButtons() {
         addTranslateButton();
     }
 
-    setTimeout(function () {
-        /// Set border radius for first and last buttons
-        tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-        tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+    // setTimeout(function () {
+    //     /// Set border radius for first and last buttons
+    //     tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+    //     tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
-        calculateTooltipPosition();
-    }, 1);
+    //     calculateTooltipPosition();
+    // }, 1);
 }
 
 function calculateTooltipPosition() {
@@ -1055,7 +1060,7 @@ function calculateTooltipPosition() {
 
     setTimeout(function () {
         checkTooltipForCollidingWithSideEdges();
-    }, 1);
+    }, 2);
 }
 
 function showTooltip(dx, dy) {
@@ -1155,54 +1160,6 @@ function showTooltip(dx, dy) {
                 console.log(e);
             }
         }, configs.animationDuration);
-}
-
-function checkTooltipForCollidingWithSideEdges() {
-    if (configs.debugMode)
-        console.log('Checking Selecton tooltip to colliding with side edges...');
-
-    var dx = parseInt(tooltip.style.left.replaceAll('px', ''));
-
-    var tooltipWidth = 12.0;
-    tooltip.querySelectorAll('.selection-popup-button').forEach(function (el) {
-        tooltipWidth += el.offsetWidth;
-    });
-
-    /// Tooltip is off-screen on the left
-    if (dx < 0) {
-
-        if (configs.debugMode)
-            console.log('Tooltip is colliding with left edge. Fixing...');
-
-        tooltip.style.left = '5px';
-
-        /// Shift the arrow to match new position
-        var newLeftPercentForArrow = ((dx * -1) + 5) / tooltipWidth * 100;
-        if (arrow !== null && arrow !== undefined)
-            arrow.style.left = `${50 - newLeftPercentForArrow}%`;
-
-    } else {
-        var screenWidth = window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth;
-
-        var offscreenAmount = (dx + tooltipWidth) - screenWidth + 10;
-
-        /// Tooltip is off-screen on the right
-        if (offscreenAmount > 0) {
-            if (configs.debugMode)
-                console.log('Tooltip is colliding with right edge. Fixing...');
-
-            tooltip.style.left = `${dx - offscreenAmount - 5}px`;
-
-            /// Shift the arrow to match new position
-            var newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
-            arrow.style.left = `${50 + newLeftPercentForArrow}%`;
-        } else {
-            if (configs.debugMode)
-                console.log('Tooltip is not colliding with side edges');
-        }
-    }
 }
 
 function hideTooltip() {

@@ -1,6 +1,8 @@
 #3.1.2
 - Implemented 'Convert time' button
 - Selecton is capable now of converting astrix punctuation for feet/inches (like 6'5")
+- Now code to check selected text for matches will run asynchronously, which should improve overall snapiness of the tooltip
+- "Live translation" button no longer breaks code to shift tooltip when colliding with side edges
 - Small layout fixes and improvements
 
 #3.1.1
