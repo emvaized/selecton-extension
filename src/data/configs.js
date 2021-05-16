@@ -4,6 +4,7 @@ var configs = {
     'convertMetrics': true,
     'addOpenLinks': true,
     'convertCurrencies': true,
+    'convertTime': true,
     'performSimpleMathOperations': true,
     'preferredMetricsSystem': 'metric',
     'showTranslateButton': true,

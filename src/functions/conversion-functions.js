@@ -12,11 +12,11 @@ function extractAmountFromSelectedText(selectedText) {
 
         try {
             amount = calculateString(word.trim().replaceAll('$', ''));
-            console.log('calculated word:');
-            console.log(amount);
+            // console.log('calculated word:');
+            // console.log(amount);
         } catch (e) {
-            console.log('failed to calculate word ' + i.toString());
-            console.log(e);
+            // console.log('failed to calculate word ' + i.toString());
+            // console.log(e);
         }
 
         if (amount == null || amount == undefined || amount == '' || amount == NaN) {

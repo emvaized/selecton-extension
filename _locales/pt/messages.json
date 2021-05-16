@@ -83,6 +83,10 @@
         "message": "Converter métricas",
         "description": "Rótulo para o campo nas configurações"
     },
+    "convertTime": {
+        "message": "Converter tempo",
+        "description": "Label for field in settings"
+    },
     "convertToCurrency": {
         "message": "Moeda para converter (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Veja a informação</a>)",
         "description": "Rótulo para o campo nas configurações"

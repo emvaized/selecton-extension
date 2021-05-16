@@ -83,6 +83,10 @@
         "message": "Convertir les statistiques",
         "description": "Libellé du champ dans les paramètres"
     },
+    "convertTime": {
+        "message": "Convertir le temps",
+        "description": "Label for field in settings"
+    },
     "convertToCurrency": {
         "message": "Devise à convertir (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Voir info</a>)",
         "description": "Libellé du champ dans les paramètres"

@@ -259,7 +259,10 @@ function addBasicTooltipButtons(layout) {
                         hideTooltip();
                         removeSelectionOnPage();
                     });
-                    tooltip.appendChild(boldButton);
+                    if (configs.reverseTooltipButtonsOrder)
+                        tooltip.insertBefore(boldButton, copyButton);
+                    else
+                        tooltip.appendChild(boldButton);
 
                     /// Add 'italic' button 
                     var italicButton = document.createElement('button');
@@ -278,10 +281,11 @@ function addBasicTooltipButtons(layout) {
                         hideTooltip();
                         removeSelectionOnPage();
                     });
-                    tooltip.appendChild(italicButton);
+                    if (configs.reverseTooltipButtonsOrder)
+                        tooltip.insertBefore(italicButton, boldButton);
+                    else
+                        tooltip.appendChild(italicButton);
                 }
-
-
 
             } catch (e) { if (configs.debugMode) console.log(e) }
 
@@ -361,62 +365,104 @@ function addContextualButtons() {
         var numberToConvert;
 
         /// Unit conversion button
-        if (configs.convertMetrics)
-            outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-                var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                if (selectedText.includes(nonConvertedUnit)) {
+        if (configs.convertMetrics) {
+            var convertedNumber;
+            var fromUnit;
+            var convertedUnit;
 
-                    numberToConvert = extractAmountFromSelectedText(selectedText);
+            /// Feet ' and inches " handling
+            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric')
+                if ((selectedText.includes("'"))) {
+                    let feet;
+                    let inches;
 
-                    if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-                        var fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                        var convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
-                        var convertedNumber;
+                    let parts = selectedText.split("'");
+                    console.log(parts);
+                    if (parts.length == 2 || parts.length == 4) {
+                        feet = extractAmountFromSelectedText(parts[0]);
+                        inches = extractAmountFromSelectedText(parts[1].split('"')[0])
+                    } else if (parts.length == 1) {
+                        /// Only feet available
+                        feet = extractAmountFromSelectedText(parts[0]);
+                    }
 
-                        if (fromUnit.includes('°')) {
-                            convertedNumber = value['convertFunction'](numberToConvert);
-                        } else {
-                            convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
-                        }
+                    if (feet !== null) {
+                        if (inches == null) inches = 0.0;
+                        convertedNumber = (feet * convertionUnits['feet']['ratio'] * 100) + (inches * convertionUnits['inch']['ratio']);
+                        fromUnit = '';
+                        convertedUnit = 'cm';
+                        numberToConvert = selectedText;
+                    }
 
-                        /// Round doubles to the first 2 symbols after dot
-                        convertedNumber = convertedNumber.toFixed(2);
+                } else if (selectedText.includes('"')) {
+                    /// Only inches present
+                    let parts = selectedText.split('"')
 
-                        /// Add unit converter button
-                        if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && convertedNumber !== NaN) {
-                            var interactiveButton = document.createElement('button');
-                            interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                            if (configs.showUnconvertedValue)
-                                interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
+                    if (parts.length == 2) {
+                        inches = extractAmountFromSelectedText(selectedText);
+                        convertedNumber = inches * convertionUnits['inch']['ratio'];
+                        fromUnit = '';
+                        convertedUnit = 'cm';
+                        numberToConvert = selectedText;
+                    }
 
-                            var converted = document.createElement('span');
-                            converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
-                            converted.setAttribute('style', `color: ${secondaryColor}`);
-                            interactiveButton.appendChild(converted);
+                } else
+                    outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+                        var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                        if (selectedText.includes(nonConvertedUnit)) {
 
-                            interactiveButton.addEventListener("mousedown", function (e) {
-                                let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
-                                onTooltipButtonClick(e, url);
-                            });
+                            numberToConvert = extractAmountFromSelectedText(selectedText);
 
-                            if (configs.reverseTooltipButtonsOrder)
-                                tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                            else
-                                tooltip.appendChild(interactiveButton);
-                            try {
-                                tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                            } catch (e) {
-                                if (configs.debugMode)
-                                    console.log(e);
+                            if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                                fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                                convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+
+                                if (fromUnit.includes('°')) {
+                                    convertedNumber = value['convertFunction'](numberToConvert);
+                                } else {
+                                    convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
+                                }
+
+                                break outerloop;
                             }
-                            break outerloop;
                         }
                     }
+
+            /// Add unit converter button
+            if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && !isNaN(convertedNumber)) {
+                /// Round doubles to the first 2 symbols after dot
+                convertedNumber = convertedNumber.toFixed(2);
+
+                var interactiveButton = document.createElement('button');
+                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                if (configs.showUnconvertedValue)
+                    interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
+
+                var converted = document.createElement('span');
+                converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                converted.setAttribute('style', `color: ${secondaryColor}`);
+                interactiveButton.appendChild(converted);
+
+                interactiveButton.addEventListener("mousedown", function (e) {
+                    let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
+                    onTooltipButtonClick(e, url);
+                });
+
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                else
+                    tooltip.appendChild(interactiveButton);
+                try {
+                    tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                } catch (e) {
+                    if (configs.debugMode)
+                        console.log(e);
                 }
             }
+        }
 
         /// Phone number button
-        if (configs.addPhoneButton && selectedText.includes('+') && !selectedText.trim().includes(' ') && selectedText.trim().length == 13 && selectedText[0] == '+') {
+        if (configs.addPhoneButton && selectedText.includes('+') && !selectedText.includes(' ') && selectedText.length == 13 && selectedText[0] == '+') {
             var phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
             phoneButton.innerHTML = createImageIcon(phoneIcon, 0.7) + selectedText;
@@ -835,6 +881,120 @@ function addContextualButtons() {
                         }
                     }
 
+            }
+        }
+
+        /// Timezone convert button
+        if (configs.convertTime) {
+
+            let textToProccess = selectedText;
+
+            let convertedTime;
+            let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
+            for (i in timeZoneKeywordsKeys) {
+                let marker = timeZoneKeywordsKeys[i];
+
+
+                if (textToProccess.includes(' ' + marker)) {
+                    let words = textToProccess.trim().split(' ');
+
+                    let timeWord;
+                    for (i in words) {
+                        let word = words[i];
+
+                        if (word.includes(':')) {
+                            timeWord = word;
+                            break;
+                        }
+                    }
+
+                    if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
+                        let numbers = timeWord.split(':');
+
+                        if (numbers.length == 2 || numbers.length == 3) {
+
+                            let today = new Date();
+                            if (configs.debugMode) {
+                                console.log('today:');
+                                console.log(today);
+                            }
+
+                            let modifier = textToProccess.includes(' PM') ? ' PM' : textToProccess.includes(' AM') ? ' AM' : '';
+
+                            let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
+
+                            if (configs.debugMode) {
+                                console.log('setting date from:');
+                                console.log(dateStringWithTimeReplaced);
+                            }
+
+                            let d = new Date(dateStringWithTimeReplaced); /// '6/29/2011 4:52:48 PM UTC'
+                            if (configs.debugMode) {
+                                console.log('setted date:');
+                                console.log(d.toString())
+                            }
+
+                            convertedTime = d.toLocaleTimeString().substring(0, 5);
+                            if (configs.debugMode) {
+                                console.log('converted time:');
+                                console.log(convertedTime);
+                            }
+
+                            // console.log(today.getDay())
+                            // console.log(new Date(d.toString()).getDay())
+                        }
+                    }
+                    break;
+                }
+            }
+
+            /// Check if selected text contains numbers
+            let numbers = extractAmountFromSelectedText(textToProccess);
+
+            if (numbers !== null) {
+                if (configs.preferredMetricsSystem == 'metric') {
+                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        textToProccess = convertTime12to24(textToProccess)
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
+                    }
+                } else {
+                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('AM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        textToProccess = convertTime24to12(textToProccess)
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
+                    }
+                }
+            }
+
+            if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
+                var timeButton = document.createElement('button');
+                timeButton.setAttribute('class', `selection-popup-button button-with-border`);
+                timeButton.style.color = secondaryColor;
+                if (addButtonIcons)
+                    timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess);
+                else
+                    timeButton.textContent = convertedTime ?? textToProccess;
+                // timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + convertedTime;
+                timeButton.addEventListener("mousedown", function (e) {
+                    hideTooltip();
+                    removeSelectionOnPage();
+
+                    /// Open system handler
+                    if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
+                        onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                    else
+                        onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+
+                });
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(timeButton, tooltip.children[1]);
+                else
+                    tooltip.appendChild(timeButton);
             }
         }
     }

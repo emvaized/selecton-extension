@@ -87,6 +87,10 @@
     "message": "Convert metrics",
     "description": "Label for field in settings"
   },
+  "convertTime": {
+    "message": "Convert time",
+    "description": "Label for field in settings"
+  },
   "convertToCurrency": {
     "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See info</a>)",
     "description": "Label for field in settings"

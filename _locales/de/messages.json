@@ -83,6 +83,10 @@
         "message": "Metriken konvertieren",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "convertTime": {
+        "message": "Zeit umrechnen",
+        "description": "Label for field in settings"
+    },
     "convertToCurrency": {
         "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)",
         "description": "Bezeichnung für Feld in Einstellungen"

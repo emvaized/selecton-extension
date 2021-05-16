@@ -87,6 +87,10 @@
         "message": "Конвертировать длину/массу",
         "description": "Label for field in settings"
     },
+    "convertTime": {
+        "message": "Конвертировать время",
+        "description": "Label for field in settings"
+    },
     "convertToCurrency": {
         "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать больше</a>)",
         "description": "Label for field in settings"
