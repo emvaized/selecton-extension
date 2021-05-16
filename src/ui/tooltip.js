@@ -897,11 +897,36 @@ function addContextualButtons() {
 
             let textToProccess = selectedText;
 
+            /// 12H - 24H conversion
+            let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
+
+            if (numbers !== null) {
+                if (configs.preferredMetricsSystem == 'metric') {
+                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        // textToProccess = convertTime12to24(textToProccess)
+                        textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
+                    }
+                } else {
+                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('AM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        // textToProccess = convertTime24to12(textToProccess)
+                        textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
+
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
+                    }
+                }
+            }
+
             let convertedTime;
             let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
             for (i in timeZoneKeywordsKeys) {
                 let marker = timeZoneKeywordsKeys[i];
-
 
                 if (textToProccess.includes(' ' + marker)) {
                     let words = textToProccess.trim().split(' ');
@@ -953,38 +978,15 @@ function addContextualButtons() {
                 }
             }
 
-            /// Check if selected text contains numbers
-            let numbers = extractAmountFromSelectedText(textToProccess);
-
-            if (numbers !== null) {
-                if (configs.preferredMetricsSystem == 'metric') {
-                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = convertTime12to24(textToProccess)
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                } else {
-                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('AM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = convertTime24to12(textToProccess)
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                }
-            }
-
             if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
                 var timeButton = document.createElement('button');
                 timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                 timeButton.style.color = secondaryColor;
                 if (addButtonIcons)
-                    timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess);
+                    timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
                 else
-                    timeButton.textContent = convertedTime ?? textToProccess;
-                // timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + convertedTime;
+                    // timeButton.textContent = convertedTime ?? textToProccess;
+                    timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':');
                 timeButton.addEventListener("mousedown", function (e) {
                     hideTooltip();
                     removeSelectionOnPage();
@@ -1082,7 +1084,7 @@ function showTooltip(dx, dy) {
     tooltip.style.transform = returnTooltipRevealTransform(true);
 
     if (configs.debugMode)
-        console.log('Selecton tooltip shown');
+        console.log('Selecton tooltip is shown');
 
     if (configs.shiftTooltipWhenWebsiteHasOwn)
         setTimeout(function () {
@@ -1144,7 +1146,7 @@ function showTooltip(dx, dy) {
             } else {
                 arrow.style.opacity = 1.0;
                 if (configs.debugMode) {
-                    console.log('Selection didnt found any website tooltips');
+                    console.log('Selecton didnt found any website tooltips');
                 }
             }
 
