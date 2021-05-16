@@ -88,7 +88,30 @@ function setRegularTranslateButton(translateButton) {
         translateButton.textContent = translateLabel;
 
     /// Correct tooltip's dx
-    tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+    // tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+
+    let resultingDx;
+    try {
+        /// New approach - place tooltip in horizontal center between two selection handles
+        let selStartDimensions = getSelectionCoordinates(true);
+        let selEndDimensions = getSelectionCoordinates(false);
+        let delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
+
+        if (selEndDimensions.dx > selStartDimensions.dx)
+            resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+        else
+            resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+
+    } catch (e) {
+        if (configs.debugMode)
+            console.log(e);
+
+        /// Fall back to old approach - place tooltip in horizontal center selection rect,
+        /// which may be in fact bigger than visible selection
+        resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+    }
+
+    tooltip.style.left = `${resultingDx}px`;
 
     /// Correct last button's border radius
     tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
@@ -103,11 +126,11 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     /// Simplified version of Simple Translate extension request (as per 4 May 21) 
     /// https://github.com/sienori/simple-translate/blob/f8ec34e1b17635c0b03d8fbbc64562ca5534acca/src/common/translate.js#L26
 
+    // let translateButtonWidthBeforeResult = translateButton.clientWidth;
 
-    let translateButtonWidthBeforeResult = translateButton.clientWidth;
     /// Placeholder while loading
-    translateButton.style.color = secondaryColor;
-    translateButton.innerHTML = word;
+    // translateButton.innerHTML = '.'.repeat(word.length);
+    translateButton.innerHTML = translateLabel;
 
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(
         word
@@ -145,12 +168,13 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     } catch (e) { }
 
     /// Set translated button
-    if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '') {
+    if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
         if (configs.debugMode) {
             console.log('Result of live translation:');
             console.log(resultOfLiveTranslation);
         }
 
+        translateButton.style.color = secondaryColor;
         translateButton.innerHTML = resultOfLiveTranslation;
 
         /// Create origin language label
@@ -203,6 +227,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
 
     } else {
         /// if no translation found, set regular translate button
+        translateButton.style.color = getTextColorForBackground(configs.tooltipBackground.toLowerCase());
         setRegularTranslateButton(translateButton);
     }
 

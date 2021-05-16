@@ -379,7 +379,11 @@ function addContextualButtons() {
             var convertedUnit;
 
             /// Feet ' and inches " handling
-            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric')
+
+            /// don't proccess if text includes letters
+            var regExp = /[a-zA-Z]/g;
+
+            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric' && !regExp.test(selectedText))
                 if ((selectedText.includes("'"))) {
                     let feet;
                     let inches;
