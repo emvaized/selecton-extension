@@ -380,16 +380,12 @@ function addContextualButtons() {
 
             /// Feet ' and inches " handling
 
-            /// don't proccess if text includes letters
-            var regExp = /[a-zA-Z]/g;
-
-            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric' && !regExp.test(selectedText))
+            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
                 if ((selectedText.includes("'"))) {
                     let feet;
                     let inches;
 
                     let parts = selectedText.split("'");
-                    console.log(parts);
                     if (parts.length == 2 || parts.length == 4) {
                         feet = extractAmountFromSelectedText(parts[0]);
                         inches = extractAmountFromSelectedText(parts[1].split('"')[0])
@@ -1062,7 +1058,7 @@ function calculateTooltipPosition() {
     showTooltip(resultingDx, resultingDy + 4);
 
     if (configs.addDragHandles)
-        setDragHandles();
+        ммsetDragHandles();
 
     setTimeout(function () {
         checkTooltipForCollidingWithSideEdges();
