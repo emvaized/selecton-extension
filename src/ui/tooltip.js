@@ -1058,7 +1058,7 @@ function calculateTooltipPosition() {
     showTooltip(resultingDx, resultingDy + 4);
 
     if (configs.addDragHandles)
-        ммsetDragHandles();
+        setDragHandles();
 
     setTimeout(function () {
         checkTooltipForCollidingWithSideEdges();

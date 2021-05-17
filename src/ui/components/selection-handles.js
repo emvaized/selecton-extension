@@ -1,4 +1,4 @@
-function setDragHaмndles() {
+function setDragHandles() {
     /// Dont add drag handles if they are already added
     var existingDragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle'`);
     if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
