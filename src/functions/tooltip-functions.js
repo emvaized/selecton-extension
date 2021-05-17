@@ -63,7 +63,7 @@ function returnDomainFromUrl(url, firstLetterIsCapital = true) {
 
 function checkTooltipForCollidingWithSideEdges() {
     if (configs.debugMode)
-        console.log('Checking Selecton tooltip to colliding with side edges...');
+        console.log('Checking Selecton tooltip for colliding with side edges...');
 
     var dx = parseInt(tooltip.style.left.replaceAll('px', ''));
 

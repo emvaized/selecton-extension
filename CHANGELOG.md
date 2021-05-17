@@ -1,3 +1,6 @@
+#3.1.4
+- Fix for unit conversion not working after latest update
+
 #3.1.3
 - Implemented 'Convert time' button
 - Selecton is capable now of converting astrix punctuation for feet/inches (like 6'5")

@@ -379,7 +379,6 @@ function addContextualButtons() {
             var convertedUnit;
 
             /// Feet ' and inches " handling
-
             if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
                 if ((selectedText.includes("'"))) {
                     let feet;
@@ -413,30 +412,31 @@ function addContextualButtons() {
                         convertedUnit = 'cm';
                         numberToConvert = selectedText;
                     }
+                }
 
-                } else
-                    outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-                        var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                        if (selectedText.includes(nonConvertedUnit)) {
+            /// Basic unit conversion
+            outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+                var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                if (selectedText.includes(nonConvertedUnit)) {
 
-                            numberToConvert = extractAmountFromSelectedText(selectedText);
+                    numberToConvert = extractAmountFromSelectedText(selectedText);
 
-                            if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-                                fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                                convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+                    if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                        fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                        convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
 
-                                if (fromUnit.includes('°')) {
-                                    convertedNumber = value['convertFunction'](numberToConvert);
-                                } else {
-                                    convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
-                                }
-
-                                break outerloop;
-                            }
+                        if (fromUnit.includes('°')) {
+                            convertedNumber = value['convertFunction'](numberToConvert);
+                        } else {
+                            convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
                         }
-                    }
 
-            /// Add unit converter button
+                        break outerloop;
+                    }
+                }
+            }
+
+            /// Show result button
             if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && !isNaN(convertedNumber)) {
                 /// Round doubles to the first 2 symbols after dot
                 convertedNumber = convertedNumber.toFixed(2);
@@ -983,7 +983,7 @@ function addContextualButtons() {
                 timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                 timeButton.style.color = secondaryColor;
                 if (addButtonIcons)
-                    timeButton.innerHTML = createImageIcon(clockIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
+                    timeButton.innerHTML = createImageIcon(clockIcon, 0.55) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
                 else
                     // timeButton.textContent = convertedTime ?? textToProccess;
                     timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':');
@@ -1023,10 +1023,13 @@ function addContextualButtons() {
 }
 
 function calculateTooltipPosition() {
-    var selDimensions = getSelectionRectDimensions();
+    // var selDimensions = getSelectionRectDimensions();
 
     /// Calculating DY
-    var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+    // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+
+    var selStartDimensions = getSelectionCoordinates(true);
+    var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
 
     /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
     var vertOutOfView = resultingDy <= window.scrollY;
@@ -1036,7 +1039,7 @@ function calculateTooltipPosition() {
     var resultingDx;
     try {
         /// New approach - place tooltip in horizontal center between two selection handles
-        var selStartDimensions = getSelectionCoordinates(true);
+        // var selStartDimensions = getSelectionCoordinates(true);
         var selEndDimensions = getSelectionCoordinates(false);
         var delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
 
@@ -1051,6 +1054,7 @@ function calculateTooltipPosition() {
 
         /// Fall back to old approach - place tooltip in horizontal center selection rect,
         /// which may be in fact bigger than visible selection
+        var selDimensions = getSelectionRectDimensions();
         resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
     }
 
