@@ -982,11 +982,12 @@ function addContextualButtons() {
                 var timeButton = document.createElement('button');
                 timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                 timeButton.style.color = secondaryColor;
+
                 if (addButtonIcons)
-                    timeButton.innerHTML = createImageIcon(clockIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.7, true) + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
+                    timeButton.innerHTML = createImageIcon(clockIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.7, true) + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':'));
                 else
                     // timeButton.textContent = convertedTime ?? textToProccess;
-                    timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':');
+                    timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
                 timeButton.addEventListener("mousedown", function (e) {
                     hideTooltip();
                     removeSelectionOnPage();
