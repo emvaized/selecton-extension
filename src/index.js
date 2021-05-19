@@ -163,10 +163,9 @@ function setPageListeners() {
       hideTooltip();
       hideDragHandles();
 
-
-      /// TODO: Re-open tooltip and drag handles
       setTimeout(function () {
-        console.log('recreating the tooltip...');
+        if (configs.debugMode)
+          console.log('recreating the tooltip...');
 
         if (window.getSelection) {
           selection = window.getSelection();
@@ -196,11 +195,6 @@ function setPageListeners() {
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
       createTooltip(e);
-
-      // setTimeout(function () {
-      //   document.addEventListener("selectionchange", selectionChangeListener);
-      // }, configs.animationDuration)
-
     }
   });
 
@@ -208,7 +202,7 @@ function setPageListeners() {
     /// TODO: 
     /// Recaclulate dx/dy for tooltip, secondary tooltip and drag handles
     if (configs.debugMode)
-      console.log('hide all Selecton overlays on window resize');
+      console.log('hiding all Selecton overlays on window resize...');
     hideTooltip();
     hideDragHandles();
   });
