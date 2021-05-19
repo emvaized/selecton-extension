@@ -122,7 +122,7 @@ function createSecondaryTooltip() {
 
     setTimeout(function () {
         appendSecondaryTooltip();
-    }, 100);
+    }, configs.animationDuration / 2);
 }
 
 function appendSecondaryTooltip() {

@@ -130,7 +130,9 @@ function setPageListeners() {
   /// Hide tooltip when any key is pressed
   if (configs.hideOnKeypress)
     document.addEventListener("keydown", function (e) {
+      if (tooltipIsShown == false) return;
       if (e.key == 'Control') return;
+      if (e.shiftKey) return;
 
       hideTooltip();
       hideDragHandles();
@@ -138,15 +140,51 @@ function setPageListeners() {
 
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip) return;
+
     evt = e || window.event;
+    if (tooltipIsShown == false) return;
+
     if ("buttons" in evt) {
       if (evt.buttons == 1) {
         selection = null;
         hideTooltip();
         hideDragHandles();
+
+        // document.removeEventListener("selectionchange", selectionChangeListener);
       }
     }
   });
+
+  function selectionChangeListener(e) {
+    /// Handler when selection changed while tooltip is shown
+
+    if (tooltipIsShown) {
+      selection = null;
+      hideTooltip();
+      hideDragHandles();
+
+
+      /// TODO: Re-open tooltip and drag handles
+      setTimeout(function () {
+        console.log('recreating the tooltip...');
+
+        if (window.getSelection) {
+          selection = window.getSelection();
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+
+        if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
+
+          createTooltip();
+        }
+      }, configs.animationDuration)
+
+
+    }
+  }
+
+  document.addEventListener("selectionchange", selectionChangeListener);
 
   document.addEventListener("mouseup", async function (e) {
     if (window.getSelection) {
@@ -158,6 +196,11 @@ function setPageListeners() {
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
       createTooltip(e);
+
+      // setTimeout(function () {
+      //   document.addEventListener("selectionchange", selectionChangeListener);
+      // }, configs.animationDuration)
+
     }
   });
 

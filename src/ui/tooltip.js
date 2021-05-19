@@ -4,90 +4,87 @@ function createTooltip(e) {
     if (dontShowTooltip !== true)
         setTimeout(
             function () {
-                if ("buttons" in evt) {
-                    if (evt.buttons == 1) {
+                if (e !== undefined && evt !== null && evt.button !== 0) return;
 
-                        hideTooltip();
+                hideTooltip();
 
-                        if (configs.snapSelectionToWord) {
-                            if (configs.disableWordSnappingOnCtrlKey && e.ctrlKey == true) {
-                                if (configs.debugMode)
-                                    console.log('Word snapping was rejected due to pressed CTRL key');
-                            } else {
+                if (configs.snapSelectionToWord) {
+                    if (configs.disableWordSnappingOnCtrlKey && e !== undefined && e.ctrlKey == true) {
+                        if (configs.debugMode)
+                            console.log('Word snapping was rejected due to pressed CTRL key');
+                    } else {
 
-                                if (document.querySelector(`[class*='selection-tooltip-draghandle'`) == null)
-                                    snapSelectionByWords(selection);
-                            }
-                        }
-
-                        /// Clear previously stored selection value
-                        if (window.getSelection) {
-                            selection = window.getSelection();
-                        } else if (document.selection) {
-                            selection = document.selection.createRange();
-                        }
-
-                        selectedText = selection.toString().trim();
-
-                        /// Special tooltip for text fields
-                        if (
-                            document.activeElement.tagName === "INPUT" ||
-                            document.activeElement.tagName === "TEXTAREA" ||
-                            document.activeElement.getAttribute('contenteditable') !== null
-                        ) {
-                            if (configs.addActionButtonsForTextFields == false) return;
-
-                            /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
-                            if (selectedText == '') {
-                                var ta = document.querySelector(':focus');
-                                selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-                                selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-
-                                if (selection == null || selection == undefined || selection.toString().trim() == '') return;
-                            }
-
-                            /// Ignore single click on text field with inputted value
-                            try {
-                                if (document.activeElement.value.trim() !== '' && selectedText == '') return;
-                            } catch (e) { }
-
-                            /// Create text field tooltip
-                            setUpNewTooltip('textfield');
-
-                            /// Check resulting DY to be out of view
-                            var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
-                            var vertOutOfView = resultDy <= window.scrollY;
-                            if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
-
-                            showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
-
-                            return;
-                        }
-
-                        if (tooltip !== null && tooltip !== undefined) {
-                            hideTooltip();
-                        }
-
-                        if (selectedText == '') {
-                            hideDragHandles();
-                        }
-
-                        setUpNewTooltip();
-
-                        if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
-                            addContextualButtons();
-
-                            setTimeout(function () {
-                                /// Set border radius for first and last buttons
-                                tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-                                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                                calculateTooltipPosition();
-                            }, 1);
-                        }
-                        else hideTooltip();
+                        if (document.querySelector(`[class*='selection-tooltip-draghandle'`) == null)
+                            snapSelectionByWords(selection);
                     }
                 }
+
+                /// Clear previously stored selection value
+                if (window.getSelection) {
+                    selection = window.getSelection();
+                } else if (document.selection) {
+                    selection = document.selection.createRange();
+                }
+
+                selectedText = selection.toString().trim();
+
+                /// Special tooltip for text fields
+                if (
+                    document.activeElement.tagName === "INPUT" ||
+                    document.activeElement.tagName === "TEXTAREA" ||
+                    document.activeElement.getAttribute('contenteditable') !== null
+                ) {
+                    if (configs.addActionButtonsForTextFields == false) return;
+
+                    /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
+                    if (selectedText == '') {
+                        var ta = document.querySelector(':focus');
+                        selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                        selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+
+                        if (selection == null || selection == undefined || selection.toString().trim() == '') return;
+                    }
+
+                    /// Ignore single click on text field with inputted value
+                    try {
+                        if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                    } catch (e) { }
+
+                    /// Create text field tooltip
+                    setUpNewTooltip('textfield');
+
+                    /// Check resulting DY to be out of view
+                    var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+                    var vertOutOfView = resultDy <= window.scrollY;
+                    if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
+
+                    showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
+
+                    return;
+                }
+
+                if (tooltip !== null && tooltip !== undefined) {
+                    hideTooltip();
+                }
+
+                if (selectedText == '') {
+                    hideDragHandles();
+                }
+
+                setUpNewTooltip();
+
+                if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
+                    addContextualButtons();
+
+                    setTimeout(function () {
+                        /// Set border radius for first and last buttons
+                        tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+                        tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                        calculateTooltipPosition();
+                    }, 1);
+                }
+                else hideTooltip();
             }, 1
         );
 }
@@ -473,13 +470,16 @@ function addContextualButtons() {
         if (configs.addPhoneButton && selectedText.includes('+') && !selectedText.includes(' ') && selectedText.length == 13 && selectedText[0] == '+') {
             var phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
-            phoneButton.innerHTML = createImageIcon(phoneIcon, 0.7) + selectedText;
+            phoneButton.innerHTML = createImageIcon(phoneIcon, 0.7, true) + selectedText;
+            phoneButton.style.color = secondaryColor;
             phoneButton.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 removeSelectionOnPage();
 
                 /// Open system handler
                 window.open(`tel:${selectedText.trim()}`);
+                // onTooltipButtonClick(e, `tel:${selectedText.trim()}`);
+
             });
             if (configs.reverseTooltipButtonsOrder)
                 tooltip.insertBefore(phoneButton, tooltip.children[1]);
@@ -488,7 +488,7 @@ function addContextualButtons() {
         }
 
         /// Do simple math calculations
-        if (numberToConvert == null && configs.performSimpleMathOperations) {
+        if (numberToConvert == null && configs.performSimpleMathOperations && selectedText[0] !== '+' && !selectedText.includes('{')) {
             if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
                 try {
                     var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
@@ -580,8 +580,8 @@ function addContextualButtons() {
                 var emailButton = document.createElement('button');
                 emailButton.setAttribute('class', `selection-popup-button button-with-border`);
                 // if (addButtonIcons)
-                emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.4 : 0.65) + (configs.buttonsStyle == 'onlyicon' ? '  ' : '') + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
-                // emailButton.style.color = secondaryColor;
+                emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.65, true) + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
+                emailButton.style.color = secondaryColor;
 
                 emailButton.addEventListener("mousedown", function (e) {
                     let url = returnNewEmailUrl(emailText);
@@ -859,9 +859,9 @@ function addContextualButtons() {
 
                                         if (addButtonIcons) {
                                             if (configs.buttonsStyle == 'onlyicon') {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5) + ' ';
+                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
                                             } else {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65);
+                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
                                             }
                                         }
                                         else
@@ -983,7 +983,7 @@ function addContextualButtons() {
                 timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                 timeButton.style.color = secondaryColor;
                 if (addButtonIcons)
-                    timeButton.innerHTML = createImageIcon(clockIcon, 0.55) + (configs.buttonsStyle == 'onlyicon' ? ' ' : '') + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
+                    timeButton.innerHTML = createImageIcon(clockIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.7, true) + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':'));
                 else
                     // timeButton.textContent = convertedTime ?? textToProccess;
                     timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).join(':');
@@ -1089,6 +1089,7 @@ function showTooltip(dx, dy) {
 
     if (configs.debugMode)
         console.log('Selecton tooltip is shown');
+    tooltipIsShown = true;
 
     if (configs.shiftTooltipWhenWebsiteHasOwn)
         setTimeout(function () {
@@ -1183,6 +1184,8 @@ function hideTooltip() {
     }
 
     if (oldTooltips !== null && oldTooltips.length !== 0) {
+        tooltipIsShown = false;
+
         oldTooltips.forEach(function (oldTooltip) {
             oldTooltip.style.opacity = 0.0;
 
@@ -1222,8 +1225,8 @@ function hideTooltip() {
     tooltip = null;
 }
 
-function createImageIcon(url, opacity = 0.5) {
-    return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;${configs.buttonsStyle == 'onlyicon' ? '' : 'padding-right: 5px;'}"" />`;
+function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
+    return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px; " />`;
 }
 
 

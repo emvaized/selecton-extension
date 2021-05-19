@@ -132,19 +132,20 @@ function addDragHandle(dragHandleIndex) {
                             if (dragHandleIndex == 0) {
                                 /// Left handle
                                 createSelectionFromPoint(
-                                    // selEndDimensions.dx + 4, /// DX end of selection (anchorX)
                                     selEndDimensions.dx - 2, /// DX end of selection (anchorX)
-                                    selEndDimensions.dy + 4, /// DY end of selection (anchorY)
+                                    // selEndDimensions.dy + 4, /// DY end of selection (anchorY)
+                                    selEndDimensions.dy + (lineHeight / 2), /// DY end of selection (anchorY)
                                     selStartDimensions.dx - deltaXFromInitial - 0.05, /// DX beginning of selection (focusX)
-                                    selStartDimensions.dy - deltaYFromInitial - lineHeight, /// DY beginning of selection (focusY)
+                                    selStartDimensions.dy - deltaYFromInitial - (lineHeight), /// DY beginning of selection (focusY)
                                 );
                             } else {
                                 /// Right handle
                                 createSelectionFromPoint(
-                                    selStartDimensions.dx + 4, /// DX beginning of selection (focusX)
+                                    // selStartDimensions.dx + 4, /// DX beginning of selection (focusX)
+                                    selStartDimensions.dx + 2, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy,  /// DY beginning of selection (focusY)
                                     selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
-                                    selEndDimensions.dy + deltaYFromInitial - lineHeight,  /// DY end of selection (anchorY)
+                                    selEndDimensions.dy + deltaYFromInitial - (lineHeight / 2),  /// DY end of selection (anchorY)
                                 );
                             }
 

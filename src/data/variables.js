@@ -27,6 +27,7 @@ var selection;
 var selectedText;
 var dontShowTooltip = false;
 var isDraggingTooltip = false;
+var tooltipIsShown = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
 var isDarkBackground = true;

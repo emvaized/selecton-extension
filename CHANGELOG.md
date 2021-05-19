@@ -1,3 +1,11 @@
+#3.1.5
+- Tooltip now respects events when selection is changed from outside (for example by keyboard shortcut)
+- Possible fix for search options tooltip being too low sometimes
+- Improved selection handles logic
+- Reduced CPU load
+- 'Move up' is now default tooltip reveal effect
+- Small layout and design improvements
+
 #3.1.4
 - Fix for unit conversion not working after latest update
 
