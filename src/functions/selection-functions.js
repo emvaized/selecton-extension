@@ -310,3 +310,33 @@ function positionFromPoint(doc, x, y, favourPrecedingPosition) {
         offset: offset
     };
 }
+
+function selectionChangeListener(e) {
+    /// Handler when selection changed while tooltip is shown
+
+    if (tooltipIsShown == true) {
+        selection = null;
+        hideTooltip();
+        hideDragHandles();
+
+        document.removeEventListener("selectionchange", selectionChangeListener);
+
+        // setTimeout(function () {
+
+        //   if (configs.debugMode)
+        //     console.log('recreating the tooltip...');
+
+        //   if (window.getSelection) {
+        //     selection = window.getSelection();
+        //   } else if (document.selection) {
+        //     selection = document.selection.createRange();
+        //   }
+
+        //   if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
+        //     createTooltip();
+        //   }
+        // }, configs.animationDuration)
+
+
+    }
+}

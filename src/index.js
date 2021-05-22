@@ -151,40 +151,12 @@ function setPageListeners() {
         hideTooltip();
         hideDragHandles();
 
-        document.removeEventListener("selectionchange", selectionChangeListener);
+        // document.removeEventListener("selectionchange", selectionChangeListener);
       }
     }
   });
 
-  function selectionChangeListener(e) {
-    /// Handler when selection changed while tooltip is shown
 
-    if (tooltipIsShown == true) {
-      selection = null;
-      hideTooltip();
-      hideDragHandles();
-
-      document.removeEventListener("selectionchange", selectionChangeListener);
-
-      // setTimeout(function () {
-
-      //   if (configs.debugMode)
-      //     console.log('recreating the tooltip...');
-
-      //   if (window.getSelection) {
-      //     selection = window.getSelection();
-      //   } else if (document.selection) {
-      //     selection = document.selection.createRange();
-      //   }
-
-      //   if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
-      //     createTooltip();
-      //   }
-      // }, configs.animationDuration)
-
-
-    }
-  }
 
   // document.addEventListener("selectionchange", selectionChangeListener);
 
@@ -203,9 +175,9 @@ function setPageListeners() {
 
       createTooltip(e);
 
-      setTimeout(function () {
-        document.addEventListener("selectionchange", selectionChangeListener);
-      }, configs.animationDuration)
+      // setTimeout(function () {
+      //   document.addEventListener("selectionchange", selectionChangeListener);
+      // }, configs.animationDuration)
 
     }
   });

@@ -1057,9 +1057,19 @@ function calculateTooltipPosition(e) {
         var selStartDimensions = getSelectionCoordinates(true);
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
 
-        /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
+        /// If tooltip is going off-screen on top...
         var vertOutOfView = resultingDy <= window.scrollY;
-        if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
+        if (vertOutOfView) {
+            /// ...make it visible by manually placing on top of screen
+            // resultingDy = window.scrollY;
+
+            ///     ... display tooltip under selection
+            var selEndDimensions = getSelectionCoordinates(false);
+            resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY;
+            arrow.style.bottom = '';
+            arrow.style.top = '-50%';
+            arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+        }
 
         /// Calculating DX
         var resultingDx;
@@ -1113,10 +1123,14 @@ function showTooltip(dx, dy) {
     /// Set reveal animation type
     tooltip.style.transform = returnTooltipRevealTransform(true);
 
+    /// Selection change listener
+    setTimeout(function () {
+        document.addEventListener("selectionchange", selectionChangeListener);
+    }, 300)
+
     if (configs.debugMode)
         console.log('Selecton tooltip is shown');
     tooltipIsShown = true;
-
 
     /// Check for website existing tooltip
     if (configs.shiftTooltipWhenWebsiteHasOwn && configs.tooltipPosition !== 'overCursor')
@@ -1203,6 +1217,8 @@ function showTooltip(dx, dy) {
 
 function hideTooltip() {
     if (tooltip == null || tooltip == undefined) return;
+
+    document.removeEventListener("selectionchange", selectionChangeListener);
 
     if (configs.debugMode)
         console.log('Checking for existing Selecton tooltips...')
