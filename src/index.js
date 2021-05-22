@@ -144,6 +144,7 @@ function setPageListeners() {
     evt = e || window.event;
     if (tooltipIsShown == false) return;
 
+
     if ("buttons" in evt) {
       if (evt.buttons == 1) {
         selection = null;
@@ -151,7 +152,6 @@ function setPageListeners() {
         hideDragHandles();
 
         document.removeEventListener("selectionchange", selectionChangeListener);
-
       }
     }
   });
@@ -163,6 +163,8 @@ function setPageListeners() {
       selection = null;
       hideTooltip();
       hideDragHandles();
+
+      document.removeEventListener("selectionchange", selectionChangeListener);
 
       // setTimeout(function () {
 
