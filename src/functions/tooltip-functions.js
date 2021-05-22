@@ -101,7 +101,9 @@ function checkTooltipForCollidingWithSideEdges() {
 
             /// Shift the arrow to match new position
             var newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
-            arrow.style.left = `${50 + newLeftPercentForArrow}%`;
+
+            if (configs.tooltipPosition !== 'overCursor')
+                arrow.style.left = `${50 + newLeftPercentForArrow}%`;
         } else {
             if (configs.debugMode)
                 console.log('Tooltip is not colliding with side edges');

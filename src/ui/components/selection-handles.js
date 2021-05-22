@@ -45,7 +45,7 @@ function addDragHandle(dragHandleIndex) {
 
         var dragHandle = document.createElement('div');
         dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
-        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-in-out; position: absolute; z-index: 9998; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor};`);
+        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + window.scrollY + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-in-out; position: absolute; z-index: 9998; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px !important; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important;`);
         document.body.appendChild(dragHandle);
 
         var circleDiv = document.createElement('div');

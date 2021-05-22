@@ -37,6 +37,7 @@ var browserLanguage;
 var browserCurrency;
 var browserMetricSystem;
 var addButtonIcons;
+var lastMouseUpEvent;
 
 var previousSelection;
 

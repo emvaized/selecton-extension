@@ -78,6 +78,7 @@ function addTranslateButton() {
     }
 }
 
+
 function setRegularTranslateButton(translateButton) {
     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
         translateButton.setAttribute('title', translateLabel);
@@ -88,36 +89,8 @@ function setRegularTranslateButton(translateButton) {
         translateButton.textContent = translateLabel;
 
     /// Correct tooltip's dx
-    // tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (translateButton.clientWidth / 2))}px`;
+    correctTooltipPosition()
 
-    let resultingDx;
-    try {
-        /// New approach - place tooltip in horizontal center between two selection handles
-        let selStartDimensions = getSelectionCoordinates(true);
-        let selEndDimensions = getSelectionCoordinates(false);
-        let delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
-
-        if (selEndDimensions.dx > selStartDimensions.dx)
-            resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-        else
-            resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-
-    } catch (e) {
-        if (configs.debugMode)
-            console.log(e);
-
-        /// Fall back to old approach - place tooltip in horizontal center selection rect,
-        /// which may be in fact bigger than visible selection
-        resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
-    }
-
-    tooltip.style.left = `${resultingDx}px`;
-
-    /// Correct last button's border radius
-    tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-    checkTooltipForCollidingWithSideEdges();
 }
 
 async function setLiveTranslatedButton(word, sourceLang, targetLang, translateButton) {
@@ -131,6 +104,8 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     /// Placeholder while loading
     // translateButton.innerHTML = '.'.repeat(word.length);
     translateButton.innerHTML = translateLabel;
+
+    let maxLengthForResult = 30;
 
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(
         word
@@ -175,6 +150,10 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
         }
 
         translateButton.style.color = secondaryColor;
+
+        if (resultOfLiveTranslation.length > maxLengthForResult)
+            resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
+
         translateButton.innerHTML = resultOfLiveTranslation;
 
         /// Create origin language label
@@ -191,37 +170,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
 
         setTimeout(function () {
             /// Correct tooltip's dx
-            // tooltip.style.left = `${parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - ((translateButton.clientWidth - translateButtonWidthBeforeResult) / 2)}px`;
-
-            let resultingDx;
-            try {
-                /// New approach - place tooltip in horizontal center between two selection handles
-                let selStartDimensions = getSelectionCoordinates(true);
-                let selEndDimensions = getSelectionCoordinates(false);
-                let delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
-
-                if (selEndDimensions.dx > selStartDimensions.dx)
-                    resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-                else
-                    resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-
-            } catch (e) {
-                if (configs.debugMode)
-                    console.log(e);
-
-                /// Fall back to old approach - place tooltip in horizontal center selection rect,
-                /// which may be in fact bigger than visible selection
-                resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
-            }
-
-            tooltip.style.left = `${resultingDx}px`;
-
-
-            /// Correct last button's border radius
-            tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-            checkTooltipForCollidingWithSideEdges();
+            correctTooltipPosition()
         }, 2);
 
 
@@ -231,4 +180,42 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
         setRegularTranslateButton(translateButton);
     }
 
+}
+
+function correctTooltipPosition() {
+    if (configs.tooltipPosition == 'overCursor') {
+
+        /// Show tooltip over cursor
+        tooltip.style.left = `${lastMouseUpEvent.clientX - tooltip.clientWidth / 2}px`;
+
+    } else {
+        let resultingDx;
+        try {
+            /// New approach - place tooltip in horizontal center between two selection handles
+            let selStartDimensions = getSelectionCoordinates(true);
+            let selEndDimensions = getSelectionCoordinates(false);
+            let delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
+
+            if (selEndDimensions.dx > selStartDimensions.dx)
+                resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+            else
+                resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+
+        } catch (e) {
+            if (configs.debugMode)
+                console.log(e);
+
+            /// Fall back to old approach - place tooltip in horizontal center selection rect,
+            /// which may be in fact bigger than visible selection
+            resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+        }
+
+        tooltip.style.left = `${resultingDx}px`;
+    }
+
+    /// Correct last button's border radius
+    tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+    checkTooltipForCollidingWithSideEdges();
 }

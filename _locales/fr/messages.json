@@ -410,5 +410,17 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "tooltipPosition": {
+        "message": "Alignement horizontal de l'infobulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "overCursor": {
+        "message": "Sur le curseur",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "selectionCenter": {
+        "message": "Centre de sélection",
+        "description": "Libellé du champ dans les paramètres"
     }
 }

@@ -410,5 +410,17 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "tooltipPosition": {
+        "message": "Horizontale Ausrichtung des Tooltips",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "overCursor": {
+        "message": "Over cursor",
+        "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "selectionCenter": {
+        "message": "Auswahlzentrum",
+        "description": "Beschriftung für Feld in Einstellungen"
     }
 }

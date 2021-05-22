@@ -410,5 +410,17 @@
     "writeAReview": {
         "message": "Escribe una reseña",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
+    "tooltipPosition": {
+        "message": "Alineación horizontal de la información sobre herramientas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "overCursor": {
+        "message": "Sobre el cursor",
+        "description": "Etiqueta para el campo en la configuración"
+    },
+    "selectionCenter": {
+        "message": "Centro de selección",
+        "description": "Etiqueta para el campo en la configuración"
     }
 }

@@ -86,6 +86,10 @@ function createSecondaryTooltip() {
             (configs.verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
                 hideTooltip();
                 var selectedText = selection.toString();
+
+                selectedText = encodeURI(selectedText);
+                selectedText = selectedText.replaceAll('&', '%26');
+
                 let urlToOpen = url.replaceAll('%s', selectedText);
 
                 try {
@@ -94,9 +98,6 @@ function createSecondaryTooltip() {
                 } catch (e) {
                     if (configs.debugMode) console.log(e);
                 }
-
-                urlToOpen = encodeURI(urlToOpen);
-                urlToOpen = urlToOpen.replaceAll('&', '%26');
 
                 removeSelectionOnPage();
 

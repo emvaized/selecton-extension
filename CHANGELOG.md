@@ -1,3 +1,9 @@
+#3.1.6
+- Fixes for some custom search urls not working
+- Implemented new option 'Horizontal alignment of tooltip'
+- Disabled tooltip recreation on selection change, as it caused issues on some websites
+- Improved 'move tooltip up when website has it's own' feature
+
 #3.1.5
 - Tooltip now respects events when selection is changed from outside (for example by keyboard shortcut)
 - Possible fix for search options tooltip being too low sometimes

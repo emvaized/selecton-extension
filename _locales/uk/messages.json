@@ -410,5 +410,17 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "tooltipPosition": {
+        "message": "Горизонтальне вирівнювання панелі",
+        "description": "Мітка для поля в налаштуваннях"
+    },
+    "overCursor": {
+        "message": "По курсору",
+        "description": "Мітка для поля в налаштуваннях"
+    },
+    "selectionCenter": {
+        "message": "Центр виділення",
+        "description": "Мітка для поля в налаштуваннях"
     }
 }

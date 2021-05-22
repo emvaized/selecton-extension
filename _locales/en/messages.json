@@ -414,5 +414,17 @@
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"
+  },
+  "tooltipPosition": {
+    "message": "Horizontal alignment of tooltip",
+    "description": "Label for field in settings"
+  },
+  "overCursor": {
+    "message": "Over cursor",
+    "description": "Label for field in settings"
+  },
+  "selectionCenter": {
+    "message": "Center of selection",
+    "description": "Label for field in settings"
   }
 }

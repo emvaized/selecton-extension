@@ -87,7 +87,7 @@ function init() {
           setPageListeners();
         } catch (e) {
           if (configs.debugMode)
-            console.log('Error while setting Selecton listeners: ' + e);
+            console.log('Error while setting Selecton page listeners: ' + e);
         }
       }
     });
@@ -150,7 +150,8 @@ function setPageListeners() {
         hideTooltip();
         hideDragHandles();
 
-        // document.removeEventListener("selectionchange", selectionChangeListener);
+        document.removeEventListener("selectionchange", selectionChangeListener);
+
       }
     }
   });
@@ -158,32 +159,32 @@ function setPageListeners() {
   function selectionChangeListener(e) {
     /// Handler when selection changed while tooltip is shown
 
-    if (tooltipIsShown) {
+    if (tooltipIsShown == true) {
       selection = null;
       hideTooltip();
       hideDragHandles();
 
-      setTimeout(function () {
-        if (configs.debugMode)
-          console.log('recreating the tooltip...');
+      // setTimeout(function () {
 
-        if (window.getSelection) {
-          selection = window.getSelection();
-        } else if (document.selection) {
-          selection = document.selection.createRange();
-        }
+      //   if (configs.debugMode)
+      //     console.log('recreating the tooltip...');
 
-        if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
+      //   if (window.getSelection) {
+      //     selection = window.getSelection();
+      //   } else if (document.selection) {
+      //     selection = document.selection.createRange();
+      //   }
 
-          createTooltip();
-        }
-      }, configs.animationDuration)
+      //   if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
+      //     createTooltip();
+      //   }
+      // }, configs.animationDuration)
 
 
     }
   }
 
-  document.addEventListener("selectionchange", selectionChangeListener);
+  // document.addEventListener("selectionchange", selectionChangeListener);
 
   document.addEventListener("mouseup", async function (e) {
     if (window.getSelection) {
@@ -194,7 +195,16 @@ function setPageListeners() {
 
     if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
 
+      // setTimeout(function () {
+      //   createTooltip(e);
+      // }, 1)
+
       createTooltip(e);
+
+      setTimeout(function () {
+        document.addEventListener("selectionchange", selectionChangeListener);
+      }, configs.animationDuration)
+
     }
   });
 

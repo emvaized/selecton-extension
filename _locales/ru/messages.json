@@ -418,5 +418,17 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
+    },
+    "tooltipPosition": {
+        "message": "Горизональное выравнивание панели",
+        "description": "Label for field in settings"
+    },
+    "overCursor": {
+        "message": "По курсору",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Центр выделения",
+        "description": "Label for field in settings"
     }
 }

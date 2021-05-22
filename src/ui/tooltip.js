@@ -6,6 +6,8 @@ function createTooltip(e) {
             function () {
                 if (e !== undefined && evt !== null && evt.button !== 0) return;
 
+                lastMouseUpEvent = e;
+
                 hideTooltip();
 
                 if (configs.snapSelectionToWord) {
@@ -81,7 +83,7 @@ function createTooltip(e) {
                         tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
                         tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
-                        calculateTooltipPosition();
+                        calculateTooltipPosition(e);
                     }, 1);
                 }
                 else hideTooltip();
@@ -672,13 +674,15 @@ function addContextualButtons() {
 
             for (const [key, value] of Object.entries(currenciesList)) {
                 var match = false;
-                if (selectedText.includes(value["id"]) || selectedText.includes(value["currencySymbol"])) {
+                if (selectedText.includes(value["id"]) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
+                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(value["id"]) ? value['id'] : value['currencySymbol']));
                     match = true;
                 } else {
                     var currencyKeywords = value["currencyKeywords"];
                     if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords !== [])
                         for (i in currencyKeywords) {
                             if (selectedText.toLowerCase().includes(currencyKeywords[i])) {
+                                if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
                                 match = true;
                             }
                         }
@@ -1023,44 +1027,65 @@ function addContextualButtons() {
     // }, 1);
 }
 
-function calculateTooltipPosition() {
-    // var selDimensions = getSelectionRectDimensions();
+function calculateTooltipPosition(e) {
 
-    /// Calculating DY
-    // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+    if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
-    var selStartDimensions = getSelectionCoordinates(true);
-    var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+        var selStartDimensions = getSelectionCoordinates(true);
 
-    /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
-    var vertOutOfView = resultingDy <= window.scrollY;
-    if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
+        // let dyToShow = e.clientY - tooltip.clientHeight - arrow.clientHeight - 5 + window.scrollY;
+        // if (dyToShow > selStartDimensions.dy + window.scrollY - tooltip.clientHeight) {
+        //     /// When tooltip is going to overlap text selection and drag handles...
 
-    /// Calculating DX
-    var resultingDx;
-    try {
-        /// New approach - place tooltip in horizontal center between two selection handles
-        // var selStartDimensions = getSelectionCoordinates(true);
-        var selEndDimensions = getSelectionCoordinates(false);
-        var delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
+        //     /// Display tooltip under selection
+        //     var selEndDimensions = getSelectionCoordinates(false);
+        //     showTooltip(e.clientX - tooltip.clientWidth / 2, selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY);
+        //     arrow.style.bottom = '';
+        //     arrow.style.top = '-50%';
+        //     arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+        // } else
 
-        if (selEndDimensions.dx > selStartDimensions.dx)
-            resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-        else
-            resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+        //     /// Show tooltip over cursor
+        //     showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShow);
 
-    } catch (e) {
-        if (configs.debugMode)
-            console.log(e);
+        /// Show it on top of selection, dx aligned to cursor
+        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY);
+    } else {
+        /// Calculating DY
+        // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
 
-        /// Fall back to old approach - place tooltip in horizontal center selection rect,
-        /// which may be in fact bigger than visible selection
-        var selDimensions = getSelectionRectDimensions();
-        resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+        var selStartDimensions = getSelectionCoordinates(true);
+        var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+
+        /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
+        var vertOutOfView = resultingDy <= window.scrollY;
+        if (vertOutOfView) resultingDy = resultingDy + (window.scrollY - resultingDy);
+
+        /// Calculating DX
+        var resultingDx;
+        try {
+            /// New approach - place tooltip in horizontal center between two selection handles
+            var selEndDimensions = getSelectionCoordinates(false);
+            var delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
+
+            if (selEndDimensions.dx > selStartDimensions.dx)
+                resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+            else
+                resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+
+        } catch (e) {
+            if (configs.debugMode)
+                console.log(e);
+
+            /// Fall back to old approach - place tooltip in horizontal center selection rect,
+            /// which may be in fact bigger than visible selection
+            var selDimensions = getSelectionRectDimensions();
+            resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+        }
+
+        /// Show tooltip on top of selection
+        showTooltip(resultingDx, resultingDy + 4);
     }
-
-    /// Show tooltip on top of selection
-    showTooltip(resultingDx, resultingDy + 4);
 
     if (configs.addDragHandles)
         setDragHandles();
@@ -1082,7 +1107,7 @@ function showTooltip(dx, dy) {
         setTimeout(function () {
             if (tooltip !== null)
                 tooltip.style.pointerEvents = 'all';
-        }, configs.animationDuration / 2);
+        }, configs.animationDuration);
     }
 
     /// Set reveal animation type
@@ -1092,8 +1117,11 @@ function showTooltip(dx, dy) {
         console.log('Selecton tooltip is shown');
     tooltipIsShown = true;
 
-    if (configs.shiftTooltipWhenWebsiteHasOwn)
+
+    /// Check for website existing tooltip
+    if (configs.shiftTooltipWhenWebsiteHasOwn && configs.tooltipPosition !== 'overCursor')
         setTimeout(function () {
+
             /// Experimental code to determine website's own selection tooltip
             var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
 
@@ -1124,7 +1152,7 @@ function showTooltip(dx, dy) {
                         if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate') && transformStyle !== 'translateY(0px)' && transformStyle !== 'translate(0px, 0px)')
                             || (elementStyle.includes('left:') && elementStyle.includes('top:'))
                         ) {
-                            if (el.getAttribute('id') !== 'cmg-fullscreen-image' && el.clientHeight < 100) {
+                            if (el.getAttribute('id') !== 'cmg-fullscreen-image' && el.clientHeight < 100 && el.clientHeight > 5 && el.clientWidth > 20) {
                                 if (configs.debugMode) {
                                     console.log('Detected selection tooltip on the website with following style:');
                                     console.log(elementStyle);
@@ -1138,7 +1166,10 @@ function showTooltip(dx, dy) {
                     }
                 };
 
-            if (websiteTooltip !== null && websiteTooltip !== undefined && websiteTooltip.clientHeight > 1) {
+            if (websiteTooltip !== null && websiteTooltip !== undefined) {
+                console.log('client width:');
+                console.log(websiteTooltip.clientWidth);
+                console.log(websiteTooltip);
                 tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-in-out, transform 200ms ease-out`;
                 tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
 

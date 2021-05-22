@@ -56,6 +56,7 @@ var configs = {
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
     'preferredTranslateService': 'google',
+    'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

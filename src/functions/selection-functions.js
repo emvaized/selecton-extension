@@ -150,6 +150,8 @@ function removeSelectionOnPage() {
             } else if (sel.empty) {
                 sel.empty();
             }
+
+            hideDragHandles();
         }
     } else {
         dontShowTooltip = true;

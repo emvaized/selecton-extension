@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Selecton",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",

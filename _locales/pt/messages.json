@@ -406,5 +406,17 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "tooltipPosition": {
+        "message": "Alinhamento horizontal da dica de ferramenta",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "overCursor": {
+        "message": "Sobre o cursor",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "selectionCenter": {
+        "message": "Centro de seleção",
+        "description": "Rótulo para o campo nas configurações"
     }
 }

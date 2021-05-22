@@ -141,6 +141,8 @@ function updateDisabledOptions() {
     document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
 
+    document.querySelector("#shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.querySelector("#tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
+
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
