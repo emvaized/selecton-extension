@@ -8,7 +8,7 @@ function createSecondaryTooltip() {
     secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
     secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
-    secondaryTooltip.style.borderRadius = `${configs.borderRadius}px`;
+    secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';
     secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 100% 0' : '25% 100% 0';
 

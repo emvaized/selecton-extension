@@ -161,6 +161,7 @@ function setCollapsibleHeaders() {
                 content.style.maxHeight = null;
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
+                content.scrollIntoView({ block: 'center', inline: "start", behavior: "smooth" });
             }
         });
     }

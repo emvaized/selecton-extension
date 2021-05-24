@@ -1274,7 +1274,9 @@ function hideTooltip() {
 }
 
 function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
-    return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px; " />`;
+    const iconHeight = configs.fontSize * 1.35;
+    // return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px; " />`;  transform: translate(0, -${configs.fontSize / 4}px) 
+    return `<img src="${url}" style="all: revert; height: ${iconHeight}px; fill: white; opacity: ${configs.buttonsStyle == 'onlyicon' ? 0.75 : 0.5}; filter: invert(${isDarkBackground ? '100' : '0'}%); vertical-align: top !important; display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px;  transform: translate(0, -1px) " />`;
 }
 
 

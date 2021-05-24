@@ -1,3 +1,8 @@
+#3.1.7
+- Changed icons to material from Google - now all icons are standartized in size and opacity
+- Reduced extension size twice by removing old icons + improved performance
+- Improved pop-up (it no longer has unwanted bottom padding in some browsers)
+
 #3.1.6
 - Fixes for some custom search urls not working
 - Implemented new option 'Horizontal alignment of tooltip'

@@ -2,12 +2,26 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Selecton",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",
     "96": "icons/logo-96.png"
   },
+  "web_accessible_resources": [
+    "icons/button-icons/search.svg",
+    "icons/button-icons/bold.svg",
+    "icons/button-icons/call.svg",
+    "icons/button-icons/copy.svg",
+    "icons/button-icons/cut.svg",
+    "icons/button-icons/email.svg",
+    "icons/button-icons/italic.svg",
+    "icons/button-icons/map.svg",
+    "icons/button-icons/open.svg",
+    "icons/button-icons/paste.svg",
+    "icons/button-icons/time.svg",
+    "icons/button-icons/translate.svg"
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "selection_action@emvaized.com"
