@@ -1,7 +1,7 @@
 #3.1.7
-- Changed icons to material from Google - now all icons are standartized in size and opacity
+- Changed icons to material from Google - now all icons are better standartized in size and opacity
 - Reduced extension size twice by removing old icons + improved performance
-- Improved pop-up (it no longer has unwanted bottom padding in some browsers)
+- Improved extension pop-up (it no longer has unwanted bottom padding in some browsers)
 
 #3.1.6
 - Fixes for some custom search urls not working
