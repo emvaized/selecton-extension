@@ -28,7 +28,7 @@ function createSecondaryTooltip() {
         const title = item['title'];
         const icon = item['icon'];
 
-        if (optionEnabled) {
+        if (optionEnabled && url !== '') {
             var imgButton = document.createElement('img');
             imgButton.addEventListener('error', function () {
                 if (configs.debugMode) {
@@ -61,8 +61,8 @@ function createSecondaryTooltip() {
             let container = document.createElement('div');
 
             /// Add label in vertical style
-            if (configs.verticalSecondaryTooltip) {
-                container.setAttribute('style', `display: ${configs.verticalSecondaryTooltip ? 'block' : 'inline'};`);
+            if (verticalSecondaryTooltip) {
+                container.setAttribute('style', `display: ${verticalSecondaryTooltip ? 'block' : 'inline'};`);
                 container.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
                 container.setAttribute('class', 'custom-search-image-button');
                 container.appendChild(imgButton);
@@ -83,7 +83,7 @@ function createSecondaryTooltip() {
             }
 
             /// Set click listeners
-            (configs.verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
+            (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
                 hideTooltip();
                 var selectedText = selection.toString();
 
@@ -136,25 +136,25 @@ function appendSecondaryTooltip() {
     var dy = tooltip.style.top;
 
     let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
-    let initialDy = configs.verticalSecondaryTooltip ? endDy : dy;
+    let initialDy = verticalSecondaryTooltip ? endDy : dy;
 
     /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
     let vertOutOfView = endDy <= window.scrollY;
     if (vertOutOfView) {
         /// Show secondary tooltip beneath the main one
         endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
-        initialDy = configs.verticalSecondaryTooltip ? endDy : dy;
+        initialDy = verticalSecondaryTooltip ? endDy : dy;
 
         secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
 
         secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
     }
 
-    // secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
+    // secondaryTooltip.style.top = verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
     secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
 
-    if (configs.verticalSecondaryTooltip)
+    if (verticalSecondaryTooltip)
         secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
 
     searchButton.onmouseover = function (event) {
@@ -163,16 +163,16 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
 
-        if (configs.verticalSecondaryTooltip)
+        if (verticalSecondaryTooltip)
             secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
             // secondaryTooltip.style.top = dy;
-            secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? endDy : dy;
+            secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
 
-            if (configs.verticalSecondaryTooltip)
+            if (verticalSecondaryTooltip)
                 secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
         }
     }
@@ -183,18 +183,18 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
 
-        if (configs.verticalSecondaryTooltip)
+        if (verticalSecondaryTooltip)
             secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
 
     secondaryTooltip.onmouseout = function () {
         isSecondaryTooltipHovered = false;
 
-        secondaryTooltip.style.top = configs.verticalSecondaryTooltip ? endDy : dy;
+        secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
 
-        if (configs.verticalSecondaryTooltip)
+        if (verticalSecondaryTooltip)
             secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
     }
 

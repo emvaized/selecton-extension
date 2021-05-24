@@ -134,10 +134,14 @@ function updateDisabledOptions() {
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#verticalSecondaryTooltip").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    // document.querySelector("#verticalSecondaryTooltip").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    // document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#verticalSecondaryTooltip").checked ? 'hidden-option' : 'visible-option';
+
+    document.querySelector("#secondaryTooltipLayout").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
+
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#verticalSecondaryTooltip").checked ? 'hidden-option' : 'visible-option';
     document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
 
@@ -161,7 +165,7 @@ function setCollapsibleHeaders() {
                 content.style.maxHeight = null;
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-                content.scrollIntoView({ block: 'center', inline: "start", behavior: "smooth" });
+                // content.scrollIntoView({ block: 'nearest', inline: "end", behavior: "smooth" });
             }
         });
     }

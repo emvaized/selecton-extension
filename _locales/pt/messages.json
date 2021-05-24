@@ -175,6 +175,10 @@
         "message": "Ocultar dica de ferramenta na rolagem",
         "description": "Rótulo para o campo nas configurações"
     },
+    "horizontalLayout": {
+        "message": "Horizontal",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Ícones + texto",
         "description": "Rótulo para opção de estilo de botões nas configurações"
@@ -235,6 +239,10 @@
         "message": "Abrir",
         "description": "Rótulo para ação de link aberto"
     },
+    "overCursor": {
+        "message": "Sobre o cursor",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "pasteLabel": {
         "message": "Colar",
         "description": "Rótulo para colar ação"
@@ -294,6 +302,14 @@
     "secondaryTooltipIconSize": {
         "message": "Tamanho do ícone (px)",
         "description": "Rótulo para adicionar novo botão de opção de pesquisa"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Layout de botão",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Centro de seleção",
+        "description": "Rótulo para o campo nas configurações"
     },
     "selectionHeader": {
         "message": "Seleção de texto",
@@ -367,6 +383,10 @@
         "message": "Opacidade da dica de ferramenta",
         "description": "Rótulo para o campo nas configurações"
     },
+    "tooltipPosition": {
+        "message": "Alinhamento horizontal da dica de ferramenta",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "tooltipRevealEffect": {
         "message": "Efeito de revelação da dica",
         "description": "Rótulo para opção de estilo de botões nas configurações"
@@ -391,6 +411,10 @@
         "message": "Use o ícone do Google",
         "description": "Rótulo para o campo nas configurações"
     },
+    "verticalLayout": {
+        "message": "Vertical",
+        "description": "Label for field in settings"
+    },
     "verticalSecondaryTooltip": {
         "message": "Exibir como lista vertical (desabilitar para horizontal)",
         "description": "Rótulo para o campo nas configurações"
@@ -406,17 +430,5 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
-    },
-    "tooltipPosition": {
-        "message": "Alinhamento horizontal da dica de ferramenta",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "overCursor": {
-        "message": "Sobre o cursor",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "selectionCenter": {
-        "message": "Centro de seleção",
-        "description": "Rótulo para o campo nas configurações"
     }
 }

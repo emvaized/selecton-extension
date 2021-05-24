@@ -175,6 +175,10 @@
         "message": "Ховати при прокручуванні",
         "description": "Label for field in settings"
     },
+    "horizontalLayout": {
+        "message": "Горизонтальна",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Іконки + текст",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
@@ -234,6 +238,10 @@
     "openLinkLabel": {
         "message": "Відкрити",
         "description": "Label for open link action"
+    },
+    "overCursor": {
+        "message": "По курсору",
+        "description": "Мітка для поля в налаштуваннях"
     },
     "pasteLabel": {
         "message": "Вставити",
@@ -298,6 +306,14 @@
     "secondaryTooltipIconSize": {
         "message": "Розмір іконок (px)",
         "description": "Label for add new search option button"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Розмітка кнопок",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Центр виділення",
+        "description": "Мітка для поля в налаштуваннях"
     },
     "selectionHeader": {
         "message": "Виділення тексту",
@@ -371,6 +387,10 @@
         "message": "Прозорість панелі",
         "description": ""
     },
+    "tooltipPosition": {
+        "message": "Горизонтальне вирівнювання панелі",
+        "description": "Мітка для поля в налаштуваннях"
+    },
     "tooltipRevealEffect": {
         "message": "Ефект появи панелі",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
@@ -392,8 +412,12 @@
         "description": ""
     },
     "useIconFromGoogle": {
-        "message": "Використовувати іконку від Google",
+        "message": "Іконка від Google",
         "description": "Мітка для поля в налаштуваннях"
+    },
+    "verticalLayout": {
+        "message": "Вертикальна",
+        "description": "Label for field in settings"
     },
     "verticalSecondaryTooltip": {
         "message": "Відображати як вертикальний список (відключити для горизонтального)",
@@ -410,17 +434,5 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
-    },
-    "tooltipPosition": {
-        "message": "Горизонтальне вирівнювання панелі",
-        "description": "Мітка для поля в налаштуваннях"
-    },
-    "overCursor": {
-        "message": "По курсору",
-        "description": "Мітка для поля в налаштуваннях"
-    },
-    "selectionCenter": {
-        "message": "Центр виділення",
-        "description": "Мітка для поля в налаштуваннях"
     }
 }

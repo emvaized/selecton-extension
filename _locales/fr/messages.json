@@ -175,6 +175,10 @@
         "message": "Masquer l'info-bulle lors du défilement",
         "description": "Libellé du champ dans les paramètres"
     },
+    "horizontalLayout": {
+        "message": "Horizontale",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Icônes + texte",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
@@ -234,6 +238,10 @@
     "openLinkLabel": {
         "message": "Ouvrir",
         "description": "Libellé pour l'action de lien ouvert"
+    },
+    "overCursor": {
+        "message": "Sur le curseur",
+        "description": "Libellé du champ dans les paramètres"
     },
     "pasteLabel": {
         "message": "Coller",
@@ -298,6 +306,14 @@
     "secondaryTooltipIconSize": {
         "message": "Taille de l'icône (px)",
         "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Disposition des boutons",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Centre de sélection",
+        "description": "Libellé du champ dans les paramètres"
     },
     "selectionHeader": {
         "message": "Sélection de texte",
@@ -371,6 +387,10 @@
         "message": "Opacité de l'info-bulle",
         "description": "Libellé du champ dans les paramètres"
     },
+    "tooltipPosition": {
+        "message": "Alignement horizontal de l'infobulle",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "tooltipRevealEffect": {
         "message": "Effet de révélation de l'infobulle",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
@@ -395,6 +415,10 @@
         "message": "Utiliser l'icône de Google",
         "description": "Libellé du champ dans les paramètres"
     },
+    "verticalLayout": {
+        "message": "Verticale",
+        "description": "Label for field in settings"
+    },
     "verticalSecondaryTooltip": {
         "message": "Afficher sous forme de liste verticale (désactiver pour l'horizontale)",
         "description": "Libellé du champ dans les paramètres"
@@ -410,17 +434,5 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
-    },
-    "tooltipPosition": {
-        "message": "Alignement horizontal de l'infobulle",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "overCursor": {
-        "message": "Sur le curseur",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "selectionCenter": {
-        "message": "Centre de sélection",
-        "description": "Libellé du champ dans les paramètres"
     }
 }

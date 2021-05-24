@@ -52,7 +52,7 @@ var configs = {
     'textSelectionBackgroundOpacity': 1.0,
     'updateRatesEveryDays': 14,
     'fontSize': 12.5,
-    'verticalSecondaryTooltip': true,
+    'secondaryTooltipLayout': 'horizontalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
     'preferredTranslateService': 'google',

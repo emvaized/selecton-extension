@@ -179,6 +179,10 @@
     "message": "Hide tooltip on scroll",
     "description": "Label for field in settings"
   },
+  "horizontalLayout": {
+    "message": "Horizontal",
+    "description": "Label for field in settings"
+  },
   "iconlabel": {
     "message": "Icons + text",
     "description": "Label for buttons style option in settings"
@@ -243,6 +247,10 @@
     "message": "Open",
     "description": "Label for open link action"
   },
+  "overCursor": {
+    "message": "Over cursor",
+    "description": "Label for field in settings"
+  },
   "pasteLabel": {
     "message": "Paste",
     "description": "Label for paste action"
@@ -263,12 +271,12 @@
     "message": "Preferred method for creating new email",
     "description": "Label for field in settings"
   },
-  "preferredTranslateService": {
-    "message": "Translation service",
-    "description": "Label for field in settings"
-  },
   "preferredSearchEngine": {
     "message": "Search engine",
+    "description": "Label for field in settings"
+  },
+  "preferredTranslateService": {
+    "message": "Translation service",
     "description": "Label for field in settings"
   },
   "removeCustomIcon": {
@@ -302,6 +310,14 @@
   "secondaryTooltipIconSize": {
     "message": "Icon size (px)",
     "description": "Label for add new search option button"
+  },
+  "secondaryTooltipLayout": {
+    "message": "Button layout",
+    "description": "Label for field in settings"
+  },
+  "selectionCenter": {
+    "message": "Center of selection",
+    "description": "Label for field in settings"
   },
   "selectionHeader": {
     "message": "Text selection",
@@ -375,6 +391,10 @@
     "message": "Tooltip opacity",
     "description": "Label for field in settings"
   },
+  "tooltipPosition": {
+    "message": "Horizontal alignment of tooltip",
+    "description": "Label for field in settings"
+  },
   "tooltipRevealEffect": {
     "message": "Tooltip reveal effect",
     "description": "Label for buttons style option in settings"
@@ -399,6 +419,10 @@
     "message": "Use icon from Google",
     "description": "Label for field in settings"
   },
+  "verticalLayout": {
+    "message": "Vertical",
+    "description": "Label for field in settings"
+  },
   "verticalSecondaryTooltip": {
     "message": "Display as vertical list (disable for horizontal)",
     "description": "Label for field in settings"
@@ -414,17 +438,5 @@
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"
-  },
-  "tooltipPosition": {
-    "message": "Horizontal alignment of tooltip",
-    "description": "Label for field in settings"
-  },
-  "overCursor": {
-    "message": "Over cursor",
-    "description": "Label for field in settings"
-  },
-  "selectionCenter": {
-    "message": "Center of selection",
-    "description": "Label for field in settings"
   }
 }

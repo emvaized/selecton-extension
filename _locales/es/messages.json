@@ -175,6 +175,10 @@
         "message": "Ocultar información sobre herramientas en el desplazamiento",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "horizontalLayout": {
+        "message": "Horizontal",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Iconos + texto",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
@@ -234,6 +238,10 @@
     "openLinkLabel": {
         "message": "Abrir",
         "description": "Etiqueta para acción de enlace abierto"
+    },
+    "overCursor": {
+        "message": "Sobre el cursor",
+        "description": "Etiqueta para el campo en la configuración"
     },
     "pasteLabel": {
         "message": "Pegar",
@@ -298,6 +306,14 @@
     "secondaryTooltipIconSize": {
         "message": "Tamaño de ícono (px)",
         "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Diseño de botones",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Centro de selección",
+        "description": "Etiqueta para el campo en la configuración"
     },
     "selectionHeader": {
         "message": "Selección de texto",
@@ -371,6 +387,10 @@
         "message": "Opacidad de la información sobre herramientas",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "tooltipPosition": {
+        "message": "Alineación horizontal de la información sobre herramientas",
+        "description": "Etiqueta para el campo en la configuración"
+    },
     "tooltipRevealEffect": {
         "message": "Efecto de revelación de información sobre herramientas",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
@@ -395,6 +415,10 @@
         "message": "Usar el icono de Google",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "verticalLayout": {
+        "message": "Vertical",
+        "description": "Label for field in settings"
+    },
     "verticalSecondaryTooltip": {
         "message": "Mostrar como lista vertical (deshabilitar para horizontal)",
         "description": "Etiqueta para el botón de configuración que lleva a la página de GitHub"
@@ -410,17 +434,5 @@
     "writeAReview": {
         "message": "Escribe una reseña",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
-    },
-    "tooltipPosition": {
-        "message": "Alineación horizontal de la información sobre herramientas",
-        "description": "Etiqueta para el campo en la configuración"
-    },
-    "overCursor": {
-        "message": "Sobre el cursor",
-        "description": "Etiqueta para el campo en la configuración"
-    },
-    "selectionCenter": {
-        "message": "Centro de selección",
-        "description": "Etiqueta para el campo en la configuración"
     }
 }

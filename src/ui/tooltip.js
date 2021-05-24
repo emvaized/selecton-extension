@@ -32,7 +32,7 @@ function createTooltip(e) {
 
                 /// Special tooltip for text fields
                 if (
-                    document.activeElement.tagName === "INPUT" ||
+                    (document.activeElement.tagName === "INPUT" && document.activeElement.getAttribute('type') == 'text') ||
                     document.activeElement.tagName === "TEXTAREA" ||
                     document.activeElement.getAttribute('contenteditable') !== null
                 ) {
@@ -1029,9 +1029,12 @@ function addContextualButtons() {
 
 function calculateTooltipPosition(e) {
 
+    var selStartDimensions = getSelectionCoordinates(true);
+
+    // if (selStartDimensions.dy + window.scrollY < window.scrollY) return;
+
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
-        var selStartDimensions = getSelectionCoordinates(true);
 
         // let dyToShow = e.clientY - tooltip.clientHeight - arrow.clientHeight - 5 + window.scrollY;
         // if (dyToShow > selStartDimensions.dy + window.scrollY - tooltip.clientHeight) {
@@ -1054,7 +1057,6 @@ function calculateTooltipPosition(e) {
         /// Calculating DY
         // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
 
-        var selStartDimensions = getSelectionCoordinates(true);
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
 
         /// If tooltip is going off-screen on top...

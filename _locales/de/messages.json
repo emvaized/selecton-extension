@@ -175,6 +175,10 @@
         "message": "Tooltip beim Scrollen ausblenden",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
+    "horizontalLayout": {
+        "message": "Horizontal",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Icons + text",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -234,6 +238,10 @@
     "openLinkLabel": {
         "message": "Öffnen",
         "description": "Label für Open Link-Aktion"
+    },
+    "overCursor": {
+        "message": "Over cursor",
+        "description": "Bezeichnung für Feld in Einstellungen"
     },
     "pasteLabel": {
         "message": "Einfügen",
@@ -298,6 +306,14 @@
     "secondaryTooltipIconSize": {
         "message": "Symbolgröße (px)",
         "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Tastenlayout",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Auswahlzentrum",
+        "description": "Beschriftung für Feld in Einstellungen"
     },
     "selectionHeader": {
         "message": "Textauswahl",
@@ -371,6 +387,10 @@
         "message": "Tooltip-Deckkraft",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "tooltipPosition": {
+        "message": "Horizontale Ausrichtung des Tooltips",
+        "description": "Beschriftung für Feld in Einstellungen"
+    },
     "tooltipRevealEffect": {
         "message": "Tooltip enthüllt Effekt",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -395,6 +415,10 @@
         "message": "Symbol von Google verwenden",
         "description": ""
     },
+    "verticalLayout": {
+        "message": "Vertikal",
+        "description": "Label for field in settings"
+    },
     "verticalSecondaryTooltip": {
         "message": "Als vertikale Liste anzeigen (für horizontal deaktivieren)",
         "description": ""
@@ -410,17 +434,5 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
-    },
-    "tooltipPosition": {
-        "message": "Horizontale Ausrichtung des Tooltips",
-        "description": "Beschriftung für Feld in Einstellungen"
-    },
-    "overCursor": {
-        "message": "Over cursor",
-        "description": "Bezeichnung für Feld in Einstellungen"
-    },
-    "selectionCenter": {
-        "message": "Auswahlzentrum",
-        "description": "Beschriftung für Feld in Einstellungen"
     }
 }

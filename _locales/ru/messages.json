@@ -179,17 +179,21 @@
         "message": "Прятать при прокрутке",
         "description": "Label for field in settings"
     },
+    "horizontalLayout": {
+        "message": "Горизонтальное",
+        "description": "Label for field in settings"
+    },
     "iconlabel": {
         "message": "Иконки + текст",
-        "description": "Label for buttons style option in settings"
-    },
-    "italicLabel": {
-        "message": "Курсив",
         "description": "Label for buttons style option in settings"
     },
     "imperial": {
         "message": "Английская",
         "description": "Variant of metrics system for dropdown"
+    },
+    "italicLabel": {
+        "message": "Курсив",
+        "description": "Label for buttons style option in settings"
     },
     "languageToTranslate": {
         "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
@@ -242,6 +246,10 @@
     "openLinkLabel": {
         "message": "Открыть",
         "description": "Label for open link action"
+    },
+    "overCursor": {
+        "message": "По курсору",
+        "description": "Label for field in settings"
     },
     "pasteLabel": {
         "message": "Вставить",
@@ -306,6 +314,14 @@
     "secondaryTooltipIconSize": {
         "message": "Размер иконок (px)",
         "description": "Label for add new search option button"
+    },
+    "secondaryTooltipLayout": {
+        "message": "Расположение кнопок",
+        "description": "Label for field in settings"
+    },
+    "selectionCenter": {
+        "message": "Центр выделения",
+        "description": "Label for field in settings"
     },
     "selectionHeader": {
         "message": "Выделение текста",
@@ -379,6 +395,10 @@
         "message": "Прозрачность панели",
         "description": ""
     },
+    "tooltipPosition": {
+        "message": "Горизональное выравнивание панели",
+        "description": "Label for field in settings"
+    },
     "tooltipRevealEffect": {
         "message": "Эффект появления панели",
         "description": "Label for buttons style option in settings"
@@ -400,8 +420,12 @@
         "description": ""
     },
     "useIconFromGoogle": {
-        "message": "Использовать иконку от Google",
+        "message": "Иконка от Google",
         "description": "Ярлык для поля в настройках"
+    },
+    "verticalLayout": {
+        "message": "Вертикальное",
+        "description": "Label for field in settings"
     },
     "verticalSecondaryTooltip": {
         "message": "Отображать в виде вертикального списка (отключить для горизонтального)",
@@ -418,17 +442,5 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
-    },
-    "tooltipPosition": {
-        "message": "Горизональное выравнивание панели",
-        "description": "Label for field in settings"
-    },
-    "overCursor": {
-        "message": "По курсору",
-        "description": "Label for field in settings"
-    },
-    "selectionCenter": {
-        "message": "Центр выделения",
-        "description": "Label for field in settings"
     }
 }

@@ -43,6 +43,8 @@ function init() {
 
         addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
 
+        verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
+
         if (configs.debugMode) {
           console.log('Loaded Selecton settings from memory:');
           console.log(configs);
@@ -143,7 +145,6 @@ function setPageListeners() {
 
     evt = e || window.event;
     if (tooltipIsShown == false) return;
-
 
     if ("buttons" in evt) {
       if (evt.buttons == 1) {

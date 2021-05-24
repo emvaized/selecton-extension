@@ -1,3 +1,10 @@
+#3.1.8
+- Added missing 'Call' icon
+- Custom search options with no URL added get hidden now
+- Fixed too small extension pop-up height on Firefox
+- Custom search options are now horizontal by default
+- Improved options page and translations
+
 #3.1.7
 - Changed icons to material from Google - now all icons are better standartized in size and opacity
 - Reduced extension size twice by removing old icons + improved performance
