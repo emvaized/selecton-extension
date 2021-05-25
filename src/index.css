@@ -68,6 +68,7 @@
   .selection-popup-button:hover {
     all: revert;
     background-color: var(--selection-button-background-hover) !important;
+    background-clip: padding-box !important;
     cursor: pointer;
     color: white;
     transition: background-color 25ms ease-in-out !important;
@@ -126,4 +127,5 @@
   /* border-left: 1px solid var(--selection-button-background-hover) !important; */
   border-left: var(--selecton-button-border-left) !important;
   border-right: var(--selecton-button-border-right) !important;
+
 }

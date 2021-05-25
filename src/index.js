@@ -193,4 +193,11 @@ function setPageListeners() {
   });
 }
 
-init();
+// init();
+
+function domLoadedListener() {
+  init();
+  document.removeEventListener('DOMContentLoaded', domLoadedListener);
+}
+
+document.addEventListener('DOMContentLoaded', domLoadedListener);

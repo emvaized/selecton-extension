@@ -27,12 +27,15 @@ function getSelectionCoordinates(atStart) {
 /// When word is selected only partially, this methods selects whole word 
 /// (also trims empty spaces at the start and in the end)
 function snapSelectionByWords(sel) {
+
+    /// TODO: Don't extend selection if next/prev word is: ' '
+
     if (configs.debugMode)
         console.log('Snap selection by word...');
 
     if (!sel.isCollapsed) {
-        var firstSymbolOfSelection = sel.toString()[0];
-        var lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
+        let firstSymbolOfSelection = sel.toString()[0];
+        let lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
 
         // Detect if selection is backwards
         var range = document.createRange();
@@ -52,6 +55,7 @@ function snapSelectionByWords(sel) {
             direction = ['forward', 'backward'];
         }
 
+
         sel.modify("move", direction[0], "character");
 
         /// Trim empty space in the beginning of selection
@@ -60,15 +64,26 @@ function snapSelectionByWords(sel) {
         }
 
         sel.modify("move", direction[1], "word");
+
         sel.extend(endNode, endOffset);
         sel.modify("extend", direction[1], "character");
 
         /// Trim empty space in the end of selection
         if ((backwards ? firstSymbolOfSelection : lastSymbolOfSelection) == ' ') {
-
         }
         else
             sel.modify("extend", direction[0], "word");
+
+        /// Check for spaces on start and end
+        // console.log('updated selection:');
+        // console.log(sel.toString());
+
+        // firstSymbolOfSelection = sel.toString()[0];
+        // lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
+
+
+
+
     }
 }
 

@@ -1,3 +1,9 @@
+#3.1.9
+- Fixed icons being too big on some websites
+- Tooltip should now be accessible immediately after main page contents loaded
+- Hovered button background no longer overlaps with button separator
+- Fixed border radius for first/last custom search buttons in vertical layout
+
 #3.1.8
 - Added missing 'Call' icon
 - Custom search options with no URL added get hidden now
