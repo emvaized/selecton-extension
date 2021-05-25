@@ -139,26 +139,33 @@ function createSecondaryTooltip() {
 function appendSecondaryTooltip() {
     if (tooltip == null) return;
 
-    var paddingOnBottom = 3;
+    var paddingOnBottom = 5;
     var isSecondaryTooltipHovered = false;
 
     var dx = tooltip.style.left;
     var dy = tooltip.style.top;
 
-    let endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
-    let initialDy = verticalSecondaryTooltip ? endDy : dy;
+    let endDy, initialDy, vertOutOfView;
 
-    /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
-    let vertOutOfView = endDy <= window.scrollY;
-    if (vertOutOfView) {
-        /// Show secondary tooltip beneath the main one
-        endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
+    function calculateEndDy() {
+        endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+
+        /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
+        vertOutOfView = endDy <= window.scrollY;
+        if (vertOutOfView) {
+            /// Show secondary tooltip beneath the main one
+            endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
+            initialDy = verticalSecondaryTooltip ? endDy : dy;
+
+            secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
+
+            secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
+        }
+
         initialDy = verticalSecondaryTooltip ? endDy : dy;
-
-        secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
-
-        secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
     }
+    calculateEndDy();
+
 
     // secondaryTooltip.style.top = verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
     secondaryTooltip.style.top = initialDy;
@@ -170,7 +177,8 @@ function appendSecondaryTooltip() {
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
 
-        endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
 
@@ -179,7 +187,8 @@ function appendSecondaryTooltip() {
     }
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
-            endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+            // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+            calculateEndDy();
             secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
 
@@ -190,7 +199,8 @@ function appendSecondaryTooltip() {
     secondaryTooltip.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
 
-        endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
@@ -202,7 +212,8 @@ function appendSecondaryTooltip() {
     secondaryTooltip.onmouseout = function () {
         isSecondaryTooltipHovered = false;
 
-        endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
+        calculateEndDy();
         secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';

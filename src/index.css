@@ -5,22 +5,24 @@
     opacity: 0;
     display: inline-block;
     position: absolute;
-    padding: 3px;
+    padding: 2px;
     color: white;
     border-radius: 3px;
     font-stretch: condensed;
     text-decoration: none;
-    z-index: 10000 !important;
+    z-index: 10001 !important;
     max-height: 24px !important;
     margin: 0px !important;
     line-height: 1.0 !important; 
+
+    border: 0.25px solid var(--selecton-outline-color);
   }
 
 /* Arrow */
   .selection-tooltip-arrow {
     z-index:10000 !important;
     width: 25px;
-    height: 16px;
+    height: 15px;
     overflow: hidden;
     position: absolute;
     left:  50%;
@@ -37,7 +39,10 @@
     bottom: 50%;
     width: 15px;
     height: 15px;
-    transform: rotate(45deg);
+    transform:  translate(0px, 2px) rotate(45deg);
+
+    border-bottom: 0.25px solid var(--selecton-outline-color);
+    border-right: 0.25px solid var(--selecton-outline-color);
   }
 
 /* Buttons */
@@ -87,6 +92,7 @@
   display: inline-block;
   line-height: 1.0 !important; 
   /* transform-origin: 25% 100% 0; */
+  border: 0.25px solid var(--selecton-outline-color);
 }
 
 .secondary-selection-tooltip-bottom-div {
@@ -127,5 +133,15 @@
   /* border-left: 1px solid var(--selection-button-background-hover) !important; */
   border-left: var(--selecton-button-border-left) !important;
   border-right: var(--selecton-button-border-right) !important;
+}
+
+
+/* .selection-tooltip-draghandle {
+  border: 0.25px solid var(--selecton-outline-color);
 
 }
+
+.selection-tooltip-draghandle-circle {
+  border: 0.25px solid var(--selecton-outline-color);
+} */
+

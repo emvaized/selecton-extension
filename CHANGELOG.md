@@ -1,3 +1,7 @@
+#3.2.0
+- Fixed issue with custom search options not being moved down when no space on top
+- Added small outline to panels for better clarity on darker background
+
 #3.1.9
 - Fixed icons being too big on some websites
 - Tooltip should now be accessible immediately after main page contents loaded

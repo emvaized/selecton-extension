@@ -96,7 +96,7 @@ function setUpNewTooltip(type) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.setAttribute('class', `selection-tooltip`);
-    tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${configs.animationDuration}ms ease-in-out, transform ${configs.animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
+    tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
 
     if (configs.useCustomStyle && configs.tooltipOpacity !== 1.0 && configs.tooltipOpacity !== 1) {
         tooltip.onmouseover = function (event) {
@@ -1052,7 +1052,7 @@ function calculateTooltipPosition(e) {
         //     showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShow);
 
         /// Show it on top of selection, dx aligned to cursor
-        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY);
+        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY - 2);
     } else {
         /// Calculating DY
         // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
@@ -1096,7 +1096,7 @@ function calculateTooltipPosition(e) {
         }
 
         /// Show tooltip on top of selection
-        showTooltip(resultingDx, resultingDy + 4);
+        showTooltip(resultingDx, resultingDy + 2);
     }
 
     if (configs.addDragHandles)
