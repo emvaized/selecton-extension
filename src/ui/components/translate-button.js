@@ -217,5 +217,8 @@ function correctTooltipPosition() {
     tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
     tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
+    if (configs.reverseTooltipButtonsOrder)
+        tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
+
     checkTooltipForCollidingWithSideEdges();
 }

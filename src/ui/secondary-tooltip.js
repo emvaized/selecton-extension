@@ -158,7 +158,6 @@ function appendSecondaryTooltip() {
             initialDy = verticalSecondaryTooltip ? endDy : dy;
 
             secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
-
             secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
         }
 
@@ -180,6 +179,7 @@ function appendSecondaryTooltip() {
         // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
+
         secondaryTooltip.style.opacity = 1.0;
 
         if (verticalSecondaryTooltip)

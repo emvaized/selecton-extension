@@ -159,13 +159,23 @@ function setUpNewTooltip(type) {
                 isDraggingTooltip = false;
                 document.body.style.cursor = 'unset';
 
+                tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
+                tooltip.style.top = `${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px`;
+                tooltip.style.transform = null;
+
                 /// Move secondary tooltip
+                // if (configs.secondaryTooltipEnabled) {
+                //     var secondaryTooltipDx = parseInt(secondaryTooltip.style.left.replaceAll('px', ''));
+                //     var secondaryTooltipDy = parseInt(secondaryTooltip.style.top.replaceAll('px', ''));
+                //     secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
+                //     // secondaryTooltip.style.left = `${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px;`;
+                //     // secondaryTooltip.style.top = ` ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px`;
+                // }
                 if (configs.secondaryTooltipEnabled) {
-                    var secondaryTooltipDx = parseInt(secondaryTooltip.style.left.replaceAll('px', ''));
-                    var secondaryTooltipDy = parseInt(secondaryTooltip.style.top.replaceAll('px', ''));
-                    secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
-                    // secondaryTooltip.style.left = `${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px;`;
-                    // secondaryTooltip.style.top = ` ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px`;
+                    if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
+                        secondaryTooltip.parentNode.removeChild(secondaryTooltip);
+                        createSecondaryTooltip();
+                    }
                 }
 
                 if (configs.debugMode)
