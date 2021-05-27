@@ -86,7 +86,7 @@
   opacity: 0.0;
   left: 0px;
   z-index: 9999 !important;
-  position: absolute;
+  position: fixed;
   margin: 0px !important;
   padding: 0px !important;
   display: inline-block;

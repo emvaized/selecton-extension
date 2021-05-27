@@ -1,3 +1,7 @@
+#3.2.1
+- Fixed issue with tooltip being dispositioned on some websites
+- Tooltip now is always hidden on scroll
+
 #3.2.0
 - Fixed issue with custom search options not being moved down when no space on top
 - Added small outline to panels for better clarity on darker background

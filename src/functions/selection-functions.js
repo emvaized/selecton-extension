@@ -16,11 +16,13 @@ function getSelectionCoordinates(atStart) {
 
     // get client rect
     range.collapse(atStart);
-    let rects = range.getClientRects();
-    if (rects.length <= 0) return null;
 
-    // return coord
-    let rect = rects[0];
+    // let rects = range.getClientRects();
+    // if (rects.length <= 0) return null;
+    // let rect = rects[0];  /// return coord
+
+    let rect = range.getBoundingClientRect();
+
     return { dx: rect.x, dy: rect.y };
 }
 

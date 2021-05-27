@@ -96,7 +96,7 @@ function setUpNewTooltip(type) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.setAttribute('class', `selection-tooltip`);
-    tooltip.setAttribute('style', `opacity: 0.0;position: absolute; transition: opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
+    tooltip.setAttribute('style', `opacity: 0.0;position: fixed; transition: opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
 
     if (configs.useCustomStyle && configs.tooltipOpacity !== 1.0 && configs.tooltipOpacity !== 1) {
         tooltip.onmouseover = function (event) {
@@ -147,9 +147,8 @@ function setUpNewTooltip(type) {
                 /// Move main tooltip
                 tooltip.style.left = `0px`;
                 tooltip.style.top = `0px`;
-                tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
+                tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
                 tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-
                 document.body.style.cursor = 'move';
             };
 
@@ -164,7 +163,7 @@ function setUpNewTooltip(type) {
                 if (configs.secondaryTooltipEnabled) {
                     var secondaryTooltipDx = parseInt(secondaryTooltip.style.left.replaceAll('px', ''));
                     var secondaryTooltipDy = parseInt(secondaryTooltip.style.top.replaceAll('px', ''));
-                    secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
+                    secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
                     // secondaryTooltip.style.left = `${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px;`;
                     // secondaryTooltip.style.top = ` ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px`;
                 }
@@ -1035,7 +1034,6 @@ function calculateTooltipPosition(e) {
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
-
         // let dyToShow = e.clientY - tooltip.clientHeight - arrow.clientHeight - 5 + window.scrollY;
         // if (dyToShow > selStartDimensions.dy + window.scrollY - tooltip.clientHeight) {
         //     /// When tooltip is going to overlap text selection and drag handles...
@@ -1052,22 +1050,24 @@ function calculateTooltipPosition(e) {
         //     showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShow);
 
         /// Show it on top of selection, dx aligned to cursor
-        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY - 2);
+        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY - 2);
+        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
     } else {
         /// Calculating DY
-        // var resultingDy = selDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
-
-        var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+        // var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
+        var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
 
         /// If tooltip is going off-screen on top...
-        var vertOutOfView = resultingDy <= window.scrollY;
+        // var vertOutOfView = resultingDy <= window.scrollY;
+        var vertOutOfView = resultingDy <= 0;
         if (vertOutOfView) {
             /// ...make it visible by manually placing on top of screen
             // resultingDy = window.scrollY;
 
             ///     ... display tooltip under selection
             var selEndDimensions = getSelectionCoordinates(false);
-            resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY;
+            // resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY;
+            resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             arrow.style.bottom = '';
             arrow.style.top = '-50%';
             arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';

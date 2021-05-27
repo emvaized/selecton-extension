@@ -127,8 +127,10 @@ function setPageListeners() {
 
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {
-    if (configs.hideOnScroll)
-      hideTooltip();
+    // if (configs.hideOnScroll) {
+    hideTooltip();
+    hideDragHandles();
+    // }
   });
 
   /// Hide tooltip when any key is pressed
@@ -149,7 +151,8 @@ function setPageListeners() {
     if (tooltipIsShown == false) return;
 
     if ("buttons" in evt) {
-      if (evt.buttons == 1) {
+      // if (evt.buttons == 1) {
+      if (evt.button == 1) {
         selection = null;
         hideTooltip();
         hideDragHandles();

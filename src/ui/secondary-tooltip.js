@@ -151,7 +151,7 @@ function appendSecondaryTooltip() {
         endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
 
         /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
-        vertOutOfView = endDy <= window.scrollY;
+        vertOutOfView = endDy <= 0;
         if (vertOutOfView) {
             /// Show secondary tooltip beneath the main one
             endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
