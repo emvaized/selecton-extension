@@ -3,6 +3,10 @@ function calculateString(fn) {
     return new Function('return ' + fn)();
 }
 
+function extractNumber(str) {
+    return parseFloat(str.replace(/[^\d\.]*/g, ''));
+}
+
 function extractAmountFromSelectedText(selectedText) {
     let amount;
     let words = selectedText.split(' ');
@@ -11,36 +15,21 @@ function extractAmountFromSelectedText(selectedText) {
         let word = words[i].toString();
 
         try {
-            amount = calculateString(word.trim().replaceAll('$', ''));
-            // console.log('calculated word:');
-            // console.log(amount);
-        } catch (e) {
-            // console.log('failed to calculate word ' + i.toString());
-            // console.log(e);
-        }
-
-        if (amount == null || amount == undefined || amount == '' || amount == NaN) {
-            try {
-                amount = calculateString(selectedText.trim());
-            } catch (e) { }
-        } else break;
-
-        if (amount == null || amount == undefined || amount == '' || amount == NaN) {
-            amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
-        } else break;
+            amount = extractNumber(word.trim().replaceAll('$', ''));
+            if (amount !== null && amount !== undefined && amount !== '' && amount !== NaN && amount !== 0 && amount !== 0.0) break;
+        } catch (e) { }
     }
 
     if (amount == null || amount == undefined || amount == '' || amount == NaN) {
+        try {
+            amount = extractNumber(selectedText.trim());
+        } catch (e) { }
+    } else {
         /// Remove all non-number symbols (except dots)
         amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
         if (amount !== null)
             amount = amount.join("");
     }
-
-    // if (amount == null || amount == undefined || amount == '' || amount == NaN) {
-    //     /// Fallback to return the same text
-    //     amount = selectedText;
-    // }
 
     return amount;
 }

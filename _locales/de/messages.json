@@ -19,6 +19,10 @@
         "message": "Auswahl-Ziehpunkte hinzufügen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "addFontFormatButtons": {
+        "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Neue Suchoption hinzufügen",
         "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
@@ -26,6 +30,10 @@
     "addOpenLinks": {
         "message": "Schaltfläche zum Öffnen des Links hinzufügen",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "addPasteButton": {
+        "message": "Schaltfläche 'Einfügen' hinzufügen",
+        "description": "Label for option in settings"
     },
     "addPhoneButton": {
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",

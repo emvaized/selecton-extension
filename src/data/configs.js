@@ -3,6 +3,8 @@ var configs = {
     'hideOnScroll': true,
     'convertMetrics': true,
     'addOpenLinks': true,
+    'addFontFormatButtons': false,
+    'addPasteButton': true,
     'convertCurrencies': true,
     'convertTime': true,
     'performSimpleMathOperations': true,

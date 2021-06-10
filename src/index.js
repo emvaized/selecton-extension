@@ -64,7 +64,6 @@ function init() {
         /// Set dynamic color for foreground (text and icons)
         document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
         document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        // document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
         document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)');
         secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
 
@@ -151,20 +150,14 @@ function setPageListeners() {
     if (tooltipIsShown == false) return;
 
     if ("buttons" in evt) {
-      // if (evt.buttons == 1) {
       if (evt.button == 1) {
         selection = null;
         hideTooltip();
         hideDragHandles();
-
-        // document.removeEventListener("selectionchange", selectionChangeListener);
       }
     }
   });
 
-
-
-  // document.addEventListener("selectionchange", selectionChangeListener);
 
   document.addEventListener("mouseup", async function (e) {
     if (window.getSelection) {
@@ -173,19 +166,10 @@ function setPageListeners() {
       selection = document.selection.createRange();
     }
 
-    if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
-
-      // setTimeout(function () {
-      //   createTooltip(e);
-      // }, 1)
-
+    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim() !== ''))
+      // if (selection !== null && selection !== undefined && selection.toString().trim() !== '')
       createTooltip(e);
 
-      // setTimeout(function () {
-      //   document.addEventListener("selectionchange", selectionChangeListener);
-      // }, configs.animationDuration)
-
-    }
   });
 
   window.addEventListener('resize', function (e) {
@@ -193,12 +177,11 @@ function setPageListeners() {
     /// Recaclulate dx/dy for tooltip, secondary tooltip and drag handles
     if (configs.debugMode)
       console.log('hiding all Selecton overlays on window resize...');
+
     hideTooltip();
     hideDragHandles();
   });
 }
-
-// init();
 
 function domLoadedListener() {
   init();

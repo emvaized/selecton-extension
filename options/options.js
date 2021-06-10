@@ -141,6 +141,8 @@ function updateDisabledOptions() {
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
 
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#addFontFormatButtons").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#addPasteButton").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';

@@ -15,6 +15,7 @@
     margin: 0px !important;
     line-height: 1.0 !important; 
 
+    box-sizing: unset !important;
     border: 0.25px solid var(--selecton-outline-color);
   }
 
@@ -48,7 +49,9 @@
 /* Buttons */
   .selection-popup-button {
     all: revert;
-    max-height: 24px !important;
+
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
     color: var(--selection-button-foreground);
     background-color: transparent !important;
     cursor: pointer;
@@ -65,8 +68,8 @@
     text-transform: none !important;
     outline: none !important;
     text-align: center !important;
-    /* font-size: 12.5px !important; */
     font-size: var(--selecton-font-size) !important;
+    line-height: 1.2 !important; 
     }
 
     

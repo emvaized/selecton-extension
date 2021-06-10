@@ -19,6 +19,10 @@
         "message": "Додати ручки перетягування виділення",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "addFontFormatButtons": {
+        "message": "Додати кнопки формату шрифту (курсив, жирний)",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Додати нову опцію пошуку",
         "description": "Ярлик для кнопки додавання нового пошуку"
@@ -26,6 +30,10 @@
     "addOpenLinks": {
         "message": "Додати кнопку відкриття посилання",
         "description": "Label for field in settings"
+    },
+    "addPasteButton": {
+        "message": "Додати кнопку 'Вставити'",
+        "description": "Label for option in settings"
     },
     "addPhoneButton": {
         "message": "Додати кнопку номера телефону",

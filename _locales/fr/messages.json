@@ -19,6 +19,10 @@
         "message": "Ajouter des poignées de sélection",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "addFontFormatButtons": {
+        "message": "Ajouter des boutons de format de police (italique, gras)",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Ajouter une nouvelle option de recherche",
         "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
@@ -26,6 +30,10 @@
     "addOpenLinks": {
         "message": "Ajouter un bouton pour ouvrir le lien",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "addPasteButton": {
+        "message": "Ajouter le bouton 'Coller'",
+        "description": "Label for option in settings"
     },
     "addPhoneButton": {
         "message": "Bouton Ajouter un numéro de téléphone",

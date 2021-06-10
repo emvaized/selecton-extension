@@ -1,3 +1,9 @@
+#3.2.2
+- Fix for text field tooltip not showing up
+- Text field tooltip now has 'Paste' button, when textfield is empty
+- Layout fixes on some websites
+- Performance improvements & security optimization
+
 #3.2.1
 - Fixed issue with tooltip being dispositioned on some websites
 - Tooltip now is always hidden on scroll

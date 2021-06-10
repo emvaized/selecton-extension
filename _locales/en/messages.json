@@ -19,6 +19,10 @@
     "message": "Add selection drag handles",
     "description": "Label for buttons style option in settings"
   },
+  "addFontFormatButtons": {
+    "message": "Add font format buttons (italic, bold)",
+    "description": "Label for buttons style option in settings"
+  },
   "addNewSearchOption": {
     "message": "Add new search option",
     "description": "Label for add new search option button"
@@ -26,6 +30,10 @@
   "addOpenLinks": {
     "message": "Add button to open link",
     "description": "Label for field in settings"
+  },
+  "addPasteButton": {
+    "message": "Add 'Paste' button",
+    "description": "Label for option in settings"
   },
   "addPhoneButton": {
     "message": "Add phone number button",

@@ -36,6 +36,7 @@ function createTooltip(e) {
                     document.activeElement.tagName === "TEXTAREA" ||
                     document.activeElement.getAttribute('contenteditable') !== null
                 ) {
+
                     if (configs.addActionButtonsForTextFields == false) return;
 
                     /// Special handling for Firefox (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
@@ -44,21 +45,30 @@ function createTooltip(e) {
                         selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
                         selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
 
-                        if (selection == null || selection == undefined || selection.toString().trim() == '') return;
+                        // if (selection == null || selection == undefined || selection.toString().trim() == '') return;
                     }
 
                     /// Ignore single click on text field with inputted value
-                    try {
-                        if (document.activeElement.value.trim() !== '' && selectedText == '') return;
-                    } catch (e) { }
+                    // try {
+                    if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                    // } catch (e) { }
 
                     /// Create text field tooltip
                     setUpNewTooltip('textfield');
 
+                    if (tooltip.children.length < 2) return;
+
                     /// Check resulting DY to be out of view
-                    var resultDy = e.clientY + window.scrollY - tooltip.clientHeight - arrow.clientHeight - 7.5;
-                    var vertOutOfView = resultDy <= window.scrollY;
-                    if (vertOutOfView) resultDy = resultDy + (window.scrollY - resultDy);
+                    var resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+                    let vertOutOfView = resultDy <= 0;
+                    if (vertOutOfView) {
+                        // resultDy = 0;
+
+                        resultDy = e.clientY + arrow.clientHeight;
+                        arrow.style.bottom = '';
+                        arrow.style.top = '-50%';
+                        arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+                    }
 
                     showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
 
@@ -258,7 +268,7 @@ function addBasicTooltipButtons(layout) {
                 /// support for cyrillic alphabets
                 /// source: https://stackoverflow.com/a/40503617/11381400
                 const cyrillicPattern = /^[\u0400-\u04FF]+$/;
-                if (!cyrillicPattern.test(selection.toString().replaceAll(' ', ''))) {
+                if (configs.addFontFormatButtons && !cyrillicPattern.test(selection.toString().replaceAll(' ', ''))) {
                     /// Add 'bold' button 
                     var boldButton = document.createElement('button');
                     boldButton.setAttribute('class', `selection-popup-button button-with-border`);
@@ -310,25 +320,28 @@ function addBasicTooltipButtons(layout) {
             tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
-            try {
-                /// Add only paste button 
-                var pasteButton = document.createElement('button');
-                pasteButton.setAttribute('class', `selection-popup-button`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    pasteButton.setAttribute('title', pasteLabel);
-                pasteButton.style.borderRadius = `${configs.borderRadius - 3}px`;
 
-                if (addButtonIcons)
-                    pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
-                else
-                    pasteButton.textContent = pasteLabel;
-                pasteButton.addEventListener("mousedown", function (e) {
-                    textField.focus();
-                    document.execCommand('paste');
-                    removeSelectionOnPage();
-                });
-                tooltip.appendChild(pasteButton);
-            } catch (e) { if (configs.debugMode) console.log(e); }
+            if (configs.addPasteButton)
+                try {
+
+                    /// Add only paste button 
+                    let pasteButton = document.createElement('button');
+                    pasteButton.setAttribute('class', `selection-popup-button`);
+                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                        pasteButton.setAttribute('title', pasteLabel);
+                    pasteButton.style.borderRadius = `${configs.borderRadius - 3}px`;
+
+                    if (addButtonIcons)
+                        pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
+                    else
+                        pasteButton.textContent = pasteLabel;
+                    pasteButton.addEventListener("mousedown", function (e) {
+                        textField.focus();
+                        document.execCommand('paste');
+                        removeSelectionOnPage();
+                    });
+                    tooltip.appendChild(pasteButton);
+                } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
 
@@ -345,7 +358,6 @@ function addBasicTooltipButtons(layout) {
             var selectedText = selection.toString();
             onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
         });
-
         tooltip.appendChild(searchButton);
 
 
@@ -1037,30 +1049,11 @@ function addContextualButtons() {
 }
 
 function calculateTooltipPosition(e) {
-
     var selStartDimensions = getSelectionCoordinates(true);
-
-    // if (selStartDimensions.dy + window.scrollY < window.scrollY) return;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
-        // let dyToShow = e.clientY - tooltip.clientHeight - arrow.clientHeight - 5 + window.scrollY;
-        // if (dyToShow > selStartDimensions.dy + window.scrollY - tooltip.clientHeight) {
-        //     /// When tooltip is going to overlap text selection and drag handles...
-
-        //     /// Display tooltip under selection
-        //     var selEndDimensions = getSelectionCoordinates(false);
-        //     showTooltip(e.clientX - tooltip.clientWidth / 2, selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY);
-        //     arrow.style.bottom = '';
-        //     arrow.style.top = '-50%';
-        //     arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
-        // } else
-
-        //     /// Show tooltip over cursor
-        //     showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShow);
-
         /// Show it on top of selection, dx aligned to cursor
-        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) + window.scrollY - 2);
         showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
     } else {
         /// Calculating DY
@@ -1068,15 +1061,13 @@ function calculateTooltipPosition(e) {
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
 
         /// If tooltip is going off-screen on top...
-        // var vertOutOfView = resultingDy <= window.scrollY;
         var vertOutOfView = resultingDy <= 0;
         if (vertOutOfView) {
             /// ...make it visible by manually placing on top of screen
             // resultingDy = window.scrollY;
 
-            ///     ... display tooltip under selection
+            ///     ... or display tooltip under selection
             var selEndDimensions = getSelectionCoordinates(false);
-            // resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight + window.scrollY;
             resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             arrow.style.bottom = '';
             arrow.style.top = '-50%';

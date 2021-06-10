@@ -19,6 +19,10 @@
         "message": "Agregar controles de arrastre de selección",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
+    "addFontFormatButtons": {
+        "message": "Agregar botones de formato de fuente (cursiva, negrita)",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Agregar nueva opción de búsqueda",
         "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
@@ -26,6 +30,10 @@
     "addOpenLinks": {
         "message": "Agregar botón para abrir enlace",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "addPasteButton": {
+        "message": "Agregar botón 'Pegar'",
+        "description": "Label for option in settings"
     },
     "addPhoneButton": {
         "message": "Botón para agregar número de teléfono",
