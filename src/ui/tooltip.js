@@ -49,9 +49,9 @@ function createTooltip(e) {
                     }
 
                     /// Ignore single click on text field with inputted value
-                    // try {
-                    if (document.activeElement.value.trim() !== '' && selectedText == '') return;
-                    // } catch (e) { }
+                    try {
+                        if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                    } catch (e) { }
 
                     /// Create text field tooltip
                     setUpNewTooltip('textfield');

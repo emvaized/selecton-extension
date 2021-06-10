@@ -35,7 +35,7 @@ function snapSelectionByWords(sel) {
     if (configs.debugMode)
         console.log('Snap selection by word...');
 
-    if (!sel.isCollapsed) {
+    if (sel !== null && !sel.isCollapsed) {
         let firstSymbolOfSelection = sel.toString()[0];
         let lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
 
