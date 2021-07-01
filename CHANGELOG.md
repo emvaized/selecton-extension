@@ -1,3 +1,10 @@
+#3.2.4
+- Fixed issue with tooltip not showing up on triple click
+- Disabled accordeon-like animation on custom search panel reveal
+
+#3.2.3
+- Small layout fixes and improvements
+
 #3.2.2
 - Fix for text field tooltip not showing up
 - Text field tooltip now has 'Paste' button, when textfield is empty

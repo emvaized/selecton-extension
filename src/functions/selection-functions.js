@@ -57,7 +57,6 @@ function snapSelectionByWords(sel) {
             direction = ['forward', 'backward'];
         }
 
-
         sel.modify("move", direction[0], "character");
 
         /// Trim empty space in the beginning of selection
@@ -66,7 +65,6 @@ function snapSelectionByWords(sel) {
         }
 
         sel.modify("move", direction[1], "word");
-
         sel.extend(endNode, endOffset);
         sel.modify("extend", direction[1], "character");
 
@@ -82,10 +80,6 @@ function snapSelectionByWords(sel) {
 
         // firstSymbolOfSelection = sel.toString()[0];
         // lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
-
-
-
-
     }
 }
 

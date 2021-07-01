@@ -41,7 +41,6 @@
     width: 15px;
     height: 15px;
     transform:  translate(0px, 2px) rotate(45deg);
-
     border-bottom: 0.25px solid var(--selecton-outline-color);
     border-right: 0.25px solid var(--selecton-outline-color);
   }
@@ -78,7 +77,7 @@
     background-color: var(--selection-button-background-hover) !important;
     background-clip: padding-box !important;
     cursor: pointer;
-    color: white;
+    color: white !important;
     transition: background-color 25ms ease-in-out !important;
    }
 

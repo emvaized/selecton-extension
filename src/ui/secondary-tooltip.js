@@ -10,7 +10,7 @@ function createSecondaryTooltip() {
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';
-    secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 100% 0' : '25% 100% 0';
+    secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '100% 100% 0' : '0% 100% 0';
 
     document.body.appendChild(secondaryTooltip);
 
@@ -170,8 +170,8 @@ function appendSecondaryTooltip() {
     secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
 
-    if (verticalSecondaryTooltip)
-        secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
+    // if (verticalSecondaryTooltip)
+    //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
 
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
@@ -182,8 +182,8 @@ function appendSecondaryTooltip() {
 
         secondaryTooltip.style.opacity = 1.0;
 
-        if (verticalSecondaryTooltip)
-            secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
+        // if (verticalSecondaryTooltip)
+        //     secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
@@ -192,8 +192,8 @@ function appendSecondaryTooltip() {
             secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
 
-            if (verticalSecondaryTooltip)
-                secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
+            // if (verticalSecondaryTooltip)
+            //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
         }
     }
     secondaryTooltip.onmouseover = function (event) {
@@ -205,8 +205,8 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
 
-        if (verticalSecondaryTooltip)
-            secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
+        // if (verticalSecondaryTooltip)
+        //     secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
 
     secondaryTooltip.onmouseout = function () {
@@ -218,8 +218,8 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
 
-        if (verticalSecondaryTooltip)
-            secondaryTooltip.style.transform = 'scale(0.0, 0.0)';
+        // if (verticalSecondaryTooltip)
+        //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
     }
 
     /// Add some bottom space to prevent unwanted jumping on moving cursor

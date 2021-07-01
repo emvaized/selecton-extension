@@ -64,7 +64,7 @@ function init() {
         /// Set dynamic color for foreground (text and icons)
         document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
         document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)');
+        document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
         secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
 
         /// Set font-size
@@ -147,6 +147,7 @@ function setPageListeners() {
     if (isDraggingTooltip) return;
 
     evt = e || window.event;
+
     if (tooltipIsShown == false) return;
 
     if ("buttons" in evt) {
@@ -158,8 +159,28 @@ function setPageListeners() {
     }
   });
 
+  // document.addEventListener('click', function (e) {
+  //   if (e.detail === 3) {
+  //     // alert('triple click!');
+  //     if ((selection !== null && selection !== undefined && selection.toString().trim() !== '')) {
+  //       // if (selection !== null && selection !== undefined && selection.toString().trim() !== '')
+  //       hideDragHandles();
+  //       if (tooltip == null) {
+  //         hideTooltip();
+  //         createTooltip(e);
+  //       }
+
+  //     }
+  //   }
+  // });
+
 
   document.addEventListener("mouseup", async function (e) {
+    if (e.detail == 3) {
+      hideDragHandles();
+      return;
+    }
+
     if (window.getSelection) {
       selection = window.getSelection();
     } else if (document.selection) {
