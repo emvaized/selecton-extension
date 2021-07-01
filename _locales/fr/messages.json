@@ -439,6 +439,10 @@
         "message": "Quoi de neuf",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "wordSnappingBlacklist": {
+        "message": "Domaines à exclure",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"

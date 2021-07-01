@@ -49,6 +49,7 @@ var configs = {
     'disableWordSnappingOnCtrlKey': true,
     'showButtonLabelOnHover': true,
     'animationDuration': 300,
+    'wordSnappingBlacklist': '',
     // 'tooltipRevealEffect': 'scaleUpTooltipEffect',
     'tooltipRevealEffect': 'moveUpTooltipEffect',
     'textSelectionBackgroundOpacity': 1.0,

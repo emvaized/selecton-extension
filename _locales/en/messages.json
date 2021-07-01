@@ -443,6 +443,10 @@
     "message": "What's new",
     "description": "Label for buttons style option in settings"
   },
+  "wordSnappingBlacklist": {
+    "message": "Domains to exclude",
+    "description": "Label for buttons style option in settings"
+  },
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"

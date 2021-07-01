@@ -435,6 +435,10 @@
         "message": "O que há de novo",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "wordSnappingBlacklist": {
+        "message": "Domínios a serem excluídos",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"

@@ -44,7 +44,7 @@ function loadSettings() {
 
                 /// Set translated label for input
                 if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key))) {
-                    if (input.tagName == 'SELECT' || input.id == 'excludedDomains')
+                    if (input.tagName == 'SELECT' || input.id == 'excludedDomains' || input.id == 'wordSnappingBlacklist')
                         input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
                     else
                         input.parentNode.innerHTML += chrome.i18n.getMessage(key);
@@ -65,10 +65,13 @@ function loadSettings() {
             });
         });
 
-        /// Set custom style for 'Excluded domains' textfield
-        var excludedDomainsTextfield = document.querySelector("#excludedDomains");
-        excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
-        excludedDomainsTextfield.style.maxWidth = '200px';
+        /// Set custom style for 'Excluded domains' textfields
+        var excludedDomainsTextfields = document.querySelectorAll("#excludedDomains, #wordSnappingBlacklist");
+        excludedDomainsTextfields.forEach(function (excludedDomainsTextfield) {
+            excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
+            excludedDomainsTextfield.style.maxWidth = '200px';
+        })
+
 
         setTranslatedLabels();
 
@@ -138,6 +141,7 @@ function updateDisabledOptions() {
     // document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#verticalSecondaryTooltip").checked ? 'hidden-option' : 'visible-option';
 
     document.querySelector("#secondaryTooltipLayout").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#wordSnappingBlacklist").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
 
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';

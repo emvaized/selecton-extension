@@ -439,6 +439,10 @@
         "message": "Novedades",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
+    "wordSnappingBlacklist": {
+        "message": "Dominios para excluir",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Escribe una reseña",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"

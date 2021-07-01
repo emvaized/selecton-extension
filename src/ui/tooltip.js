@@ -16,8 +16,18 @@ function createTooltip(e) {
                             console.log('Word snapping was rejected due to pressed CTRL key');
                     } else {
 
-                        if (document.querySelector(`[class*='selection-tooltip-draghandle'`) == null)
-                            snapSelectionByWords(selection);
+                        if (document.querySelector(`[class*='selection-tooltip-draghandle'`) == null) {
+                            var domainIsBlacklistedForSnapping = false;
+                            if (configs.wordSnappingBlacklist !== null && configs.wordSnappingBlacklist !== undefined && configs.wordSnappingBlacklist !== '')
+                                configs.wordSnappingBlacklist.split(',').forEach(function (domain) {
+                                    if (window.location.href.includes(domain.trim())) {
+                                        domainIsBlacklistedForSnapping = true;
+                                    }
+                                });
+
+                            if (domainIsBlacklistedForSnapping == false)
+                                snapSelectionByWords(selection);
+                        }
                     }
                 }
 

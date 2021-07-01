@@ -439,6 +439,10 @@
         "message": "Що нового",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "wordSnappingBlacklist": {
+        "message": "Домени для виключення",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"

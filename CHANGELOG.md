@@ -1,6 +1,7 @@
 #3.2.4
 - Fixed issue with tooltip not showing up on triple click
 - Disabled accordeon-like animation on custom search panel reveal
+- Added config to exclude domains for 'Snap selection to words'
 
 #3.2.3
 - Small layout fixes and improvements

@@ -447,6 +447,10 @@
         "message": "Что нового",
         "description": "Label for buttons style option in settings"
     },
+    "wordSnappingBlacklist": {
+        "message": "Исключенные домены",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"

@@ -439,6 +439,10 @@
         "message": "Was ist neu",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "wordSnappingBlacklist": {
+        "message": "Auszuschließende Domains",
+        "description": "Label for buttons style option in settings"
+    },
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
