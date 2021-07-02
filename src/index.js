@@ -126,10 +126,8 @@ function setPageListeners() {
 
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {
-    // if (configs.hideOnScroll) {
     hideTooltip();
     hideDragHandles();
-    // }
   });
 
   /// Hide tooltip when any key is pressed
@@ -160,6 +158,12 @@ function setPageListeners() {
   });
 
   document.addEventListener("mouseup", async function (e) {
+
+    /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
+    const documentActiveElTag = document.activeElement.tagName;
+    if (documentActiveElTag == 'A' || documentActiveElTag == 'BUTTON') return;
+
+    /// Special handling for triple mouse click
     if (e.detail == 3) {
       hideDragHandles();
       return;
@@ -172,7 +176,6 @@ function setPageListeners() {
     }
 
     if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim() !== ''))
-      // if (selection !== null && selection !== undefined && selection.toString().trim() !== '')
       createTooltip(e);
 
   });
