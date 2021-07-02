@@ -33,11 +33,12 @@ function snapSelectionByWords(sel) {
     /// TODO: Don't extend selection if next/prev word is: ' '
 
     if (configs.debugMode)
-        console.log('Snap selection by word...');
+        console.log('Snapping selection by word...');
 
     if (sel !== null && !sel.isCollapsed) {
         let firstSymbolOfSelection = sel.toString()[0];
         let lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
+        const endNode = sel.focusNode, endOffset = sel.focusOffset;
 
         // Detect if selection is backwards
         var range = document.createRange();
@@ -46,40 +47,35 @@ function snapSelectionByWords(sel) {
         var backwards = range.collapsed;
         range.detach();
 
-        // modify() works on the focus of the selection
-        var endNode = sel.focusNode, endOffset = sel.focusOffset;
+
+        // For more correct modifications better to collapse the selection first
         sel.collapse(sel.anchorNode, sel.anchorOffset);
 
         var direction = [];
+
+        /// When selection was made from right to left, need to invert the directions
         if (backwards) {
             direction = ['backward', 'forward'];
         } else {
             direction = ['forward', 'backward'];
         }
 
+        /// Trim empty space in the beginning of selection
         sel.modify("move", direction[0], "character");
 
-        /// Trim empty space in the beginning of selection
         if ((backwards ? lastSymbolOfSelection : firstSymbolOfSelection) == ' ') {
             sel.modify("move", direction[0], "character");
         }
 
+        /// Snap selection to word backwards
         sel.modify("move", direction[1], "word");
         sel.extend(endNode, endOffset);
         sel.modify("extend", direction[1], "character");
 
-        /// Trim empty space in the end of selection
-        if ((backwards ? firstSymbolOfSelection : lastSymbolOfSelection) == ' ') {
-        }
-        else
+        /// Snap selection to word forward (when last symbol is not empty space)
+        if ((backwards ? firstSymbolOfSelection : lastSymbolOfSelection) !== ' ')
             sel.modify("extend", direction[0], "word");
 
-        /// Check for spaces on start and end
-        // console.log('updated selection:');
-        // console.log(sel.toString());
-
-        // firstSymbolOfSelection = sel.toString()[0];
-        // lastSymbolOfSelection = sel.toString()[sel.toString().length - 1];
     }
 }
 

@@ -159,22 +159,6 @@ function setPageListeners() {
     }
   });
 
-  // document.addEventListener('click', function (e) {
-  //   if (e.detail === 3) {
-  //     // alert('triple click!');
-  //     if ((selection !== null && selection !== undefined && selection.toString().trim() !== '')) {
-  //       // if (selection !== null && selection !== undefined && selection.toString().trim() !== '')
-  //       hideDragHandles();
-  //       if (tooltip == null) {
-  //         hideTooltip();
-  //         createTooltip(e);
-  //       }
-
-  //     }
-  //   }
-  // });
-
-
   document.addEventListener("mouseup", async function (e) {
     if (e.detail == 3) {
       hideDragHandles();
