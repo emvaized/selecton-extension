@@ -1,9 +1,9 @@
-button {
-  cursor: pointer;
+body {
+  margin: 9px;
 }
 
-form {
-  padding: 0px 12px 0px 3px;
+button {
+  cursor: pointer;
 }
 
 .option {
@@ -99,7 +99,7 @@ select {
   color: #444;
   cursor: pointer;
   padding: 18px 6px 18px 12px;
-  width: 100%;
+  /* width: 100%; */
   border: none;
   text-align: left;
   outline: none;
@@ -111,24 +111,26 @@ select {
   background-color: #ccc;
 }
 
-.collapsible-header:after {
-    /* content: '\02795'; Unicode character for "plus" sign (+) */
-    content: '\002B'; /* Unicode character for "arrow down" sign (+) */
-    font-size: 30px;
-    float: right;
-    opacity: 0.5;
-    transform: translate(0, -7px);
-}
-
-.active:after {
-  content: "\2212"; /* Unicode character for "arrow up" sign (-) */
-}
-
 /* Style the collapsible content. Note: hidden by default */
 .collapsible-content {
+  /* padding: 6px 0px 6px 12px; */
+  /* border: solid 1px lightgrey; */
+  padding-left: 8px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.collapsible-header:after {
+  content: '\002B'; /* Unicode character for "arrow down" sign (+) */
+  font-size: 30px;
+  float: right;
+  opacity: 0.5;
+  transform: translate(0, -7px);
+}
+
+.active:after {
+content: "\2212"; /* Unicode character for "arrow up" sign (-) */
 }
 
 #selecton-version {

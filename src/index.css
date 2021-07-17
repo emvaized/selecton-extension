@@ -48,7 +48,6 @@
 /* Buttons */
   .selection-popup-button {
     all: revert;
-
     font-weight: 500 !important;
     letter-spacing: 0 !important;
     color: var(--selection-button-foreground);

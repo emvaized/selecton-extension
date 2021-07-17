@@ -6,7 +6,8 @@ function createSecondaryTooltip() {
     if (searchButton == null || searchButton == undefined) return;
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
-    secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
+    secondaryTooltip.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important`);
+    // secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';

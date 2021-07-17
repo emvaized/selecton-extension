@@ -3,22 +3,35 @@
 /// Those are used on settings page
 
 let userConfigs;
+const expandedSettingsSections = [];
 
 var keys = Object.keys(configs);
 
 function loadSettings() {
-    var ids = [];
-    keys.forEach(function (key) {
-        ids.push('#' + key);
+
+    /// Load expanded sections list
+    chrome.storage.local.get(['expandedSettingsSections'], function (val) {
+        console.log(val.expandedSettingsSections);
+        if (val.expandedSettingsSections !== null && val.expandedSettingsSections !== undefined)
+            val.expandedSettingsSections.forEach(function (v) {
+                expandedSettingsSections.push(v);
+            })
     });
 
+    // var ids = [];
+    // keys.forEach(function (key) {
+    //     ids.push('#' + key);
+    // });
+
+    /// Load configs
     chrome.storage.local.get(keys, setInputs);
 
     function setInputs(result) {
         userConfigs = result;
 
         keys.forEach(function (key) {
-            var input = document.getElementById(key);
+            // const input = document.getElementById(key);
+            var input = document.querySelector('#' + key.toString());
 
             /// Set input value
             if (input !== null && input !== undefined) {
@@ -37,8 +50,7 @@ function loadSettings() {
                                 option.innerHTML = chrome.i18n.getMessage(option['value']);
                             if (option.value == selectedValue) option.setAttribute('selected', true);
                         });
-                }
-                else {
+                } else {
                     input.setAttribute('value', result[key] ?? configs[key]);
                 }
 
@@ -48,22 +60,35 @@ function loadSettings() {
                         input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
                     else
                         input.parentNode.innerHTML += chrome.i18n.getMessage(key);
-
                 }
+
+                input = document.querySelector('#' + key.toString());
+
+                /// Set event listener
+                input.addEventListener("input", function (e) {
+                    let id = input.getAttribute('id');
+                    let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+                    userConfigs[id] = inputValue;
+
+                    saveAllSettings();
+                    updateDisabledOptions();
+                });
+
             }
         });
 
-        var inputs = document.querySelectorAll(ids.join(','));
-        inputs.forEach(function (input) {
-            input.addEventListener("input", function (e) {
-                let id = input.getAttribute('id');
-                let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
-                userConfigs[id] = inputValue;
+        /// Set event listeners
+        // var inputs = document.querySelectorAll(ids.join(','));
+        // inputs.forEach(function (input) {
+        //     input.addEventListener("input", function (e) {
+        //         let id = input.getAttribute('id');
+        //         let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+        //         userConfigs[id] = inputValue;
 
-                saveAllSettings();
-                updateDisabledOptions();
-            });
-        });
+        //         saveAllSettings();
+        //         updateDisabledOptions();
+        //     });
+        // });
 
         /// Set custom style for 'Excluded domains' textfields
         var excludedDomainsTextfields = document.querySelectorAll("#excludedDomains, #wordSnappingBlacklist");
@@ -164,15 +189,36 @@ function setCollapsibleHeaders() {
     var i;
 
     for (i = 0; i < coll.length; i++) {
+
+        /// Make section initially expanded
+        if (expandedSettingsSections.includes(coll[i].id)) {
+            const it = coll[i];
+            setTimeout(function (e) {
+                it.classList.toggle("active");
+                var content = it.nextElementSibling;
+                content.style.maxHeight = content.scrollHeight + "px";
+            }, 50);
+
+        }
+
         coll[i].addEventListener("click", function () {
             this.classList.toggle("active");
             var content = this.nextElementSibling;
             if (content.style.maxHeight) {
+                /// Collapse
                 content.style.maxHeight = null;
+                var indexInArray = expandedSettingsSections.indexOf(this.id);
+                if (indexInArray > -1) {
+                    expandedSettingsSections.splice(indexInArray, 1);
+                }
             } else {
+                /// Expand
                 content.style.maxHeight = content.scrollHeight + "px";
+                if (!expandedSettingsSections.includes(this.id))
+                    expandedSettingsSections.push(this.id);
                 // content.scrollIntoView({ block: 'nearest', inline: "end", behavior: "smooth" });
             }
+            saveExpandedSections();
         });
     }
 }
@@ -474,6 +520,10 @@ function generateCustomSearchButtonsList() {
 
 function saveCustomSearchButtons() {
     chrome.storage.local.set({ 'customSearchButtons': customSearchButtonsList });
+}
+
+function saveExpandedSections() {
+    chrome.storage.local.set({ 'expandedSettingsSections': expandedSettingsSections });
 }
 
 function saveAllSettings() {

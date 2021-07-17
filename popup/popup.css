@@ -5,6 +5,5 @@
 
 #openSettingsInTabButton:hover{
     background-color: lightGrey;
-    /* border-radius: 50%; */
     cursor: pointer;
 }

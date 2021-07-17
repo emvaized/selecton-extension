@@ -1,3 +1,9 @@
+#3.2.5
+- Options page now restores previously expanded sections
+- Performance & small layout improvements for options page
+- Enforce background color for search options tooltip
+- Changed extension name
+
 #3.2.4
 - Fixed issue with tooltip not showing up on triple click
 - Disabled accordeon-like animation on custom search panel reveal
