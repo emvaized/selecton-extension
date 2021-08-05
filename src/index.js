@@ -143,13 +143,10 @@ function setPageListeners() {
 
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip) return;
-
-    evt = e || window.event;
-
     if (tooltipIsShown == false) return;
 
-    if ("buttons" in evt) {
-      if (evt.button == 1) {
+    if ("buttons" in e) {
+      if (e.button == 1) {
         selection = null;
         hideTooltip();
         hideDragHandles();

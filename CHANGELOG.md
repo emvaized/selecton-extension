@@ -1,3 +1,6 @@
+#3.2.6
+- Small bug fixes
+
 #3.2.5
 - Options page now restores previously expanded sections
 - Performance & small layout improvements for options page

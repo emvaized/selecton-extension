@@ -111,7 +111,6 @@
   vertical-align: middle;
   font-size: var(--selecton-font-size) !important;
   font-family: Arial, Helvetica, sans-serif !important;
-
   color: var(--selection-button-foreground);
 }
 

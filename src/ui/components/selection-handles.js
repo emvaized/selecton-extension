@@ -41,6 +41,10 @@ function addDragHandle(dragHandleIndex) {
         var selStartDimensions = getSelectionCoordinates(true);
         var selEndDimensions = getSelectionCoordinates(false);
 
+        if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) {
+            selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY };
+        }
+
         if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
 
         var dragHandle = document.createElement('div');

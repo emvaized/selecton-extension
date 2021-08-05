@@ -4,7 +4,7 @@ function createTooltip(e) {
     if (dontShowTooltip !== true)
         setTimeout(
             function () {
-                if (e !== undefined && evt !== null && evt.button !== 0) return;
+                if (e !== undefined && e !== null && e.button !== 0) return;
 
                 lastMouseUpEvent = e;
 
