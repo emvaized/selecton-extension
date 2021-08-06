@@ -70,6 +70,7 @@ function createTooltip(e) {
 
                     /// Check resulting DY to be out of view
                     var resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+
                     let vertOutOfView = resultDy <= 0;
                     if (vertOutOfView) {
                         // resultDy = 0;
@@ -1064,11 +1065,28 @@ function calculateTooltipPosition(e) {
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
         /// Show it on top of selection, dx aligned to cursor
-        showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
+        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
+
+        let dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
+        let vertOutOfView = dyToShowTooltip <= 0;
+        if (vertOutOfView) {
+            /// ...make it visible by manually placing on top of screen
+            // resultingDy = window.scrollY;
+
+            ///     ... or display tooltip under selection
+            var selEndDimensions = getSelectionCoordinates(false);
+            dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
+            arrow.style.bottom = '';
+            arrow.style.top = '-50%';
+            arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+        }
+
+        showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
     } else {
         /// Calculating DY
         // var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
+
 
         /// If tooltip is going off-screen on top...
         var vertOutOfView = resultingDy <= 0;

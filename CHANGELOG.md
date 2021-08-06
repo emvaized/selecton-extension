@@ -1,5 +1,7 @@
 #3.2.6
-- Small bug fixes
+- Fixed end selection handle getting placed in top left corner sometimes
+- Fix for tooltip not visible when selection goes off-screen on top (when placing tooltip over cursor)
+- Other small bug fixes
 
 #3.2.5
 - Options page now restores previously expanded sections
