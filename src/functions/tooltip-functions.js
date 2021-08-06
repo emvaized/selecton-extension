@@ -32,9 +32,7 @@ function onTooltipButtonClick(e, url) {
     }
 }
 
-
 function returnDomainFromUrl(url, firstLetterIsCapital = true) {
-
     if (url == null || url == undefined || url == '') return '';
 
     try {
