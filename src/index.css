@@ -130,9 +130,9 @@
 }
 
 .button-with-border {
-  /* border-left: 1px solid var(--selection-button-background-hover) !important; */
   border-left: var(--selecton-button-border-left) !important;
   border-right: var(--selecton-button-border-right) !important;
+  /* border-bottom: 1px solid transparent !important; */
 }
 
 
