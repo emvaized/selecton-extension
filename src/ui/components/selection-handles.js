@@ -1,22 +1,22 @@
-function setDragHandles() {
+function setDragHandles(tooltipOnBottom) {
     /// Dont add drag handles if they are already added
     var existingDragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle'`);
     if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
 
-    addDragHandle(0);
-    addDragHandle(1);
+    addDragHandle(0, tooltipOnBottom);
+    addDragHandle(1, tooltipOnBottom);
 }
 
 /// 0 for first (left) drag handle, 1 for second (right)
-function addDragHandle(dragHandleIndex) {
+function addDragHandle(dragHandleIndex, tooltipOnBottom) {
     if (configs.debugMode)
         console.log('Adding drag handle ' + dragHandleIndex.toString() + '...');
 
     if (selection == null || selection == undefined) return;
 
     var lineHeight = 25;
-    var lineWidth = 2.5;
-    var circleHeight = 15;
+    var lineWidth = 2.25;
+    var circleHeight = 12.5;
     var verticalOffsetCorrection = -1.5;
 
     /// Try to adapt handle height to selected text's line-height
@@ -54,7 +54,8 @@ function addDragHandle(dragHandleIndex) {
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        // circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIndex == 1 && tooltipOnBottom ? `top: -${circleHeight - 1}px` : `bottom: -${lineHeight - 1}px`}; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {

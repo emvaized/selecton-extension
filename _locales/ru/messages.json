@@ -268,7 +268,7 @@
         "description": "Label for field in settings"
     },
     "preferCurrencySymbol": {
-        "message": "Предпочитать символы валют вместо кодов",
+        "message": "Предпочитать символ валюты вместо кода",
         "description": "Label for buttons style option in settings"
     },
     "preferredMapsService": {

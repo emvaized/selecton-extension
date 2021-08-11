@@ -41,18 +41,3 @@ var verticalSecondaryTooltip;
 var lastMouseUpEvent;
 
 var previousSelection;
-
-
-
-/// Look for these words to find that selected text is address
-const addressKeywords = [
-    'ул.',
-    'пр.',
-    'проспект ',
-    'улица ',
-    'переулок ',
-    'вулиця ',
-    ' street',
-    'broadway',
-    ' st.',
-];

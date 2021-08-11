@@ -762,12 +762,19 @@ function addContextualButtons() {
 
                     for (const [key, value] of Object.entries(currenciesList)) {
                         if (value["id"] == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                            var rateOfDesiredCurrency = value['rate'];
+                            let rateOfDesiredCurrency = value['rate'];
                             if (configs.debugMode)
                                 console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
-                            var resultingRate = rateOfDesiredCurrency / currencyRate;
-                            var convertedAmount = amount * resultingRate;
+
+                            /// Check for literal multipliers (million, billion and so on)
+                            const loweredSelectedText = selectedText.toLowerCase();
+                            for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
+                            for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
+                            for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
+
+                            let resultingRate = rateOfDesiredCurrency / currencyRate;
+                            let convertedAmount = amount * resultingRate;
 
                             if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
                                 /// Round result
@@ -777,10 +784,14 @@ function addContextualButtons() {
                                 } catch (e) { console.log(e); }
 
                                 /// Separate resulting numbers in groups of 3 digits
-                                var convertedAmountString = convertedAmount.toString();
-                                var parts = convertedAmountString.split('.');
+                                let convertedAmountString = convertedAmount.toString();
+                                let parts = convertedAmountString.split('.');
                                 parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                convertedAmountString = parts.join('.');
+                                if (parts[1] == '00') parts[1] = '';
+                                convertedAmountString = parts[1] == '' ? parts[0] : parts.join('.');
+
+                                /// Remove empty .00 on end
+                                // convertedAmountString.replaceAll('.00', '');
 
                                 /// Create and add currency button with result of conversion
                                 let currencyButton = document.createElement('button');
@@ -795,16 +806,25 @@ function addContextualButtons() {
                                 }
 
                                 /// Show value after converion
-                                var converted = document.createElement('span');
-                                var userCurrencySymbol = currenciesList[configs.convertToCurrency]['currencySymbol'];
+                                const converted = document.createElement('span');
+                                const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
 
-                                if (configs.preferCurrencySymbol && userCurrencySymbol !== undefined)
-                                    converted.textContent = ` ${convertedAmountString} ${userCurrencySymbol}`;
+                                if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
+                                    // converted.textContent = ` ${convertedAmountString} ${currencySymbolToUse}`;
+                                    converted.textContent = ` ${convertedAmountString}`;
                                 else
-                                    converted.textContent = ` ${convertedAmountString} ${configs.convertToCurrency}`;
+                                    // converted.textContent = ` ${convertedAmountString} ${configs.convertToCurrency}`;
+                                    converted.textContent = ` ${convertedAmountString}`;
 
                                 converted.setAttribute('style', `color: ${secondaryColor}`);
                                 currencyButton.appendChild(converted);
+
+                                /// Add currency symbol with different color
+                                const currencyLabel = document.createElement('span');
+                                currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
+                                currencyLabel.setAttribute('style', `color: ${isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)'}`);
+                                currencyButton.appendChild(currencyLabel);
+
 
                                 currencyButton.addEventListener("mousedown", function (e) {
                                     let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
@@ -928,7 +948,7 @@ function addContextualButtons() {
             }
         }
 
-        /// Timezone convert button
+        /// Time convert button
         if (configs.convertTime) {
 
             let textToProccess = selectedText;
@@ -962,12 +982,12 @@ function addContextualButtons() {
             let convertedTime;
             let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
             for (i in timeZoneKeywordsKeys) {
-                let marker = timeZoneKeywordsKeys[i];
+                var marker = timeZoneKeywordsKeys[i];
 
                 if (textToProccess.includes(' ' + marker)) {
                     let words = textToProccess.trim().split(' ');
 
-                    let timeWord;
+                    var timeWord;
                     for (i in words) {
                         let word = words[i];
 
@@ -1061,6 +1081,7 @@ function addContextualButtons() {
 
 function calculateTooltipPosition(e) {
     var selStartDimensions = getSelectionCoordinates(true);
+    let tooltipOnBottom = false;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1069,13 +1090,17 @@ function calculateTooltipPosition(e) {
 
         let dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
-        if (vertOutOfView) {
-            /// ...make it visible by manually placing on top of screen
-            // resultingDy = window.scrollY;
+        const selEndDimensions = getSelectionCoordinates(false);
 
-            ///     ... or display tooltip under selection
-            var selEndDimensions = getSelectionCoordinates(false);
-            dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
+        // if (vertOutOfView) {
+        if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
+
+            if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)
+                tooltipOnBottom = true;
+
+            /// display tooltip under selection
+            // dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
+            dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
             arrow.style.bottom = '';
             arrow.style.top = '-50%';
             arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
@@ -1129,7 +1154,7 @@ function calculateTooltipPosition(e) {
     }
 
     if (configs.addDragHandles)
-        setDragHandles();
+        setDragHandles(tooltipOnBottom);
 
     setTimeout(function () {
         checkTooltipForCollidingWithSideEdges();

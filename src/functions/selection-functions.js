@@ -23,7 +23,20 @@ function getSelectionCoordinates(atStart) {
 
     let rect = range.getBoundingClientRect();
 
-    return { dx: rect.x, dy: rect.y };
+
+    // Detect if selection is backwards
+    let isBackwards;
+    try {
+        let range = document.createRange();
+        range.setStart(sel.anchorNode, sel.anchorOffset);
+        range.setEnd(sel.focusNode, sel.focusOffset);
+        isBackwards = range.collapsed;
+        range.detach();
+    } catch (e) { console.log(e); }
+
+
+    // return { dx: rect.x, dy: rect.y };
+    return { dx: rect.x, dy: rect.y, backwards: isBackwards };
 }
 
 /// When word is selected only partially, this methods selects whole word 

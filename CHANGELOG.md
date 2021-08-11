@@ -1,3 +1,10 @@
+#3.2.7
+- "Show tooltip at cursor position" now shows it on bottom of selection when multi-line + selected from top to bottom
+- Selecton now can read literal multipliers for numbers on some languages (like '$5 million')
+- ".00" in the end of converted price will be hidden
+- Currency symbol is now colored differently than value
+- Refactored all keywords in a separate "src/data/keywords.js" file
+
 #3.2.6
 - Fixed end selection handle getting placed in top left corner sometimes
 - Fix for tooltip not visible when selection goes off-screen on top (when placing tooltip over cursor)
