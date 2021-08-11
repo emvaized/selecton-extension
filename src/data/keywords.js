@@ -65,6 +65,7 @@ const billionMultipliers = [
     'milliard',
     'mil millones',
     'млрд',
+    'миллиард',
     'більйон',
     'мільярд',
 ];

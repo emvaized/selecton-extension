@@ -397,11 +397,13 @@ function addContextualButtons() {
     if (configs.debugMode)
         console.log('Checking to add contextual buttons...');
     var selectedText = selection.toString().trim();
+    const loweredSelectedText = selectedText.toLowerCase();
     var wordsCount = selectedText.split(' ').length;
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
 
         var numberToConvert;
+        var unitLabelColor = isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
 
         /// Unit conversion button
         if (configs.convertMetrics) {
@@ -472,15 +474,29 @@ function addContextualButtons() {
                 /// Round doubles to the first 2 symbols after dot
                 convertedNumber = convertedNumber.toFixed(2);
 
-                var interactiveButton = document.createElement('button');
+                /// Check selected text for literal multipliers
+                for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { convertedNumber *= 1000000000; break; } }
+                for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { convertedNumber *= 1000000; break; } }
+                for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { convertedNumber *= 1000; break; } }
+
+                /// Separate resulting numbers in groups of 3 digits
+                convertedNumber = splitNumberInGroups(convertedNumber.toString());
+
+                const interactiveButton = document.createElement('button');
                 interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
                 if (configs.showUnconvertedValue)
                     interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
 
-                var converted = document.createElement('span');
-                converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                const converted = document.createElement('span');
+                // converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
+                converted.textContent = ` ${convertedNumber}`;
                 converted.setAttribute('style', `color: ${secondaryColor}`);
                 interactiveButton.appendChild(converted);
+
+                const unitLabelEl = document.createElement('span');
+                unitLabelEl.textContent = ` ${convertedUnit}`;
+                unitLabelEl.setAttribute('style', `color: ${unitLabelColor}`);
+                interactiveButton.appendChild(unitLabelEl);
 
                 interactiveButton.addEventListener("mousedown", function (e) {
                     let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
@@ -573,7 +589,7 @@ function addContextualButtons() {
             var containsAddress = false;
 
             addressKeywords.forEach(function (address) {
-                if (selectedText.toLowerCase().includes(address))
+                if (loweredSelectedText.includes(address))
                     containsAddress = true;
             });
 
@@ -610,7 +626,7 @@ function addContextualButtons() {
         /// Add email button
         if (configs.showEmailButton && selectedText.includes('@') && !selectedText.trim().includes(' ')) {
             try {
-                var emailText = selectedText.trim().toLowerCase();
+                var emailText = loweredSelectedText;
                 var emailButton = document.createElement('button');
                 emailButton.setAttribute('class', `selection-popup-button button-with-border`);
                 // if (addButtonIcons)
@@ -713,7 +729,7 @@ function addContextualButtons() {
                     var currencyKeywords = value["currencyKeywords"];
                     if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords !== [])
                         for (i in currencyKeywords) {
-                            if (selectedText.toLowerCase().includes(currencyKeywords[i])) {
+                            if (loweredSelectedText.includes(currencyKeywords[i])) {
                                 if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
                                 match = true;
                             }
@@ -768,7 +784,6 @@ function addContextualButtons() {
 
 
                             /// Check for literal multipliers (million, billion and so on)
-                            const loweredSelectedText = selectedText.toLowerCase();
                             for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
                             for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
                             for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
@@ -785,13 +800,7 @@ function addContextualButtons() {
 
                                 /// Separate resulting numbers in groups of 3 digits
                                 let convertedAmountString = convertedAmount.toString();
-                                let parts = convertedAmountString.split('.');
-                                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                if (parts[1] == '00') parts[1] = '';
-                                convertedAmountString = parts[1] == '' ? parts[0] : parts.join('.');
-
-                                /// Remove empty .00 on end
-                                // convertedAmountString.replaceAll('.00', '');
+                                convertedAmountString = splitNumberInGroups(convertedAmountString);
 
                                 /// Create and add currency button with result of conversion
                                 let currencyButton = document.createElement('button');
@@ -822,7 +831,7 @@ function addContextualButtons() {
                                 /// Add currency symbol with different color
                                 const currencyLabel = document.createElement('span');
                                 currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
-                                currencyLabel.setAttribute('style', `color: ${isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)'}`);
+                                currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
                                 currencyButton.appendChild(currencyLabel);
 
 
@@ -1333,6 +1342,13 @@ function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
     const iconHeight = configs.fontSize * 1.35;
     // return `<img src="${url}" style="all: revert; opacity: ${configs.buttonsStyle == 'onlyicon' ? opacity * 1.5 : opacity}; filter: invert(${isDarkBackground ? '100' : '0'}%);vertical-align: top !important;  max-height:16px !important;display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px; " />`;  transform: translate(0, -${configs.fontSize / 4}px) 
     return `<img src="${url}" style="all: revert; height: ${iconHeight}px; max-height: ${iconHeight}px !important; fill: white; opacity: ${configs.buttonsStyle == 'onlyicon' ? 0.75 : 0.5}; filter: invert(${isDarkBackground ? '100' : '0'}%); vertical-align: top !important; display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px;  transform: translate(0, -1px) " />`;
+}
+
+function splitNumberInGroups(stringNumber) {
+    let parts = stringNumber.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    if (parts[1] == '00') parts[1] = ''; /// Remove empty .00 on end
+    return parts[1] == '' ? parts[0] : parts.join('.');
 }
 
 
