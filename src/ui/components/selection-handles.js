@@ -52,10 +52,12 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
         dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-out; position: fixed; z-index: 9998; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px !important; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important;`);
         document.body.appendChild(dragHandle);
 
+        const dragHandleIsReverted = dragHandleIndex == 1 && tooltipOnBottom;
+
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
         // circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
-        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIndex == 1 && tooltipOnBottom ? `top: -${circleHeight - 1}px` : `bottom: -${lineHeight - 1}px`}; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIsReverted ? `top: -${circleHeight - 1}px` : `bottom: -${lineHeight - 1}px`}; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {
@@ -124,7 +126,8 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                     if (dragHandleIndex == 0) {
                         dragHandle.style.transform = `translate(${e.clientX}px, ${selStartDimensions.dy - lineHeight - deltaYFromInitial + verticalOffsetCorrection}px)`;
                     } else {
-                        dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy - lineHeight + deltaYFromInitial + verticalOffsetCorrection}px)`;
+                        // dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy - lineHeight + deltaYFromInitial + verticalOffsetCorrection}px)`;
+                        dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy - (dragHandleIsReverted ? - (circleHeight / 2) : lineHeight) + deltaYFromInitial + verticalOffsetCorrection}px)`;
                     }
 
                     /// Create selection from rect
@@ -150,7 +153,8 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                                     selStartDimensions.dx + 2, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy,  /// DY beginning of selection (focusY)
                                     selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
-                                    selEndDimensions.dy + deltaYFromInitial - (lineHeight / 2),  /// DY end of selection (anchorY)
+                                    // selEndDimensions.dy + deltaYFromInitial - (lineHeight / 2),  /// DY end of selection (anchorY)
+                                    selEndDimensions.dy + deltaYFromInitial - (dragHandleIsReverted ? - (lineHeight / 2) : lineHeight / 2),  /// DY end of selection (anchorY)
                                 );
                             }
 
