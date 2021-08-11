@@ -455,6 +455,12 @@ function addContextualButtons() {
                     numberToConvert = extractAmountFromSelectedText(selectedText);
 
                     if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+
+                        /// Check selected text for literal multipliers
+                        for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
+                        for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { numberToConvert *= 1000000; break; } }
+                        for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { numberToConvert *= 1000; break; } }
+
                         fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                         convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
 
@@ -473,11 +479,6 @@ function addContextualButtons() {
             if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && !isNaN(convertedNumber)) {
                 /// Round doubles to the first 2 symbols after dot
                 convertedNumber = convertedNumber.toFixed(2);
-
-                /// Check selected text for literal multipliers
-                for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { convertedNumber *= 1000000000; break; } }
-                for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { convertedNumber *= 1000000; break; } }
-                for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { convertedNumber *= 1000; break; } }
 
                 /// Separate resulting numbers in groups of 3 digits
                 convertedNumber = splitNumberInGroups(convertedNumber.toString());
@@ -499,7 +500,7 @@ function addContextualButtons() {
                 interactiveButton.appendChild(unitLabelEl);
 
                 interactiveButton.addEventListener("mousedown", function (e) {
-                    let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit} to ${convertedUnit}`);
+                    let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit.trim()} to ${convertedUnit}`);
                     onTooltipButtonClick(e, url);
                 });
 
@@ -865,12 +866,14 @@ function addContextualButtons() {
 
                 /// Add 'open link' button
                 if (configs.addOpenLinks)
-                    // if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.') || selectedText.includes('/'))) {
                     if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.'))) {
                         var words = selectedText.split(' ');
                         for (i in words) {
                             var link = words[i];
-                            if ((link.includes('.') || link.includes('/')) && !link.trim().includes(' ') && !link.includes('@') && !link.includes('<') && link.length > 4) {
+                            let splittedByDots = link.split('.');
+
+                            // if ((link.includes('.') || link.includes('/')) && !link.trim().includes(' ') && !link.includes('@') && !link.includes('<') && link.length > 4) {
+                            if ((link.includes('.') && 1 < link.split('.')[1].length < 4)) {
                                 link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
                                 var lastSymbol = link[link.length - 1];
 
@@ -905,7 +908,6 @@ function addContextualButtons() {
                                     link = link.trim();
 
                                     /// Filtering out non-links
-                                    var splittedByDots = link.split('.');
                                     var lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
                                     if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {

@@ -49,7 +49,7 @@ const timeZoneKeywords = {
 const thousandMultipliers = [
     'thousand',
     'тысяч',
-    'тыс.',
+    'тыс',
 ];
 
 const millionMultipliers = [
