@@ -1,0 +1,166 @@
+{
+    "actionButtonsHeader": {
+        "message": "Eylem düğmeleri",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı"
+    },
+    "addActionButtonsForTextFields": {
+        "message": "Metin alanları için özel paneli kullanın",
+        "description": "Alan için etiket ayarları"
+    },
+    "addButtonIcons": {
+        "message": "Düğmeler için simgeleri göster",
+        "description": "Alan için etiket ayarları"
+    },
+    "addColorPreviewButton": {
+        "message": "Renk önizleme düğmesi ekle (#ffffff gibi CSS renkleri için)",
+        "description": "Alan için etiket ayarları"
+    },
+    "addDragHandles": {
+        "message": "Ekle seçim sürükleme tutamaçları",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "addFontFormatButtons": {
+        "message": "Yazı tipi biçimi düğmeleri ekle (italik, kalın)",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "addNewSearchOption": {
+        "message": "Yeni arama seçeneği ekle",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı0"
+    },
+    "addOpenLinks": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı1",
+        "description": "Alan için etiket ayarları"
+    },
+    "addPasteButton": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı2",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı3"
+    },
+    "addPhoneButton": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı4",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı3"
+    },
+    "addScaleUpEffect": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı5",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı3"
+    },
+    "addTooltipShadow": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı6",
+        "description": "Alan için etiket ayarları"
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı7",
+        "description": ""
+    },
+    "animationDuration": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı8",
+        "description": "Alan için etiket ayarları"
+    },
+    "appearanceHeader": {
+        "message": "Ayarlarda eylem düğmeleri kategorisi başlığı9",
+        "description": "Metin alanları için özel paneli kullanın0"
+    },
+    "behaviorHeader": {
+        "message": "Metin alanları için özel paneli kullanın1",
+        "description": "Metin alanları için özel paneli kullanın0"
+    },
+    "boldLabel": {
+        "message": "Metin alanları için özel paneli kullanın2",
+        "description": "Alan için etiket ayarları"
+    },
+    "borderRadius": {
+        "message": "Metin alanları için özel paneli kullanın3",
+        "description": "Alan için etiket ayarları"
+    },
+    "buttonsStyle": {
+        "message": "Metin alanları için özel paneli kullanın4",
+        "description": "Ayarlarda eylem düğmeleri kategorisi başlığı3"
+    },
+    "buyMeCoffee": {
+        "message": "Destek geliştirme",
+        "description": ""
+    },
+    "changeTextSelectionColor": {
+        "message": "Metin seçimini özelleştir",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "contextualButtonsHeader": {
+        "message": "Düğmeler",
+        "description": "Ayarlarda bağlamsal düğmeler kategorisi için başlık"
+    },
+    "convertCurrencies": {
+        "message": "Para birimlerini dönüştür",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "convertMetrics": {
+        "message": "Metrikleri dönüştür",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "convertTime": {
+        "message": "Zaman dönüştür",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "convertToCurrency": {
+        "message": "Dönüştürülecek para birimi (<bir hedef= '_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Bilgiye bakın</a>)",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "convertToCurrencyHint": {
+        "message": "'Kod'a bakın' <a target='_blank' href='https: //www.iban.com/currency-codes'>burada</a>",
+        "description": "Metin seçimini özelleştir0"
+    },
+    "convertionHeader": {
+        "message": "Metin seçimini özelleştir1",
+        "description": "Metin seçimini özelleştir2"
+    },
+    "copyLabel": {
+        "message": "Metin seçimini özelleştir3",
+        "description": "Metin seçimini özelleştir4"
+    },
+    "customIcon": {
+        "message": "Metin seçimini özelleştir5",
+        "description": "Metin seçimini özelleştir6"
+    },
+    "customIconUrl": {
+        "message": "Metin seçimini özelleştir7",
+        "description": "Metin seçimini özelleştir8"
+    },
+    "customSearchButtonsHeader": {
+        "message": "Metin seçimini özelleştir9",
+        "description": "Ayarlarda alan için etiket0"
+    },
+    "customSearchTooltip": {
+        "message": "Ayarlarda alan için etiket1",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "customSearchTooltipHint": {
+        "message": "Ayarlarda alan için etiket2",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "customSearchUrl": {
+        "message": "Ayarlarda alan için etiket3",
+        "description": "Ayarlarda alan için etiket"
+    },
+    "cutLabel": {
+        "message": "Ayarlarda alan için etiket4",
+        "description": "Ayarlarda alan için etiket5"
+    },
+    "debugMode": {
+        "message": "Ayarlarda alan için etiket6",
+        "description": "Metin seçimini özelleştir8"
+    },
+    "deleteLabel": {
+        "message": "Ayarlarda alan için etiket7",
+        "description": "Ayarlarda alan için etiket8"
+    },
+    "disableWordSnappingOnCtrlKey": {
+        "message": "Ayarlarda alan için etiket9",
+        "description": "Metin seçimini özelleştir8"
+    },
+    "dontSnapTextfieldSelection": {
+        "message": "Düğmeler0",
+        "description": "Metin seçimini özelleştir8"
+    },
+    "draggableTooltip": {
+        "message": "Düğmeler1",
+        "description": "Ayarlarda alan için etiket"
+    }
+}

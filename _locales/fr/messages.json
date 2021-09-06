@@ -151,6 +151,10 @@
         "message": "Ne pas sélectionner par mots si la touche CTRL est enfoncée",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "dontSnapTextfieldSelection": {
+        "message": "Ne pas aligner la sélection dans les champs de texte",
+        "description": "Label for option in settings"
+    },
     "draggableTooltip": {
         "message": "Le panneau peut être déplacé par la flèche",
         "description": "Libellé du champ dans les paramètres"

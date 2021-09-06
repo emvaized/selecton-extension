@@ -151,6 +151,10 @@
         "message": "Não selecione por palavras se a tecla CTRL estiver pressionada",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "dontSnapTextfieldSelection": {
+        "message": "Não ajuste a seleção em campos de texto",
+        "description": "Label for option in settings"
+    },
     "draggableTooltip": {
         "message": "O painel pode ser arrastado pela seta",
         "description": "Rótulo para o campo nas configurações"

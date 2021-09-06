@@ -151,6 +151,10 @@
         "message": "Не виділяти по словам, якщо натиснута клавіша CTRL",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "dontSnapTextfieldSelection": {
+        "message": "Не виділяти по словам у полях вводу",
+        "description": "Label for option in settings"
+    },
     "draggableTooltip": {
         "message": "Панель можна перетягнути за стрілку",
         "description": ""

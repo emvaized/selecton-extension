@@ -151,6 +151,10 @@
         "message": "Nicht mit Worten auswählen, wenn die STRG-Taste gedrückt wird",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "dontSnapTextfieldSelection": {
+        "message": "Auswahl in Textfeldern nicht einrasten",
+        "description": "Label for option in settings"
+    },
     "draggableTooltip": {
         "message": "Panel kann durch den Pfeil gezogen werden",
         "description": "Beschriftung für Feld in Einstellungen"

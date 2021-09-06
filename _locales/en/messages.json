@@ -153,7 +153,11 @@
   },
   "disableWordSnappingOnCtrlKey": {
     "message": "Do not select by words if the CTRL key is pressed",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
+  },
+  "dontSnapTextfieldSelection": {
+    "message": "Do not snap selection in text fields",
+    "description": "Label for option in settings"
   },
   "draggableTooltip": {
     "message": "Panel can be dragged by the arrow",

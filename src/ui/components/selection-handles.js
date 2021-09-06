@@ -1,6 +1,8 @@
 function setDragHandles(tooltipOnBottom) {
+    /// Hide existing drag handles
+    //hideDragHandles();
     /// Dont add drag handles if they are already added
-    var existingDragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle'`);
+    let existingDragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
     if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
 
     addDragHandle(0, tooltipOnBottom);
@@ -23,10 +25,6 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
     try {
         const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
 
-        if (configs.debugMode) {
-            console.log('Selected text line height: ' + selectedTextLineHeight.toString());
-        }
-
         if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px')) {
             lineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
         }
@@ -41,23 +39,21 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
         var selStartDimensions = getSelectionCoordinates(true);
         var selEndDimensions = getSelectionCoordinates(false);
 
-        if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) {
-            selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY };
-        }
+        /// When returned dimensions are 0;0, place the handle where it was left by user
+        if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (lineHeight / 2) - circleHeight };
+        if (selStartDimensions.dx == 0 && selStartDimensions.dy == 0) selStartDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (lineHeight / 2) - circleHeight };
 
-        if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
+        if (selStartDimensions == null || selEndDimensions == null) { return; }
+
+        const dragHandleIsReverted = dragHandleIndex == 1 && tooltipOnBottom;
 
         var dragHandle = document.createElement('div');
         dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
         dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-out; position: fixed; z-index: 9998; left: 0px; top: 0px;height: ${lineHeight}px; width: ${lineWidth}px !important; opacity:0; background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important;`);
-        document.body.appendChild(dragHandle);
-
-        const dragHandleIsReverted = dragHandleIndex == 1 && tooltipOnBottom;
 
         var circleDiv = document.createElement('div');
         circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-        // circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; bottom: -${lineHeight - 1}px; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
-        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIsReverted ? `top: -${circleHeight - 1}px` : `bottom: -${lineHeight - 1}px`}; left: -${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIsReverted ? `top: -${circleHeight - 1}px` : `bottom: -${lineHeight - 1}px`}; right: ${(circleHeight / 2) - (lineWidth / 2)}px;`);
         dragHandle.appendChild(circleDiv);
         circleDiv.style.cursor = 'grab';
         setTimeout(function () {
@@ -126,7 +122,6 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                     if (dragHandleIndex == 0) {
                         dragHandle.style.transform = `translate(${e.clientX}px, ${selStartDimensions.dy - lineHeight - deltaYFromInitial + verticalOffsetCorrection}px)`;
                     } else {
-                        // dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy - lineHeight + deltaYFromInitial + verticalOffsetCorrection}px)`;
                         dragHandle.style.transform = `translate(${e.clientX}px, ${selEndDimensions.dy - (dragHandleIsReverted ? - (circleHeight / 2) : lineHeight) + deltaYFromInitial + verticalOffsetCorrection}px)`;
                     }
 
@@ -141,7 +136,6 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                                 /// Left handle
                                 createSelectionFromPoint(
                                     selEndDimensions.dx - 2, /// DX end of selection (anchorX)
-                                    // selEndDimensions.dy + 4, /// DY end of selection (anchorY)
                                     selEndDimensions.dy + (lineHeight / 2), /// DY end of selection (anchorY)
                                     selStartDimensions.dx - deltaXFromInitial - 0.05, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy - deltaYFromInitial - (lineHeight), /// DY beginning of selection (focusY)
@@ -149,11 +143,9 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                             } else {
                                 /// Right handle
                                 createSelectionFromPoint(
-                                    // selStartDimensions.dx + 4, /// DX beginning of selection (focusX)
                                     selStartDimensions.dx + 2, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy,  /// DY beginning of selection (focusY)
                                     selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
-                                    // selEndDimensions.dy + deltaYFromInitial - (lineHeight / 2),  /// DY end of selection (anchorY)
                                     selEndDimensions.dy + deltaYFromInitial - (dragHandleIsReverted ? - (lineHeight / 2) : lineHeight / 2),  /// DY end of selection (anchorY)
                                 );
                             }
@@ -198,17 +190,17 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
 
                         extendSelectionByWord(windowSelection, dragHandleIndex)
 
-                    } else {
                     }
 
                     createTooltip(e);
-
 
                     setTimeout(function () {
                         var selStartDimensions = getSelectionCoordinates(true);
                         var selEndDimensions = getSelectionCoordinates(false);
 
                         if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
+                        if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (lineHeight / 2) - circleHeight };
+                        if (selStartDimensions.dx == 0 && selStartDimensions.dy == 0) selStartDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (lineHeight / 2) - circleHeight };
 
                         /// Animate drag handle to the new place
                         dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${configs.animationDuration}ms ease-in-out`;
@@ -225,9 +217,6 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                             dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
                         }, 200);
                     }, 2);
-
-
-                    // createTooltip(e);
                 }, 1);
 
 
@@ -235,6 +224,9 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                     console.log('Changing selection finished');
             };
         }
+
+        //dragHandles.push(dragHandle);
+        document.body.appendChild(dragHandle);
 
         if (configs.debugMode) {
             console.log('Successfully added drag handle ' + dragHandleIndex.toString());
@@ -249,13 +241,16 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
 function hideDragHandles() {
     /// Remove all drag handles
     if (configs.addDragHandles) {
-        var dragHandles = document.querySelectorAll(`[class*='selection-tooltip-draghandle']`);
-        dragHandles.forEach(function (dragHandle) {
+        let dragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
+
+        for (let i = 0, l = dragHandles.length; i < l; i++) {
+            let dragHandle = dragHandles[i];
             dragHandle.style.opacity = 0.0;
+
             setTimeout(function () {
-                if (dragHandle.parentNode !== null)
-                    dragHandle.parentNode.removeChild(dragHandle);
+                dragHandle.remove();
+                //dragHandles.splice(i, 1);
             }, configs.animationDuration);
-        });
+        }
     }
 }

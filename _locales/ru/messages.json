@@ -155,6 +155,10 @@
         "message": "Не выделять по словам, если зажата клавиша CTRL",
         "description": "Label for buttons style option in settings"
     },
+    "dontSnapTextfieldSelection": {
+        "message": "Не выделять по словам в текстовых полях",
+        "description": "Label for option in settings"
+    },
     "draggableTooltip": {
         "message": "Панель можно перетащить за стрелку",
         "description": ""

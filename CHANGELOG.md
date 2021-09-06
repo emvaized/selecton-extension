@@ -1,3 +1,9 @@
+#3.2.8
+- Improved logic for drag handles
+- Added new check "Don't snap selection in text fields" (defaults to "true")
+- Selecton mouse listeners now won't be loaded in page unless user starts to actually select text
+- Various performance optimizations
+
 #3.2.7
 - "Show tooltip at cursor position" now shows it on bottom of selection when multi-line + selected from top to bottom
 - Selecton now can read literal multipliers for numbers on some languages (like '$5 million')

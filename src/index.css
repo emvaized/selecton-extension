@@ -134,14 +134,3 @@
   border-right: var(--selecton-button-border-right) !important;
   /* border-bottom: 1px solid transparent !important; */
 }
-
-
-/* .selection-tooltip-draghandle {
-  border: 0.25px solid var(--selecton-outline-color);
-
-}
-
-.selection-tooltip-draghandle-circle {
-  border: 0.25px solid var(--selecton-outline-color);
-} */
-

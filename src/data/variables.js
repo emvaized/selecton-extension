@@ -3,7 +3,6 @@ var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
 var ignoreWhenTextFieldFocused = true;
 var convertWhenOnlyFewWordsSelected = true;
-var loadTooltipOnPageLoad = false;
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 var allowWebsitesOverrideSelectionColor = true;
@@ -39,5 +38,8 @@ var browserMetricSystem;
 var addButtonIcons;
 var verticalSecondaryTooltip;
 var lastMouseUpEvent;
-
 var previousSelection;
+
+// var dragHandles = [];
+// var oldTooltips = [];
+// var oldSecondaryTooltips = [];

@@ -1,19 +1,15 @@
-/// Create secondary tooltip for custom search engines
-
-var secondaryTooltipHeight;
-
+/// Create secondary tooltip for additional search engines
 function createSecondaryTooltip() {
     if (searchButton == null || searchButton == undefined) return;
     secondaryTooltip = document.createElement('div');
-    secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
+    //secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
+    secondaryTooltip.className = 'secondary-selection-tooltip selecton-entity';
     secondaryTooltip.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important`);
     // secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';
     secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '100% 100% 0' : '0% 100% 0';
-
-    document.body.appendChild(secondaryTooltip);
 
     /// Add shadow
     if (configs.addTooltipShadow) {
@@ -166,8 +162,6 @@ function appendSecondaryTooltip() {
     }
     calculateEndDy();
 
-
-    // secondaryTooltip.style.top = verticalSecondaryTooltip ? parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom : dy;
     secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
 
@@ -176,51 +170,33 @@ function appendSecondaryTooltip() {
 
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
-
-        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
-
         secondaryTooltip.style.opacity = 1.0;
-
-        // if (verticalSecondaryTooltip)
-        //     secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
     searchButton.onmouseout = function () {
         if (isSecondaryTooltipHovered == false) {
-            // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
             calculateEndDy();
             secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
             secondaryTooltip.style.opacity = 0.0;
-
-            // if (verticalSecondaryTooltip)
-            //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
         }
     }
     secondaryTooltip.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
 
-        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
-
-        // if (verticalSecondaryTooltip)
-        //     secondaryTooltip.style.transform = 'scale(1.0, 1.0)';
     }
 
     secondaryTooltip.onmouseout = function () {
         isSecondaryTooltipHovered = false;
 
-        // endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
         calculateEndDy();
         secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
-
-        // if (verticalSecondaryTooltip)
-        //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
     }
 
     /// Add some bottom space to prevent unwanted jumping on moving cursor
@@ -233,4 +209,7 @@ function appendSecondaryTooltip() {
     else
         space.style.bottom = `-${paddingOnBottom * 2}px`;
     secondaryTooltip.appendChild(space);
+
+    //oldSecondaryTooltips.push(secondaryTooltip)
+    document.body.appendChild(secondaryTooltip);
 }

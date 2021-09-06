@@ -1,5 +1,4 @@
 function init() {
-
   let userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -42,7 +41,6 @@ function init() {
         });
 
         addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
-
         verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
 
         if (configs.debugMode) {
@@ -76,22 +74,19 @@ function init() {
 
         ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
 
-        /// If initial launch, update currency rates
-        if (configs.convertCurrencies) {
-          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-            fetchCurrencyRates();
-          else loadCurrencyRatesFromMemory();
-        }
+        // /// If initial launch, update currency rates
+        // if (configs.convertCurrencies) {
+        //   if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+        //     fetchCurrencyRates();
+        //   else loadCurrencyRatesFromMemory();
+        // }
 
-        if (loadTooltipOnPageLoad)
-          setUpNewTooltip();
-
-        try {
-          setPageListeners();
-        } catch (e) {
-          if (configs.debugMode)
-            console.log('Error while setting Selecton page listeners: ' + e);
-        }
+        // try {
+        //   setPageListeners();
+        // } catch (e) {
+        //   if (configs.debugMode)
+        //     console.log('Error while setting Selecton page listeners: ' + e);
+        // }
       }
     });
 }
@@ -191,6 +186,29 @@ function setPageListeners() {
 function domLoadedListener() {
   init();
   document.removeEventListener('DOMContentLoaded', domLoadedListener);
+  document.addEventListener('selectionchange', selectionChangeInitListener);
+}
+
+function selectionChangeInitListener(e) {
+  if (document.getSelection().toString().length < 1) return;
+  document.removeEventListener('selectionchange', selectionChangeInitListener);
+  // init();
+
+  /// If initial launch, update currency rates
+  if (configs.convertCurrencies) {
+    if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+      fetchCurrencyRates();
+    else loadCurrencyRatesFromMemory();
+  }
+
+  try {
+    setPageListeners();
+  } catch (e) {
+    if (configs.debugMode)
+      console.log('Error while setting Selecton page listeners: ' + e);
+  }
+
+  console.log(e);
 }
 
 document.addEventListener('DOMContentLoaded', domLoadedListener);
