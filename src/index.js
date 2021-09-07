@@ -169,7 +169,6 @@ function setPageListeners() {
 
     if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim() !== ''))
       createTooltip(e);
-
   });
 
   window.addEventListener('resize', function (e) {
@@ -207,8 +206,6 @@ function selectionChangeInitListener(e) {
     if (configs.debugMode)
       console.log('Error while setting Selecton page listeners: ' + e);
   }
-
-  console.log(e);
 }
 
 document.addEventListener('DOMContentLoaded', domLoadedListener);

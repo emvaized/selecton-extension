@@ -2,6 +2,7 @@
 const addressKeywords = [
     'ул.',
     'пр.',
+    'г.',
     'проспект ',
     'улица ',
     'переулок ',
@@ -9,6 +10,7 @@ const addressKeywords = [
     ' street',
     'broadway',
     ' st.',
+    ' city',
 ];
 
 const timeZoneKeywords = {

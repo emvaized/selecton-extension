@@ -48,7 +48,7 @@ var configs = {
     'shouldOverrideWebsiteSelectionColor': false,
     'disableWordSnappingOnCtrlKey': true,
     'showButtonLabelOnHover': true,
-    'animationDuration': 300,
+    'animationDuration': 250,
     'wordSnappingBlacklist': 'github.com',
     'dontSnapTextfieldSelection': true,
     'tooltipRevealEffect': 'moveUpTooltipEffect',

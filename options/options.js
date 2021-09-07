@@ -440,7 +440,7 @@ function generateCustomSearchButtonsList() {
 
         var moveUpButton = document.createElement('button');
         moveUpButton.textContent = 'ᐱ';
-        moveUpButton.setAttribute('style', 'max-width: 1px; padding: 1px; align-items: center');
+        moveUpButton.setAttribute('style', 'max-width: 20px; padding: 1px; align-items: center');
         moveUpButton.setAttribute('id', 'moveup' + i.toString());
         moveUpButton.setAttribute('title', chrome.i18n.getMessage("moveUpLabel"));
         moveUpButton.onmouseup = function () {
@@ -456,7 +456,7 @@ function generateCustomSearchButtonsList() {
 
         var moveDownButton = document.createElement('button');
         moveDownButton.textContent = 'ᐯ';
-        moveDownButton.setAttribute('style', 'max-width: 1px; padding: 1px; align-items: center');
+        moveDownButton.setAttribute('style', 'max-width: 20px; padding: 1px; align-items: center');
         moveDownButton.setAttribute('id', 'movedown' + i.toString());
         moveDownButton.setAttribute('title', chrome.i18n.getMessage("moveDownLabel"));
         moveDownButton.onmouseup = function () {

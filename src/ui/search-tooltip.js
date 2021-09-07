@@ -1,11 +1,11 @@
 /// Create secondary tooltip for additional search engines
 function createSecondaryTooltip() {
     if (searchButton == null || searchButton == undefined) return;
+
     secondaryTooltip = document.createElement('div');
-    //secondaryTooltip.setAttribute('class', 'secondary-selection-tooltip');
     secondaryTooltip.className = 'secondary-selection-tooltip selecton-entity';
-    secondaryTooltip.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important`);
-    // secondaryTooltip.style.backgroundColor = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
+    // secondaryTooltip.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important`);
+    secondaryTooltip.style.background = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';
@@ -136,12 +136,11 @@ function createSecondaryTooltip() {
 function appendSecondaryTooltip() {
     if (tooltip == null) return;
 
-    var paddingOnBottom = 5;
     var isSecondaryTooltipHovered = false;
 
-    var dx = tooltip.style.left;
-    var dy = tooltip.style.top;
-
+    let paddingOnBottom = 5;
+    let dx = tooltip.style.left;
+    let dy = tooltip.style.top;
     let endDy, initialDy, vertOutOfView;
 
     function calculateEndDy() {
@@ -155,7 +154,8 @@ function appendSecondaryTooltip() {
             initialDy = verticalSecondaryTooltip ? endDy : dy;
 
             secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
-            secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
+            // secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
+            secondaryTooltip.classList.add('higher-z-index');
         }
 
         initialDy = verticalSecondaryTooltip ? endDy : dy;
@@ -165,40 +165,27 @@ function appendSecondaryTooltip() {
     secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
 
-    // if (verticalSecondaryTooltip)
-    //     secondaryTooltip.style.transform = 'scale(1.0, 0.0)';
-
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.pointerEvents = 'auto';
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
+
+        searchButton.classList.add("hovered-tooltip-button");
     }
+
     searchButton.onmouseout = function () {
-        if (isSecondaryTooltipHovered == false) {
-            calculateEndDy();
-            secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
-            secondaryTooltip.style.opacity = 0.0;
-        }
+        setTimeout(function () {
+            if (isSecondaryTooltipHovered == false) {
+                calculateEndDy();
+                secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
+                secondaryTooltip.style.opacity = 0.0;
+
+                searchButton.classList.remove("hovered-tooltip-button");
+            }
+        }, 50);
+
     }
-    secondaryTooltip.onmouseover = function (event) {
-        secondaryTooltip.style.pointerEvents = 'auto';
-
-        calculateEndDy();
-        secondaryTooltip.style.top = `${endDy}px`;
-        secondaryTooltip.style.opacity = 1.0;
-        isSecondaryTooltipHovered = true;
-    }
-
-    secondaryTooltip.onmouseout = function () {
-        isSecondaryTooltipHovered = false;
-
-        calculateEndDy();
-        secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
-        secondaryTooltip.style.opacity = 0.0;
-        secondaryTooltip.style.pointerEvents = 'none';
-    }
-
     /// Add some bottom space to prevent unwanted jumping on moving cursor
     var space = document.createElement('div');
     space.setAttribute('class', `secondary-selection-tooltip-bottom-div`);
@@ -209,6 +196,26 @@ function appendSecondaryTooltip() {
     else
         space.style.bottom = `-${paddingOnBottom * 2}px`;
     secondaryTooltip.appendChild(space);
+
+    secondaryTooltip.onmouseover = function (event) {
+        secondaryTooltip.style.pointerEvents = 'auto';
+        calculateEndDy();
+        secondaryTooltip.style.top = `${endDy}px`;
+        secondaryTooltip.style.opacity = 1.0;
+        isSecondaryTooltipHovered = true;
+
+        searchButton.classList.add("hovered-tooltip-button");
+    }
+
+    secondaryTooltip.onmouseout = function () {
+        isSecondaryTooltipHovered = false;
+        calculateEndDy();
+        secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
+        secondaryTooltip.style.opacity = 0.0;
+        secondaryTooltip.style.pointerEvents = 'none';
+
+        searchButton.classList.remove("hovered-tooltip-button");
+    }
 
     //oldSecondaryTooltips.push(secondaryTooltip)
     document.body.appendChild(secondaryTooltip);

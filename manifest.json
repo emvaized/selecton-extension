@@ -53,7 +53,7 @@
         "src/functions/input-functions.js",
         "src/functions/tooltip-functions.js",
         "src/ui/components/translate-button.js",
-        "src/ui/secondary-tooltip.js",
+        "src/ui/search-tooltip.js",
         "src/ui/tooltip.js",
         "src/ui/components/selection-handles.js",
         "src/index.js"

@@ -31,6 +31,7 @@ var firstButtonBorderRadius = `3px 0px 0px 3px`;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
 var isDarkBackground = true;
 var linkSymbolsToShow = 20;
+var selectionHandleLineHeight = 25;
 var searchButton;
 var browserLanguage;
 var browserCurrency;

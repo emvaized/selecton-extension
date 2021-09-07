@@ -23,7 +23,6 @@ function getSelectionCoordinates(atStart) {
 
     let rect = range.getBoundingClientRect();
 
-
     // Detect if selection is backwards
     let isBackwards;
     try {
@@ -35,6 +34,20 @@ function getSelectionCoordinates(atStart) {
     } catch (e) { console.log(e); }
 
 
+    if (rect.x == 0 && rect.y == 0) {
+        try {
+            let range2 = document.createRange();
+            range2.setStart(sel.anchorNode, sel.anchorOffset);
+            range2.setEnd(sel.focusNode, sel.focusOffset);
+            let rect2 = range2.getBoundingClientRect();
+
+            console.log(atStart);
+            console.log(rect2);
+            rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
+        } catch (e) { console.log(e); }
+    }
+
+    // range.collapse(true);
     // return { dx: rect.x, dy: rect.y };
     return { dx: rect.x, dy: rect.y, backwards: isBackwards };
 }

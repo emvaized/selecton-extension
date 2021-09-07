@@ -60,13 +60,13 @@ function addTranslateButton() {
                     try {
                         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
                     } catch (e) {
-                        console.log(e);
+                        if (configs.debugMode) console.log(e);
                         setRegularTranslateButton(translateButton);
                     }
                 } else {
                     setRegularTranslateButton(translateButton);
                 }
-
+                // setRegularTranslateButton(translateButton);
             } else {
                 checkTooltipForCollidingWithSideEdges();
             }
@@ -89,20 +89,20 @@ function setRegularTranslateButton(translateButton) {
         translateButton.textContent = translateLabel;
 
     /// Correct tooltip's dx
-    correctTooltipPosition()
+    correctTooltipPosition();
+
+
+    if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
+        translateButton.addEventListener("mouseover", function (e) {
+            setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
+        });
+    }
 
 }
 
 async function setLiveTranslatedButton(word, sourceLang, targetLang, translateButton) {
 
-    /// Fetch translation from Google Translate
-    /// Simplified version of Simple Translate extension request (as per 4 May 21) 
-    /// https://github.com/sienori/simple-translate/blob/f8ec34e1b17635c0b03d8fbbc64562ca5534acca/src/common/translate.js#L26
-
-    // let translateButtonWidthBeforeResult = translateButton.clientWidth;
-
     /// Placeholder while loading
-    // translateButton.innerHTML = '.'.repeat(word.length);
     translateButton.innerHTML = translateLabel;
 
     let maxLengthForResult = 30;
@@ -155,6 +155,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
             resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 
         translateButton.innerHTML = resultOfLiveTranslation;
+        // translateButton.setAttribute('title', resultOfLiveTranslation);
 
         /// Create origin language label
         let originLabelWidth = configs.fontSize / 1.5;

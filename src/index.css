@@ -71,7 +71,7 @@
     }
 
     
-  .selection-popup-button:hover {
+  .selection-popup-button:hover, .hovered-tooltip-button {
     all: revert;
     background-color: var(--selection-button-background-hover) !important;
     background-clip: padding-box !important;
@@ -133,4 +133,9 @@
   border-left: var(--selecton-button-border-left) !important;
   border-right: var(--selecton-button-border-right) !important;
   /* border-bottom: 1px solid transparent !important; */
+}
+
+/* Highter z-index for search tooltip on bottom */
+.higher-z-index {
+  z-index: 10001 !important;
 }

@@ -93,13 +93,13 @@ function createTooltip(e) {
                 if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
                     addContextualButtons();
 
-                    //oldTooltips.push(tooltip);
-                    document.body.appendChild(tooltip);
-
                     setTimeout(function () {
                         /// Set border radius for first and last buttons
                         tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
                         tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                        //oldTooltips.push(tooltip);
+                        document.body.appendChild(tooltip);
 
                         calculateTooltipPosition(e);
                     }, 1);
@@ -186,20 +186,13 @@ function setUpNewTooltip(type) {
                 tooltip.style.top = `${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px`;
                 tooltip.style.transform = null;
 
-                /// Move secondary tooltip
+                /// Recreate secondary tooltip
                 // if (configs.secondaryTooltipEnabled) {
-                //     var secondaryTooltipDx = parseInt(secondaryTooltip.style.left.replaceAll('px', ''));
-                //     var secondaryTooltipDy = parseInt(secondaryTooltip.style.top.replaceAll('px', ''));
-                //     secondaryTooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px )`;
-                //     // secondaryTooltip.style.left = `${e.clientX - tooltip.clientWidth / 2 - secondaryTooltipDx}px;`;
-                //     // secondaryTooltip.style.top = ` ${e.clientY + window.scrollY - tooltip.clientHeight - (arrow.clientHeight / 2) - secondaryTooltipDy}px`;
+                //     if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
+                //         secondaryTooltip.parentNode.removeChild(secondaryTooltip);
+                //         createSecondaryTooltip();
+                //     }
                 // }
-                if (configs.secondaryTooltipEnabled) {
-                    if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
-                        secondaryTooltip.parentNode.removeChild(secondaryTooltip);
-                        createSecondaryTooltip();
-                    }
-                }
 
                 if (configs.debugMode)
                     console.log('Dragging tooltip finished');
@@ -368,7 +361,7 @@ function addBasicTooltipButtons(layout) {
             searchButton.textContent = searchLabel;
 
         searchButton.addEventListener("mousedown", function (e) {
-            var selectedText = selection.toString();
+            let selectedText = selection.toString();
             onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
         });
         tooltip.appendChild(searchButton);
@@ -1277,10 +1270,10 @@ function showTooltip(dx, dy) {
         setTimeout(function () {
             try {
                 createSecondaryTooltip();
+                //addSearchButtonListeners();
             } catch (e) {
                 console.log(e);
             }
-            // }, configs.animationDuration);
         }, 3);
 }
 
@@ -1292,7 +1285,7 @@ function hideTooltip() {
     if (configs.debugMode)
         console.log('Checking for existing Selecton tooltips...')
 
-    /// Hide all main tooltips
+    /// Hide all tooltips
     // var oldTooltips = document.querySelectorAll('.selection-tooltip');
     let oldTooltips = document.querySelectorAll(`.selecton-entity`);
     // if (configs.debugMode) {
@@ -1330,6 +1323,7 @@ function hideTooltip() {
     // }
 
     tooltip = null;
+    secondaryTooltip = null;
 }
 
 function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
