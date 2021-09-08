@@ -164,17 +164,25 @@ function appendSecondaryTooltip() {
 
     secondaryTooltip.style.top = initialDy;
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
+    secondaryTooltip.style.transform = 'scale(0.0)';
+
+    // var timeoutToRevealSearchTooltip;
 
     searchButton.onmouseover = function (event) {
+        secondaryTooltip.style.transform = 'scale(1.0)';
+
+        // timeoutToRevealSearchTooltip = timeout(function () {
         secondaryTooltip.style.pointerEvents = 'auto';
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
-
         searchButton.classList.add("hovered-tooltip-button");
+        // }, 150);
     }
 
     searchButton.onmouseout = function () {
+        // clearTimeout(timeoutToRevealSearchTooltip);
+
         setTimeout(function () {
             if (isSecondaryTooltipHovered == false) {
                 calculateEndDy();
@@ -182,6 +190,11 @@ function appendSecondaryTooltip() {
                 secondaryTooltip.style.opacity = 0.0;
 
                 searchButton.classList.remove("hovered-tooltip-button");
+
+                setTimeout(function () {
+                    if (isSecondaryTooltipHovered == false)
+                        secondaryTooltip.style.transform = 'scale(0.0)';
+                }, 300);
             }
         }, 50);
 

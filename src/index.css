@@ -83,7 +83,7 @@
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
   all: revert;
-  transition: top 300ms ease-in-out, opacity 300ms ease-in-out, transform 300ms ease-out;
+  transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
   opacity: 0.0;
   left: 0px;
   z-index: 9999 !important;

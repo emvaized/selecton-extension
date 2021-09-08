@@ -30,22 +30,27 @@ function getSelectionCoordinates(atStart) {
         range.setStart(sel.anchorNode, sel.anchorOffset);
         range.setEnd(sel.focusNode, sel.focusOffset);
         isBackwards = range.collapsed;
+
+        if (rect.x == 0 && rect.y == 0) {
+            let rect2 = range.getBoundingClientRect();
+            rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
+        }
+
         range.detach();
     } catch (e) { console.log(e); }
 
+    // if (rect.x == 0 && rect.y == 0) {
+    //     try {
+    //         let range2 = document.createRange();
+    //         range2.setStart(sel.anchorNode, sel.anchorOffset);
+    //         range2.setEnd(sel.focusNode, sel.focusOffset);
+    //         let rect2 = range2.getBoundingClientRect();
 
-    if (rect.x == 0 && rect.y == 0) {
-        try {
-            let range2 = document.createRange();
-            range2.setStart(sel.anchorNode, sel.anchorOffset);
-            range2.setEnd(sel.focusNode, sel.focusOffset);
-            let rect2 = range2.getBoundingClientRect();
-
-            console.log(atStart);
-            console.log(rect2);
-            rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
-        } catch (e) { console.log(e); }
-    }
+    //         console.log(atStart);
+    //         console.log(rect2);
+    //         rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
+    //     } catch (e) { console.log(e); }
+    // }
 
     // range.collapse(true);
     // return { dx: rect.x, dy: rect.y };
