@@ -3,7 +3,7 @@
 - Added new check "Don't snap selection in text fields" (defaults to "true")
 - Selecton mouse listeners now won't be loaded in page unless user starts to actually select text
 - Added more address markers
-- Various performance optimizations
+- Various performance optimizations and design improvements
 
 #3.2.7
 - "Show tooltip at cursor position" now shows it on bottom of selection when multi-line + selected from top to bottom

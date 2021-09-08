@@ -420,7 +420,7 @@
         "description": "Label for translate action"
     },
     "updatePageToSeeChanges": {
-        "message": "Обновите страницу, чтобы увидеть изменения",
+        "message": "Обновите страницы, чтобы увидеть изменения",
         "description": ""
     },
     "updateRatesEveryDays": {

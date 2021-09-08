@@ -148,14 +148,18 @@ function appendSecondaryTooltip() {
 
         /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
         vertOutOfView = endDy <= 0;
-        if (vertOutOfView) {
+        if (vertOutOfView || tooltipOnBottom) {
             /// Show secondary tooltip beneath the main one
             endDy = parseInt(dy.replaceAll('px', '')) + tooltip.clientHeight + paddingOnBottom;
             initialDy = verticalSecondaryTooltip ? endDy : dy;
 
             secondaryTooltip.style.transformOrigin = configs.reverseTooltipButtonsOrder ? '75% 0% 0' : '25% 0% 0';
             // secondaryTooltip.setAttribute('style', secondaryTooltip.getAttribute('style') + 'z-index: 10001 !important;');
-            secondaryTooltip.classList.add('higher-z-index');
+
+            if (vertOutOfView)
+                setTimeout(function () {
+                    secondaryTooltip.classList.add('higher-z-index');
+                }, 300)
         }
 
         initialDy = verticalSecondaryTooltip ? endDy : dy;
@@ -167,7 +171,6 @@ function appendSecondaryTooltip() {
     secondaryTooltip.style.transform = 'scale(0.0)';
 
     // var timeoutToRevealSearchTooltip;
-
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.transform = 'scale(1.0)';
 
@@ -182,13 +185,11 @@ function appendSecondaryTooltip() {
 
     searchButton.onmouseout = function () {
         // clearTimeout(timeoutToRevealSearchTooltip);
-
         setTimeout(function () {
             if (isSecondaryTooltipHovered == false) {
                 calculateEndDy();
                 secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
                 secondaryTooltip.style.opacity = 0.0;
-
                 searchButton.classList.remove("hovered-tooltip-button");
 
                 setTimeout(function () {

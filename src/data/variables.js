@@ -40,6 +40,7 @@ var addButtonIcons;
 var verticalSecondaryTooltip;
 var lastMouseUpEvent;
 var previousSelection;
+var tooltipOnBottom = false;
 
 // var dragHandles = [];
 // var oldTooltips = [];

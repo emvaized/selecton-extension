@@ -1086,7 +1086,7 @@ function addContextualButtons() {
 
 function calculateTooltipPosition(e) {
     var selStartDimensions = getSelectionCoordinates(true);
-    let tooltipOnBottom = false;
+    tooltipOnBottom = false;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1116,7 +1116,6 @@ function calculateTooltipPosition(e) {
         /// Calculating DY
         // var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
-
 
         /// If tooltip is going off-screen on top...
         var vertOutOfView = resultingDy <= 0;

@@ -127,10 +127,11 @@ function setTranslatedLabels() {
     var infoCircle = document.createElement('div');
     infoCircle.textContent = '🛈';
     infoCircle.setAttribute('style', 'display: inline;position: relative; top: 3px; left: 3px; color: grey; font-size: 18px;');
-    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
-    document.querySelector("#allChangesSavedAutomaticallyHeader").appendChild(infoCircle);
-    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML += '<br />';
-    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
+    let hintEl = document.querySelector("#allChangesSavedAutomaticallyHeader");
+    hintEl.innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
+    hintEl.appendChild(infoCircle);
+    hintEl.innerHTML += '<br />';
+    hintEl.innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
 
     /// Translate footer buttons
     // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
