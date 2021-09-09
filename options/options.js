@@ -302,9 +302,14 @@ function generateCustomSearchButtonsList() {
     for (var i = 0; i < customSearchButtonsList.length; i++) {
         var item = customSearchButtonsList[i];
 
-        var entry = document.createElement('div');
+        let entry = document.createElement('div');
         entry.setAttribute('class', 'option');
         entry.setAttribute('style', 'margin: 8px 0px;');
+
+        if (item['enabled'] == false)
+            entry.style.opacity = 0.7;
+        else
+            entry.style.opacity = 1.0;
 
         /// Enabled checkbox
         var checkbox = document.createElement('input');
@@ -318,6 +323,11 @@ function generateCustomSearchButtonsList() {
         checkbox.addEventListener("input", function (e) {
             customSearchButtonsList[parseInt(this.id.replaceAll('checkbox', ''))]['enabled'] = this.checked;
             saveCustomSearchButtons();
+
+            if (this.checked)
+                entry.style.opacity = 1.0;
+            else
+                entry.style.opacity = 0.7;
         });
         entry.appendChild(checkbox);
 
