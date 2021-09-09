@@ -1,13 +1,13 @@
 # <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48"></sub>electon - text selection actions
 
 Get customizable pop-up with action buttons on text selection!
-* Copy any text in one click - especially useful for laptops
-* Customizable appearance for tooltip and text selection color
+* Copy or search any text in one click - especially useful for laptops
+* Customizable appearance for tooltip and custom text selection color
 * Currency converter (supports 30+ currencies)
-* Basic units converter (metric/imperial)
-* Contextual buttons depending on selected text, such as 'Open link', 'Translate' and more 
-* Enable snapping selection by words, so you'll never loose that one last letter again
-* Selection handles, which allow to quickly change current selection
+* Basic units converter (metric/imperial) and timezones conversion
+* Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map' and more 
+* Enable snapping selection by words, so you'll never loose that last letter again
+* Selection handles, which allow to quickly edit text selection
 * Live translation of the selected text (up to 3 words)
 
 
@@ -59,9 +59,13 @@ VND — Vietnamese Dong
 ZAR — Rand
 ```
 
-If you can't find your currency in the list, please create the issue here on GitHub so that I can implement it in future updates
+### Contributing
+You can make Selecton better the following ways:
+- Provide translation for your language: [Base English file](https://github.com/emvaized/selecton-extension/blob/master/_locales/en/messages.json)
+- Add your currency to the list of supported currencies: [Currencies](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
+- Selecton relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](https://github.com/emvaized/selecton-extension/blob/master/src/data/keywords.js)
 
-
+Make your changes, and then create pull request here on GitHub so I can merge it.
 
 
 
