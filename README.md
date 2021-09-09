@@ -67,7 +67,8 @@ You can make Selecton better the following ways:
 - Selecton relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](https://github.com/emvaized/selecton-extension/blob/master/src/data/keywords.js)
 
 Make your changes, and then create pull request here on GitHub so I can merge it.
-Also, you can write me on [email](mailto:maximtsyba@gmail.com) to share your ideas and suggestions.
+
+Also, you can always write me on [email](mailto:maximtsyba@gmail.com) to share your ideas and suggestions.
 
 
 
