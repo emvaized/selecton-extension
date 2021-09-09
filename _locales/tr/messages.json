@@ -1,458 +1,458 @@
 {
     "actionButtonsHeader": {
-        "message": "Action buttons",
-        "description": "Header for action buttons category in settings"
+        "message": "Eylem düğmeleri",
+        "description": "Ayarlarda eylem düğmeleri kategorisi üstbilgisi"
     },
     "addActionButtonsForTextFields": {
-        "message": "Use special panel for text fields",
-        "description": "Label for field in settings"
+        "message": "Metin alanları için özel panel kullanma",
+        "description": "Ayarlardaki alan etiketi"
     },
     "addButtonIcons": {
-        "message": "Show icons for buttons",
-        "description": "Label for field in settings"
+        "message": "Düğme simgelerini göster",
+        "description": "Ayarlardaki alan etiketi"
     },
     "addColorPreviewButton": {
-        "message": "Add color preview button (for CSS colors like #ffffff)",
-        "description": "Label for field in settings"
+        "message": "Renk önizleme düğmesi ekle (#ffffff gibi CSS renkleri için)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "addDragHandles": {
-        "message": "Add selection drag handles",
-        "description": "Label for buttons style option in settings"
+        "message": "Seçim sürükleme tutamaçları ekleme",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "addFontFormatButtons": {
-        "message": "Add font format buttons (italic, bold)",
-        "description": "Label for buttons style option in settings"
+        "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "addNewSearchOption": {
-        "message": "Add new search option",
-        "description": "Label for add new search option button"
+        "message": "Yeni arama seçeneği ekle",
+        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
     },
     "addOpenLinks": {
-        "message": "Add button to open link",
-        "description": "Label for field in settings"
+        "message": "Bağlantıyı açmak için düğme ekle",
+        "description": "Ayarlardaki alan etiketi"
     },
     "addPasteButton": {
-        "message": "Add 'Paste' button",
-        "description": "Label for option in settings"
+        "message": "'Yapıştır' düğmesi ekle",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "addPhoneButton": {
-        "message": "Add phone number button",
-        "description": "Label for option in settings"
+        "message": "Telefon numarası ekle düğmesi",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "addScaleUpEffect": {
-        "message": "Use scale-up effect on reveal",
-        "description": "Label for option in settings"
+        "message": "Ortaya çıkanda ölçek büyütme efektlerini kullanma",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "addTooltipShadow": {
-        "message": "Add tooltip shadow",
-        "description": "Label for field in settings"
+        "message": "Araç ipucu gölgesi ekleme",
+        "description": "Ayarlardaki alan etiketi"
     },
     "allChangesSavedAutomatically": {
-        "message": "All settings are saved automatically",
+        "message": "Tüm ayarlar otomatik olarak kaydedilir",
         "description": ""
     },
     "animationDuration": {
-        "message": "Animations duration (ms)",
-        "description": "Label for field in settings"
+        "message": "Animasyon süresi (ms)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "appearanceHeader": {
-        "message": "Panel appearance",
-        "description": "Header for appearance category in settings"
+        "message": "Panel görünümü",
+        "description": "Ayarlarda görünüm kategorisi üstbilgisi"
     },
     "behaviorHeader": {
-        "message": "Panel behavior",
-        "description": "Header for appearance category in settings"
+        "message": "Panel davranışı",
+        "description": "Ayarlarda görünüm kategorisi üstbilgisi"
     },
     "boldLabel": {
-        "message": "Bold",
-        "description": "Label for field in settings"
+        "message": "Kalın",
+        "description": "Ayarlardaki alan etiketi"
     },
     "borderRadius": {
-        "message": "Border radius",
-        "description": "Label for field in settings"
+        "message": "Kenarlık yarıçapı",
+        "description": "Ayarlardaki alan etiketi"
     },
     "buttonsStyle": {
-        "message": "Buttons style",
-        "description": "Label for option in settings"
+        "message": "Düğme stili",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "buyMeCoffee": {
-        "message": "Support development",
+        "message": "Geliştirmeyi destekleyin",
         "description": ""
     },
     "changeTextSelectionColor": {
-        "message": "Customize text selection",
-        "description": "Label for field in settings"
+        "message": "Metin seçimini özelleştirme",
+        "description": "Ayarlardaki alan etiketi"
     },
     "contextualButtonsHeader": {
-        "message": "Buttons",
-        "description": "Header for contextual buttons category in settings"
+        "message": "Düğme",
+        "description": "Ayarlarda bağlamsal düğmeler kategorisi üstbilgisi"
     },
     "convertCurrencies": {
-        "message": "Convert currencies",
-        "description": "Label for field in settings"
+        "message": "Para birimlerini dönüştürme",
+        "description": "Ayarlardaki alan etiketi"
     },
     "convertMetrics": {
-        "message": "Convert metrics",
-        "description": "Label for field in settings"
+        "message": "Ölçümleri dönüştürme",
+        "description": "Ayarlardaki alan etiketi"
     },
     "convertTime": {
-        "message": "Convert time",
-        "description": "Label for field in settings"
+        "message": "Zamanı dönüştürme",
+        "description": "Ayarlardaki alan etiketi"
     },
     "convertToCurrency": {
-        "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See info</a>)",
-        "description": "Label for field in settings"
+        "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See bilgileri</a>)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "convertToCurrencyHint": {
-        "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference",
-        "description": "Currency code hint for 'convert to currency' field in settings"
+        "message": "Referans için 'Kod' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> bakın",
+        "description": "Ayarlardaki 'para birimine dönüştür' alanı için para birimi kodu ipucu"
     },
     "convertionHeader": {
-        "message": "Conversion",
-        "description": "Header for convertion category in settings"
+        "message": "Dönüşüm",
+        "description": "Ayarlarda dönüştürme kategorisi üstbilgisi"
     },
     "copyLabel": {
-        "message": "Copy",
-        "description": "Label for copy text action"
+        "message": "Kopya",
+        "description": "Metin kopyalama eylemi etiketi"
     },
     "customIcon": {
-        "message": "Icône personnalisée",
-        "description": "Libellé du bouton dans les paramètres"
+        "message": "Özel simge",
+        "description": "Ayarlarda düğme etiketi"
     },
     "customIconUrl": {
-        "message": "Custom icon URL",
-        "description": "Label for option in settings"
+        "message": "Özel simge URL'si",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "customSearchButtonsHeader": {
-        "message": "Search buttons",
-        "description": "Header for settings section"
+        "message": "Arama düğmeleri",
+        "description": "Ayarlar bölümü için üstbilgi"
     },
     "customSearchTooltip": {
-        "message": "Custom search tooltip",
-        "description": "Label for field in settings"
+        "message": "Özel arama aracı ipucu",
+        "description": "Ayarlardaki alan etiketi"
     },
     "customSearchTooltipHint": {
-        "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for search query. <br/>%w is a placeholder for current domain (for website search).",
-        "description": "Label for field in settings"
+        "message": "'Ara' düğmesinin üzerine gelindiğinde ortaya çıkar. <br/>%s öğesini arama sorgusu için yer tutucu olarak kullan.<br/> %w geçerli etki alanı (web sitesi araması için) için bir yer tutucudur.",
+        "description": "Ayarlardaki alan etiketi"
     },
     "customSearchUrl": {
-        "message": "Custom search URL <br />(use %s as a placeholder for query)",
-        "description": "Label for field in settings"
+        "message": "Özel arama URL'si <br />(sorgu için yer tutucu olarak %s kullanın)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "cutLabel": {
-        "message": "Cut",
-        "description": "Label for cut action"
+        "message": "Kesmek",
+        "description": "Kesme eylemi etiketi"
     },
     "debugMode": {
-        "message": "Debug mode",
-        "description": "Label for option in settings"
+        "message": "Hata ayıklama modu",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "deleteLabel": {
-        "message": "Delete",
-        "description": "Label for the delete button"
+        "message": "Silmek",
+        "description": "Sil düğmesinin etiketi"
     },
     "disableWordSnappingOnCtrlKey": {
-        "message": "Do not select by words if the CTRL key is pressed",
-        "description": "Label for option in settings"
+        "message": "CTRL tuşuna basıldığında sözcüklere göre seçme",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "dontSnapTextfieldSelection": {
-        "message": "Do not snap selection in text fields",
-        "description": "Label for option in settings"
+        "message": "Metin alanlarında seçimi tutturma",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "draggableTooltip": {
-        "message": "Panel can be dragged by the arrow",
-        "description": "Label for field in settings"
+        "message": "Panel okla sürüklenebilir",
+        "description": "Ayarlardaki alan etiketi"
     },
     "enabled": {
-        "message": "Enabled",
-        "description": "Label for field in settings"
+        "message": "Etkin",
+        "description": "Ayarlardaki alan etiketi"
     },
     "excludedDomains": {
-        "message": "Excluded domains",
-        "description": "Label for option in settings"
+        "message": "Dışlanan etki alanları",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "extensionDescription": {
-        "message": "Customizable pop-up with actions on text selection",
-        "description": "Extension description"
+        "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere",
+        "description": "Uzantı açıklaması"
     },
     "fontSize": {
-        "message": "Font size",
-        "description": "Label for option in settings"
+        "message": "Yazı tipi boyutu",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "gmail": {
-        "message": "Gmail new email",
-        "description": "Option label for new email method setting"
+        "message": "Gmail yeni e-posta",
+        "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
     },
     "hideOnKeypress": {
-        "message": "Hide on key press",
-        "description": "Label for field in settings"
+        "message": "Tuşa basıldığında gizle",
+        "description": "Ayarlardaki alan etiketi"
     },
     "hideOnScroll": {
-        "message": "Hide tooltip on scroll",
-        "description": "Label for field in settings"
+        "message": "Kaydırmada araç ipucuni gizle",
+        "description": "Ayarlardaki alan etiketi"
     },
     "horizontalLayout": {
-        "message": "Horizontal",
-        "description": "Label for field in settings"
+        "message": "Yatay",
+        "description": "Ayarlardaki alan etiketi"
     },
     "iconlabel": {
-        "message": "Icons + text",
-        "description": "Label for buttons style option in settings"
+        "message": "Simgeler + metin",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "imperial": {
         "message": "Imperial",
         "description": "Variant of metrics system for dropdown"
     },
     "italicLabel": {
-        "message": "Italic",
-        "description": "Label for field in settings"
+        "message": "İtalik",
+        "description": "Ayarlardaki alan etiketi"
     },
     "languageToTranslate": {
-        "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
-        "description": "Label for field in settings, incorporating inline link"
+        "message": "Çevrilecek dil (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 kodu</a>)",
+        "description": "Satır içi bağlantıyı içeren ayarlardaki alan etiketi"
     },
     "liveTranslation": {
-        "message": "Live translation (from Google Translate)",
-        "description": "Label for field in settings"
+        "message": "Canlı çeviri (Google Çeviri'den)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "mailto": {
-        "message": "Email client",
-        "description": "Option label for new email method setting"
+        "message": "E-posta istemcisi",
+        "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
     },
     "metric": {
-        "message": "Metric",
-        "description": "Variant of metrics system for dropdown"
+        "message": "Metrik",
+        "description": "Açılır menüsü için ölçüm sisteminin varyantı"
     },
     "moveDownLabel": {
-        "message": "Move down",
-        "description": "Tooltip for 'move button down' button"
+        "message": "Aşağı gitme",
+        "description": "'Düğmeyi aşağı taşı' düğmesi için araç ipucu"
     },
     "moveDownTooltipEffect": {
-        "message": "Move down",
-        "description": "Label for buttons style option in settings"
+        "message": "Aşağı gitme",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "moveUpLabel": {
-        "message": "Move up",
-        "description": "Tooltip for 'move button up' button"
+        "message": "Yukarı taşı",
+        "description": "'Düğmeyi yukarı taşı' düğmesi için araç ipucu"
     },
     "moveUpTooltipEffect": {
-        "message": "Move up",
-        "description": "Label for buttons style option in settings"
+        "message": "Yukarı taşı",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "noTooltipEffect": {
-        "message": "No effect",
-        "description": "Label for buttons style option in settings"
+        "message": "Etkisi yok",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "onlyicon": {
-        "message": "Icons only",
-        "description": "Label for buttons style option in settings"
+        "message": "Yalnızca simgeler",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "onlylabel": {
-        "message": "Text only",
-        "description": "Label for buttons style option in settings"
+        "message": "Yalnızca metin",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "openInNewTab": {
-        "message": "Open in new tab",
-        "description": "Label for open link action"
+        "message": "Yeni sekmede aç",
+        "description": "Açık bağlantı eylemi etiketi"
     },
     "openLinkLabel": {
-        "message": "Open",
-        "description": "Label for open link action"
+        "message": "Açık",
+        "description": "Açık bağlantı eylemi etiketi"
     },
     "overCursor": {
-        "message": "Over cursor",
-        "description": "Label for field in settings"
+        "message": "imlecin üzerinde",
+        "description": "Ayarlardaki alan etiketi"
     },
     "pasteLabel": {
-        "message": "Paste",
-        "description": "Label for paste action"
+        "message": "Yapıştırmak",
+        "description": "Yapıştırma eylemi etiketi"
     },
     "performSimpleMathOperations": {
-        "message": "Do simple math calculations",
-        "description": "Label for field in settings"
+        "message": "Basit matematik hesaplamaları yapın",
+        "description": "Ayarlardaki alan etiketi"
     },
     "preferCurrencySymbol": {
-        "message": "Prefer currency symbols instead of codes",
-        "description": "Label for buttons style option in settings"
+        "message": "Kodlar yerine para birimi simgelerini tercih edin",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "preferredMetricsSystem": {
-        "message": "Preferred metrics system",
-        "description": "Label for field in settings"
+        "message": "Tercih edilen ölçüm sistemi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "preferredNewEmailMethod": {
-        "message": "Preferred method for creating new email",
-        "description": "Label for field in settings"
+        "message": "Yeni e-posta oluşturmak için tercih edilen yöntem",
+        "description": "Ayarlardaki alan etiketi"
     },
     "preferredSearchEngine": {
-        "message": "Search engine",
-        "description": "Label for field in settings"
+        "message": "Arama motoru",
+        "description": "Ayarlardaki alan etiketi"
     },
     "preferredTranslateService": {
-        "message": "Translation service",
-        "description": "Label for field in settings"
+        "message": "Çeviri hizmeti",
+        "description": "Ayarlardaki alan etiketi"
     },
     "removeCustomIcon": {
-        "message": "Remove custom icon",
-        "description": "Tooltip for button to remove custom icon"
+        "message": "Özel simgeyi kaldır",
+        "description": "Özel simgeyi kaldırmak için düğme için araç ipucu"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": "Remove text selection after selected action",
+        "message": "Seçili eylemden sonra metin seçimini kaldırma",
         "description": ""
     },
     "resetDefaults": {
-        "message": "Restore defaults",
-        "description": "Label for settings button to restore default settings"
+        "message": "Varsayılanları geri yükleme",
+        "description": "Varsayılan ayarları geri yüklemek için ayarlar düğmesi etiketi"
     },
     "reverseTooltipButtonsOrder": {
-        "message": "Reverse the order of buttons",
-        "description": "Label for settings button"
+        "message": "Düğmelerin sırasını tersine çevirme",
+        "description": "Ayarlar için etiket düğmesi"
     },
     "scaleUpTooltipEffect": {
-        "message": "Scale up",
-        "description": "Label for buttons style option in settings"
+        "message": "Ölçeği büyütme",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "searchLabel": {
-        "message": "Search",
-        "description": "Label for search text action"
+        "message": "Aramak",
+        "description": "Arama metni eylemi etiketi"
     },
     "secondaryTooltipEnabled": {
-        "message": "Tooltip enabled",
-        "description": "Label for add new search option button"
+        "message": "Araç ipucu etkin",
+        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
     },
     "secondaryTooltipIconSize": {
-        "message": "Icon size (px)",
-        "description": "Label for add new search option button"
+        "message": "Simge boyutu (px)",
+        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
     },
     "secondaryTooltipLayout": {
-        "message": "Button layout",
-        "description": "Label for field in settings"
+        "message": "Düğme düzeni",
+        "description": "Ayarlardaki alan etiketi"
     },
     "selectionCenter": {
-        "message": "Center of selection",
-        "description": "Label for field in settings"
+        "message": "Seçim merkezi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "selectionHeader": {
-        "message": "Text selection",
-        "description": "Header for category in settings"
+        "message": "Metin seçimi",
+        "description": "Ayarlarda kategori üstbilgisi"
     },
     "selectonSettings": {
-        "message": "Selecton settings",
-        "description": "Label for popup header"
+        "message": "Selecton ayarları",
+        "description": "Açılır üstbilgi etiketi"
     },
     "shadowOpacity": {
-        "message": "Shadow opacity",
-        "description": "Label for field in settings"
+        "message": "Gölge opaklığı",
+        "description": "Ayarlardaki alan etiketi"
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Try to shift selection tooltip up when website shows it's own",
-        "description": "Label for field in settings"
+        "message": "Web sitesi kendi olduğunu gösterdiğinde seçim araç ipucunı kaydırmaya çalışın",
+        "description": "Ayarlardaki alan etiketi"
     },
     "shouldOverrideWebsiteSelectionColor": {
-        "message": "Overwrite page's highlight color",
-        "description": "Label for buttons style option in settings"
+        "message": "Sayfanın vurgu renginin üzerine yaz",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "showButtonLabelOnHover": {
-        "message": "Show button label on hover",
-        "description": "Label for buttons style option in settings"
+        "message": "Vurgulu düğme etiketini göster",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "showEmailButton": {
-        "message": "Add email button",
-        "description": "Label for field in settings"
+        "message": "E-posta ekle düğmesi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "showOnMap": {
-        "message": "Show on map",
-        "description": "Label for show on map action"
+        "message": "Haritada göster",
+        "description": "Harita eyleminde gösterme etiketi"
     },
     "showOnMapButtonEnabled": {
-        "message": "Add button to show on map",
-        "description": "Label for field in settings"
+        "message": "Haritada göstermek için düğme ekle",
+        "description": "Ayarlardaki alan etiketi"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Show title on hover",
-        "description": "Label for option in settings"
+        "message": "Başlığı vurgulu olarak göster",
+        "description": "Ayarlardaki seçenek etiketi"
     },
     "showTranslateButton": {
-        "message": "Show translate button",
-        "description": "Label for field in settings"
+        "message": "Çevir düğmesini göster",
+        "description": "Ayarlardaki alan etiketi"
     },
     "showUnconvertedValue": {
-        "message": "Show original value before conversion",
-        "description": "Label for button in settings"
+        "message": "Dönüştürmeden önce orijinal değeri göster",
+        "description": "Ayarlardaki düğme etiketi"
     },
     "snapSelectionToWord": {
-        "message": "Snap text selection by word",
-        "description": "Label for buttons style option in settings"
+        "message": "Metin seçimini sözcükle yaslama",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "textSelectionBackground": {
-        "message": "Selection color",
-        "description": "Label for field in settings"
+        "message": "Seçim rengi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "textSelectionBackgroundOpacity": {
-        "message": "Background opacity",
-        "description": "Label for field in settings"
+        "message": "Arka plan opaklığı",
+        "description": "Ayarlardaki alan etiketi"
     },
     "textSelectionColor": {
-        "message": "Text color",
-        "description": "Label for field in settings"
+        "message": "Metin rengi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "tooltipBackground": {
-        "message": "Background color",
-        "description": "Label for field in settings"
+        "message": "Arka plan rengi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "tooltipOpacity": {
-        "message": "Tooltip opacity",
-        "description": "Label for field in settings"
+        "message": "Araç ipucu opaklığı",
+        "description": "Ayarlardaki alan etiketi"
     },
     "tooltipPosition": {
-        "message": "Horizontal alignment of tooltip",
-        "description": "Label for field in settings"
+        "message": "Araç ipucunun yatay hizalaması",
+        "description": "Ayarlardaki alan etiketi"
     },
     "tooltipRevealEffect": {
-        "message": "Tooltip reveal effect",
-        "description": "Label for buttons style option in settings"
+        "message": "Araç ipucu gösterme efekti",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "translateLabel": {
-        "message": "Translate",
-        "description": "Label for translate action"
+        "message": "Çevir",
+        "description": "Çevirme eylemi etiketi"
     },
     "updatePageToSeeChanges": {
-        "message": "Refresh the page to see the changes",
+        "message": "Değişiklikleri görmek için sayfayı yenileme",
         "description": ""
     },
     "updateRatesEveryDays": {
-        "message": "Rates update interval (days)",
-        "description": "Label for buttons style option in settings"
+        "message": "Oran güncelleştirme aralığı (gün)",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "useCustomStyle": {
-        "message": "Use custom style for tooltip",
-        "description": "Label for field in settings"
+        "message": "Araç ipucu için özel stil kullanma",
+        "description": "Ayarlardaki alan etiketi"
     },
     "useIconFromGoogle": {
-        "message": "Use icon from Google",
-        "description": "Label for field in settings"
+        "message": "Google'dan kullan simgesi",
+        "description": "Ayarlardaki alan etiketi"
     },
     "verticalLayout": {
-        "message": "Vertical",
-        "description": "Label for field in settings"
+        "message": "Dikey",
+        "description": "Ayarlardaki alan etiketi"
     },
     "verticalSecondaryTooltip": {
-        "message": "Display as vertical list (disable for horizontal)",
-        "description": "Label for field in settings"
+        "message": "Dikey liste olarak görüntüle (yatay olarak devre dışı bırak)",
+        "description": "Ayarlardaki alan etiketi"
     },
     "visitGithub": {
-        "message": "Visit GitHub page",
-        "description": "Label for settings button leading to GitHub page"
+        "message": "GitHub sayfasını ziyaret edin",
+        "description": "GitHub sayfasına giden ayarlar düğmesi için etiket"
     },
     "whatsNew": {
-        "message": "What's new",
-        "description": "Label for buttons style option in settings"
+        "message": "Yenilikler",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "wordSnappingBlacklist": {
-        "message": "Domains to exclude",
-        "description": "Label for buttons style option in settings"
+        "message": "Dışlayacak etki alanları",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
     "writeAReview": {
-        "message": "Write a review",
-        "description": "Label for buttons style option in settings"
+        "message": "Yorum yazma",
+        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     }
 }
