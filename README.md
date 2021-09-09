@@ -58,6 +58,7 @@ USD — United States Dollar
 VND — Vietnamese Dong
 ZAR — Rand
 ```
+____
 
 ### Contributing
 You can make Selecton better the following ways:
