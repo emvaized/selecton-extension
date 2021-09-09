@@ -1,16 +1,25 @@
 /// Look for these words to find that selected text is address, in order to show "Show on map" button
 const addressKeywords = [
-    'ул.',
-    'пр.',
-    'г.',
-    'проспект ',
-    'улица ',
-    'переулок ',
-    'вулиця ',
     ' street',
     'broadway',
     ' st.',
     ' city',
+
+    /// Russian keywords
+    'ул.',
+    'пр.',
+    'г.',
+    'город ',
+    'проспект ',
+    'улица ',
+    'переулок ',
+
+    /// Ukrainian keywords
+    'вулиця ',
+    'вул. ',
+    'м. ',
+    'місто ',
+
 ];
 
 /// Convert timezones
@@ -39,6 +48,8 @@ const timeZoneKeywords = {
     'UTC': 'UTC',
     'WAT': '+0100',
     'WET': 'UTC',
+
+    /// Russian keywords
     'по Московскому времени': '+0300',
     'по московскому времени': '+0300',
     'по Москве': '+0300',
