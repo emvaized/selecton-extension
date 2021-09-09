@@ -63,10 +63,11 @@ ____
 ### Contributing
 You can make Selecton better the following ways:
 - Provide translation for your language: [Base English file](https://github.com/emvaized/selecton-extension/blob/master/_locales/en/messages.json)
-- Add your currency to the list of supported currencies: [Currencies](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
+- Add your currency to the list of supported currencies: [Currencies list](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
 - Selecton relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](https://github.com/emvaized/selecton-extension/blob/master/src/data/keywords.js)
 
 Make your changes, and then create pull request here on GitHub so I can merge it.
+Also, you can write me on [email](mailto:maximtsyba@gmail.com) to share your ideas and suggestions.
 
 
 
