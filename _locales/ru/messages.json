@@ -96,7 +96,7 @@
         "description": "Label for field in settings"
     },
     "convertTime": {
-        "message": "Конвертировать время",
+        "message": "Конвертировать время (12h - 24h, врем. пояса)",
         "description": "Label for field in settings"
     },
     "convertToCurrency": {
@@ -260,7 +260,7 @@
         "description": "Label for open link action"
     },
     "overCursor": {
-        "message": "По курсору",
+        "message": "Возле курсора",
         "description": "Label for field in settings"
     },
     "pasteLabel": {
@@ -332,7 +332,7 @@
         "description": "Label for field in settings"
     },
     "selectionCenter": {
-        "message": "Центр выделения",
+        "message": "По центру выделения",
         "description": "Label for field in settings"
     },
     "selectionHeader": {
@@ -408,7 +408,7 @@
         "description": ""
     },
     "tooltipPosition": {
-        "message": "Горизональное выравнивание панели",
+        "message": "Расположение панели",
         "description": "Label for field in settings"
     },
     "tooltipRevealEffect": {

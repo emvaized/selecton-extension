@@ -9,8 +9,8 @@ function fetchCurrencyRates() {
         var ratesObject = {};
 
         Object.keys(currenciesList).forEach(function (key) {
-            currenciesList[key]['rate'] = val[currenciesList[key]['id']];
-            ratesObject[key] = val[currenciesList[key]['id']];
+            currenciesList[key]['rate'] = val[key];
+            ratesObject[key] = val[key];
         });
 
         /// Save rates to memory
@@ -19,11 +19,15 @@ function fetchCurrencyRates() {
             'rates': ratesObject
         });
 
-        if (configs.debugMode)
-            console.log('Updated currency rates for Selecton');
+        if (configs.debugMode) {
+            console.log('Updated currency rates from network:');
+            console.log(ratesObject);
+        }
     }).catch(function (e) {
-        if (configs.debugMode)
+        if (configs.debugMode) {
+            console.log('Error while loading currencies from network:');
             console.log(e);
+        }
     });
 }
 
@@ -32,8 +36,7 @@ function loadCurrencyRatesFromMemory() {
         var loadedRates = val['rates'];
 
         Object.keys(currenciesList).forEach(function (key) {
-            var id = currenciesList[key]['id'];
-            var rate = loadedRates[id];
+            var rate = loadedRates[key];
             if (rate !== null && rate !== undefined)
                 currenciesList[key]['rate'] = rate;
         });

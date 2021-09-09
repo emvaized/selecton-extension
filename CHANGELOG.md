@@ -3,6 +3,7 @@
 - Added new check "Don't snap selection in text fields" (defaults to "true")
 - Selecton mouse listeners now won't be loaded in page unless user starts to actually select text
 - Added more address markers
+- Removed junk from code
 - Various performance optimizations and design improvements
 
 #3.2.7

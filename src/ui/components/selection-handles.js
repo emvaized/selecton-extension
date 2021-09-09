@@ -5,12 +5,13 @@ function setDragHandles(tooltipOnBottom) {
     let existingDragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
     if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
 
-    addDragHandle(0, tooltipOnBottom);
-    addDragHandle(1, tooltipOnBottom);
+    //addDragHandle(0, tooltipOnBottom);
+    addDragHandle(0);
+    addDragHandle(1);
 }
 
 /// 0 for first (left) drag handle, 1 for second (right)
-function addDragHandle(dragHandleIndex, tooltipOnBottom) {
+function addDragHandle(dragHandleIndex) {
     if (configs.debugMode)
         console.log('Adding drag handle ' + dragHandleIndex.toString() + '...');
 
@@ -189,7 +190,6 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                             console.log('Single click on drag handle');
 
                         extendSelectionByWord(windowSelection, dragHandleIndex)
-
                     }
 
                     createTooltip(e);
@@ -211,6 +211,17 @@ function addDragHandle(dragHandleIndex, tooltipOnBottom) {
                         } else {
                             /// Right handle
                             dragHandle.style.transform = `translate(${selEndDimensions.dx}px, ${selEndDimensions.dy + verticalOffsetCorrection}px)`;
+                        }
+
+                        /// Vertically revert the drag handle if tooltip is located on bottom
+                        if (configs.tooltipPosition == 'overCursor') {
+                            if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true) {
+                                circleDiv.style.bottom = "unset";
+                                circleDiv.style.top = `-${circleHeight - 1}px`;
+                            } else {
+                                circleDiv.style.bottom = `-${selectionHandleLineHeight - 1}px`;
+                                circleDiv.style.top = "unset";
+                            }
                         }
 
                         setTimeout(function () {

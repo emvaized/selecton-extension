@@ -717,8 +717,8 @@ function addContextualButtons() {
 
             for (const [key, value] of Object.entries(currenciesList)) {
                 var match = false;
-                if (selectedText.includes(value["id"]) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
-                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(value["id"]) ? value['id'] : value['currencySymbol']));
+                if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
+                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {
                     var currencyKeywords = value["currencyKeywords"];
@@ -732,7 +732,7 @@ function addContextualButtons() {
                 }
 
                 if (match) {
-                    currency = value["id"];
+                    currency = key;
                     currencyRate = value["rate"];
                     currencySymbol = value["currencySymbol"];
 
@@ -772,11 +772,10 @@ function addContextualButtons() {
                         console.log(`Found local rate for currency ${currency}`);
 
                     for (const [key, value] of Object.entries(currenciesList)) {
-                        if (value["id"] == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
+                        if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
                             let rateOfDesiredCurrency = value['rate'];
                             if (configs.debugMode)
                                 console.log(`Rate is: ${rateOfDesiredCurrency}`);
-
 
                             /// Check for literal multipliers (million, billion and so on)
                             for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
@@ -814,10 +813,8 @@ function addContextualButtons() {
                                 const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
 
                                 if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
-                                    // converted.textContent = ` ${convertedAmountString} ${currencySymbolToUse}`;
                                     converted.textContent = ` ${convertedAmountString}`;
                                 else
-                                    // converted.textContent = ` ${convertedAmountString} ${configs.convertToCurrency}`;
                                     converted.textContent = ` ${convertedAmountString}`;
 
                                 converted.setAttribute('style', `color: ${secondaryColor}`);
@@ -828,7 +825,6 @@ function addContextualButtons() {
                                 currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
                                 currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
                                 currencyButton.appendChild(currencyLabel);
-
 
                                 currencyButton.addEventListener("mousedown", function (e) {
                                     let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
@@ -1129,6 +1125,8 @@ function calculateTooltipPosition(e) {
             arrow.style.bottom = '';
             arrow.style.top = '-50%';
             arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+
+            tooltipOnBottom = true;
         }
 
         /// Calculating DX

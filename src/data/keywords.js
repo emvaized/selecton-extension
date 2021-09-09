@@ -1,4 +1,4 @@
-/// Look for these words to find that selected text is address
+/// Look for these words to find that selected text is address, in order to show "Show on map" button
 const addressKeywords = [
     'ул.',
     'пр.',
@@ -13,6 +13,7 @@ const addressKeywords = [
     ' city',
 ];
 
+/// Convert timezones
 const timeZoneKeywords = {
     'PST': '-0800',
     'PDT': '-0700',
@@ -49,6 +50,7 @@ const timeZoneKeywords = {
 
 
 /// Literal multipliers for numeric values
+/// With the help of these, "2 thousand" will be converted to "2000"
 const thousandMultipliers = [
     'thousand',
     'тысяч',
@@ -76,6 +78,8 @@ const billionMultipliers = [
 
 /// Unit conversion units
 /// Each key is a keyword, which will be searched for in the selected text
+/// 'ratio' is the ratio to multiply, in order to get the value in 'covertsTo'
+/// Temperature units provide "convertFunction" instead - code will look for this if selected value contains "°"
 const convertionUnits = {
     "inch": {
         "convertsTo": "cm",
@@ -135,7 +139,9 @@ const convertionUnits = {
     },
     "°K": {
         "convertsTo": "°C",
-        "ratio": -272.15,
+        "convertFunction": function (value) {
+            return value - 273.15;
+        },
     },
 
     /// Russian variants
