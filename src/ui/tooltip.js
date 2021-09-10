@@ -856,14 +856,14 @@ function addContextualButtons() {
 
                 /// Add 'open link' button
                 if (configs.addOpenLinks)
-                    if (tooltip.children.length < 4 && !selectedText.trim().includes(' ') && (selectedText.includes('.'))) {
-                        var words = selectedText.split(' ');
-                        for (i in words) {
-                            var link = words[i];
+                    if (tooltip.children.length < 4 && !selectedText.includes(' ') && (selectedText.includes('.'))) {
+                        //var words = selectedText.split(' ');
+                        let link = selectedText;
+
+                        if (link.includes('.')) {
                             let splittedByDots = link.split('.');
 
-                            // if ((link.includes('.') || link.includes('/')) && !link.trim().includes(' ') && !link.includes('@') && !link.includes('<') && link.length > 4) {
-                            if ((link.includes('.') && 1 < link.split('.')[1].length < 4)) {
+                            if (1 < splittedByDots[1].length < 4) {
                                 link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
                                 var lastSymbol = link[link.length - 1];
 
@@ -871,42 +871,42 @@ function addContextualButtons() {
                                     link = link.substring(0, link.length - 1);
 
                                 /// Remove '/' on the end of link, just for better looks in pop-up
-                                var lastSymbol = link[link.length - 1];
+                                lastSymbol = link[link.length - 1];
                                 if (lastSymbol == '/')
                                     link = link.substring(0, link.length - 1);
 
                                 /// Remove quotes in start and end of the link
-                                var firstSymbol = link[0];
-                                var lastSymbol = link[link.length - 1];
+                                let firstSymbol = link[0];
+                                lastSymbol = link[link.length - 1];
                                 if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
                                     link = link.substring(1, link.length);
                                 if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
                                     link = link.substring(0, link.length - 1);
 
-                                /// Handle when resulting link has spaces
-                                if (link.includes(' ')) {
-                                    var urlWords = link.split(' ');
-                                    for (i in urlWords) {
-                                        var word = urlWords[i];
-                                        if (word.includes('.') || word.includes('/')) {
-                                            link = word;
-                                        }
-                                    }
-                                }
+                                /// Handle cases when resulting link has spaces
+                                // if (link.includes(' ')) {
+                                //     var urlWords = link.split(' ');
+                                //     for (i in urlWords) {
+                                //         var word = urlWords[i];
+                                //         if (word.includes('.') || word.includes('/')) {
+                                //             link = word;
+                                //         }
+                                //     }
+                                // }
 
                                 try {
-                                    link = link.trim();
 
                                     /// Filtering out non-links
-                                    var lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+                                    let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
-                                    if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                    //if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                    if ((1 < lastWordAfterDot.length <= 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
                                         /// Adding button
-                                        var interactiveButton = document.createElement('button');
+                                        let interactiveButton = document.createElement('button');
                                         interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                                        var linkText = document.createElement('span');
+                                        let linkText = document.createElement('span');
 
-                                        var linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                                        let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
                                         linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
                                         linkText.setAttribute('style', `color: ${secondaryColor}`);
 
@@ -920,9 +920,7 @@ function addContextualButtons() {
                                             } else {
                                                 interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
                                             }
-                                        }
-                                        else
-                                            interactiveButton.innerHTML = openLinkLabel + ' ';
+                                        } else interactiveButton.innerHTML = openLinkLabel + ' ';
 
                                         interactiveButton.appendChild(linkText);
                                         interactiveButton.addEventListener("mousedown", function (e) {
@@ -938,14 +936,14 @@ function addContextualButtons() {
                                             tooltip.insertBefore(interactiveButton, tooltip.children[1]);
                                         else
                                             tooltip.appendChild(interactiveButton);
-                                        break;
+
+                                        // break;
                                     }
                                 } catch (e) { console.log(e) }
 
                             }
                         }
                     }
-
             }
         }
 

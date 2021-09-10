@@ -87,6 +87,34 @@ const billionMultipliers = [
 ];
 
 
+/// Keywords to recognize selected text as a website
+const websiteKeywords = [
+    '.com',
+    '.org',
+    '.net',
+    '.int',
+    '.edu',
+    '.gov',
+    '.mil',
+    '.xyz',
+    '.website',
+    '.video',
+    '.travel',
+    '.support',
+    '.store',
+    '.site',
+    '.pub',
+    '.photo',
+    '.info',
+    '.eu',
+
+    /// Russian/Ukrainian domains
+    '.ru',
+    '.ру',
+    '.ua',
+];
+
+
 /// Unit conversion units
 /// Each key is a keyword, which will be searched for in the selected text
 /// 'ratio' is the ratio to multiply, in order to get the value in 'covertsTo'
