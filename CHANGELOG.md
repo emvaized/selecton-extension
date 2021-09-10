@@ -1,8 +1,9 @@
-#3.2.8
+#3.3.0
 - Improved logic for drag handles
 - Added new check "Don't snap selection in text fields" (defaults to "true")
 - Selecton mouse listeners now won't be loaded in page unless user starts to actually select text
 - Inactive custom search options are now dimmed out in settings
+- Improved shifting tooltip when it collades with side edges
 - Added more address markers
 - Added Turkish translation
 - Removed junk from code

@@ -865,10 +865,11 @@ function addContextualButtons() {
 
                             if (1 < splittedByDots[1].length < 4) {
                                 link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                                var lastSymbol = link[link.length - 1];
+                                let linkLength = link.length;
+                                var lastSymbol = link[linkLength - 1];
 
                                 if (lastSymbol == '.' || lastSymbol == ',')
-                                    link = link.substring(0, link.length - 1);
+                                    link = link.substring(0, linkLength - 1);
 
                                 /// Remove '/' on the end of link, just for better looks in pop-up
                                 lastSymbol = link[link.length - 1];
@@ -877,11 +878,12 @@ function addContextualButtons() {
 
                                 /// Remove quotes in start and end of the link
                                 let firstSymbol = link[0];
-                                lastSymbol = link[link.length - 1];
+                                linkLength = link.length;
+                                lastSymbol = link[linkLength - 1];
                                 if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
-                                    link = link.substring(1, link.length);
+                                    link = link.substring(1, linkLength);
                                 if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
-                                    link = link.substring(0, link.length - 1);
+                                    link = link.substring(0, linkLength - 1);
 
                                 /// Handle cases when resulting link has spaces
                                 // if (link.includes(' ')) {
@@ -899,8 +901,7 @@ function addContextualButtons() {
                                     /// Filtering out non-links
                                     let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
-                                    //if ((lastWordAfterDot.length == 2 || lastWordAfterDot.length == 3) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                    if ((1 < lastWordAfterDot.length <= 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                    if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
                                         /// Adding button
                                         let interactiveButton = document.createElement('button');
                                         interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
@@ -936,8 +937,6 @@ function addContextualButtons() {
                                             tooltip.insertBefore(interactiveButton, tooltip.children[1]);
                                         else
                                             tooltip.appendChild(interactiveButton);
-
-                                        // break;
                                     }
                                 } catch (e) { console.log(e) }
 
@@ -960,16 +959,14 @@ function addContextualButtons() {
                     if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
                         if (configs.debugMode)
                             console.log('converting from 12h to 24...');
-                        // textToProccess = convertTime12to24(textToProccess)
                         textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
                         if (configs.debugMode)
                             console.log('result: ' + textToProccess);
                     }
                 } else {
-                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('AM')) {
+                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
                         if (configs.debugMode)
                             console.log('converting from 12h to 24...');
-                        // textToProccess = convertTime24to12(textToProccess)
                         textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
 
                         if (configs.debugMode)
@@ -981,12 +978,12 @@ function addContextualButtons() {
             let convertedTime;
             let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
             for (i in timeZoneKeywordsKeys) {
-                var marker = timeZoneKeywordsKeys[i];
+                let marker = timeZoneKeywordsKeys[i];
 
                 if (textToProccess.includes(' ' + marker)) {
                     let words = textToProccess.trim().split(' ');
 
-                    var timeWord;
+                    let timeWord;
                     for (i in words) {
                         let word = words[i];
 
@@ -1153,10 +1150,9 @@ function calculateTooltipPosition(e) {
         showTooltip(resultingDx, resultingDy + 2);
     }
 
-    if (configs.addDragHandles)
-        setDragHandles(tooltipOnBottom);
-
     setTimeout(function () {
+        if (configs.addDragHandles)
+            setDragHandles(tooltipOnBottom);
         checkTooltipForCollidingWithSideEdges();
     }, 2);
 }

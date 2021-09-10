@@ -63,12 +63,17 @@ function checkTooltipForCollidingWithSideEdges() {
     if (configs.debugMode)
         console.log('Checking Selecton tooltip for colliding with side edges...');
 
-    var dx = parseInt(tooltip.style.left.replaceAll('px', ''));
+    let dx = parseInt(tooltip.style.left.replaceAll('px', ''));
 
-    var tooltipWidth = 12.0;
-    tooltip.querySelectorAll('.selection-popup-button').forEach(function (el) {
-        tooltipWidth += el.offsetWidth;
-    });
+    let tooltipWidth = 12.0;
+    // tooltip.querySelectorAll('button').forEach(function (el) {
+    //     tooltipWidth += el.offsetWidth;
+    // });
+
+    for (let i = 0, l = tooltip.children.length; i < l; i++) {
+        if (i == 0) continue; /// ignore arrow element
+        tooltipWidth += tooltip.children[i].offsetWidth;
+    }
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {
@@ -79,16 +84,21 @@ function checkTooltipForCollidingWithSideEdges() {
         tooltip.style.left = '5px';
 
         /// Shift the arrow to match new position
-        var newLeftPercentForArrow = ((dx * -1) + 5) / tooltipWidth * 100;
+        var newLeftPercentForArrow = (-dx + 5) / tooltipWidth * 100;
         if (arrow !== null && arrow !== undefined)
             arrow.style.left = `${50 - newLeftPercentForArrow}%`;
 
     } else {
-        var screenWidth = window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth;
+        /// Check tooltip to be off-screen on the right
 
-        var offscreenAmount = (dx + tooltipWidth) - screenWidth + 10;
+        // let screenWidth = window.innerWidth
+        //     || document.documentElement.clientWidth
+        //     || document.body.clientWidth;
+
+        let screenWidth = document.body.clientWidth;
+
+        // let offscreenAmount = (dx + tooltipWidth) - screenWidth + 10;
+        let offscreenAmount = (dx + tooltipWidth) - screenWidth;
 
         /// Tooltip is off-screen on the right
         if (offscreenAmount > 0) {
@@ -98,10 +108,12 @@ function checkTooltipForCollidingWithSideEdges() {
             tooltip.style.left = `${dx - offscreenAmount - 5}px`;
 
             /// Shift the arrow to match new position
-            var newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
+            // let newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
+            let newLeftPercentForArrow = offscreenAmount / tooltipWidth * 100;
 
-            if (configs.tooltipPosition !== 'overCursor')
-                arrow.style.left = `${50 + newLeftPercentForArrow}%`;
+            // if (configs.tooltipPosition !== 'overCursor')
+            arrow.style.left = `${50 + (newLeftPercentForArrow / 2)}%`;
+
         } else {
             if (configs.debugMode)
                 console.log('Tooltip is not colliding with side edges');
