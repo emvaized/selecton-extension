@@ -7,6 +7,7 @@
 - Added more address markers
 - Added Turkish translation
 - Removed junk from code
+- Changed some default configs
 - Added 'Contributing' section in README
 - Various performance optimizations and design improvements
 

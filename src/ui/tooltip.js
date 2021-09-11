@@ -398,6 +398,7 @@ function addContextualButtons() {
 
         var numberToConvert;
         var unitLabelColor = isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
+        var selectionContainsSpaces = selectedText.includes(' ');
 
         /// Unit conversion button
         if (configs.convertMetrics) {
@@ -512,8 +513,8 @@ function addContextualButtons() {
         }
 
         /// Phone number button
-        if (configs.addPhoneButton && selectedText.includes('+') && !selectedText.includes(' ') && selectedText.length == 13 && selectedText[0] == '+') {
-            var phoneButton = document.createElement('button');
+        if (configs.addPhoneButton && selectedText.includes('+') && !selectionContainsSpaces && selectedText.length == 13 && selectedText[0] == '+') {
+            let phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
             phoneButton.innerHTML = createImageIcon(phoneIcon, 0.7, true) + selectedText;
             phoneButton.style.color = secondaryColor;
@@ -522,7 +523,7 @@ function addContextualButtons() {
                 removeSelectionOnPage();
 
                 /// Open system handler
-                window.open(`tel:${selectedText.trim()}`);
+                window.open(`tel:${selectedText}`);
                 // onTooltipButtonClick(e, `tel:${selectedText.trim()}`);
 
             });
@@ -539,19 +540,19 @@ function addContextualButtons() {
                     var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
                     if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
-                        var number;
-                        var numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
+                        let number;
+                        let numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
                         number = numbersArray[0];
 
                         // number = calculatedExpression;
 
                         if (number !== null) {
-                            var interactiveButton = document.createElement('button');
+                            let interactiveButton = document.createElement('button');
                             interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
                             if (configs.showUnconvertedValue)
                                 interactiveButton.textContent = selectedText + ' →';
 
-                            var converted = document.createElement('span');
+                            let converted = document.createElement('span');
                             converted.textContent = ` ${calculatedExpression}`;
                             converted.setAttribute('style', `color: ${secondaryColor}`);
                             interactiveButton.appendChild(converted);
@@ -583,10 +584,12 @@ function addContextualButtons() {
         if (configs.showOnMapButtonEnabled) {
             var containsAddress = false;
 
-            addressKeywords.forEach(function (address) {
-                if (loweredSelectedText.includes(address))
+            for (i in addressKeywords) {
+                if (loweredSelectedText.includes(addressKeywords[i])) {
                     containsAddress = true;
-            });
+                    break;
+                }
+            }
 
             if (containsAddress) {
                 var mapButton = document.createElement('button');
@@ -619,7 +622,7 @@ function addContextualButtons() {
         }
 
         /// Add email button
-        if (configs.showEmailButton && selectedText.includes('@') && !selectedText.trim().includes(' ')) {
+        if (configs.showEmailButton && selectedText.includes('@') && !selectionContainsSpaces) {
             try {
                 var emailText = loweredSelectedText;
                 var emailButton = document.createElement('button');
@@ -650,37 +653,34 @@ function addContextualButtons() {
         }
 
         /// Add HEX color preview button
-        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectedText.trim().includes(' ')) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
+        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
             try {
                 var colorText;
                 if (selectedText.includes('rgb') && selectedText.includes('(')) {
                     /// Try to convert rgb value to hex
                     try {
-                        var string = selectedText.trim().toUpperCase().split('(')[1].split(')')[0];
-                        var colors = string.replaceAll(' ', '').split(',');
-                        console.log(colors);
+                        let string = selectedText.toUpperCase().split('(')[1].split(')')[0];
+                        let colors = string.replaceAll(' ', '').split(',');
                         for (i in colors) {
                             colors[i] = parseInt(colors[i], 10);
                         }
                         colorText = rgbToHex(colors[0], colors[1], colors[2]).toUpperCase();
                     } catch (e) {
-                        console.log(e);
-                        colorText = selectedText.trim().toUpperCase();
+                        colorText = selectedText.toUpperCase();
                     }
-
                 } else
-                    colorText = selectedText.trim().toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
+                    colorText = selectedText.toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
 
                 colorText = colorText.toLowerCase();
-                var colorButton = document.createElement('button');
+                let colorButton = document.createElement('button');
                 colorButton.setAttribute('class', `selection-popup-button button-with-border`);
 
-                var colorCircle = document.createElement('div');
+                let colorCircle = document.createElement('div');
                 colorCircle.setAttribute('class', `selection-popup-color-preview-circle`);
                 colorCircle.style.background = colorText;
 
                 /// Add red/green/blue tooltip on hover
-                var rgbColor = hexToRgb(colorText);
+                let rgbColor = hexToRgb(colorText);
                 colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
 
                 colorButton.appendChild(colorCircle);
@@ -856,7 +856,7 @@ function addContextualButtons() {
 
                 /// Add 'open link' button
                 if (configs.addOpenLinks)
-                    if (tooltip.children.length < 4 && !selectedText.includes(' ') && (selectedText.includes('.'))) {
+                    if (tooltip.children.length < 4 && !selectionContainsSpaces && (selectedText.includes('.'))) {
                         //var words = selectedText.split(' ');
                         let link = selectedText;
 
@@ -885,19 +885,7 @@ function addContextualButtons() {
                                 if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
                                     link = link.substring(0, linkLength - 1);
 
-                                /// Handle cases when resulting link has spaces
-                                // if (link.includes(' ')) {
-                                //     var urlWords = link.split(' ');
-                                //     for (i in urlWords) {
-                                //         var word = urlWords[i];
-                                //         if (word.includes('.') || word.includes('/')) {
-                                //             link = word;
-                                //         }
-                                //     }
-                                // }
-
                                 try {
-
                                     /// Filtering out non-links
                                     let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
@@ -948,7 +936,6 @@ function addContextualButtons() {
 
         /// Time convert button
         if (configs.convertTime) {
-
             let textToProccess = selectedText;
 
             /// 12H - 24H conversion

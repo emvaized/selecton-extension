@@ -7,7 +7,7 @@ var configs = {
     'addPasteButton': true,
     'convertCurrencies': true,
     'convertTime': true,
-    'performSimpleMathOperations': true,
+    'performSimpleMathOperations': false,
     'preferredMetricsSystem': 'metric',
     'showTranslateButton': true,
     'languageToTranslate': navigator.language || navigator.userLanguage || 'en',
