@@ -43,8 +43,8 @@ function createSecondaryTooltip() {
             imgButton.style.filter = 'none';
 
             /// Set title
+            let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
             if (configs.showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '') {
-                var titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
                 imgButton.setAttribute('title', titleText);
             }
 
