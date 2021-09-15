@@ -76,7 +76,7 @@
         "description": "Label for option in settings"
     },
     "buyMeCoffee": {
-        "message": "Поблагодарить разработчика",
+        "message": "Поддержать разработку",
         "description": ""
     },
     "changeTextSelectionColor": {
@@ -420,7 +420,7 @@
         "description": "Label for translate action"
     },
     "updatePageToSeeChanges": {
-        "message": "Обновите страницы, чтобы увидеть изменения",
+        "message": "Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "updateRatesEveryDays": {
@@ -444,7 +444,7 @@
         "description": "Ярлык для поля в настройках"
     },
     "visitGithub": {
-        "message": "Посетить страницу на GitHub",
+        "message": "Посетить страницу GitHub",
         "description": ""
     },
     "whatsNew": {

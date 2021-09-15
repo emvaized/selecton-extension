@@ -1,3 +1,8 @@
+#3.3.1
+- Fixed bug when tooltip false-detected colliding with side edge
+- Fixes for 'snap selection to words' feature
+- Small options design improvements
+
 #3.3.0
 - Improved logic for drag handles
 - Added new check "Don't snap selection in text fields" (defaults to "true")

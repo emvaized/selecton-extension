@@ -72,12 +72,11 @@ function snapSelectionByWords(sel) {
         const endNode = sel.focusNode, endOffset = sel.focusOffset;
 
         // Detect if selection is backwards
-        var range = document.createRange();
+        let range = document.createRange();
         range.setStart(sel.anchorNode, sel.anchorOffset);
         range.setEnd(sel.focusNode, sel.focusOffset);
-        var backwards = range.collapsed;
+        const backwards = range.collapsed;
         range.detach();
-
 
         // For more correct modifications better to collapse the selection first
         sel.collapse(sel.anchorNode, sel.anchorOffset);
@@ -101,10 +100,14 @@ function snapSelectionByWords(sel) {
         /// Snap selection to word backwards
         sel.modify("move", direction[1], "word");
         sel.extend(endNode, endOffset);
-        sel.modify("extend", direction[1], "character");
+        sel.modify("extend", direction[1], "character"); /// remove empty space in the end of selection
+
+
 
         /// Snap selection to word forward (when last symbol is not empty space)
-        if ((backwards ? firstSymbolOfSelection : lastSymbolOfSelection) !== ' ')
+        // if ((backwards ? firstSymbolOfSelection : lastSymbolOfSelection) !== ' ')
+        let symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
+        if (symbolToCheck !== ' ' && symbolToCheck !== '')
             sel.modify("extend", direction[0], "word");
 
     }

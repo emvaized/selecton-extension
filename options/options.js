@@ -124,17 +124,19 @@ function setTranslatedLabels() {
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader") + ':';
 
     /// "All changes saved automatically" block
-    var infoCircle = document.createElement('div');
-    infoCircle.textContent = '🛈';
-    infoCircle.setAttribute('style', 'display: inline;position: relative; top: 3px; left: 3px; color: grey; font-size: 18px;');
+    // var infoCircle = document.createElement('div');
+    // infoCircle.textContent = '🛈';
+    // infoCircle.setAttribute('style', 'display: inline;position: relative; top: 3px; left: 3px; color: grey; font-size: 18px;');
+
     let hintEl = document.querySelector("#allChangesSavedAutomaticallyHeader");
     hintEl.innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
-    hintEl.appendChild(infoCircle);
-    hintEl.innerHTML += '<br />';
+    // hintEl.appendChild(infoCircle);
+    hintEl.innerHTML += '.<br />';
     hintEl.innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
 
     /// Translate footer buttons
     // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+    //document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview") + ' (Chrome Web Store)';
     document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
     document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
     document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
@@ -379,7 +381,7 @@ function generateCustomSearchButtonsList() {
             });
         }, 1);
 
-        label.innerHTML += ' ' + chrome.i18n.getMessage("useIconFromGoogle");
+        label.innerHTML += chrome.i18n.getMessage("useIconFromGoogle");
         label.setAttribute('style', 'padding-right: 3px; display: inline; float: right; max-width: 60%;');
         entry.appendChild(label);
 
@@ -394,7 +396,7 @@ function generateCustomSearchButtonsList() {
         var urlInput = document.createElement('input');
         urlInput.setAttribute('type', 'text');
         urlInput.setAttribute('placeholder', 'URL');
-        urlInput.setAttribute('style', 'display: inline; min-width: 90%; max-width: 90% !important;  margin: 0px 0px;');
+        urlInput.setAttribute('style', 'display: inline; min-width: 92%; max-width: 92% !important;  margin: 0px 0px;');
         urlInput.value = item['url'];
         urlInput.setAttribute('id', 'url' + i.toString());
         urlInput.addEventListener("input", function (e) {
@@ -451,7 +453,7 @@ function generateCustomSearchButtonsList() {
 
         var moveUpButton = document.createElement('button');
         moveUpButton.textContent = 'ᐱ';
-        moveUpButton.setAttribute('style', 'max-width: 20px; padding: 1px; align-items: center');
+        moveUpButton.setAttribute('style', 'max-width: 25px; padding: 1px; align-items: center');
         moveUpButton.setAttribute('id', 'moveup' + i.toString());
         moveUpButton.setAttribute('title', chrome.i18n.getMessage("moveUpLabel"));
         moveUpButton.onmouseup = function () {
@@ -467,7 +469,7 @@ function generateCustomSearchButtonsList() {
 
         var moveDownButton = document.createElement('button');
         moveDownButton.textContent = 'ᐯ';
-        moveDownButton.setAttribute('style', 'max-width: 20px; padding: 1px; align-items: center');
+        moveDownButton.setAttribute('style', 'max-width: 25px; padding: 1px; align-items: center');
         moveDownButton.setAttribute('id', 'movedown' + i.toString());
         moveDownButton.setAttribute('title', chrome.i18n.getMessage("moveDownLabel"));
         moveDownButton.onmouseup = function () {

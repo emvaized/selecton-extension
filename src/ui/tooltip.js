@@ -29,7 +29,7 @@ function createTooltip(e) {
                                     }
                                 });
 
-                            if (domainIsBlacklistedForSnapping == false)
+                            if (domainIsBlacklistedForSnapping == false && e.detail < 2)
                                 snapSelectionByWords(selection);
                         }
                     }
@@ -86,6 +86,7 @@ function createTooltip(e) {
 
                 if (selectedText == '') {
                     hideDragHandles();
+                    return;
                 }
 
                 setUpNewTooltip();

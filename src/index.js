@@ -167,7 +167,8 @@ function setPageListeners() {
       selection = document.selection.createRange();
     }
 
-    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim() !== ''))
+
+    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0))
       createTooltip(e);
   });
 

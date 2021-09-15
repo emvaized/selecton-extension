@@ -1,9 +1,20 @@
-#openSettingsInTabButton {
-    float: right;
-    opacity: 0.75;
+#selecton-settings-label {
+    display: inline; font-size: 18px;vertical-align: middle; color: grey; 
 }
 
-#openSettingsInTabButton:hover{
+.circleButton {
+    /* opacity: 0.75; */
+    opacity: 0.55;
+    border-radius: 50%;
+    padding: 3px;
+    margin-left: 3px;
+}
+
+.float {
+    float: right;
+}
+
+.circleButton:hover{
     background-color: lightGrey;
     cursor: pointer;
 }

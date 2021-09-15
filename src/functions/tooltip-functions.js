@@ -65,7 +65,7 @@ function checkTooltipForCollidingWithSideEdges() {
 
     let dx = parseInt(tooltip.style.left.replaceAll('px', ''));
 
-    let tooltipWidth = 12.0;
+    let tooltipWidth = 24.0;
     // tooltip.querySelectorAll('button').forEach(function (el) {
     //     tooltipWidth += el.offsetWidth;
     // });
@@ -91,11 +91,11 @@ function checkTooltipForCollidingWithSideEdges() {
     } else {
         /// Check tooltip to be off-screen on the right
 
-        // let screenWidth = window.innerWidth
-        //     || document.documentElement.clientWidth
-        //     || document.body.clientWidth;
+        let screenWidth = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
 
-        let screenWidth = document.body.clientWidth;
+        // let screenWidth = document.body.clientWidth;
 
         // let offscreenAmount = (dx + tooltipWidth) - screenWidth + 10;
         let offscreenAmount = (dx + tooltipWidth) - screenWidth;
