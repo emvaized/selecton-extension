@@ -33,7 +33,7 @@ function getSelectionCoordinates(atStart) {
 
         if (rect.x == 0 && rect.y == 0) {
             let rect2 = range.getBoundingClientRect();
-            rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
+            rect = atStart ? { x: rect2.left, y: rect2.top } : { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
         }
 
         range.detach();

@@ -1,6 +1,6 @@
 #3.3.1
 - Fixed bug when tooltip false-detected colliding with side edge
-- Fixes for 'snap selection to words' feature
+- Fixes for 'snap selection to words' feature and selection handles
 - Small options design improvements
 
 #3.3.0
