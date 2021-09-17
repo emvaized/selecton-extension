@@ -1,4 +1,4 @@
-function initConfigs(fullLoad = true) {
+function initConfigs(fullLoad = true, e) {
   let userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -14,19 +14,33 @@ function initConfigs(fullLoad = true) {
       /// Check for domain to be in black list
       configs.excludedDomains = loadedConfigs.excludedDomains || '';
 
-      var domainIsBlacklisted = false;
+      // var domainIsBlacklisted = false;
       if (configs.excludedDomains !== null && configs.excludedDomains !== undefined && configs.excludedDomains !== '')
         configs.excludedDomains.split(',').forEach(function (domain) {
           if (window.location.href.includes(domain.trim())) {
-            domainIsBlacklisted = true;
+            // domainIsBlacklisted = true;
+            configs.enabled = false;
           }
         });
 
-      if (configs.enabled && domainIsBlacklisted == false) {
+      // if (configs.enabled && domainIsBlacklisted == false) {
+      if (configs.enabled) {
         configs.debugMode = loadedConfigs.debugMode ?? false;
 
         if (configs.changeTextSelectionColor)
           setTextSelectionColor();
+
+
+        /// If initial launch, fetch currency rates
+        configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
+
+        if (configs.convertCurrencies) {
+          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
+          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+            fetchCurrencyRates();
+          else loadCurrencyRatesFromMemory();
+        }
 
         if (fullLoad) {
           if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
@@ -74,8 +88,7 @@ function initConfigs(fullLoad = true) {
           /// Set pop-up inner padding
           document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
 
-          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
-
+          createTooltip(e);
         }
       }
     });
@@ -140,6 +153,7 @@ function setPageListeners() {
   });
 
   document.addEventListener("mouseup", async function (e) {
+    if (!configs.enabled) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;
@@ -159,8 +173,8 @@ function setPageListeners() {
 
 
     if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
-      initConfigs(true);
-      createTooltip(e);
+      initConfigs(true, e);
+      // createTooltip(e);
     }
   });
 
@@ -182,16 +196,10 @@ function domLoadedListener() {
 }
 
 function selectionChangeInitListener(e) {
+  if (!configs.enabled) return;
   if (document.getSelection().toString().length < 1) return;
   document.removeEventListener('selectionchange', selectionChangeInitListener);
   // init();
-
-  /// If initial launch, update currency rates
-  if (configs.convertCurrencies) {
-    if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-      fetchCurrencyRates();
-    else loadCurrencyRatesFromMemory();
-  }
 
   try {
     setPageListeners();
