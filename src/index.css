@@ -5,7 +5,8 @@
     opacity: 0;
     display: inline-block;
     position: absolute;
-    padding: 2px;
+    /* padding: 2px; */
+    padding: var(--selecton-tooltip-inner-padding);
     color: white;
     border-radius: 3px;
     font-stretch: condensed;
@@ -56,7 +57,8 @@
     border: none !important;
     box-shadow: none !important;
     z-index: 10000 !important;
-    padding:  4px 12px !important;
+    /* padding:  4px 12px !important; */
+    padding:  4px 10px !important;
     vertical-align: top !important;
     font-family: Arial, Helvetica, sans-serif !important;
     height: 100% !important;

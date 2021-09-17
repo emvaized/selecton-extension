@@ -170,6 +170,8 @@ function appendSecondaryTooltip() {
     secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
     secondaryTooltip.style.transform = 'scale(0.0)';
 
+    let timerToRemoveTooltip;
+
     // var timeoutToRevealSearchTooltip;
     searchButton.onmouseover = function (event) {
         secondaryTooltip.style.transform = 'scale(1.0)';
@@ -181,11 +183,12 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.opacity = 1.0;
         searchButton.classList.add("hovered-tooltip-button");
         // }, 150);
+        clearTimeout(timerToRemoveTooltip);
     }
 
     searchButton.onmouseout = function () {
         // clearTimeout(timeoutToRevealSearchTooltip);
-        setTimeout(function () {
+        timerToRemoveTooltip = setTimeout(function () {
             if (isSecondaryTooltipHovered == false) {
                 calculateEndDy();
                 secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;

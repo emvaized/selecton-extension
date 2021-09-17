@@ -1,3 +1,8 @@
+#3.3.2
+- Changed settings now get applied immediately
+- Improved "Open link" button detection
+- Other small fixes and improvements
+
 #3.3.1
 - Fixed bug when tooltip false-detected colliding with side edge
 - Fixes for 'snap selection to words' feature and selection handles

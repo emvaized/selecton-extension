@@ -35,12 +35,10 @@ function getSelectionCoordinates(atStart) {
 
     if (rect.x == 0 && rect.y == 0) {
         let rectCoords = getSelectionRectDimensions();
-        //console.log(atStart ? 'start:' : 'end:');
-        //console.log(rectCoords);
 
         if (atStart)
             return { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
-        return { dx: rectCoords.dx, dy: rectCoords.dy + rectCoords.height, backwards: isBackwards };
+        return { dx: rectCoords.dx + rectCoords.width, dy: rectCoords.dy + rectCoords.height - (selectionHandleLineHeight - 7.5), backwards: isBackwards };
     }
 
     // range.collapse(true);

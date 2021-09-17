@@ -214,6 +214,10 @@ function setUpNewTooltip(type) {
         /// Set rounded corners for buttons
         firstButtonBorderRadius = `${configs.borderRadius - 3}px 0px 0px ${configs.borderRadius - 3}px`;
         lastButtonBorderRadius = `0px ${configs.borderRadius - 3}px ${configs.borderRadius - 3}px 0px`;
+    } else {
+        /// Set default corners for buttons
+        firstButtonBorderRadius = '2px 0px 0px 2px';
+        lastButtonBorderRadius = '0px 2px 2px 0px';
     }
 
     if (configs.debugMode)
@@ -861,75 +865,78 @@ function addContextualButtons() {
                         //var words = selectedText.split(' ');
                         let link = selectedText;
 
-                        if (link.includes('.')) {
-                            let splittedByDots = link.split('.');
+                        let splittedByDots = link.split('.');
 
-                            if (1 < splittedByDots[1].length < 4) {
-                                link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                                let linkLength = link.length;
-                                var lastSymbol = link[linkLength - 1];
+                        console.log(splittedByDots[1]);
+                        console.log(splittedByDots[1].length);
 
-                                if (lastSymbol == '.' || lastSymbol == ',')
-                                    link = link.substring(0, linkLength - 1);
+                        let domainLength = splittedByDots[1].length;
 
-                                /// Remove '/' on the end of link, just for better looks in pop-up
-                                lastSymbol = link[link.length - 1];
-                                if (lastSymbol == '/')
-                                    link = link.substring(0, link.length - 1);
+                        if (domainLength > 1 && domainLength < 4) {
+                            link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
+                            let linkLength = link.length;
+                            let lastSymbol = link[linkLength - 1];
 
-                                /// Remove quotes in start and end of the link
-                                let firstSymbol = link[0];
-                                linkLength = link.length;
-                                lastSymbol = link[linkLength - 1];
-                                if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
-                                    link = link.substring(1, linkLength);
-                                if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
-                                    link = link.substring(0, linkLength - 1);
+                            if (lastSymbol == '.' || lastSymbol == ',')
+                                link = link.substring(0, linkLength - 1);
 
-                                try {
-                                    /// Filtering out non-links
-                                    let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+                            /// Remove '/' on the end of link, just for better looks in pop-up
+                            lastSymbol = link[link.length - 1];
+                            if (lastSymbol == '/')
+                                link = link.substring(0, link.length - 1);
 
-                                    if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                        /// Adding button
-                                        let interactiveButton = document.createElement('button');
-                                        interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                                        let linkText = document.createElement('span');
+                            /// Remove quotes in start and end of the link
+                            let firstSymbol = link[0];
+                            linkLength = link.length;
+                            lastSymbol = link[linkLength - 1];
+                            if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
+                                link = link.substring(1, linkLength);
+                            if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
+                                link = link.substring(0, linkLength - 1);
 
-                                        let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                        linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
-                                        linkText.setAttribute('style', `color: ${secondaryColor}`);
+                            try {
+                                /// Filtering out non-links
+                                let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
-                                        /// Add tooltip with full website on hover
-                                        if (link.length > linkSymbolsToShow)
-                                            interactiveButton.setAttribute('title', link);
+                                if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                    /// Adding button
+                                    let interactiveButton = document.createElement('button');
+                                    interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                                    let linkText = document.createElement('span');
 
-                                        if (addButtonIcons) {
-                                            if (configs.buttonsStyle == 'onlyicon') {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
-                                            } else {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
-                                            }
-                                        } else interactiveButton.innerHTML = openLinkLabel + ' ';
+                                    let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                                    linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
+                                    linkText.setAttribute('style', `color: ${secondaryColor}`);
 
-                                        interactiveButton.appendChild(linkText);
-                                        interactiveButton.addEventListener("mousedown", function (e) {
+                                    /// Add tooltip with full website on hover
+                                    if (link.length > linkSymbolsToShow)
+                                        interactiveButton.setAttribute('title', link);
 
-                                            // if (!link.includes('http://') && !link.includes('https://') && !link.includes('chrome://') && !link.includes('about:'))
-                                            if (!link.includes('://') && !link.includes('about:'))
-                                                link = 'https://' + link;
+                                    if (addButtonIcons) {
+                                        if (configs.buttonsStyle == 'onlyicon') {
+                                            interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
+                                        } else {
+                                            interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
+                                        }
+                                    } else interactiveButton.innerHTML = openLinkLabel + ' ';
 
-                                            onTooltipButtonClick(e, link);
-                                        });
+                                    interactiveButton.appendChild(linkText);
+                                    interactiveButton.addEventListener("mousedown", function (e) {
 
-                                        if (configs.reverseTooltipButtonsOrder)
-                                            tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                                        else
-                                            tooltip.appendChild(interactiveButton);
-                                    }
-                                } catch (e) { console.log(e) }
+                                        // if (!link.includes('http://') && !link.includes('https://') && !link.includes('chrome://') && !link.includes('about:'))
+                                        if (!link.includes('://') && !link.includes('about:'))
+                                            link = 'https://' + link;
 
-                            }
+                                        onTooltipButtonClick(e, link);
+                                    });
+
+                                    if (configs.reverseTooltipButtonsOrder)
+                                        tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                                    else
+                                        tooltip.appendChild(interactiveButton);
+                                }
+                            } catch (e) { console.log(e) }
+
                         }
                     }
             }

@@ -1,4 +1,4 @@
-function init() {
+function initConfigs(fullLoad = true) {
   let userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -22,71 +22,61 @@ function init() {
           }
         });
 
-      document.body.style.setProperty('--selection-button-padding', '6px 12px');
-
       if (configs.enabled && domainIsBlacklisted == false) {
         configs.debugMode = loadedConfigs.debugMode ?? false;
 
         if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 
-        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
-          setDefaultLocales();
+        if (fullLoad) {
+          if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
+            setDefaultLocales();
+          }
+
+          /// Assign loaded values to a config file
+          Object.keys(configs).forEach(function (key) {
+            if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
+              configs[key] = loadedConfigs[key];
+          });
+
+          addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
+          verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
+
+          if (configs.debugMode) {
+            console.log('Loaded Selecton settings from memory:');
+            console.log(configs);
+          }
+
+          /// Get translated button labels
+          copyLabel = chrome.i18n.getMessage("copyLabel");
+          searchLabel = chrome.i18n.getMessage("searchLabel");
+          translateLabel = chrome.i18n.getMessage("translateLabel");
+          openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+          showOnMapLabel = chrome.i18n.getMessage("showOnMap");
+          cutLabel = chrome.i18n.getMessage("cutLabel");
+          pasteLabel = chrome.i18n.getMessage("pasteLabel");
+          boldLabel = chrome.i18n.getMessage("boldLabel");
+          italicLabel = chrome.i18n.getMessage("italicLabel");
+
+          /// Set dynamic color for foreground (text and icons)
+          document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
+          document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
+          document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
+          secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+
+          /// Set font-size
+          document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
+
+          /// Set pop-up buttons border
+          document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
+          document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+
+          /// Set pop-up inner padding
+          document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
+
+          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
         }
-
-        /// Assign loaded values to a config file
-        Object.keys(configs).forEach(function (key) {
-          if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
-            configs[key] = loadedConfigs[key];
-        });
-
-        addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
-        verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
-
-        if (configs.debugMode) {
-          console.log('Loaded Selecton settings from memory:');
-          console.log(configs);
-        }
-
-        /// Get translated button labels
-        copyLabel = chrome.i18n.getMessage("copyLabel");
-        searchLabel = chrome.i18n.getMessage("searchLabel");
-        translateLabel = chrome.i18n.getMessage("translateLabel");
-        openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
-        showOnMapLabel = chrome.i18n.getMessage("showOnMap");
-        cutLabel = chrome.i18n.getMessage("cutLabel");
-        pasteLabel = chrome.i18n.getMessage("pasteLabel");
-        boldLabel = chrome.i18n.getMessage("boldLabel");
-        italicLabel = chrome.i18n.getMessage("italicLabel");
-
-        /// Set dynamic color for foreground (text and icons)
-        document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
-        secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
-
-        /// Set font-size
-        document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
-
-        /// Set pop-up buttons border
-        document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
-        document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
-
-        ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
-
-        // /// If initial launch, update currency rates
-        // if (configs.convertCurrencies) {
-        //   if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-        //     fetchCurrencyRates();
-        //   else loadCurrencyRatesFromMemory();
-        // }
-
-        // try {
-        //   setPageListeners();
-        // } catch (e) {
-        //   if (configs.debugMode)
-        //     console.log('Error while setting Selecton page listeners: ' + e);
-        // }
       }
     });
 }
@@ -168,8 +158,10 @@ function setPageListeners() {
     }
 
 
-    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0))
+    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
+      initConfigs(true);
       createTooltip(e);
+    }
   });
 
   window.addEventListener('resize', function (e) {
@@ -184,7 +176,7 @@ function setPageListeners() {
 }
 
 function domLoadedListener() {
-  init();
+  initConfigs(false);
   document.removeEventListener('DOMContentLoaded', domLoadedListener);
   document.addEventListener('selectionchange', selectionChangeInitListener);
 }
