@@ -20,7 +20,6 @@ function getSelectionCoordinates(atStart) {
     // let rects = range.getClientRects();
     // if (rects.length <= 0) return null;
     // let rect = rects[0];  /// return coord
-
     let rect = range.getBoundingClientRect();
 
     // Detect if selection is backwards
@@ -31,26 +30,18 @@ function getSelectionCoordinates(atStart) {
         range.setEnd(sel.focusNode, sel.focusOffset);
         isBackwards = range.collapsed;
 
-        if (rect.x == 0 && rect.y == 0) {
-            let rect2 = range.getBoundingClientRect();
-            rect = atStart ? { x: rect2.left, y: rect2.top } : { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
-        }
-
         range.detach();
     } catch (e) { console.log(e); }
 
-    // if (rect.x == 0 && rect.y == 0) {
-    //     try {
-    //         let range2 = document.createRange();
-    //         range2.setStart(sel.anchorNode, sel.anchorOffset);
-    //         range2.setEnd(sel.focusNode, sel.focusOffset);
-    //         let rect2 = range2.getBoundingClientRect();
+    if (rect.x == 0 && rect.y == 0) {
+        let rectCoords = getSelectionRectDimensions();
+        //console.log(atStart ? 'start:' : 'end:');
+        //console.log(rectCoords);
 
-    //         console.log(atStart);
-    //         console.log(rect2);
-    //         rect = { x: rect2.right, y: rect2.bottom - (selectionHandleLineHeight / 2) };
-    //     } catch (e) { console.log(e); }
-    // }
+        if (atStart)
+            return { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
+        return { dx: rectCoords.dx, dy: rectCoords.dy + rectCoords.height, backwards: isBackwards };
+    }
 
     // range.collapse(true);
     // return { dx: rect.x, dy: rect.y };
