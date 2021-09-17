@@ -121,7 +121,7 @@ function setTranslatedLabels() {
     document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
     document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
     document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
-    document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader") + ':';
+    document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
 
     /// "All changes saved automatically" block
     // var infoCircle = document.createElement('div');

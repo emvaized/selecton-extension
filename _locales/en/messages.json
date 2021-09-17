@@ -132,7 +132,7 @@
     "description": "Label for field in settings"
   },
   "customSearchTooltipHint": {
-    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for search query. <br/>%w is a placeholder for current domain (for website search).",
+    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for search query <br/>%w is a placeholder for current domain (for website search)",
     "description": "Label for field in settings"
   },
   "customSearchUrl": {

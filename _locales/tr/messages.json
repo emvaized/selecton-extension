@@ -132,7 +132,7 @@
         "description": "Ayarlardaki alan etiketi"
     },
     "customSearchTooltipHint": {
-        "message": "'Ara' düğmesinin üzerine gelindiğinde ortaya çıkar. <br/>%s öğesini arama sorgusu için yer tutucu olarak kullan.<br/> %w geçerli etki alanı (web sitesi araması için) için bir yer tutucudur.",
+        "message": "'Ara' düğmesinin üzerine gelindiğinde ortaya çıkar. <br/>%s öğesini arama sorgusu için yer tutucu olarak kullan<br/> %w geçerli etki alanı (web sitesi araması için) için bir yer tutucudur",
         "description": "Ayarlardaki alan etiketi"
     },
     "customSearchUrl": {
