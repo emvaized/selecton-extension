@@ -197,6 +197,7 @@ function setPageListeners() {
 function recreateTooltip() {
   if (timerToRecreateOverlays !== null) {
     clearTimeout(timerToRecreateOverlays);
+    timerToRecreateOverlays = null;
   }
 
   timerToRecreateOverlays = setTimeout(function () {

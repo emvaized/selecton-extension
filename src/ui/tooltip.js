@@ -29,7 +29,7 @@ function createTooltip(e) {
                                     }
                                 });
 
-                            if (domainIsBlacklistedForSnapping == false && e.detail < 2)
+                            if (domainIsBlacklistedForSnapping == false && e.detail < 2 && timerToRecreateOverlays == undefined)
                                 snapSelectionByWords(selection);
                         }
                     }
@@ -1310,6 +1310,7 @@ function hideTooltip() {
 
     tooltip = null;
     secondaryTooltip = null;
+    timerToRecreateOverlays = undefined;
 }
 
 function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
