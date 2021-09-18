@@ -29,7 +29,7 @@ function createTooltip(e) {
                                     }
                                 });
 
-                            if (domainIsBlacklistedForSnapping == false && e.detail < 2 && timerToRecreateOverlays == undefined)
+                            if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                                 snapSelectionByWords(selection);
                         }
                     }
@@ -1073,6 +1073,7 @@ function addContextualButtons() {
 function calculateTooltipPosition(e) {
     var selStartDimensions = getSelectionCoordinates(true);
     tooltipOnBottom = false;
+    var resultingDx;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1120,7 +1121,7 @@ function calculateTooltipPosition(e) {
         }
 
         /// Calculating DX
-        var resultingDx;
+
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
             var selEndDimensions = getSelectionCoordinates(false);
@@ -1310,7 +1311,7 @@ function hideTooltip() {
 
     tooltip = null;
     secondaryTooltip = null;
-    timerToRecreateOverlays = undefined;
+    timerToRecreateOverlays = null;
 }
 
 function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {

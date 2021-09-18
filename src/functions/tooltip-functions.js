@@ -67,10 +67,6 @@ function checkTooltipForCollidingWithSideEdges() {
 
     let dx = parseInt(tooltip.style.left.replaceAll('px', ''));
     let tooltipWidth = 24.0;
-    // tooltip.querySelectorAll('button').forEach(function (el) {
-    //     tooltipWidth += el.offsetWidth;
-    // });
-
     for (let i = 0, l = tooltip.children.length; i < l; i++) {
         if (i == 0) continue; /// ignore arrow element
         tooltipWidth += tooltip.children[i].offsetWidth;

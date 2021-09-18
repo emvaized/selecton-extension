@@ -158,7 +158,8 @@ function appendSecondaryTooltip() {
 
             if (vertOutOfView)
                 setTimeout(function () {
-                    secondaryTooltip.classList.add('higher-z-index');
+                    if (secondaryTooltip != null)
+                        secondaryTooltip.classList.add('higher-z-index');
                 }, 300)
         }
 
