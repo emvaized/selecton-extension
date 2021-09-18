@@ -1,6 +1,7 @@
 #3.3.2
-- Changed settings now get applied immediately
-- Improved "Open link" button detection
+- Changes to some settings now get applied immediately
+- Improved "Open link" button detection (less false detections)
+- Tooltip now recreates after scroll or screen resize
 - Other small fixes and improvements
 
 #3.3.1

@@ -63,8 +63,9 @@ function checkTooltipForCollidingWithSideEdges() {
     if (configs.debugMode)
         console.log('Checking Selecton tooltip for colliding with side edges...');
 
-    let dx = parseInt(tooltip.style.left.replaceAll('px', ''));
+    if (tooltip == null) return;
 
+    let dx = parseInt(tooltip.style.left.replaceAll('px', ''));
     let tooltipWidth = 24.0;
     // tooltip.querySelectorAll('button').forEach(function (el) {
     //     tooltipWidth += el.offsetWidth;

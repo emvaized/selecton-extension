@@ -124,8 +124,12 @@ function setPageListeners() {
 
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {
+    if (tooltipIsShown == false) return;
+
     hideTooltip();
     hideDragHandles();
+
+    recreateTooltip();
   });
 
   /// Hide tooltip when any key is pressed
@@ -171,7 +175,6 @@ function setPageListeners() {
       selection = document.selection.createRange();
     }
 
-
     if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
       initConfigs(true, e);
       // createTooltip(e);
@@ -186,8 +189,29 @@ function setPageListeners() {
 
     hideTooltip();
     hideDragHandles();
+
+    recreateTooltip();
   });
 }
+
+function recreateTooltip() {
+  if (timerToRecreateOverlays !== null) {
+    clearTimeout(timerToRecreateOverlays);
+  }
+
+  timerToRecreateOverlays = setTimeout(function () {
+    if (window.getSelection) {
+      selection = window.getSelection();
+    } else if (document.selection) {
+      selection = document.selection.createRange();
+    }
+
+    if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
+      createTooltip(lastMouseUpEvent);
+    }
+  }, 600);
+}
+
 
 function domLoadedListener() {
   initConfigs(false);

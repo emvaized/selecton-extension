@@ -42,6 +42,10 @@ var lastMouseUpEvent;
 var previousSelection;
 var tooltipOnBottom = false;
 
+var timerToRecreateOverlays;
+var delayToRecreateOverlays = 150;
+
+
 // var dragHandles = [];
 // var oldTooltips = [];
 // var oldSecondaryTooltips = [];
