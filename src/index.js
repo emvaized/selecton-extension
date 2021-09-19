@@ -182,6 +182,7 @@ function setPageListeners() {
   });
 
   window.addEventListener('resize', function (e) {
+    if (tooltipIsShown == false) return;
     /// TODO: 
     /// Recaclulate dx/dy for tooltip, secondary tooltip and drag handles
     if (configs.debugMode)

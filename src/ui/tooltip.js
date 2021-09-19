@@ -76,7 +76,6 @@ function createTooltip(e) {
                     }
 
                     showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
-
                     return;
                 }
 
@@ -91,7 +90,7 @@ function createTooltip(e) {
 
                 setUpNewTooltip();
 
-                if (dontShowTooltip == false && selectedText !== null && selectedText.trim() !== '' && tooltip.style.opacity !== 0.0) {
+                if (dontShowTooltip == false && selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
                     addContextualButtons();
 
                     setTimeout(function () {
@@ -101,7 +100,6 @@ function createTooltip(e) {
 
                         //oldTooltips.push(tooltip);
                         document.body.appendChild(tooltip);
-
                         calculateTooltipPosition(e);
                     }, 1);
                 } else hideTooltip();
@@ -1073,7 +1071,6 @@ function addContextualButtons() {
 function calculateTooltipPosition(e) {
     var selStartDimensions = getSelectionCoordinates(true);
     tooltipOnBottom = false;
-    var resultingDx;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1107,20 +1104,18 @@ function calculateTooltipPosition(e) {
         /// If tooltip is going off-screen on top...
         var vertOutOfView = resultingDy <= 0;
         if (vertOutOfView) {
-            /// ...make it visible by manually placing on top of screen
-            // resultingDy = window.scrollY;
 
-            ///     ... or display tooltip under selection
+            /// ...display tooltip below text selection
             var selEndDimensions = getSelectionCoordinates(false);
             resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             arrow.style.bottom = '';
             arrow.style.top = '-50%';
             arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
-
             tooltipOnBottom = true;
         }
 
         /// Calculating DX
+        var resultingDx;
 
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
