@@ -1,4 +1,4 @@
-function initConfigs(fullLoad = true, e) {
+function initConfigs(shouldCreateTooltip = false, e) {
   let userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -28,27 +28,26 @@ function initConfigs(fullLoad = true, e) {
         if (configs.changeTextSelectionColor && selectionColorWasApplied == false)
           setTextSelectionColor();
 
-        // if (fullLoad || configs.applyConfigsImmediately == false) {
-        if (fullLoad) {
-          if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
-            setDefaultLocales();
-          }
+        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
+          setDefaultLocales();
+        }
 
-          /// Assign loaded values to a config file
-          Object.keys(configs).forEach(function (key) {
-            if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
-              configs[key] = loadedConfigs[key];
-          });
+        /// Assign loaded values to a config file
+        Object.keys(configs).forEach(function (key) {
+          if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
+            configs[key] = loadedConfigs[key];
+        });
 
-          addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
-          verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
+        addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
+        verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
 
-          if (configs.debugMode) {
-            console.log('Loaded Selecton settings from memory:');
-            console.log(configs);
-          }
+        if (configs.debugMode) {
+          console.log('Loaded Selecton settings from memory:');
+          console.log(configs);
+        }
 
-          /// Get translated button labels
+        /// Get translated button labels
+        if (configsWereLoaded == false) {
           copyLabel = chrome.i18n.getMessage("copyLabel");
           searchLabel = chrome.i18n.getMessage("searchLabel");
           translateLabel = chrome.i18n.getMessage("translateLabel");
@@ -59,48 +58,49 @@ function initConfigs(fullLoad = true, e) {
           boldLabel = chrome.i18n.getMessage("boldLabel");
           italicLabel = chrome.i18n.getMessage("italicLabel");
 
-          /// Set dynamic color for foreground (text and icons)
-          document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
-          document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-          document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
-          secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
-
-          /// Set font-size
-          document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
-
-          /// Set pop-up buttons border
-          document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
-          document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
-
-          /// Set pop-up inner padding
-          document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
-
-          /// Check to fetch currency rates
-          configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
-
           configsWereLoaded = true;
-
-          if (configs.convertCurrencies) {
-            ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
-
-            if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-              fetchCurrencyRates();
-            else {
-              let today = new Date();
-              let dayOfNextFetch = new Date(ratesLastFetchedDate);
-
-              dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
-
-              if (today >= dayOfNextFetch) {
-                fetchCurrencyRates(); /// fetch rates from server
-              } else
-                loadCurrencyRatesFromMemory();
-            }
-          }
-
-          if (configs.applyConfigsImmediately == true)
-            createTooltip(e);
         }
+
+        /// Set dynamic color for foreground (text and icons)
+        document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
+        document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
+        document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
+        secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+
+        /// Set font-size
+        document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
+
+        /// Set pop-up buttons border
+        document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
+        document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+
+        /// Set pop-up inner padding
+        document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
+
+        /// Check to fetch currency rates
+        configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
+
+
+        if (configs.convertCurrencies) {
+          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
+          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+            fetchCurrencyRates();
+          else {
+            let today = new Date();
+            let dayOfNextFetch = new Date(ratesLastFetchedDate);
+
+            dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+
+            if (today >= dayOfNextFetch) {
+              fetchCurrencyRates(); /// fetch rates from server
+            } else
+              loadCurrencyRatesFromMemory();
+          }
+        }
+
+        if (shouldCreateTooltip)
+          createTooltip(e);
       }
     });
 }
@@ -205,15 +205,8 @@ function setPageListeners() {
     if (selection.toString().trim().length > 0 || configs.addActionButtonsForTextFields) {
       if (configs.applyConfigsImmediately)
         initConfigs(true, e);
-      else {
-
-        if (configsWereLoaded == true)
-          createTooltip(e);
-        else
-          setTimeout(function () {
-            createTooltip(e);
-          }, 12);
-      }
+      else
+        createTooltip(e);
     }
   });
 }
@@ -242,6 +235,7 @@ function recreateTooltip() {
 
 function domLoadedListener() {
   initConfigs(false);
+
   document.removeEventListener('DOMContentLoaded', domLoadedListener);
   document.addEventListener('selectionchange', selectionChangeInitListener);
 }
@@ -250,9 +244,6 @@ function selectionChangeInitListener() {
   if (!configs.enabled) return;
   if (document.getSelection().toString().length < 1) return;
   document.removeEventListener('selectionchange', selectionChangeInitListener);
-  // init();
-  if (configs.applyConfigsImmediately == false)
-    initConfigs(true);
 
   try {
     setPageListeners();
