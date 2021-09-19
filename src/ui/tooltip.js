@@ -1267,7 +1267,7 @@ function showTooltip(dx, dy) {
         }, 3);
 }
 
-function hideTooltip() {
+function hideTooltip(animated = true) {
     if (tooltip == null || tooltip == undefined) return;
 
     document.removeEventListener("selectionchange", selectionChangeListener);
@@ -1276,7 +1276,6 @@ function hideTooltip() {
         console.log('Checking for existing Selecton tooltips...')
 
     /// Hide all tooltips
-    // var oldTooltips = document.querySelectorAll('.selection-tooltip');
     let oldTooltips = document.querySelectorAll(`.selecton-entity`);
     // if (configs.debugMode) {
     //     console.log(`Found ${oldTooltips.length} Selecton tooltips:`);
@@ -1289,28 +1288,15 @@ function hideTooltip() {
 
         for (let i = 0, l = oldTooltips.length; i < l; i++) {
             let oldTooltip = oldTooltips[i];
+            if (!animated)
+                oldTooltip.style.transition = '';
             oldTooltip.style.opacity = 0.0;
 
             setTimeout(function () {
                 oldTooltip.remove();
-                //oldTooltips.splice(i, 1);
-            }, configs.animationDuration);
+            }, animated ? configs.animationDuration : 0);
         }
     }
-
-    /// Hide all secondary tooltips
-    // var oldSecondaryTooltips = document.querySelectorAll('.secondary-selection-tooltip');
-    // if (oldSecondaryTooltips !== null && oldSecondaryTooltips.length > 0) {
-    //     for (let i = 0, l = oldSecondaryTooltips.length; i < l; i++) {
-    //         let oldSecondaryTooltip = oldSecondaryTooltips[i];
-    //         oldSecondaryTooltip.style.opacity = 0.0;
-
-    //         setTimeout(function () {
-    //             oldSecondaryTooltip.remove();
-    //             oldSecondaryTooltips.splice(i, 1);
-    //         }, configs.animationDuration);
-    //     }
-    // }
 
     tooltip = null;
     secondaryTooltip = null;

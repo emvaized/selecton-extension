@@ -249,19 +249,22 @@ function addDragHandle(dragHandleIndex) {
     }
 }
 
-function hideDragHandles() {
+function hideDragHandles(animated = true) {
     /// Remove all drag handles
     if (configs.addDragHandles) {
         let dragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
 
         for (let i = 0, l = dragHandles.length; i < l; i++) {
             let dragHandle = dragHandles[i];
+
+            if (!animated)
+                dragHandle.style.transition = '';
             dragHandle.style.opacity = 0.0;
 
             setTimeout(function () {
                 dragHandle.remove();
                 //dragHandles.splice(i, 1);
-            }, configs.animationDuration);
+            }, animated ? configs.animationDuration : 0);
         }
     }
 }

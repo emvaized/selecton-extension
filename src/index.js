@@ -121,14 +121,24 @@ function setPageListeners() {
       console.log(error);
   }
 
-
   /// Hide tooltip on scroll
   document.addEventListener("scroll", function (e) {
     if (tooltipIsShown == false) return;
 
     hideTooltip();
-    hideDragHandles();
+    hideDragHandles(false);
+    recreateTooltip();
+  });
 
+  /// Hide tooltip on window resize
+  window.addEventListener('resize', function (e) {
+    if (tooltipIsShown == false) return;
+
+    if (configs.debugMode)
+      console.log('hiding all Selecton overlays on window resize...');
+
+    hideTooltip(false);
+    hideDragHandles(false);
     recreateTooltip();
   });
 
@@ -179,19 +189,6 @@ function setPageListeners() {
       initConfigs(true, e);
       // createTooltip(e);
     }
-  });
-
-  window.addEventListener('resize', function (e) {
-    if (tooltipIsShown == false) return;
-    /// TODO: 
-    /// Recaclulate dx/dy for tooltip, secondary tooltip and drag handles
-    if (configs.debugMode)
-      console.log('hiding all Selecton overlays on window resize...');
-
-    hideTooltip();
-    hideDragHandles();
-
-    recreateTooltip();
   });
 }
 
