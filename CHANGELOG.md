@@ -1,7 +1,8 @@
 #3.3.2
 - Added option to apply configs immediately (no need to refresh page) - disabled by default for better performance
-- Improved "Open link" button detection (less false detections)
 - Tooltip now recreates after scroll or screen resize (can be disabled in settings)
+- Improved "Open link" button detection (less false detections)
+- Improved currency & measure units detection
 - Other small fixes and improvements
 
 #3.3.1

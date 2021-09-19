@@ -451,12 +451,12 @@ function addContextualButtons() {
 
                 /// Update currency rates in case they are old (will be used for next conversions)
                 if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
-                    var today = new Date();
-                    var dayOfNextFetch = new Date(ratesLastFetchedDate);
+                    let today = new Date();
+                    let dayOfNextFetch = new Date(ratesLastFetchedDate);
                     dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
 
                     if (today >= dayOfNextFetch) {
-                        fetchCurrencyRates();
+                        fetchCurrencyRates(); /// fetch rates from server
                     }
                 }
 
@@ -465,86 +465,87 @@ function addContextualButtons() {
                     if (configs.debugMode)
                         console.log(`Found local rate for currency ${currency}`);
 
-                    for (const [key, value] of Object.entries(currenciesList)) {
-                        if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                            let rateOfDesiredCurrency = value['rate'];
-                            if (configs.debugMode)
-                                console.log(`Rate is: ${rateOfDesiredCurrency}`);
+                    // for (const [key, value] of Object.entries(currenciesList)) {
+                    // if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
+                    let value = currenciesList[configs.convertToCurrency];
 
-                            /// Check for literal multipliers (million, billion and so on)
-                            for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
-                            for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
-                            for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
+                    if (value && value['rate'] !== null && value['rate'] !== undefined) {
 
-                            let resultingRate = rateOfDesiredCurrency / currencyRate;
-                            let convertedAmount = amount * resultingRate;
+                        let rateOfDesiredCurrency = value['rate'];
+                        if (configs.debugMode)
+                            console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
-                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
-                                /// Round result
-                                try {
-                                    convertedAmount = parseFloat(convertedAmount);
-                                    convertedAmount = convertedAmount.toFixed(2);
-                                } catch (e) { console.log(e); }
+                        /// Check for literal multipliers (million, billion and so on)
+                        for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
+                        for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
+                        for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
 
-                                /// Separate resulting numbers in groups of 3 digits
-                                let convertedAmountString = convertedAmount.toString();
-                                convertedAmountString = splitNumberInGroups(convertedAmountString);
+                        let resultingRate = rateOfDesiredCurrency / currencyRate;
+                        let convertedAmount = amount * resultingRate;
 
-                                /// Create and add currency button with result of conversion
-                                let currencyButton = document.createElement('button');
-                                currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                        if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
+                            /// Round result
+                            try {
+                                convertedAmount = parseFloat(convertedAmount);
+                                convertedAmount = convertedAmount.toFixed(2);
+                            } catch (e) { console.log(e); }
 
-                                /// Show value before convertion
-                                if (configs.showUnconvertedValue) {
-                                    if (configs.preferCurrencySymbol && currencySymbol !== undefined)
-                                        currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
-                                    else
-                                        currencyButton.textContent = ` ${amount} ${currency} →`;
-                                }
+                            /// Separate resulting numbers in groups of 3 digits
+                            let convertedAmountString = convertedAmount.toString();
+                            convertedAmountString = splitNumberInGroups(convertedAmountString);
 
-                                /// Show value after converion
-                                const converted = document.createElement('span');
-                                const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
+                            /// Create and add currency button with result of conversion
+                            let currencyButton = document.createElement('button');
+                            currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
 
-                                if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
-                                    converted.textContent = ` ${convertedAmountString}`;
+                            /// Show value before convertion
+                            if (configs.showUnconvertedValue) {
+                                if (configs.preferCurrencySymbol && currencySymbol !== undefined)
+                                    currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
                                 else
-                                    converted.textContent = ` ${convertedAmountString}`;
-
-                                converted.setAttribute('style', `color: ${secondaryColor}`);
-                                currencyButton.appendChild(converted);
-
-                                /// Add currency symbol with different color
-                                const currencyLabel = document.createElement('span');
-                                currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
-                                currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
-                                currencyButton.appendChild(currencyLabel);
-
-                                currencyButton.addEventListener("mousedown", function (e) {
-                                    let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
-                                    onTooltipButtonClick(e, url);
-                                });
-
-                                if (configs.reverseTooltipButtonsOrder)
-                                    tooltip.insertBefore(currencyButton, tooltip.children[1]);
-                                else
-                                    tooltip.appendChild(currencyButton);
-
-                                /// Correct tooltip's dx
-                                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
-
-                                /// Correct last button's border radius
-                                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                                break;
+                                    currencyButton.textContent = ` ${amount} ${currency} →`;
                             }
+
+                            /// Show value after converion
+                            const converted = document.createElement('span');
+                            const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
+
+                            if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
+                                converted.textContent = ` ${convertedAmountString}`;
+                            else
+                                converted.textContent = ` ${convertedAmountString}`;
+
+                            converted.setAttribute('style', `color: ${secondaryColor}`);
+                            currencyButton.appendChild(converted);
+
+                            /// Add currency symbol with different color
+                            const currencyLabel = document.createElement('span');
+                            currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
+                            currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
+                            currencyButton.appendChild(currencyLabel);
+
+                            currencyButton.addEventListener("mousedown", function (e) {
+                                let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
+                                onTooltipButtonClick(e, url);
+                            });
+
+                            if (configs.reverseTooltipButtonsOrder)
+                                tooltip.insertBefore(currencyButton, tooltip.children[1]);
+                            else
+                                tooltip.appendChild(currencyButton);
+
+                            /// Correct tooltip's dx
+                            tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
+
+                            /// Correct last button's border radius
+                            tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+                            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                            // break;
                         }
                     }
-
-                    /// Fetch rates from server
-                } else
-                    fetchCurrencyRates();
+                    // }
+                }
 
             }
         }
@@ -654,12 +655,12 @@ function addContextualButtons() {
                     tooltip.insertBefore(interactiveButton, tooltip.children[1]);
                 else
                     tooltip.appendChild(interactiveButton);
-                try {
-                    tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                } catch (e) {
-                    if (configs.debugMode)
-                        console.log(e);
-                }
+                // try {
+                //     tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                // } catch (e) {
+                //     if (configs.debugMode)
+                //         console.log(e);
+                // }
             }
         }
 
