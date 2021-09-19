@@ -454,5 +454,13 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "applyConfigsImmediately": {
+        "message": "Застосувати налаштування відразу",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Вимкніть для кращої швидкодії",
+        "description": "Label for option in settings"
     }
 }

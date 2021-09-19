@@ -458,5 +458,13 @@
     "writeAReview": {
         "message": "Yorum yazma",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "applyConfigsImmediately": {
+        "message": "Yapılandırmaları hemen uygulayın",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Daha iyi performans için devre dışı bırakın",
+        "description": "Label for option in settings"
     }
 }

@@ -59,6 +59,7 @@ var configs = {
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
     'recreateTooltipAfterScroll': true,
+    'applyConfigsImmediately': false,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'customSearchButtons': [

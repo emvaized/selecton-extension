@@ -6,7 +6,7 @@ function createTooltip(e) {
             function () {
                 if (e !== undefined && e !== null && e.button !== 0) return;
                 lastMouseUpEvent = e;
-                hideTooltip();
+                //hideTooltip();
 
                 let isTextField = (document.activeElement.tagName === "INPUT" && document.activeElement.getAttribute('type') == 'text') ||
                     document.activeElement.tagName === "TEXTAREA" ||
@@ -403,6 +403,152 @@ function addContextualButtons() {
         var unitLabelColor = isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
         var selectionContainsSpaces = selectedText.includes(' ');
 
+        /// Convert currency button
+        if (configs.convertCurrencies) {
+            var currency;
+            var amount;
+            var currencyRate;
+            var currencySymbol;
+
+            for (const [key, value] of Object.entries(currenciesList)) {
+                var match = false;
+                if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
+                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
+                    match = true;
+                } else {
+                    var currencyKeywords = value["currencyKeywords"];
+                    if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords !== [])
+                        for (i in currencyKeywords) {
+                            if (loweredSelectedText.includes(currencyKeywords[i])) {
+                                if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
+                                match = true;
+                            }
+                        }
+                }
+
+                if (match) {
+                    currency = key;
+                    currencyRate = value["rate"];
+                    currencySymbol = value["currencySymbol"];
+
+                    /// Special handling for prices where coma separates fractional digits instead of thousandths
+                    if (selectedText.includes(',')) {
+                        var parts = selectedText.split(',');
+                        if (parts.length == 2) {
+                            if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
+                                selectedText = selectedText.replaceAll(',', '.');
+                            }
+                        }
+                    }
+
+                    /// Find the amount
+                    amount = extractAmountFromSelectedText(selectedText);
+                    break;
+                }
+            }
+
+            if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null && amount !== undefined) {
+
+                /// Update currency rates in case they are old (will be used for next conversions)
+                if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
+                    var today = new Date();
+                    var dayOfNextFetch = new Date(ratesLastFetchedDate);
+                    dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+
+                    if (today >= dayOfNextFetch) {
+                        fetchCurrencyRates();
+                    }
+                }
+
+                /// Rates are already locally stored (should be initially)
+                if (currencyRate !== null && currencyRate !== undefined) {
+                    if (configs.debugMode)
+                        console.log(`Found local rate for currency ${currency}`);
+
+                    for (const [key, value] of Object.entries(currenciesList)) {
+                        if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
+                            let rateOfDesiredCurrency = value['rate'];
+                            if (configs.debugMode)
+                                console.log(`Rate is: ${rateOfDesiredCurrency}`);
+
+                            /// Check for literal multipliers (million, billion and so on)
+                            for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
+                            for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
+                            for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
+
+                            let resultingRate = rateOfDesiredCurrency / currencyRate;
+                            let convertedAmount = amount * resultingRate;
+
+                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
+                                /// Round result
+                                try {
+                                    convertedAmount = parseFloat(convertedAmount);
+                                    convertedAmount = convertedAmount.toFixed(2);
+                                } catch (e) { console.log(e); }
+
+                                /// Separate resulting numbers in groups of 3 digits
+                                let convertedAmountString = convertedAmount.toString();
+                                convertedAmountString = splitNumberInGroups(convertedAmountString);
+
+                                /// Create and add currency button with result of conversion
+                                let currencyButton = document.createElement('button');
+                                currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+
+                                /// Show value before convertion
+                                if (configs.showUnconvertedValue) {
+                                    if (configs.preferCurrencySymbol && currencySymbol !== undefined)
+                                        currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
+                                    else
+                                        currencyButton.textContent = ` ${amount} ${currency} →`;
+                                }
+
+                                /// Show value after converion
+                                const converted = document.createElement('span');
+                                const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
+
+                                if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
+                                    converted.textContent = ` ${convertedAmountString}`;
+                                else
+                                    converted.textContent = ` ${convertedAmountString}`;
+
+                                converted.setAttribute('style', `color: ${secondaryColor}`);
+                                currencyButton.appendChild(converted);
+
+                                /// Add currency symbol with different color
+                                const currencyLabel = document.createElement('span');
+                                currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
+                                currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
+                                currencyButton.appendChild(currencyLabel);
+
+                                currencyButton.addEventListener("mousedown", function (e) {
+                                    let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
+                                    onTooltipButtonClick(e, url);
+                                });
+
+                                if (configs.reverseTooltipButtonsOrder)
+                                    tooltip.insertBefore(currencyButton, tooltip.children[1]);
+                                else
+                                    tooltip.appendChild(currencyButton);
+
+                                /// Correct tooltip's dx
+                                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
+
+                                /// Correct last button's border radius
+                                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+                                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+
+                                break;
+                            }
+                        }
+                    }
+
+                    /// Fetch rates from server
+                } else
+                    fetchCurrencyRates();
+
+            }
+        }
+
         /// Unit conversion button
         if (configs.convertMetrics) {
             var convertedNumber;
@@ -410,7 +556,7 @@ function addContextualButtons() {
             var convertedUnit;
 
             /// Feet ' and inches " handling
-            if (!selectedText.includes(' ') && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
+            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
                 if ((selectedText.includes("'"))) {
                     let feet;
                     let inches;
@@ -447,8 +593,10 @@ function addContextualButtons() {
 
             /// Basic unit conversion
             outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-                var nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+
+                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
+                    if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
 
                     numberToConvert = extractAmountFromSelectedText(selectedText);
 
@@ -528,7 +676,6 @@ function addContextualButtons() {
                 /// Open system handler
                 window.open(`tel:${selectedText}`);
                 // onTooltipButtonClick(e, `tel:${selectedText.trim()}`);
-
             });
             if (configs.reverseTooltipButtonsOrder)
                 tooltip.insertBefore(phoneButton, tooltip.children[1]);
@@ -711,243 +858,6 @@ function addContextualButtons() {
             }
         }
 
-        /// Convert currency button
-        if (configs.convertCurrencies) {
-            var currency;
-            var amount;
-            var currencyRate;
-            var currencySymbol;
-
-            for (const [key, value] of Object.entries(currenciesList)) {
-                var match = false;
-                if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
-                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
-                    match = true;
-                } else {
-                    var currencyKeywords = value["currencyKeywords"];
-                    if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords !== [])
-                        for (i in currencyKeywords) {
-                            if (loweredSelectedText.includes(currencyKeywords[i])) {
-                                if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
-                                match = true;
-                            }
-                        }
-                }
-
-                if (match) {
-                    currency = key;
-                    currencyRate = value["rate"];
-                    currencySymbol = value["currencySymbol"];
-
-                    /// Special handling for prices where coma separates fractional digits instead of thousandths
-                    if (selectedText.includes(',')) {
-                        var parts = selectedText.split(',');
-                        if (parts.length == 2) {
-                            if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
-                                selectedText = selectedText.replaceAll(',', '.');
-                            }
-                        }
-                    }
-
-                    /// Find the amount
-                    amount = extractAmountFromSelectedText(selectedText);
-
-                    break;
-                }
-            }
-
-            if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null) {
-
-                /// Update currency rates in case they are old (will be used for next conversions)
-                if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
-                    var today = new Date();
-                    var dayOfNextFetch = new Date(ratesLastFetchedDate);
-                    dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
-
-                    if (today >= dayOfNextFetch) {
-                        fetchCurrencyRates();
-                    }
-                }
-
-                /// Rates are already locally stored (should be initially)
-                if (currencyRate !== null && currencyRate !== undefined) {
-                    if (configs.debugMode)
-                        console.log(`Found local rate for currency ${currency}`);
-
-                    for (const [key, value] of Object.entries(currenciesList)) {
-                        if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                            let rateOfDesiredCurrency = value['rate'];
-                            if (configs.debugMode)
-                                console.log(`Rate is: ${rateOfDesiredCurrency}`);
-
-                            /// Check for literal multipliers (million, billion and so on)
-                            for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
-                            for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
-                            for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
-
-                            let resultingRate = rateOfDesiredCurrency / currencyRate;
-                            let convertedAmount = amount * resultingRate;
-
-                            if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
-                                /// Round result
-                                try {
-                                    convertedAmount = parseFloat(convertedAmount);
-                                    convertedAmount = convertedAmount.toFixed(2);
-                                } catch (e) { console.log(e); }
-
-                                /// Separate resulting numbers in groups of 3 digits
-                                let convertedAmountString = convertedAmount.toString();
-                                convertedAmountString = splitNumberInGroups(convertedAmountString);
-
-                                /// Create and add currency button with result of conversion
-                                let currencyButton = document.createElement('button');
-                                currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-
-                                /// Show value before convertion
-                                if (configs.showUnconvertedValue) {
-                                    if (configs.preferCurrencySymbol && currencySymbol !== undefined)
-                                        currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
-                                    else
-                                        currencyButton.textContent = ` ${amount} ${currency} →`;
-                                }
-
-                                /// Show value after converion
-                                const converted = document.createElement('span');
-                                const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
-
-                                if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
-                                    converted.textContent = ` ${convertedAmountString}`;
-                                else
-                                    converted.textContent = ` ${convertedAmountString}`;
-
-                                converted.setAttribute('style', `color: ${secondaryColor}`);
-                                currencyButton.appendChild(converted);
-
-                                /// Add currency symbol with different color
-                                const currencyLabel = document.createElement('span');
-                                currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
-                                currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
-                                currencyButton.appendChild(currencyLabel);
-
-                                currencyButton.addEventListener("mousedown", function (e) {
-                                    let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
-                                    onTooltipButtonClick(e, url);
-                                });
-
-                                if (configs.reverseTooltipButtonsOrder)
-                                    tooltip.insertBefore(currencyButton, tooltip.children[1]);
-                                else
-                                    tooltip.appendChild(currencyButton);
-
-                                /// Correct tooltip's dx
-                                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
-
-                                /// Correct last button's border radius
-                                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                                break;
-                            }
-                        }
-                    }
-
-                    /// Fetch rates from server
-                } else
-                    fetchCurrencyRates();
-
-            } else {
-
-                /// Add 'open link' button
-                if (configs.addOpenLinks)
-                    if (tooltip.children.length < 4 && !selectionContainsSpaces && (selectedText.includes('.'))) {
-                        let link = selectedText;
-                        let splittedByDots = link.split('.');
-                        let domain = splittedByDots[1];
-                        let domainLength = splittedByDots[1].length;
-
-                        if (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4) {
-
-                            let isFileName = false;
-
-                            /// Don't recognize if selected text looks like filename
-                            for (i in filetypesToIgnoreAsDomains) {
-                                if (domain.includes(filetypesToIgnoreAsDomains[i])) {
-                                    isFileName = true;
-                                    break;
-                                }
-                            }
-
-                            if (isFileName == false) {
-                                link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                                let linkLength = link.length;
-                                let lastSymbol = link[linkLength - 1];
-
-                                if (lastSymbol == '.' || lastSymbol == ',')
-                                    link = link.substring(0, linkLength - 1);
-
-                                /// Remove '/' on the end of link, just for better looks in pop-up
-                                lastSymbol = link[link.length - 1];
-                                if (lastSymbol == '/')
-                                    link = link.substring(0, link.length - 1);
-
-                                /// Remove quotes in start and end of the link
-                                let firstSymbol = link[0];
-                                linkLength = link.length;
-                                lastSymbol = link[linkLength - 1];
-                                if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
-                                    link = link.substring(1, linkLength);
-                                if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
-                                    link = link.substring(0, linkLength - 1);
-
-                                try {
-                                    /// Filtering out non-links
-                                    let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
-
-                                    if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                        /// Adding button
-                                        let interactiveButton = document.createElement('button');
-                                        interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
-                                        let linkText = document.createElement('span');
-
-                                        let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                        linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
-                                        linkText.setAttribute('style', `color: ${secondaryColor}`);
-
-                                        /// Add tooltip with full website on hover
-                                        if (link.length > linkSymbolsToShow)
-                                            interactiveButton.setAttribute('title', link);
-
-                                        if (addButtonIcons) {
-                                            if (configs.buttonsStyle == 'onlyicon') {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
-                                            } else {
-                                                interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
-                                            }
-                                        } else interactiveButton.innerHTML = openLinkLabel + ' ';
-
-                                        interactiveButton.appendChild(linkText);
-                                        interactiveButton.addEventListener("mousedown", function (e) {
-
-                                            // if (!link.includes('http://') && !link.includes('https://') && !link.includes('chrome://') && !link.includes('about:'))
-                                            if (!link.includes('://') && !link.includes('about:'))
-                                                link = 'https://' + link;
-
-                                            onTooltipButtonClick(e, link);
-                                        });
-
-                                        if (configs.reverseTooltipButtonsOrder)
-                                            tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                                        else
-                                            tooltip.appendChild(interactiveButton);
-                                    }
-                                } catch (e) { console.log(e) }
-                            }
-
-                        }
-                    }
-            }
-        }
-
         /// Time convert button
         if (configs.convertTime) {
             let textToProccess = selectedText;
@@ -1058,6 +968,95 @@ function addContextualButtons() {
                     tooltip.appendChild(timeButton);
             }
         }
+
+        /// Add 'open link' button
+        if (configs.addOpenLinks)
+            if (tooltip.children.length < 4 && !selectionContainsSpaces && (selectedText.includes('.'))) {
+                let link = selectedText;
+                let splittedByDots = link.split('.');
+                let domain = splittedByDots[1];
+                let domainLength = splittedByDots[1].length;
+
+                if (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain)) {
+
+                    let isFileName = false;
+
+                    /// Don't recognize if selected text looks like filename
+                    for (i in filetypesToIgnoreAsDomains) {
+                        if (domain.includes(filetypesToIgnoreAsDomains[i])) {
+                            isFileName = true;
+                            break;
+                        }
+                    }
+
+                    if (isFileName == false) {
+                        link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
+                        let linkLength = link.length;
+                        let lastSymbol = link[linkLength - 1];
+
+                        if (lastSymbol == '.' || lastSymbol == ',')
+                            link = link.substring(0, linkLength - 1);
+
+                        /// Remove '/' on the end of link, just for better looks in pop-up
+                        lastSymbol = link[link.length - 1];
+                        if (lastSymbol == '/')
+                            link = link.substring(0, link.length - 1);
+
+                        /// Remove quotes in start and end of the link
+                        let firstSymbol = link[0];
+                        linkLength = link.length;
+                        lastSymbol = link[linkLength - 1];
+                        if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
+                            link = link.substring(1, linkLength);
+                        if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
+                            link = link.substring(0, linkLength - 1);
+
+                        try {
+                            /// Filtering out non-links
+                            let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+
+                            if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
+                                /// Adding button
+                                let interactiveButton = document.createElement('button');
+                                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                                let linkText = document.createElement('span');
+
+                                let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                                linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
+                                linkText.setAttribute('style', `color: ${secondaryColor}`);
+
+                                /// Add tooltip with full website on hover
+                                if (link.length > linkSymbolsToShow)
+                                    interactiveButton.setAttribute('title', link);
+
+                                if (addButtonIcons) {
+                                    if (configs.buttonsStyle == 'onlyicon') {
+                                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
+                                    } else {
+                                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
+                                    }
+                                } else interactiveButton.innerHTML = openLinkLabel + ' ';
+
+                                interactiveButton.appendChild(linkText);
+                                interactiveButton.addEventListener("mousedown", function (e) {
+
+                                    // if (!link.includes('http://') && !link.includes('https://') && !link.includes('chrome://') && !link.includes('about:'))
+                                    if (!link.includes('://') && !link.includes('about:'))
+                                        link = 'https://' + link;
+
+                                    onTooltipButtonClick(e, link);
+                                });
+
+                                if (configs.reverseTooltipButtonsOrder)
+                                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                                else
+                                    tooltip.appendChild(interactiveButton);
+                            }
+                        } catch (e) { console.log(e) }
+                    }
+
+                }
+            }
     }
 
     /// Show Translate button when enabled, and no other contextual buttons were added 

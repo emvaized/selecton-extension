@@ -17,7 +17,7 @@ var currenciesList = {
     "CZK": { currencyName: "Czech Koruna", currencySymbol: "Kč", rate: 21.936455 },
     "DKK": { currencyName: "Danish Krone", currencySymbol: " kr", rate: 6.229502 },
     "EUR": { currencyName: "Euro", currencySymbol: "€", rate: 0.8378, currencyKeywords: ['euro', 'евро'], },
-    "GBP": { currencyName: "British Pound", currencySymbol: "£", rate: 0.721124 },
+    "GBP": { currencyName: "British Pound", currencySymbol: "£", rate: 0.721124, currencyKeywords: ['фунтов стерлингов', 'british pound'], },
     "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", rate: 7.765632 },
     "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", rate: 3.310401 },
     "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", rate: 72.452006, currencyKeywords: ['rupees', 'рупий'], },

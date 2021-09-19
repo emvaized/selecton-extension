@@ -59,6 +59,10 @@
     "message": "Panel appearance",
     "description": "Header for appearance category in settings"
   },
+  "applyConfigsImmediately": {
+    "message": "Apply configs immediately",
+    "description": "Header for appearance category in settings"
+  },
   "behaviorHeader": {
     "message": "Panel behavior",
     "description": "Header for appearance category in settings"
@@ -150,6 +154,10 @@
   "deleteLabel": {
     "message": "Delete",
     "description": "Label for the delete button"
+  },
+  "disableForBetterPerformance": {
+    "message": "Disable for better performance",
+    "description": "Label for option in settings"
   },
   "disableWordSnappingOnCtrlKey": {
     "message": "Do not select by words if the CTRL key is pressed",

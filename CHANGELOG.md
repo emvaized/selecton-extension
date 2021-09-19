@@ -1,5 +1,5 @@
 #3.3.2
-- Changes to some settings now get applied immediately - no need to refresh page
+- Added option to apply configs immediately (no need to refresh page) - disabled by default for better performance
 - Improved "Open link" button detection (less false detections)
 - Tooltip now recreates after scroll or screen resize
 - Other small fixes and improvements

@@ -26,25 +26,25 @@ function initConfigs(fullLoad = true, e) {
       // if (configs.enabled && domainIsBlacklisted == false) {
       if (configs.enabled) {
         configs.debugMode = loadedConfigs.debugMode ?? false;
+        configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
 
         if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 
-
-        /// If initial launch, fetch currency rates
-        configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
-
-        if (configs.convertCurrencies) {
-          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
-
-          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-            fetchCurrencyRates();
-          else loadCurrencyRatesFromMemory();
-        }
-
-        if (fullLoad) {
+        if (fullLoad || configs.applyConfigsImmediately == false) {
           if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
             setDefaultLocales();
+          }
+
+          /// If initial launch, fetch currency rates
+          configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
+
+          if (configs.convertCurrencies) {
+            ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
+            if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+              fetchCurrencyRates();
+            else loadCurrencyRatesFromMemory();
           }
 
           /// Assign loaded values to a config file
@@ -88,7 +88,8 @@ function initConfigs(fullLoad = true, e) {
           /// Set pop-up inner padding
           document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
 
-          createTooltip(e);
+          if (configs.applyConfigsImmediately == true)
+            createTooltip(e);
         }
       }
     });
@@ -125,7 +126,7 @@ function setPageListeners() {
   document.addEventListener("scroll", function (e) {
     if (tooltipIsShown == false) return;
 
-    hideTooltip();
+    hideTooltip(false);
     hideDragHandles(false);
     recreateTooltip();
   });
@@ -166,7 +167,7 @@ function setPageListeners() {
     }
   });
 
-  document.addEventListener("mouseup", async function (e) {
+  document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
@@ -175,7 +176,7 @@ function setPageListeners() {
 
     /// Special handling for triple mouse click
     if (e.detail == 3) {
-      hideDragHandles();
+      hideDragHandles(false);
       return;
     }
 
@@ -185,9 +186,12 @@ function setPageListeners() {
       selection = document.selection.createRange();
     }
 
-    if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
-      initConfigs(true, e);
-      // createTooltip(e);
+    // if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
+    if (selection.toString().trim().length > 0 || configs.addActionButtonsForTextFields) {
+      if (configs.applyConfigsImmediately)
+        initConfigs(true, e);
+      else
+        createTooltip(e);
     }
   });
 }

@@ -123,6 +123,8 @@ function setTranslatedLabels() {
     document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
 
+    document.querySelector("#applyConfigsImmediately").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
+
     /// "All changes saved automatically" block
     // var infoCircle = document.createElement('div');
     // infoCircle.textContent = '🛈';

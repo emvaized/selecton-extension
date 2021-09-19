@@ -145,7 +145,7 @@ const convertionUnits = {
         "ratio": 0.453592,
     },
     "pound": {
-        "convertsTo": "kilogram",
+        "convertsTo": "kg",
         "ratio": 0.453592,
     },
     "mph": {
@@ -240,4 +240,5 @@ var filetypesToIgnoreAsDomains = [
     "js",
     "html",
     "css",
+    "log",
 ];

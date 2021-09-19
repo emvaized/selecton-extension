@@ -59,6 +59,10 @@
         "message": "Внешний вид панели",
         "description": "Header for appearance category in settings"
     },
+    "applyConfigsImmediately": {
+        "message": "Применять настройки немедленно",
+        "description": "Header for appearance category in settings"
+    },
     "behaviorHeader": {
         "message": "Поведение панели",
         "description": "Header for appearance category in settings"
@@ -144,12 +148,16 @@
         "description": "Label for cut action"
     },
     "debugMode": {
-        "message": "Режим отладки",
+        "message": "Режим отладки (debug)",
         "description": "Label for option in settings"
     },
     "deleteLabel": {
         "message": "Удалить",
         "description": "Ярлык для кнопки удаления"
+    },
+    "disableForBetterPerformance": {
+        "message": "Отключите для лучшей производительности",
+        "description": "Label for buttons style option in settings"
     },
     "disableWordSnappingOnCtrlKey": {
         "message": "Не выделять по словам, если зажата клавиша CTRL",

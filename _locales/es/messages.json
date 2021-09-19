@@ -454,5 +454,13 @@
     "writeAReview": {
         "message": "Escribe una reseña",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
+    "applyConfigsImmediately": {
+        "message": "Aplicar las configuraciones inmediatamente",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Desactivar para un mejor rendimiento",
+        "description": "Label for option in settings"
     }
 }

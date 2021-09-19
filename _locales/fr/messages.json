@@ -454,5 +454,13 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "applyConfigsImmediately": {
+        "message": "Appliquer les configurations immédiatement",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Désactiver pour de meilleures performances",
+        "description": "Label for option in settings"
     }
 }

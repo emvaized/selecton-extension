@@ -454,5 +454,13 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "applyConfigsImmediately": {
+        "message": "Wenden Sie Konfigurationen sofort an",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Für bessere Leistung deaktivieren",
+        "description": "Label for option in settings"
     }
 }

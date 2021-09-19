@@ -450,5 +450,13 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "applyConfigsImmediately": {
+        "message": "Aplicar configurações imediatamente",
+        "description": "Header for appearance category in settings"
+    },
+    "disableForBetterPerformance": {
+        "message": "Desabilite para melhor desempenho",
+        "description": "Label for option in settings"
     }
 }
