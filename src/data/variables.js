@@ -41,6 +41,7 @@ var verticalSecondaryTooltip;
 var lastMouseUpEvent;
 var previousSelection;
 var tooltipOnBottom = false;
+var configsWereLoaded = false;
 var currencyRatesWereLoaded = false;
 var selectionColorWasApplied = false;
 

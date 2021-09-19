@@ -11,35 +11,29 @@ function isStringNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-
 function extractAmountFromSelectedText(selectedText) {
     let amount;
-    let words = selectedText.split(' ');
 
-    for (i in words) {
-        let word = words[i].replaceAll('$', '');
+    try {
+        let extracted = extractNumber(selectedText);
+        if (extracted !== null && extracted !== undefined && extracted !== '' && !isNaN(extracted) && extracted !== 0 && extracted !== 0.0)
+            amount = extracted;
+    } catch (e) { }
 
-        try {
-            //amount = extractNumber(word.replaceAll('$', ''));
-            if (isStringNumeric(word)) {
-                amount = extractNumber(word);
-                if (amount !== null && amount !== undefined && amount !== '' && amount !== NaN && amount !== 0 && amount !== 0.0) {
-                    break;
-                }
-            }
-        } catch (e) { }
-    }
+    // let words = selectedText.split(' ');
 
-    // if (amount == null || amount == undefined || amount == '' || amount == NaN) {
+    // for (i in words) {
+    //     let word = words[i].replaceAll('$', '');
+
     //     try {
-    //         amount = extractNumber(selectedText.trim());
+    //         //amount = extractNumber(word.replaceAll('$', ''));
+    //         if (isStringNumeric(word)) {
+    //             amount = extractNumber(word);
+    //             if (amount !== null && amount !== undefined && amount !== '' && amount !== NaN && amount !== 0 && amount !== 0.0) break;
+    //         }
     //     } catch (e) { }
-    // } else {
-    //     /// Remove all non-number symbols (except dots)
-    //     amount = selectedText.match(/[+-]?\d+(\.\d)?/g);
-    //     if (amount !== null)
-    //         amount = amount.join("");
     // }
+
 
     return amount;
 }

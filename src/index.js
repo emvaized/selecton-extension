@@ -34,27 +34,6 @@ function initConfigs(fullLoad = true, e) {
             setDefaultLocales();
           }
 
-          /// If initial launch, fetch currency rates
-          configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
-
-          if (configs.convertCurrencies) {
-            ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
-
-            if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-              fetchCurrencyRates();
-            else {
-              let today = new Date();
-              let dayOfNextFetch = new Date(ratesLastFetchedDate);
-
-              dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
-
-              if (today >= dayOfNextFetch) {
-                fetchCurrencyRates(); /// fetch rates from server
-              } else
-                loadCurrencyRatesFromMemory();
-            }
-          }
-
           /// Assign loaded values to a config file
           Object.keys(configs).forEach(function (key) {
             if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
@@ -95,6 +74,29 @@ function initConfigs(fullLoad = true, e) {
 
           /// Set pop-up inner padding
           document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
+
+          /// Check to fetch currency rates
+          configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
+
+          configsWereLoaded = true;
+
+          if (configs.convertCurrencies) {
+            ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+
+            if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+              fetchCurrencyRates();
+            else {
+              let today = new Date();
+              let dayOfNextFetch = new Date(ratesLastFetchedDate);
+
+              dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+
+              if (today >= dayOfNextFetch) {
+                fetchCurrencyRates(); /// fetch rates from server
+              } else
+                loadCurrencyRatesFromMemory();
+            }
+          }
 
           if (configs.applyConfigsImmediately == true)
             createTooltip(e);
@@ -139,7 +141,7 @@ function setPageListeners() {
   document.addEventListener("scroll", function (e) {
     if (tooltipIsShown == false) return;
 
-    hideTooltip(false);
+    hideTooltip();
     hideDragHandles(false);
     recreateTooltip();
   });
@@ -203,8 +205,15 @@ function setPageListeners() {
     if (selection.toString().trim().length > 0 || configs.addActionButtonsForTextFields) {
       if (configs.applyConfigsImmediately)
         initConfigs(true, e);
-      else
-        createTooltip(e);
+      else {
+
+        if (configsWereLoaded == true)
+          createTooltip(e);
+        else
+          setTimeout(function () {
+            createTooltip(e);
+          }, 12);
+      }
     }
   });
 }
@@ -227,7 +236,7 @@ function recreateTooltip() {
     if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
       createTooltip(lastMouseUpEvent);
     }
-  }, 600);
+  }, 650);
 }
 
 
@@ -237,7 +246,7 @@ function domLoadedListener() {
   document.addEventListener('selectionchange', selectionChangeInitListener);
 }
 
-function selectionChangeInitListener(e) {
+function selectionChangeInitListener() {
   if (!configs.enabled) return;
   if (document.getSelection().toString().length < 1) return;
   document.removeEventListener('selectionchange', selectionChangeInitListener);
