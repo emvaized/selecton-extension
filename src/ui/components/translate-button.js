@@ -22,8 +22,8 @@ function addTranslateButton() {
                 var langs = detectedLanguages.languages;
 
                 if (langs !== []) {
-                    if (configs.debugMode)
-                        console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
+                    // if (configs.debugMode)
+                    // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
                     langs.forEach(function (lang) {
                         if (configs.debugMode) {
                             console.log('Detected language: ' + langs[0].language);

@@ -23,7 +23,9 @@ function extractAmountFromSelectedText(selectedText) {
             //amount = extractNumber(word.replaceAll('$', ''));
             if (isStringNumeric(word)) {
                 amount = extractNumber(word);
-                if (amount !== null && amount !== undefined && amount !== '' && amount !== NaN && amount !== 0 && amount !== 0.0) break;
+                if (amount !== null && amount !== undefined && amount !== '' && amount !== NaN && amount !== 0 && amount !== 0.0) {
+                    break;
+                }
             }
         } catch (e) { }
     }

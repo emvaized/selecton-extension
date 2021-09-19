@@ -1,7 +1,24 @@
 const urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 
 function fetchCurrencyRates() {
-    fetch(urlToLoadCurrencyRates).then(function (val) {
+    if (currencyRatesWereLoaded) return;
+
+    let urlToFetch = urlToLoadCurrencyRates;
+
+    let today = new Date();
+    const offset = today.getTimezoneOffset()
+    today = new Date(today.getTime() - (offset * 60 * 1000))
+    today = today.toISOString().split('T')[0];
+
+    if (configs.debugMode) {
+        console.log('Today:');
+        console.log(today);
+    }
+
+    if (today != null && today !== undefined && today != '')
+        urlToFetch += `&v=${today}`;
+
+    fetch(urlToFetch).then(function (val) {
         return val.json();
     }).then(function (jsonObj) {
         var date = jsonObj['date'];
@@ -19,9 +36,14 @@ function fetchCurrencyRates() {
             'rates': ratesObject
         });
 
+        currencyRatesWereLoaded = true;
+
         if (configs.debugMode) {
             console.log('Updated currency rates from network:');
             console.log(ratesObject);
+
+            console.log('Saved date of last fetch:');
+            console.log(date);
         }
     }).catch(function (e) {
         if (configs.debugMode) {
@@ -32,6 +54,8 @@ function fetchCurrencyRates() {
 }
 
 function loadCurrencyRatesFromMemory() {
+    if (currencyRatesWereLoaded) return;
+
     chrome.storage.local.get('rates', function (val) {
         var loadedRates = val['rates'];
 
@@ -41,8 +65,10 @@ function loadCurrencyRatesFromMemory() {
                 currenciesList[key]['rate'] = rate;
         });
 
+        currencyRatesWereLoaded = true;
+
         if (configs.debugMode) {
-            console.log('Selecton currency rates were successfully loaded from memory:');
+            console.log('Selecton currency rates loaded from memory:');
             console.log(loadedRates);
         }
     });

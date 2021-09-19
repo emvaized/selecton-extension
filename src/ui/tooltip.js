@@ -449,16 +449,16 @@ function addContextualButtons() {
 
             if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null && amount !== undefined) {
 
-                /// Update currency rates in case they are old (will be used for next conversions)
-                if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
-                    let today = new Date();
-                    let dayOfNextFetch = new Date(ratesLastFetchedDate);
-                    dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+                /// Update currency rates in case they are outdated (will be used for next conversions)
+                // if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
+                //     let today = new Date();
+                //     let dayOfNextFetch = new Date(ratesLastFetchedDate);
+                //     dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
 
-                    if (today >= dayOfNextFetch) {
-                        fetchCurrencyRates(); /// fetch rates from server
-                    }
-                }
+                //     if (today >= dayOfNextFetch) {
+                //         fetchCurrencyRates(); /// fetch rates from server
+                //     }
+                // }
 
                 /// Rates are already locally stored (should be initially)
                 if (currencyRate !== null && currencyRate !== undefined) {
@@ -540,13 +540,9 @@ function addContextualButtons() {
                             /// Correct last button's border radius
                             tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
                             tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-                            // break;
                         }
                     }
-                    // }
                 }
-
             }
         }
 

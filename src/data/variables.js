@@ -41,6 +41,8 @@ var verticalSecondaryTooltip;
 var lastMouseUpEvent;
 var previousSelection;
 var tooltipOnBottom = false;
+var currencyRatesWereLoaded = false;
+var selectionColorWasApplied = false;
 
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;

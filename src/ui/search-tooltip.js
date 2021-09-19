@@ -175,6 +175,7 @@ function appendSecondaryTooltip() {
 
     // var timeoutToRevealSearchTooltip;
     searchButton.onmouseover = function (event) {
+        if (secondaryTooltip == null) return;
         secondaryTooltip.style.transform = 'scale(1.0)';
 
         // timeoutToRevealSearchTooltip = timeout(function () {
@@ -191,12 +192,15 @@ function appendSecondaryTooltip() {
         // clearTimeout(timeoutToRevealSearchTooltip);
         timerToRemoveTooltip = setTimeout(function () {
             if (isSecondaryTooltipHovered == false) {
+                if (secondaryTooltip == null) return;
                 calculateEndDy();
                 secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
                 secondaryTooltip.style.opacity = 0.0;
                 searchButton.classList.remove("hovered-tooltip-button");
 
                 setTimeout(function () {
+                    if (secondaryTooltip == null) return;
+
                     if (isSecondaryTooltipHovered == false)
                         secondaryTooltip.style.transform = 'scale(0.0)';
                 }, 300);
@@ -216,22 +220,22 @@ function appendSecondaryTooltip() {
     secondaryTooltip.appendChild(space);
 
     secondaryTooltip.onmouseover = function (event) {
+        if (secondaryTooltip == null) return;
         secondaryTooltip.style.pointerEvents = 'auto';
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
         secondaryTooltip.style.opacity = 1.0;
         isSecondaryTooltipHovered = true;
-
         searchButton.classList.add("hovered-tooltip-button");
     }
 
     secondaryTooltip.onmouseout = function () {
+        if (secondaryTooltip == null) return;
         isSecondaryTooltipHovered = false;
         calculateEndDy();
         secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
-
         searchButton.classList.remove("hovered-tooltip-button");
     }
 

@@ -53,7 +53,7 @@ var configs = {
     'dontSnapTextfieldSelection': true,
     'tooltipRevealEffect': 'moveUpTooltipEffect',
     'textSelectionBackgroundOpacity': 1.0,
-    'updateRatesEveryDays': 14,
+    'updateRatesEveryDays': 18,
     'fontSize': 12.5,
     'secondaryTooltipLayout': 'horizontalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': false,

@@ -14,24 +14,22 @@ function initConfigs(fullLoad = true, e) {
       /// Check for domain to be in black list
       configs.excludedDomains = loadedConfigs.excludedDomains || '';
 
-      // var domainIsBlacklisted = false;
       if (configs.excludedDomains !== null && configs.excludedDomains !== undefined && configs.excludedDomains !== '')
         configs.excludedDomains.split(',').forEach(function (domain) {
           if (window.location.href.includes(domain.trim())) {
-            // domainIsBlacklisted = true;
             configs.enabled = false;
           }
         });
 
-      // if (configs.enabled && domainIsBlacklisted == false) {
       if (configs.enabled) {
         configs.debugMode = loadedConfigs.debugMode ?? false;
         configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
 
-        if (configs.changeTextSelectionColor)
+        if (configs.changeTextSelectionColor && selectionColorWasApplied == false)
           setTextSelectionColor();
 
-        if (fullLoad || configs.applyConfigsImmediately == false) {
+        // if (fullLoad || configs.applyConfigsImmediately == false) {
+        if (fullLoad) {
           if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
             setDefaultLocales();
           }
@@ -44,7 +42,17 @@ function initConfigs(fullLoad = true, e) {
 
             if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
               fetchCurrencyRates();
-            else loadCurrencyRatesFromMemory();
+            else {
+              let today = new Date();
+              let dayOfNextFetch = new Date(ratesLastFetchedDate);
+
+              dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+
+              if (today >= dayOfNextFetch) {
+                fetchCurrencyRates(); /// fetch rates from server
+              } else
+                loadCurrencyRatesFromMemory();
+            }
           }
 
           /// Assign loaded values to a config file
@@ -108,6 +116,11 @@ function setTextSelectionColor() {
   css.type = 'text/css';
   css.appendChild(document.createTextNode(rule)); // Support for the rest
   document.getElementsByTagName("head")[0].appendChild(css);
+
+  selectionColorWasApplied = true;
+
+  if (configs.debugMode)
+    console.log('Selecton applied custom selection color')
 }
 
 function setPageListeners() {
@@ -229,6 +242,8 @@ function selectionChangeInitListener(e) {
   if (document.getSelection().toString().length < 1) return;
   document.removeEventListener('selectionchange', selectionChangeInitListener);
   // init();
+  if (configs.applyConfigsImmediately == false)
+    initConfigs(true);
 
   try {
     setPageListeners();
