@@ -287,6 +287,10 @@
         "message": "Servicio de traduccion",
         "description": "Label for field in settings"
     },
+    "recreateTooltipAfterScroll": {
+        "message": "Recrear información sobre herramientas después de desplazarse",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Eliminar icono personalizado",
         "description": "Descripción emergente del botón para eliminar el icono personalizado"

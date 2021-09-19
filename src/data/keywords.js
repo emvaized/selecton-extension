@@ -225,3 +225,19 @@ const convertionUnits = {
         "ratio": 28.3495,
     },
 };
+
+/// Those will be ignored when looking for website in selected text
+/// So that, for example, when selected "somefile.txt" - it won't be recognized as a website in "Open link" button
+var filetypesToIgnoreAsDomains = [
+    "txt",
+    "zip",
+    "rar",
+    "7z",
+    "mp3",
+    "exe",
+    "cfg",
+    "ini",
+    "js",
+    "html",
+    "css",
+];

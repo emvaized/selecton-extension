@@ -58,6 +58,7 @@ var configs = {
     'secondaryTooltipLayout': 'horizontalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
+    'recreateTooltipAfterScroll': true,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'customSearchButtons': [

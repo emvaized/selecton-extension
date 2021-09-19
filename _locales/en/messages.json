@@ -291,6 +291,10 @@
     "message": "Translation service",
     "description": "Label for field in settings"
   },
+  "recreateTooltipAfterScroll": {
+    "message": "Recreate tooltip after scroll or window resize",
+    "description": "Label for field in settings"
+  },
   "removeCustomIcon": {
     "message": "Remove custom icon",
     "description": "Tooltip for button to remove custom icon"

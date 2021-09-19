@@ -291,6 +291,10 @@
         "message": "Çeviri hizmeti",
         "description": "Ayarlardaki alan etiketi"
     },
+    "recreateTooltipAfterScroll": {
+        "message": "Kaydırma veya pencere yeniden boyutlandırma işleminden sonra araç ipucunu yeniden oluşturun",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Özel simgeyi kaldır",
         "description": "Özel simgeyi kaldırmak için düğme için araç ipucu"

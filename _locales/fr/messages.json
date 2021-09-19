@@ -287,6 +287,10 @@
         "message": "Service de traduction",
         "description": "Label for field in settings"
     },
+    "recreateTooltipAfterScroll": {
+        "message": "Recréer l'info-bulle après le défilement ou le redimensionnement de la fenêtre",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Supprimer l'icône personnalisée",
         "description": "Info-bulle pour le bouton permettant de supprimer l'icône personnalisée"

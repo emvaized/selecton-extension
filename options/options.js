@@ -106,8 +106,6 @@ function loadSettings() {
 
         setCurrenciesDropdown();
 
-        setLanguagesDropdown();
-
         setCollapsibleHeaders();
 
         setVersionLabel();
@@ -225,37 +223,10 @@ function setCollapsibleHeaders() {
 }
 
 /// Configure additional elements
-
 function setCurrenciesDropdown() {
     chrome.storage.local.get(['convertToCurrency'], function (result) {
         let initialValue = result.convertToCurrency || 'USD';
         let select = document.getElementById('convertToCurrencyDropdown');
-
-        Object.keys(currenciesList).forEach((function (key) {
-            let option = document.createElement('option');
-            let currencySymbol = currenciesList[key]['currencySymbol'];
-            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + currenciesList[key]['currencyName'];
-            option.setAttribute('value', key);
-            select.appendChild(option);
-
-            if (option.value == initialValue) option.setAttribute('selected', true);
-        }));
-
-        select.parentNode.innerHTML = chrome.i18n.getMessage('convertToCurrency') + '<br />' + select.parentNode.innerHTML;
-
-        setTimeout(function () {
-            document.getElementById('convertToCurrencyDropdown').addEventListener("input", function (e) {
-                let selectInput = document.getElementById('convertToCurrencyDropdown');
-                chrome.storage.local.set({ 'convertToCurrency': selectInput.value.split(' — ')[0] });
-            });
-        }, 300);
-    });
-}
-
-function setLanguagesDropdown() {
-    chrome.storage.local.get(['languageToTranslate'], function (result) {
-        let initialValue = result.languageToTranslate || configs.languageToTranslate;
-        let select = document.getElementById('languageToTranslateDropdown');
 
         Object.keys(currenciesList).forEach((function (key) {
             let option = document.createElement('option');

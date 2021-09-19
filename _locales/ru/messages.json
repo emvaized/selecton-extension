@@ -295,6 +295,10 @@
         "message": "Сервис перевода",
         "description": "Label for field in settings"
     },
+    "recreateTooltipAfterScroll": {
+        "message": "Восстановить панель после прокрутки или изменения размера окна",
+        "description": "Label for field in settings"
+    },
     "removeCustomIcon": {
         "message": "Убрать свою иконку",
         "description": "Tooltip for button to remove custom icon"

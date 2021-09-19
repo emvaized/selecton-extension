@@ -287,6 +287,10 @@
         "message": "Währungssymbole anstelle von Codes bevorzugen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "recreateTooltipAfterScroll": {
+        "message": "Tooltip nach Scrollen oder Fenstergröße neu erstellen",
+        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
+    },
     "removeCustomIcon": {
         "message": "Benutzerdefiniertes Symbol entfernen",
         "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
