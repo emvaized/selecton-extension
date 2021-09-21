@@ -20,9 +20,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
         });
 
       if (configs.enabled) {
-        // configs.debugMode = loadedConfigs.debugMode ?? false;
-        // configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
-
         if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 

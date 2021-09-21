@@ -4,7 +4,7 @@
 - Improvements for textfield handling and "Paste" button
 - Fixed configs not applying for some users
 - Improved word snapping algorythm
-- Other small fixes and improvements
+- Various small fixes and improvements
 
 #3.3.2
 - Added option to apply configs immediately (no need to refresh page) - disabled by default for better performance

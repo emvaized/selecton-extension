@@ -30,8 +30,7 @@ function createTooltip(e) {
                                     }
                                 });
 
-                            // if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
-                            if (domainIsBlacklistedForSnapping == false && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                            if (domainIsBlacklistedForSnapping == false && e.detail < 3 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                                 snapSelectionByWords(selection);
                         }
                     }
