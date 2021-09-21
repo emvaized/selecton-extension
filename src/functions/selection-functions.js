@@ -19,7 +19,7 @@ function getSelectionCoordinates(atStart) {
 
     // let rects = range.getClientRects();
     // if (rects.length <= 0) return null;
-    // let rect = rects[0];  /// return coord
+    // let rect = rects[0];
     let rect = range.getBoundingClientRect();
 
     // Detect if selection is backwards
@@ -36,13 +36,10 @@ function getSelectionCoordinates(atStart) {
     if (rect.x == 0 && rect.y == 0) {
         let rectCoords = getSelectionRectDimensions();
 
-        if (atStart)
-            return { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
+        if (atStart) return { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
         return { dx: rectCoords.dx + rectCoords.width, dy: rectCoords.dy + rectCoords.height - (selectionHandleLineHeight - 7.5), backwards: isBackwards };
     }
 
-    // range.collapse(true);
-    // return { dx: rect.x, dy: rect.y };
     return { dx: rect.x, dy: rect.y, backwards: isBackwards };
 }
 
@@ -69,7 +66,7 @@ function snapSelectionByWords(sel) {
         const backwards = range.collapsed;
         range.detach();
 
-        // For more correct modifications better to collapse the selection first
+        // For more correct modifications it's better to collapse the selection first
         sel.collapse(sel.anchorNode, sel.anchorOffset);
 
         /// When selection was made from right to left, need to invert the directions
@@ -105,6 +102,7 @@ function snapSelectionByWords(sel) {
             sel.modify("extend", direction[0], "word");
 
         /// Check last symbol after modification
+        /// If last symbol is undesirable, trim it
         selString = sel.toString();
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
@@ -118,7 +116,6 @@ function snapSelectionByWords(sel) {
             // case '.': shouldUntrimLastCh = true; break;
         }
 
-        /// If last symbol is undesirable, trim it
         if (shouldUntrimLastCh) sel.modify("extend", direction[1], "character");
     }
 }
