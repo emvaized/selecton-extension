@@ -48,7 +48,6 @@ var selectionColorWasApplied = false;
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;
 
-
 // var dragHandles = [];
 // var oldTooltips = [];
 // var oldSecondaryTooltips = [];

@@ -4,7 +4,7 @@
 /// New rates will be downloaded automatically with from network by looking for each currency key in server response
 /// Period of update specified in configs.updateRatesEveryDays
 /// Currently used url can be found in: src/functions/currencies-functions.js -> urlToLoadCurrencyRates
-var currenciesList = {
+const currenciesList = {
     "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", rate: 1.29009, currencyKeywords: ['australian dollar', 'австралийских доллар'] },
     "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", rate: 1.640562 },
     "BRL": { currencyName: "Brazilian real", currencySymbol: "R$", rate: 5.616101 },

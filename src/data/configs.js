@@ -1,4 +1,4 @@
-var configs = {
+const configs = {
     'convertToCurrency': 'USD',
     'hideOnScroll': true,
     'convertMetrics': true,

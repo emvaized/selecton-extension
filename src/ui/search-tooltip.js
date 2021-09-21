@@ -52,12 +52,11 @@ function createSecondaryTooltip() {
             if (verticalSecondaryTooltip) {
                 container.style.display = verticalSecondaryTooltip ? 'block' : 'inline';
                 container.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
-                // container.setAttribute('class', 'custom-search-image-button');
                 container.className = 'custom-search-image-button';
                 container.appendChild(imgButton);
 
                 let labelSpan = document.createElement('span');
-                labelSpan.innerHTML = titleText.charAt(0).toUpperCase() + titleText.slice(1);
+                labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
                 // labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
                 if (configs.reverseTooltipButtonsOrder)
                     container.insertBefore(labelSpan, imgButton);
@@ -204,19 +203,19 @@ function appendSecondaryTooltip() {
                         secondaryTooltip.style.transform = 'scale(0.0)';
                 }, 300);
             }
-        }, 50);
+        }, 100);
 
     }
     /// Add some bottom space to prevent unwanted jumping on moving cursor
-    var space = document.createElement('div');
-    space.setAttribute('class', `secondary-selection-tooltip-bottom-div`);
-    space.style.width = `${secondaryTooltip.clientWidth}px`;
-    space.style.height = `${paddingOnBottom * 2}px`;
-    if (vertOutOfView)
-        space.style.top = `-${paddingOnBottom * 2}px`;
-    else
-        space.style.bottom = `-${paddingOnBottom * 2}px`;
-    secondaryTooltip.appendChild(space);
+    // let space = document.createElement('div');
+    // space.setAttribute('class', `secondary-selection-tooltip-bottom-div`);
+    // space.style.width = `${secondaryTooltip.clientWidth}px`;
+    // space.style.height = `${paddingOnBottom * 2}px`;
+    // if (vertOutOfView)
+    //     space.style.top = `-${paddingOnBottom * 2}px`;
+    // else
+    //     space.style.bottom = `-${paddingOnBottom * 2}px`;
+    // secondaryTooltip.appendChild(space);
 
     secondaryTooltip.onmouseover = function (event) {
         if (secondaryTooltip == null) return;

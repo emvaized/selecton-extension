@@ -51,9 +51,11 @@ function createTooltip(e) {
                     /// Special handling for Firefox 
                     /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
                     if (selectedText == '') {
-                        var ta = document.querySelector(':focus');
-                        selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-                        selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                        let ta = document.querySelector(':focus');
+                        if (ta.value != undefined) {
+                            selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                            selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+                        }
                     }
 
                     /// Ignore single click on text field with inputted value
@@ -200,7 +202,7 @@ function setUpNewTooltip(type) {
 
     /// Apply custom stylings
     if (configs.useCustomStyle) {
-        tooltip.style.borderRadius = `${configs.borderRadius}px`;
+        // tooltip.style.borderRadius = `${configs.borderRadius}px`;
         // tooltip.style.background = configs.tooltipBackground;
         // arrow.style.background = configs.tooltipBackground;
 

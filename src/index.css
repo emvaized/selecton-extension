@@ -9,7 +9,7 @@
     /* padding: 2px; */
     padding: var(--selecton-tooltip-inner-padding);
     color: white;
-    border-radius: 3px;
+    border-radius: var(--selecton-border-radius);
     font-stretch: condensed;
     text-decoration: none;
     z-index: 10001 !important;
