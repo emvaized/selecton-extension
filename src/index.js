@@ -129,8 +129,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
           try { setDefaultLocales(); } catch (e) { }
 
-
-        /// Fetch or load currency rates
+        /// Fetch or load currency rates from storage
         if (configs.convertCurrencies) {
           ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
 
@@ -157,7 +156,7 @@ function setTextSelectionColor() {
   let importance = configs.shouldOverrideWebsiteSelectionColor ? '!important' : '';
 
   // CSS rules
-  var selectionBackgroundRgb = hexToRgb(configs.textSelectionBackground);
+  let selectionBackgroundRgb = hexToRgb(configs.textSelectionBackground);
 
   let rule = `::selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${configs.textSelectionBackgroundOpacity}) ${importance}; color: ${configs.textSelectionColor} ${importance}; }`;
   rule += `::-moz-selection {background-color: rgba(${selectionBackgroundRgb.red}, ${selectionBackgroundRgb.green}, ${selectionBackgroundRgb.blue}, ${configs.textSelectionBackgroundOpacity}) ${importance}; color: ${configs.textSelectionColor} ${importance};}`;
