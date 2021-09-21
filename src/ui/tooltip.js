@@ -67,6 +67,8 @@ function createTooltip(e) {
                         // if (activeEl.value.trim() !== '' && selectedText == '') return;
                     } catch (e) { }
 
+                    if (selectedText == '') { hideTooltip(); }
+
                     /// Create text field tooltip
                     setUpNewTooltip('textfield');
                     if (tooltip.children.length < 2) return;
@@ -74,13 +76,10 @@ function createTooltip(e) {
                     document.body.appendChild(tooltip);
 
                     /// Check resulting DY to be out of view
-                    let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 7.5;
+                    let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 9;
                     let vertOutOfView = resultDy <= 0;
                     if (vertOutOfView) {
                         resultDy = e.clientY + arrow.clientHeight;
-                        // arrow.style.bottom = '';
-                        // arrow.style.top = '-50%';
-                        // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
                         arrow.classList.add('arrow-on-bottom');
                     }
 
@@ -215,12 +214,12 @@ function setUpNewTooltip(type) {
             arrow.style.boxShadow = `1px 1px 3px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
         }
         /// Set rounded corners for buttons
-        firstButtonBorderRadius = `${configs.borderRadius - 3}px 0px 0px ${configs.borderRadius - 3}px`;
-        lastButtonBorderRadius = `0px ${configs.borderRadius - 3}px ${configs.borderRadius - 3}px 0px`;
+        firstButtonBorderRadius = `${configs.borderRadius}px 0px 0px ${configs.borderRadius}px`;
+        lastButtonBorderRadius = `0px ${configs.borderRadius}px ${configs.borderRadius}px 0px`;
     } else {
         /// Set default corners for buttons
-        firstButtonBorderRadius = '2px 0px 0px 2px';
-        lastButtonBorderRadius = '0px 2px 2px 0px';
+        firstButtonBorderRadius = '3px 0px 0px 3px';
+        lastButtonBorderRadius = '0px 3px 3px 0px';
     }
 
     if (configs.debugMode)
@@ -269,6 +268,7 @@ function addBasicTooltipButtons(layout) {
                     try {
                         textField.focus();
                         document.execCommand('copy');
+                        hideTooltip();
                         removeSelectionOnPage();
 
                     } catch (e) { console.log(e); }
@@ -1058,7 +1058,7 @@ function addContextualButtons() {
     }
 
     /// Add Translate button when enabled, and no other contextual buttons were added 
-    if (tooltip.children.length < 4 && configs.showTranslateButton && isFileName == false) {
+    if (configs.showTranslateButton && tooltip.children.length < 4 && isFileName == false) {
         addTranslateButton();
     }
 

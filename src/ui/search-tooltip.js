@@ -73,31 +73,12 @@ function createSecondaryTooltip() {
                 secondaryTooltip.appendChild(imgButton);
             }
 
-            /// Set border radius for first and last buttons
-            let borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
-
-            let firstSearchButtonBorderRadius = verticalSecondaryTooltip ?
-                `${borderRadiusForButton}px ${borderRadiusForButton}px 0px 0px`
-                : firstButtonBorderRadius;
-
-            let lastSearchButtonBorderRadius = verticalSecondaryTooltip ?
-                ` 0px 0px ${borderRadiusForButton}px ${borderRadiusForButton}px`
-                : lastButtonBorderRadius;
-
-            if (i == 0) {
-                (verticalSecondaryTooltip ? container : imgButton).style.borderRadius = firstSearchButtonBorderRadius;
-            } else if (i == configs.customSearchButtons.length - 1) {
-                (verticalSecondaryTooltip ? container : imgButton).style.borderRadius = lastSearchButtonBorderRadius;
-            }
-
             /// Set click listeners
             (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
                 hideTooltip();
-                var selectedText = selection.toString();
-
+                let selectedText = selection.toString();
                 selectedText = encodeURI(selectedText);
                 selectedText = selectedText.replaceAll('&', '%26');
-
                 let urlToOpen = url.replaceAll('%s', selectedText);
 
                 try {
@@ -110,7 +91,7 @@ function createSecondaryTooltip() {
                 removeSelectionOnPage();
 
                 try {
-                    var evt = e || window.event;
+                    let evt = e || window.event;
 
                     if ("buttons" in evt) {
                         if (evt.buttons == 1) {
@@ -128,6 +109,28 @@ function createSecondaryTooltip() {
             });
         }
     }
+
+    /// Set border radius for first and last buttons
+    const borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
+
+    const firstSearchButtonBorderRadius = verticalSecondaryTooltip ?
+        `${borderRadiusForButton}px ${borderRadiusForButton}px 0px 0px`
+        : firstButtonBorderRadius;
+
+    const lastSearchButtonBorderRadius = verticalSecondaryTooltip ?
+        `0px 0px ${borderRadiusForButton}px ${borderRadiusForButton}px`
+        : lastButtonBorderRadius;
+
+
+    let buttons = secondaryTooltip.children;
+    buttons[0].style.borderRadius = firstSearchButtonBorderRadius;
+    buttons[buttons.length - 1].style.borderRadius = lastSearchButtonBorderRadius;
+
+    // if (i == 0) {
+    //     (verticalSecondaryTooltip ? container : imgButton).style.borderRadius = firstSearchButtonBorderRadius;
+    // } else if (i == searchButtonsLength - 1) {
+    //     (verticalSecondaryTooltip ? container : imgButton).style.borderRadius = lastSearchButtonBorderRadius;
+    // }
 
     setTimeout(function () {
         appendSecondaryTooltip();

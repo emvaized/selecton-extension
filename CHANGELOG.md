@@ -1,8 +1,8 @@
 #3.3.3
-- Fixed issue with textfield tooltip not appearing
-- Possible fix for configs restore issue
 - Implemented new option "Invert color on dark page" + custom background color on dark pages
-- Improvements for textfield handling on vk.com and yandex.ru
+- Fixed issues with textfield tooltip
+- Improvements for textfield handling and "Paste" button
+- Fixed configs not applying for some users
 - Improved word snapping algorythm
 - Other small fixes and improvements
 
