@@ -74,19 +74,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         if (configs.invertColorOnDarkWebsite)
           try {
-            let pageBgColor = window.getComputedStyle(document.body).backgroundColor;
-            if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = window.getComputedStyle(document.body.querySelector('div')).backgroundColor;
-
-            // if (configs.debugMode) console.log('website background color: ' + pageBgColor);
-            pageBgColor = pageBgColor.replaceAll('rgb(', '').replaceAll('rgba(', '').replaceAll(')', '').split(',');
-
-            let colorLuminance =
-              (0.299 * pageBgColor[0] + 0.587 * pageBgColor[1] + 0.114 * pageBgColor[2]) / 255;
-            if (colorLuminance <= 0.5) isDarkPage = true;
-
-            if (configs.debugMode)
-              console.log('Check page has dark background: ' + isDarkPage);
-
+            isDarkPage = checkPageToHaveDarkBg();
           } catch (e) { if (configs.debugMode) console.log(e); }
 
 
@@ -153,6 +141,31 @@ function initConfigs(shouldCreateTooltip = false, e) {
           createTooltip(e);
       }
     });
+}
+
+function checkPageToHaveDarkBg() {
+  let isDarkPage = false;
+  let pageBgColor = window.getComputedStyle(document.body).backgroundColor;
+
+  if (pageBgColor == 'rgba(0, 0, 0, 0)') {
+    const firstDivChildStyle = window.getComputedStyle(document.body.querySelector('div'));
+    pageBgColor = firstDivChildStyle.backgroundColor;
+    if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = firstDivChildStyle.background;
+  }
+
+  if (configs.debugMode) console.log('website background color: ' + pageBgColor);
+
+  if (!pageBgColor.includes('(')) return isDarkPage;
+  pageBgColor = pageBgColor.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
+
+  let colorLuminance =
+    (0.299 * pageBgColor[0] + 0.587 * pageBgColor[1] + 0.114 * pageBgColor[2]) / 255;
+  if (colorLuminance <= 0.5) isDarkPage = true;
+
+  if (configs.debugMode)
+    console.log('Check page has dark background: ' + isDarkPage);
+
+  return isDarkPage;
 }
 
 function setTextSelectionColor() {

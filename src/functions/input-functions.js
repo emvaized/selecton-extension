@@ -290,3 +290,21 @@ const convertTime24to12 = (time24h) => {
 
     return `${hours}:${minutes ?? '00'} ${modifier}`;
 }
+
+function getCurrentClipboard() {
+    const activeElemenet = document.activeElement;
+
+    let clipboardContent;
+    const input = document.createElement('input');
+    input.setAttribute('style', `position: absolute; top: ${window.scrollY}px; left: 0px; opacity: 0;`)
+    document.body.appendChild(input);
+    input.focus();
+    document.execCommand('paste');
+    clipboardContent = input.value;
+    document.execCommand('undo');
+    input.blur();
+    document.body.removeChild(input);
+    activeElemenet.focus();
+
+    return clipboardContent;
+}

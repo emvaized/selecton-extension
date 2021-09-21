@@ -8,9 +8,10 @@ function createTooltip(e) {
                 lastMouseUpEvent = e;
                 //hideTooltip();
 
-                let isTextField = (document.activeElement.tagName === "INPUT" && document.activeElement.getAttribute('type') == 'text') ||
-                    document.activeElement.tagName === "TEXTAREA" ||
-                    document.activeElement.getAttribute('contenteditable') !== null;
+                const activeEl = document.activeElement;
+                let isTextField = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text') || activeEl.getAttribute('name') == 'text') ||
+                    activeEl.tagName === "TEXTAREA" ||
+                    activeEl.getAttribute('contenteditable') !== null;
 
                 if (configs.snapSelectionToWord) {
                     if (isTextField == true && configs.dontSnapTextfieldSelection == true) {
@@ -60,7 +61,10 @@ function createTooltip(e) {
 
                     /// Ignore single click on text field with inputted value
                     try {
-                        if (document.activeElement.value.trim() !== '' && selectedText == '') return;
+                        if (activeEl.getAttribute('contenteditable') != null) {
+                            if (activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>') return;
+                        } else { if (activeEl.value.trim() !== '' && selectedText == '') return; }
+                        // if (activeEl.value.trim() !== '' && selectedText == '') return;
                     } catch (e) { }
 
                     /// Create text field tooltip
@@ -228,7 +232,7 @@ function setUpNewTooltip(type) {
 
 function addBasicTooltipButtons(layout) {
     if (layout == 'textfield') {
-        var textField = document.activeElement;
+        const textField = document.activeElement;
 
         if (selection.toString() !== '') {
             try {
@@ -246,7 +250,7 @@ function addBasicTooltipButtons(layout) {
                 cutButton.addEventListener("mousedown", function (e) {
                     document.execCommand('cut');
                     hideTooltip();
-                    removeSelectionOnPage();
+                    // removeSelectionOnPage();
                 });
                 tooltip.appendChild(cutButton);
 
@@ -331,6 +335,9 @@ function addBasicTooltipButtons(layout) {
         } else {
             if (configs.addPasteButton)
                 try {
+                    // if (tooltip != null)
+                    //     hideTooltip();
+
                     /// Add only paste button 
                     let pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button`);
@@ -345,7 +352,16 @@ function addBasicTooltipButtons(layout) {
                         pasteButton.textContent = pasteLabel;
                     pasteButton.addEventListener("mousedown", function (e) {
                         textField.focus();
-                        document.execCommand('paste');
+                        // document.execCommand('paste');
+
+                        if (textField.getAttribute('contenteditable') !== null) {
+                            let currentClipboardContent = getCurrentClipboard();
+
+                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
+                                document.execCommand("insertHTML", false, currentClipboardContent);
+                        } else
+                            document.execCommand('paste');
+
                         removeSelectionOnPage();
                     });
                     tooltip.appendChild(pasteButton);
