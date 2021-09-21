@@ -25,10 +25,17 @@ function fetchCurrencyRates() {
         var val = jsonObj['rates'];
         var ratesObject = {};
 
-        Object.keys(currenciesList).forEach(function (key) {
+        // Object.keys(currenciesList).forEach(function (key) {
+        //     currenciesList[key]['rate'] = val[key];
+        //     ratesObject[key] = val[key];
+        // });
+
+        let keys = Object.keys(currenciesList);
+        for (let i = 0, l = keys.length; i < l; i++) {
+            let key = keys[i];
             currenciesList[key]['rate'] = val[key];
             ratesObject[key] = val[key];
-        });
+        }
 
         /// Save rates to memory
         chrome.storage.local.set({
@@ -59,11 +66,19 @@ function loadCurrencyRatesFromMemory() {
     chrome.storage.local.get('rates', function (val) {
         var loadedRates = val['rates'];
 
-        Object.keys(currenciesList).forEach(function (key) {
+        // Object.keys(currenciesList).forEach(function (key) {
+        //     let rate = loadedRates[key];
+        //     if (rate !== null && rate !== undefined)
+        //         currenciesList[key]['rate'] = rate;
+        // });
+
+        let keys = Object.keys(currenciesList);
+        for (let i = 0, l = keys.length; i < l; i++) {
+            let key = keys[i];
             let rate = loadedRates[key];
             if (rate !== null && rate !== undefined)
                 currenciesList[key]['rate'] = rate;
-        });
+        }
 
         currencyRatesWereLoaded = true;
 

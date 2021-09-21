@@ -4,7 +4,6 @@ function createSecondaryTooltip() {
 
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.className = 'secondary-selection-tooltip selecton-entity';
-    // secondaryTooltip.style.background = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';

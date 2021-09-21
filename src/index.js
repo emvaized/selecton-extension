@@ -16,9 +16,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
       if (configs.excludedDomains !== null && configs.excludedDomains !== undefined && configs.excludedDomains !== '')
         configs.excludedDomains.split(',').forEach(function (domain) {
-          if (window.location.href.includes(domain.trim())) {
-            configs.enabled = false;
-          }
+          if (window.location.href.includes(domain.trim())) configs.enabled = false;
         });
 
       if (configs.enabled) {
@@ -29,10 +27,17 @@ function initConfigs(shouldCreateTooltip = false, e) {
           setTextSelectionColor();
 
         /// Assign loaded values to config variable
-        Object.keys(configs).forEach(function (key) {
+        // Object.keys(configs).forEach(function (key) {
+        //   if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
+        //     configs[key] = loadedConfigs[key];
+        // });
+
+        let keys = Object.keys(configs);
+        for (let i = 0, l = keys.length; i < l; i++) {
+          let key = keys[i];
           if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
             configs[key] = loadedConfigs[key];
-        });
+        }
 
         addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
         verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
@@ -73,7 +78,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
             if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = window.getComputedStyle(document.body.querySelector('div')).backgroundColor;
 
             // if (configs.debugMode) console.log('website background color: ' + pageBgColor);
-
             pageBgColor = pageBgColor.replaceAll('rgb(', '').replaceAll('rgba(', '').replaceAll(')', '').split(',');
 
             let colorLuminance =
@@ -81,7 +85,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
             if (colorLuminance <= 0.5) isPageDark = true;
 
             if (configs.debugMode)
-              console.log('Is page dark: ' + isPageDark);
+              console.log('Check page has dark background: ' + isPageDark);
 
           } catch (e) { if (configs.debugMode) console.log(e); }
 
@@ -139,10 +143,8 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
             dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
 
-            if (today >= dayOfNextFetch) {
-              fetchCurrencyRates(); /// fetch rates from server
-            } else
-              loadCurrencyRatesFromMemory();
+            if (today >= dayOfNextFetch) fetchCurrencyRates(); /// fetch rates from server
+            else loadCurrencyRatesFromMemory();
           }
         }
 

@@ -22,16 +22,15 @@ function addTranslateButton() {
                 var langs = detectedLanguages.languages;
 
                 if (langs !== []) {
+                    if (configs.debugMode) {
+                        console.log('Detected language: ' + langs[0].language);
+                    }
                     // if (configs.debugMode)
                     // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
-                    langs.forEach(function (lang) {
-                        if (configs.debugMode) {
-                            console.log('Detected language: ' + langs[0].language);
-                        }
-                        /// Don't show translate button if selected language is the same as desired
-                        if (lang.language == configs.languageToTranslate) shouldTranslate = false;
-                        else shouldTranslate = true;
-                    })
+
+                    /// Don't show translate button if selected language is the same as desired
+                    if (langs[0].language == configs.languageToTranslate) shouldTranslate = false;
+                    else shouldTranslate = true;
                 } else {
                     if (configs.debugMode) {
                         console.log('Selecton failed to detect selected text language');
@@ -43,8 +42,8 @@ function addTranslateButton() {
                 console.log(`Should translate: ${shouldTranslate}`);
 
             if (shouldTranslate == true) {
-                var translateButton = document.createElement('button');
-                translateButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                let translateButton = document.createElement('button');
+                translateButton.setAttribute('class', 'selection-popup-button button-with-border');
                 if (configs.reverseTooltipButtonsOrder)
                     tooltip.insertBefore(translateButton, tooltip.children[1]);
                 else
@@ -66,7 +65,6 @@ function addTranslateButton() {
                 } else {
                     setRegularTranslateButton(translateButton);
                 }
-                // setRegularTranslateButton(translateButton);
             } else {
                 checkTooltipForCollidingWithSideEdges();
             }
@@ -90,7 +88,6 @@ function setRegularTranslateButton(translateButton) {
 
     /// Correct tooltip's dx
     correctTooltipPosition();
-
 
     if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
         translateButton.addEventListener("mouseover", function (e) {

@@ -27,11 +27,16 @@ function setDefaultLocales() {
         else browserMetricSystem = 'metric';
 
         /// Set default currency
-        Object.keys(currenciesList).forEach(function (key) {
-            if (key.includes(browserCountry)) {
-                browserCurrency = key;
-            }
-        });
+        // Object.keys(currenciesList).forEach(function (key) {
+        //     if (key.includes(browserCountry)) browserCurrency = key;
+        // });
+
+        let keys = Object.keys(currenciesList);
+        for (let i = 0, l = keys.length; i < l; i++) {
+            let key = keys[i];
+            if (key.includes(browserCountry)) browserCurrency = key;
+        }
+
         if (configs.debugMode) {
             console.log(`Default browser language: ${browserLanguage}`);
             console.log(`Default browser metrics: ${browserMetricSystem}`);
@@ -40,7 +45,7 @@ function setDefaultLocales() {
         }
     }
 
-    /// Save calculated locales to memory
+    /// Save measured locales to memory
     chrome.storage.local.set({
         'convertToCurrency': browserCurrency || 'USD',
         'languageToTranslate': browserLanguage || 'en',

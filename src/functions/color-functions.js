@@ -6,11 +6,13 @@ function getTextColorForBackground(color) {
     var luminance =
         (0.299 * c.red + 0.587 * c.green + 0.114 * c.blue) / 255;
     if (luminance > 0.5) {
+        /// bright color - black font
         isDarkBackground = false;
         // d = 0; // bright colors - black font
     }
     else {
-        // d = 255; // dark colors - white font
+        /// dark color - white font
+        // d = 255; 
         isDarkBackground = true;
     }
 

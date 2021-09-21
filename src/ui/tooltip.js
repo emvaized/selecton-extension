@@ -331,9 +331,10 @@ function addBasicTooltipButtons(layout) {
                     /// Add only paste button 
                     let pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button`);
+                    pasteButton.style.borderRadius = configs.useCustomStyle ? `${configs.borderRadius}px` : '3px';
+
                     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                         pasteButton.setAttribute('title', pasteLabel);
-                    pasteButton.style.borderRadius = `${configs.borderRadius - 3}px`;
 
                     if (addButtonIcons)
                         pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
@@ -344,7 +345,6 @@ function addBasicTooltipButtons(layout) {
                         document.execCommand('paste');
                         removeSelectionOnPage();
                     });
-                    pasteButton.style.borderRadius = configs.useCustomStyle ? `${configs.borderRadius}px` : '3px';
                     tooltip.appendChild(pasteButton);
                 } catch (e) { if (configs.debugMode) console.log(e); }
         }
@@ -353,6 +353,9 @@ function addBasicTooltipButtons(layout) {
         /// Add search button
         searchButton = document.createElement('button');
         searchButton.setAttribute('class', 'selection-popup-button');
+        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+            searchButton.setAttribute('title', searchLabel);
+
         if (addButtonIcons)
             searchButton.innerHTML = createImageIcon(searchButtonIcon) + (configs.buttonsStyle == 'onlyicon' ? '' : searchLabel);
         else
@@ -391,9 +394,9 @@ function addContextualButtons() {
     var selectedText = selection.toString().trim();
     const loweredSelectedText = selectedText.toLowerCase();
     var wordsCount = selectedText.split(' ').length;
+    let isFileName = false;
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
-
         var numberToConvert;
         var unitLabelColor = isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
         var selectionContainsSpaces = selectedText.includes(' ');
@@ -444,17 +447,6 @@ function addContextualButtons() {
 
             if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null && amount !== undefined) {
 
-                /// Update currency rates in case they are outdated (will be used for next conversions)
-                // if (ratesLastFetchedDate !== null && ratesLastFetchedDate !== undefined && ratesLastFetchedDate !== '') {
-                //     let today = new Date();
-                //     let dayOfNextFetch = new Date(ratesLastFetchedDate);
-                //     dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
-
-                //     if (today >= dayOfNextFetch) {
-                //         fetchCurrencyRates(); /// fetch rates from server
-                //     }
-                // }
-
                 /// Rates are already locally stored (should be initially)
                 if (currencyRate !== null && currencyRate !== undefined) {
                     if (configs.debugMode)
@@ -491,7 +483,7 @@ function addContextualButtons() {
 
                             /// Create and add currency button with result of conversion
                             let currencyButton = document.createElement('button');
-                            currencyButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                            currencyButton.setAttribute('class', `selection-popup-button button-with-border`);
 
                             /// Show value before convertion
                             if (configs.showUnconvertedValue) {
@@ -622,7 +614,7 @@ function addContextualButtons() {
                 convertedNumber = splitNumberInGroups(convertedNumber.toString());
 
                 const interactiveButton = document.createElement('button');
-                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                 if (configs.showUnconvertedValue)
                     interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
 
@@ -688,7 +680,7 @@ function addContextualButtons() {
 
                         if (number !== null) {
                             let interactiveButton = document.createElement('button');
-                            interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                            interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                             if (configs.showUnconvertedValue)
                                 interactiveButton.textContent = selectedText + ' →';
 
@@ -878,7 +870,7 @@ function addContextualButtons() {
 
             let convertedTime;
             let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
-            for (i in timeZoneKeywordsKeys) {
+            for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
                 let marker = timeZoneKeywordsKeys[i];
 
                 if (textToProccess.includes(' ' + marker)) {
@@ -968,10 +960,9 @@ function addContextualButtons() {
                 let domainLength = splittedByDots[1].length;
 
                 if (selectedText.includes('://') || (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain))) {
-                    let isFileName = false;
 
                     /// Don't recognize if selected text looks like filename
-                    for (i in filetypesToIgnoreAsDomains) {
+                    for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
                         if (domain.includes(filetypesToIgnoreAsDomains[i])) {
                             isFileName = true;
                             break;
@@ -995,9 +986,9 @@ function addContextualButtons() {
                         let firstSymbol = link[0];
                         linkLength = link.length;
                         lastSymbol = link[linkLength - 1];
-                        if (firstSymbol == "'" || firstSymbol == "'" || firstSymbol == '«' || firstSymbol == '“')
+                        if (firstSymbol == "'" || firstSymbol == '"' || firstSymbol == '«' || firstSymbol == '“')
                             link = link.substring(1, linkLength);
-                        if (lastSymbol == "'" || lastSymbol == "'" || lastSymbol == "»" || lastSymbol == '”')
+                        if (lastSymbol == "'" || lastSymbol == '"' || lastSymbol == "»" || lastSymbol == '”')
                             link = link.substring(0, linkLength - 1);
 
                         try {
@@ -1005,14 +996,14 @@ function addContextualButtons() {
                             let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
                             if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                /// Adding button
+                                /// Adding  open link button
                                 let interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
+                                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                                 let linkText = document.createElement('span');
 
                                 let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
                                 linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
-                                linkText.setAttribute('style', `color: ${secondaryColor}`);
+                                linkText.style.color = secondaryColor;
 
                                 /// Add tooltip with full website on hover
                                 if (link.length > linkSymbolsToShow)
@@ -1024,12 +1015,10 @@ function addContextualButtons() {
                                     } else {
                                         interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
                                     }
-                                } else interactiveButton.innerHTML = openLinkLabel + ' ';
+                                } else interactiveButton.innerText = openLinkLabel + ' ';
 
                                 interactiveButton.appendChild(linkText);
                                 interactiveButton.addEventListener("mousedown", function (e) {
-
-                                    // if (!link.includes('http://') && !link.includes('https://') && !link.includes('chrome://') && !link.includes('about:'))
                                     if (!link.includes('://') && !link.includes('about:'))
                                         link = 'https://' + link;
 
@@ -1048,10 +1037,8 @@ function addContextualButtons() {
             }
     }
 
-    /// Show Translate button when enabled, and no other contextual buttons were added 
-
-    // if (tooltip.children.length < 4 && configs.showTranslateButton && (document.getElementById('selecton-translate-button') == null || document.getElementById('selecton-translate-button') == undefined)) {
-    if (tooltip.children.length < 4 && configs.showTranslateButton) {
+    /// Add Translate button when enabled, and no other contextual buttons were added 
+    if (tooltip.children.length < 4 && configs.showTranslateButton && isFileName == false) {
         addTranslateButton();
     }
 

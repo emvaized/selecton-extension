@@ -1,7 +1,7 @@
 #3.3.3
 - Fixed issue with textfield tooltip not appearing
 - Possible fix for configs restore issue
-- Implemented new option "Invert color on dark page" + custom background color on dark page
+- Implemented new option "Invert color on dark page" + custom background color on dark pages
 - Other small fixes and improvements
 
 #3.3.2
