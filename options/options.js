@@ -43,12 +43,16 @@ function loadSettings() {
                     var options = input.querySelectorAll('option');
                     if (options !== null)
                         options.forEach(function (option) {
-                            var selectedValue = result[key] ?? configs[key];
-                            if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
-                                option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
-                            else if (chrome.i18n.getMessage(option['value']) !== (null || undefined || ''))
-                                option.innerHTML = chrome.i18n.getMessage(option['value']);
+                            let selectedValue = result[key] ?? configs[key];
                             if (option.value == selectedValue) option.setAttribute('selected', true);
+
+                            try {
+                                if (chrome.i18n.getMessage(option.innerHTML) != '')
+                                    option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                                else if (chrome.i18n.getMessage(option['value']) != '')
+                                    option.innerHTML = chrome.i18n.getMessage(option['value']);
+                            } catch (e) { }
+
                         });
                 } else {
                     input.setAttribute('value', result[key] ?? configs[key]);
@@ -343,7 +347,8 @@ function generateCustomSearchButtonsList() {
         /// Title field
         var title = document.createElement('input');
         title.setAttribute('type', 'text');
-        title.setAttribute('placeholder', returnDomainFromUrl(item['url']));
+        // title.setAttribute('placeholder', returnDomainFromUrl(item['url']));
+        title.setAttribute('placeholder', 'Title');
         title.setAttribute('style', 'margin-left: 3px; margin-bottom: 3px; display: inline;');
         title.value = item['title'];
         title.setAttribute('id', 'title' + i.toString());

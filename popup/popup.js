@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
         window.close();
     });
 
-    let donateCircleButton = document.getElementById('donateCircleButton');
-    donateCircleButton.setAttribute('title', chrome.i18n.getMessage("buyMeCoffee") ?? 'Support development');
-    donateCircleButton.addEventListener('click', function () {
-        window.close();
-        window.open('https://emvaized.diaka.ua/donate', '_blank');
-    });
+    // let donateCircleButton = document.getElementById('donateCircleButton');
+    // donateCircleButton.setAttribute('title', chrome.i18n.getMessage("buyMeCoffee") ?? 'Support development');
+    // donateCircleButton.addEventListener('click', function () {
+    //     window.close();
+    //     window.open('https://emvaized.diaka.ua/donate', '_blank');
+    // });
 
-    let emailCircleButton = document.getElementById('emailCircleButton');
-    emailCircleButton.setAttribute('title', 'Email');
-    emailCircleButton.addEventListener('click', function () {
-        window.close();
-        window.open('mailto:maximtsyba@gmail.com');
-    });
+    // let emailCircleButton = document.getElementById('emailCircleButton');
+    // emailCircleButton.setAttribute('title', 'Email');
+    // emailCircleButton.addEventListener('click', function () {
+    //     window.close();
+    //     window.open('mailto:maximtsyba@gmail.com');
+    // });
 });

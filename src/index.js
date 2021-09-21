@@ -23,7 +23,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         // configs.debugMode = loadedConfigs.debugMode ?? false;
         // configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
 
-        if (configs.changeTextSelectionColor && selectionColorWasApplied == false)
+        if (configs.changeTextSelectionColor)
           setTextSelectionColor();
 
         /// Assign loaded values to config variable
@@ -32,11 +32,16 @@ function initConfigs(shouldCreateTooltip = false, e) {
         //     configs[key] = loadedConfigs[key];
         // });
 
-        let keys = Object.keys(configs);
+        const keys = Object.keys(configs);
         for (let i = 0, l = keys.length; i < l; i++) {
-          let key = keys[i];
-          if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
-            configs[key] = loadedConfigs[key];
+          try {
+            let key = keys[i];
+            if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
+              configs[key] = loadedConfigs[key];
+          } catch (e) {
+            console.log('Selecton failed to restore config: ' + keys[i].toString());
+            console.log('Error: ' + e.toString());
+          }
         }
 
         addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
@@ -74,7 +79,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         if (configs.invertColorOnDarkWebsite)
           try { isDarkPage = checkPageToHaveDarkBg(); } catch (e) { if (configs.debugMode) console.log(e); }
-
 
         /// Set css styles
         if (configs.useCustomStyle) {
@@ -151,7 +155,7 @@ function checkPageToHaveDarkBg() {
     if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = firstDivChildStyle.background;
   }
 
-  if (configs.debugMode) console.log('website background color: ' + pageBgColor);
+  if (configs.debugMode) console.log('Page background color: ' + pageBgColor);
 
   if (!pageBgColor.includes('(')) return isDarkPage;
   pageBgColor = pageBgColor.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
@@ -179,8 +183,6 @@ function setTextSelectionColor() {
   css.type = 'text/css';
   css.appendChild(document.createTextNode(rule)); // Support for the rest
   document.getElementsByTagName("head")[0].appendChild(css);
-
-  selectionColorWasApplied = true;
 
   if (configs.debugMode)
     console.log('Selecton applied custom selection color')

@@ -43,7 +43,6 @@ var previousSelection;
 var tooltipOnBottom = false;
 var configsWereLoaded = false;
 var currencyRatesWereLoaded = false;
-var selectionColorWasApplied = false;
 
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;

@@ -15,7 +15,10 @@ function createSecondaryTooltip() {
     }
 
     /// Add search buttons
-    for (var i = 0; i < configs.customSearchButtons.length; i++) {
+    const searchButtonsLength = configs.customSearchButtons.length;
+    if (searchButtonsLength == 0) return;
+
+    for (var i = 0; i < searchButtonsLength; i++) {
         var item = configs.customSearchButtons[i];
 
         const url = item['url'];
