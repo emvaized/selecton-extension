@@ -20,8 +20,8 @@ function initConfigs(shouldCreateTooltip = false, e) {
         });
 
       if (configs.enabled) {
-        configs.debugMode = loadedConfigs.debugMode ?? false;
-        configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
+        // configs.debugMode = loadedConfigs.debugMode ?? false;
+        // configs.applyConfigsImmediately = loadedConfigs.applyConfigsImmediately ?? false;
 
         if (configs.changeTextSelectionColor && selectionColorWasApplied == false)
           setTextSelectionColor();
@@ -70,7 +70,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         }
 
         /// Check page to have dark background
-        let isPageDark = false;
+        let isDarkPage = false;
 
         if (configs.invertColorOnDarkWebsite)
           try {
@@ -82,18 +82,18 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
             let colorLuminance =
               (0.299 * pageBgColor[0] + 0.587 * pageBgColor[1] + 0.114 * pageBgColor[2]) / 255;
-            if (colorLuminance <= 0.5) isPageDark = true;
+            if (colorLuminance <= 0.5) isDarkPage = true;
 
             if (configs.debugMode)
-              console.log('Check page has dark background: ' + isPageDark);
+              console.log('Check page has dark background: ' + isDarkPage);
 
           } catch (e) { if (configs.debugMode) console.log(e); }
 
 
+        /// Set css styles
         if (configs.useCustomStyle) {
           /// Custom style from settings
-
-          const bgColor = isPageDark ? configs.tooltipInvertedBackground : configs.tooltipBackground;
+          const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
           document.body.style.setProperty('--selecton-background-color', bgColor);
           getTextColorForBackground(bgColor);
 
@@ -104,11 +104,12 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         } else {
           /// Default style
-          document.body.style.setProperty('--selecton-background-color', isPageDark ? '#bfbfbf' : '#4c4c4c');
-          document.body.style.setProperty('--selection-button-foreground', isPageDark ? '#000000' : '#ffffff');
-          document.body.style.setProperty('--selection-button-background-hover', isPageDark ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
-          document.body.style.setProperty('--selecton-outline-color', isPageDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
-          secondaryColor = isPageDark ? 'dodgerBlue' : 'lightBlue';
+          document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
+          document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
+          document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
+          document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
+          secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
+          isDarkBackground = !isDarkPage;
         }
 
         /// Set font-size
@@ -124,14 +125,12 @@ function initConfigs(shouldCreateTooltip = false, e) {
         /// selection handle circle radius
         document.body.style.setProperty('--selecton-handle-circle-radius', '12.5px');
 
-        /// Check browser localization
-        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
+        /// Check browser locales on first launch (language and metric system)
+        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
           try { setDefaultLocales(); } catch (e) { }
-        }
 
-        /// Check to fetch currency rates
-        configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
 
+        /// Fetch or load currency rates
         if (configs.convertCurrencies) {
           ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
 

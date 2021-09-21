@@ -77,7 +77,6 @@ function createTooltip(e) {
                         arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
                     }
 
-
                     showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
                     return;
                 }
@@ -755,33 +754,34 @@ function addContextualButtons() {
 
         /// Add email button
         if (configs.showEmailButton && selectedText.includes('@') && !selectionContainsSpaces) {
-            try {
-                var emailText = loweredSelectedText;
-                var emailButton = document.createElement('button');
-                emailButton.setAttribute('class', `selection-popup-button button-with-border`);
-                // if (addButtonIcons)
-                emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.65, true) + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
-                emailButton.style.color = secondaryColor;
+            const splitedByAt = selectedText.split('@');
+            if (splitedByAt.length == 2 && splitedByAt[1].includes('.'))
+                try {
+                    var emailText = loweredSelectedText;
+                    const emailButton = document.createElement('button');
+                    emailButton.setAttribute('class', `selection-popup-button button-with-border`);
+                    emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.65, true) + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
+                    emailButton.style.color = secondaryColor;
 
-                emailButton.addEventListener("mousedown", function (e) {
-                    let url = returnNewEmailUrl(emailText);
-                    onTooltipButtonClick(e, url);
-                });
+                    emailButton.addEventListener("mousedown", function (e) {
+                        let url = returnNewEmailUrl(emailText);
+                        onTooltipButtonClick(e, url);
+                    });
 
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(emailButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(emailButton);
+                    if (configs.reverseTooltipButtonsOrder)
+                        tooltip.insertBefore(emailButton, tooltip.children[1]);
+                    else
+                        tooltip.appendChild(emailButton);
 
-                /// Correct tooltip's dx
-                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (emailButton.clientWidth / 2))}px`;
+                    /// Correct tooltip's dx
+                    tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (emailButton.clientWidth / 2))}px`;
 
-                /// Correct last button's border radius
-                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-            } catch (error) {
-                console.log(error);
-            }
+                    /// Correct last button's border radius
+                    tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
+                    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+                } catch (error) {
+                    console.log(error);
+                }
         }
 
         /// Add HEX color preview button
@@ -1015,7 +1015,7 @@ function addContextualButtons() {
                                     } else {
                                         interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
                                     }
-                                } else interactiveButton.innerText = openLinkLabel + ' ';
+                                } else interactiveButton.textContent = openLinkLabel + ' ';
 
                                 interactiveButton.appendChild(linkText);
                                 interactiveButton.addEventListener("mousedown", function (e) {
@@ -1163,13 +1163,12 @@ function showTooltip(dx, dy) {
         setTimeout(function () {
 
             /// Experimental code to determine website's own selection tooltip
-            var websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
+            let websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
 
-            var websiteTooltip;
+            let websiteTooltip;
             if (websiteTooltips !== null && websiteTooltips !== undefined)
-                for (i in websiteTooltips) {
-                    var el = websiteTooltips[i];
-
+                for (let i = 0, l = websiteTooltips.length; i < l; i++) {
+                    let el = websiteTooltips[i];
                     let elementClass;
                     try {
                         elementClass = el.getAttribute('class');
@@ -1178,13 +1177,13 @@ function showTooltip(dx, dy) {
                     if (elementClass !== null && elementClass !== undefined && elementClass.toString().includes('selection-tooltip')) {
 
                     } else if (el.style !== undefined) {
-                        var transformStyle;
+                        let transformStyle;
+                        let elementStyle;
 
                         try {
                             transformStyle = el.style.transform.toString();
-                            var elementStyle = el.getAttribute('style').toString();
+                            elementStyle = el.getAttribute('style').toString();
                         } catch (e) { }
-
 
                         // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
                         // if (!el.getAttribute('class').toString().includes('selection-tooltip'))
@@ -1196,7 +1195,6 @@ function showTooltip(dx, dy) {
                                 if (configs.debugMode) {
                                     console.log('Detected selection tooltip on the website with following style:');
                                     console.log(elementStyle);
-                                    console.log(el.getAttribute('id'));
                                 }
 
                                 websiteTooltip = el;
@@ -1207,9 +1205,6 @@ function showTooltip(dx, dy) {
                 };
 
             if (websiteTooltip !== null && websiteTooltip !== undefined) {
-                console.log('client width:');
-                console.log(websiteTooltip.clientWidth);
-                console.log(websiteTooltip);
                 tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-in-out, transform 200ms ease-out`;
                 tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
 
@@ -1218,16 +1213,14 @@ function showTooltip(dx, dy) {
 
                 setTimeout(function () {
                     tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out, transform 200ms ease-out`;
-                    arrow.parentNode.removeChild(arrow);
+                    arrow.remove();
                 }, 200);
             } else {
                 arrow.style.opacity = 1.0;
-                if (configs.debugMode) {
-                    console.log('Selecton didnt found any website tooltips');
-                }
+                if (configs.debugMode) console.log('Selecton didnt found any website tooltips');
             }
 
-        }, 300);
+        }, configs.animationDuration);
 
     /// Create secondary tooltip (for custom search options)
     /// Add a delay to be sure currency and translate buttons were already added
@@ -1235,10 +1228,7 @@ function showTooltip(dx, dy) {
         setTimeout(function () {
             try {
                 createSecondaryTooltip();
-                //addSearchButtonListeners();
-            } catch (e) {
-                console.log(e);
-            }
+            } catch (e) { console.log(e); }
         }, 3);
 }
 
@@ -1279,8 +1269,10 @@ function hideTooltip(animated = true) {
 }
 
 function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
+    /// Unused 'opacity' is still in the constructor because I was too lazy to remove it in every invocation
     const iconHeight = configs.fontSize * 1.35;
-    return `<img src="${url}" style="all: revert; height: ${iconHeight}px; max-height: ${iconHeight}px !important; fill: white; opacity: ${configs.buttonsStyle == 'onlyicon' ? 0.75 : 0.5}; filter: invert(${isDarkBackground ? '100' : '0'}%); vertical-align: top !important; display: unset !important;margin-right: ${shouldAlwaysHaveMargin || configs.buttonsStyle !== 'onlyicon' ? '4' : '0'}px;  transform: translate(0, -1px) " />`;
+    const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
+    return `<img class='selecton-button-img-icon' src="${url}" style="height: ${iconHeight}px; max-height: ${iconHeight}px !important; opacity: ${configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5}; filter: invert(${isDarkBackground ? '100' : '0'}%); margin-right: ${shouldAlwaysHaveMargin || !onlyIconStyle ? '4' : '0'}px;" />`;
 }
 
 function splitNumberInGroups(stringNumber) {

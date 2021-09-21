@@ -22,7 +22,7 @@ var configs = {
     'changeTextSelectionColor': false,
     'textSelectionBackground': '#338FFF',
     'textSelectionColor': '#ffffff',
-    'shiftTooltipWhenWebsiteHasOwn': true,
+    'shiftTooltipWhenWebsiteHasOwn': false,
     'addActionButtonsForTextFields': false,
     'removeSelectionOnActionButtonClick': true,
     'draggableTooltip': true,
@@ -42,7 +42,7 @@ var configs = {
     'addPhoneButton': true,
     'showUnconvertedValue': false,
     'debugMode': false,
-    'buttonsStyle': 'onlylabel',
+    'buttonsStyle': 'onlylabel', /// Possible: onlylabel, onlyicon, iconlabel
     'addDragHandles': true,
     'snapSelectionToWord': true,
     'preferCurrencySymbol': false,

@@ -2,6 +2,7 @@ const urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
 
 function fetchCurrencyRates() {
     if (currencyRatesWereLoaded) return;
+    if (configs.debugMode) console.log('Selecton needs to update currency rates');
 
     let urlToFetch = urlToLoadCurrencyRates;
 
@@ -9,11 +10,6 @@ function fetchCurrencyRates() {
     const offset = today.getTimezoneOffset()
     today = new Date(today.getTime() - (offset * 60 * 1000))
     today = today.toISOString().split('T')[0];
-
-    if (configs.debugMode) {
-        console.log('Today:');
-        console.log(today);
-    }
 
     if (today != null && today !== undefined && today != '')
         urlToFetch += `&v=${today}`;
@@ -64,7 +60,7 @@ function loadCurrencyRatesFromMemory() {
     if (currencyRatesWereLoaded) return;
 
     chrome.storage.local.get('rates', function (val) {
-        var loadedRates = val['rates'];
+        let loadedRates = val['rates'];
 
         // Object.keys(currenciesList).forEach(function (key) {
         //     let rate = loadedRates[key];
