@@ -73,9 +73,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         let isDarkPage = false;
 
         if (configs.invertColorOnDarkWebsite)
-          try {
-            isDarkPage = checkPageToHaveDarkBg();
-          } catch (e) { if (configs.debugMode) console.log(e); }
+          try { isDarkPage = checkPageToHaveDarkBg(); } catch (e) { if (configs.debugMode) console.log(e); }
 
 
         /// Set css styles

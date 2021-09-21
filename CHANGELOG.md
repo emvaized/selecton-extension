@@ -3,6 +3,7 @@
 - Possible fix for configs restore issue
 - Implemented new option "Invert color on dark page" + custom background color on dark pages
 - Improvements for textfield handling on vk.com and yandex.ru
+- Improved word snapping algorythm
 - Other small fixes and improvements
 
 #3.3.2
