@@ -22,20 +22,16 @@ function addTranslateButton() {
                 var langs = detectedLanguages.languages;
 
                 if (langs !== []) {
-                    if (configs.debugMode) {
-                        console.log('Detected language: ' + langs[0].language);
-                    }
+                    if (configs.debugMode) console.log('Detected language: ' + langs[0].language);
+
                     // if (configs.debugMode)
                     // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
 
                     /// Don't show translate button if selected language is the same as desired
                     if (langs[0].language == configs.languageToTranslate) shouldTranslate = false;
                     else shouldTranslate = true;
-                } else {
-                    if (configs.debugMode) {
-                        console.log('Selecton failed to detect selected text language');
-                    }
-                }
+                } else
+                    if (configs.debugMode) console.log('Selecton failed to detect selected text language');
             }
 
             if (configs.debugMode)
@@ -200,8 +196,7 @@ function correctTooltipPosition() {
                 resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
 
         } catch (e) {
-            if (configs.debugMode)
-                console.log(e);
+            if (configs.debugMode) console.log(e);
 
             /// Fall back to old approach - place tooltip in horizontal center selection rect,
             /// which may be in fact bigger than visible selection
