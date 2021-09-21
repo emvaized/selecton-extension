@@ -91,7 +91,7 @@ function addDragHandle(dragHandleIndex) {
 
         circleDiv.onmousedown = function (e) {
             hideTooltip();
-            isDraggingTooltip = true;
+            isDraggingDragHandle = true;
             e.preventDefault();
 
             if (window.getSelection) {
@@ -180,7 +180,7 @@ function addDragHandle(dragHandleIndex) {
                 e.preventDefault();
                 document.onmousemove = null;
                 document.onmouseup = null;
-                isDraggingTooltip = false;
+                isDraggingDragHandle = false;
                 document.body.style.cursor = 'unset';
                 circleDiv.style.cursor = 'grab';
 

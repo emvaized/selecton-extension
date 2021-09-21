@@ -36,11 +36,11 @@ function createTooltip(e) {
                 }
 
                 /// Clear previously stored selection value
-                if (window.getSelection) {
-                    selection = window.getSelection();
-                } else if (document.selection) {
-                    selection = document.selection.createRange();
-                }
+                // if (window.getSelection) {
+                //     selection = window.getSelection();
+                // } else if (document.selection) {
+                //     selection = document.selection.createRange();
+                // }
 
                 selectedText = selection.toString().trim();
 
@@ -72,18 +72,18 @@ function createTooltip(e) {
                     let vertOutOfView = resultDy <= 0;
                     if (vertOutOfView) {
                         resultDy = e.clientY + arrow.clientHeight;
-                        arrow.style.bottom = '';
-                        arrow.style.top = '-50%';
-                        arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+                        // arrow.style.bottom = '';
+                        // arrow.style.top = '-50%';
+                        // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+                        arrow.classList.add('arrow-on-bottom');
                     }
 
                     showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
                     return;
                 }
 
-                if (tooltip !== null && tooltip !== undefined) {
-                    hideTooltip();
-                }
+                if (tooltip !== null && tooltip !== undefined) hideTooltip();
+
 
                 if (selectedText == '') {
                     hideDragHandles();
@@ -160,15 +160,17 @@ function setUpNewTooltip(type) {
             if (configs.debugMode)
                 console.log('Started dragging tooltip...');
 
+            tooltip.style.left = `0px`;
+            tooltip.style.top = `0px`;
+            tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
+            document.body.style.cursor = 'move';
+            tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
+
             document.onmousemove = function (e) {
                 e.preventDefault();
 
                 /// Move main tooltip
-                tooltip.style.left = `0px`;
-                tooltip.style.top = `0px`;
                 tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
-                tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-                document.body.style.cursor = 'move';
             };
 
             document.onmouseup = function (e) {
@@ -1073,9 +1075,10 @@ function calculateTooltipPosition(e) {
             /// display tooltip under selection
             // dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
-            arrow.style.bottom = '';
-            arrow.style.top = '-50%';
-            arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+            // arrow.style.bottom = '';
+            // arrow.style.top = '-50%';
+            // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+            arrow.classList.add('arrow-on-bottom');
         }
 
         showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
@@ -1091,9 +1094,10 @@ function calculateTooltipPosition(e) {
             /// ...display tooltip below text selection
             var selEndDimensions = getSelectionCoordinates(false);
             resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
-            arrow.style.bottom = '';
-            arrow.style.top = '-50%';
-            arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+            // arrow.style.bottom = '';
+            // arrow.style.top = '-50%';
+            // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
+            arrow.classList.add('arrow-on-bottom');
             tooltipOnBottom = true;
         }
 

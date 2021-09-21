@@ -218,7 +218,7 @@ function initMouseListeners() {
     });
 
   document.addEventListener("mousedown", function (e) {
-    if (isDraggingTooltip) return;
+    if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
 
     if ("buttons" in e) {
@@ -232,6 +232,7 @@ function initMouseListeners() {
 
   document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
+    if (isDraggingTooltip) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;

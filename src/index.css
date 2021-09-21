@@ -31,8 +31,20 @@
     left:  50%;
     background: transparent !important;
     box-shadow: none !important;
+
     bottom:-50%;
     transform: translate(-12.5px, 0px);
+  }
+
+  .arrow-on-top {
+    bottom:-50%;
+    transform: translate(-12.5px, 0px);
+  }
+
+  .arrow-on-bottom {
+    bottom: unset;
+    top:-50%;
+    transform: rotate(180deg) translate(12.5px, 0px);
   }
 
   .selection-tooltip-arrow-child {
