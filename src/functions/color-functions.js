@@ -2,19 +2,20 @@
 function getTextColorForBackground(color) {
     var c = hexToRgb(color);
 
-    var d = 0;
+    // var d = 0;
     var luminance =
         (0.299 * c.red + 0.587 * c.green + 0.114 * c.blue) / 255;
     if (luminance > 0.5) {
         isDarkBackground = false;
-        d = 0; // bright colors - black font
+        // d = 0; // bright colors - black font
     }
     else {
-        d = 255; // dark colors - white font
+        // d = 255; // dark colors - white font
         isDarkBackground = true;
     }
 
-    return rgbToHex(d, d, d);
+    // return rgbToHex(d, d, d);
+    //return rgbToHex(d, d, d);
 }
 
 function hexToRgb(hex) {

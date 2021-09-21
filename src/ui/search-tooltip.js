@@ -4,8 +4,7 @@ function createSecondaryTooltip() {
 
     secondaryTooltip = document.createElement('div');
     secondaryTooltip.className = 'secondary-selection-tooltip selecton-entity';
-    // secondaryTooltip.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important`);
-    secondaryTooltip.style.background = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
+    // secondaryTooltip.style.background = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     secondaryTooltip.style.minWidth = `${searchButton.clientWidth}px`;
     secondaryTooltip.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     secondaryTooltip.style.pointerEvents = 'none';
@@ -52,14 +51,15 @@ function createSecondaryTooltip() {
 
             /// Add label in vertical style
             if (verticalSecondaryTooltip) {
-                container.setAttribute('style', `display: ${verticalSecondaryTooltip ? 'block' : 'inline'};`);
+                container.style.display = verticalSecondaryTooltip ? 'block' : 'inline';
                 container.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
-                container.setAttribute('class', 'custom-search-image-button');
+                // container.setAttribute('class', 'custom-search-image-button');
+                container.className = 'custom-search-image-button';
                 container.appendChild(imgButton);
 
                 let labelSpan = document.createElement('span');
                 labelSpan.innerHTML = titleText.charAt(0).toUpperCase() + titleText.slice(1);
-                labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
+                // labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
                 if (configs.reverseTooltipButtonsOrder)
                     container.insertBefore(labelSpan, imgButton);
                 else
@@ -68,7 +68,7 @@ function createSecondaryTooltip() {
                 secondaryTooltip.appendChild(container);
 
             } else {
-                imgButton.setAttribute('class', 'custom-search-image-button');
+                imgButton.className = 'custom-search-image-button';
                 secondaryTooltip.appendChild(imgButton);
             }
 

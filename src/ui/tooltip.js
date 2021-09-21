@@ -20,8 +20,8 @@ function createTooltip(e) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected due to pressed CTRL key');
                     } else {
-                        if (document.querySelector(`[class*='selection-tooltip-draghandle']`) == null) {
-                            var domainIsBlacklistedForSnapping = false;
+                        if (document.querySelector('.selection-tooltip-draghandle') == null) {
+                            let domainIsBlacklistedForSnapping = false;
                             if (configs.wordSnappingBlacklist !== null && configs.wordSnappingBlacklist !== undefined && configs.wordSnappingBlacklist !== '')
                                 configs.wordSnappingBlacklist.split(',').forEach(function (domain) {
                                     if (window.location.href.includes(domain.trim())) {
@@ -65,6 +65,8 @@ function createTooltip(e) {
                     setUpNewTooltip('textfield');
                     if (tooltip.children.length < 2) return;
 
+                    document.body.appendChild(tooltip);
+
                     /// Check resulting DY to be out of view
                     let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 7.5;
                     let vertOutOfView = resultDy <= 0;
@@ -74,6 +76,7 @@ function createTooltip(e) {
                         arrow.style.top = '-50%';
                         arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
                     }
+
 
                     showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
                     return;
@@ -111,7 +114,6 @@ function setUpNewTooltip(type) {
 
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
-    //tooltip.setAttribute('class', `selection-tooltip`);
     tooltip.className = 'selection-tooltip selecton-entity';
     tooltip.style.opacity = 0.0;
     tooltip.style.position = 'fixed';
@@ -119,10 +121,8 @@ function setUpNewTooltip(type) {
     tooltip.style.transform = returnTooltipRevealTransform(false);
     tooltip.style.transformOrigin = '50% 100% 0';
 
-    //tooltip.setAttribute('style', `opacity: 0.0;position: fixed; transition: opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out; transform:${returnTooltipRevealTransform(false)};transform-origin: 50% 100% 0;`);
-
-    if (configs.useCustomStyle && configs.tooltipOpacity !== 1.0 && configs.tooltipOpacity !== 1) {
-        tooltip.onmouseover = function (event) {
+    if (configs.useCustomStyle && configs.tooltipOpacity != 1.0 && configs.tooltipOpacity != 1) {
+        tooltip.onmouseover = function () {
             setTimeout(function () {
                 if (dontShowTooltip == true) return;
                 try {
@@ -146,11 +146,9 @@ function setUpNewTooltip(type) {
 
     arrow = document.createElement('div');
     arrow.setAttribute('class', `selection-tooltip-arrow`);
-    var arrowChild = document.createElement('div');
+    let arrowChild = document.createElement('div');
     arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
 
-    //arrowChild.setAttribute('style', `background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}`);
-    arrowChild.style.background = configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor;
     arrow.appendChild(arrowChild);
     tooltip.appendChild(arrow);
 
@@ -202,8 +200,8 @@ function setUpNewTooltip(type) {
     /// Apply custom stylings
     if (configs.useCustomStyle) {
         tooltip.style.borderRadius = `${configs.borderRadius}px`;
-        tooltip.style.background = configs.tooltipBackground;
-        arrow.style.background = configs.tooltipBackground;
+        // tooltip.style.background = configs.tooltipBackground;
+        // arrow.style.background = configs.tooltipBackground;
 
         if (configs.addTooltipShadow) {
             tooltip.style.boxShadow = `0 2px 7px rgba(0,0,0,${configs.shadowOpacity})`;
@@ -230,10 +228,9 @@ function addBasicTooltipButtons(layout) {
         var textField = document.activeElement;
 
         if (selection.toString() !== '') {
-
             try {
                 /// Add a cut button 
-                var cutButton = document.createElement('button');
+                let cutButton = document.createElement('button');
                 cutButton.setAttribute('class', `selection-popup-button`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     cutButton.setAttribute('title', cutLabel);
@@ -251,7 +248,7 @@ function addBasicTooltipButtons(layout) {
                 tooltip.appendChild(cutButton);
 
                 /// Add copy button 
-                var copyButton = document.createElement('button');
+                let copyButton = document.createElement('button');
                 copyButton.setAttribute('class', `selection-popup-button button-with-border`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     copyButton.setAttribute('title', copyLabel);
@@ -329,10 +326,8 @@ function addBasicTooltipButtons(layout) {
             tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
 
         } else {
-
             if (configs.addPasteButton)
                 try {
-
                     /// Add only paste button 
                     let pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button`);
@@ -349,10 +344,10 @@ function addBasicTooltipButtons(layout) {
                         document.execCommand('paste');
                         removeSelectionOnPage();
                     });
+                    pasteButton.style.borderRadius = configs.useCustomStyle ? `${configs.borderRadius}px` : '3px';
                     tooltip.appendChild(pasteButton);
                 } catch (e) { if (configs.debugMode) console.log(e); }
         }
-
 
     } else {
         /// Add search button
@@ -370,7 +365,7 @@ function addBasicTooltipButtons(layout) {
         tooltip.appendChild(searchButton);
 
         /// Add copy button 
-        var copyButton = document.createElement('button');
+        let copyButton = document.createElement('button');
         copyButton.setAttribute('class', `selection-popup-button button-with-border`);
         if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
             copyButton.setAttribute('title', copyLabel);
@@ -691,8 +686,6 @@ function addContextualButtons() {
                         let numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
                         number = numbersArray[0];
 
-                        // number = calculatedExpression;
-
                         if (number !== null) {
                             let interactiveButton = document.createElement('button');
                             interactiveButton.setAttribute('class', `selection-popup-button button-with-border open-link-button`);
@@ -974,8 +967,7 @@ function addContextualButtons() {
                 let domain = splittedByDots[1];
                 let domainLength = splittedByDots[1].length;
 
-                if (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain)) {
-
+                if (selectedText.includes('://') || (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain))) {
                     let isFileName = false;
 
                     /// Don't recognize if selected text looks like filename

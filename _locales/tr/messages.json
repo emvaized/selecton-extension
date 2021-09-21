@@ -466,5 +466,13 @@
     "disableForBetterPerformance": {
         "message": "Daha iyi performans için devre dışı bırakın",
         "description": "Label for option in settings"
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Karanlık web sitesinde rengi ters çevir",
+        "description": "Ayarlarda alan etiketi"
+    },
+    "tooltipInvertedBackground": {
+        "message": "Arka plan rengi (koyu sayfa)",
+        "description": "Ayarlarda alan etiketi"
     }
 }

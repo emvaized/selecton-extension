@@ -14,6 +14,7 @@ var configs = {
     'ratesLastFetchedDate': '',
     'useCustomStyle': false,
     'tooltipBackground': '#3B3B3B',
+    'tooltipInvertedBackground': '#bfbfbf',
     'tooltipOpacity': 1.0,
     'addTooltipShadow': false,
     'shadowOpacity': 0.5,
@@ -60,6 +61,7 @@ var configs = {
     'reverseTooltipButtonsOrder': false,
     'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
+    'invertColorOnDarkWebsite': true,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'customSearchButtons': [

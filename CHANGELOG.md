@@ -1,3 +1,9 @@
+#3.3.3
+- Fixed issue with textfield tooltip not appearing
+- Possible fix for configs restore issue
+- Implemented new option "Invert color on dark page" + custom background color on dark page
+- Other small fixes and improvements
+
 #3.3.2
 - Added option to apply configs immediately (no need to refresh page) - disabled by default for better performance
 - Tooltip now recreates after scroll or window resize (can be disabled in settings)

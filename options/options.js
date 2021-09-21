@@ -97,7 +97,6 @@ function loadSettings() {
             excludedDomainsTextfield.style.maxWidth = '200px';
         })
 
-
         setTranslatedLabels();
 
         updateDisabledOptions();
@@ -124,6 +123,7 @@ function setTranslatedLabels() {
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
 
     document.querySelector("#applyConfigsImmediately").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
+    document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
     /// "All changes saved automatically" block
     // var infoCircle = document.createElement('div');
@@ -183,6 +183,7 @@ function updateDisabledOptions() {
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#showButtonLabelOnHover").parentNode.parentNode.className = document.querySelector("#buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#tooltipInvertedBackground").parentNode.parentNode.className = document.querySelector("#invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
 }
 
 function setCollapsibleHeaders() {

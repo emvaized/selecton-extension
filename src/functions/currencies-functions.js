@@ -60,7 +60,7 @@ function loadCurrencyRatesFromMemory() {
         var loadedRates = val['rates'];
 
         Object.keys(currenciesList).forEach(function (key) {
-            var rate = loadedRates[key];
+            let rate = loadedRates[key];
             if (rate !== null && rate !== undefined)
                 currenciesList[key]['rate'] = rate;
         });

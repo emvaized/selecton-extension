@@ -462,5 +462,13 @@
     "disableForBetterPerformance": {
         "message": "Désactiver pour de meilleures performances",
         "description": "Label for option in settings"
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Inverser la couleur sur un site Web sombre",
+        "description": "Libellé du champ dans les paramètres"
+    },
+    "tooltipInvertedBackground": {
+        "message": "Couleur de fond (page sombre)",
+        "description": "Libellé du champ dans les paramètres"
     }
 }

@@ -6,7 +6,6 @@ var convertWhenOnlyFewWordsSelected = true;
 var addSelectionTextShadow = false;
 var selectionTextShadowOpacity = 0.75;
 var allowWebsitesOverrideSelectionColor = true;
-var defaultBackgroundColor = '#4c4c4c';
 
 /// Service variables
 var copyLabel = 'Copy';

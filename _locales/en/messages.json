@@ -466,5 +466,13 @@
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"
+  },
+  "invertColorOnDarkWebsite": {
+    "message": "Invert color on dark website",
+    "description": "Label for field in settings"
+  },
+  "tooltipInvertedBackground": {
+    "message": "Background color (dark page)",
+    "description": "Label for field in settings"
   }
 }

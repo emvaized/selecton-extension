@@ -1,7 +1,8 @@
 /* Tooltip */
   .selection-tooltip {
     all: revert;
-    background: #4c4c4c;
+    /* background: #4c4c4c; */
+    background: var(--selecton-background-color);
     opacity: 0;
     display: inline-block;
     position: absolute;
@@ -44,6 +45,7 @@
     transform:  translate(0px, 2px) rotate(45deg);
     border-bottom: 0.25px solid var(--selecton-outline-color);
     border-right: 0.25px solid var(--selecton-outline-color);
+    background: var(--selecton-background-color);
   }
 
 /* Buttons */
@@ -96,6 +98,7 @@
   line-height: 1.0 !important; 
   /* transform-origin: 25% 100% 0; */
   border: 0.25px solid var(--selecton-outline-color);
+  background: var(--selecton-background-color);
 }
 
 .secondary-selection-tooltip-bottom-div {
@@ -119,6 +122,11 @@
 .custom-search-image-button:hover {
   cursor: pointer;
   background-color: var(--selection-button-background-hover) !important;
+  color: white;
+}
+
+.custom-search-image-button span {
+  display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;
 }
 
 .custom-search-image-button img {
@@ -140,4 +148,13 @@
 /* Highter z-index for search tooltip on bottom */
 .higher-z-index {
   z-index: 10001 !important;
+}
+
+.selection-tooltip-draghandle {
+  position: fixed; z-index: 9998; left: 0px; top: 0px; opacity:0; background: var(--selecton-background-color) !important;
+}
+
+.selection-tooltip-draghandle-circle {
+  border: 0.25px solid var(--selecton-outline-color);z-index: 9998;border-radius: 50%;background: var(--selecton-background-color);position: relative;
+  height: var(--selecton-handle-circle-radius); width: var(--selecton-handle-circle-radius);
 }

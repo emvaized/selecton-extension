@@ -47,21 +47,30 @@ function addDragHandle(dragHandleIndex) {
 
         let dragHandleIsReverted = dragHandleIndex == 1 && tooltipOnBottom;
 
-        var dragHandle = document.createElement('div');
-        dragHandle.setAttribute('class', 'selection-tooltip-draghandle');
-        dragHandle.setAttribute('style', ` transform: translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px);transition: opacity ${configs.animationDuration}ms ease-out; position: fixed; z-index: 9998; left: 0px; top: 0px;  opacity:0; height: ${selectionHandleLineHeight}px; width: ${lineWidth}px !important;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor} !important;`);
+        let dragHandle = document.createElement('div');
+        dragHandle.className = 'selection-tooltip-draghandle';
+        dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
+        dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
+        dragHandle.style.height = `${selectionHandleLineHeight}px`;
+        dragHandle.style.width = `${lineWidth}px`;
 
-        var circleDiv = document.createElement('div');
-        circleDiv.setAttribute('class', 'selection-tooltip-draghandle-circle');
-        circleDiv.setAttribute('style', `border: 0.25px solid var(--selecton-outline-color);z-index: 9998; transition: opacity ${configs.animationDuration}ms ease-out;border-radius: 50%;background: ${configs.useCustomStyle ? configs.tooltipBackground : defaultBackgroundColor}; height: ${circleHeight}px; width: ${circleHeight}px; position: relative; ${dragHandleIsReverted ? `top: -${circleHeight - 1}px` : `bottom: -${selectionHandleLineHeight - 1}px`}; right: ${(circleHeight / 2) - (lineWidth / 2)}px;`);
+        let circleDiv = document.createElement('div');
+        circleDiv.className = 'selection-tooltip-draghandle-circle';
         circleDiv.style.cursor = 'grab';
+        circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
+        circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
+
+        if (dragHandleIsReverted)
+            circleDiv.style.top = `-${circleHeight - 1}px`;
+        else circleDiv.style.bottom = `-${selectionHandleLineHeight - 1}px`;
+
         dragHandle.appendChild(circleDiv);
 
         setTimeout(function () {
             dragHandle.style.opacity = configs.useCustomStyle ? configs.tooltipOpacity : 1.0;
         }, 1);
 
-        if (configs.useCustomStyle && configs.tooltipOpacity !== 1.0 && configs.tooltipOpacity !== 1) {
+        if (configs.useCustomStyle && configs.tooltipOpacity != 1.0 && configs.tooltipOpacity != 1) {
             dragHandle.onmouseover = function (event) {
                 setTimeout(function () {
                     if (dontShowTooltip == true) return;

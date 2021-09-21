@@ -440,7 +440,7 @@
         "description": "Ярлык для опции стиля кнопок в настройках"
     },
     "useCustomStyle": {
-        "message": "Изменить стиль панели",
+        "message": "Свой стиль панели",
         "description": ""
     },
     "useIconFromGoogle": {
@@ -470,5 +470,13 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Инвертировать цвет на темном сайте",
+        "description": "Ярлык для поля в настройках"
+    },
+    "tooltipInvertedBackground": {
+        "message": "Цвет фона (темная страница)",
+        "description": "Ярлык для поля в настройках"
     }
 }

@@ -1,8 +1,8 @@
 function setDefaultLocales() {
 
     /// Set default currency and language according to browser's locale
-    var browserLocale = navigator.language || navigator.userLanguage;
-    var browserCountry;
+    let browserLocale = navigator.language || navigator.userLanguage;
+    let browserCountry;
 
     if (configs.debugMode) {
         console.log('Browser locale is: ' + browserLocale);
@@ -11,7 +11,7 @@ function setDefaultLocales() {
 
     browserLocale.replaceAll(' ', '');
     if (browserLocale.includes('-')) {
-        var parts = browserLocale.split('-');
+        let parts = browserLocale.split('-');
         browserLanguage = parts[0];
         browserCountry = parts[1];
     } else {
@@ -26,12 +26,10 @@ function setDefaultLocales() {
             browserMetricSystem = 'imperial';
         else browserMetricSystem = 'metric';
 
-
         /// Set default currency
         Object.keys(currenciesList).forEach(function (key) {
-            var id = currenciesList[key]['id'];
-            if (id.includes(browserCountry)) {
-                browserCurrency = id;
+            if (key.includes(browserCountry)) {
+                browserCurrency = key;
             }
         });
         if (configs.debugMode) {
@@ -42,12 +40,10 @@ function setDefaultLocales() {
         }
     }
 
-
-    /// Save rates to memory
+    /// Save calculated locales to memory
     chrome.storage.local.set({
         'convertToCurrency': browserCurrency || 'USD',
         'languageToTranslate': browserLanguage || 'en',
         'preferredMetricsSystem': browserMetricSystem || 'metric',
     });
-
 }

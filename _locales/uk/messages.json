@@ -462,5 +462,13 @@
     "disableForBetterPerformance": {
         "message": "Вимкніть для кращої швидкодії",
         "description": "Label for option in settings"
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Інвертувати колір на темному веб-сайті",
+        "description": "Мітка для поля в налаштуваннях"
+    },
+    "tooltipInvertedBackground": {
+        "message": "Колір фону (темна сторінка)",
+        "description": "Мітка для поля в налаштуваннях"
     }
 }

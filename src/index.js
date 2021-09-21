@@ -28,11 +28,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         if (configs.changeTextSelectionColor && selectionColorWasApplied == false)
           setTextSelectionColor();
 
-        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
-          setDefaultLocales();
-        }
-
-        /// Assign loaded values to a config file
+        /// Assign loaded values to config variable
         Object.keys(configs).forEach(function (key) {
           if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
             configs[key] = loadedConfigs[key];
@@ -46,8 +42,10 @@ function initConfigs(shouldCreateTooltip = false, e) {
           console.log(configs);
         }
 
-        /// Get translated button labels
+        /// Run only on first load
         if (configsWereLoaded == false) {
+
+          /// Get translated button labels
           copyLabel = chrome.i18n.getMessage("copyLabel");
           searchLabel = chrome.i18n.getMessage("searchLabel");
           translateLabel = chrome.i18n.getMessage("translateLabel");
@@ -58,28 +56,77 @@ function initConfigs(shouldCreateTooltip = false, e) {
           boldLabel = chrome.i18n.getMessage("boldLabel");
           italicLabel = chrome.i18n.getMessage("italicLabel");
 
+          if (configs.addActionButtonsForTextFields)
+            initMouseListeners();
+          else
+            document.addEventListener('selectionchange', selectionChangeInitListener);
+
           configsWereLoaded = true;
         }
 
-        /// Set dynamic color for foreground (text and icons)
-        document.body.style.setProperty('--selection-button-foreground', configs.useCustomStyle == false ? '#ffffff' : getTextColorForBackground(configs.tooltipBackground.toLowerCase()));
-        document.body.style.setProperty('--selection-button-background-hover', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.5)');
-        document.body.style.setProperty('--selecton-outline-color', configs.useCustomStyle == false || isDarkBackground ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)');
-        secondaryColor = configs.useCustomStyle == false || isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+        /// Check page to have dark background
+        let isPageDark = false;
+
+        if (configs.invertColorOnDarkWebsite)
+          try {
+            let pageBgColor = window.getComputedStyle(document.body).backgroundColor;
+            if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = window.getComputedStyle(document.body.querySelector('div')).backgroundColor;
+
+            // if (configs.debugMode) console.log('website background color: ' + pageBgColor);
+
+            pageBgColor = pageBgColor.replaceAll('rgb(', '').replaceAll('rgba(', '').replaceAll(')', '').split(',');
+
+            let colorLuminance =
+              (0.299 * pageBgColor[0] + 0.587 * pageBgColor[1] + 0.114 * pageBgColor[2]) / 255;
+            if (colorLuminance <= 0.5) isPageDark = true;
+
+            if (configs.debugMode)
+              console.log('Is page dark: ' + isPageDark);
+
+          } catch (e) { if (configs.debugMode) console.log(e); }
+
+
+        if (configs.useCustomStyle) {
+          /// Custom style from settings
+
+          const bgColor = isPageDark ? configs.tooltipInvertedBackground : configs.tooltipBackground;
+          document.body.style.setProperty('--selecton-background-color', bgColor);
+          getTextColorForBackground(bgColor);
+
+          document.body.style.setProperty('--selection-button-foreground', isDarkBackground ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
+          document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
+          document.body.style.setProperty('--selecton-outline-color', isDarkBackground ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
+          secondaryColor = isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+
+        } else {
+          /// Default style
+          document.body.style.setProperty('--selecton-background-color', isPageDark ? '#bfbfbf' : '#4c4c4c');
+          document.body.style.setProperty('--selection-button-foreground', isPageDark ? '#000000' : '#ffffff');
+          document.body.style.setProperty('--selection-button-background-hover', isPageDark ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
+          document.body.style.setProperty('--selecton-outline-color', isPageDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
+          secondaryColor = isPageDark ? 'dodgerBlue' : 'lightBlue';
+        }
 
         /// Set font-size
         document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
 
-        /// Set pop-up buttons border
+        /// pop-up buttons border
         document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
         document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
 
-        /// Set pop-up inner padding
-        document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? "2px 2px 3px" : "2px");
+        /// pop-up inner padding
+        document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? '2px 2px 3px' : '2px');
+
+        /// selection handle circle radius
+        document.body.style.setProperty('--selecton-handle-circle-radius', '12.5px');
+
+        /// Check browser localization
+        if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined) {
+          try { setDefaultLocales(); } catch (e) { }
+        }
 
         /// Check to fetch currency rates
         configs.convertCurrencies = loadedConfigs.convertCurrencies ?? true;
-
 
         if (configs.convertCurrencies) {
           ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
@@ -125,7 +172,7 @@ function setTextSelectionColor() {
     console.log('Selecton applied custom selection color')
 }
 
-function setPageListeners() {
+function initMouseListeners() {
   try {
     window.addEventListener('popstate', function () {
       hideTooltip();
@@ -189,7 +236,7 @@ function setPageListeners() {
     const documentActiveElTag = document.activeElement.tagName;
     if (documentActiveElTag == 'A' || documentActiveElTag == 'BUTTON') return;
 
-    /// Special handling for triple mouse click
+    /// Special handling for triple mouse click (paragraph selection)
     if (e.detail == 3) {
       hideDragHandles(false);
       return;
@@ -201,14 +248,16 @@ function setPageListeners() {
       selection = document.selection.createRange();
     }
 
-    // if (configs.addActionButtonsForTextFields || (selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
     if (selection.toString().trim().length > 0 || configs.addActionButtonsForTextFields) {
       if (configs.applyConfigsImmediately)
-        initConfigs(true, e);
+        initConfigs(true, e); /// createTooltip will be called after checking for updated configs
       else
-        createTooltip(e);
+        createTooltip(e); /// create tooltip immediately
     }
   });
+
+  if (configs.debugMode)
+    console.log('Selection initiated mouse listeners');
 }
 
 function recreateTooltip() {
@@ -235,9 +284,7 @@ function recreateTooltip() {
 
 function domLoadedListener() {
   initConfigs(false);
-
   document.removeEventListener('DOMContentLoaded', domLoadedListener);
-  document.addEventListener('selectionchange', selectionChangeInitListener);
 }
 
 function selectionChangeInitListener() {
@@ -246,10 +293,10 @@ function selectionChangeInitListener() {
   document.removeEventListener('selectionchange', selectionChangeInitListener);
 
   try {
-    setPageListeners();
+    initMouseListeners();
   } catch (e) {
     if (configs.debugMode)
-      console.log('Error while setting Selecton page listeners: ' + e);
+      console.log('Error while setting Selecton mouse listeners: ' + e);
   }
 }
 

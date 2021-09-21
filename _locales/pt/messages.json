@@ -458,5 +458,13 @@
     "disableForBetterPerformance": {
         "message": "Desabilite para melhor desempenho",
         "description": "Label for option in settings"
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Inverter cor no site escuro",
+        "description": "Rótulo para o campo nas configurações"
+    },
+    "tooltipInvertedBackground": {
+        "message": "Cor de fundo (página escura)",
+        "description": "Rótulo para o campo nas configurações"
     }
 }
