@@ -474,5 +474,9 @@
     "tooltipInvertedBackground": {
         "message": "Arka plan rengi (koyu sayfa)",
         "description": "Ayarlarda alan etiketi"
+    },
+    "maxIconsInRow": {
+        "message": "Satırdaki simge miktarı",
+        "description": "Ayarlarda seçenek etiketi"
     }
 }

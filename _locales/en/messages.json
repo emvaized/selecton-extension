@@ -227,6 +227,10 @@
     "message": "Email client",
     "description": "Option label for new email method setting"
   },
+  "maxIconsInRow": {
+    "message": "Amount of icons in row",
+    "description": "Option label for new email method setting"
+  },
   "metric": {
     "message": "Metric",
     "description": "Variant of metrics system for dropdown"

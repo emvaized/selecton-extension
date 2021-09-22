@@ -63,10 +63,10 @@ function initConfigs(shouldCreateTooltip = false, e) {
           boldLabel = chrome.i18n.getMessage("boldLabel");
           italicLabel = chrome.i18n.getMessage("italicLabel");
 
-          if (configs.addActionButtonsForTextFields)
-            initMouseListeners();
-          else
-            document.addEventListener('selectionchange', selectionChangeInitListener);
+          // if (configs.addActionButtonsForTextFields)
+          initMouseListeners();
+          // else
+          //   document.addEventListener('selectionchange', selectionChangeInitListener);
 
           configsWereLoaded = true;
         }
@@ -155,7 +155,7 @@ function checkPageToHaveDarkBg() {
 
   const bodyStyle = window.getComputedStyle(document.body);
   let pageBgColor = bodyStyle.backgroundColor;
-  if (pageBgColor.includes('rgba(0, 0, 0, 0)')) pageBgColor = bodyStyle.background;
+  // if (pageBgColor.includes('rgba(0, 0, 0, 0)')) pageBgColor = bodyStyle.background;
   if (pageBgColor.includes('rgba(0, 0, 0, 0)')) {
     const firstDivChildStyle = window.getComputedStyle(document.body.querySelector('div'));
     pageBgColor = firstDivChildStyle.backgroundColor;

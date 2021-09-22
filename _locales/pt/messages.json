@@ -466,5 +466,9 @@
     "tooltipInvertedBackground": {
         "message": "Cor de fundo (página escura)",
         "description": "Rótulo para o campo nas configurações"
+    },
+    "maxIconsInRow": {
+        "message": "Quantidade de ícones em linha",
+        "description": "Rótulo para opção nas configurações"
     }
 }

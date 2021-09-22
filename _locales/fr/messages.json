@@ -470,5 +470,9 @@
     "tooltipInvertedBackground": {
         "message": "Couleur de fond (page sombre)",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "maxIconsInRow": {
+        "message": "Nombre d'icônes en ligne",
+        "description": "Libellé pour l'option dans les paramètres"
     }
 }

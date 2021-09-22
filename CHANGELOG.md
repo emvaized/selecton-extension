@@ -1,4 +1,5 @@
 #3.3.4
+- Implemented 'amount of icons in row' config
 - Improved text snapping to trim some symbols in the end of selection (,:")
 - Fixed performance leak when clicking inside text field
 - Improved dark page detection

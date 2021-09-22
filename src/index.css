@@ -107,7 +107,7 @@
   padding: 0px !important;
   display: inline-block;
   line-height: 1.0 !important; 
-  /* border: 0.25px solid var(--selecton-outline-color); */
+  border: 0.25px solid var(--selecton-outline-color);
   background: var(--selecton-background-color);
 }
 

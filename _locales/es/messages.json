@@ -470,5 +470,9 @@
     "tooltipInvertedBackground": {
         "message": "Color de fondo (página oscura)",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "maxIconsInRow": {
+        "message": "Cantidad de iconos en fila",
+        "description": "Etiqueta para la opción en la configuración"
     }
 }

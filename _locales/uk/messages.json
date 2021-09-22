@@ -470,5 +470,9 @@
     "tooltipInvertedBackground": {
         "message": "Колір фону (темна сторінка)",
         "description": "Мітка для поля в налаштуваннях"
+    },
+    "maxIconsInRow": {
+        "message": "Кіл-сть іконок у рядку",
+        "description": "Мітка для параметра в налаштуваннях"
     }
 }

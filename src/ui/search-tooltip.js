@@ -22,7 +22,7 @@ function createSecondaryTooltip() {
     containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
     containerPrototype.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
     containerPrototype.className = 'custom-search-image-button';
-    // if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px'
+    const maxIconsInRow = configs.maxIconsInRow;
 
     for (var i = 0; i < searchButtonsLength; i++) {
         var item = configs.customSearchButtons[i];
@@ -45,6 +45,7 @@ function createSecondaryTooltip() {
                 /// Reserve service to load favicon
                 imgButton.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
             });
+
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
 
             /// Set title
@@ -66,13 +67,25 @@ function createSecondaryTooltip() {
                     container.appendChild(labelSpan);
 
             } else {
+                /// No label in horizontal style
                 imgButton.style.padding = '5px 8px';
                 // container.style.height = 'max-content';
                 container.style.padding = '0px';
                 container.appendChild(imgButton);
             }
 
+
+
+            if (!verticalSecondaryTooltip) {
+                if (i % (maxIconsInRow) == 0 && i > 0)
+                    secondaryTooltip.insertAdjacentHTML('beforeend', '<br />');
+            }
+
             secondaryTooltip.appendChild(container);
+
+
+
+
 
             /// Set click listeners
             (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {

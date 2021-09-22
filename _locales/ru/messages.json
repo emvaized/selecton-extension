@@ -478,5 +478,9 @@
     "tooltipInvertedBackground": {
         "message": "Цвет фона (темная страница)",
         "description": "Ярлык для поля в настройках"
+    },
+    "maxIconsInRow": {
+        "message": "Кол-во иконок в ряду",
+        "description": "Ярлык для поля в настройках"
     }
 }

@@ -470,5 +470,9 @@
     "tooltipInvertedBackground": {
         "message": "Hintergrundfarbe (dunkle Seite)",
         "description": "Beschriftung für Feld in den Einstellungen"
+    },
+    "maxIconsInRow": {
+        "message": "Anzahl der Symbole in der Reihe",
+        "description": "Label für Option in den Einstellungen"
     }
 }
