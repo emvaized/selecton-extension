@@ -7,13 +7,13 @@ function getTextColorForBackground(color) {
         (0.299 * c.red + 0.587 * c.green + 0.114 * c.blue) / 255;
     if (luminance > 0.5) {
         /// bright color - black font
-        isDarkBackground = false;
+        isDarkTooltip = false;
         // d = 0; // bright colors - black font
     }
     else {
         /// dark color - white font
         // d = 255; 
-        isDarkBackground = true;
+        isDarkTooltip = true;
     }
 
     // return rgbToHex(d, d, d);

@@ -112,8 +112,14 @@ function snapSelectionByWords(sel) {
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
             case ',': shouldUntrimLastCh = true; break;
-            case ':': shouldUntrimLastCh = true; break;
-            // case '.': shouldUntrimLastCh = true; break;
+            case ')': shouldUntrimLastCh = true; break;
+            case '"': shouldUntrimLastCh = true; break;
+            case "'": shouldUntrimLastCh = true; break;
+            case ':': {
+                if (selString[selString.length - 2] == '"') sel.modify("extend", direction[1], "character"); /// special handling for json keys (like "key": )
+                shouldUntrimLastCh = true;
+                break;
+            }
         }
 
         if (shouldUntrimLastCh) sel.modify("extend", direction[1], "character");

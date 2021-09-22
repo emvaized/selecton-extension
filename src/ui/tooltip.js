@@ -8,13 +8,8 @@ function createTooltip(e) {
                 lastMouseUpEvent = e;
                 //hideTooltip();
 
-                const activeEl = document.activeElement;
-                let isTextField = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text') || activeEl.getAttribute('name') == 'text') ||
-                    activeEl.tagName === "TEXTAREA" ||
-                    activeEl.getAttribute('contenteditable') !== null;
-
                 if (configs.snapSelectionToWord) {
-                    if (isTextField == true && configs.dontSnapTextfieldSelection == true) {
+                    if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected while textfield is focused');
                     } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && e.ctrlKey == true) {
@@ -36,38 +31,9 @@ function createTooltip(e) {
                     }
                 }
 
-                /// Clear previously stored selection value
-                // if (window.getSelection) {
-                //     selection = window.getSelection();
-                // } else if (document.selection) {
-                //     selection = document.selection.createRange();
-                // }
-
-                selectedText = selection.toString().trim();
-
                 /// Special tooltip for text fields
-                if (isTextField) {
+                if (isTextFieldFocused) {
                     if (configs.addActionButtonsForTextFields == false) return;
-
-                    /// Special handling for Firefox 
-                    /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
-                    if (selectedText == '') {
-                        let ta = document.querySelector(':focus');
-                        if (ta.value != undefined) {
-                            selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-                            selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-                        }
-                    }
-
-                    /// Ignore single click on text field with inputted value
-                    try {
-                        if (activeEl.getAttribute('contenteditable') != null) {
-                            if (activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>') return;
-                        } else { if (activeEl.value.trim() !== '' && selectedText == '') return; }
-                        // if (activeEl.value.trim() !== '' && selectedText == '') return;
-                    } catch (e) { }
-
-                    if (selectedText == '') { hideTooltip(); }
 
                     /// Create text field tooltip
                     setUpNewTooltip('textfield');
@@ -169,13 +135,16 @@ function setUpNewTooltip(type) {
             tooltip.style.top = `0px`;
             tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
             document.body.style.cursor = 'move';
-            tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
+
+            const tooltipOnBottom = arrow.classList.contains('arrow-on-bottom');
+            tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px)`;
+            tooltip.style.pointerEvents = 'none';
 
             document.onmousemove = function (e) {
                 e.preventDefault();
 
                 /// Move main tooltip
-                tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px)`;
+                tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px)`;
             };
 
             document.onmouseup = function (e) {
@@ -186,16 +155,17 @@ function setUpNewTooltip(type) {
                 document.body.style.cursor = 'unset';
 
                 tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
-                tooltip.style.top = `${e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2)}px`;
+                tooltip.style.top = `${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px`;
                 tooltip.style.transform = null;
+                tooltip.style.pointerEvents = 'auto';
 
                 /// Recreate secondary tooltip
-                // if (configs.secondaryTooltipEnabled) {
-                //     if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
-                //         secondaryTooltip.parentNode.removeChild(secondaryTooltip);
-                //         createSecondaryTooltip();
-                //     }
-                // }
+                if (configs.secondaryTooltipEnabled) {
+                    if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
+                        secondaryTooltip.parentNode.removeChild(secondaryTooltip);
+                        createSecondaryTooltip();
+                    }
+                }
 
                 if (configs.debugMode)
                     console.log('Dragging tooltip finished');
@@ -205,17 +175,13 @@ function setUpNewTooltip(type) {
 
     /// Apply custom stylings
     if (configs.useCustomStyle) {
-        // tooltip.style.borderRadius = `${configs.borderRadius}px`;
-        // tooltip.style.background = configs.tooltipBackground;
-        // arrow.style.background = configs.tooltipBackground;
-
         if (configs.addTooltipShadow) {
             tooltip.style.boxShadow = `0 2px 7px rgba(0,0,0,${configs.shadowOpacity})`;
             arrow.style.boxShadow = `1px 1px 3px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
         }
         /// Set rounded corners for buttons
-        firstButtonBorderRadius = `${configs.borderRadius}px 0px 0px ${configs.borderRadius}px`;
-        lastButtonBorderRadius = `0px ${configs.borderRadius}px ${configs.borderRadius}px 0px`;
+        firstButtonBorderRadius = `${configs.borderRadius / 1.5}px 0px 0px ${configs.borderRadius / 1.5}px`;
+        lastButtonBorderRadius = `0px ${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px 0px`;
     } else {
         /// Set default corners for buttons
         firstButtonBorderRadius = '3px 0px 0px 3px';
@@ -242,7 +208,7 @@ function addBasicTooltipButtons(layout) {
                     cutButton.setAttribute('title', cutLabel);
 
                 if (addButtonIcons)
-                    cutButton.innerHTML = createImageIcon(cutButtonIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : cutLabel);
+                    cutButton.appendChild(createImageIconNew(cutButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : cutLabel));
                 else
                     cutButton.textContent = cutLabel;
                 cutButton.style.borderRadius = firstButtonBorderRadius;
@@ -259,7 +225,7 @@ function addBasicTooltipButtons(layout) {
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     copyButton.setAttribute('title', copyLabel);
                 if (addButtonIcons)
-                    copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (configs.buttonsStyle == 'onlyicon' ? '' : copyLabel);
+                    copyButton.appendChild(createImageIconNew(copyButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : copyLabel));
                 else
                     copyButton.textContent = copyLabel;
                 // copyButton.style.borderRadius = lastButtonBorderRadius;
@@ -289,7 +255,7 @@ function addBasicTooltipButtons(layout) {
                         boldButton.setAttribute('title', boldLabel);
 
                     if (addButtonIcons)
-                        boldButton.innerHTML = createImageIcon(boldTextIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : boldLabel);
+                        boldButton.appendChild(createImageIconNew(boldTextIcon, configs.buttonsStyle == 'onlyicon' ? '' : boldLabel));
                     else
                         boldButton.textContent = boldLabel;
                     boldButton.addEventListener("mousedown", function (e) {
@@ -310,7 +276,7 @@ function addBasicTooltipButtons(layout) {
                         italicButton.setAttribute('title', italicLabel);
 
                     if (addButtonIcons)
-                        italicButton.innerHTML = createImageIcon(italicTextIcon, 0.5) + (configs.buttonsStyle == 'onlyicon' ? '' : italicLabel);
+                        italicButton.appendChild(createImageIconNew(italicTextIcon, configs.buttonsStyle == 'onlyicon' ? '' : italicLabel));
                     else
                         italicButton.textContent = italicLabel;
                     italicButton.style.borderRadius = lastButtonBorderRadius;
@@ -347,7 +313,7 @@ function addBasicTooltipButtons(layout) {
                         pasteButton.setAttribute('title', pasteLabel);
 
                     if (addButtonIcons)
-                        pasteButton.innerHTML = createImageIcon(pasteButtonIcon, 0.7) + (configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel);
+                        pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
                     else
                         pasteButton.textContent = pasteLabel;
                     pasteButton.addEventListener("mousedown", function (e) {
@@ -376,7 +342,7 @@ function addBasicTooltipButtons(layout) {
             searchButton.setAttribute('title', searchLabel);
 
         if (addButtonIcons)
-            searchButton.innerHTML = createImageIcon(searchButtonIcon) + (configs.buttonsStyle == 'onlyicon' ? '' : searchLabel);
+            searchButton.appendChild(createImageIconNew(searchButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : searchLabel));
         else
             searchButton.textContent = searchLabel;
 
@@ -392,7 +358,7 @@ function addBasicTooltipButtons(layout) {
         if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
             copyButton.setAttribute('title', copyLabel);
         if (addButtonIcons)
-            copyButton.innerHTML = createImageIcon(copyButtonIcon, 0.8) + (configs.buttonsStyle == 'onlyicon' ? '' : copyLabel);
+            copyButton.appendChild(createImageIconNew(copyButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : copyLabel));
         else
             copyButton.textContent = copyLabel;
         copyButton.addEventListener("mousedown", function (e) {
@@ -417,7 +383,7 @@ function addContextualButtons() {
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
         var numberToConvert;
-        var unitLabelColor = isDarkBackground ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
+        var unitLabelColor = isDarkTooltip ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
         var selectionContainsSpaces = selectedText.includes(' ');
 
         /// Convert currency button
@@ -427,8 +393,9 @@ function addContextualButtons() {
             var currencyRate;
             var currencySymbol;
 
+            let match = false;
+
             for (const [key, value] of Object.entries(currenciesList)) {
-                var match = false;
                 if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
@@ -670,7 +637,7 @@ function addContextualButtons() {
         if (configs.addPhoneButton && selectedText.includes('+') && !selectionContainsSpaces && selectedText.length == 13 && selectedText[0] == '+') {
             let phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
-            phoneButton.innerHTML = createImageIcon(phoneIcon, 0.7, true) + selectedText;
+            phoneButton.appendChild(createImageIconNew(phoneIcon, selectedText));
             phoneButton.style.color = secondaryColor;
             phoneButton.addEventListener("mousedown", function (e) {
                 hideTooltip();
@@ -749,7 +716,7 @@ function addContextualButtons() {
                     mapButton.setAttribute('title', showOnMapLabel);
 
                 if (addButtonIcons)
-                    mapButton.innerHTML = createImageIcon(mapButtonIcon, 1.0) + (configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel);
+                    mapButton.appendChild(createImageIconNew(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel));
                 else
                     mapButton.textContent = showOnMapLabel;
                 mapButton.addEventListener("mousedown", function (e) {
@@ -780,7 +747,7 @@ function addContextualButtons() {
                     var emailText = loweredSelectedText;
                     const emailButton = document.createElement('button');
                     emailButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    emailButton.innerHTML = createImageIcon(emailButtonIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.65, true) + (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText);
+                    emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText)));
                     emailButton.style.color = secondaryColor;
 
                     emailButton.addEventListener("mousedown", function (e) {
@@ -836,7 +803,7 @@ function addContextualButtons() {
                 colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
 
                 colorButton.appendChild(colorCircle);
-                colorButton.innerHTML += ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText);
+                colorButton.insertAdjacentHTML('beforeend', ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText));
                 colorButton.style.color = secondaryColor;
 
                 colorButton.addEventListener("mousedown", function (e) {
@@ -949,10 +916,10 @@ function addContextualButtons() {
                 timeButton.style.color = secondaryColor;
 
                 if (addButtonIcons)
-                    timeButton.innerHTML = createImageIcon(clockIcon, configs.buttonsStyle == 'onlyicon' ? 0.5 : 0.7, true) + (convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':'));
+                    timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':')));
                 else
-                    // timeButton.textContent = convertedTime ?? textToProccess;
                     timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
+
                 timeButton.addEventListener("mousedown", function (e) {
                     hideTooltip();
                     removeSelectionOnPage();
@@ -1022,20 +989,16 @@ function addContextualButtons() {
                                 let linkText = document.createElement('span');
 
                                 let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                linkText.textContent = (addButtonIcons ? '' : ' ') + linkToDisplay;
+                                linkText.textContent = linkToDisplay;
                                 linkText.style.color = secondaryColor;
 
                                 /// Add tooltip with full website on hover
                                 if (link.length > linkSymbolsToShow)
                                     interactiveButton.setAttribute('title', link);
 
-                                if (addButtonIcons) {
-                                    if (configs.buttonsStyle == 'onlyicon') {
-                                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.5, true);
-                                    } else {
-                                        interactiveButton.innerHTML = createImageIcon(openLinkButtonIcon, 0.65, true);
-                                    }
-                                } else interactiveButton.textContent = openLinkLabel + ' ';
+                                if (addButtonIcons)
+                                    interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon));
+                                else interactiveButton.textContent = openLinkLabel + ' ';
 
                                 interactiveButton.appendChild(linkText);
                                 interactiveButton.addEventListener("mousedown", function (e) {
@@ -1288,17 +1251,32 @@ function hideTooltip(animated = true) {
     tooltip = null;
     secondaryTooltip = null;
     timerToRecreateOverlays = null;
+    isTextFieldFocused = false;
 }
 
-function createImageIcon(url, opacity = 0.5, shouldAlwaysHaveMargin) {
-    /// Unused 'opacity' is still in the constructor because I was too lazy to remove it in every invocation
-    const iconHeight = configs.fontSize * 1.35;
+function createImageIconNew(url, title) {
+    let container = document.createDocumentFragment();
+
+    let img = document.createElement('img');
+    img.setAttribute('src', url);
+    img.setAttribute('class', 'selecton-button-img-icon');
+
     const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
-    return `<img class='selecton-button-img-icon' src="${url}" style="height: ${iconHeight}px; max-height: ${iconHeight}px !important; opacity: ${configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5}; filter: invert(${isDarkBackground ? '100' : '0'}%); margin-right: ${shouldAlwaysHaveMargin || !onlyIconStyle ? '4' : '0'}px;" />`;
+    img.style.opacity = configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5;
+    if (!onlyIconStyle) img.style.marginRight = '4px';
+    container.appendChild(img);
+
+    if (title != undefined && title != '') {
+        let label = document.createElement('span');
+        label.textContent = title;
+        container.appendChild(label);
+    }
+
+    return container;
 }
 
 function splitNumberInGroups(stringNumber) {
-    let parts = stringNumber.split('.');
+    const parts = stringNumber.split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     if (parts[1] == '00') parts[1] = ''; /// Remove empty .00 on end
     return parts[1] == '' ? parts[0] : parts.join('.');

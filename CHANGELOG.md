@@ -1,3 +1,9 @@
+#3.3.4
+- Improved text snapping to trim some symbols in the end of selection (,:")
+- Fixed performance leak when clicking inside text field
+- Improved dark page detection
+- Fixed dragging tooltip by arrow
+
 #3.3.3
 - Implemented new option "Invert color on dark page" + custom background color on dark pages
 - Fixed issues with textfield tooltip

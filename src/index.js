@@ -73,9 +73,8 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         /// Check page to have dark background
         let isDarkPage = false;
-
         if (configs.invertColorOnDarkWebsite)
-          try { isDarkPage = checkPageToHaveDarkBg(); } catch (e) { if (configs.debugMode) console.log(e); }
+          try { isDarkPage = checkPageToHaveDarkBg(); } catch (e) { isDarkPage = false; if (configs.debugMode) console.log(e); }
 
         /// Set css styles
         if (configs.useCustomStyle) {
@@ -84,10 +83,10 @@ function initConfigs(shouldCreateTooltip = false, e) {
           document.body.style.setProperty('--selecton-background-color', bgColor);
           getTextColorForBackground(bgColor);
 
-          document.body.style.setProperty('--selection-button-foreground', isDarkBackground ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
-          document.body.style.setProperty('--selection-button-background-hover', isDarkBackground ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
-          document.body.style.setProperty('--selecton-outline-color', isDarkBackground ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
-          secondaryColor = isDarkBackground ? 'lightBlue' : 'dodgerBlue';
+          document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
+          document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
+          document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
+          secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
 
         } else {
           /// Default style
@@ -96,11 +95,15 @@ function initConfigs(shouldCreateTooltip = false, e) {
           document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
           document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
           secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
-          isDarkBackground = !isDarkPage;
+          isDarkTooltip = !isDarkPage;
         }
 
         /// Set font-size
         document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
+
+        /// styles of tooltip button icon
+        document.body.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
+        document.body.style.setProperty('--selecton-button-icon-invert', `invert(${isDarkTooltip ? '100' : '0'}%)`);
 
         /// Set border radius
         document.body.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
@@ -109,11 +112,16 @@ function initConfigs(shouldCreateTooltip = false, e) {
         document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
         document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
 
-        /// pop-up inner padding
-        document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? '2px 2px 3px' : '2px');
+        /// pop-up innder and button inner paddings
+        // document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? '2px 2px 3px' : '2px');
+        document.body.style.setProperty('--selecton-tooltip-inner-padding', '2px');
+        document.body.style.setProperty('--selecton-button-padding', addButtonIcons ? '3px 10px' : '4px 10px');
 
         /// selection handle circle radius
         document.body.style.setProperty('--selecton-handle-circle-radius', '12.5px');
+
+        /// search tooltip icon size
+        document.body.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
 
         /// Check browser locales on first launch (language and metric system)
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
@@ -144,12 +152,20 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
 function checkPageToHaveDarkBg() {
   let isDarkPage = false;
-  let pageBgColor = window.getComputedStyle(document.body).backgroundColor;
 
-  if (pageBgColor == 'rgba(0, 0, 0, 0)') {
+  const bodyStyle = window.getComputedStyle(document.body);
+  let pageBgColor = bodyStyle.backgroundColor;
+  if (pageBgColor.includes('rgba(0, 0, 0, 0)')) pageBgColor = bodyStyle.background;
+  if (pageBgColor.includes('rgba(0, 0, 0, 0)')) {
     const firstDivChildStyle = window.getComputedStyle(document.body.querySelector('div'));
     pageBgColor = firstDivChildStyle.backgroundColor;
-    if (pageBgColor == 'rgba(0, 0, 0, 0)') pageBgColor = firstDivChildStyle.background;
+    if (pageBgColor.includes('rgba(0, 0, 0, 0)')) pageBgColor = firstDivChildStyle.background;
+  }
+
+  /// False negative is preferred to false positive
+  if (pageBgColor.includes('rgba(0, 0, 0, 0)')) {
+    isDarkPage = false;
+    return;
   }
 
   if (configs.debugMode) console.log('Page background color: ' + pageBgColor);
@@ -256,23 +272,65 @@ function initMouseListeners() {
       return;
     }
 
-    if (window.getSelection) {
-      selection = window.getSelection();
-    } else if (document.selection) {
-      selection = document.selection.createRange();
-    }
+    if (window.getSelection) selection = window.getSelection();
+    else if (document.selection) selection = document.selection.createRange();
 
-    if (selection.toString().trim().length > 0 || configs.addActionButtonsForTextFields) {
-      if (configs.applyConfigsImmediately)
-        initConfigs(true, e); /// createTooltip will be called after checking for updated configs
-      else
-        createTooltip(e); /// create tooltip immediately
+    selectedText = selection.toString().trim();
+    if (configs.addActionButtonsForTextFields) checkTextField();
+
+    if (selectedText.length > 0) {
+      /// create tooltip anyway
+      initTooltip(e);
+    } else {
+      /// check if textfield is focused
+      if (configs.addActionButtonsForTextFields && isTextFieldFocused) initTooltip(e);
     }
   });
+
+  function checkTextField() {
+    /// check if textfield is focused
+
+    const activeEl = document.activeElement;
+    isTextFieldFocused = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text') || activeEl.getAttribute('name') == 'text') ||
+      activeEl.tagName === "TEXTAREA" ||
+      activeEl.getAttribute('contenteditable') !== null;
+
+    /// Special handling for Firefox 
+    /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
+    if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
+      let ta = document.querySelector(':focus');
+      if (ta != null && ta.value != undefined) {
+        selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+        selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+      }
+    }
+
+    if (selectedText == '') { hideTooltip(); }
+
+    if (isTextFieldFocused) {
+      /// Ignore single click on text field with inputted value
+      try {
+        if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
+          isTextFieldFocused = false;
+        else
+          if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
+
+      } catch (e) { console.log(e); }
+    }
+  }
+
+  function initTooltip(e) {
+    if (configs.applyConfigsImmediately)
+      initConfigs(true, e); /// createTooltip will be called after checking for updated configs
+    else
+      createTooltip(e);
+  }
 
   if (configs.debugMode)
     console.log('Selection initiated mouse listeners');
 }
+
+
 
 function recreateTooltip() {
   if (configs.recreateTooltipAfterScroll == false) return;

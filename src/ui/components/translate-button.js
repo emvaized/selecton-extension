@@ -78,7 +78,7 @@ function setRegularTranslateButton(translateButton) {
         translateButton.setAttribute('title', translateLabel);
     translateButton.setAttribute('id', 'selecton-translate-button');
     if (addButtonIcons)
-        translateButton.innerHTML = createImageIcon(translateButtonIcon, 0.75) + (configs.buttonsStyle == 'onlyicon' ? '' : translateLabel);
+        translateButton.appendChild(createImageIconNew(translateButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : translateLabel));
     else
         translateButton.textContent = translateLabel;
 

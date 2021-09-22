@@ -29,7 +29,7 @@ var isDraggingDragHandle = false;
 var tooltipIsShown = false;
 var firstButtonBorderRadius = `3px 0px 0px 3px`;
 var lastButtonBorderRadius = `0px 3px 3px 0px`;
-var isDarkBackground = true;
+var isDarkTooltip = true;
 var linkSymbolsToShow = 20;
 var selectionHandleLineHeight = 25;
 var searchButton;
@@ -43,6 +43,7 @@ var previousSelection;
 var tooltipOnBottom = false;
 var configsWereLoaded = false;
 var currencyRatesWereLoaded = false;
+var isTextFieldFocused = false;
 
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;

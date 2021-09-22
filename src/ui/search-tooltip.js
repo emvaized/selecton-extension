@@ -18,6 +18,12 @@ function createSecondaryTooltip() {
     const searchButtonsLength = configs.customSearchButtons.length;
     if (searchButtonsLength == 0) return;
 
+    const containerPrototype = document.createElement('div');
+    containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
+    containerPrototype.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
+    containerPrototype.className = 'custom-search-image-button';
+    // if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px'
+
     for (var i = 0; i < searchButtonsLength; i++) {
         var item = configs.customSearchButtons[i];
 
@@ -27,7 +33,9 @@ function createSecondaryTooltip() {
         const icon = item['icon'];
 
         if (optionEnabled && url !== '') {
-            var imgButton = document.createElement('img');
+            let imgButton = document.createElement('img');
+            imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
+
             imgButton.addEventListener('error', function () {
                 if (configs.debugMode) {
                     console.log('error loading favicon for: ' + url);
@@ -35,43 +43,36 @@ function createSecondaryTooltip() {
                 }
 
                 /// Reserve service to load favicon
-                favicon.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
+                imgButton.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
             });
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
-            imgButton.setAttribute('width', `${configs.secondaryTooltipIconSize}px`);
-            imgButton.setAttribute('height', `${configs.secondaryTooltipIconSize}px`);
-            imgButton.style.maxHeight = `${configs.secondaryTooltipIconSize}px`;
-            imgButton.style.filter = 'none';
 
             /// Set title
             let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
-            if (configs.showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '') {
+            if (configs.showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '')
                 imgButton.setAttribute('title', titleText);
-            }
 
-            let container = document.createElement('div');
+            const container = containerPrototype.cloneNode(true);
 
             /// Add label in vertical style
             if (verticalSecondaryTooltip) {
-                container.style.display = verticalSecondaryTooltip ? 'block' : 'inline';
-                container.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
-                container.className = 'custom-search-image-button';
                 container.appendChild(imgButton);
 
-                let labelSpan = document.createElement('span');
+                const labelSpan = document.createElement('span');
                 labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
-                // labelSpan.setAttribute('style', 'display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;');
                 if (configs.reverseTooltipButtonsOrder)
                     container.insertBefore(labelSpan, imgButton);
                 else
                     container.appendChild(labelSpan);
 
-                secondaryTooltip.appendChild(container);
-
             } else {
-                imgButton.className = 'custom-search-image-button';
-                secondaryTooltip.appendChild(imgButton);
+                imgButton.style.padding = '5px 8px';
+                // container.style.height = 'max-content';
+                container.style.padding = '0px';
+                container.appendChild(imgButton);
             }
+
+            secondaryTooltip.appendChild(container);
 
             /// Set click listeners
             (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
@@ -109,6 +110,7 @@ function createSecondaryTooltip() {
             });
         }
     }
+    containerPrototype.remove();
 
     /// Set border radius for first and last buttons
     const borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
@@ -148,6 +150,7 @@ function appendSecondaryTooltip() {
     let endDy, initialDy, vertOutOfView;
 
     function calculateEndDy() {
+        // dy = tooltip.style.top;
         endDy = parseInt(dy.replaceAll('px', '')) - secondaryTooltip.clientHeight - paddingOnBottom;
 
         /// If tooltip is going off-screen on top, make it visible by manually placing on top of screen
@@ -171,10 +174,8 @@ function appendSecondaryTooltip() {
     }
     calculateEndDy();
 
-    secondaryTooltip.style.top = initialDy;
-    secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
-    secondaryTooltip.style.transform = 'scale(0.0)';
 
+    /// Set mouse listeners
     let timerToRemoveTooltip;
 
     // var timeoutToRevealSearchTooltip;
@@ -205,23 +206,12 @@ function appendSecondaryTooltip() {
                 setTimeout(function () {
                     if (secondaryTooltip == null) return;
 
-                    if (isSecondaryTooltipHovered == false)
-                        secondaryTooltip.style.transform = 'scale(0.0)';
+                    // if (isSecondaryTooltipHovered == false)
+                    // secondaryTooltip.style.transform = 'scale(0.0)';
                 }, 300);
             }
         }, 100);
-
     }
-    /// Add some bottom space to prevent unwanted jumping on moving cursor
-    // let space = document.createElement('div');
-    // space.setAttribute('class', `secondary-selection-tooltip-bottom-div`);
-    // space.style.width = `${secondaryTooltip.clientWidth}px`;
-    // space.style.height = `${paddingOnBottom * 2}px`;
-    // if (vertOutOfView)
-    //     space.style.top = `-${paddingOnBottom * 2}px`;
-    // else
-    //     space.style.bottom = `-${paddingOnBottom * 2}px`;
-    // secondaryTooltip.appendChild(space);
 
     secondaryTooltip.onmouseover = function (event) {
         if (secondaryTooltip == null) return;
@@ -243,6 +233,8 @@ function appendSecondaryTooltip() {
         searchButton.classList.remove("hovered-tooltip-button");
     }
 
-    //oldSecondaryTooltips.push(secondaryTooltip)
+    secondaryTooltip.style.transform = 'scale(0.0)';
+    secondaryTooltip.style.top = initialDy;
     document.body.appendChild(secondaryTooltip);
+    secondaryTooltip.style.left = configs.reverseTooltipButtonsOrder ? `${parseInt(dx.replaceAll('px', '')) + tooltip.clientWidth - secondaryTooltip.clientWidth}px` : dx;
 }
