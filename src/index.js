@@ -281,7 +281,8 @@ function initMouseListeners() {
     else if (document.selection) selection = document.selection.createRange();
 
     selectedText = selection.toString().trim();
-    if (configs.addActionButtonsForTextFields) checkTextField();
+
+    if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField();
 
     if (selectedText.length > 0) {
       /// create tooltip anyway
@@ -303,14 +304,14 @@ function initMouseListeners() {
     /// Special handling for Firefox 
     /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
     if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
-      let ta = document.querySelector(':focus');
+      const ta = document.querySelector(':focus');
       if (ta != null && ta.value != undefined) {
         selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
         selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
       }
     }
 
-    if (selectedText == '') { hideTooltip(); }
+    if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
 
     if (isTextFieldFocused && configs.addPasteOnlyEmptyField) {
       /// Ignore single click on text field with inputted value

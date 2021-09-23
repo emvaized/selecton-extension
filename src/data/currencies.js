@@ -62,5 +62,9 @@ const cryptoCurrencies = [
     "EOS",
     "BCH",
     "XRP",
+    "ZEC",
+    "XMR",
+    "ZCL",
+    "DOGE",
 ]
 

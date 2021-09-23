@@ -356,6 +356,9 @@ function addBasicTooltipButtons(layout) {
 function addContextualButtons() {
     if (configs.debugMode)
         console.log('Checking to add contextual buttons...');
+
+    if (selection == null) return;
+
     var selectedText = selection.toString().trim();
     const loweredSelectedText = selectedText.toLowerCase();
     var wordsCount = selectedText.split(' ').length;

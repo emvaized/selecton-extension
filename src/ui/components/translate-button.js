@@ -13,8 +13,6 @@ function addTranslateButton() {
 
             /// Show Translate button when language was not detected
             let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
-            console.log('isFirefox');
-            console.log(isFirefox);
             var shouldTranslate = isFirefox;
 
             if (configs.debugMode)
