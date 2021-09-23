@@ -13,13 +13,15 @@ function addTranslateButton() {
 
             /// Show Translate button when language was not detected
             let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+            console.log('isFirefox');
+            console.log(isFirefox);
             var shouldTranslate = isFirefox;
 
             if (configs.debugMode)
                 console.log(`User language is: ${configs.languageToTranslate}`);
 
             if (detectedLanguages !== null && detectedLanguages !== undefined) {
-                var langs = detectedLanguages.languages;
+                const langs = detectedLanguages.languages;
 
                 if (langs !== []) {
                     if (configs.debugMode) console.log('Detected language: ' + langs[0].language);
@@ -31,14 +33,14 @@ function addTranslateButton() {
                     if (langs[0].language == configs.languageToTranslate) shouldTranslate = false;
                     else shouldTranslate = true;
                 } else
-                    if (configs.debugMode) console.log('Selecton failed to detect selected text language');
+                    if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
             }
 
             if (configs.debugMode)
                 console.log(`Should translate: ${shouldTranslate}`);
 
             if (shouldTranslate == true) {
-                let translateButton = document.createElement('button');
+                const translateButton = document.createElement('button');
                 translateButton.setAttribute('class', 'selection-popup-button button-with-border');
                 if (configs.reverseTooltipButtonsOrder)
                     tooltip.insertBefore(translateButton, tooltip.children[1]);

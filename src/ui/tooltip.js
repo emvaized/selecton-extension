@@ -202,7 +202,7 @@ function addBasicTooltipButtons(layout) {
         if (selection.toString() !== '') {
             try {
                 /// Add a cut button 
-                let cutButton = document.createElement('button');
+                const cutButton = document.createElement('button');
                 cutButton.setAttribute('class', `selection-popup-button`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     cutButton.setAttribute('title', cutLabel);
@@ -220,7 +220,7 @@ function addBasicTooltipButtons(layout) {
                 tooltip.appendChild(cutButton);
 
                 /// Add copy button 
-                let copyButton = document.createElement('button');
+                const copyButton = document.createElement('button');
                 copyButton.setAttribute('class', `selection-popup-button button-with-border`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     copyButton.setAttribute('title', copyLabel);
@@ -278,7 +278,7 @@ function addBasicTooltipButtons(layout) {
                 const cyrillicPattern = /^[\u0400-\u04FF]+$/;
                 if (configs.addFontFormatButtons && !cyrillicPattern.test(selection.toString().replaceAll(' ', ''))) {
                     /// Add 'bold' button 
-                    var boldButton = document.createElement('button');
+                    const boldButton = document.createElement('button');
                     boldButton.setAttribute('class', `selection-popup-button button-with-border`);
                     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                         boldButton.setAttribute('title', boldLabel);
@@ -299,7 +299,7 @@ function addBasicTooltipButtons(layout) {
                         tooltip.appendChild(boldButton);
 
                     /// Add 'italic' button 
-                    var italicButton = document.createElement('button');
+                    const italicButton = document.createElement('button');
                     italicButton.setAttribute('class', `selection-popup-button button-with-border`);
                     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                         italicButton.setAttribute('title', italicLabel);
@@ -331,7 +331,7 @@ function addBasicTooltipButtons(layout) {
             if (configs.addPasteButton)
                 try {
                     /// Add only paste button 
-                    let pasteButton = document.createElement('button');
+                    const pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button`);
                     pasteButton.style.borderRadius = configs.useCustomStyle ? `${configs.borderRadius}px` : '3px';
 
@@ -382,7 +382,7 @@ function addBasicTooltipButtons(layout) {
         tooltip.appendChild(searchButton);
 
         /// Add copy button 
-        let copyButton = document.createElement('button');
+        const copyButton = document.createElement('button');
         copyButton.setAttribute('class', `selection-popup-button button-with-border`);
         if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
             copyButton.setAttribute('title', copyLabel);
@@ -502,7 +502,7 @@ function addContextualButtons() {
                             convertedAmountString = splitNumberInGroups(convertedAmountString);
 
                             /// Create and add currency button with result of conversion
-                            let currencyButton = document.createElement('button');
+                            const currencyButton = document.createElement('button');
                             currencyButton.setAttribute('class', `selection-popup-button button-with-border`);
 
                             /// Show value before convertion
@@ -669,7 +669,7 @@ function addContextualButtons() {
 
         /// Phone number button
         if (configs.addPhoneButton && selectedText.includes('+') && !selectionContainsSpaces && selectedText.length == 13 && selectedText[0] == '+') {
-            let phoneButton = document.createElement('button');
+            const phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
             phoneButton.appendChild(createImageIconNew(phoneIcon, selectedText));
             phoneButton.style.color = secondaryColor;
@@ -702,12 +702,12 @@ function addContextualButtons() {
                             number = numbersArray[0];
 
                             if (number !== null) {
-                                let interactiveButton = document.createElement('button');
+                                const interactiveButton = document.createElement('button');
                                 interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                                 if (configs.showUnconvertedValue)
                                     interactiveButton.textContent = selectedText + ' →';
 
-                                let converted = document.createElement('span');
+                                const converted = document.createElement('span');
                                 converted.textContent = ` ${calculatedExpression}`;
                                 converted.setAttribute('style', `color: ${secondaryColor}`);
                                 interactiveButton.appendChild(converted);
@@ -738,7 +738,7 @@ function addContextualButtons() {
 
         /// Add "open on map" button
         if (configs.showOnMapButtonEnabled) {
-            var containsAddress = false;
+            let containsAddress = false;
 
             for (i in addressKeywords) {
                 if (loweredSelectedText.includes(addressKeywords[i])) {
@@ -748,7 +748,7 @@ function addContextualButtons() {
             }
 
             if (containsAddress) {
-                var mapButton = document.createElement('button');
+                const mapButton = document.createElement('button');
                 mapButton.setAttribute('class', `selection-popup-button button-with-border`);
                 if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
                     mapButton.setAttribute('title', showOnMapLabel);
@@ -829,15 +829,15 @@ function addContextualButtons() {
                     colorText = selectedText.toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
 
                 colorText = colorText.toLowerCase();
-                let colorButton = document.createElement('button');
+                const colorButton = document.createElement('button');
                 colorButton.setAttribute('class', `selection-popup-button button-with-border`);
 
-                let colorCircle = document.createElement('div');
+                const colorCircle = document.createElement('div');
                 colorCircle.setAttribute('class', `selection-popup-color-preview-circle`);
                 colorCircle.style.background = colorText;
 
                 /// Add red/green/blue tooltip on hover
-                let rgbColor = hexToRgb(colorText);
+                const rgbColor = hexToRgb(colorText);
                 colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
 
                 colorButton.appendChild(colorCircle);
@@ -952,7 +952,7 @@ function addContextualButtons() {
             }
 
             if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
-                var timeButton = document.createElement('button');
+                const timeButton = document.createElement('button');
                 timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                 timeButton.style.color = secondaryColor;
 
@@ -1011,7 +1011,7 @@ function addContextualButtons() {
                             link = link.substring(0, link.length - 1);
 
                         /// Remove quotes in start and end of the link
-                        let firstSymbol = link[0];
+                        const firstSymbol = link[0];
                         linkLength = link.length;
                         lastSymbol = link[linkLength - 1];
                         if (firstSymbol == "'" || firstSymbol == '"' || firstSymbol == '«' || firstSymbol == '“')
@@ -1021,11 +1021,11 @@ function addContextualButtons() {
 
                         try {
                             /// Filtering out non-links
-                            let lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+                            const lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
 
                             if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
                                 /// Adding  open link button
-                                let interactiveButton = document.createElement('button');
+                                const interactiveButton = document.createElement('button');
                                 interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                                 let linkText = document.createElement('span');
 
