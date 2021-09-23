@@ -4,8 +4,9 @@
 - Fixed performance leak when clicking inside text field
 - Improved dark page detection
 - Added option "Add 'Paste' button only when field is empty"
-- Set higher z-index of panels for better visibility on websites
+- Set higher z-index for panels for better visibility on websites
 - Fixed dragging tooltip by arrow
+- Added support for crypto currencies
 - Ditched support for textfield format buttons (italic/bold) because of bugs
 - Small fixes and improvements
 

@@ -131,6 +131,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
           try { setDefaultLocales(); } catch (e) { }
 
+
         /// Fetch or load currency rates from storage
         if (configs.convertCurrencies) {
           ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
@@ -143,11 +144,12 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
             dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
 
-            if (today >= dayOfNextFetch) fetchCurrencyRates(); /// fetch rates from server
+            // loadCurrencyRatesFromMemory();
+            if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
             else loadCurrencyRatesFromMemory();
           }
         }
-        // fetchCurrencyRates();
+        // fetchCurrencyRates(); /// enforce fetch for testing
 
         if (shouldCreateTooltip)
           createTooltip(e);

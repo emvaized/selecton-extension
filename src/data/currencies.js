@@ -40,13 +40,17 @@ const currenciesList = {
     "ZAR": { currencyName: "Rand", rate: 14.856969 },
 
     /// Crypto
-    "ETH": { currencyName: "Ethereum", rate: 2255.465964 },
-    "LTC": { currencyName: "Litecoin", rate: 117.758719 },
-    "ADA": { currencyName: "Cardano", rate: 1.650264 },
-    "MIOTA": { currencyName: "MIOTA", rate: 0.991868 },
-    "EOS": { currencyName: "EOS", rate: 3.112415 },
-    "BCH": { currencyName: "BCH", rate: 370.078067 },
-    "XRP": { currencyName: "XRP", rate: 0.732569 },
+    "ETH": { currencyName: "Ethereum", rate: 0.0003208 },
+    "LTC": { currencyName: "Litecoin", rate: 0.006242 },
+    "ADA": { currencyName: "Cardano", rate: 0.4492 },
+    "MIOTA": { currencyName: "MIOTA", rate: 0.7418 },
+    "EOS": { currencyName: "EOS", rate: 0.2336 },
+    "BCH": { currencyName: "BCH", rate: 0.001843 },
+    "XRP": { currencyName: "XRP", rate: 1.016 },
+    "ZEC": { currencyName: "ZEC", rate: 0.008209 },
+    "XMR": { currencyName: "XMR", rate: 0.004037 },
+    "ZCL": { currencyName: "XMR", rate: 7.348 },
+    "DOGE": { currencyName: "DOGE", rate: 4.537 },
 }
 
 /// This list is used in server fetch method, to filter really huge response to only selected
