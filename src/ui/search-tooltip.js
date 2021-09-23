@@ -66,7 +66,6 @@ function createSecondaryTooltip() {
                     container.insertBefore(labelSpan, imgButton);
                 else
                     container.appendChild(labelSpan);
-
             } else {
                 /// No label in horizontal style
                 imgButton.style.padding = '3px 6px';
@@ -80,9 +79,8 @@ function createSecondaryTooltip() {
 
             secondaryTooltip.appendChild(container);
 
-
             /// Set click listeners
-            (verticalSecondaryTooltip ? container : imgButton).addEventListener("mousedown", function (e) {
+            container.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 let selectedText = selection.toString();
                 selectedText = encodeURI(selectedText);

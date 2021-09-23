@@ -1,5 +1,5 @@
 function initConfigs(shouldCreateTooltip = false, e) {
-  let userSettingsKeys = Object.keys(configs);
+  const userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
   chrome.storage.local.get(
@@ -41,6 +41,10 @@ function initConfigs(shouldCreateTooltip = false, e) {
           }
         }
 
+        /// Check for faulty values
+        if (configs.animationDuration < 0) configs.animationDuration = 0;
+        if (configs.updateRatesEveryDays < 0) configs.updateRatesEveryDays = 14;
+
         addButtonIcons = configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel';
         verticalSecondaryTooltip = configs.secondaryTooltipLayout == 'verticalLayout';
 
@@ -60,8 +64,8 @@ function initConfigs(shouldCreateTooltip = false, e) {
           showOnMapLabel = chrome.i18n.getMessage("showOnMap");
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
-          boldLabel = chrome.i18n.getMessage("boldLabel");
-          italicLabel = chrome.i18n.getMessage("italicLabel");
+          // boldLabel = chrome.i18n.getMessage("boldLabel");
+          // italicLabel = chrome.i18n.getMessage("italicLabel");
 
           if (configs.addActionButtonsForTextFields)
             initMouseListeners();
@@ -143,6 +147,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
             else loadCurrencyRatesFromMemory();
           }
         }
+        // fetchCurrencyRates();
 
         if (shouldCreateTooltip)
           createTooltip(e);
@@ -305,7 +310,7 @@ function initMouseListeners() {
 
     if (selectedText == '') { hideTooltip(); }
 
-    if (isTextFieldFocused) {
+    if (isTextFieldFocused && configs.addPasteOnlyEmptyField) {
       /// Ignore single click on text field with inputted value
       try {
         if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')

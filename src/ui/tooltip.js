@@ -243,7 +243,7 @@ function addBasicTooltipButtons(layout) {
                 else
                     tooltip.appendChild(copyButton);
 
-                if (configs.addPasteButton && !configs.addPasteOnlyEmptyField) {
+                if (configs.addPasteButton) {
                     /// Add paste button 
                     const pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button button-with-border`);
@@ -272,55 +272,6 @@ function addBasicTooltipButtons(layout) {
                     else
                         tooltip.appendChild(pasteButton);
                 }
-
-                /// support for cyrillic alphabets
-                /// source: https://stackoverflow.com/a/40503617/11381400
-                const cyrillicPattern = /^[\u0400-\u04FF]+$/;
-                if (configs.addFontFormatButtons && !cyrillicPattern.test(selection.toString().replaceAll(' ', ''))) {
-                    /// Add 'bold' button 
-                    const boldButton = document.createElement('button');
-                    boldButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                        boldButton.setAttribute('title', boldLabel);
-
-                    if (addButtonIcons)
-                        boldButton.appendChild(createImageIconNew(boldTextIcon, configs.buttonsStyle == 'onlyicon' ? '' : boldLabel));
-                    else
-                        boldButton.textContent = boldLabel;
-                    boldButton.addEventListener("mousedown", function (e) {
-                        formatSelectedTextForInput(textField, selection, 'bold')
-
-                        hideTooltip();
-                        removeSelectionOnPage();
-                    });
-                    if (configs.reverseTooltipButtonsOrder)
-                        tooltip.insertBefore(boldButton, copyButton);
-                    else
-                        tooltip.appendChild(boldButton);
-
-                    /// Add 'italic' button 
-                    const italicButton = document.createElement('button');
-                    italicButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                        italicButton.setAttribute('title', italicLabel);
-
-                    if (addButtonIcons)
-                        italicButton.appendChild(createImageIconNew(italicTextIcon, configs.buttonsStyle == 'onlyicon' ? '' : italicLabel));
-                    else
-                        italicButton.textContent = italicLabel;
-                    italicButton.style.borderRadius = lastButtonBorderRadius;
-                    italicButton.addEventListener("mousedown", function (e) {
-                        formatSelectedTextForInput(textField, selection, 'italic');
-
-                        hideTooltip();
-                        removeSelectionOnPage();
-                    });
-                    if (configs.reverseTooltipButtonsOrder)
-                        tooltip.insertBefore(italicButton, boldButton);
-                    else
-                        tooltip.appendChild(italicButton);
-                }
-
             } catch (e) { if (configs.debugMode) console.log(e) }
 
             /// Set border radius for buttons
@@ -469,18 +420,19 @@ function addContextualButtons() {
 
                 /// Rates are already locally stored (should be initially)
                 if (currencyRate !== null && currencyRate !== undefined) {
-                    if (configs.debugMode)
-                        console.log(`Found local rate for currency ${currency}`);
+                    if (configs.debugMode) {
+                        console.log(`Found rate for currency ${currency}: ${currencyRate}`);
+                        console.log('User currency is: ' + configs.convertToCurrency);
+                    }
 
                     // for (const [key, value] of Object.entries(currenciesList)) {
                     // if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                    let value = currenciesList[configs.convertToCurrency];
-
+                    const value = currenciesList[configs.convertToCurrency];
                     if (value && value['rate'] !== null && value['rate'] !== undefined) {
 
                         let rateOfDesiredCurrency = value['rate'];
-                        if (configs.debugMode)
-                            console.log(`Rate is: ${rateOfDesiredCurrency}`);
+                        // if (configs.debugMode)
+                        //     console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
                         /// Check for literal multipliers (million, billion and so on)
                         for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
@@ -488,6 +440,7 @@ function addContextualButtons() {
                         for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
 
                         let resultingRate = rateOfDesiredCurrency / currencyRate;
+                        if (configs.debugMode) console.log('conversion rate: ' + resultingRate);
                         let convertedAmount = amount * resultingRate;
 
                         if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {

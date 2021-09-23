@@ -6,6 +6,7 @@
 - Added option "Add 'Paste' button only when field is empty"
 - Set higher z-index of panels for better visibility on websites
 - Fixed dragging tooltip by arrow
+- Ditched support for textfield format buttons (italic/bold) because of bugs
 - Small fixes and improvements
 
 #3.3.3

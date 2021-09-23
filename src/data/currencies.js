@@ -38,9 +38,8 @@ const currenciesList = {
     "USD": { currencyName: "United States Dollar", currencySymbol: "$", rate: 1, currencyKeywords: ['dollar', 'доллар'] },
     "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", rate: 23054.385489 },
     "ZAR": { currencyName: "Rand", rate: 14.856969 },
-}
 
-const crypto = {
+    /// Crypto
     "ETH": { currencyName: "Ethereum", rate: 2255.465964 },
     "LTC": { currencyName: "Litecoin", rate: 117.758719 },
     "ADA": { currencyName: "Cardano", rate: 1.650264 },
@@ -49,3 +48,15 @@ const crypto = {
     "BCH": { currencyName: "BCH", rate: 370.078067 },
     "XRP": { currencyName: "XRP", rate: 0.732569 },
 }
+
+/// This list is used in server fetch method, to filter really huge response to only selected
+const cryptoCurrencies = [
+    "ETH",
+    "LTC",
+    "ADA",
+    "MIOTA",
+    "EOS",
+    "BCH",
+    "XRP",
+]
+
