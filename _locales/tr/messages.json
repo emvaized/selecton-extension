@@ -478,5 +478,9 @@
     "maxIconsInRow": {
         "message": "Satırdaki simge miktarı",
         "description": "Ayarlarda seçenek etiketi"
+    },
+    "addPasteOnlyEmptyField": {
+        "message": "'Yapıştır'ı yalnızca alan boşken ekleyin",
+        "description": "Ayarlarda seçenek etiketi"
     }
 }

@@ -113,6 +113,8 @@ function snapSelectionByWords(sel) {
             case ' ': shouldUntrimLastCh = true; break;
             case ',': shouldUntrimLastCh = true; break;
             case ')': shouldUntrimLastCh = true; break;
+            case ']': shouldUntrimLastCh = true; break;
+            case '}': shouldUntrimLastCh = true; break;
             case '"': shouldUntrimLastCh = true; break;
             case "'": shouldUntrimLastCh = true; break;
             case ':': {
@@ -196,7 +198,7 @@ function extendSelectionByWord(sel, dragHandleIndex) {
 
 function removeSelectionOnPage() {
     if (configs.removeSelectionOnActionButtonClick) {
-        var sel = window.getSelection ? window.getSelection() : document.selection;
+        const sel = window.getSelection ? window.getSelection() : document.selection;
 
         if (sel) {
             if (sel.removeAllRanges) {
@@ -205,7 +207,8 @@ function removeSelectionOnPage() {
                 sel.empty();
             }
 
-            hideDragHandles();
+            if (configs.addDragHandles)
+                hideDragHandles();
         }
     } else {
         dontShowTooltip = true;

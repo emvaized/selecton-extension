@@ -35,6 +35,10 @@
     "message": "Add 'Paste' button",
     "description": "Label for option in settings"
   },
+  "addPasteOnlyEmptyField": {
+    "message": "Add 'Paste' only when field is empty",
+    "description": "Label for option in settings"
+  },
   "addPhoneButton": {
     "message": "Add phone number button",
     "description": "Label for option in settings"

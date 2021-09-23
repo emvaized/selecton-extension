@@ -10,12 +10,12 @@ function returnTooltipRevealTransform(onEnd = true) {
 function onTooltipButtonClick(e, url) {
     hideTooltip();
     removeSelectionOnPage();
-    if (configs.addDragHandles)
-        hideDragHandles();
+    // if (configs.addDragHandles)
+    //     hideDragHandles();
 
     /// Open new tab with passed url
     try {
-        var evt = e || window.event;
+        const evt = e || window.event;
 
         if ("buttons" in evt) {
             if (evt.buttons == 1) {

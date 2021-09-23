@@ -470,5 +470,9 @@
     "maxIconsInRow": {
         "message": "Quantidade de ícones em linha",
         "description": "Rótulo para opção nas configurações"
+    },
+    "addPasteOnlyEmptyField": {
+        "message": "Adicionar 'Colar' apenas quando o campo estiver vazio",
+        "description": "Rótulo para opção nas configurações"
     }
 }

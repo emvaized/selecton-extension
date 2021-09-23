@@ -249,12 +249,10 @@ function initMouseListeners() {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
 
-    if ("buttons" in e) {
-      if (e.button == 1) {
-        selection = null;
-        hideTooltip();
-        hideDragHandles();
-      }
+    if (e.button == 1) {
+      selection = null;
+      hideTooltip();
+      hideDragHandles();
     }
   });
 

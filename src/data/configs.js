@@ -63,6 +63,7 @@ const configs = {
     'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
     'invertColorOnDarkWebsite': true,
+    'addPasteOnlyEmptyField': true,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'customSearchButtons': [

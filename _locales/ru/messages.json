@@ -482,5 +482,9 @@
     "maxIconsInRow": {
         "message": "Кол-во иконок в ряду",
         "description": "Ярлык для поля в настройках"
+    },
+    "addPasteOnlyEmptyField": {
+        "message": "Добавить 'Вставить', только если поле пустое",
+        "description": "Ярлык для опции в настройках"
     }
 }

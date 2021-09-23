@@ -474,5 +474,9 @@
     "maxIconsInRow": {
         "message": "Cantidad de iconos en fila",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "addPasteOnlyEmptyField": {
+        "message": "Agrega 'Pegar' solo cuando el campo esté vacío",
+        "description": "Etiqueta para la opción en la configuración"
     }
 }

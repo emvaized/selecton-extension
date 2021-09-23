@@ -474,5 +474,9 @@
     "maxIconsInRow": {
         "message": "Anzahl der Symbole in der Reihe",
         "description": "Label für Option in den Einstellungen"
+    },
+    "addPasteOnlyEmptyField": {
+        "message": "'Einfügen' nur hinzufügen, wenn das Feld leer ist",
+        "description": "Label für Option in den Einstellungen"
     }
 }

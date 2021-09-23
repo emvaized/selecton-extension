@@ -22,6 +22,7 @@ function createSecondaryTooltip() {
     containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
     containerPrototype.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
     containerPrototype.className = 'custom-search-image-button';
+    if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px';
     const maxIconsInRow = configs.maxIconsInRow;
 
     for (var i = 0; i < searchButtonsLength; i++) {
@@ -68,23 +69,16 @@ function createSecondaryTooltip() {
 
             } else {
                 /// No label in horizontal style
-                imgButton.style.padding = '5px 8px';
-                // container.style.height = 'max-content';
-                container.style.padding = '0px';
+                imgButton.style.padding = '3px 6.5px';
+                // container.style.padding = '0px';
                 container.appendChild(imgButton);
             }
 
-
-
-            if (!verticalSecondaryTooltip) {
-                if (i % (maxIconsInRow) == 0 && i > 0)
-                    secondaryTooltip.insertAdjacentHTML('beforeend', '<br />');
+            if (!verticalSecondaryTooltip && (i % (maxIconsInRow) == 0) && i > 0) {
+                secondaryTooltip.insertAdjacentHTML('beforeend', '<br />');
             }
 
             secondaryTooltip.appendChild(container);
-
-
-
 
 
             /// Set click listeners
@@ -214,13 +208,14 @@ function appendSecondaryTooltip() {
                 calculateEndDy();
                 secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
                 secondaryTooltip.style.opacity = 0.0;
+                secondaryTooltip.style.pointerEvents = 'none';
                 searchButton.classList.remove("hovered-tooltip-button");
 
                 setTimeout(function () {
                     if (secondaryTooltip == null) return;
 
-                    // if (isSecondaryTooltipHovered == false)
-                    // secondaryTooltip.style.transform = 'scale(0.0)';
+                    if (isSecondaryTooltipHovered == false)
+                        secondaryTooltip.style.transform = 'scale(0.0)';
                 }, 300);
             }
         }, 100);

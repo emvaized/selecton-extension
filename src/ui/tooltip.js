@@ -228,7 +228,6 @@ function addBasicTooltipButtons(layout) {
                     copyButton.appendChild(createImageIconNew(copyButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : copyLabel));
                 else
                     copyButton.textContent = copyLabel;
-                // copyButton.style.borderRadius = lastButtonBorderRadius;
 
                 copyButton.addEventListener("mousedown", function (e) {
                     try {
@@ -243,6 +242,36 @@ function addBasicTooltipButtons(layout) {
                     tooltip.insertBefore(copyButton, cutButton);
                 else
                     tooltip.appendChild(copyButton);
+
+                if (configs.addPasteButton && !configs.addPasteOnlyEmptyField) {
+                    /// Add paste button 
+                    const pasteButton = document.createElement('button');
+                    pasteButton.setAttribute('class', `selection-popup-button button-with-border`);
+                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                        pasteButton.setAttribute('title', pasteLabel);
+                    if (addButtonIcons)
+                        pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
+                    else
+                        pasteButton.textContent = pasteLabel;
+
+                    pasteButton.addEventListener("mousedown", function (e) {
+                        textField.focus();
+
+                        if (textField.getAttribute('contenteditable') !== null) {
+                            let currentClipboardContent = getCurrentClipboard();
+
+                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
+                                document.execCommand("insertHTML", false, currentClipboardContent);
+                        } else
+                            document.execCommand('paste');
+
+                        removeSelectionOnPage();
+                    });
+                    if (configs.reverseTooltipButtonsOrder)
+                        tooltip.insertBefore(pasteButton, copyButton);
+                    else
+                        tooltip.appendChild(pasteButton);
+                }
 
                 /// support for cyrillic alphabets
                 /// source: https://stackoverflow.com/a/40503617/11381400
@@ -301,9 +330,6 @@ function addBasicTooltipButtons(layout) {
         } else {
             if (configs.addPasteButton)
                 try {
-                    // if (tooltip != null)
-                    //     hideTooltip();
-
                     /// Add only paste button 
                     let pasteButton = document.createElement('button');
                     pasteButton.setAttribute('class', `selection-popup-button`);
@@ -318,7 +344,6 @@ function addBasicTooltipButtons(layout) {
                         pasteButton.textContent = pasteLabel;
                     pasteButton.addEventListener("mousedown", function (e) {
                         textField.focus();
-                        // document.execCommand('paste');
 
                         if (textField.getAttribute('contenteditable') !== null) {
                             let currentClipboardContent = getCurrentClipboard();
@@ -338,8 +363,12 @@ function addBasicTooltipButtons(layout) {
         /// Add search button
         searchButton = document.createElement('button');
         searchButton.setAttribute('class', 'selection-popup-button');
-        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-            searchButton.setAttribute('title', searchLabel);
+
+        // if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+        if (configs.showButtonLabelOnHover)
+            // searchButton.setAttribute('title', searchLabel + ` (${configs.preferredSearchEngine})`);
+            // else
+            searchButton.setAttribute('title', configs.preferredSearchEngine);
 
         if (addButtonIcons)
             searchButton.appendChild(createImageIconNew(searchButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : searchLabel));
@@ -395,14 +424,19 @@ function addContextualButtons() {
 
             let match = false;
 
-            for (const [key, value] of Object.entries(currenciesList)) {
+            const keys = Object.keys(currenciesList);
+            for (let i = 0, l = keys.length; i < l; i++) {
+                let key = keys[i];
+                let value = currenciesList[key];
+
+                // for (const [key, value] of Object.entries(currenciesList)) {
                 if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {
-                    var currencyKeywords = value["currencyKeywords"];
-                    if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords !== [])
-                        for (i in currencyKeywords) {
+                    let currencyKeywords = value["currencyKeywords"];
+                    if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords.length !== 0)
+                        for (let i, l = currencyKeywords.length; i < l; i++) {
                             if (loweredSelectedText.includes(currencyKeywords[i])) {
                                 if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
                                 match = true;
@@ -857,13 +891,16 @@ function addContextualButtons() {
 
             let convertedTime;
             let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
+            let timeWord;
+            let marker;
+
             for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
-                let marker = timeZoneKeywordsKeys[i];
+                marker = timeZoneKeywordsKeys[i];
 
                 if (textToProccess.includes(' ' + marker)) {
                     let words = textToProccess.trim().split(' ');
 
-                    let timeWord;
+
                     for (i in words) {
                         let word = words[i];
 
