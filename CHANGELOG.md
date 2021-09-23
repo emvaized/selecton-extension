@@ -6,6 +6,7 @@
 - Added option "Add 'Paste' button only when field is empty"
 - Set higher z-index for better visibility on websites
 - Fixed dragging tooltip by arrow
+- Small fixes and improvements
 
 #3.3.3
 - Implemented new option "Invert color on dark page" + custom background color on dark pages

@@ -174,9 +174,7 @@ function updateDisabledOptions() {
     document.querySelector("#dontSnapTextfieldSelection").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#secondaryTooltipLayout").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#wordSnappingBlacklist").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
-    document.querySelector("#maxIconsInRow").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
-    document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked ? 'visible-option' : 'hidden-option';
+    document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked && document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addFontFormatButtons").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addPasteButton").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
@@ -190,6 +188,8 @@ function updateDisabledOptions() {
     document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#showButtonLabelOnHover").parentNode.parentNode.className = document.querySelector("#buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#tooltipInvertedBackground").parentNode.parentNode.className = document.querySelector("#invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
+    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
+    document.querySelector("#maxIconsInRow").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
 }
 
 function setCollapsibleHeaders() {

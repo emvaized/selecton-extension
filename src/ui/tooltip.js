@@ -424,19 +424,19 @@ function addContextualButtons() {
 
             let match = false;
 
-            const keys = Object.keys(currenciesList);
-            for (let i = 0, l = keys.length; i < l; i++) {
-                let key = keys[i];
-                let value = currenciesList[key];
+            // const keys = Object.keys(currenciesList);
+            // for (let i = 0, l = keys.length; i < l; i++) {
+            //     let key = keys[i];
+            //     let value = currenciesList[key];
 
-                // for (const [key, value] of Object.entries(currenciesList)) {
+            for (const [key, value] of Object.entries(currenciesList)) {
                 if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {
                     let currencyKeywords = value["currencyKeywords"];
-                    if (currencyKeywords !== null && currencyKeywords !== undefined && currencyKeywords.length !== 0)
-                        for (let i, l = currencyKeywords.length; i < l; i++) {
+                    if (currencyKeywords !== null && currencyKeywords !== undefined)
+                        for (i in currencyKeywords) {
                             if (loweredSelectedText.includes(currencyKeywords[i])) {
                                 if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
                                 match = true;
@@ -451,7 +451,7 @@ function addContextualButtons() {
 
                     /// Special handling for prices where coma separates fractional digits instead of thousandths
                     if (selectedText.includes(',')) {
-                        var parts = selectedText.split(',');
+                        let parts = selectedText.split(',');
                         if (parts.length == 2) {
                             if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
                                 selectedText = selectedText.replaceAll(',', '.');
@@ -689,40 +689,44 @@ function addContextualButtons() {
 
         /// Do simple math calculations
         if (numberToConvert == null && configs.performSimpleMathOperations && selectedText[0] !== '+' && !selectedText.includes('{')) {
-            if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('/') || selectedText.includes('^'))
+            if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('^'))
                 try {
-                    var calculatedExpression = calculateString(selectedText.trim().replaceAll(' ', ''));
-                    if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
+                    let numbersFromString = selectedText.match(/[+-]?\d+(\.\d)?/g);
 
-                        let number;
-                        let numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
-                        number = numbersArray[0];
+                    if (numbersFromString != null && numbersFromString.length > 0) {
+                        let calculatedExpression = calculateString(selectedText.replaceAll(' ', ''));
+                        if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
-                        if (number !== null) {
-                            let interactiveButton = document.createElement('button');
-                            interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                            if (configs.showUnconvertedValue)
-                                interactiveButton.textContent = selectedText + ' →';
+                            let number;
+                            let numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
+                            number = numbersArray[0];
 
-                            let converted = document.createElement('span');
-                            converted.textContent = ` ${calculatedExpression}`;
-                            converted.setAttribute('style', `color: ${secondaryColor}`);
-                            interactiveButton.appendChild(converted);
+                            if (number !== null) {
+                                let interactiveButton = document.createElement('button');
+                                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
+                                if (configs.showUnconvertedValue)
+                                    interactiveButton.textContent = selectedText + ' →';
 
-                            interactiveButton.addEventListener("mousedown", function (e) {
-                                let url = returnSearchUrl(selectedText.replaceAll('+', '%2B'));
-                                onTooltipButtonClick(e, url);
-                            });
+                                let converted = document.createElement('span');
+                                converted.textContent = ` ${calculatedExpression}`;
+                                converted.setAttribute('style', `color: ${secondaryColor}`);
+                                interactiveButton.appendChild(converted);
 
-                            if (configs.reverseTooltipButtonsOrder)
-                                tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                            else
-                                tooltip.appendChild(interactiveButton);
-                            try {
-                                tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                            } catch (e) {
-                                if (configs.debugMode)
-                                    console.log(e);
+                                interactiveButton.addEventListener("mousedown", function (e) {
+                                    let url = returnSearchUrl(selectedText.replaceAll('+', '%2B'));
+                                    onTooltipButtonClick(e, url);
+                                });
+
+                                if (configs.reverseTooltipButtonsOrder)
+                                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                                else
+                                    tooltip.appendChild(interactiveButton);
+                                try {
+                                    tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
+                                } catch (e) {
+                                    if (configs.debugMode)
+                                        console.log(e);
+                                }
                             }
                         }
                     }

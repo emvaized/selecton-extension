@@ -69,7 +69,7 @@ function createSecondaryTooltip() {
 
             } else {
                 /// No label in horizontal style
-                imgButton.style.padding = '3px 6.5px';
+                imgButton.style.padding = '3px 6px';
                 // container.style.padding = '0px';
                 container.appendChild(imgButton);
             }

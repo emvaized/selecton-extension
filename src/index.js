@@ -63,10 +63,10 @@ function initConfigs(shouldCreateTooltip = false, e) {
           boldLabel = chrome.i18n.getMessage("boldLabel");
           italicLabel = chrome.i18n.getMessage("italicLabel");
 
-          // if (configs.addActionButtonsForTextFields)
-          initMouseListeners();
-          // else
-          //   document.addEventListener('selectionchange', selectionChangeInitListener);
+          if (configs.addActionButtonsForTextFields)
+            initMouseListeners();
+          else
+            document.addEventListener('selectionchange', selectionChangeInitListener);
 
           configsWereLoaded = true;
         }
