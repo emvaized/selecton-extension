@@ -7,7 +7,6 @@
 - Set higher z-index for panels for better visibility on websites
 - Fixed dragging tooltip by arrow
 - Added support for crypto currencies
-- Ditched support for textfield format buttons (italic/bold) because of bugs
 - Small fixes and improvements
 
 #3.3.3

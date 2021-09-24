@@ -43,7 +43,6 @@ async function fetchCurrencyRates() {
 
         if (configs.debugMode) console.log('Fetched regular currencies successfully');
 
-
         /// Fetch crypto currencies
         urlToFetch = urlToLoadCryptoCurrencies;
         const listOfParams = cryptoCurrencies.join(',');

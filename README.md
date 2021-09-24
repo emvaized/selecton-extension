@@ -3,9 +3,9 @@
 Get customizable pop-up with action buttons on text selection!
 * Copy or search any text in one click - especially useful for laptops
 * Customizable appearance for tooltip and custom text selection color
-* Currency converter (supports 30+ currencies)
+* Currency converter (supports 30+ currencies & 10+ crypto currencies)
 * Basic units converter (metric/imperial) and timezones conversion
-* Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map' and more 
+* Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map', CSS color display and more 
 * Enable snapping selection by words, so you'll never loose that last letter again
 * Selection handles, which allow to quickly edit text selection
 * Live translation of the selected text (up to 3 words)
@@ -21,14 +21,15 @@ ____
 
 ### Currency converter
 *Note*:
-In order to make extension more autonomous, currency rates get updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation.
-Rates are fetched from [exchangerate.host](https://exchangerate.host/#/)
+In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. 
+But you could always decrease update interval in extension's settings if needed.
+
+Currency rates are fetched from [exchangerate.host](https://exchangerate.host/#/)
 
 ```
 AUD — Australian Dollar
 BGN — Bulgarian Lev
 BRL — Brazilian real
-BTC — Bitcoin
 CAD — Canadian Dollar
 CHF — Swiss Franc
 CNY — Chinese Yuan
@@ -57,6 +58,20 @@ UAH — Ukrainian Hryvnia
 USD — United States Dollar
 VND — Vietnamese Dong
 ZAR — Rand
+
+Crypto:
+BTC — Bitcoin
+ETH — Etherium
+LTC — Litecoin
+ADA — Cardano
+BCH — Bitcoin Cash
+XRP — Ripple
+ZEC — Zcash
+XMR — Monero
+ZCL — ZClassic
+DOGE — Dogecoin
+IOTA (MIOTA)
+EOS
 ```
 ____
 

@@ -320,7 +320,6 @@ function initMouseListeners() {
           isTextFieldFocused = false;
         else
           if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
-
       } catch (e) { console.log(e); }
     }
   }

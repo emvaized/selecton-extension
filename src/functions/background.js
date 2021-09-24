@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener(
                 let json = await res.json();
                 // sendResponse(json);
                 sendResponse({ complete: true, value: json });
-            })
+            }).catch((err) => sendResponse({ complete: false }))
             return true;
         }
     }
