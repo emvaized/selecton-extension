@@ -1,3 +1,6 @@
+#3.3.5
+- Fixed dublicated Translate button issue
+
 #3.3.4
 - Implemented 'amount of icons in row' config
 - Improved text snapping to trim some symbols in the end of selection (,:")

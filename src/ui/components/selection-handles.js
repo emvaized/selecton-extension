@@ -201,9 +201,8 @@ function addDragHandle(dragHandleIndex) {
                         extendSelectionByWord(windowSelection, dragHandleIndex)
                     }
 
-
-                    if (configs.applyConfigsImmediately == false)
-                        createTooltip(e);
+                    // if (configs.applyConfigsImmediately == false)
+                    //     createTooltip(e);
 
                     setTimeout(function () {
                         var selStartDimensions = getSelectionCoordinates(true);
