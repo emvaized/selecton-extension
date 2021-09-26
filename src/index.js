@@ -144,7 +144,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
             dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
 
-            // loadCurrencyRatesFromMemory();
             if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
             else loadCurrencyRatesFromMemory();
           }

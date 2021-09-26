@@ -49,7 +49,20 @@ async function fetchCurrencyRates() {
         urlToFetch += '&tsyms=' + listOfParams;
 
         try {
-            await fetchCryptoRates(urlToFetch, ratesObject);
+            // await fetchCryptoRates(urlToFetch, ratesObject);
+            const cryptoResponse = await fetch(urlToFetch);
+            if (!cryptoResponse.ok) throw new Error(`An error has occured: ${cryptoResponse.status}`);
+            const cryptoVal = await cryptoResponse.json();
+
+            for (let i = 0, l = cryptoCurrencies.length; i < l; i++) {
+                try {
+                    let currency = cryptoCurrencies[i];
+                    if (cryptoVal[currency] == null || cryptoVal[currency] == undefined) continue;
+                    currenciesList[currency]['rate'] = cryptoVal[currency];
+                    ratesObject[currency] = cryptoVal[currency];
+                } catch (e) { console.log(e); }
+            }
+
             if (configs.debugMode) console.log('Fetched crypto currencies successfully');
         } catch (e) { if (configs.debugMode) console.log('Failed to fetch crypto currencies'); }
 
@@ -65,7 +78,7 @@ async function fetchCurrencyRates() {
         if (configs.debugMode) {
             console.log('Updated currency rates from network:');
             console.log(ratesObject);
-            console.log('Saved date of last fetch:');
+            console.log('Saved date of last rates fetch:');
             console.log(date);
         }
 
@@ -145,30 +158,5 @@ function loadCurrencyRatesFromMemory() {
             console.log('Selecton currency rates loaded from memory:');
             console.log(loadedRates);
         }
-    });
-}
-
-/// Promise wrapper for chrome.tabs.sendMessage
-function fetchCryptoRates(url, ratesObject) {
-    return new Promise((resolve, reject) => {
-        chrome.runtime.sendMessage({ type: 'selecton-fetch-url', url: url }, (response) => {
-            if (response.complete) {
-                const val = response.value;
-                if (val == null || val == undefined || val == {}) reject('Selecton failed to fetch crypto currencies');
-
-                for (let i = 0, l = cryptoCurrencies.length; i < l; i++) {
-                    try {
-                        let currency = cryptoCurrencies[i];
-                        if (val[currency] == null || val[currency] == undefined) continue;
-                        currenciesList[currency]['rate'] = val[currency];
-                        ratesObject[currency] = val[currency];
-                    } catch (e) { console.log(e); }
-                }
-
-                resolve();
-            } else {
-                reject('Selecton failed to fetch crypto currencies');
-            }
-        });
     });
 }

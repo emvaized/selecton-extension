@@ -15,14 +15,5 @@ chrome.runtime.onMessage.addListener(
             );
             return true;
         }
-
-        else if (request.type == 'selecton-fetch-url') {
-            fetch(request.url).then(async function (res) {
-                let json = await res.json();
-                // sendResponse(json);
-                sendResponse({ complete: true, value: json });
-            }).catch((err) => sendResponse({ complete: false }))
-            return true;
-        }
     }
 );

@@ -73,6 +73,7 @@
   "permissions": [
     "https://translate.googleapis.com/*",
     "https://api.exchangerate.host/*",
+    "https://min-api.cryptocompare.com/data/*",
     "storage",
     "clipboardRead"
   ],
