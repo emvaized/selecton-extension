@@ -128,8 +128,15 @@ function setTranslatedLabels() {
     document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
 
-    document.querySelector("#applyConfigsImmediately").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
+
+    try {
+        const span = document.createElement('span');
+        span.style.opacity = 0.5;
+        const disableForBetterPerformanceLabel = chrome.i18n.getMessage("disableForBetterPerformance");
+        span.innerHTML = '<br/>' + disableForBetterPerformanceLabel[0].toLowerCase() + disableForBetterPerformanceLabel.substring(1, disableForBetterPerformanceLabel.length);
+        document.querySelector("#applyConfigsImmediately").parentNode.appendChild(span);
+    } catch (e) { }
 
     /// "All changes saved automatically" block
     // var infoCircle = document.createElement('div');

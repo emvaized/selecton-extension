@@ -4,6 +4,7 @@
 - Improved dark background recognition on some websites
 - Attempt to fix incompatibilities with older browsers
 - Improved 'amount of icons in row' search tooltip config
+- Small improvements for options page
 
 #3.3.4
 - Implemented 'amount of icons in row' config

@@ -1,11 +1,11 @@
 function setDragHandles(tooltipOnBottom) {
     /// Hide existing drag handles
     //hideDragHandles();
+
     /// Dont add drag handles if they are already added
     let existingDragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
     if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
 
-    //addDragHandle(0, tooltipOnBottom);
     addDragHandle(0);
     addDragHandle(1);
 }
