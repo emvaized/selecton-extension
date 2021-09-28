@@ -24,11 +24,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
           setTextSelectionColor();
 
         /// Assign loaded values to config variable
-        // Object.keys(configs).forEach(function (key) {
-        //   if (loadedConfigs[key] !== null && loadedConfigs[key] !== undefined)
-        //     configs[key] = loadedConfigs[key];
-        // });
-
         const keys = Object.keys(configs);
         for (let i = 0, l = keys.length; i < l; i++) {
           try {
@@ -73,6 +68,13 @@ function initConfigs(shouldCreateTooltip = false, e) {
             document.addEventListener('selectionchange', selectionChangeInitListener);
 
           configsWereLoaded = true;
+
+          /// Fix for older browsers
+          if (!String.prototype.replaceAll) {
+            String.prototype.replaceAll = function (find, replace) {
+              return this.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+            };
+          }
         }
 
         /// Check page to have dark background

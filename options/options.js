@@ -18,10 +18,12 @@ function loadSettings() {
             })
     });
 
-    // var ids = [];
-    // keys.forEach(function (key) {
-    //     ids.push('#' + key);
-    // });
+    /// Fix for older browsers
+    if (!String.prototype.replaceAll) {
+        String.prototype.replaceAll = function (search, replacement) {
+            return this.replace(new RegExp(search, 'g'), replacement);
+        };
+    }
 
     /// Load configs
     chrome.storage.local.get(keys, setInputs);
@@ -618,7 +620,6 @@ function resetSettings() {
         }
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", loadSettings);
 

@@ -68,16 +68,15 @@ function createSecondaryTooltip() {
                     container.appendChild(labelSpan);
             } else {
                 /// No label in horizontal style
-                imgButton.style.padding = '3px 6px';
-                // container.style.padding = '0px';
+                imgButton.style.margin = '3px 6px';
                 container.appendChild(imgButton);
             }
 
-            if (!verticalSecondaryTooltip && (i % (maxIconsInRow) == 0) && i > 0) {
+            secondaryTooltip.appendChild(container);
+
+            if (!verticalSecondaryTooltip && (i % (maxIconsInRow) === 0) && i > 0) {
                 secondaryTooltip.insertAdjacentHTML('beforeend', '<br />');
             }
-
-            secondaryTooltip.appendChild(container);
 
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
