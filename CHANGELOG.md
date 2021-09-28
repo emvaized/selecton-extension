@@ -1,3 +1,6 @@
+#3.3.6
+- Improved dark background recognition on some websites
+
 #3.3.5
 - Fixed dublicated Translate button issue
 - Made cryptocompare.com permission explicit in manifest
