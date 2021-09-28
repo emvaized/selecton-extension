@@ -133,6 +133,7 @@ function setTranslatedLabels() {
     try {
         const span = document.createElement('span');
         span.style.opacity = 0.5;
+        span.id = 'applyConfigsImmediatelyPerformanceTip';
         const disableForBetterPerformanceLabel = chrome.i18n.getMessage("disableForBetterPerformance");
         span.innerHTML = '<br/>' + disableForBetterPerformanceLabel[0].toLowerCase() + disableForBetterPerformanceLabel.substring(1, disableForBetterPerformanceLabel.length);
         document.querySelector("#applyConfigsImmediately").parentNode.appendChild(span);
@@ -199,6 +200,7 @@ function updateDisabledOptions() {
     document.querySelector("#tooltipInvertedBackground").parentNode.parentNode.className = document.querySelector("#invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
     document.querySelector("#maxIconsInRow").parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'visible-option';
+    document.querySelector("#applyConfigsImmediatelyPerformanceTip").className = document.querySelector("#applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
 }
 
 function setCollapsibleHeaders() {

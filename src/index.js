@@ -226,48 +226,6 @@ function setTextSelectionColor() {
 }
 
 function initMouseListeners() {
-  try {
-    window.addEventListener('popstate', function () {
-      hideTooltip();
-      hideDragHandles();
-      if (configs.debugMode) console.log('Selecton tooltip was hidden on url change');
-    });
-  } catch (error) {
-    if (configs.debugMode)
-      console.log(error);
-  }
-
-  /// Hide tooltip on scroll
-  document.addEventListener("scroll", function (e) {
-    if (tooltipIsShown == false) return;
-
-    hideTooltip();
-    hideDragHandles(false);
-    recreateTooltip();
-  });
-
-  /// Hide tooltip on window resize
-  window.addEventListener('resize', function (e) {
-    if (tooltipIsShown == false) return;
-
-    if (configs.debugMode)
-      console.log('hiding all Selecton overlays on window resize...');
-
-    hideTooltip(false);
-    hideDragHandles(false);
-    recreateTooltip();
-  });
-
-  /// Hide tooltip when any key is pressed
-  if (configs.hideOnKeypress)
-    document.addEventListener("keydown", function (e) {
-      if (tooltipIsShown == false) return;
-      if (e.key == 'Control') return;
-      if (e.shiftKey) return;
-
-      hideTooltip();
-      hideDragHandles();
-    });
 
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip || isDraggingDragHandle) return;
@@ -347,6 +305,49 @@ function initMouseListeners() {
     else
       createTooltip(e);
   }
+
+  try {
+    window.addEventListener('popstate', function () {
+      hideTooltip();
+      hideDragHandles();
+      if (configs.debugMode) console.log('Selecton tooltip was hidden on url change');
+    });
+  } catch (error) {
+    if (configs.debugMode)
+      console.log(error);
+  }
+
+  /// Hide tooltip on scroll
+  document.addEventListener("scroll", function (e) {
+    if (tooltipIsShown == false) return;
+
+    hideTooltip();
+    hideDragHandles(false);
+    recreateTooltip();
+  });
+
+  /// Hide tooltip on window resize
+  window.addEventListener('resize', function (e) {
+    if (tooltipIsShown == false) return;
+
+    if (configs.debugMode)
+      console.log('hiding all Selecton overlays on window resize...');
+
+    hideTooltip(false);
+    hideDragHandles(false);
+    recreateTooltip();
+  });
+
+  /// Hide tooltip when any key is pressed
+  if (configs.hideOnKeypress)
+    document.addEventListener("keydown", function (e) {
+      if (tooltipIsShown == false) return;
+      if (e.key == 'Control') return;
+      if (e.shiftKey) return;
+
+      hideTooltip();
+      hideDragHandles();
+    });
 
   if (configs.debugMode)
     console.log('Selection initiated mouse listeners');
