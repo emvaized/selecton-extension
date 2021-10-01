@@ -3,8 +3,8 @@ function setDragHandles(tooltipOnBottom) {
     //hideDragHandles();
 
     /// Dont add drag handles if they are already added
-    let existingDragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
-    if (existingDragHandles !== null && existingDragHandles !== undefined && existingDragHandles.length > 0) return;
+    let existingDragHandle = document.querySelector('.selection-tooltip-draghandle');
+    if (existingDragHandle !== null && existingDragHandle !== undefined) return;
 
     addDragHandle(0);
     addDragHandle(1);
@@ -17,17 +17,13 @@ function addDragHandle(dragHandleIndex) {
 
     if (selection == null || selection == undefined) return;
 
-    var lineWidth = 2.25;
-    var circleHeight = 12.5;
-    var verticalOffsetCorrection = -1.5;
+    const lineWidth = 2.25, circleHeight = 12.5, verticalOffsetCorrection = -1.5;
 
     /// Try to adapt handle height to selected text's line-height
     try {
         const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
-
-        if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px')) {
+        if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px'))
             selectionHandleLineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
-        }
 
     } catch (e) {
         if (configs.debugMode)
@@ -165,7 +161,6 @@ function addDragHandle(dragHandleIndex) {
                                 console.log(e);
                             }
                         }
-
                     }
                 } catch (e) {
                     if (configs.debugMode) {
