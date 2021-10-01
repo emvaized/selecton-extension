@@ -96,7 +96,7 @@
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
   all: revert;
-  transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: top var(--selecton-anim-duration) ease-in-out, opacity var(--selecton-anim-duration) ease-in-out;
   opacity: 0.0;
   left: 0px;
   z-index: 99999 !important;

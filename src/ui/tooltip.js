@@ -6,7 +6,7 @@ function createTooltip(e) {
             function () {
                 if (e !== undefined && e !== null && e.button !== 0) return;
                 lastMouseUpEvent = e;
-                //hideTooltip();
+                // hideTooltip();
 
                 if (configs.snapSelectionToWord) {
                     if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
@@ -16,18 +16,9 @@ function createTooltip(e) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected due to pressed CTRL key');
                     } else {
-                        if (document.querySelector('.selection-tooltip-draghandle') == null) {
-                            let domainIsBlacklistedForSnapping = false;
-                            if (configs.wordSnappingBlacklist !== null && configs.wordSnappingBlacklist !== undefined && configs.wordSnappingBlacklist !== '')
-                                configs.wordSnappingBlacklist.split(',').forEach(function (domain) {
-                                    if (window.location.href.includes(domain.trim())) {
-                                        domainIsBlacklistedForSnapping = true;
-                                    }
-                                });
-
+                        if (isDraggingDragHandle == false) /// dont snap if selection is modified by drag handle
                             if (domainIsBlacklistedForSnapping == false && e.detail < 3 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                                 snapSelectionByWords(selection);
-                        }
                     }
                 }
 
@@ -53,8 +44,13 @@ function createTooltip(e) {
                     return;
                 }
 
+                /// Hide previous tooltip if exists
                 if (tooltip !== null && tooltip !== undefined) hideTooltip();
 
+                /// Check text selection again
+                /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
+                selection = window.getSelection();
+                selectedText = selection.toString().trim();
 
                 if (selectedText == '') {
                     hideDragHandles();
@@ -63,7 +59,7 @@ function createTooltip(e) {
 
                 setUpNewTooltip();
 
-                if (dontShowTooltip == false && selectedText !== null && selectedText !== '' && tooltip.style.opacity !== 0.0) {
+                if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
                     addContextualButtons();
 
                     setTimeout(function () {
@@ -76,6 +72,7 @@ function createTooltip(e) {
                         calculateTooltipPosition(e);
                     }, 1);
                 } else hideTooltip();
+
             }, 1
         );
 }
@@ -1032,7 +1029,7 @@ function addContextualButtons() {
 }
 
 function calculateTooltipPosition(e) {
-    var selStartDimensions = getSelectionCoordinates(true);
+    const selStartDimensions = getSelectionCoordinates(true);
     tooltipOnBottom = false;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
@@ -1080,12 +1077,12 @@ function calculateTooltipPosition(e) {
         }
 
         /// Calculating DX
-        var resultingDx;
+        let resultingDx;
 
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
-            var selEndDimensions = getSelectionCoordinates(false);
-            var delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
+            const selEndDimensions = getSelectionCoordinates(false);
+            const delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
 
             if (selEndDimensions.dx > selStartDimensions.dx)
                 resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
@@ -1098,7 +1095,7 @@ function calculateTooltipPosition(e) {
 
             /// Fall back to old approach - place tooltip in horizontal center selection rect,
             /// which may be in fact bigger than visible selection
-            var selDimensions = getSelectionRectDimensions();
+            const selDimensions = getSelectionRectDimensions();
             resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
         }
 

@@ -107,6 +107,7 @@ function addDragHandle(dragHandleIndex) {
 
             document.body.style.cursor = 'grabbing';
             circleDiv.style.cursor = 'grabbing';
+            dragHandle.style.transition = '';
 
             document.onmousemove = function (e) {
                 try {
@@ -120,15 +121,14 @@ function addDragHandle(dragHandleIndex) {
                     // circleDiv.style.bottom = `${-lastWordLineHeight - 1}px;`;
 
                     /// Change cursor shape
-                    document.body.style.cursor = 'grabbing';
-                    circleDiv.style.cursor = 'grabbing';
+                    // document.body.style.cursor = 'grabbing';
+                    // circleDiv.style.cursor = 'grabbing';
 
                     /// Calculate deltas
-                    var deltaXFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dx - e.clientX) : (selEndDimensions.dx - e.clientX);
-                    var deltaYFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dy - e.clientY) : (e.clientY - selEndDimensions.dy);
+                    const deltaXFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dx - e.clientX) : (selEndDimensions.dx - e.clientX);
+                    const deltaYFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dy - e.clientY) : (e.clientY - selEndDimensions.dy);
 
                     /// Move drag handle
-                    dragHandle.style.transition = '';
                     if (dragHandleIndex == 0) {
                         dragHandle.style.transform = `translate(${e.clientX}px, ${selStartDimensions.dy - selectionHandleLineHeight - deltaYFromInitial + verticalOffsetCorrection}px)`;
                     } else {
@@ -137,7 +137,6 @@ function addDragHandle(dragHandleIndex) {
 
                     /// Create selection from rect
                     if (currentWindowSelection !== null && currentWindowSelection !== undefined && currentWindowSelection !== '') {
-
                         try {
                             if (configs.debugMode)
                                 console.log(`Creating selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
@@ -145,7 +144,7 @@ function addDragHandle(dragHandleIndex) {
                             if (dragHandleIndex == 0) {
                                 /// Left handle
                                 createSelectionFromPoint(
-                                    selEndDimensions.dx - 2, /// DX end of selection (anchorX)
+                                    selEndDimensions.dx - 2, /// DX end of selection (anchorX) - needs to be < than selEndDimensions.dx to work
                                     selEndDimensions.dy + (selectionHandleLineHeight / 2), /// DY end of selection (anchorY)
                                     selStartDimensions.dx - deltaXFromInitial - 0.05, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy - deltaYFromInitial - (selectionHandleLineHeight), /// DY beginning of selection (focusY)
@@ -153,7 +152,7 @@ function addDragHandle(dragHandleIndex) {
                             } else {
                                 /// Right handle
                                 createSelectionFromPoint(
-                                    selStartDimensions.dx + 2, /// DX beginning of selection (focusX)
+                                    selStartDimensions.dx + 3, /// DX beginning of selection (focusX) - needs to be > than selStartDimensions.dx to work
                                     selStartDimensions.dy,  /// DY beginning of selection (focusY)
                                     selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
                                     selEndDimensions.dy + deltaYFromInitial - (dragHandleIsReverted ? - (selectionHandleLineHeight / 2) : selectionHandleLineHeight / 2),  /// DY end of selection (anchorY)
@@ -180,18 +179,13 @@ function addDragHandle(dragHandleIndex) {
                 e.preventDefault();
                 document.onmousemove = null;
                 document.onmouseup = null;
-                isDraggingDragHandle = false;
+                // isDraggingDragHandle = false;
                 document.body.style.cursor = 'unset';
                 circleDiv.style.cursor = 'grab';
 
                 /// If selection not changed (single click on handle), increase selection by one word
                 setTimeout(function () {
-                    var windowSelection;
-                    if (window.getSelection) {
-                        windowSelection = window.getSelection();
-                    } else if (document.selection) {
-                        windowSelection = document.selection.createRange();
-                    }
+                    let windowSelection = window.getSelection();
 
                     /// Single click to expand selection by one word
                     if (windowSelection.toString() == currentWindowSelection.toString()) {
@@ -201,12 +195,15 @@ function addDragHandle(dragHandleIndex) {
                         extendSelectionByWord(windowSelection, dragHandleIndex)
                     }
 
+                    /// old fix - left it here in case needed in future
                     // if (configs.applyConfigsImmediately == false)
                     //     createTooltip(e);
 
                     setTimeout(function () {
-                        var selStartDimensions = getSelectionCoordinates(true);
-                        var selEndDimensions = getSelectionCoordinates(false);
+                        isDraggingDragHandle = false;
+
+                        let selStartDimensions = getSelectionCoordinates(true);
+                        let selEndDimensions = getSelectionCoordinates(false);
 
                         if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
                         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
@@ -238,6 +235,7 @@ function addDragHandle(dragHandleIndex) {
                             dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
                         }, 200);
                     }, 2);
+
                 }, 1);
 
 

@@ -69,7 +69,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
           configsWereLoaded = true;
 
-          /// Fix for older browsers
+          /// Fix for older browsers which don't support String.replaceAll (used here in a lot of places)
           if (!String.prototype.replaceAll) {
             String.prototype.replaceAll = function (find, replace) {
               return this.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
@@ -119,7 +119,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
         document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
 
         /// pop-up innder and button inner paddings
-        // document.body.style.setProperty('--selecton-tooltip-inner-padding', addButtonIcons ? '2px 2px 3px' : '2px');
         document.body.style.setProperty('--selecton-tooltip-inner-padding', '2px');
         document.body.style.setProperty('--selecton-button-padding', addButtonIcons ? '3px 10px' : '4px 10px');
 
@@ -129,10 +128,19 @@ function initConfigs(shouldCreateTooltip = false, e) {
         /// search tooltip icon size
         document.body.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
 
+        /// Anim duration
+        document.body.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
+
         /// Check browser locales on first launch (language and metric system)
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
           try { setDefaultLocales(); } catch (e) { }
 
+        /// Check if word snapping is allowed on page
+        domainIsBlacklistedForSnapping = false;
+        if (configs.snapSelectionToWord && configs.wordSnappingBlacklist !== null && configs.wordSnappingBlacklist !== undefined && configs.wordSnappingBlacklist !== '')
+          configs.wordSnappingBlacklist.split(',').forEach(function (domain) {
+            if (window.location.href.includes(domain.trim())) domainIsBlacklistedForSnapping = true;
+          });
 
         /// Fetch or load currency rates from storage
         if (configs.convertCurrencies) {
@@ -150,7 +158,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
             else loadCurrencyRatesFromMemory();
           }
         }
-        // fetchCurrencyRates(); /// enforce fetch for testing
+        // fetchCurrencyRates(); /// enforce rates fetch for testing
 
         if (shouldCreateTooltip)
           createTooltip(e);
@@ -195,7 +203,6 @@ function checkPageToHaveDarkBg() {
 
   if (!pageBgColor.includes('(')) return isDarkPage;
   pageBgColor = pageBgColor.replace('rgb(', '').replace('rgba(', '').replace(')', '').replace(' ', '').split(',');
-  console.log(pageBgColor);
 
   let colorLuminance =
     (0.299 * pageBgColor[0] + 0.587 * pageBgColor[1] + 0.114 * pageBgColor[2]) / 255;
@@ -226,7 +233,6 @@ function setTextSelectionColor() {
 }
 
 function initMouseListeners() {
-
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
@@ -252,18 +258,18 @@ function initMouseListeners() {
       return;
     }
 
-    if (window.getSelection) selection = window.getSelection();
-    else if (document.selection) selection = document.selection.createRange();
-
+    /// Get page selection
+    selection = window.getSelection();
     selectedText = selection.toString().trim();
 
+    /// Check if clicked on text field
     if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField();
 
     if (selectedText.length > 0) {
       /// create tooltip anyway
       initTooltip(e);
     } else {
-      /// check if textfield is focused
+      /// no selection on page - check if textfield is focused
       if (configs.addActionButtonsForTextFields && isTextFieldFocused) initTooltip(e);
     }
   });
@@ -352,7 +358,6 @@ function initMouseListeners() {
   if (configs.debugMode)
     console.log('Selection initiated mouse listeners');
 }
-
 
 
 function recreateTooltip() {

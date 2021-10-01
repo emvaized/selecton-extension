@@ -115,6 +115,7 @@ function snapSelectionByWords(sel) {
             case ')': shouldUntrimLastCh = true; break;
             case ']': shouldUntrimLastCh = true; break;
             case '}': shouldUntrimLastCh = true; break;
+            case '>': shouldUntrimLastCh = true; break;
             case '"': shouldUntrimLastCh = true; break;
             case "'": shouldUntrimLastCh = true; break;
             case ':': {
@@ -129,13 +130,13 @@ function snapSelectionByWords(sel) {
 }
 
 function getSelectionRectDimensions() {
-    var sel = document.selection, range;
-    var width = 0, height = 0;
-    var dx = 0, dy = 0;
+    let sel = document.selection, range;
+    let width = 0, height = 0;
+    let dx = 0, dy = 0;
     if (sel) {
         if (sel.type != "Control") {
             range = sel.createRange();
-            var rect = range.getBoundingClientRect();
+            const rect = range.getBoundingClientRect();
             width = range.boundingWidth;
             height = range.boundingHeight;
             dx = rect.left;
@@ -146,7 +147,7 @@ function getSelectionRectDimensions() {
         if (sel.rangeCount) {
             range = sel.getRangeAt(0).cloneRange();
             if (range.getBoundingClientRect) {
-                var rect = range.getBoundingClientRect();
+                const rect = range.getBoundingClientRect();
                 width = rect.right - rect.left;
                 height = rect.bottom - rect.top;
                 dx = rect.left;
@@ -241,7 +242,7 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
     if (typeof doc.body.createTextRange != "undefined") {
         range = doc.body.createTextRange();
         range.moveToPoint(startX, startY);
-        var endRange = range.duplicate();
+        const endRange = range.duplicate();
         endRange.moveToPoint(endX, endY);
         range.setEndPoint("EndToEnd", endRange);
         range.select();
@@ -281,7 +282,7 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
             var sel = window.getSelection();
             sel.removeAllRanges();
             if (backward && sel.extend) {
-                var endRange = range.cloneRange();
+                const endRange = range.cloneRange();
                 endRange.collapse(false);
                 sel.addRange(endRange);
                 sel.extend(range.startContainer, range.startOffset);

@@ -44,6 +44,7 @@ var tooltipOnBottom = false;
 var configsWereLoaded = false;
 var currencyRatesWereLoaded = false;
 var isTextFieldFocused = false;
+var domainIsBlacklistedForSnapping;
 
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;
