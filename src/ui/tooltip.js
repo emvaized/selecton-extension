@@ -112,7 +112,7 @@ function setUpNewTooltip(type) {
     }
 
     arrow = document.createElement('div');
-    arrow.setAttribute('class', `selection-tooltip-arrow`);
+    arrow.setAttribute('class', 'selection-tooltip-arrow');
     let arrowChild = document.createElement('div');
     arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
 

@@ -23,7 +23,6 @@
 /* Arrow */
 .selection-tooltip-arrow {
   z-index: 100000 !important;
-  width: 25px;
   height: 15px;
   overflow: hidden;
   position: absolute;
@@ -31,6 +30,7 @@
   background: transparent !important;
   box-shadow: none !important;
   bottom:-50%;
+  width: 25px;
   transform: translate(-12.5px, 0px);
 }
 
@@ -52,7 +52,7 @@
   bottom: 50%;
   width: 15px;
   height: 15px;
-  transform:  translate(0px, 2px) rotate(45deg);
+  transform:  translate(0px, 1.5px) rotate(45deg);
   border-bottom: 0.25px solid var(--selecton-outline-color);
   border-right: 0.25px solid var(--selecton-outline-color);
   background: var(--selecton-background-color);
