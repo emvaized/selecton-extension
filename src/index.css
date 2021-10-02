@@ -63,7 +63,7 @@
   all: revert;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
-  color: var(--selection-button-foreground);
+  color: var(--selection-button-foreground) !important;
   background-color: transparent !important;
   cursor: pointer;
   border: none !important;
@@ -82,7 +82,6 @@
   font-size: var(--selecton-font-size) !important;
   line-height: 1.2 !important; 
 }
-
     
 .selection-popup-button:hover, .hovered-tooltip-button {
   all: revert;
