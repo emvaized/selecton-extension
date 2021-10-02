@@ -107,21 +107,26 @@ function snapSelectionByWords(sel) {
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
         symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
-
+        console.log(symbolToCheck);
         let shouldUntrimLastCh = false;
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
-            case ',': shouldUntrimLastCh = true; break;
             case ')': shouldUntrimLastCh = true; break;
             case ']': shouldUntrimLastCh = true; break;
             case '}': shouldUntrimLastCh = true; break;
             case '>': shouldUntrimLastCh = true; break;
             case '"': shouldUntrimLastCh = true; break;
             case "'": shouldUntrimLastCh = true; break;
+            case ',': {
+                /// Also untrim if symbol before , is )
+                if (selString[selString.length - 2] == ')') sel.modify("extend", direction[1], "character");
+                shouldUntrimLastCh = true; break;
+            }
             case ':': {
-                if (selString[selString.length - 2] == '"') sel.modify("extend", direction[1], "character"); /// special handling for json keys (like "key": )
-                shouldUntrimLastCh = true;
-                break;
+                /// special handling for json keys (like "key": )
+                /// untrim if symbol before : is "
+                if (selString[selString.length - 2] == '"') sel.modify("extend", direction[1], "character");
+                shouldUntrimLastCh = true; break;
             }
         }
 

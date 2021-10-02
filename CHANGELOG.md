@@ -1,7 +1,7 @@
 #3.3.6
 - Search tooltip now respects animation duration setting
 - Fix on Firefox - when clicking inside selected area recreated tooltip with no selected text anymore
-- Small fixes for word snapping and drag handles
+- Small improvements for word snapping and drag handles
 
 #3.3.5
 - Fixed dublicated Translate button issue
