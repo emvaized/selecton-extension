@@ -2,6 +2,7 @@
 - Search tooltip now respects animation duration setting
 - Fix on Firefox - when clicking inside selected area recreated tooltip with no selected text anymore
 - Small improvements for word snapping and drag handles
+- Possible fix for currency rates not fetched sometimes
 
 #3.3.5
 - Fixed dublicated Translate button issue

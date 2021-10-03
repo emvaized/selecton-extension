@@ -52,6 +52,7 @@
         "src/functions/conversion-functions.js",
         "src/functions/input-functions.js",
         "src/functions/tooltip-functions.js",
+        "src/functions/dark-page-detection.js",
         "src/ui/components/translate-button.js",
         "src/ui/search-tooltip.js",
         "src/ui/tooltip.js",

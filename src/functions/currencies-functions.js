@@ -69,7 +69,8 @@ async function fetchCurrencyRates() {
         /// Save rates to memory
         if (ratesObject != {})
             chrome.storage.local.set({
-                'ratesLastFetchedDate': date,
+                //'ratesLastFetchedDate': date,
+                'ratesLastFetchedDate': today,
                 'rates': ratesObject
             });
 
