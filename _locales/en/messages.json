@@ -203,6 +203,10 @@
     "message": "Hide tooltip on scroll",
     "description": "Label for field in settings"
   },
+  "hideTranslateButtonForUserLanguage": {
+    "message": "Hide translate button for user's language",
+    "description": "Label for field in settings"
+  },
   "horizontalLayout": {
     "message": "Horizontal",
     "description": "Label for field in settings"
@@ -220,7 +224,7 @@
     "description": "Label for field in settings"
   },
   "languageToTranslate": {
-    "message": "Language to translate (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
+    "message": "User's language (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
     "description": "Label for field in settings, incorporating inline link"
   },
   "liveTranslation": {

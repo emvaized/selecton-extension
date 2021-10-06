@@ -48,10 +48,10 @@ function returnShowOnMapUrl(query, shouldEncode = true) {
     }
 }
 
-function returnTranslateUrl(query) {
+function returnTranslateUrl(query, languageToTranslateTo) {
     switch (configs.preferredTranslateService) {
-        case 'google': return `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
-        case 'yandex': return `https://translate.yandex.ru/?lang=auto-${configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
-        case 'bing': return `https://www.bing.com/translator?from=auto&to=${configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
+        case 'google': return `https://translate.google.com/?sl=auto&tl=${languageToTranslateTo ?? configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
+        case 'yandex': return `https://translate.yandex.ru/?lang=auto-${languageToTranslateTo ?? configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
+        case 'bing': return `https://www.bing.com/translator?from=auto&to=${languageToTranslateTo ?? configs.languageToTranslate}&text=${encodeURI(query.trim())}`; break;
     }
 }

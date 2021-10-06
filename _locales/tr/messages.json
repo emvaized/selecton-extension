@@ -482,5 +482,9 @@
     "addPasteOnlyEmptyField": {
         "message": "'Yapıştır'ı yalnızca alan boşken ekleyin",
         "description": "Ayarlarda seçenek etiketi"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Kullanıcının dili için çeviri düğmesini gizle",
+        "description": "Label for field in settings"
     }
 }

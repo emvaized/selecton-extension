@@ -478,5 +478,9 @@
     "addPasteOnlyEmptyField": {
         "message": "'Einfügen' nur hinzufügen, wenn das Feld leer ist",
         "description": "Label für Option in den Einstellungen"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden",
+        "description": "Label for field in settings"
     }
 }

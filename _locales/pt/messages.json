@@ -474,5 +474,9 @@
     "addPasteOnlyEmptyField": {
         "message": "Adicionar 'Colar' apenas quando o campo estiver vazio",
         "description": "Rótulo para opção nas configurações"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Ocultar botão de tradução para o idioma do usuário",
+        "description": "Label for field in settings"
     }
 }

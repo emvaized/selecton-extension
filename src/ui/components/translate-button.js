@@ -9,26 +9,30 @@ function addTranslateButton() {
 
     try {
         chrome.i18n.detectLanguage(selectedText, function (result) {
-            var detectedLanguages = result;
 
             /// Show Translate button when language was not detected
             let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
-            var shouldTranslate = isFirefox;
+            let shouldTranslate = isFirefox;
 
             if (configs.debugMode)
                 console.log(`User language is: ${configs.languageToTranslate}`);
+
+            let detectedLanguages = result;
+            let languageOfSelectedText;
 
             if (detectedLanguages !== null && detectedLanguages !== undefined) {
                 const langs = detectedLanguages.languages;
 
                 if (langs !== []) {
-                    if (configs.debugMode) console.log('Detected language: ' + langs[0].language);
+                    languageOfSelectedText = langs[0].language;
+                    if (configs.debugMode) console.log('Detected language: ' + languageOfSelectedText);
 
                     // if (configs.debugMode)
                     // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
 
                     /// Don't show translate button if selected language is the same as desired
-                    if (langs[0].language == configs.languageToTranslate) shouldTranslate = false;
+                    if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
+                        shouldTranslate = false;
                     else shouldTranslate = true;
                 } else
                     if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
@@ -47,7 +51,9 @@ function addTranslateButton() {
 
                 translateButton.addEventListener("mousedown", function (e) {
                     // let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
-                    let url = returnTranslateUrl(selectedText);
+                    let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
+                        returnTranslateUrl(selectedText, 'en') :
+                        returnTranslateUrl(selectedText);
                     onTooltipButtonClick(e, url);
                 });
 

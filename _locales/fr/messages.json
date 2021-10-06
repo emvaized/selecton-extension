@@ -478,5 +478,9 @@
     "addPasteOnlyEmptyField": {
         "message": "Ajouter 'Coller' uniquement lorsque le champ est vide",
         "description": "Libellé pour l'option dans les paramètres"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Masquer le bouton de traduction pour la langue de l'utilisateur",
+        "description": "Label for field in settings"
     }
 }

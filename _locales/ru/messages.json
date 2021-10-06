@@ -216,7 +216,7 @@
         "description": "Label for buttons style option in settings"
     },
     "languageToTranslate": {
-        "message": "Язык для перевода (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
+        "message": "Язык пользователя (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
     },
     "liveTranslation": {
@@ -485,6 +485,10 @@
     },
     "addPasteOnlyEmptyField": {
         "message": "Добавить 'Вставить', только если поле пустое",
+        "description": "Ярлык для опции в настройках"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Скрыть кнопку перевода для языка пользователя",
         "description": "Ярлык для опции в настройках"
     }
 }

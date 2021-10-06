@@ -478,5 +478,9 @@
     "addPasteOnlyEmptyField": {
         "message": "Agrega 'Pegar' solo cuando el campo esté vacío",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Ocultar el botón de traducción para el idioma del usuario",
+        "description": "Label for field in settings"
     }
 }
