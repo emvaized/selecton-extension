@@ -61,6 +61,7 @@
 /* Buttons */
 .selection-popup-button {
   all: revert;
+  font: status-bar !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
   color: var(--selection-button-foreground) !important;
