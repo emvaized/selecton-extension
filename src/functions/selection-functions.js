@@ -33,14 +33,20 @@ function getSelectionCoordinates(atStart) {
         range.detach();
     } catch (e) { console.log(e); }
 
+    let coordsToReturn = { dx: rect.x, dy: rect.y, backwards: isBackwards };
+
     if (rect.x == 0 && rect.y == 0) {
         let rectCoords = getSelectionRectDimensions();
-
-        if (atStart) return { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
-        return { dx: rectCoords.dx + rectCoords.width, dy: rectCoords.dy + rectCoords.height - (selectionHandleLineHeight - 7.5), backwards: isBackwards };
+        if (atStart)
+            coordsToReturn = { dx: rectCoords.dx, dy: rectCoords.dy, backwards: isBackwards };
+        else
+            coordsToReturn = { dx: rectCoords.dx + rectCoords.width, dy: rectCoords.dy + rectCoords.height - (selectionHandleLineHeight - 7.5), backwards: isBackwards };
     }
 
-    return { dx: rect.x, dy: rect.y, backwards: isBackwards };
+    if (coordsToReturn.dx == 0 && coordsToReturn.dy == 0)
+        coordsToReturn = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - 8, backwards: isBackwards, dontAddDragHandles: true };
+
+    return coordsToReturn;
 }
 
 /// When word is selected only partially, this methods selects whole word 
@@ -383,23 +389,5 @@ function selectionChangeListener(e) {
         hideDragHandles();
 
         document.removeEventListener("selectionchange", selectionChangeListener);
-
-        // setTimeout(function () {
-
-        //   if (configs.debugMode)
-        //     console.log('recreating the tooltip...');
-
-        //   if (window.getSelection) {
-        //     selection = window.getSelection();
-        //   } else if (document.selection) {
-        //     selection = document.selection.createRange();
-        //   }
-
-        //   if (selection !== null && selection !== undefined && selection.toString().trim() !== '') {
-        //     createTooltip();
-        //   }
-        // }, configs.animationDuration)
-
-
     }
 }

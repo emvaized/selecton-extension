@@ -1031,6 +1031,8 @@ function addContextualButtons() {
 function calculateTooltipPosition(e) {
     const selStartDimensions = getSelectionCoordinates(true);
     tooltipOnBottom = false;
+    let canAddDragHandles = true;
+    if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1048,47 +1050,35 @@ function calculateTooltipPosition(e) {
                 tooltipOnBottom = true;
 
             /// display tooltip under selection
-            // dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
-            // arrow.style.bottom = '';
-            // arrow.style.top = '-50%';
-            // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
             arrow.classList.add('arrow-on-bottom');
         }
 
         showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
     } else {
         /// Calculating DY
-        // var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight + window.scrollY;
         var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
+        const selEndDimensions = getSelectionCoordinates(false);
 
         /// If tooltip is going off-screen on top...
         var vertOutOfView = resultingDy <= 0;
         if (vertOutOfView) {
-
             /// ...display tooltip below text selection
-            var selEndDimensions = getSelectionCoordinates(false);
             resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
-            // arrow.style.bottom = '';
-            // arrow.style.top = '-50%';
-            // arrow.style.transform = 'rotate(180deg) translate(12.5px, 0px)';
             arrow.classList.add('arrow-on-bottom');
             tooltipOnBottom = true;
         }
 
         /// Calculating DX
         let resultingDx;
-
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
-            const selEndDimensions = getSelectionCoordinates(false);
             const delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
 
             if (selEndDimensions.dx > selStartDimensions.dx)
                 resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
             else
                 resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-
         } catch (e) {
             if (configs.debugMode)
                 console.log(e);
@@ -1104,7 +1094,7 @@ function calculateTooltipPosition(e) {
     }
 
     setTimeout(function () {
-        if (configs.addDragHandles)
+        if (configs.addDragHandles && canAddDragHandles)
             setDragHandles(tooltipOnBottom);
         checkTooltipForCollidingWithSideEdges();
     }, 2);
@@ -1275,6 +1265,3 @@ function splitNumberInGroups(stringNumber) {
     if (parts[1] == '00') parts[1] = ''; /// Remove empty .00 on end
     return parts[1] == '' ? parts[0] : parts.join('.');
 }
-
-
-
