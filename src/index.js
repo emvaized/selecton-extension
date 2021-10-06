@@ -151,15 +151,22 @@ function initConfigs(shouldCreateTooltip = false, e) {
           else {
             let today = new Date();
             let dayOfNextFetch = new Date(ratesLastFetchedDate);
+            const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+
             if (configs.debugMode) {
+              console.log('--- Check dates to update currency rates ---');
               console.log('Today: ' + today);
               console.log('Date of last fetch: ' + dayOfNextFetch);
             }
-            dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+
+            //dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
+            today = today.getTime();
+            dayOfNextFetch = new Date(dayOfNextFetch.getTime() + (configs.updateRatesEveryDays * oneDayInMilliseconds));
 
             if (configs.debugMode) {
               console.log('Rates update interval: ' + configs.updateRatesEveryDays);
               console.log('Date of next fetch: ' + dayOfNextFetch);
+              console.log('--- Finished checking dates ---');
             }
 
             if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
