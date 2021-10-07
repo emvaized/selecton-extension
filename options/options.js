@@ -152,6 +152,7 @@ function setTranslatedLabels() {
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
 
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
+    document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
     try {
         const span = document.createElement('span');

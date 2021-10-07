@@ -57,7 +57,7 @@ function addTranslateButton() {
                     onTooltipButtonClick(e, url);
                 });
 
-                if (configs.liveTranslation && selectedText.split(' ').length <= 3 && configs.preferredTranslateService == 'google') {
+                if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
                     try {
                         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
                     } catch (e) {
