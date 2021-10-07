@@ -290,6 +290,7 @@ function addBasicTooltipButtons(layout) {
                         pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
                     else
                         pasteButton.textContent = pasteLabel;
+
                     pasteButton.addEventListener("mousedown", function (e) {
                         textField.focus();
 

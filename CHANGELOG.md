@@ -1,3 +1,6 @@
+#3.3.7
+- Fixes for live translate button
+
 #3.3.6
 - Search tooltip now respects animation duration setting
 - Added config "Hide translate button for user's language"

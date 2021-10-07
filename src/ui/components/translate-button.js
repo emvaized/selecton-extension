@@ -62,6 +62,7 @@ function addTranslateButton() {
                         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
                     } catch (e) {
                         if (configs.debugMode) console.log(e);
+                        translateButton.innerHTML = '';
                         setRegularTranslateButton(translateButton);
                     }
                 } else {
@@ -83,19 +84,24 @@ function setRegularTranslateButton(translateButton) {
     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
         translateButton.setAttribute('title', translateLabel);
     translateButton.setAttribute('id', 'selecton-translate-button');
+
+    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+        translateButton.setAttribute('title', translateLabel);
+
     if (addButtonIcons)
         translateButton.appendChild(createImageIconNew(translateButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : translateLabel));
     else
-        translateButton.textContent = translateLabel;
+        translateButton.innerHTML = translateLabel;
+
 
     /// Correct tooltip's dx
     correctTooltipPosition();
 
-    if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
-        translateButton.addEventListener("mouseover", function (e) {
-            setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
-        });
-    }
+    // if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
+    //     translateButton.addEventListener("mouseover", function (e) {
+    //         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
+    //     });
+    // }
 
 }
 
@@ -126,6 +132,12 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     if (configs.debugMode) {
         console.log('Response from Google Translate:');
         console.log(result);
+    }
+
+    if (result.response == null) {
+        translateButton.innerHTML = '';
+        setRegularTranslateButton(translateButton);
+        return;
     }
 
     let resultOfLiveTranslation;
@@ -177,6 +189,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
     } else {
         /// if no translation found, set regular translate button
         translateButton.style.color = getTextColorForBackground(configs.tooltipBackground.toLowerCase());
+        translateButton.innerHTML = '';
         setRegularTranslateButton(translateButton);
     }
 
