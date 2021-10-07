@@ -113,7 +113,6 @@ function snapSelectionByWords(sel) {
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
         symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
-        console.log(symbolToCheck);
         let shouldUntrimLastCh = false;
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;

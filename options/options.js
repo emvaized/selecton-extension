@@ -119,24 +119,23 @@ function loadSettings() {
             chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: configs });
         }
 
-        const pickerOpts = {
-            types: [
-                {
-                    description: 'Config file',
-                    accept: { 'text/*': ['.json'] }
-                },
-            ],
-            excludeAcceptAllOption: true,
-            multiple: false
-        };
-
-
         /// Import settings
-        let fileHandle;
-        document.getElementById('importSettings').onclick = async function () {
+        // const pickerOpts = {
+        //     types: [
+        //         {
+        //             description: 'Config file',
+        //             accept: { 'text/*': ['.json'] }
+        //         },
+        //     ],
+        //     excludeAcceptAllOption: true,
+        //     multiple: false
+        // };
 
-            [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-        }
+        // let fileHandle;
+        // document.getElementById('importSettings').onclick = async function () {
+        //     [fileHandle] = await window.showOpenFilePicker(pickerOpts);
+        //     console.log([fileHandle]);
+        // }
 
     }
 }

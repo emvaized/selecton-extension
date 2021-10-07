@@ -2,9 +2,6 @@ body {
   margin: 9px;
 }
 
-button {
-  cursor: pointer;
-}
 
 .option {
   padding: 4px;
@@ -83,6 +80,7 @@ button {
   margin: 3px !important;
   width: 100%;
   text-align: center;
+  cursor: pointer;
 }
 
 #customSearchButtonsContainer {
