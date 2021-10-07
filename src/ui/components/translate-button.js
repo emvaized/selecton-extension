@@ -164,7 +164,8 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
             resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 
         translateButton.innerHTML = resultOfLiveTranslation;
-        translateButton.style.color = secondaryColor;
+        translateButton.classList.add('selecton-live-translation')
+        // translateButton.style.color = secondaryColor;
         // translateButton.setAttribute('title', resultOfLiveTranslation);
 
         /// Create origin language label
@@ -174,7 +175,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
         if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
             langLabel = document.createElement('span');
             langLabel.textContent = originLanguage;
-            langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px; color: ${getTextColorForBackground(configs.tooltipBackground.toLowerCase())} !important`)
+            langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
             translateButton.appendChild(langLabel);
         }
 

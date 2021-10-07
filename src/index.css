@@ -93,6 +93,10 @@
   transition: background-color 25ms ease-in-out !important;
 }
 
+.selecton-live-translation {
+  color: var(--selecton-secondary-color) !important;
+}
+
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
   all: revert;
