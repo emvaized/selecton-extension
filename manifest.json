@@ -69,7 +69,7 @@
     "page": "options/options.html",
     "browser_style": true,
     "chrome_style": true,
-    "open_in_tab": false
+    "open_in_tab": true
   },
   "permissions": [
     "https://translate.googleapis.com/*",

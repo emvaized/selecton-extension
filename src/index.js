@@ -291,13 +291,16 @@ function initMouseListeners() {
   }
 
   /// Hide tooltip on scroll
-  document.addEventListener("scroll", function (e) {
+  document.addEventListener('wheel', hideOnScrollListener);
+  document.addEventListener('scroll', hideOnScrollListener);
+
+  function hideOnScrollListener(e) {
     if (tooltipIsShown == false) return;
 
     hideTooltip();
     hideDragHandles(false);
     recreateTooltip();
-  });
+  }
 
   /// Hide tooltip on window resize
   window.addEventListener('resize', function (e) {

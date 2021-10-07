@@ -11,7 +11,6 @@ function loadSettings() {
 
     /// Load expanded sections list
     chrome.storage.local.get(['expandedSettingsSections'], function (val) {
-        console.log(val.expandedSettingsSections);
         if (val.expandedSettingsSections !== null && val.expandedSettingsSections !== undefined)
             val.expandedSettingsSections.forEach(function (v) {
                 expandedSettingsSections.push(v);
@@ -114,6 +113,31 @@ function loadSettings() {
         setCollapsibleHeaders();
 
         setVersionLabel();
+
+        /// Export settings
+        document.getElementById('exportSettings').onclick = function () {
+            chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: configs });
+        }
+
+        const pickerOpts = {
+            types: [
+                {
+                    description: 'Config file',
+                    accept: { 'text/*': ['.json'] }
+                },
+            ],
+            excludeAcceptAllOption: true,
+            multiple: false
+        };
+
+
+        /// Import settings
+        let fileHandle;
+        document.getElementById('importSettings').onclick = async function () {
+
+            [fileHandle] = await window.showOpenFilePicker(pickerOpts);
+        }
+
     }
 }
 

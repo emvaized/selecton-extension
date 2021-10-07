@@ -14,6 +14,24 @@ chrome.runtime.onMessage.addListener(
             }
             );
             return true;
+        } else if (request.type == 'selecton-export-configs') {
+            const filename = 'selecton-settings.json';
+            const jsonStr = JSON.stringify(request.configs);
+            let element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        } else if (request.type == 'selecton-import-configs') {
+
+            // chrome.runtime.sendMessage({ actionToDo: 'checkPrevTabAvailability' }, (response) => {
+            //     updateButtonAvailability(e, 'switchToPreviousTab', !response);
+
+            // }
+            // );
+            return true;
         }
     }
 );

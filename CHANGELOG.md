@@ -1,5 +1,6 @@
 #3.3.7
 - Fixes for live translate button
+- Fixed issue when tooltip wasn't hidden on page inner scroll events
 
 #3.3.6
 - Search tooltip now respects animation duration setting
