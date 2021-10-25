@@ -713,7 +713,7 @@ function addContextualButtons() {
                     mapButton.textContent = showOnMapLabel;
                 mapButton.addEventListener("mousedown", function (e) {
                     /// Open maps service set by user (defaults to Google Maps)
-                    let url = returnShowOnMapUrl(selectedText.trim());
+                    let url = returnShowOnMapUrl(selectedText);
                     onTooltipButtonClick(e, url);
                 });
 

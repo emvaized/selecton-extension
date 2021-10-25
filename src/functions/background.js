@@ -24,14 +24,6 @@ chrome.runtime.onMessage.addListener(
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
-        } else if (request.type == 'selecton-import-configs') {
-
-            // chrome.runtime.sendMessage({ actionToDo: 'checkPrevTabAvailability' }, (response) => {
-            //     updateButtonAvailability(e, 'switchToPreviousTab', !response);
-
-            // }
-            // );
-            return true;
         }
     }
 );

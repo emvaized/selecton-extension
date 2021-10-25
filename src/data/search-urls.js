@@ -41,10 +41,10 @@ function returnShowOnMapUrl(query, shouldEncode = true) {
 
     switch (configs.preferredMapsService) {
         case 'google': return `https://www.google.com/maps/place/${encodedQuery}`; break;
-        case 'waze': return `https://www.waze.com/ru/live-map?q=kharkiv${encodedQuery}`; break;
-        case 'mapquest': return `https://www.mapquest.com/search/results?query=${encodedQuery}`; break;
         case '2gis': return `https://2gis.ua/kharkov/search/${encodedQuery}`; break;
         case 'yandexmaps': return `https://yandex.ru/maps/geo/${encodedQuery}`; break;
+        case 'waze': return `https://www.waze.com/ru/live-map?q=${encodedQuery}`; break;
+        case 'mapquest': return `https://www.mapquest.com/search/results?query=${encodedQuery}`; break;
     }
 }
 

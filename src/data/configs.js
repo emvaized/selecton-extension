@@ -35,7 +35,7 @@ const configs = {
     'preferredMapsService': 'google',
     'addColorPreviewButton': true,
     'secondaryTooltipEnabled': true,
-    'secondaryTooltipIconSize': 15,
+    'secondaryTooltipIconSize': 16,
     'showSecondaryTooltipTitleOnHover': false,
     'excludedDomains': '',
     'addPhoneButton': true,
