@@ -56,7 +56,7 @@ const configs = {
     'updateRatesEveryDays': 18,
     'fontSize': 12.5,
     'maxIconsInRow': 5,
-    'secondaryTooltipLayout': 'horizontalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
+    'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': false,
     'reverseTooltipButtonsOrder': false,
     'recreateTooltipAfterScroll': true,

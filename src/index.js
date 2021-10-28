@@ -16,7 +16,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
       if (configs.excludedDomains !== null && configs.excludedDomains !== undefined && configs.excludedDomains !== '')
         configs.excludedDomains.split(',').forEach(function (domain) {
-          if (window.location.href.includes(domain.trim())) configs.enabled = false;
+          if (window.location.href.includes(domain.trim().toLowerCase())) configs.enabled = false;
         });
 
       if (configs.enabled) {

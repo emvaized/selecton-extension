@@ -140,4 +140,59 @@ content: "\2212";
 #additional-settings-block {
   width: 100%;
 }
+
+#customSearchTooltipHint {
+  margin: 0px 0px 15px;
+}
   
+
+
+@media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) { 
+  .collapsible-header { 
+    background-color: rgba(211,211,211, 0.6); 
+    cursor: auto; 
+    border-radius: 4px; 
+    padding: 16px 6px 16px 12px; 
+  } 
+ 
+  .active, .collapsible-header:hover { 
+    background-color: rgba(211,211,211, 0.6); 
+  }  
+   
+  h4 { 
+    color: black; 
+    opacity: 0.3; 
+  } 
+ 
+  button { 
+    padding: 6px 0px; cursor: auto;  
+  } 
+ 
+  button img { display: none; } 
+ 
+  .option, label { cursor: auto; } 
+ 
+  .option:hover { 
+    background-color: unset; 
+  } 
+ 
+  hr { 
+    opacity: 0.5; 
+  } 
+ 
+  /* Collapsible header arrow */ 
+  .collapsible-header:after { 
+    /* content: 'ᐊ';  */ 
+    content: '❮';  
+    font-size: 20px; 
+    font-weight: 100; 
+    float: right; 
+    opacity: 0.5; 
+    transform: translate(-7px, -5px) rotate(-90deg); 
+    transition: transform 150ms ease; 
+  } 
+   
+  .active:after { 
+    transform: translate(-7px, -5px) rotate(-270deg); 
+  } 
+}}
