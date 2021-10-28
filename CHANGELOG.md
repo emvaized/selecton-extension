@@ -1,6 +1,6 @@
 #3.3.8
 - Fix for 2GIS map search
-- Excluded domains config is no longer case-sensitive
+- Excluded domains configs are no longer case-sensitive
 - Options page fixes and improvements
 
 #3.3.7
