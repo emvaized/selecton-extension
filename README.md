@@ -103,8 +103,8 @@ In this case you would like to use **vertical layout** for custom search panel, 
 
 **How to add Selecton settings as Vivaldi side panel?**
 
-* Use this URL: chrome-extension://*ID OF EXTENSION*/options/options.html
-Where *ID OF EXTENSION* is unique extension ID on your computer. You can get this from extension details page on chrome://extension
+* Use this URL: chrome-extension://**{ID OF EXTENSION}**/options/options.html
+Where **{ID OF EXTENSION}** is unique extension ID on your computer. You can get this from extension details page on chrome://extension
 
 ----
 
