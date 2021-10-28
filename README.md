@@ -80,7 +80,7 @@ ____
 *On Firefox, can't change colors from extension popup*
 
 * This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1676222).
-To change colors on Firefox, open settings in new tab by clicking bottom in top-right corner of popup
+To change colors on Firefox, open settings in new tab by clicking button in top-right corner of the popup
 
 *Change fetch interval for currency rates?*
 
@@ -99,12 +99,12 @@ To permanently disable word snapping, add website to word snapping blacklist or 
 *Additional search buttons do not show on hovering Search button?*
 
 * Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services.
-In this case you would like to use vertical layout for custom search panel, or visit "Settings > Custom search tooltip" and set your own icon for each option
+In this case you would like to use **vertical layout** for custom search panel, or visit *Settings > Custom search tooltip* and set your own icon for each option
 
 *How to add Selecton settings as Vivaldi side panel?*
 
-* Use this URL: chrome-extension://**ID OF EXTENSION**/options/options.html
-Where **ID OF EXTENSION** is unique extension ID on your computer. You can get this from extension details page on chrome://extension
+* Use this URL: chrome-extension://*ID OF EXTENSION*/options/options.html
+Where *ID OF EXTENSION* is unique extension ID on your computer. You can get this from extension details page on chrome://extension
 
 ----
 
