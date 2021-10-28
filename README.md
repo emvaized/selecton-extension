@@ -76,33 +76,34 @@ EOS
 ____
 
 ### FAQ
+
 *On Firefox, can't change colors from extension popup*
 
-This is a common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1676222).
+* This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1676222).
 To change colors on Firefox, open settings in new tab by clicking bottom in top-right corner of popup
 
 *Change fetch interval for currency rates?*
 
-Settings > Conversion > Rates update interval
+* Settings > Conversion > Rates update interval
 
 *Disable selelction hangles on the right and left?*
 
-Settings > Text selection > Add selection drag handles
+* Settings > Text selection > Add selection drag handles
 
 *How to disable word snapping?*
 
-Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped.
+* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped.
 To permanently disable word snapping, add website to word snapping blacklist or uncheck:
 "Settings > Text selection > Snap text selection by word"
 
 *Additional search buttons do not show on hovering Search button?*
 
-Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services.
+* Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services.
 In this case you would like to use vertical layout for custom search panel, or visit "Settings > Custom search tooltip" and set your own icon for each option
 
 *How to add Selecton settings as Vivaldi side panel?*
 
-Use this URL: chrome-extension://**ID OF EXTENSION**/options/options.html
+* Use this URL: chrome-extension://**ID OF EXTENSION**/options/options.html
 Where **ID OF EXTENSION** is unique extension ID on your computer. You can get this from extension details page on chrome://extension
 
 ----
