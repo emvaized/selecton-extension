@@ -103,13 +103,12 @@ In this case you would like to use **vertical layout** for custom search panel, 
 
 **How to add Selecton settings as Vivaldi side panel?**
 
-* Use this URL: chrome-extension://**{ID OF EXTENSION}**/options/options.html
-Where **{ID OF EXTENSION}** is unique extension ID on your computer. You can get this from extension details page on chrome://extension
+* Use this URL: *chrome-extension://{ID OF EXTENSION}/options/options.html*, where *{ID OF EXTENSION}* is a unique extension ID on your computer. You can get this from extension details page on chrome://extension
 
 ----
 
 ### Contributing
-You can make Selecton better without knowing how to code:
+You can make Selecton better without even knowing how to code:
 - Provide translation for your language: [Base English file](https://github.com/emvaized/selecton-extension/blob/master/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
 - Selecton relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](https://github.com/emvaized/selecton-extension/blob/master/src/data/keywords.js)
