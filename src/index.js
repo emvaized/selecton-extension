@@ -142,7 +142,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
         domainIsBlacklistedForSnapping = false;
         if (configs.snapSelectionToWord && configs.wordSnappingBlacklist !== null && configs.wordSnappingBlacklist !== undefined && configs.wordSnappingBlacklist !== '')
           configs.wordSnappingBlacklist.split(',').forEach(function (domain) {
-            if (window.location.href.includes(domain.trim().toLocaleLowerCase())) domainIsBlacklistedForSnapping = true;
+            if (window.location.href.includes(domain.trim().toLowerCase())) domainIsBlacklistedForSnapping = true;
           });
 
         /// Fetch or load currency rates from storage
