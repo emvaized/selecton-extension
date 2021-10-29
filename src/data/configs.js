@@ -71,20 +71,26 @@ const configs = {
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
             'title': 'YouTube',
-            'icon': 'https://icons-for-free.com/iconfiles/png/512/video+youtube+icon-1320192294490006733.png',
+            // 'icon': 'https://icons-for-free.com/iconfiles/png/512/video+youtube+icon-1320192294490006733.png',
             'enabled': true
         },
         {
             'url': 'https://open.spotify.com/search/%s',
             'title': 'Spotify',
-            'icon': 'https://image.flaticon.com/icons/png/512/2111/2111624.png',
+            // 'icon': 'https://image.flaticon.com/icons/png/512/2111/2111624.png',
             'enabled': true
         },
         {
-            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
-            'title': 'Aliexpress',
+            'url': 'https://aliexpress.ru/wholesale?catId=&SearchText=%s',
+            'title': 'Ali (ru)',
             'icon': 'https://img.icons8.com/color/452/aliexpress.png',
             'enabled': true
+        },
+        {
+            'url': 'https://www.aliexpress.com/wholesale?SearchText=%s',
+            'title': 'Ali (en)',
+            // 'icon': 'https://img.icons8.com/color/452/aliexpress.png',
+            'enabled': false
         },
         {
             'url': 'https://www.amazon.com/s?k=%s',
@@ -95,13 +101,13 @@ const configs = {
         {
             'url': 'https://wikipedia.org/w/index.php?search=%s',
             'title': 'Wikipedia',
-            'icon': 'https://pngimg.com/uploads/wikipedia/wikipedia_PNG16.png',
+            // 'icon': 'https://pngimg.com/uploads/wikipedia/wikipedia_PNG16.png',
             'enabled': false
         },
         {
             'url': 'https://www.imdb.com/find?s=alt&q=%s',
             'title': 'IMDB',
-            'icon': 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/171_Imdb_logo_logos-512.png',
+            // 'icon': 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/171_Imdb_logo_logos-512.png',
             'enabled': false
         },
         {

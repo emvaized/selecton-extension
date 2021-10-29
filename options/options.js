@@ -302,40 +302,7 @@ var customSearchButtonsList;
 
 function loadCustomSearchButtons() {
     chrome.storage.local.get(['customSearchButtons'], function (value) {
-        customSearchButtonsList = value.customSearchButtons ?? [
-            {
-                'url': 'https://www.youtube.com/results?search_query=%s',
-                'title': 'YouTube',
-                'enabled': true,
-            },
-            {
-                'url': 'https://open.spotify.com/search/%s',
-                'title': 'Spotify',
-                'enabled': true,
-            },
-            {
-                'url': 'https://aliexpress.com/wholesale?SearchText=%s',
-                'title': 'Aliexpress',
-                // 'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
-                'enabled': true
-            },
-            {
-                'url': 'https://www.amazon.com/s?k=%s',
-                'title': 'Amazon',
-                'enabled': true
-            },
-            {
-                // 'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
-                'url': 'https://wikipedia.org/w/index.php?search=%s',
-                'title': 'Wikipedia',
-                'enabled': false
-            },
-            {
-                'url': 'https://www.imdb.com/find?s=alt&q=%s',
-                'title': 'IMDB',
-                'enabled': false
-            },
-        ];
+        customSearchButtonsList = value.customSearchButtons ?? configs.customSearchButtons;
 
         generateCustomSearchButtonsList();
     });
@@ -358,8 +325,9 @@ function generateCustomSearchButtonsList() {
             entry.style.opacity = 1.0;
 
         /// Enabled checkbox
-        var checkbox = document.createElement('input');
+        let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('title', 'On/off');
         checkbox.setAttribute('style', 'pointer: cursor; vertical-align: middle !important;');
         checkbox.value = item['enabled'];
         if (item['enabled'])
@@ -378,8 +346,8 @@ function generateCustomSearchButtonsList() {
         entry.appendChild(checkbox);
 
         /// Create favicon preview
-        var imgButton = document.createElement('img');
-        var icon = item['icon'];
+        let imgButton = document.createElement('img');
+        let icon = item['icon'];
         imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
         imgButton.setAttribute('width', '18px');
         imgButton.setAttribute('height', '18px');
@@ -387,11 +355,11 @@ function generateCustomSearchButtonsList() {
         entry.appendChild(imgButton);
 
         /// Title field
-        var title = document.createElement('input');
+        let title = document.createElement('input');
         title.setAttribute('type', 'text');
         // title.setAttribute('placeholder', returnDomainFromUrl(item['url']));
         title.setAttribute('placeholder', 'Title');
-        title.setAttribute('style', 'margin-left: 3px; margin-bottom: 3px; display: inline;');
+        title.setAttribute('style', 'margin-left: 3px; min-width: 100px; margin-bottom: 3px; display: inline;');
         title.value = item['title'];
         title.setAttribute('id', 'title' + i.toString());
         title.addEventListener("input", function (e) {
@@ -441,7 +409,8 @@ function generateCustomSearchButtonsList() {
         var urlInput = document.createElement('input');
         urlInput.setAttribute('type', 'text');
         urlInput.setAttribute('placeholder', 'URL');
-        urlInput.setAttribute('style', 'display: inline; min-width: 92%; max-width: 92% !important;  margin: 0px 0px;');
+        // urlInput.setAttribute('style', 'display: inline; min-width: 92%; max-width: 92%;  margin: 0px 0px;');
+        urlInput.setAttribute('class', 'custom-search-option-url-input');
         urlInput.value = item['url'];
         urlInput.setAttribute('id', 'url' + i.toString());
         urlInput.addEventListener("input", function (e) {

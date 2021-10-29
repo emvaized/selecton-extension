@@ -144,7 +144,17 @@ content: "\2212";
 #customSearchTooltipHint {
   margin: 0px 0px 15px;
 }
-  
+
+.custom-search-option-url-input {
+  display: inline; min-width: 90%; max-width: 90%; 
+}
+
+@-moz-document url-prefix() {
+  .custom-search-option-url-input {
+    max-width: 85%;
+    min-width: 85%;
+  }
+}
 
 
 @media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) { 
