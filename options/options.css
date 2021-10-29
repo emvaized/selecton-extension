@@ -158,14 +158,9 @@ content: "\2212";
 }
 
 .custom-search-option-icon-input {
-  min-width: 90%; max-width: 90%; margin-top: 3px;
+  min-width: 100%; max-width: 100%; margin-top: 3px !important;
 }
 
-@-moz-document url-prefix() {
-  .custom-search-option-icon-input {
-    max-width: 85%; min-width: 85%;
-  }
-}
 
 @media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) { 
   .collapsible-header { 
@@ -175,19 +170,10 @@ content: "\2212";
     padding: 16px 6px 16px 12px; 
   } 
 
-  .custom-search-option-icon-input {
-    max-width: 85%; min-width: 85%;
-  }
-
   .custom-search-option-move-button{
     max-width: 40px; width: 40px; padding: 2.5px;
   }
 
-  .custom-search-option-url-label {
-    opacity: 0.4; font-weight: 200;
-  }
-  
- 
   .active, .collapsible-header:hover { 
     background-color: rgba(211,211,211, 0.6); 
   }  

@@ -425,17 +425,17 @@ function generateCustomSearchButtonsList() {
         if (item['icon'] !== null && item['icon'] !== undefined) {
             var iconInputDiv = document.createElement('div');
 
-            let iconLabel = document.createElement('span');
-            iconLabel.setAttribute('style', 'display: inline;opacity: 0.5;');
-            iconLabel.textContent = 'Icon ';
-            iconInputDiv.appendChild(iconLabel);
+            // let iconLabel = document.createElement('span');
+            // iconLabel.setAttribute('style', 'display: inline;opacity: 0.5;');
+            // iconLabel.textContent = 'Icon ';
+            // iconInputDiv.appendChild(iconLabel);
 
             /// Custom icon URL field
             var iconInput = document.createElement('input');
             iconInput.setAttribute('type', 'text');
             iconInput.setAttribute('placeholder', chrome.i18n.getMessage("customIconUrl"));
-            // iconInput.setAttribute('style', 'min-width: 90%; max-width: 90%; margin-top: 3px;');
             iconInput.setAttribute('class', 'custom-search-option-icon-input');
+            iconInput.setAttribute('title', chrome.i18n.getMessage("customIconUrl"));
             iconInput.setAttribute('id', 'icon' + i.toString());
             iconInput.value = item['icon'];
             iconInput.addEventListener("input", function (e) {
