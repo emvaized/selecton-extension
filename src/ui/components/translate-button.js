@@ -7,72 +7,80 @@ function addTranslateButton() {
     if (configs.debugMode)
         console.log(`Selected text is: ${selectedText}`);
 
-    try {
-        chrome.i18n.detectLanguage(selectedText, function (result) {
 
-            /// Show Translate button when language was not detected
-            let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
-            let shouldTranslate = isFirefox;
+    function proccessButton(shouldTranslate, languageOfSelectedText) {
+        if (shouldTranslate == true) {
+            const translateButton = document.createElement('button');
+            translateButton.setAttribute('class', 'selection-popup-button button-with-border');
+            if (configs.reverseTooltipButtonsOrder)
+                tooltip.insertBefore(translateButton, tooltip.children[1]);
+            else
+                tooltip.appendChild(translateButton);
 
-            if (configs.debugMode)
-                console.log(`User language is: ${configs.languageToTranslate}`);
+            translateButton.addEventListener("mousedown", function (e) {
+                // let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
+                let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
+                    returnTranslateUrl(selectedText, 'en') :
+                    returnTranslateUrl(selectedText);
+                onTooltipButtonClick(e, url);
+            });
 
-            let detectedLanguages = result;
-            let languageOfSelectedText;
-
-            if (detectedLanguages !== null && detectedLanguages !== undefined) {
-                const langs = detectedLanguages.languages;
-
-                if (langs !== []) {
-                    languageOfSelectedText = langs[0].language;
-                    if (configs.debugMode) console.log('Detected language: ' + languageOfSelectedText);
-
-                    // if (configs.debugMode)
-                    // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
-
-                    /// Don't show translate button if selected language is the same as desired
-                    if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
-                        shouldTranslate = false;
-                    else shouldTranslate = true;
-                } else
-                    if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
-            }
-
-            if (configs.debugMode)
-                console.log(`Should translate: ${shouldTranslate}`);
-
-            if (shouldTranslate == true) {
-                const translateButton = document.createElement('button');
-                translateButton.setAttribute('class', 'selection-popup-button button-with-border');
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(translateButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(translateButton);
-
-                translateButton.addEventListener("mousedown", function (e) {
-                    // let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
-                    let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
-                        returnTranslateUrl(selectedText, 'en') :
-                        returnTranslateUrl(selectedText);
-                    onTooltipButtonClick(e, url);
-                });
-
-                if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
-                    try {
-                        setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
-                    } catch (e) {
-                        if (configs.debugMode) console.log(e);
-                        translateButton.innerHTML = '';
-                        setRegularTranslateButton(translateButton);
-                    }
-                } else {
+            if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
+                try {
+                    setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
+                } catch (e) {
+                    if (configs.debugMode) console.log(e);
+                    translateButton.innerHTML = '';
                     setRegularTranslateButton(translateButton);
                 }
             } else {
-                checkTooltipForCollidingWithSideEdges();
+                setRegularTranslateButton(translateButton);
             }
+        } else {
+            checkTooltipForCollidingWithSideEdges();
+        }
+    }
 
-        });
+    try {
+
+        if (!chrome.i18n.detectLanguage) proccessButton(true);
+        else
+            chrome.i18n.detectLanguage(selectedText, function (result) {
+
+                /// Show Translate button when language was not detected
+                let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+                let shouldTranslate = isFirefox;
+
+                if (configs.debugMode)
+                    console.log(`User language is: ${configs.languageToTranslate}`);
+
+                let detectedLanguages = result;
+                let languageOfSelectedText;
+
+                if (detectedLanguages !== null && detectedLanguages !== undefined) {
+                    const langs = detectedLanguages.languages;
+
+                    if (langs !== []) {
+                        languageOfSelectedText = langs[0].language;
+                        if (configs.debugMode) console.log('Detected language: ' + languageOfSelectedText);
+
+                        // if (configs.debugMode)
+                        // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
+
+                        /// Don't show translate button if selected language is the same as desired
+                        if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
+                            shouldTranslate = false;
+                        else shouldTranslate = true;
+                    } else
+                        if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
+                }
+
+                if (configs.debugMode)
+                    console.log(`Should translate: ${shouldTranslate}`);
+
+                proccessButton(shouldTranslate, languageOfSelectedText);
+
+            });
     } catch (e) {
         if (configs.debugMode)
             console.log(e);
@@ -165,8 +173,6 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
 
         translateButton.innerHTML = resultOfLiveTranslation;
         translateButton.classList.add('selecton-live-translation')
-        // translateButton.style.color = secondaryColor;
-        // translateButton.setAttribute('title', resultOfLiveTranslation);
 
         /// Create origin language label
         let originLabelWidth = configs.fontSize / 1.5;
@@ -181,6 +187,7 @@ async function setLiveTranslatedButton(word, sourceLang, targetLang, translateBu
 
         setTimeout(function () {
             /// Correct tooltip's dx
+            tooltip.style.transition += ', left 100ms ease-out';
             correctTooltipPosition()
         }, 2);
 

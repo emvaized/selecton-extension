@@ -226,6 +226,10 @@ function updateDisabledOptions() {
     document.querySelector("#applyConfigsImmediatelyPerformanceTip").className = document.querySelector("#applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.querySelector("#maxIconsInRow").parentNode.parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
+
+    /// Hide language detection option when browser doesn't support it
+    if (!chrome.i18n.detectLanguage)
+        document.getElementById('hideTranslateButtonForUserLanguage').parentNode.parentNode.className = 'hidden-option';
 }
 
 function setCollapsibleHeaders() {
