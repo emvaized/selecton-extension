@@ -1,4 +1,5 @@
 function returnSearchUrl(query, shouldEncode = true) {
+    let encodedQuery = query;
     if (shouldEncode)
         encodedQuery = encodeURI(query);
 
@@ -16,7 +17,7 @@ function returnSearchUrl(query, shouldEncode = true) {
 }
 
 function returnNewEmailUrl(query, shouldEncode = true) {
-    var encodedQuery = query;
+    let encodedQuery = query;
 
     if (shouldEncode)
         encodedQuery = encodeURI(query);
@@ -32,7 +33,7 @@ function returnNewEmailUrl(query, shouldEncode = true) {
 }
 
 function returnShowOnMapUrl(query, shouldEncode = true) {
-    var encodedQuery = query;
+    let encodedQuery = query;
 
     if (shouldEncode)
         encodedQuery = encodeURI(query);

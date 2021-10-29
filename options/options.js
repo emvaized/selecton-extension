@@ -115,9 +115,9 @@ function loadSettings() {
         setVersionLabel();
 
         /// Export settings
-        document.getElementById('exportSettings').onclick = function () {
-            chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: configs });
-        }
+        // document.getElementById('exportSettings').onclick = function () {
+        //     chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: configs });
+        // }
 
         /// Import settings
         // const pickerOpts = {

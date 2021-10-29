@@ -86,12 +86,13 @@ function createSecondaryTooltip() {
                 selectedText = selectedText.replaceAll('&', '%26');
                 let urlToOpen = url.replaceAll('%s', selectedText);
 
-                try {
-                    let currentDomain = window.location.href.split('/')[2];
-                    urlToOpen = urlToOpen.replaceAll('%w', currentDomain);
-                } catch (e) {
-                    if (configs.debugMode) console.log(e);
-                }
+                if (urlToOpen.includes('%w'))
+                    try {
+                        let currentDomain = window.location.href.split('/')[2];
+                        urlToOpen = urlToOpen.replaceAll('%w', currentDomain);
+                    } catch (e) {
+                        if (configs.debugMode) console.log(e);
+                    }
 
                 removeSelectionOnPage();
 
@@ -192,6 +193,7 @@ function appendSecondaryTooltip() {
         timerToRemoveTooltip = null;
 
         timeoutToRevealSearchTooltip = setTimeout(function () {
+            if (secondaryTooltip == null) return;
             secondaryTooltip.style.pointerEvents = 'auto';
             calculateEndDy();
             secondaryTooltip.style.top = `${endDy}px`;
