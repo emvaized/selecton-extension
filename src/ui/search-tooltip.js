@@ -39,12 +39,12 @@ function createSecondaryTooltip() {
 
             imgButton.addEventListener('error', function () {
                 if (configs.debugMode) {
-                    console.log('error loading favicon for: ' + url);
-                    console.log('switching to fallback icon: ' + `https://api.faviconkit.com/${url.split('/')[2]}/16`);
+                    console.log('error loading favicon for: ' + url + ' because of security policies of website');
+                    // console.log('switching to fallback icon: ' + `https://api.faviconkit.com/${url.split('/')[2]}/16`);
                 }
 
                 /// Reserve service to load favicon
-                imgButton.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
+                // imgButton.setAttribute("src", `https://api.faviconkit.com/${url.split('/')[2]}/16`);
             });
 
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
@@ -178,27 +178,33 @@ function appendSecondaryTooltip() {
     }
     calculateEndDy();
 
-
     /// Set mouse listeners
     let timerToRemoveTooltip;
+    let timeoutToRevealSearchTooltip;
+    let delayToReveal = 350;
 
-    // var timeoutToRevealSearchTooltip;
     searchButton.onmouseover = function (event) {
         if (secondaryTooltip == null) return;
-        secondaryTooltip.style.transform = 'scale(1.0)';
 
-        // timeoutToRevealSearchTooltip = timeout(function () {
-        secondaryTooltip.style.pointerEvents = 'auto';
-        calculateEndDy();
-        secondaryTooltip.style.top = `${endDy}px`;
-        secondaryTooltip.style.opacity = 1.0;
-        searchButton.classList.add("hovered-tooltip-button");
-        // }, 150);
+        if (timerToRemoveTooltip == null)
+            timeoutToRevealSearchTooltip = setTimeout(function () {
+                secondaryTooltip.style.pointerEvents = 'auto';
+                calculateEndDy();
+                secondaryTooltip.style.top = `${endDy}px`;
+                secondaryTooltip.style.opacity = 1.0;
+                searchButton.classList.add("hovered-tooltip-button");
+                secondaryTooltip.style.transform = 'scale(1.0)';
+
+            }, delayToReveal);
+
         clearTimeout(timerToRemoveTooltip);
+        timerToRemoveTooltip = null;
+
     }
 
     searchButton.onmouseout = function () {
-        // clearTimeout(timeoutToRevealSearchTooltip);
+        clearTimeout(timeoutToRevealSearchTooltip);
+
         timerToRemoveTooltip = setTimeout(function () {
             if (isSecondaryTooltipHovered == false) {
                 if (secondaryTooltip == null) return;
@@ -207,6 +213,8 @@ function appendSecondaryTooltip() {
                 secondaryTooltip.style.opacity = 0.0;
                 secondaryTooltip.style.pointerEvents = 'none';
                 searchButton.classList.remove("hovered-tooltip-button");
+
+                timerToRemoveTooltip = null;
 
                 setTimeout(function () {
                     if (secondaryTooltip == null) return;
