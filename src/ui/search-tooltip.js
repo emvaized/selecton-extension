@@ -213,7 +213,6 @@ function appendSecondaryTooltip() {
                 secondaryTooltip.style.opacity = 0.0;
                 secondaryTooltip.style.pointerEvents = 'none';
                 searchButton.classList.remove("hovered-tooltip-button");
-
                 timerToRemoveTooltip = null;
 
                 setTimeout(function () {
@@ -244,6 +243,9 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.opacity = 0.0;
         secondaryTooltip.style.pointerEvents = 'none';
         searchButton.classList.remove("hovered-tooltip-button");
+
+        clearTimeout(timerToRemoveTooltip);
+        timerToRemoveTooltip = null;
     }
 
     secondaryTooltip.style.transform = 'scale(0.0)';
