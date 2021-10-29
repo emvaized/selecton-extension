@@ -401,15 +401,15 @@ function generateCustomSearchButtonsList() {
         /// URL field
         let urlInputDiv = document.createElement('div');
 
-        let urlLabel = document.createElement('label');
-        urlLabel.setAttribute('style', 'display: inline; opacity: 0.5;');
-        urlLabel.textContent = 'URL ';
-        urlInputDiv.appendChild(urlLabel);
+        // let urlLabel = document.createElement('label');
+        // urlLabel.setAttribute('class', 'custom-search-option-url-label');
+        // urlLabel.textContent = 'URL ';
+        // urlInputDiv.appendChild(urlLabel);
 
         var urlInput = document.createElement('input');
         urlInput.setAttribute('type', 'text');
         urlInput.setAttribute('placeholder', 'URL');
-        // urlInput.setAttribute('style', 'display: inline; min-width: 92%; max-width: 92%;  margin: 0px 0px;');
+        urlInput.setAttribute('title', 'URL');
         urlInput.setAttribute('class', 'custom-search-option-url-input');
         urlInput.value = item['url'];
         urlInput.setAttribute('id', 'url' + i.toString());
@@ -434,7 +434,8 @@ function generateCustomSearchButtonsList() {
             var iconInput = document.createElement('input');
             iconInput.setAttribute('type', 'text');
             iconInput.setAttribute('placeholder', chrome.i18n.getMessage("customIconUrl"));
-            iconInput.setAttribute('style', 'min-width: 90%; max-width: 90% !important; margin-top: 3px;');
+            // iconInput.setAttribute('style', 'min-width: 90%; max-width: 90%; margin-top: 3px;');
+            iconInput.setAttribute('class', 'custom-search-option-icon-input');
             iconInput.setAttribute('id', 'icon' + i.toString());
             iconInput.value = item['icon'];
             iconInput.addEventListener("input", function (e) {
@@ -467,8 +468,8 @@ function generateCustomSearchButtonsList() {
 
         var moveUpButton = document.createElement('button');
         moveUpButton.textContent = 'ᐱ';
-        moveUpButton.setAttribute('style', 'max-width: 25px; padding: 1px; align-items: center');
         moveUpButton.setAttribute('id', 'moveup' + i.toString());
+        moveUpButton.className = 'custom-search-option-move-button';
         moveUpButton.setAttribute('title', chrome.i18n.getMessage("moveUpLabel"));
         moveUpButton.onmouseup = function () {
             var currentIndex = parseInt(this.id.replaceAll('moveup', ''), 10);
@@ -483,8 +484,8 @@ function generateCustomSearchButtonsList() {
 
         var moveDownButton = document.createElement('button');
         moveDownButton.textContent = 'ᐯ';
-        moveDownButton.setAttribute('style', 'max-width: 25px; padding: 1px; align-items: center');
         moveDownButton.setAttribute('id', 'movedown' + i.toString());
+        moveDownButton.className = 'custom-search-option-move-button';
         moveDownButton.setAttribute('title', chrome.i18n.getMessage("moveDownLabel"));
         moveDownButton.onmouseup = function () {
             var currentIndex = parseInt(this.id.replaceAll('movedown', ''), 10);
