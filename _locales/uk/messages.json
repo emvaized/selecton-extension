@@ -143,6 +143,10 @@
         "message": "Режим відлагодження",
         "description": "Мітка для опції в налаштуваннях"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Затримка перед показом панелі (мс)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Видалити",
         "description": "Ярлик для кнопки видалення"

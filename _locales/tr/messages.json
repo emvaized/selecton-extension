@@ -147,6 +147,10 @@
         "message": "Hata ayıklama modu",
         "description": "Ayarlardaki seçenek etiketi"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Paneli göstermeden önceki gecikme (ms)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Silmek",
         "description": "Sil düğmesinin etiketi"

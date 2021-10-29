@@ -143,6 +143,10 @@
         "message": "Debug mode",
         "description": "Bezeichnung für Option in Einstellungen"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Verzögerung vor dem Aufdecken des Panels (ms)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Löschen",
         "description": "Bezeichnung für die Schaltfläche 'Löschen'"

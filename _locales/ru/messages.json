@@ -151,6 +151,10 @@
         "message": "Режим отладки (debug)",
         "description": "Label for option in settings"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Задержка перед открытием панели (мс)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Удалить",
         "description": "Ярлык для кнопки удаления"

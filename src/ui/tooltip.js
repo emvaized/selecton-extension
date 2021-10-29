@@ -313,11 +313,10 @@ function addBasicTooltipButtons(layout) {
         searchButton = document.createElement('button');
         searchButton.setAttribute('class', 'selection-popup-button');
 
-        // if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-        if (configs.showButtonLabelOnHover)
-            // searchButton.setAttribute('title', searchLabel + ` (${configs.preferredSearchEngine})`);
-            // else
-            searchButton.setAttribute('title', configs.preferredSearchEngine);
+        // if (configs.showButtonLabelOnHover)
+        //     searchButton.setAttribute('title', configs.preferredSearchEngine);
+        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+            searchButton.setAttribute('title', searchLabel);
 
         if (addButtonIcons)
             searchButton.appendChild(createImageIconNew(searchButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : searchLabel));
@@ -1020,13 +1019,6 @@ function addContextualButtons() {
         addTranslateButton();
     }
 
-    // setTimeout(function () {
-    //     /// Set border radius for first and last buttons
-    //     tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-    //     tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-    //     calculateTooltipPosition();
-    // }, 1);
 }
 
 function calculateTooltipPosition(e) {

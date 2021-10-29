@@ -143,6 +143,10 @@
         "message": "Mode débogage",
         "description": "Libellé de l'option dans les paramètres"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Délai avant révélation du panneau (ms)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Supprimer",
         "description": "Libellé du bouton de suppression"

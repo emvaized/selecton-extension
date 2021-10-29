@@ -143,6 +143,10 @@
         "message": "Modo de depuração",
         "description": "Rótulo para opção nas configurações"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Atraso para revelar o painel (ms)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Excluir",
         "description": "Rótulo para o botão de exclusão"

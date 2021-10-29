@@ -143,6 +143,10 @@
         "message": "Modo de depuración",
         "description": "Etiqueta para la opción en la configuración"
     },
+    "delayToRevealSearchTooltip": {
+        "message": "Retraso antes de revelar el panel (ms)",
+        "description": "Label for option in settings"
+    },
     "deleteLabel": {
         "message": "Eliminar",
         "description": "Etiqueta para el botón de eliminación"

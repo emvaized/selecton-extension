@@ -42,7 +42,7 @@ function getCurrentClipboard() {
 
     let clipboardContent;
     const input = document.createElement('input');
-    input.setAttribute('style', `position: absolute; top: ${window.scrollY}px; left: 0px; opacity: 0;`)
+    input.setAttribute('style', 'position: fixed; top: 0px; left: 0px; opacity: 0;')
     document.body.appendChild(input);
     input.focus();
     document.execCommand('paste');

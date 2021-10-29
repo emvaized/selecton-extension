@@ -181,25 +181,25 @@ function appendSecondaryTooltip() {
     /// Set mouse listeners
     let timerToRemoveTooltip;
     let timeoutToRevealSearchTooltip;
-    let delayToReveal = 350;
 
     searchButton.onmouseover = function (event) {
         if (secondaryTooltip == null) return;
 
-        if (timerToRemoveTooltip == null)
-            timeoutToRevealSearchTooltip = setTimeout(function () {
-                secondaryTooltip.style.pointerEvents = 'auto';
-                calculateEndDy();
-                secondaryTooltip.style.top = `${endDy}px`;
-                secondaryTooltip.style.opacity = 1.0;
-                searchButton.classList.add("hovered-tooltip-button");
-                secondaryTooltip.style.transform = 'scale(1.0)';
-
-            }, delayToReveal);
-
-        clearTimeout(timerToRemoveTooltip);
+        try {
+            clearTimeout(timerToRemoveTooltip);
+            clearTimeout(timeoutToRevealSearchTooltip);
+        } catch (e) { }
         timerToRemoveTooltip = null;
 
+        timeoutToRevealSearchTooltip = setTimeout(function () {
+            secondaryTooltip.style.pointerEvents = 'auto';
+            calculateEndDy();
+            secondaryTooltip.style.top = `${endDy}px`;
+            secondaryTooltip.style.opacity = 1.0;
+            searchButton.classList.add("hovered-tooltip-button");
+            secondaryTooltip.style.transform = 'scale(1.0)';
+
+        }, configs.delayToRevealSearchTooltip ?? 350);
     }
 
     searchButton.onmouseout = function () {
@@ -213,7 +213,6 @@ function appendSecondaryTooltip() {
                 secondaryTooltip.style.opacity = 0.0;
                 secondaryTooltip.style.pointerEvents = 'none';
                 searchButton.classList.remove("hovered-tooltip-button");
-                timerToRemoveTooltip = null;
 
                 setTimeout(function () {
                     if (secondaryTooltip == null) return;
@@ -244,8 +243,7 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.pointerEvents = 'none';
         searchButton.classList.remove("hovered-tooltip-button");
 
-        clearTimeout(timerToRemoveTooltip);
-        timerToRemoveTooltip = null;
+        try { clearTimeout(timerToRemoveTooltip); } catch (e) { }
     }
 
     secondaryTooltip.style.transform = 'scale(0.0)';

@@ -155,6 +155,10 @@
     "message": "Debug mode",
     "description": "Label for option in settings"
   },
+  "delayToRevealSearchTooltip": {
+    "message": "Delay before reveal panel (ms)",
+    "description": "Label for the delete button"
+  },
   "deleteLabel": {
     "message": "Delete",
     "description": "Label for the delete button"
