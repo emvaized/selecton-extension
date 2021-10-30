@@ -442,8 +442,6 @@ function addContextualButtons() {
                     if (value && value['rate'] !== null && value['rate'] !== undefined) {
 
                         let rateOfDesiredCurrency = value['rate'];
-                        // if (configs.debugMode)
-                        //     console.log(`Rate is: ${rateOfDesiredCurrency}`);
 
                         /// Check for literal multipliers (million, billion and so on)
                         for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
@@ -560,11 +558,23 @@ function addContextualButtons() {
                 }
 
             /// Basic unit conversion
-            outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+            // outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+            const unitKeys = Object.keys(convertionUnits);
+            outerloop: for (let i = 0, l = unitKeys.length; i < l; i++) {
+                let key = unitKeys[i];
+                let value = convertionUnits[key];
 
                 let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
                     if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
+
+                    /// Special handling for prices where coma separates fractional digits instead of thousandths
+                    if (selectedText.includes(',')) {
+                        let parts = selectedText.split(',');
+                        if (parts.length == 2) {
+                            selectedText = selectedText.replaceAll(',', '.');
+                        }
+                    }
 
                     numberToConvert = extractAmountFromSelectedText(selectedText);
 

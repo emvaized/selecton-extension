@@ -176,6 +176,10 @@ const convertionUnits = {
         "convertsTo": "км",
         "ratio": 1.60934,
     },
+    " мили": {
+        "convertsTo": "км",
+        "ratio": 1.60934,
+    },
     " ярдов": {
         "convertsTo": "метров",
         "ratio": 0.9144,
