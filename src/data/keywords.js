@@ -228,7 +228,7 @@ const convertionUnits = {
 
 /// Those will be ignored when looking for website in selected text
 /// So that, for example, when selected "somefile.txt" - it won't be recognized as a website in "Open link" button
-var filetypesToIgnoreAsDomains = [
+const filetypesToIgnoreAsDomains = [
     "txt",
     "zip",
     "rar",
@@ -241,4 +241,22 @@ var filetypesToIgnoreAsDomains = [
     "html",
     "css",
     "log",
+];
+
+/// Search for these keywords to detect if selected text looks like code
+const codeMarkers = [
+    'const ',
+    'var ',
+    'let ',
+    'async ',
+    'await ',
+    '/>',
+    '{',
+    '}',
+    '()',
+    ' = ',
+    `='`,
+    `="`,
+    `('`,
+    `("`,
 ];

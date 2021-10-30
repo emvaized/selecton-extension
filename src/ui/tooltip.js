@@ -8,7 +8,6 @@ function createTooltip(e) {
                 lastMouseUpEvent = e;
                 // hideTooltip();
 
-                console.log(e);
                 if (configs.snapSelectionToWord) {
                     if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
                         if (configs.debugMode)
@@ -17,7 +16,17 @@ function createTooltip(e) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected due to pressed CTRL key');
                     } else {
-                        if (isDraggingDragHandle == false) /// dont snap if selection is modified by drag handle
+
+                        selectedText = selection.toString();
+
+                        let selectedTextIsCode = false;
+                        for (let i = 0, l = codeMarkers.length; i < l; i++) {
+                            if (selectedText.includes(codeMarkers[i])) {
+                                selectedTextIsCode = true; break;
+                            }
+                        }
+
+                        if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
                             if (domainIsBlacklistedForSnapping == false && e.detail < 3 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                                 snapSelectionByWords(selection);
                     }
