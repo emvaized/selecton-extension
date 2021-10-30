@@ -8,11 +8,12 @@ function createTooltip(e) {
                 lastMouseUpEvent = e;
                 // hideTooltip();
 
+                console.log(e);
                 if (configs.snapSelectionToWord) {
                     if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected while textfield is focused');
-                    } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && e.ctrlKey == true) {
+                    } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
                         if (configs.debugMode)
                             console.log('Word snapping rejected due to pressed CTRL key');
                     } else {

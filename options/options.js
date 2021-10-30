@@ -154,6 +154,12 @@ function setTranslatedLabels() {
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
+    /// Change CTRL key label on macs
+    if (navigator.userAgent.indexOf("Safari") != -1) {
+        let k = document.querySelector("#disableWordSnappingOnCtrlKey");
+        k.parentNode.innerHTML = k.parentNode.innerHTML.replaceAll('CTRL', '⌘cmd');
+    }
+
     try {
         const span = document.createElement('span');
         span.style.opacity = 0.5;
