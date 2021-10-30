@@ -1,25 +1,40 @@
 /// Look for these words to find that selected text is address, in order to show "Show on map" button
 const addressKeywords = [
+    /// English keywords
     ' street',
     'broadway',
     ' st.',
+    ' str.',
     ' city',
 
-    /// Russian keywords
+    /// Russian
     'ул.',
     'пр.',
     'г.',
-    'город ',
-    'проспект ',
     'улица ',
     'переулок ',
+    'город ',
+    'проспект ',
 
-    /// Ukrainian keywords
+    /// Ukrainian
     'вулиця ',
     'вул. ',
     'м. ',
     'місто ',
 
+    /// Spanish
+    ' calle',
+    'calle ',
+    'ciudad ',
+
+    /// French
+    'ville ',
+    'rue ',
+
+    /// german
+    'straße',
+    'strasse',
+    ' stadt',
 ];
 
 /// Convert timezones
@@ -259,4 +274,5 @@ const codeMarkers = [
     `="`,
     `('`,
     `("`,
+    `": "`,
 ];
