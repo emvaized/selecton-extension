@@ -465,7 +465,7 @@ function addContextualButtons() {
 
                             /// Create and add currency button with result of conversion
                             const currencyButton = document.createElement('button');
-                            currencyButton.setAttribute('class', `selection-popup-button button-with-border`);
+                            currencyButton.setAttribute('class', 'selection-popup-button button-with-border');
 
                             /// Show value before convertion
                             if (configs.showUnconvertedValue) {
@@ -490,7 +490,7 @@ function addContextualButtons() {
                             /// Add currency symbol with different color
                             const currencyLabel = document.createElement('span');
                             currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
-                            currencyLabel.setAttribute('style', `color: ${unitLabelColor}`);
+                            currencyLabel.style.color = unitLabelColor;
                             currencyButton.appendChild(currencyLabel);
 
                             currencyButton.addEventListener("mousedown", function (e) {
@@ -631,12 +631,6 @@ function addContextualButtons() {
                     tooltip.insertBefore(interactiveButton, tooltip.children[1]);
                 else
                     tooltip.appendChild(interactiveButton);
-                // try {
-                //     tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                // } catch (e) {
-                //     if (configs.debugMode)
-                //         console.log(e);
-                // }
             }
         }
 

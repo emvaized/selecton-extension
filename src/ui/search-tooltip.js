@@ -1,4 +1,7 @@
 /// Create secondary tooltip for additional search engines
+let timerToRemoveSearchTooltip;
+let timeoutToRevealSearchTooltip;
+
 function createSecondaryTooltip() {
     if (searchButton == null || searchButton == undefined) return;
 
@@ -109,6 +112,7 @@ function createSecondaryTooltip() {
                             chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: urlToOpen, focused: false });
                         }
                     }
+
                 } catch (e) {
                     window.open(urlToOpen, '_blank');
                 }
@@ -180,17 +184,15 @@ function appendSecondaryTooltip() {
     calculateEndDy();
 
     /// Set mouse listeners
-    let timerToRemoveTooltip;
-    let timeoutToRevealSearchTooltip;
 
     searchButton.onmouseover = function (event) {
         if (secondaryTooltip == null) return;
 
         try {
-            clearTimeout(timerToRemoveTooltip);
+            clearTimeout(timerToRemoveSearchTooltip);
             clearTimeout(timeoutToRevealSearchTooltip);
         } catch (e) { }
-        timerToRemoveTooltip = null;
+        timerToRemoveSearchTooltip = null;
 
         timeoutToRevealSearchTooltip = setTimeout(function () {
             if (secondaryTooltip == null) return;
@@ -207,9 +209,9 @@ function appendSecondaryTooltip() {
     searchButton.onmouseout = function () {
         clearTimeout(timeoutToRevealSearchTooltip);
 
-        timerToRemoveTooltip = setTimeout(function () {
+        timerToRemoveSearchTooltip = setTimeout(function () {
+            if (secondaryTooltip == null) return;
             if (isSecondaryTooltipHovered == false) {
-                if (secondaryTooltip == null) return;
                 calculateEndDy();
                 secondaryTooltip.style.top = verticalSecondaryTooltip ? endDy : dy;
                 secondaryTooltip.style.opacity = 0.0;
@@ -245,7 +247,7 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.pointerEvents = 'none';
         searchButton.classList.remove("hovered-tooltip-button");
 
-        try { clearTimeout(timerToRemoveTooltip); } catch (e) { }
+        try { clearTimeout(timerToRemoveSearchTooltip); } catch (e) { }
     }
 
     secondaryTooltip.style.transform = 'scale(0.0)';
