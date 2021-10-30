@@ -45,6 +45,7 @@ function addDragHandle(dragHandleIndex) {
 
         let dragHandle = document.createElement('div');
         dragHandle.className = 'selection-tooltip-draghandle';
+        dragHandle.id = `selecton-draghandle-${dragHandleIndex}`;
         dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
         dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
         dragHandle.style.height = `${selectionHandleLineHeight}px`;
@@ -88,6 +89,7 @@ function addDragHandle(dragHandleIndex) {
         circleDiv.onmousedown = function (e) {
             hideTooltip();
             isDraggingDragHandle = true;
+            draggingHandleIndex = dragHandleIndex;
             e.preventDefault();
 
             if (window.getSelection) {
@@ -178,7 +180,6 @@ function addDragHandle(dragHandleIndex) {
                 e.preventDefault();
                 document.onmousemove = null;
                 document.onmouseup = null;
-                // isDraggingDragHandle = false;
                 document.body.style.cursor = 'unset';
                 circleDiv.style.cursor = 'grab';
 
@@ -200,6 +201,7 @@ function addDragHandle(dragHandleIndex) {
 
                     setTimeout(function () {
                         isDraggingDragHandle = false;
+                        draggingHandleIndex = null;
 
                         let selStartDimensions = getSelectionCoordinates(true);
                         let selEndDimensions = getSelectionCoordinates(false);
@@ -263,6 +265,17 @@ function hideDragHandles(animated = true) {
 
         for (let i = 0, l = dragHandles.length; i < l; i++) {
             let dragHandle = dragHandles[i];
+
+            /// Don't hide currently dragged drag handle
+            if (draggingHandleIndex !== null && draggingHandleIndex !== undefined) {
+                try {
+                    let id = dragHandle.id;
+                    let handleIndex = parseInt(id.split('-')[2]);
+                    if (handleIndex == draggingHandleIndex) continue;
+                } catch (e) {
+                    console.log(e);
+                }
+            }
 
             if (!animated)
                 dragHandle.style.transition = '';

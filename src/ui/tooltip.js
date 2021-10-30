@@ -5,6 +5,8 @@ function createTooltip(e) {
         setTimeout(
             function () {
                 if (e !== undefined && e !== null && e.button !== 0) return;
+                if (selection == null) return;
+
                 lastMouseUpEvent = e;
                 // hideTooltip();
 
