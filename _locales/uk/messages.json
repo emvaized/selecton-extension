@@ -151,6 +151,10 @@
         "message": "Видалити",
         "description": "Ярлик для кнопки видалення"
     },
+    "disableWordSnapForCode": {
+        "message": "Вимкнути прив’язку до слів для коду",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "Не виділяти по словам, якщо натиснута клавіша CTRL",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"

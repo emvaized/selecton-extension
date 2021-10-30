@@ -151,6 +151,10 @@
         "message": "Excluir",
         "description": "Rótulo para o botão de exclusão"
     },
+    "disableWordSnapForCode": {
+        "message": "Desativar ajuste de palavras para código",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "Não selecione por palavras se a tecla CTRL estiver pressionada",
         "description": "Rótulo para opção de estilo de botões nas configurações"

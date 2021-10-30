@@ -151,6 +151,10 @@
         "message": "Supprimer",
         "description": "Libellé du bouton de suppression"
     },
+    "disableWordSnapForCode": {
+        "message": "Désactiver la capture de mots pour le code",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "Ne pas sélectionner par mots si la touche CTRL est enfoncée",
         "description": "Libellé de l'option de style des boutons dans les paramètres"

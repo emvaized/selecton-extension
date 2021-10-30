@@ -151,6 +151,10 @@
         "message": "Löschen",
         "description": "Bezeichnung für die Schaltfläche 'Löschen'"
     },
+    "disableWordSnapForCode": {
+        "message": "Wortfang für Code deaktivieren",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "Nicht mit Worten auswählen, wenn die STRG-Taste gedrückt wird",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"

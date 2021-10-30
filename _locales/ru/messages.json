@@ -163,6 +163,10 @@
         "message": "Отключите для лучшей производительности",
         "description": "Label for buttons style option in settings"
     },
+    "disableWordSnapForCode": {
+        "message": "Отключить выделение по словам для кода",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "Не выделять по словам, если зажата клавиша CTRL",
         "description": "Label for buttons style option in settings"

@@ -155,6 +155,10 @@
         "message": "Silmek",
         "description": "Sil düğmesinin etiketi"
     },
+    "disableWordSnapForCode": {
+        "message": "Kod için sözcük yakalamayı devre dışı bırak",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "CTRL tuşuna basıldığında sözcüklere göre seçme",
         "description": "Ayarlardaki seçenek etiketi"

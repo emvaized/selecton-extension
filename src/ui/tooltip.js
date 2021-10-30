@@ -20,11 +20,12 @@ function createTooltip(e) {
                         selectedText = selection.toString();
 
                         let selectedTextIsCode = false;
-                        for (let i = 0, l = codeMarkers.length; i < l; i++) {
-                            if (selectedText.includes(codeMarkers[i])) {
-                                selectedTextIsCode = true; break;
+                        if (configs.disableWordSnapForCode)
+                            for (let i = 0, l = codeMarkers.length; i < l; i++) {
+                                if (selectedText.includes(codeMarkers[i])) {
+                                    selectedTextIsCode = true; break;
+                                }
                             }
-                        }
 
                         if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
                             if (domainIsBlacklistedForSnapping == false && e.detail < 3 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))

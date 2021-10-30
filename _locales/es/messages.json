@@ -151,6 +151,10 @@
         "message": "Eliminar",
         "description": "Etiqueta para el botón de eliminación"
     },
+    "disableWordSnapForCode": {
+        "message": "Deshabilitar el ajuste de palabras para el código",
+        "description": "Label for option in settings"
+    },
     "disableWordSnappingOnCtrlKey": {
         "message": "No seleccionar por palabras si se presiona la tecla CTRL",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"

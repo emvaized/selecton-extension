@@ -167,6 +167,10 @@
     "message": "Disable for better performance",
     "description": "Label for option in settings"
   },
+  "disableWordSnapForCode": {
+    "message": "Disable word snapping for code",
+    "description": "Label for option in settings"
+  },
   "disableWordSnappingOnCtrlKey": {
     "message": "Do not select by words if the CTRL key is pressed",
     "description": "Label for option in settings"

@@ -155,7 +155,7 @@ function setTranslatedLabels() {
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
     /// Change CTRL key label on macs
-    if (navigator.userAgent.indexOf("Safari") != -1) {
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
         let k = document.querySelector("#disableWordSnappingOnCtrlKey");
         k.parentNode.innerHTML = k.parentNode.innerHTML.replaceAll('CTRL', '⌘cmd');
     }
@@ -215,6 +215,7 @@ function updateDisabledOptions() {
     document.querySelector("#dontSnapTextfieldSelection").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#secondaryTooltipLayout").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#wordSnappingBlacklist").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#disableWordSnapForCode").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked && document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
     document.querySelector("#hideTranslateButtonForUserLanguage").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
@@ -637,7 +638,6 @@ function resetSettings() {
 
 document.addEventListener("DOMContentLoaded", loadSettings);
 
-// document.querySelector("form").addEventListener("reset", resetSettings);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });
