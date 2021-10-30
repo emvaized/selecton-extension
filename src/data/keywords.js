@@ -22,6 +22,11 @@ const addressKeywords = [
     'м. ',
     'місто ',
 
+    /// Belorussian
+    'вуліца ',
+    'горад ',
+    'праспект ',
+
     /// Spanish
     ' calle',
     'calle ',
@@ -31,7 +36,7 @@ const addressKeywords = [
     'ville ',
     'rue ',
 
-    /// german
+    /// German
     'straße',
     'strasse',
     ' stadt',

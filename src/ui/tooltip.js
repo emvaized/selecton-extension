@@ -704,10 +704,9 @@ function addContextualButtons() {
         if (configs.showOnMapButtonEnabled) {
             let containsAddress = false;
 
-            for (i in addressKeywords) {
+            for (let i = 0, l = addressKeywords.length; i < l; i++) {
                 if (loweredSelectedText.includes(addressKeywords[i])) {
-                    containsAddress = true;
-                    break;
+                    containsAddress = true; break;
                 }
             }
 
