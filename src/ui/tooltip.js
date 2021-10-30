@@ -1038,6 +1038,8 @@ function addContextualButtons() {
 
 function calculateTooltipPosition(e) {
     const selStartDimensions = getSelectionCoordinates(true);
+    const selEndDimensions = getSelectionCoordinates(false);
+
     tooltipOnBottom = false;
     let canAddDragHandles = true;
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
@@ -1051,7 +1053,6 @@ function calculateTooltipPosition(e) {
 
         let dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
-        const selEndDimensions = getSelectionCoordinates(false);
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
@@ -1072,7 +1073,6 @@ function calculateTooltipPosition(e) {
     } else {
         /// Calculating DY
         let resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
-        const selEndDimensions = getSelectionCoordinates(false);
 
         /// If tooltip is going off-screen on top...
         let vertOutOfView = resultingDy <= 0;
@@ -1115,7 +1115,7 @@ function calculateTooltipPosition(e) {
 
     setTimeout(function () {
         if (configs.addDragHandles && canAddDragHandles)
-            setDragHandles(tooltipOnBottom);
+            setDragHandles(selStartDimensions, selEndDimensions);
         checkTooltipForCollidingWithSideEdges();
     }, 2);
 }

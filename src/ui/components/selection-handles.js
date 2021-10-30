@@ -1,17 +1,22 @@
-function setDragHandles(tooltipOnBottom) {
+function setDragHandles(selStartDimensions, selEndDimensions) {
     /// Hide existing drag handles
     //hideDragHandles();
 
     /// Dont add drag handles if they are already added
-    let existingDragHandle = document.querySelector('.selection-tooltip-draghandle');
-    if (existingDragHandle !== null && existingDragHandle !== undefined) return;
+    // let existingDragHandle = document.querySelector('.selection-tooltip-draghandle');
+    // if (existingDragHandle !== null && existingDragHandle !== undefined) return;
 
-    addDragHandle(0);
-    addDragHandle(1);
+    let existingDragHandle = document.getElementById('selecton-draghandle-0');
+    if (existingDragHandle == null || existingDragHandle == undefined)
+        addDragHandle(0, selStartDimensions, selEndDimensions);
+
+    existingDragHandle = document.getElementById('selecton-draghandle-1');
+    if (existingDragHandle == null || existingDragHandle == undefined)
+        addDragHandle(1, selStartDimensions, selEndDimensions);
 }
 
 /// 0 for first (left) drag handle, 1 for second (right)
-function addDragHandle(dragHandleIndex) {
+function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
     if (configs.debugMode)
         console.log('Adding drag handle ' + dragHandleIndex.toString() + '...');
 
@@ -32,8 +37,8 @@ function addDragHandle(dragHandleIndex) {
 
     try {
         var currentWindowSelection;
-        var selStartDimensions = getSelectionCoordinates(true);
-        var selEndDimensions = getSelectionCoordinates(false);
+        // var selStartDimensions = getSelectionCoordinates(true);
+        // var selEndDimensions = getSelectionCoordinates(false);
 
         /// When returned dimensions are 0;0, place the handle where it was left by user
         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
@@ -100,7 +105,6 @@ function addDragHandle(dragHandleIndex) {
 
             selStartDimensions = getSelectionCoordinates(true);
             selEndDimensions = getSelectionCoordinates(false);
-
             if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
 
             document.body.style.cursor = 'grabbing';
@@ -258,7 +262,7 @@ function addDragHandle(dragHandleIndex) {
     }
 }
 
-function hideDragHandles(animated = true) {
+function hideDragHandles(animated = true, shouldIgnoreDragged = false) {
     /// Remove all drag handles
     if (configs.addDragHandles) {
         let dragHandles = document.querySelectorAll('.selection-tooltip-draghandle');
@@ -267,7 +271,7 @@ function hideDragHandles(animated = true) {
             let dragHandle = dragHandles[i];
 
             /// Don't hide currently dragged drag handle
-            if (draggingHandleIndex !== null && draggingHandleIndex !== undefined) {
+            if (shouldIgnoreDragged && draggingHandleIndex !== null && draggingHandleIndex !== undefined) {
                 try {
                     let id = dragHandle.id;
                     let handleIndex = parseInt(id.split('-')[2]);

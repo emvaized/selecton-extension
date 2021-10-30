@@ -308,7 +308,7 @@ function initMouseListeners() {
 
   function hideOnScrollListener(e) {
     if (isDraggingDragHandle)
-      hideDragHandles(true);
+      hideDragHandles(true, true);
 
     if (tooltipIsShown == false) return;
 
