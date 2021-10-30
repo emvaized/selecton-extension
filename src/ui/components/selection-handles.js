@@ -134,8 +134,8 @@ function addDragHandle(dragHandleIndex) {
                     /// Create selection from rect
                     if (currentWindowSelection !== null && currentWindowSelection !== undefined && currentWindowSelection !== '') {
                         try {
-                            if (configs.debugMode)
-                                console.log(`Creating selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
+                            // if (configs.debugMode)
+                            //     console.log(`Creating selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
 
                             if (dragHandleIndex == 0) {
                                 /// Left handle
@@ -144,7 +144,9 @@ function addDragHandle(dragHandleIndex) {
                                     selEndDimensions.dy + (selectionHandleLineHeight / 2), /// DY end of selection (anchorY)
                                     selStartDimensions.dx - deltaXFromInitial - 0.05, /// DX beginning of selection (focusX)
                                     selStartDimensions.dy - deltaYFromInitial - (selectionHandleLineHeight), /// DY beginning of selection (focusY)
+                                    dragHandleIndex
                                 );
+
                             } else {
                                 /// Right handle
                                 createSelectionFromPoint(
@@ -152,6 +154,7 @@ function addDragHandle(dragHandleIndex) {
                                     selStartDimensions.dy,  /// DY beginning of selection (focusY)
                                     selEndDimensions.dx - deltaXFromInitial - 0.05, /// DX end of selection (anchorX)
                                     selEndDimensions.dy + deltaYFromInitial - (dragHandleIsReverted ? - (selectionHandleLineHeight / 2) : selectionHandleLineHeight / 2),  /// DY end of selection (anchorY)
+                                    dragHandleIndex
                                 );
                             }
 

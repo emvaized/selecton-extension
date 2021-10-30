@@ -29,7 +29,6 @@ function getSelectionCoordinates(atStart) {
         range.setStart(sel.anchorNode, sel.anchorOffset);
         range.setEnd(sel.focusNode, sel.focusOffset);
         isBackwards = range.collapsed;
-
         range.detach();
     } catch (e) { console.log(e); }
 
@@ -231,11 +230,20 @@ function removeSelectionOnPage() {
 
 /// Set selection from offset (used for drag handles)
 //// Source: https://stackoverflow.com/a/11336426/11381400
-function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
+function createSelectionFromPoint(anchorX, anchorY, focusX, focusY, handleIndex) {
+    /// handleIndex 0 for left handle, 1 for right handle
+
     var doc = document;
     var start, end, range = null;
     var startX, startY, endX, endY;
-    var backward = focusY < anchorY || (anchorY == focusY && focusX < anchorX);
+    // var backward = focusY < anchorY || (anchorY == focusY && focusX < anchorX);
+
+    const sel = selection ?? window.getSelection();
+    let r = document.createRange();
+    r.setStart(sel.anchorNode, sel.anchorOffset);
+    r.setEnd(sel.focusNode, sel.focusOffset);
+    let backward = r.collapsed;
+    r.detach();
 
     if (backward) {
         startX = focusX;
@@ -277,8 +285,28 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
             start = doc.caretRangeFromPoint(startX, startY);
             end = doc.caretRangeFromPoint(endX, endY);
             range = doc.createRange();
-            range.setStart(start.startContainer, start.startOffset);
-            range.setEnd(end.startContainer, end.startOffset);
+            // range.setStart(start.startContainer, start.startOffset);
+            // range.setEnd(end.startContainer, end.startOffset);
+
+            // let sel = selection ?? window.getSelection()
+            // let sel = window.getSelection();
+
+            if (handleIndex == 0) {
+                // range.setStart(start.startContainer, start.startOffset);
+                // range.setEnd(end.startContainer, end.startOffset);
+
+                range.setStart(start.startContainer, start.startOffset);
+                range.setEnd(end.startContainer, end.startOffset);
+
+            } else {
+                if (backward) {
+                    range.setStart(sel.focusNode, sel.focusOffset);
+                    range.setEnd(start.startContainer, start.startOffset);
+                } else {
+                    range.setStart(sel.anchorNode, sel.anchorOffset);
+                    range.setEnd(end.startContainer, end.startOffset);
+                }
+            }
         }
         else if (typeof doc.elementFromPoint != "undefined" && "getClientRects" in doc.createRange()) {
             start = positionFromPoint(doc, startX, startY);
@@ -289,7 +317,6 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
         }
 
         if (range !== null && typeof window.getSelection != "undefined") {
-            var sel = window.getSelection();
             sel.removeAllRanges();
             if (backward && sel.extend) {
                 const endRange = range.cloneRange();
@@ -299,6 +326,7 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
             } else {
                 sel.addRange(range);
             }
+            range.detach();
         }
     }
 }
