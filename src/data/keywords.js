@@ -160,7 +160,7 @@ const convertionUnits = {
         "ratio": 0.3048,
         "type": "imperial"
     },
-    "lb": {
+    " lb": {
         "convertsTo": "kg",
         "ratio": 0.453592,
     },
@@ -168,15 +168,11 @@ const convertionUnits = {
         "convertsTo": "kg",
         "ratio": 0.453592,
     },
-    "mph": {
+    " mph": {
         "convertsTo": "km/h",
         "ratio": 1.60934,
     },
-    "miles": {
-        "convertsTo": "km",
-        "ratio": 1.60934,
-    },
-    "mile": {
+    " mile": {
         "convertsTo": "km",
         "ratio": 1.60934,
     },
