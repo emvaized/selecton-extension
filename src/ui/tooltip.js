@@ -1039,6 +1039,8 @@ function calculateTooltipPosition(e) {
     tooltipOnBottom = false;
     let canAddDragHandles = true;
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
+    // let dyWhenOffscreen = 10;
+    let dyWhenOffscreen = window.innerHeight / 3;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
@@ -1049,30 +1051,40 @@ function calculateTooltipPosition(e) {
         let vertOutOfView = dyToShowTooltip <= 0;
         const selEndDimensions = getSelectionCoordinates(false);
 
-        // if (vertOutOfView) {
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
+            /// show tooltip under selection
 
-            if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)
+            let possibleDyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
+
+            if (possibleDyToShowTooltip < window.innerHeight) {
+                dyToShowTooltip = possibleDyToShowTooltip;
                 tooltipOnBottom = true;
-
-            /// display tooltip under selection
-            dyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
-            arrow.classList.add('arrow-on-bottom');
+                arrow.classList.add('arrow-on-bottom');
+            }
         }
+
+        /// Check to be off-screen on top
+        if (dyToShowTooltip < 0) dyToShowTooltip = dyWhenOffscreen;
 
         showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
     } else {
         /// Calculating DY
-        var resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
+        let resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
         const selEndDimensions = getSelectionCoordinates(false);
 
         /// If tooltip is going off-screen on top...
-        var vertOutOfView = resultingDy <= 0;
+        let vertOutOfView = resultingDy <= 0;
         if (vertOutOfView) {
-            /// ...display tooltip below text selection
-            resultingDy = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
-            arrow.classList.add('arrow-on-bottom');
-            tooltipOnBottom = true;
+            /// check to display on bottom
+            let resultingDyOnBottom = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
+            if (resultingDyOnBottom < window.innerHeight) {
+                resultingDy = resultingDyOnBottom;
+                arrow.classList.add('arrow-on-bottom');
+                tooltipOnBottom = true;
+            } else {
+                /// if it will be off-screen as well, use off-screen dy
+                resultingDy = dyWhenOffscreen;
+            }
         }
 
         /// Calculating DX
