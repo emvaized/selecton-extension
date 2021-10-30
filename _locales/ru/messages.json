@@ -492,7 +492,7 @@
         "description": "Ярлык для поля в настройках"
     },
     "addPasteOnlyEmptyField": {
-        "message": "Добавить 'Вставить', только если поле пустое",
+        "message": "Показать 'Вставить', только если поле пустое",
         "description": "Ярлык для опции в настройках"
     },
     "hideTranslateButtonForUserLanguage": {

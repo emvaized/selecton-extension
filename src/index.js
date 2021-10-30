@@ -202,10 +202,14 @@ function setTextSelectionColor() {
     console.log('Selecton applied custom selection color')
 }
 
+let lastMouseDownEvent;
+
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
+
+    lastMouseDownEvent = e;
 
     if (e.button == 1) {
       selection = null;
@@ -233,7 +237,8 @@ function initMouseListeners() {
     selectedText = selection.toString().trim();
 
     /// Check if clicked on text field
-    if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField();
+    // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
+    if (e.detail == 1) checkTextField(e);
 
     if (selectedText.length > 0) {
       /// create tooltip anyway
@@ -252,26 +257,29 @@ function initMouseListeners() {
       activeEl.tagName === "TEXTAREA" ||
       activeEl.getAttribute('contenteditable') !== null;
 
-    /// Special handling for Firefox 
-    /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
-    if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
-      const ta = document.querySelector(':focus');
-      if (ta != null && ta.value != undefined) {
-        selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
-        selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+    if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
+
+      /// Special handling for Firefox 
+      /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
+      if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
+        const ta = document.querySelector(':focus');
+        if (ta != null && ta.value != undefined) {
+          selectedText = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+          selection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+        }
       }
-    }
 
-    if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
+      if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
 
-    if (isTextFieldFocused && configs.addPasteOnlyEmptyField) {
-      /// Ignore single click on text field with inputted value
-      try {
-        if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
-          isTextFieldFocused = false;
-        else
-          if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
-      } catch (e) { console.log(e); }
+      if (configs.addPasteOnlyEmptyField) {
+        /// Ignore single click on text field with inputted value
+        try {
+          if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
+            isTextFieldFocused = false;
+          else
+            if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
+        } catch (e) { console.log(e); }
+      }
     }
   }
 
