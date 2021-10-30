@@ -251,6 +251,10 @@
     "message": "Metric",
     "description": "Variant of metrics system for dropdown"
   },
+  "middleClickHidesTooltip": {
+    "message": "Middle click (to open in background) hides tooltip",
+    "description": "Variant of metrics system for dropdown"
+  },
   "moveDownLabel": {
     "message": "Move down",
     "description": "Tooltip for 'move button down' button"

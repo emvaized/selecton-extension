@@ -211,7 +211,8 @@ function initMouseListeners() {
 
     lastMouseDownEvent = e;
 
-    if (e.button == 1) {
+    /// Middle button click
+    if (e.button == 1 && configs.middleClickHidesTooltip) {
       selection = null;
       hideTooltip();
       hideDragHandles();

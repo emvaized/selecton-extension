@@ -28,6 +28,7 @@ const configs = {
     'enabled': true,
     'preferredSearchEngine': 'google',
     'hideOnKeypress': true,
+    'middleClickHidesTooltip': true,
     'showOnMapButtonEnabled': true,
     'showEmailButton': true,
     'preferredNewEmailMethod': 'mailto',

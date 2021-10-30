@@ -83,7 +83,6 @@ function createSecondaryTooltip() {
 
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
-                hideTooltip();
                 let selectedText = selection.toString();
                 selectedText = encodeURI(selectedText);
                 selectedText = selectedText.replaceAll('&', '%26');
@@ -97,18 +96,23 @@ function createSecondaryTooltip() {
                         if (configs.debugMode) console.log(e);
                     }
 
-                removeSelectionOnPage();
-
                 try {
                     let evt = e || window.event;
 
                     if ("buttons" in evt) {
-                        if (evt.buttons == 1) {
+                        if (evt.button == 0) {
                             /// Left button click
+                            hideTooltip();
+                            removeSelectionOnPage();
                             chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: urlToOpen, focused: true });
-                        } else if (evt.buttons == 4) {
+                        } else if (evt.button == 1) {
                             /// Middle button click
                             evt.preventDefault();
+                            if (configs.middleClickHidesTooltip) {
+                                hideTooltip();
+                                removeSelectionOnPage();
+                            }
+
                             chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: urlToOpen, focused: false });
                         }
                     }
@@ -184,7 +188,6 @@ function appendSecondaryTooltip() {
     calculateEndDy();
 
     /// Set mouse listeners
-
     searchButton.onmouseover = function (event) {
         if (secondaryTooltip == null) return;
 

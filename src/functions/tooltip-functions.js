@@ -8,8 +8,6 @@ function returnTooltipRevealTransform(onEnd = true) {
 }
 
 function onTooltipButtonClick(e, url) {
-    hideTooltip();
-    removeSelectionOnPage();
     // if (configs.addDragHandles)
     //     hideDragHandles();
 
@@ -18,12 +16,19 @@ function onTooltipButtonClick(e, url) {
         const evt = e || window.event;
 
         if ("buttons" in evt) {
-            if (evt.buttons == 1) {
+            if (evt.button == 0) {
                 /// Left button click
+                hideTooltip();
+                removeSelectionOnPage();
                 chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: true });
-            } else if (evt.buttons == 4) {
+            } else if (evt.button == 1) {
                 /// Middle button click
                 evt.preventDefault();
+                if (configs.middleClickHidesTooltip) {
+                    hideTooltip();
+                    removeSelectionOnPage();
+                }
+
                 chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: false });
             }
         }
