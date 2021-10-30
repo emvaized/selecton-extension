@@ -561,23 +561,21 @@ function addContextualButtons() {
             // outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
             const unitKeys = Object.keys(convertionUnits);
             outerloop: for (let i = 0, l = unitKeys.length; i < l; i++) {
-                let key = unitKeys[i];
-
-                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? unitKeys[i] : value['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
                     if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
 
                     /// Special handling for prices where coma separates fractional digits instead of thousandths
                     if (selectedText.includes(',')) {
                         let parts = selectedText.split(',');
-                        if (parts.length == 2) {
+                        if (parts.length == 2)
                             selectedText = selectedText.replaceAll(',', '.');
-                        }
                     }
 
                     numberToConvert = extractAmountFromSelectedText(selectedText);
 
                     if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                        let key = unitKeys[i];
                         let value = convertionUnits[key];
 
                         /// Check selected text for literal multipliers
@@ -593,9 +591,9 @@ function addContextualButtons() {
                         } else {
                             convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
                         }
-
-                        break outerloop;
                     }
+
+                    break outerloop;
                 }
             }
 
@@ -615,12 +613,13 @@ function addContextualButtons() {
                 const converted = document.createElement('span');
                 // converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
                 converted.textContent = ` ${convertedNumber}`;
-                converted.setAttribute('style', `color: ${secondaryColor}`);
+                converted.style.color = secondaryColor;
                 interactiveButton.appendChild(converted);
 
                 const unitLabelEl = document.createElement('span');
                 unitLabelEl.textContent = ` ${convertedUnit}`;
-                unitLabelEl.setAttribute('style', `color: ${unitLabelColor}`);
+                // unitLabelEl.setAttribute('style', `color: ${unitLabelColor}`);
+                unitLabelEl.style.color = unitLabelColor;
                 interactiveButton.appendChild(unitLabelEl);
 
                 interactiveButton.addEventListener("mousedown", function (e) {
@@ -668,7 +667,7 @@ function addContextualButtons() {
                     let numbersFromString = selectedText.match(/[+-]?\d+(\.\d)?/g);
 
                     if (numbersFromString != null && numbersFromString.length > 0) {
-                        let calculatedExpression = calculateString(selectedText.replaceAll(' ', ''));
+                        let calculatedExpression = calculateString(selectedText.replaceAll(' ', '').replaceAll('}', ''));
                         if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
 
                             let number;
