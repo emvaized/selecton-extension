@@ -84,7 +84,7 @@ function createTooltip(e) {
                     }, 1);
                 } else hideTooltip();
 
-            }, 1
+            }, 2
         );
 }
 
@@ -517,9 +517,9 @@ function addContextualButtons() {
 
         /// Unit conversion button
         if (configs.convertMetrics) {
-            var convertedNumber;
-            var fromUnit;
-            var convertedUnit;
+            let convertedNumber;
+            let fromUnit;
+            let convertedUnit;
 
             /// Feet ' and inches " handling
             if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
@@ -562,7 +562,6 @@ function addContextualButtons() {
             const unitKeys = Object.keys(convertionUnits);
             outerloop: for (let i = 0, l = unitKeys.length; i < l; i++) {
                 let key = unitKeys[i];
-                let value = convertionUnits[key];
 
                 let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
@@ -579,6 +578,7 @@ function addContextualButtons() {
                     numberToConvert = extractAmountFromSelectedText(selectedText);
 
                     if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                        let value = convertionUnits[key];
 
                         /// Check selected text for literal multipliers
                         for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
