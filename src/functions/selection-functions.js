@@ -269,49 +269,85 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY, handleIndex)
             start = doc.caretPositionFromPoint(startX, startY);
             end = doc.caretPositionFromPoint(endX, endY);
             range = doc.createRange();
-            range.setStart(start.offsetNode, start.offset);
-            range.setEnd(end.offsetNode, end.offset);
-        }
-        else if (typeof doc.caretRangeFromPoint != "undefined") {
-            const screenHeight = window.innerHeight || document.documentElement.clientHeight ||
-                document.body.clientHeight;
-
-            /// When scrolling page, startY and endY are bounded to visible screen
-            /// So when one of the handles go off-screen, startY or endY are considered negative or bigger than screen height, and the selection may fail
-            if (startY < 0.0) startY = 0.0;
-            if (endY > screenHeight) endY = screenHeight - 15;
-
-            start = doc.caretRangeFromPoint(startX, startY);
-            end = doc.caretRangeFromPoint(endX, endY);
-            range = doc.createRange();
-            // range.setStart(start.startContainer, start.startOffset);
-            // range.setEnd(end.startContainer, end.startOffset);
-
+            // range.setStart(start.offsetNode, start.offset);
+            // range.setEnd(end.offsetNode, end.offset);
             if (handleIndex == 0) {
                 if (backward) {
-                    range.setStart(start.startContainer, start.startOffset);
+                    range.setStart(start.offsetNode, start.offset);
                     range.setEnd(sel.anchorNode, sel.anchorOffset);
                 } else {
-                    range.setStart(end.startContainer, end.startOffset);
+                    range.setStart(end.offsetNode, end.offset);
                     range.setEnd(sel.focusNode, sel.focusOffset);
                 }
             } else {
                 if (backward) {
                     range.setStart(sel.focusNode, sel.focusOffset);
-                    range.setEnd(start.startContainer, start.startOffset);
+                    range.setEnd(start.offsetNode, start.offset);
                 } else {
                     range.setStart(sel.anchorNode, sel.anchorOffset);
-                    range.setEnd(end.startContainer, end.startOffset);
+                    range.setEnd(end.offsetNode, end.offset);
                 }
             }
-        }
-        else if (typeof doc.elementFromPoint != "undefined" && "getClientRects" in doc.createRange()) {
-            start = positionFromPoint(doc, startX, startY);
-            end = positionFromPoint(doc, endX, endY);
-            range = doc.createRange();
-            range.setStart(start.offsetNode, start.offset);
-            range.setEnd(end.offsetNode, end.offset);
-        }
+        } else
+            if (typeof doc.caretRangeFromPoint != "undefined") {
+
+                const screenHeight = window.innerHeight || document.documentElement.clientHeight ||
+                    document.body.clientHeight;
+
+                /// When scrolling page, startY and endY are bounded to visible screen
+                /// So when one of the handles go off-screen, startY or endY are considered negative or bigger than screen height, and the selection may fail
+                if (startY < 0.0) startY = 0.0;
+                if (endY > screenHeight) endY = screenHeight - 15;
+
+                start = doc.caretRangeFromPoint(startX, startY);
+                end = doc.caretRangeFromPoint(endX, endY);
+                range = doc.createRange();
+                // range.setStart(start.startContainer, start.startOffset);
+                // range.setEnd(end.startContainer, end.startOffset);
+
+                if (handleIndex == 0) {
+                    if (backward) {
+                        range.setStart(start.startContainer, start.startOffset);
+                        range.setEnd(sel.anchorNode, sel.anchorOffset);
+                    } else {
+                        range.setStart(end.startContainer, end.startOffset);
+                        range.setEnd(sel.focusNode, sel.focusOffset);
+                    }
+                } else {
+                    if (backward) {
+                        range.setStart(sel.focusNode, sel.focusOffset);
+                        range.setEnd(start.startContainer, start.startOffset);
+                    } else {
+                        range.setStart(sel.anchorNode, sel.anchorOffset);
+                        range.setEnd(end.startContainer, end.startOffset);
+                    }
+                }
+            }
+            else if (typeof doc.elementFromPoint != "undefined" && "getClientRects" in doc.createRange()) {
+
+                start = positionFromPoint(doc, startX, startY);
+                end = positionFromPoint(doc, endX, endY);
+                range = doc.createRange();
+                // range.setStart(start.offsetNode, start.offset);
+                // range.setEnd(end.offsetNode, end.offset);
+                if (handleIndex == 0) {
+                    if (backward) {
+                        range.setStart(start.offsetNode, start.offset);
+                        range.setEnd(sel.anchorNode, sel.anchorOffset);
+                    } else {
+                        range.setStart(end.offsetNode, end.offset);
+                        range.setEnd(sel.focusNode, sel.focusOffset);
+                    }
+                } else {
+                    if (backward) {
+                        range.setStart(sel.focusNode, sel.focusOffset);
+                        range.setEnd(start.offsetNode, start.offset);
+                    } else {
+                        range.setStart(sel.anchorNode, sel.anchorOffset);
+                        range.setEnd(end.offsetNode, end.offset);
+                    }
+                }
+            }
 
         if (range !== null && typeof window.getSelection != "undefined") {
             sel.removeAllRanges();

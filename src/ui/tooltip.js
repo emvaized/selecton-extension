@@ -1230,7 +1230,7 @@ function hideTooltip(animated = true) {
         console.log('Checking for existing Selecton tooltips...')
 
     /// Hide all tooltips
-    let oldTooltips = document.querySelectorAll(`.selecton-entity`);
+    let oldTooltips = document.querySelectorAll('.selecton-entity');
     // if (configs.debugMode) {
     //     console.log(`Found ${oldTooltips.length} Selecton tooltips:`);
     //     if (oldTooltips.length !== 0)
