@@ -158,6 +158,7 @@ function addDragHandle(dragHandleIndex) {
                                 );
                             }
 
+
                         } catch (e) {
                             if (configs.debugMode) {
                                 console.log('Error while creating selection range:');

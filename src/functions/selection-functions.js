@@ -276,9 +276,8 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY, handleIndex)
             const screenHeight = window.innerHeight || document.documentElement.clientHeight ||
                 document.body.clientHeight;
 
-            /// TODO: It seems that when scrolling page, startY and endY are bounded to visible screen
-            /// So when one of the handles go off-screen, startY or endY are considered negative or bigger than screen height, and the selection fails
-            /// Following 2 lines prevent such an issue
+            /// When scrolling page, startY and endY are bounded to visible screen
+            /// So when one of the handles go off-screen, startY or endY are considered negative or bigger than screen height, and the selection may fail
             if (startY < 0.0) startY = 0.0;
             if (endY > screenHeight) endY = screenHeight - 15;
 
@@ -288,16 +287,14 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY, handleIndex)
             // range.setStart(start.startContainer, start.startOffset);
             // range.setEnd(end.startContainer, end.startOffset);
 
-            // let sel = selection ?? window.getSelection()
-            // let sel = window.getSelection();
-
             if (handleIndex == 0) {
-                // range.setStart(start.startContainer, start.startOffset);
-                // range.setEnd(end.startContainer, end.startOffset);
-
-                range.setStart(start.startContainer, start.startOffset);
-                range.setEnd(end.startContainer, end.startOffset);
-
+                if (backward) {
+                    range.setStart(start.startContainer, start.startOffset);
+                    range.setEnd(sel.anchorNode, sel.anchorOffset);
+                } else {
+                    range.setStart(end.startContainer, end.startOffset);
+                    range.setEnd(sel.focusNode, sel.focusOffset);
+                }
             } else {
                 if (backward) {
                     range.setStart(sel.focusNode, sel.focusOffset);
