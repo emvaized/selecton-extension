@@ -195,6 +195,10 @@
     "message": "Customizable pop-up with actions on text selection",
     "description": "Extension description"
   },
+  "floatingOffscreenTooltip": {
+    "message": "Keep off-screen tooltip floating",
+    "description": "Label for option in settings"
+  },
   "fontSize": {
     "message": "Font size",
     "description": "Label for option in settings"
@@ -252,7 +256,7 @@
     "description": "Variant of metrics system for dropdown"
   },
   "middleClickHidesTooltip": {
-    "message": "Middle click (to open in background) hides tooltip",
+    "message": "Middle click to open in background hides panel",
     "description": "Variant of metrics system for dropdown"
   },
   "moveDownLabel": {

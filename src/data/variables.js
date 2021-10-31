@@ -50,6 +50,9 @@ var domainIsBlacklistedForSnapping;
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;
 
+var floatingTooltipTop = false;
+var floatingTooltipBottom = false;
+
 // var dragHandles = [];
 // var oldTooltips = [];
 // var oldSecondaryTooltips = [];

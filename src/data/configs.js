@@ -69,6 +69,7 @@ const configs = {
     'delayToRevealSearchTooltip': 350,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
+    'floatingOffscreenTooltip': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

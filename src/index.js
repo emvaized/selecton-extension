@@ -312,6 +312,13 @@ function initMouseListeners() {
 
     if (tooltipIsShown == false) return;
 
+    if (configs.floatingOffscreenTooltip) /// dont hide tooltip if it's floating
+      if (floatingTooltipTop != false) {
+        if (window.scrollY >= floatingTooltipTop) return;
+      } else if (floatingTooltipBottom != false) {
+        if (window.scrollY <= floatingTooltipBottom) return;
+      }
+
     hideTooltip();
     hideDragHandles(false);
     recreateTooltip();

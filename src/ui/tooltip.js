@@ -1043,15 +1043,17 @@ function calculateTooltipPosition(e) {
     tooltipOnBottom = false;
     let canAddDragHandles = true;
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
-    // let dyWhenOffscreen = 10;
+    let dyForFloatingTooltip = 15;
     let dyWhenOffscreen = window.innerHeight / 3;
+
+    let dxToShowTooltip, dyToShowTooltip;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
         /// Show it on top of selection, dx aligned to cursor
         // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
 
-        let dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
+        dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
@@ -1069,36 +1071,40 @@ function calculateTooltipPosition(e) {
         /// Check to be off-screen on top
         if (dyToShowTooltip < 0 && tooltipOnBottom == false) dyToShowTooltip = dyWhenOffscreen;
 
-        showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
+        /// Calculating DX
+        dxToShowTooltip = e.clientX - tooltip.clientWidth / 2;
+
     } else {
         /// Calculating DY
-        let resultingDy = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
+        dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
 
         /// If tooltip is going off-screen on top...
-        let vertOutOfView = resultingDy <= 0;
+        let vertOutOfView = dyToShowTooltip <= 0;
         if (vertOutOfView) {
             /// check to display on bottom
             let resultingDyOnBottom = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
             if (resultingDyOnBottom < window.innerHeight) {
-                resultingDy = resultingDyOnBottom;
+                dyToShowTooltip = resultingDyOnBottom;
                 arrow.classList.add('arrow-on-bottom');
                 tooltipOnBottom = true;
             } else {
                 /// if it will be off-screen as well, use off-screen dy
-                resultingDy = dyWhenOffscreen;
+                dyToShowTooltip = dyWhenOffscreen;
             }
         }
 
+        /// Add small padding
+        dyToShowTooltip = dyToShowTooltip + 2;
+
         /// Calculating DX
-        let resultingDx;
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
             const delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
 
             if (selEndDimensions.dx > selStartDimensions.dx)
-                resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+                dxToShowTooltip = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
             else
-                resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+                dxToShowTooltip = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
         } catch (e) {
             if (configs.debugMode)
                 console.log(e);
@@ -1106,12 +1112,25 @@ function calculateTooltipPosition(e) {
             /// Fall back to old approach - place tooltip in horizontal center selection rect,
             /// which may be in fact bigger than visible selection
             const selDimensions = getSelectionRectDimensions();
-            resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+            dxToShowTooltip = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
         }
-
-        /// Show tooltip on top of selection
-        showTooltip(resultingDx, resultingDy + 2);
     }
+
+    if (configs.floatingOffscreenTooltip) {
+        /// Keep panel floating when off-screen
+        floatingTooltipTop = false; floatingTooltipBottom = false;
+        if (dyToShowTooltip < 0) {
+            dyToShowTooltip = dyForFloatingTooltip;
+            floatingTooltipTop = window.scrollY;
+            tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
+        } else if (dyToShowTooltip > window.innerHeight) {
+            dyToShowTooltip = window.innerHeight - (tooltip.clientHeight ?? 50) - dyForFloatingTooltip;
+            floatingTooltipBottom = window.scrollY;
+            tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
+        }
+    }
+
+    showTooltip(dxToShowTooltip, dyToShowTooltip);
 
     setTimeout(function () {
         if (configs.addDragHandles && canAddDragHandles)
