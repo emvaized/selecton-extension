@@ -319,7 +319,7 @@ function initMouseListeners() {
         if (window.scrollY <= floatingTooltipBottom) return;
       }
 
-    hideTooltip();
+    hideTooltip(false);
     hideDragHandles(false);
     recreateTooltip();
   }
@@ -368,7 +368,7 @@ function recreateTooltip() {
     }
 
     if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
-      createTooltip(lastMouseUpEvent);
+      createTooltip(lastMouseUpEvent, true);
     }
   }, 650);
 }

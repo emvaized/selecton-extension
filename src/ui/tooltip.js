@@ -1,4 +1,4 @@
-function createTooltip(e) {
+function createTooltip(e, recreated = false) {
     if (isDraggingTooltip) return;
 
     if (dontShowTooltip !== true)
@@ -70,7 +70,7 @@ function createTooltip(e) {
                     return;
                 }
 
-                setUpNewTooltip();
+                setUpNewTooltip(null, recreated);
 
                 if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
                     addContextualButtons();
@@ -90,7 +90,7 @@ function createTooltip(e) {
         );
 }
 
-function setUpNewTooltip(type) {
+function setUpNewTooltip(type, recreated = false) {
 
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
@@ -98,6 +98,7 @@ function setUpNewTooltip(type) {
     tooltip.style.opacity = 0.0;
     tooltip.style.position = 'fixed';
     tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out`;
+    if (recreated) tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
     tooltip.style.transform = returnTooltipRevealTransform(false);
     tooltip.style.transformOrigin = '50% 100% 0';
 
