@@ -184,7 +184,7 @@
         "description": "Uzantı açıklaması"
     },
     "floatingOffscreenTooltip": {
-        "message": "Ekrandan çıktığında kayan panel",
+        "message": "Ekrandan kaydırıldığında kayan panel",
         "description": "Label for option in settings"
     },
     "fontSize": {

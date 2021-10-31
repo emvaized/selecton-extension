@@ -180,7 +180,7 @@
         "description": "Опис розширення"
     },
     "floatingOffscreenTooltip": {
-        "message": "Плаваюча панель, коли выходить за межі екрана",
+        "message": "Плаваюча панель при прокрученні за межі екрана",
         "description": "Label for option in settings"
     },
     "fontSize": {

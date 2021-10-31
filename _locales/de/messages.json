@@ -180,7 +180,7 @@
         "description": "Erweiterungsbeschreibung"
     },
     "floatingOffscreenTooltip": {
-        "message": "Schwebendes Panel, wenn es aus dem Bildschirm geht",
+        "message": "Schwebendes Panel, wenn es außerhalb des Bildschirms gescrollt wird",
         "description": "Label for option in settings"
     },
     "fontSize": {

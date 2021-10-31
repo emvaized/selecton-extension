@@ -180,7 +180,7 @@
         "description": "description da extensão"
     },
     "floatingOffscreenTooltip": {
-        "message": "Painel flutuante quando sai da tela",
+        "message": "Painel flutuante quando rolado para fora da tela",
         "description": "Label for option in settings"
     },
     "fontSize": {

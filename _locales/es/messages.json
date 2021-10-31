@@ -180,7 +180,7 @@
         "description": "Descripción de la extensión"
     },
     "floatingOffscreenTooltip": {
-        "message": "Panel flotante cuando sale de la pantalla",
+        "message": "Panel flotante cuando se desplaza fuera de la pantalla",
         "description": "Label for option in settings"
     },
     "fontSize": {

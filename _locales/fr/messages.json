@@ -180,7 +180,7 @@
         "description": "Description de l'extension"
     },
     "floatingOffscreenTooltip": {
-        "message": "Panneau flottant lorsqu'il sort de l'écran",
+        "message": "Panneau flottant lorsqu'il défile hors écran",
         "description": "Label for option in settings"
     },
     "fontSize": {

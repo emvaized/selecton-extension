@@ -196,7 +196,7 @@
     "description": "Extension description"
   },
   "floatingOffscreenTooltip": {
-    "message": "Floating panel when it goes off-screen",
+    "message": "Floating panel when it's scrolled off-screen",
     "description": "Label for option in settings"
   },
   "fontSize": {
