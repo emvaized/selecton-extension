@@ -1,7 +1,15 @@
 #3.3.8
-- Fix for 2GIS map search
+- Added config "Delay before reveal custom search panel"
+- Added config "Disable word snapping for code"
+- Added config "Floating panel when scrolled off-screen" (defaults to off)
 - Excluded domains configs are no longer case-sensitive
+- Fix memory leak when can't load favicons on website
+- Fixed selecting with drag handle after scroll
+- Fixed default Aliexpress urls
+- Fix for 2GIS map search
+- Added small live translate button transition
 - Options page fixes and improvements
+- Improved overall performance and keywords detection
 
 #3.3.7
 - Fixes for live translate button
