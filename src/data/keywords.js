@@ -91,6 +91,7 @@ const thousandMultipliers = [
 const millionMultipliers = [
     'million',
     'millón',
+    'millones',
     'млн',
     'миллион',
     'мільйон',
