@@ -1,4 +1,4 @@
-#3.3.8
+#3.3.8-beta
 - Added config "Delay before reveal custom search panel"
 - Added config "Disable word snapping for code"
 - Added config "Floating panel when scrolled off-screen" (defaults to off)
