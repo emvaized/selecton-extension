@@ -183,6 +183,10 @@
         "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere",
         "description": "Uzantı açıklaması"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Ekrandan çıktığında kayan panel",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Yazı tipi boyutu",
         "description": "Ayarlardaki seçenek etiketi"
@@ -230,6 +234,10 @@
     "metric": {
         "message": "Metrik",
         "description": "Açılır menüsü için ölçüm sisteminin varyantı"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Orta tıklama (arka planda açmak için) paneli gizler",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Aşağı gitme",

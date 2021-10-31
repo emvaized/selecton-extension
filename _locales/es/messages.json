@@ -179,6 +179,10 @@
         "message": "Ventana emergente personalizable con acciones en la selección de texto",
         "description": "Descripción de la extensión"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Panel flotante cuando sale de la pantalla",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Tamaño de fuente",
         "description": "Label for option in settings"
@@ -222,6 +226,10 @@
     "metric": {
         "message": "Métrica",
         "description": "Variante del sistema de métricas para el menú desplegable"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Hacer clic con el botón central (para abrir en segundo plano) oculta el panel",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Mover hacia abajo",

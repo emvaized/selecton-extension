@@ -56,7 +56,7 @@
         "description": "Label for field in settings"
     },
     "appearanceHeader": {
-        "message": "Внешний вид панели",
+        "message": "Внешний вид",
         "description": "Header for appearance category in settings"
     },
     "applyConfigsImmediately": {
@@ -64,7 +64,7 @@
         "description": "Header for appearance category in settings"
     },
     "behaviorHeader": {
-        "message": "Поведение панели",
+        "message": "Поведение",
         "description": "Header for appearance category in settings"
     },
     "boldLabel": {
@@ -191,6 +191,10 @@
         "message": "Всплывающая панель с действиями при выделении текста",
         "description": "Описание расширения"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Плавающая панель, когда выходит за границы экрана",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Размер шрифта",
         "description": "Label for option in settings"
@@ -238,6 +242,10 @@
     "metric": {
         "message": "Метрическая",
         "description": "Variant of metrics system for dropdown"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Щелчок средней кнопкой мыши (чтобы открыть в фоновом режиме) скрывает панель",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Опустить",

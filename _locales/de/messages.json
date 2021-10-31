@@ -179,6 +179,10 @@
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
         "description": "Erweiterungsbeschreibung"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Schwebendes Panel, wenn es aus dem Bildschirm geht",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Schriftgröße",
         "description": "Label for option in settings"
@@ -222,6 +226,10 @@
     "metric": {
         "message": "Metrisch",
         "description": "Variante des Metriksystems für Dropdown"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Mittlerer Klick (um im Hintergrund zu öffnen) blendet das Panel aus",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Absteigen",

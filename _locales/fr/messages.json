@@ -179,6 +179,10 @@
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
         "description": "Description de l'extension"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Panneau flottant lorsqu'il sort de l'écran",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Taille de police",
         "description": "Label for option in settings"
@@ -222,6 +226,10 @@
     "metric": {
         "message": "Métrique",
         "description": "Variante du système de métriques pour le menu déroulant"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Le clic du milieu (pour ouvrir en arrière-plan) masque le panneau",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Descendre",

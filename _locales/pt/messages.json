@@ -179,6 +179,10 @@
         "message": "Pop-up personalizável com ações na seleção de texto",
         "description": "description da extensão"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Painel flutuante quando sai da tela",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Tamanho da fonte",
         "description": "Label for option in settings"
@@ -222,6 +226,10 @@
     "metric": {
         "message": "Métrica",
         "description": "Variante do sistema de métricas para lista suspensa"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Clique com o botão do meio (para abrir em segundo plano) para ocultar o painel",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Mover para baixo",

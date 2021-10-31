@@ -179,6 +179,10 @@
         "message": "Спливаюча панель з кнопками дій при виділенні тексту",
         "description": "Опис розширення"
     },
+    "floatingOffscreenTooltip": {
+        "message": "Плаваюча панель, коли выходить за межі екрана",
+        "description": "Label for option in settings"
+    },
     "fontSize": {
         "message": "Розмір шрифту",
         "description": "Label for option in settings"
@@ -222,6 +226,10 @@
     "metric": {
         "message": "Метрична",
         "description": "Variant of metrics system for dropdown"
+    },
+    "middleClickHidesTooltip": {
+        "message": "Середній клік (щоб відкрити у фоновому режимі) приховує панель",
+        "description": "Label for option in settings"
     },
     "moveDownLabel": {
         "message": "Опустити",

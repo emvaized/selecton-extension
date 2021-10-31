@@ -196,7 +196,7 @@
     "description": "Extension description"
   },
   "floatingOffscreenTooltip": {
-    "message": "Keep off-screen tooltip floating",
+    "message": "Floating panel when it goes off-screen",
     "description": "Label for option in settings"
   },
   "fontSize": {
@@ -256,8 +256,8 @@
     "description": "Variant of metrics system for dropdown"
   },
   "middleClickHidesTooltip": {
-    "message": "Middle click to open in background hides panel",
-    "description": "Variant of metrics system for dropdown"
+    "message": "Middle click (to open in background) hides panel",
+    "description": "Label for option in settings"
   },
   "moveDownLabel": {
     "message": "Move down",
