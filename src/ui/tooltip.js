@@ -1067,7 +1067,7 @@ function calculateTooltipPosition(e) {
         }
 
         /// Check to be off-screen on top
-        if (dyToShowTooltip < 0) dyToShowTooltip = dyWhenOffscreen;
+        if (dyToShowTooltip < 0 && tooltipOnBottom == false) dyToShowTooltip = dyWhenOffscreen;
 
         showTooltip(e.clientX - tooltip.clientWidth / 2, dyToShowTooltip);
     } else {
