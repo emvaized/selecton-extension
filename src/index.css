@@ -154,7 +154,12 @@
 }
 
 .selection-tooltip-draghandle {
-  position: fixed; z-index: 99998; left: 0px; top: 0px; opacity:0; background: var(--selecton-background-color) !important;
+  position: fixed; z-index: 99998; left: 0px; top: 0px; opacity:0; 
+  /* background: var(--selecton-background-color) !important; */
+}
+
+.selection-tooltip-draghandle-line {
+  background: var(--selecton-background-color); opacity: 0.7; position: absolute; border-radius: 4px;
 }
 
 .selection-tooltip-draghandle-circle {

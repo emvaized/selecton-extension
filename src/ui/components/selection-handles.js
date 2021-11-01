@@ -54,8 +54,12 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         dragHandle.id = `selecton-draghandle-${dragHandleIndex}`;
         dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
         dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
-        dragHandle.style.height = `${selectionHandleLineHeight}px`;
-        dragHandle.style.width = `${lineWidth}px`;
+
+        let line = document.createElement('div');
+        line.className = 'selection-tooltip-draghandle-line';
+        line.style.height = `${selectionHandleLineHeight}px`;
+        line.style.width = `${lineWidth}px`;
+        dragHandle.appendChild(line);
 
         let circleDiv = document.createElement('div');
         circleDiv.className = 'selection-tooltip-draghandle-circle';
@@ -227,15 +231,16 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         }
 
                         /// Vertically revert the drag handle if tooltip is located on bottom
-                        if (configs.tooltipPosition == 'overCursor') {
-                            if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true) {
-                                circleDiv.style.bottom = "unset";
-                                circleDiv.style.top = `-${circleHeight - 1}px`;
-                            } else {
-                                circleDiv.style.bottom = `-${selectionHandleLineHeight - 1}px`;
-                                circleDiv.style.top = "unset";
-                            }
+                        // if (configs.tooltipPosition == 'overCursor') {
+                        // if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true) {
+                        if (dragHandleIndex == 1 && tooltipOnBottom) {
+                            circleDiv.style.bottom = "unset";
+                            circleDiv.style.top = `-${circleHeight - 1}px`;
+                        } else {
+                            circleDiv.style.bottom = `-${selectionHandleLineHeight - 1}px`;
+                            circleDiv.style.top = "unset";
                         }
+                        // }
 
                         setTimeout(function () {
                             dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
