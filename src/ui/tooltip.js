@@ -1151,9 +1151,10 @@ function calculateTooltipPosition(e) {
 
     showTooltip(dxToShowTooltip, dyToShowTooltip);
 
+    if (configs.addDragHandles && canAddDragHandles)
+        setDragHandles(selStartDimensions, selEndDimensions);
+
     setTimeout(function () {
-        if (configs.addDragHandles && canAddDragHandles)
-            setDragHandles(selStartDimensions, selEndDimensions);
         checkTooltipForCollidingWithSideEdges();
     }, 2);
 }
