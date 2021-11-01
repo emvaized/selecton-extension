@@ -76,7 +76,7 @@ h4 {
 }
 */
 
-button {
+#footer-buttons button {
   margin: 3px !important;
   width: 100%;
   text-align: center;
@@ -159,6 +159,13 @@ content: "\2212";
 
 .custom-search-option-icon-input {
   min-width: 100%; max-width: 100%; margin-top: 3px !important;
+}
+
+
+@media (min-width: 600px) {
+  #footer-buttons { text-align: center; }
+  #footer-buttons button { width: unset;  display: inline; }
+  #allChangesSavedAutomaticallyHeader { text-align: center; }
 }
 
 
