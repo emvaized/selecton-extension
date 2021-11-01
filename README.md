@@ -92,14 +92,16 @@ To change colors on Firefox, open settings in new tab by clicking button in top-
 
 **How to disable word snapping?**
 
-* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped.
-To permanently disable word snapping, add website to word snapping blacklist or uncheck:
+* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped by word.
+To permanently disable word snapping, add website to word-snapping blacklist or uncheck:
 "Settings > Text selection > Snap text selection by word"
+
+**Why extension doesn't work on new tab page?**
+* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages ("chrome://", "about:*", etc.) and in extensions store.
 
 **Additional search buttons do not show on hovering Search button?**
 
-* Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services.
-In this case you would like to use **vertical layout** for custom search panel, or visit *Settings > Custom search tooltip* and set your own icon for each option
+* Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services. In this case you would like to use **vertical layout** for custom search panel to get at least labels shown, or visit *Settings > Custom search tooltip* and set your own icon for each option. It may also be that current website blocks all external requests at all, which prevents Selecton from loading favicons.
 
 **How to add Selecton settings as Vivaldi side panel?**
 
