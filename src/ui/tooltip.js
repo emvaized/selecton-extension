@@ -573,14 +573,14 @@ function addContextualButtons() {
                 let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : convertionUnits[key]['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
                     if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
-                    console.log('found key: ' + nonConvertedUnit);
+                    if (configs.debugMode) console.log('found key: ' + nonConvertedUnit);
                     includesKeyword = i; break;
                 } else if (convertionUnits[key]['variations'] && configs.preferredMetricsSystem == 'metric') {
                     const keyVariations = convertionUnits[key]['variations'];
 
                     for (let i2 = 0, l2 = keyVariations.length; i2 < l2; i2++) {
                         if (selectedText.includes(keyVariations[i2])) {
-                            console.log('found key: ' + keyVariations[i2]);
+                            if (configs.debugMode) console.log('found key: ' + keyVariations[i2]);
                             includesKeyword = i; break;
                         }
                     }

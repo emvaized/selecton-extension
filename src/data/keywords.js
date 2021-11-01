@@ -113,6 +113,11 @@ const convertionUnits = {
             return value - 273.15;
         },
     },
+    /// Duplicate only for imperial recognition to recognize " m."
+    "feet": {
+        "convertsTo": " m.",
+        "ratio": 0.3048,
+    },
 
     /// Cyrillic variants
     " миль": {
