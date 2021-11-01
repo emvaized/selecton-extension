@@ -562,41 +562,59 @@ function addContextualButtons() {
 
             /// Basic unit conversion
             // outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
+
+            /// Check for keywords in text
+            let includesKeyword = false;
             const unitKeys = Object.keys(convertionUnits);
-            outerloop: for (let i = 0, l = unitKeys.length; i < l; i++) {
-                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? unitKeys[i] : value['convertsTo'];
+            for (let i = 0, l = unitKeys.length; i < l; i++) {
+
+                const key = unitKeys[i];
+
+                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : convertionUnits[key]['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
                     if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
+                    console.log('found key: ' + nonConvertedUnit);
+                    includesKeyword = i; break;
+                } else if (convertionUnits[key]['variations'] && configs.preferredMetricsSystem == 'metric') {
+                    const keyVariations = convertionUnits[key]['variations'];
 
-                    /// Special handling for prices where coma separates fractional digits instead of thousandths
-                    if (selectedText.includes(',')) {
-                        let parts = selectedText.split(',');
-                        if (parts.length == 2)
-                            selectedText = selectedText.replaceAll(',', '.');
-                    }
-
-                    numberToConvert = extractAmountFromSelectedText(selectedText);
-
-                    if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-                        let key = unitKeys[i];
-                        let value = convertionUnits[key];
-
-                        /// Check selected text for literal multipliers
-                        for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
-                        for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { numberToConvert *= 1000000; break; } }
-                        for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { numberToConvert *= 1000; break; } }
-
-                        fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                        convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
-
-                        if (fromUnit.includes('°')) {
-                            convertedNumber = value['convertFunction'](numberToConvert);
-                        } else {
-                            convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
+                    for (let i2 = 0, l2 = keyVariations.length; i2 < l2; i2++) {
+                        if (selectedText.includes(keyVariations[i2])) {
+                            console.log('found key: ' + keyVariations[i2]);
+                            includesKeyword = i; break;
                         }
                     }
+                }
+            }
 
-                    break outerloop;
+            /// Calculate value
+            if (includesKeyword != false) {
+                /// Special handling for prices where coma separates fractional digits instead of thousandths
+                if (selectedText.includes(',')) {
+                    let parts = selectedText.split(',');
+                    if (parts.length == 2)
+                        selectedText = selectedText.replaceAll(',', '.');
+                }
+
+                numberToConvert = extractAmountFromSelectedText(selectedText);
+
+                if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
+                    let key = unitKeys[includesKeyword];
+                    let value = convertionUnits[key];
+
+                    /// Check selected text for literal multipliers
+                    for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
+                    for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { numberToConvert *= 1000000; break; } }
+                    for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { numberToConvert *= 1000; break; } }
+
+                    fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
+                    convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+
+                    if (fromUnit.includes('°')) {
+                        convertedNumber = value['convertFunction'](numberToConvert);
+                    } else {
+                        convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
+                    }
                 }
             }
 
