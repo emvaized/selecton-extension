@@ -78,31 +78,31 @@ function initConfigs(shouldCreateTooltip = false, e) {
         }
 
         /// Check page to have dark background
-        let isDarkPage = false;
-        if (configs.invertColorOnDarkWebsite)
-          try { isDarkPage = checkPageToHaveDarkBg(); } catch (e) { isDarkPage = false; if (configs.debugMode) console.log(e); }
+        // let isDarkPage = false;
+        // if (configs.invertColorOnDarkWebsite)
+        //   try { isDarkPage = checkWholePageToHaveDarkBg(); } catch (e) { isDarkPage = false; if (configs.debugMode) console.log(e); }
 
-        /// Set css styles
-        if (configs.useCustomStyle) {
-          /// Custom style from settings
-          const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
-          document.body.style.setProperty('--selecton-background-color', bgColor);
-          getTextColorForBackground(bgColor);
+        // /// Set css styles
+        // if (configs.useCustomStyle) {
+        //   /// Custom style from settings
+        //   const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
+        //   document.body.style.setProperty('--selecton-background-color', bgColor);
+        //   getTextColorForBackground(bgColor);
 
-          document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
-          document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
-          document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
-          secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
+        //   document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
+        //   document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
+        //   document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
+        //   secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
 
-        } else {
-          /// Default style
-          document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
-          document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
-          document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
-          document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
-          secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
-          isDarkTooltip = !isDarkPage;
-        }
+        // } else {
+        //   /// Default style
+        //   document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
+        //   document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
+        //   document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
+        //   document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
+        //   secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
+        //   isDarkTooltip = !isDarkPage;
+        // }
 
         /// Set font-size
         document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
@@ -222,6 +222,7 @@ function initMouseListeners() {
   document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
     if (isDraggingTooltip) return;
+    if (tooltipIsShown) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;
@@ -243,6 +244,38 @@ function initMouseListeners() {
 
     if (selectedText.length > 0) {
       /// create tooltip anyway
+
+      /// Check page to have dark background
+      setTimeout(function () {
+        let isDarkPage = false;
+        try {
+          const anchornode = selection.anchorNode;
+          if (anchornode)
+            isDarkPage = checkSelectionToHaveDarkBackground(anchornode);
+        } catch (e) { }
+
+        /// Set css styles
+        if (configs.useCustomStyle) {
+          /// Custom style from settings
+          const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
+          document.body.style.setProperty('--selecton-background-color', bgColor);
+          getTextColorForBackground(bgColor);
+
+          document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
+          document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
+          document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
+          secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
+        } else {
+          /// Default style
+          document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
+          document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
+          document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
+          document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
+          secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
+          isDarkTooltip = !isDarkPage;
+        }
+      }, 0);
+
       initTooltip(e);
     } else {
       /// no selection on page - check if textfield is focused
@@ -368,6 +401,7 @@ function recreateTooltip() {
     }
 
     if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
+
       createTooltip(lastMouseUpEvent, true);
     }
   }, 650);

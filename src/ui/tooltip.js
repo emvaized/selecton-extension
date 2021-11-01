@@ -854,116 +854,119 @@ function addContextualButtons() {
 
         /// Time convert button
         if (configs.convertTime) {
-            let textToProccess = selectedText;
+            try {
+                let textToProccess = selectedText;
 
-            /// 12H - 24H conversion
-            let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
+                /// 12H - 24H conversion
+                let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
 
-            if (numbers !== null) {
-                if (configs.preferredMetricsSystem == 'metric') {
-                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                } else {
-                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
+                if (numbers !== null) {
+                    if (configs.preferredMetricsSystem == 'metric') {
+                        if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
+                            if (configs.debugMode)
+                                console.log('converting from 12h to 24...');
+                            textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
+                            if (configs.debugMode)
+                                console.log('result: ' + textToProccess);
+                        }
+                    } else {
+                        if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
+                            if (configs.debugMode)
+                                console.log('converting from 12h to 24...');
+                            textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
 
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                }
-            }
-
-            let convertedTime;
-            let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
-            let timeWord;
-            let marker;
-
-            for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
-                marker = timeZoneKeywordsKeys[i];
-
-                if (textToProccess.includes(' ' + marker)) {
-                    let words = textToProccess.trim().split(' ');
-
-
-                    for (i in words) {
-                        let word = words[i];
-
-                        if (word.includes(':')) {
-                            timeWord = word;
-                            break;
+                            if (configs.debugMode)
+                                console.log('result: ' + textToProccess);
                         }
                     }
+                }
 
-                    if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
-                        let numbers = timeWord.split(':');
+                let convertedTime;
+                let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
+                let timeWord;
+                let marker;
 
-                        if (numbers.length == 2 || numbers.length == 3) {
+                for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
+                    marker = timeZoneKeywordsKeys[i];
 
-                            let today = new Date();
-                            if (configs.debugMode) {
-                                console.log('today:');
-                                console.log(today);
-                            }
+                    if (textToProccess.includes(' ' + marker)) {
+                        let words = textToProccess.trim().split(' ');
 
-                            let modifier = textToProccess.includes(' PM') ? ' PM' : textToProccess.includes(' AM') ? ' AM' : '';
 
-                            let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
+                        for (i in words) {
+                            let word = words[i];
 
-                            if (configs.debugMode) {
-                                console.log('setting date from:');
-                                console.log(dateStringWithTimeReplaced);
-                            }
-
-                            let d = new Date(dateStringWithTimeReplaced); /// '6/29/2011 4:52:48 PM UTC'
-                            if (configs.debugMode) {
-                                console.log('setted date:');
-                                console.log(d.toString())
-                            }
-
-                            convertedTime = d.toLocaleTimeString().substring(0, 5);
-                            if (configs.debugMode) {
-                                console.log('converted time:');
-                                console.log(convertedTime);
+                            if (word.includes(':')) {
+                                timeWord = word;
+                                break;
                             }
                         }
+
+                        if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
+                            let numbers = timeWord.split(':');
+
+                            if (numbers.length == 2 || numbers.length == 3) {
+
+                                let today = new Date();
+                                if (configs.debugMode) {
+                                    console.log('today:');
+                                    console.log(today);
+                                }
+
+                                let modifier = textToProccess.includes(' PM') ? ' PM' : textToProccess.includes(' AM') ? ' AM' : '';
+
+                                let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
+
+                                if (configs.debugMode) {
+                                    console.log('setting date from:');
+                                    console.log(dateStringWithTimeReplaced);
+                                }
+
+                                let d = new Date(dateStringWithTimeReplaced); /// '6/29/2011 4:52:48 PM UTC'
+                                if (configs.debugMode) {
+                                    console.log('setted date:');
+                                    console.log(d.toString())
+                                }
+
+                                convertedTime = d.toLocaleTimeString().substring(0, 5);
+                                if (configs.debugMode) {
+                                    console.log('converted time:');
+                                    console.log(convertedTime);
+                                }
+                            }
+                        }
+                        break;
                     }
-                    break;
                 }
-            }
 
-            if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
-                const timeButton = document.createElement('button');
-                timeButton.setAttribute('class', `selection-popup-button button-with-border`);
-                timeButton.style.color = secondaryColor;
+                if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
+                    const timeButton = document.createElement('button');
+                    timeButton.setAttribute('class', `selection-popup-button button-with-border`);
+                    timeButton.style.color = secondaryColor;
 
-                if (addButtonIcons)
-                    timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':')));
-                else
-                    timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
-
-                timeButton.addEventListener("mousedown", function (e) {
-                    hideTooltip();
-                    removeSelectionOnPage();
-
-                    /// Open system handler
-                    if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
-                        onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                    if (addButtonIcons)
+                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':')));
                     else
-                        onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                        timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
 
-                });
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(timeButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(timeButton);
-            }
+                    timeButton.addEventListener("mousedown", function (e) {
+                        hideTooltip();
+                        removeSelectionOnPage();
+
+                        /// Open system handler
+                        if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
+                            onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                        else
+                            onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+
+                    });
+                    if (configs.reverseTooltipButtonsOrder)
+                        tooltip.insertBefore(timeButton, tooltip.children[1]);
+                    else
+                        tooltip.appendChild(timeButton);
+                }
+
+            } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
         /// Add 'open link' button

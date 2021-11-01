@@ -1,4 +1,4 @@
-function checkPageToHaveDarkBg() {
+function checkWholePageToHaveDarkBg() {
     let isDarkPage = false;
     let pageBgColor;
 
@@ -44,4 +44,64 @@ function checkPageToHaveDarkBg() {
         console.log('Check page has dark background: ' + isDarkPage);
 
     return isDarkPage;
+}
+
+
+function checkSelectionToHaveDarkBackground(node) {
+    let bgColor, isDarkPage = false;
+
+    try {
+        bgColor = getFirstParentWithBackgroundColor(node.parentNode);
+    } catch (e) { console.log(e); }
+
+    if (bgColor !== null && bgColor !== undefined) {
+        if (!bgColor.includes('(')) return;
+
+        if (bgColor.includes(' ')) {
+            const words = bgColor.split(' ');
+            bgColor = words[0] + words[1] + words[2];
+        }
+
+        if (configs.debugMode) {
+            console.log('----------------')
+            console.log('detected page bg color: ');
+            console.log(bgColor);
+        }
+
+
+        bgColor = bgColor.replace('rgb(', '').replace('rgba(', '').replace(')', '').replace(' ', '').split(',');
+        let colorLuminance =
+            (0.299 * bgColor[0] + 0.587 * bgColor[1] + 0.114 * bgColor[2]) / 255;
+
+        if (configs.debugMode) {
+            console.log('color luminance');
+            console.log(colorLuminance);
+        }
+
+        if (colorLuminance <= 0.5) isDarkPage = true;
+
+        if (configs.debugMode) {
+            console.log('is dark background:');
+            console.log(isDarkPage);
+        }
+    }
+
+    return isDarkPage;
+}
+
+function getFirstParentWithBackgroundColor(node) {
+    if (!node || node.tagName == 'DIV' || !(node instanceof HTMLElement)) {
+        return getFirstParentWithBackgroundColor(node.parentNode || document.body);
+    }
+
+    const computedStyle = window.getComputedStyle(node);
+
+    if (computedStyle.background && !computedStyle.background.includes('rgba(0, 0, 0, 0)'))
+        return computedStyle.background;
+
+
+    if (computedStyle.backgroundColor && !computedStyle.backgroundColor.includes('rgba(0, 0, 0, 0)'))
+        return computedStyle.backgroundColor;
+
+    return getFirstParentWithBackgroundColor(node.parentNode || document.body);
 }
