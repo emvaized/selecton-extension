@@ -97,7 +97,7 @@ To permanently disable word snapping, add website to word-snapping blacklist or 
 "Settings > Text selection > Snap text selection by word"
 
 **Why extension doesn't work on new tab page?**
-* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages ("chrome://", "about:*", etc.) and in extensions store.
+* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages ("chrome://", "about:*", etc.) and on extensions store.
 
 **Additional search buttons do not show on hovering Search button?**
 
@@ -105,7 +105,7 @@ To permanently disable word snapping, add website to word-snapping blacklist or 
 
 **How to add Selecton settings as Vivaldi side panel?**
 
-* Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extension
+* Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extensions
 
 ----
 
