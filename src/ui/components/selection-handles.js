@@ -116,6 +116,8 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
             circleDiv.style.cursor = 'grabbing';
             dragHandle.style.transition = '';
 
+            let edgeScrollInterval = null;
+
             document.onmousemove = function (e) {
                 try {
                     e.preventDefault();
@@ -183,6 +185,26 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         console.log(e);
                     }
                 }
+
+
+                /// Scroll page on top and bottom
+                let clientY = e.clientY;
+                let sizeOfDetectingZone = 20, scrollStep = 3;
+
+                if (clientY > window.innerHeight - sizeOfDetectingZone) {
+                    if (edgeScrollInterval == null)
+                        edgeScrollInterval = setInterval(function () {
+                            window.scrollTo({ top: window.scrollY + scrollStep, behavior: 'smooth' });
+                        }, 1);
+                } else if (clientY < sizeOfDetectingZone) {
+                    if (edgeScrollInterval == null)
+                        edgeScrollInterval = setInterval(function () {
+                            window.scrollTo({ top: window.scrollY - scrollStep, behavior: 'smooth' });
+                        }, 1);
+                } else {
+                    clearInterval(edgeScrollInterval);
+                    edgeScrollInterval = null;
+                }
             };
 
             document.onmouseup = function (e) {
@@ -191,6 +213,9 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                 document.onmouseup = null;
                 document.body.style.cursor = 'unset';
                 circleDiv.style.cursor = 'grab';
+
+                clearInterval(edgeScrollInterval);
+                edgeScrollInterval = null;
 
                 /// If selection not changed (single click on handle), increase selection by one word
                 setTimeout(function () {
