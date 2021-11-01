@@ -60,7 +60,7 @@
     "description": "Label for field in settings"
   },
   "appearanceHeader": {
-    "message": "Panel appearance",
+    "message": "Appearance",
     "description": "Header for appearance category in settings"
   },
   "applyConfigsImmediately": {
@@ -68,8 +68,8 @@
     "description": "Header for appearance category in settings"
   },
   "behaviorHeader": {
-    "message": "Panel behavior",
-    "description": "Header for appearance category in settings"
+    "message": "Behavior",
+    "description": "Header for behavior category in settings"
   },
   "boldLabel": {
     "message": "Bold",
@@ -124,8 +124,8 @@
     "description": "Label for copy text action"
   },
   "customIcon": {
-    "message": "Icône personnalisée",
-    "description": "Libellé du bouton dans les paramètres"
+    "message": "Custom icon",
+    "description": "Label for field in settings"
   },
   "customIconUrl": {
     "message": "Custom icon URL",
