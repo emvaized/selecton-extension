@@ -1,4 +1,4 @@
-# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48"></sub>electon - text selection actions
+# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon - text selection actions
 
 Get customizable pop-up with action buttons on text selection!
 * Copy or search any text in one click - especially useful for laptops
