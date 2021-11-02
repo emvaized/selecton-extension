@@ -66,6 +66,7 @@ const configs = {
     'invertColorOnDarkWebsite': true,
     'addPasteOnlyEmptyField': true,
     'hideTranslateButtonForUserLanguage': true,
+    'fullOpacityOnHover': true,
     'delayToRevealSearchTooltip': 350,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'

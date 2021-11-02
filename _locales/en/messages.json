@@ -203,6 +203,10 @@
     "message": "Font size",
     "description": "Label for option in settings"
   },
+  "fullOpacityOnHover": {
+    "message": "Full opacity on hover",
+    "description": "Label for option in settings"
+  },
   "gmail": {
     "message": "Gmail new email",
     "description": "Option label for new email method setting"

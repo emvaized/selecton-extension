@@ -202,7 +202,7 @@ function appendSecondaryTooltip() {
             secondaryTooltip.style.pointerEvents = 'auto';
             calculateEndDy();
             secondaryTooltip.style.top = `${endDy}px`;
-            secondaryTooltip.style.opacity = 1.0;
+            secondaryTooltip.style.opacity = configs.useCustomStyle ? (configs.tooltipOpacity ?? 1.0) : 1.0;
             searchButton.classList.add("hovered-tooltip-button");
             secondaryTooltip.style.transform = 'scale(1.0)';
 
@@ -236,7 +236,7 @@ function appendSecondaryTooltip() {
         secondaryTooltip.style.pointerEvents = 'auto';
         calculateEndDy();
         secondaryTooltip.style.top = `${endDy}px`;
-        secondaryTooltip.style.opacity = 1.0;
+        secondaryTooltip.style.opacity = configs.useCustomStyle ? (configs.fullOpacityOnHover ? 1.0 : (configs.tooltipOpacity ?? 1.0)) : 1.0;
         isSecondaryTooltipHovered = true;
         searchButton.classList.add("hovered-tooltip-button");
     }

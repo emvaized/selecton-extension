@@ -102,7 +102,7 @@ function setUpNewTooltip(type, recreated = false) {
     tooltip.style.transform = returnTooltipRevealTransform(false);
     tooltip.style.transformOrigin = '50% 100% 0';
 
-    if (configs.useCustomStyle && configs.tooltipOpacity != 1.0 && configs.tooltipOpacity != 1) {
+    if (configs.useCustomStyle && configs.tooltipOpacity != 1.0 && configs.tooltipOpacity != 1 && configs.fullOpacityOnHover) {
         tooltip.onmouseover = function () {
             setTimeout(function () {
                 if (dontShowTooltip == true) return;
