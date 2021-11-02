@@ -646,6 +646,11 @@ document.querySelector("#githubButton").addEventListener("click", function (val)
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
 document.querySelector("#writeAReviewButton").addEventListener("click", function (val) {
+
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        window.open('mailto:maximtsyba@gmail.com'); return;
+    }
+
     let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
     window.open(isFirefox ? 'https://addons.mozilla.org/ru/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
 });
