@@ -395,7 +395,7 @@ function addContextualButtons() {
             //     let value = currenciesList[key];
 
             for (const [key, value] of Object.entries(currenciesList)) {
-                if (selectedText.includes(key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
+                if (selectedText.includes(' ' + key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {

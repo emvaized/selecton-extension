@@ -22,7 +22,7 @@ const currenciesList = {
     "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", rate: 3.310401 },
     "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", rate: 72.452006, currencyKeywords: ['rupees', 'рупий'], },
     "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", rate: 42105.017329 },
-    "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", rate: 109.188027, currencyKeywords: ['yen', 'йен'] },
+    "JPY": { currencyName: "Japanese Yen", currencySymbol: "¥", rate: 109.188027, currencyKeywords: [' yen', ' йен'] },
     "KPW": { currencyName: "North Korean Won", currencySymbol: "₩", rate: 900.00022 },
     "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "₸", rate: 418.821319, currencyKeywords: ['тенге'] },
     "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", rate: 2849.930035 },
