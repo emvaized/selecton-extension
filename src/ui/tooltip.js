@@ -892,7 +892,6 @@ function addContextualButtons() {
                     marker = timeZoneKeywordsKeys[i];
 
                     if (selectedText.includes(' ' + marker)) {
-
                         let words = selectedText.trim().split(' ');
 
                         for (i in words) {
@@ -917,7 +916,6 @@ function addContextualButtons() {
                                 }
 
                                 let modifier = selectedText.includes(' PM') ? ' PM' : selectedText.includes(' AM') ? ' AM' : '';
-
                                 let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
 
                                 if (configs.debugMode) {

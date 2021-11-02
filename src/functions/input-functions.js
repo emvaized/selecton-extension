@@ -9,6 +9,7 @@ const convertTime12to24 = (time12h) => {
 
     if (modifier === 'PM') {
         hours = parseInt(hours, 10) + 12;
+        if (hours > 24 || hours < 0) return time12h;
     } else if (modifier !== 'AM') return time12h;
 
     if (isNaN(hours)) return time12h;
