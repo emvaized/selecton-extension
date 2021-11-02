@@ -187,6 +187,10 @@
         "message": "Tamanho da fonte",
         "description": "Label for option in settings"
     },
+    "fullOpacityOnHover": {
+        "message": "Opacidade total ao pairar",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Novo e-mail do Gmail",
         "description": "Rótulo de opção para a configuração do novo método de e-mail"

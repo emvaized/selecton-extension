@@ -187,6 +187,10 @@
         "message": "Tamaño de fuente",
         "description": "Label for option in settings"
     },
+    "fullOpacityOnHover": {
+        "message": "Opacidad total al pasar el mouse",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Nuevo correo electrónico de Gmail",
         "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"

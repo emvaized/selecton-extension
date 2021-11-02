@@ -191,6 +191,10 @@
         "message": "Yazı tipi boyutu",
         "description": "Ayarlardaki seçenek etiketi"
     },
+    "fullOpacityOnHover": {
+        "message": "Fareyle üzerine gelindiğinde tam opaklık",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Gmail yeni e-posta",
         "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"

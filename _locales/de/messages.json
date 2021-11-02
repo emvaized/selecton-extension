@@ -187,6 +187,10 @@
         "message": "Schriftgröße",
         "description": "Label for option in settings"
     },
+    "fullOpacityOnHover": {
+        "message": "Volle Deckkraft beim Schweben",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Google Mail neue E-Mail",
         "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"

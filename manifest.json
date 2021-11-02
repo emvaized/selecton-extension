@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Selecton — selection tools",
+  "name": "Selecton — smart select. Copy and search with selection popup",
   "version": "3.3.8",
   "description": "__MSG_extensionDescription__",
   "icons": {

@@ -187,6 +187,10 @@
         "message": "Розмір шрифту",
         "description": "Label for option in settings"
     },
+    "fullOpacityOnHover": {
+        "message": "Повна непрозорість при наведенні",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Новий лист Gmail",
         "description": "Option label for new email method setting"

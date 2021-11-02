@@ -187,6 +187,10 @@
         "message": "Taille de police",
         "description": "Label for option in settings"
     },
+    "fullOpacityOnHover": {
+        "message": "Opacité totale au survol",
+        "description": "Label for option in settings"
+    },
     "gmail": {
         "message": "Nouvel e-mail Gmail",
         "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
