@@ -891,8 +891,9 @@ function addContextualButtons() {
                 for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
                     marker = timeZoneKeywordsKeys[i];
 
-                    if (textToProccess.includes(' ' + marker)) {
-                        let words = textToProccess.trim().split(' ');
+                    if (selectedText.includes(' ' + marker)) {
+
+                        let words = selectedText.trim().split(' ');
 
                         for (i in words) {
                             let word = words[i];
@@ -902,6 +903,7 @@ function addContextualButtons() {
                                 break;
                             }
                         }
+
 
                         if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
                             let numbers = timeWord.split(':');
@@ -914,7 +916,7 @@ function addContextualButtons() {
                                     console.log(today);
                                 }
 
-                                let modifier = textToProccess.includes(' PM') ? ' PM' : textToProccess.includes(' AM') ? ' AM' : '';
+                                let modifier = selectedText.includes(' PM') ? ' PM' : selectedText.includes(' AM') ? ' AM' : '';
 
                                 let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
 
