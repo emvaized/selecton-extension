@@ -865,7 +865,8 @@ function addContextualButtons() {
                         if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
                             if (configs.debugMode)
                                 console.log('converting from 12h to 24...');
-                            textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
+                            // textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
+                            textToProccess = convertTime12to24(textToProccess);
                             if (configs.debugMode)
                                 console.log('result: ' + textToProccess);
                         }
@@ -873,7 +874,8 @@ function addContextualButtons() {
                         if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
                             if (configs.debugMode)
                                 console.log('converting from 12h to 24...');
-                            textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
+                            // textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
+                            textToProccess = convertTime24to12(textToProccess);
 
                             if (configs.debugMode)
                                 console.log('result: ' + textToProccess);
@@ -955,9 +957,9 @@ function addContextualButtons() {
 
                         /// Open system handler
                         if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
-                            onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess))
                         else
-                            onTooltipButtonClick(e, returnSearchUrl(`${timeWord} ${marker}`))
+                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess))
 
                     });
                     if (configs.reverseTooltipButtonsOrder)
