@@ -244,6 +244,9 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
                         if (selStartDimensions.dx == 0 && selStartDimensions.dy == 0) selStartDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
 
+                        /// Sometimes end handle goes off-screen here - fix this
+                        if (selEndDimensions.dx > window.innerWidth - 25) selEndDimensions.dx = lastMouseUpEvent.clientX;
+
                         /// Animate drag handle to the new place
                         dragHandle.style.transition = `transform 200ms ease-in-out, opacity ${configs.animationDuration}ms ease-in-out`;
 
