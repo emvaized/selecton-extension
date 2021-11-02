@@ -46,9 +46,11 @@ function checkWholePageToHaveDarkBg() {
     return isDarkPage;
 }
 
+let parentsCheckedCounter = 0, maxParentsToCheck = 20;
 
 function checkSelectionToHaveDarkBackground(node) {
     let bgColor, isDarkPage = false;
+    parentsCheckedCounter = 0;
 
     try {
         bgColor = getFirstParentWithBackgroundColor(node.parentNode);
@@ -90,9 +92,14 @@ function checkSelectionToHaveDarkBackground(node) {
 }
 
 function getFirstParentWithBackgroundColor(node) {
-    if (!node || node.tagName == 'DIV' || !(node instanceof HTMLElement)) {
+    if (node.tagName == 'HTML') return;
+    // console.log('checking parent ' + parentsCheckedCounter);
+
+    parentsCheckedCounter += 1;
+    if (parentsCheckedCounter >= maxParentsToCheck) return;
+
+    if (!node || !(node instanceof HTMLElement))
         return getFirstParentWithBackgroundColor(node.parentNode || document.body);
-    }
 
     const computedStyle = window.getComputedStyle(node);
 
