@@ -56,6 +56,11 @@ const convertionUnits = {
             "pulgadas", /// sp
         ]
     },
+    /// Duplicate only for imperial recognition to recognize " m."
+    " ft.": {
+        "convertsTo": " m.",
+        "ratio": 0.3048,
+    },
     "feet": {
         "convertsTo": "meters",
         "ratio": 0.3048,
@@ -112,11 +117,6 @@ const convertionUnits = {
         "convertFunction": function (value) {
             return value - 273.15;
         },
-    },
-    /// Duplicate only for imperial recognition to recognize " m."
-    "feet": {
-        "convertsTo": " m.",
-        "ratio": 0.3048,
     },
 
     /// Cyrillic variants

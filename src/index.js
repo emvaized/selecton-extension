@@ -131,8 +131,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
         /// Anim duration
         document.body.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
 
-        /// Secondary color
-        document.body.style.setProperty('--selecton-secondary-color', secondaryColor);
 
         /// Check browser locales on first launch (language and metric system)
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
@@ -274,6 +272,9 @@ function initMouseListeners() {
           secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
           isDarkTooltip = !isDarkPage;
         }
+
+        /// Secondary color
+        document.body.style.setProperty('--selecton-secondary-color', secondaryColor);
       }, 0);
 
       initTooltip(e);
@@ -401,7 +402,6 @@ function recreateTooltip() {
     }
 
     if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
-
       createTooltip(lastMouseUpEvent, true);
     }
   }, 650);

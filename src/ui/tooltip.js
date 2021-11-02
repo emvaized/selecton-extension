@@ -487,7 +487,7 @@ function addContextualButtons() {
                             else
                                 converted.textContent = ` ${convertedAmountString}`;
 
-                            converted.setAttribute('style', `color: ${secondaryColor}`);
+                            converted.classList.add('color-highlight');
                             currencyButton.appendChild(converted);
 
                             /// Add currency symbol with different color
@@ -634,7 +634,7 @@ function addContextualButtons() {
                 const converted = document.createElement('span');
                 // converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
                 converted.textContent = ` ${convertedNumber}`;
-                converted.style.color = secondaryColor;
+                converted.classList.add('color-highlight');
                 interactiveButton.appendChild(converted);
 
                 const unitLabelEl = document.createElement('span');
@@ -660,7 +660,7 @@ function addContextualButtons() {
             const phoneButton = document.createElement('button');
             phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
             phoneButton.appendChild(createImageIconNew(phoneIcon, selectedText));
-            phoneButton.style.color = secondaryColor;
+            phoneButton.classList.add('color-highlight');
             phoneButton.addEventListener("mousedown", function (e) {
                 hideTooltip();
                 removeSelectionOnPage();
@@ -697,7 +697,7 @@ function addContextualButtons() {
 
                                 const converted = document.createElement('span');
                                 converted.textContent = ` ${calculatedExpression}`;
-                                converted.setAttribute('style', `color: ${secondaryColor}`);
+                                converted.classList.add('color-highlight');
                                 interactiveButton.appendChild(converted);
 
                                 interactiveButton.addEventListener("mousedown", function (e) {
@@ -773,7 +773,7 @@ function addContextualButtons() {
                     const emailButton = document.createElement('button');
                     emailButton.setAttribute('class', `selection-popup-button button-with-border`);
                     emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText)));
-                    emailButton.style.color = secondaryColor;
+                    emailButton.classList.add('color-highlight');
 
                     emailButton.addEventListener("mousedown", function (e) {
                         let url = returnNewEmailUrl(emailText);
@@ -829,7 +829,7 @@ function addContextualButtons() {
 
                 colorButton.appendChild(colorCircle);
                 colorButton.insertAdjacentHTML('beforeend', ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText));
-                colorButton.style.color = secondaryColor;
+                colorButton.classList.add('color-highlight');
 
                 colorButton.addEventListener("mousedown", function (e) {
                     let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
@@ -942,7 +942,7 @@ function addContextualButtons() {
                 if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
                     const timeButton = document.createElement('button');
                     timeButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    timeButton.style.color = secondaryColor;
+                    timeButton.classList.add('color-highlight');
 
                     if (addButtonIcons)
                         timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':')));
@@ -1021,7 +1021,7 @@ function addContextualButtons() {
 
                                 let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
                                 linkText.textContent = linkToDisplay;
-                                linkText.style.color = secondaryColor;
+                                linkText.classList.add('color-highlight');
 
                                 /// Add tooltip with full website on hover
                                 if (link.length > linkSymbolsToShow)

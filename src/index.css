@@ -83,6 +83,10 @@
   font-size: var(--selecton-font-size) !important;
   line-height: 1.2 !important; 
 }
+
+.color-highlight {
+  color: var(--selecton-secondary-color) !important;
+}
     
 .selection-popup-button:hover, .hovered-tooltip-button {
   all: revert;
