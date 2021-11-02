@@ -79,7 +79,7 @@ ____
 
 **On Firefox, can't change colors from extension popup**
 
-* This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1676222).
+* This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1378527).
 To change colors on Firefox, open settings in new tab by clicking button in top-right corner of the popup
 
 **Change fetch interval for currency rates?**
