@@ -858,30 +858,30 @@ function addContextualButtons() {
                 let textToProccess = selectedText;
 
                 /// 12H - 24H conversion
-                let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
+                // let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
 
-                if (numbers !== null) {
-                    if (configs.preferredMetricsSystem == 'metric') {
-                        if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
-                            if (configs.debugMode)
-                                console.log('converting from 12h to 24...');
-                            // textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
-                            textToProccess = convertTime12to24(textToProccess);
-                            if (configs.debugMode)
-                                console.log('result: ' + textToProccess);
-                        }
-                    } else {
-                        if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
-                            if (configs.debugMode)
-                                console.log('converting from 12h to 24...');
-                            // textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
-                            textToProccess = convertTime24to12(textToProccess);
+                // if (numbers !== null) {
+                if (configs.preferredMetricsSystem == 'metric') {
+                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        // textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
+                        textToProccess = convertTime12to24(textToProccess);
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
+                    }
+                } else {
+                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
+                        if (configs.debugMode)
+                            console.log('converting from 12h to 24...');
+                        // textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
+                        textToProccess = convertTime24to12(textToProccess);
 
-                            if (configs.debugMode)
-                                console.log('result: ' + textToProccess);
-                        }
+                        if (configs.debugMode)
+                            console.log('result: ' + textToProccess);
                     }
                 }
+                // }
 
                 let convertedTime;
                 let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
@@ -893,7 +893,6 @@ function addContextualButtons() {
 
                     if (textToProccess.includes(' ' + marker)) {
                         let words = textToProccess.trim().split(' ');
-
 
                         for (i in words) {
                             let word = words[i];
