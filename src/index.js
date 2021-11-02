@@ -246,11 +246,13 @@ function initMouseListeners() {
       /// Check page to have dark background
       setTimeout(function () {
         let isDarkPage = false;
-        try {
-          const anchornode = selection.anchorNode;
-          if (anchornode)
-            isDarkPage = checkSelectionToHaveDarkBackground(anchornode);
-        } catch (e) { }
+
+        if (configs.invertColorOnDarkWebsite)
+          try {
+            const anchornode = selection.anchorNode;
+            if (anchornode)
+              isDarkPage = checkSelectionToHaveDarkBackground(anchornode);
+          } catch (e) { }
 
         /// Set css styles
         if (configs.useCustomStyle) {
