@@ -109,7 +109,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         /// styles of tooltip button icon
         document.body.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
-        document.body.style.setProperty('--selecton-button-icon-invert', `invert(${isDarkTooltip ? '100' : '0'}%)`);
 
         /// Set border radius
         document.body.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
@@ -118,9 +117,24 @@ function initConfigs(shouldCreateTooltip = false, e) {
         document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
         document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
 
-        /// pop-up innder and button inner paddings
+        /// pop-up inner and button inner paddings
         document.body.style.setProperty('--selecton-tooltip-inner-padding', '2px');
-        document.body.style.setProperty('--selecton-button-padding', addButtonIcons ? '3px 10px' : '4px 10px');
+
+        // document.body.style.setProperty('--selecton-button-padding', addButtonIcons ? '3px 8px' : '4px 10px');
+        switch (configs.buttonsStyle) {
+          case 'onlylabel': {
+            document.body.style.setProperty('--selecton-button-padding', '4px 10px');
+          } break;
+          case 'onlyicon': {
+            document.body.style.setProperty('--selecton-button-padding', '3px 10px');
+          } break;
+          case 'iconlabel': {
+            document.body.style.setProperty('--selecton-button-padding', '3px 8px');
+          } break;
+          default: {
+            document.body.style.setProperty('--selecton-button-padding', '4px 10px');
+          } break;
+        }
 
         /// selection handle circle radius
         document.body.style.setProperty('--selecton-handle-circle-radius', '12.5px');
@@ -275,7 +289,10 @@ function initMouseListeners() {
           isDarkTooltip = !isDarkPage;
         }
 
-        /// Secondary color
+        /// Invert buttons icons when dark tooltip
+        document.body.style.setProperty('--selecton-button-icon-invert', `invert(${isDarkTooltip ? '100' : '0'}%)`);
+
+        /// Accent color for convert result buttons
         document.body.style.setProperty('--selecton-secondary-color', secondaryColor);
       }, 0);
 
