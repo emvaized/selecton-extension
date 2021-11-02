@@ -262,14 +262,14 @@ function initMouseListeners() {
           document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
           document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
           document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
-          secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
+          secondaryColor = isDarkTooltip ? 'lightBlue' : 'royalBlue';
         } else {
           /// Default style
           document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
           document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
           document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
           document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
-          secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
+          secondaryColor = isDarkPage ? 'royalBlue' : 'lightBlue';
           isDarkTooltip = !isDarkPage;
         }
 
