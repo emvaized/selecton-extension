@@ -56,7 +56,7 @@ const convertionUnits = {
             "pulgadas", /// sp
         ]
     },
-    /// Duplicate only for imperial recognition to recognize " m."
+    /// Duplicate only for imperial recognition of " m."
     " ft.": {
         "convertsTo": " m.",
         "ratio": 0.3048,
@@ -77,11 +77,12 @@ const convertionUnits = {
         "ratio": 0.453592,
         "variations": [
             " lb",
+            "lbs",
             " libras", /// fr
             " livres", /// fr
         ]
     },
-    " mph": {
+    "mph": {
         "convertsTo": "km/h",
         "ratio": 1.60934,
         "variations": [
@@ -98,9 +99,12 @@ const convertionUnits = {
     },
     "yard": {
         "convertsTo": "meters",
+        "variations": [
+            ' yd',
+        ],
         "ratio": 0.9144,
     },
-    " oz.": {
+    " oz": {
         "convertsTo": "grams",
         "ratio": 28.3495,
     },
@@ -192,30 +196,36 @@ const billionMultipliers = [
 
 /// Convert timezones
 const timeZoneKeywords = {
+    'GMT': 'GMT',
+    'UTC': 'UTC',
+    'WET': 'UTC',
+    'AKST': '-0900',
     'PST': '-0800',
     'PDT': '-0700',
     'MST': '-0700',
     'MDT': '-0600',
-    'ACST': '+0930',
-    'AEST': '+1000',
-    'AKST': '-0900',
-    'AST': '-0400',
-    'AWST': '+0800',
-    'CAT': '+0200',
-    'CET': '+0100',
     'CST': '-0600',
-    'EAT': '+0300',
-    'EET': '+0200',
     'EST': '-0500',
-    'GMT': 'GMT',
-    'HAST': '-1000',
-    'MSK': '+0300',
-    'MST': '-0700',
+    'AST': '-0400',
+    'EDT': '-0400',
     'NST': '-0330',
-    'PST': '-0800',
-    'UTC': 'UTC',
+    'HAST': '-1000',
+    'AEST': '+1000',
+    'CET': '+0100',
     'WAT': '+0100',
-    'WET': 'UTC',
+    'BST': '+0100',
+    'MET': '+0100',
+    'CEST': '+0100',
+    'EET': '+0200',
+    'EEST': '+0200',
+    'EET': '+0200',
+    'CAT': '+0200',
+    'MSK': '+0300',
+    'EAT': '+0300',
+    'IST': '+0530',
+    'AWST': '+0800',
+    'JST': '+0900',
+    'ACST': '+0930',
 
     /// Russian keywords
     'по Московскому времени': '+0300',
@@ -228,14 +238,17 @@ const timeZoneKeywords = {
 };
 
 
-/// Those will be ignored when looking for website in selected text
-/// So that, for example, when selected "somefile.txt" - it won't be recognized as a website in "Open link" button
+/// Those will be ignored when looking for URL in selected text
+/// So that, for example, when selected "somefile.txt" - it won't be recognized as a website for "Open link" button
 const filetypesToIgnoreAsDomains = [
     "txt",
     "zip",
     "rar",
     "7z",
     "mp3",
+    "mp4",
+    "jpg",
+    "wav",
     "exe",
     "cfg",
     "ini",
@@ -245,7 +258,7 @@ const filetypesToIgnoreAsDomains = [
     "log",
 ];
 
-/// Search for these keywords to detect if selected text looks like code
+/// Search for these keywords to detect if selected text looks like code (in order to disable word snapping)
 const codeMarkers = [
     'const ',
     'var ',
@@ -266,6 +279,7 @@ const codeMarkers = [
 
 
 /// Keywords to recognize selected text as a website
+/// Not in use
 // const websiteKeywords = [
 //     '.com',
 //     '.org',
