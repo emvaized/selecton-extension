@@ -771,8 +771,8 @@ function addContextualButtons() {
                 try {
                     var emailText = loweredSelectedText;
                     const emailButton = document.createElement('button');
-                    emailButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText)));
+                    emailButton.setAttribute('class', 'selection-popup-button button-with-border');
+                    emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText), true));
                     emailButton.classList.add('color-highlight');
 
                     emailButton.addEventListener("mousedown", function (e) {
@@ -817,7 +817,7 @@ function addContextualButtons() {
 
                 colorText = colorText.toLowerCase();
                 const colorButton = document.createElement('button');
-                colorButton.setAttribute('class', `selection-popup-button button-with-border`);
+                colorButton.setAttribute('class', 'selection-popup-button button-with-border');
 
                 const colorCircle = document.createElement('div');
                 colorCircle.setAttribute('class', `selection-popup-color-preview-circle`);
@@ -946,7 +946,7 @@ function addContextualButtons() {
                     timeButton.classList.add('color-highlight');
 
                     if (addButtonIcons)
-                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':')));
+                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':'), true));
                     else
                         timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
 
@@ -1301,7 +1301,7 @@ function hideTooltip(animated = true) {
     isTextFieldFocused = false;
 }
 
-function createImageIconNew(url, title) {
+function createImageIconNew(url, title, shouldAlwaysAddSpacing = false) {
     let container = document.createDocumentFragment();
 
     let img = document.createElement('img');
@@ -1310,7 +1310,8 @@ function createImageIconNew(url, title) {
 
     const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
     img.style.opacity = configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5;
-    if (!onlyIconStyle) img.style.marginRight = '4px';
+    // if (!onlyIconStyle) img.style.marginRight = '4px';
+    if (!onlyIconStyle || shouldAlwaysAddSpacing) img.style.marginRight = '3px';
     container.appendChild(img);
 
     if (title != undefined && title != '') {

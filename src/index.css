@@ -84,6 +84,10 @@
   line-height: 1.2 !important; 
 }
 
+.selection-popup-button span {
+  vertical-align: middle !important;
+}
+
 .color-highlight {
   color: var(--selecton-secondary-color) !important;
 }

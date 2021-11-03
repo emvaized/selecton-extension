@@ -396,7 +396,7 @@
         "description": "Label for field in settings"
     },
     "showOnMap": {
-        "message": "Показать на карте",
+        "message": "На карте",
         "description": "Label for show on map action"
     },
     "showOnMapButtonEnabled": {
