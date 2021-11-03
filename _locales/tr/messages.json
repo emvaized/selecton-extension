@@ -384,7 +384,7 @@
         "description": "Ayarlardaki alan etiketi"
     },
     "showOnMap": {
-        "message": "Haritada göster",
+        "message": "Haritada",
         "description": "Harita eyleminde gösterme etiketi"
     },
     "showOnMapButtonEnabled": {

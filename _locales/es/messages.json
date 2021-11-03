@@ -380,7 +380,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "showOnMap": {
-        "message": "Mostrar en el mapa",
+        "message": "En el mapa",
         "description": "Etiqueta para mostrar en la acción del mapa"
     },
     "showOnMapButtonEnabled": {

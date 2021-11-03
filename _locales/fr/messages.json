@@ -380,7 +380,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "showOnMap": {
-        "message": "Afficher sur la carte",
+        "message": "Sur la carte",
         "description": "Libellé pour l'action Afficher sur la carte"
     },
     "showOnMapButtonEnabled": {

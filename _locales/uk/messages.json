@@ -380,7 +380,7 @@
         "description": "Label for field in settings"
     },
     "showOnMap": {
-        "message": "Показати на мапі",
+        "message": "На мапі",
         "description": "Label for show on map action"
     },
     "showOnMapButtonEnabled": {

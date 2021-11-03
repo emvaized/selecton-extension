@@ -380,7 +380,7 @@
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "showOnMap": {
-        "message": "Auf Karte anzeigen",
+        "message": "Auf der Karte",
         "description": "Beschriftung für Aktion auf Karte anzeigen"
     },
     "showOnMapButtonEnabled": {
