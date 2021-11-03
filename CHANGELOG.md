@@ -1,3 +1,11 @@
+#3.3.9
+- Fix wrong handles position when recreated after scroll
+- Improved dark background detection - now it detects dark background behind text selection instead of whole page
+- Added config "Full opacity on hover"
+- Improved drag handles design a bit
+- Page now gets scrolled when dragging handle to the edge of the screen
+- Various small fixes and improvements
+
 #3.3.8
 - Added config "Delay before reveal custom search panel"
 - Added config "Disable word snapping for code"
