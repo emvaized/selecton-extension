@@ -104,7 +104,7 @@
     "description": "Label for field in settings"
   },
   "convertResultClickAction": {
-    "message": "Click on result action",
+    "message": "Action when click on result",
     "description": "Label for field in settings"
   },
   "convertTime": {

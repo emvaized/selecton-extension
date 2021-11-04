@@ -87,6 +87,10 @@
         "message": "Convertir monedas",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "convertResultClickAction": {
+        "message": "Acción al hacer clic en el resultado",
+        "description": "Label for field in settings"
+    },
     "convertMetrics": {
         "message": "Convertir métricas",
         "description": "Etiqueta para el campo en la configuración"

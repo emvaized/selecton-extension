@@ -91,6 +91,10 @@
         "message": "Converter métricas",
         "description": "Rótulo para o campo nas configurações"
     },
+    "convertResultClickAction": {
+        "message": "Ação ao clicar no resultado",
+        "description": "Label for field in settings"
+    },
     "convertTime": {
         "message": "Converter tempo",
         "description": "Label for field in settings"

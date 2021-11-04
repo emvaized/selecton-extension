@@ -91,6 +91,10 @@
         "message": "Конвертувати довжину/масу",
         "description": "Label for field in settings"
     },
+    "convertResultClickAction": {
+        "message": "Дія при кліку на результат",
+        "description": "Label for field in settings"
+    },
     "convertTime": {
         "message": "Конвертувати час",
         "description": "Label for field in settings"

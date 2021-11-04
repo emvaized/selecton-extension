@@ -95,6 +95,10 @@
         "message": "Ölçümleri dönüştürme",
         "description": "Ayarlardaki alan etiketi"
     },
+    "convertResultClickAction": {
+        "message": "Sonuç tıklandığında yapılacak işlem",
+        "description": "Label for field in settings"
+    },
     "convertTime": {
         "message": "Zamanı dönüştürme",
         "description": "Ayarlardaki alan etiketi"

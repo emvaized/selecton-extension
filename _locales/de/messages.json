@@ -87,6 +87,10 @@
         "message": "Währungen umrechnen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "convertResultClickAction": {
+        "message": "Aktion beim Klick auf Ergebnis",
+        "description": "Label for field in settings"
+    },
     "convertMetrics": {
         "message": "Metriken konvertieren",
         "description": "Beschriftung für Feld in Einstellungen"

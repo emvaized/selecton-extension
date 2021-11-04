@@ -99,6 +99,10 @@
         "message": "Конвертировать длину/массу",
         "description": "Label for field in settings"
     },
+    "convertResultClickAction": {
+        "message": "Действие при клике на результат",
+        "description": "Label for field in settings"
+    },
     "convertTime": {
         "message": "Конвертировать время (12h - 24h, врем. пояса)",
         "description": "Label for field in settings"

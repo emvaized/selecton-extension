@@ -91,6 +91,10 @@
         "message": "Convertir les statistiques",
         "description": "Libellé du champ dans les paramètres"
     },
+    "convertResultClickAction": {
+        "message": "Action en cliquant sur le résultat",
+        "description": "Label for field in settings"
+    },
     "convertTime": {
         "message": "Convertir le temps",
         "description": "Label for field in settings"
