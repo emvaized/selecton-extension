@@ -225,6 +225,7 @@ const timeZoneKeywords = {
     'IST': '+0530',
     'AWST': '+0800',
     'JST': '+0900',
+    'KST': '+0900',
     'ACST': '+0930',
 
     /// Russian keywords

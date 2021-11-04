@@ -883,10 +883,8 @@ function addContextualButtons() {
                 }
                 // }
 
-                let convertedTime;
-                let timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
-                let timeWord;
-                let marker;
+                const timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
+                let convertedTime, timeWord, marker;
 
                 for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
                     marker = timeZoneKeywordsKeys[i];
@@ -972,11 +970,10 @@ function addContextualButtons() {
 
         /// Add 'open link' button
         if (configs.addOpenLinks)
-            if (tooltip.children.length < 4 && !selectionContainsSpaces && (selectedText.includes('.'))) {
+            if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {
                 let link = selectedText;
-                let splittedByDots = link.split('.');
-                let domain = splittedByDots[1];
-                let domainLength = splittedByDots[1].length;
+                const splittedByDots = link.split('.');
+                let domain = splittedByDots[1], domainLength = splittedByDots[1].length;
 
                 if (selectedText.includes('://') || (splittedByDots.length == 2 && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain))) {
 
