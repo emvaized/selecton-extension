@@ -49,7 +49,7 @@ const configs = {
     'shouldOverrideWebsiteSelectionColor': false,
     'disableWordSnappingOnCtrlKey': true,
     'showButtonLabelOnHover': true,
-    'animationDuration': 250,
+    'animationDuration': 200,
     'wordSnappingBlacklist': '',
     'disableWordSnapForCode': true,
     'dontSnapTextfieldSelection': true,
