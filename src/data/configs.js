@@ -71,6 +71,7 @@ const configs = {
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'floatingOffscreenTooltip': false,
+    'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

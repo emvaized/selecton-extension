@@ -103,6 +103,10 @@
     "message": "Convert metrics",
     "description": "Label for field in settings"
   },
+  "convertResultClickAction": {
+    "message": "Click on result action",
+    "description": "Label for field in settings"
+  },
   "convertTime": {
     "message": "Convert time",
     "description": "Label for field in settings"

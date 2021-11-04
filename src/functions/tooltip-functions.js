@@ -7,7 +7,7 @@ function returnTooltipRevealTransform(onEnd = true) {
     }
 }
 
-function onTooltipButtonClick(e, url) {
+function onTooltipButtonClick(e, url, text) {
     // if (configs.addDragHandles)
     //     hideDragHandles();
 
@@ -20,7 +20,12 @@ function onTooltipButtonClick(e, url) {
                 /// Left button click
                 hideTooltip();
                 removeSelectionOnPage();
-                chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: true });
+
+                if (configs.convertResultClickAction == 'copy' && text)
+                    copyManuallyToClipboard(text);
+                else
+                    chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: true });
+
             } else if (evt.button == 1) {
                 /// Middle button click
                 evt.preventDefault();
@@ -34,6 +39,22 @@ function onTooltipButtonClick(e, url) {
         }
     } catch (e) {
         window.open(url, '_blank');
+    }
+}
+
+function copyManuallyToClipboard(text) {
+    try {
+        const input = document.createElement('input');
+        input.setAttribute('style', `position: fixed; top: 0px; left: 0px; opacity: 0.0;`)
+        document.body.appendChild(input);
+        input.value = text;
+        input.focus();
+        input.select();
+        document.execCommand('Copy');
+        // document.body.removeChild(input);
+        input.remove();
+    } catch (e) {
+        navigator.clipboard.writeText(text);
     }
 }
 

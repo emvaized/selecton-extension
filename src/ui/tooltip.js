@@ -499,7 +499,7 @@ function addContextualButtons() {
 
                             currencyButton.addEventListener("mousedown", function (e) {
                                 let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
-                                onTooltipButtonClick(e, url);
+                                onTooltipButtonClick(e, url, convertedAmountString + ` ${configs.convertToCurrency}`);
                             });
 
                             if (configs.reverseTooltipButtonsOrder)
@@ -646,7 +646,7 @@ function addContextualButtons() {
 
                 interactiveButton.addEventListener("mousedown", function (e) {
                     let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit.trim()} to ${convertedUnit}`);
-                    onTooltipButtonClick(e, url);
+                    onTooltipButtonClick(e, url, `${convertedNumber} ${convertedUnit}`);
                 });
 
                 if (configs.reverseTooltipButtonsOrder)
@@ -703,7 +703,7 @@ function addContextualButtons() {
 
                                 interactiveButton.addEventListener("mousedown", function (e) {
                                     let url = returnSearchUrl(selectedText.replaceAll('+', '%2B'));
-                                    onTooltipButtonClick(e, url);
+                                    onTooltipButtonClick(e, url, calculatedExpression);
                                 });
 
                                 if (configs.reverseTooltipButtonsOrder)
@@ -834,7 +834,7 @@ function addContextualButtons() {
 
                 colorButton.addEventListener("mousedown", function (e) {
                     let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
-                    onTooltipButtonClick(e, url);
+                    onTooltipButtonClick(e, url, colorText);
                 });
 
                 if (configs.reverseTooltipButtonsOrder)
@@ -944,10 +944,12 @@ function addContextualButtons() {
                     timeButton.setAttribute('class', `selection-popup-button button-with-border`);
                     timeButton.classList.add('color-highlight');
 
+                    const timeStringToShow = textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
+
                     if (addButtonIcons)
-                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':'), true));
+                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? timeStringToShow, true));
                     else
-                        timeButton.textContent = convertedTime ?? textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
+                        timeButton.textContent = convertedTime ?? timeStringToShow;
 
                     timeButton.addEventListener("mousedown", function (e) {
                         hideTooltip();
@@ -955,9 +957,9 @@ function addContextualButtons() {
 
                         /// Open system handler
                         if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
-                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess))
+                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess), convertedTime ?? timeStringToShow)
                         else
-                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess))
+                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess), convertedTime ?? timeStringToShow)
 
                     });
                     if (configs.reverseTooltipButtonsOrder)
