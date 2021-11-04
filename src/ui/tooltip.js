@@ -1198,12 +1198,12 @@ function showTooltip(dx, dy) {
         setTimeout(function () {
 
             /// Experimental code to determine website's own selection tooltip
-            let websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
+            const websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
 
             let websiteTooltip;
             if (websiteTooltips !== null && websiteTooltips !== undefined)
                 for (let i = 0, l = websiteTooltips.length; i < l; i++) {
-                    let el = websiteTooltips[i];
+                    const el = websiteTooltips[i];
                     let elementClass;
                     try {
                         elementClass = el.getAttribute('class');
@@ -1226,7 +1226,7 @@ function showTooltip(dx, dy) {
                         if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate') && transformStyle !== 'translateY(0px)' && transformStyle !== 'translate(0px, 0px)')
                             || (elementStyle.includes('left:') && elementStyle.includes('top:'))
                         ) {
-                            if (el.getAttribute('id') !== 'cmg-fullscreen-image' && el.clientHeight < 100 && el.clientHeight > 5 && el.clientWidth > 20) {
+                            if (el.clientHeight < 100 && el.clientHeight > 5 && el.clientWidth > 20 && el.getAttribute('id') !== 'cmg-fullscreen-image') {
                                 if (configs.debugMode) {
                                     console.log('Detected selection tooltip on the website with following style:');
                                     console.log(elementStyle);
@@ -1240,18 +1240,19 @@ function showTooltip(dx, dy) {
                 };
 
             if (websiteTooltip !== null && websiteTooltip !== undefined) {
-                tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-in-out, transform 200ms ease-out`;
+                tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
                 tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
 
-                arrow.style.transition = ` opacity 100ms ease-in-out`;
+                arrow.style.opacity = 1.0;
+                arrow.style.transition = 'opacity 200ms ease-out';
                 arrow.style.opacity = 0.0;
 
                 setTimeout(function () {
-                    tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out, transform 200ms ease-out`;
+                    tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
                     arrow.remove();
                 }, 200);
             } else {
-                arrow.style.opacity = 1.0;
+                // arrow.style.opacity = 1.0;
                 if (configs.debugMode) console.log('Selecton didnt found any website tooltips');
             }
 

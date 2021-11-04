@@ -642,6 +642,10 @@ document.addEventListener("DOMContentLoaded", loadSettings);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });
+
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
+    document.querySelector("#donateButton").style.display = 'none';
+
 document.querySelector("#githubButton").addEventListener("click", function (val) {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
