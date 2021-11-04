@@ -379,14 +379,14 @@ function addContextualButtons() {
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
         var numberToConvert;
         var unitLabelColor = isDarkTooltip ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
-        var selectionContainsSpaces = selectedText.includes(' ');
+        const selectionContainsSpaces = selectedText.includes(' ');
 
         /// Convert currency button
         if (configs.convertCurrencies) {
-            var currency;
-            var amount;
-            var currencyRate;
-            var currencySymbol;
+            let currency, amount, currencyRate, currencySymbol;
+            // var amount;
+            // var currencyRate;
+            // var currencySymbol;
 
             let match = false;
 
@@ -400,7 +400,7 @@ function addContextualButtons() {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {
-                    let currencyKeywords = value["currencyKeywords"];
+                    const currencyKeywords = value["currencyKeywords"];
                     if (currencyKeywords !== null && currencyKeywords !== undefined)
                         for (i in currencyKeywords) {
                             if (loweredSelectedText.includes(currencyKeywords[i])) {
@@ -798,10 +798,10 @@ function addContextualButtons() {
         }
 
         /// Add HEX color preview button
-        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
+        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces && selectedText.length == 7) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
             try {
-                var colorText;
-                if (selectedText.includes('rgb') && selectedText.includes('(')) {
+                let colorText;
+                if (selectedText.includes('rgb')) {
                     /// Try to convert rgb value to hex
                     try {
                         let string = selectedText.toUpperCase().split('(')[1].split(')')[0];
@@ -1016,9 +1016,9 @@ function addContextualButtons() {
                                 /// Adding  open link button
                                 const interactiveButton = document.createElement('button');
                                 interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                                let linkText = document.createElement('span');
-                                let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                linkText.textContent = linkToDisplay;
+                                let linkText = document.createElement('div');
+                                linkText.style.display = 'inline';
+                                linkText.textContent = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
                                 linkText.classList.add('color-highlight');
 
                                 /// Add tooltip with full website on hover
