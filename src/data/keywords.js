@@ -42,6 +42,35 @@ const addressKeywords = [
     ' stadt',
 ];
 
+
+/// Literal multipliers for numeric values
+/// With the help of these, "2 thousand" will be converted to "2000"
+const thousandMultipliers = [
+    'thousand',
+    'тысяч',
+    'тыс',
+];
+
+const millionMultipliers = [
+    'million',
+    'millón',
+    'millones',
+    'млн',
+    'миллион',
+    'мільйон',
+];
+
+const billionMultipliers = [
+    'billion',
+    'milliard',
+    'mil millones',
+    'млрд',
+    'миллиард',
+    'більйон',
+    'мільярд',
+];
+
+
 /// Unit conversion units
 /// Each key is a keyword, which will be searched for in the selected text
 /// 'ratio' is the ratio to multiply, in order to get the value in 'covertsTo'
@@ -131,32 +160,66 @@ const convertionUnits = {
     },
 };
 
-/// Literal multipliers for numeric values
-/// With the help of these, "2 thousand" will be converted to "2000"
-const thousandMultipliers = [
-    'thousand',
-    'тысяч',
-    'тыс',
-];
+/// Unit conversion units when preferred system is imprerial
+const imprerialConvertionUnits = {
+    "cm": {
+        "convertsTo": "inch",
+        "ratio": 2.54,
+        "variations": [
+            "см", /// ru
+        ]
+    },
+    "meter": {
+        "convertsTo": "ft.",
+        "ratio": 0.3048,
+        "variations": [
+            " m.",
+            " metros", // sp
+            " mètres", // fr
+        ]
+    },
+    "kg": {
+        "convertsTo": "lbs",
+        "ratio": 0.453592,
+        "variations": [
+            " kilogram",
+        ]
+    },
+    "km/h": {
+        "convertsTo": "mph",
+        "ratio": 1.60934,
+    },
+    "km": {
+        "convertsTo": "miles",
+        "ratio": 1.60934,
+        "variations": [
+            'killometer',
+            'kilometr',
+            'kilómetros',
+        ],
+    },
+    " gr": {
+        "convertsTo": "oz",
+        "ratio": 28.3495,
+        "variations": [
+            ' gramm',
+            ' gramos',
+        ],
+    },
+    "°C": {
+        "convertsTo": "°F",
+        "convertFunction": function (value) {
+            return (value * 9 / 5) + 32;
+        },
+    },
+    "°K": {
+        "convertsTo": "°F",
+        "convertFunction": function (value) {
+            return value * (9 / 5) - 459.67;
+        },
+    },
+};
 
-const millionMultipliers = [
-    'million',
-    'millón',
-    'millones',
-    'млн',
-    'миллион',
-    'мільйон',
-];
-
-const billionMultipliers = [
-    'billion',
-    'milliard',
-    'mil millones',
-    'млрд',
-    'миллиард',
-    'більйон',
-    'мільярд',
-];
 
 
 /// Convert timezones

@@ -568,17 +568,20 @@ function addContextualButtons() {
 
             /// Check for keywords in text
             let includesKeyword = false;
-            const unitKeys = Object.keys(convertionUnits);
+
+            const unitsKeywords = configs.preferredMetricsSystem == 'metric' ? convertionUnits : imprerialConvertionUnits;
+            const unitKeys = Object.keys(unitsKeywords);
+
             for (let i = 0, l = unitKeys.length; i < l; i++) {
                 const key = unitKeys[i];
 
-                let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : convertionUnits[key]['convertsTo'];
+                let nonConvertedUnit = key;
                 if (selectedText.includes(nonConvertedUnit)) {
                     if ((nonConvertedUnit == 'pound') && tooltip.children.length == 4) return;
                     if (configs.debugMode) console.log('found key: ' + nonConvertedUnit);
                     includesKeyword = i; break;
-                } else if (convertionUnits[key]['variations'] && configs.preferredMetricsSystem == 'metric') {
-                    const keyVariations = convertionUnits[key]['variations'];
+                } else if (unitsKeywords[key]['variations']) {
+                    const keyVariations = unitsKeywords[key]['variations'];
 
                     for (let i2 = 0, l2 = keyVariations.length; i2 < l2; i2++) {
                         if (selectedText.includes(keyVariations[i2])) {
@@ -602,15 +605,15 @@ function addContextualButtons() {
 
                 if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
                     let key = unitKeys[includesKeyword];
-                    let value = convertionUnits[key];
+                    let value = unitsKeywords[key];
 
                     /// Check selected text for literal multipliers
                     for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
                     for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { numberToConvert *= 1000000; break; } }
                     for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { numberToConvert *= 1000; break; } }
 
-                    fromUnit = configs.preferredMetricsSystem == 'metric' ? key : value['convertsTo'];
-                    convertedUnit = configs.preferredMetricsSystem == 'metric' ? value['convertsTo'] : key;
+                    fromUnit = key;
+                    convertedUnit = value['convertsTo'];
 
                     if (fromUnit.includes('°')) {
                         convertedNumber = value['convertFunction'](numberToConvert);
