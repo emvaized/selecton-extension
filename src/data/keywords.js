@@ -54,15 +54,12 @@ const convertionUnits = {
         "variations": [
             "pouces", /// fr
             "pulgadas", /// sp
+            "дюймов", /// ru
+            "дюйма",
         ]
     },
-    /// Duplicate only for imperial recognition of " m."
-    " ft.": {
-        "convertsTo": " m.",
-        "ratio": 0.3048,
-    },
     "feet": {
-        "convertsTo": "meters",
+        "convertsTo": "m",
         "ratio": 0.3048,
         "type": "imperial",
         "variations": [
@@ -70,6 +67,8 @@ const convertionUnits = {
             " foot",
             "pieds", /// fr
             "pies", /// sp
+            ' фута',
+            "футов"
         ]
     },
     "pound": {
@@ -78,16 +77,15 @@ const convertionUnits = {
         "variations": [
             " lb",
             "lbs",
-            " libras", /// fr
+            " libras", /// sp
             " livres", /// fr
+            " фунтов", /// ru
+            " фунта",
         ]
     },
     "mph": {
         "convertsTo": "km/h",
         "ratio": 1.60934,
-        "variations": [
-            "miles per hour",
-        ]
     },
     " mile": {
         "convertsTo": "km",
@@ -95,18 +93,27 @@ const convertionUnits = {
         "variations": [
             'millas', /// sp
             'milles', /// fr
+            /// rus
+            ' миль',
+            ' мили',
         ],
     },
     "yard": {
-        "convertsTo": "meters",
+        "convertsTo": "m",
         "variations": [
             ' yd',
+            ' ярдов',
         ],
         "ratio": 0.9144,
     },
     " oz": {
-        "convertsTo": "grams",
+        "convertsTo": "gr",
         "ratio": 28.3495,
+        "variations": [
+            ' унций',
+            ' унции',
+            ' унция',
+        ],
     },
     "°F": {
         "convertsTo": "°C",
@@ -121,48 +128,6 @@ const convertionUnits = {
         "convertFunction": function (value) {
             return value - 273.15;
         },
-    },
-
-    /// Cyrillic variants
-    " миль": {
-        "convertsTo": "км",
-        "ratio": 1.60934,
-        "variations": [
-            ' мили',
-        ],
-    },
-    " ярдов": {
-        "convertsTo": "метров",
-        "ratio": 0.9144,
-    },
-    "футов": {
-        "convertsTo": "метров",
-        "ratio": 0.3048,
-        "variations": [
-            ' фута',
-        ],
-    },
-    "дюймов": {
-        "convertsTo": "см",
-        "ratio": 2.54,
-        "variations": [
-            ' дюйма',
-        ],
-    },
-    "фунтов": {
-        "convertsTo": "кг",
-        "ratio": 0.453592,
-        "variations": [
-            ' фунта',
-        ],
-    },
-    " унций": {
-        "convertsTo": "грамм",
-        "ratio": 28.3495,
-        "variations": [
-            ' унции',
-            ' унция',
-        ],
     },
 };
 
@@ -271,6 +236,7 @@ const codeMarkers = [
     '}',
     '()',
     ' = ',
+    ');',
     `='`,
     `="`,
     `('`,

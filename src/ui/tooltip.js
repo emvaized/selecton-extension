@@ -570,12 +570,11 @@ function addContextualButtons() {
             let includesKeyword = false;
             const unitKeys = Object.keys(convertionUnits);
             for (let i = 0, l = unitKeys.length; i < l; i++) {
-
                 const key = unitKeys[i];
 
                 let nonConvertedUnit = configs.preferredMetricsSystem == 'metric' ? key : convertionUnits[key]['convertsTo'];
                 if (selectedText.includes(nonConvertedUnit)) {
-                    if ((nonConvertedUnit == 'pound' || nonConvertedUnit == 'фунтов') && tooltip.children.length == 4) return;
+                    if ((nonConvertedUnit == 'pound') && tooltip.children.length == 4) return;
                     if (configs.debugMode) console.log('found key: ' + nonConvertedUnit);
                     includesKeyword = i; break;
                 } else if (convertionUnits[key]['variations'] && configs.preferredMetricsSystem == 'metric') {
@@ -591,7 +590,7 @@ function addContextualButtons() {
             }
 
             /// Calculate value
-            if (includesKeyword != false) {
+            if (includesKeyword !== false) {
                 /// Special handling for prices where coma separates fractional digits instead of thousandths
                 if (selectedText.includes(',')) {
                     let parts = selectedText.split(',');

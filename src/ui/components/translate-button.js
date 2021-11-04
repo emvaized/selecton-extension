@@ -2,11 +2,7 @@ function addTranslateButton() {
     if (configs.debugMode)
         console.log('Checking if its needed to add Translate button...');
 
-    var selectedText = selection.toString().trim();
-
-    if (configs.debugMode)
-        console.log(`Selected text is: ${selectedText}`);
-
+    // var selectedText = selection.toString().trim();
 
     function proccessButton(shouldTranslate, languageOfSelectedText) {
         if (shouldTranslate == true) {

@@ -66,7 +66,7 @@ function checkSelectionToHaveDarkBackground(node) {
 
         if (configs.debugMode) {
             console.log('----------------')
-            console.log('detected page bg color: ');
+            console.log('detected background color: ');
             console.log(bgColor);
         }
 
@@ -74,11 +74,6 @@ function checkSelectionToHaveDarkBackground(node) {
         bgColor = bgColor.replace('rgb(', '').replace('rgba(', '').replace(')', '').replace(' ', '').split(',');
         let colorLuminance =
             (0.299 * bgColor[0] + 0.587 * bgColor[1] + 0.114 * bgColor[2]) / 255;
-
-        if (configs.debugMode) {
-            console.log('color luminance');
-            console.log(colorLuminance);
-        }
 
         if (colorLuminance <= 0.5) isDarkPage = true;
 
