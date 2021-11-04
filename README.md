@@ -86,7 +86,7 @@ To change colors on Firefox, open settings in new tab by clicking button in top-
 
 * Settings > Conversion > Rates update interval
 
-**Disable selelction hangles on the right and left?**
+**Disable selection handles on the right and left?**
 
 * Settings > Text selection > Add selection drag handles
 
@@ -97,7 +97,7 @@ To permanently disable word snapping, add website to word-snapping blacklist or 
 "Settings > Text selection > Snap text selection by word"
 
 **Why extension doesn't work on new tab page?**
-* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages ("chrome://", "about:*", etc.) and on extensions store.
+* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages (`chrome://`, `about:`, etc.) and on extensions store.
 
 **Additional search buttons do not show on hovering Search button?**
 
