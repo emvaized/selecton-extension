@@ -526,40 +526,42 @@ function addContextualButtons() {
             let convertedUnit;
 
             /// Feet ' and inches " handling
-            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && !/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText)) /// don't proccess if text includes letters
-                if ((selectedText.includes("'"))) {
-                    let feet;
-                    let inches;
+            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && /['||"]/.test(selectedText)) /// don't proccess if text includes letters
+                // if (!/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText))
+                if (!/[a-zA-Z]/g.test(selectedText))
+                    if (selectedText.includes("'")) {
+                        let feet;
+                        let inches;
 
-                    let parts = selectedText.split("'");
-                    if (parts.length == 2 || parts.length == 4) {
-                        feet = extractAmountFromSelectedText(parts[0]);
-                        inches = extractAmountFromSelectedText(parts[1].split('"')[0])
-                    } else if (parts.length == 1) {
-                        /// Only feet available
-                        feet = extractAmountFromSelectedText(parts[0]);
+                        let parts = selectedText.split("'");
+                        if (parts.length == 2 || parts.length == 4) {
+                            feet = extractAmountFromSelectedText(parts[0]);
+                            inches = extractAmountFromSelectedText(parts[1].split('"')[0])
+                        } else if (parts.length == 1) {
+                            /// Only feet available
+                            feet = extractAmountFromSelectedText(parts[0]);
+                        }
+
+                        if (feet !== null) {
+                            if (inches == null) inches = 0.0;
+                            convertedNumber = (feet * convertionUnits['feet']['ratio'] * 100) + (inches * convertionUnits['inch']['ratio']);
+                            fromUnit = '';
+                            convertedUnit = 'cm';
+                            numberToConvert = selectedText;
+                        }
+
+                    } else if (selectedText.includes('"')) {
+                        /// Only inches present
+                        let parts = selectedText.split('"')
+
+                        if (parts.length == 2) {
+                            inches = extractAmountFromSelectedText(selectedText);
+                            convertedNumber = inches * convertionUnits['inch']['ratio'];
+                            fromUnit = '';
+                            convertedUnit = 'cm';
+                            numberToConvert = selectedText;
+                        }
                     }
-
-                    if (feet !== null) {
-                        if (inches == null) inches = 0.0;
-                        convertedNumber = (feet * convertionUnits['feet']['ratio'] * 100) + (inches * convertionUnits['inch']['ratio']);
-                        fromUnit = '';
-                        convertedUnit = 'cm';
-                        numberToConvert = selectedText;
-                    }
-
-                } else if (selectedText.includes('"')) {
-                    /// Only inches present
-                    let parts = selectedText.split('"')
-
-                    if (parts.length == 2) {
-                        inches = extractAmountFromSelectedText(selectedText);
-                        convertedNumber = inches * convertionUnits['inch']['ratio'];
-                        fromUnit = '';
-                        convertedUnit = 'cm';
-                        numberToConvert = selectedText;
-                    }
-                }
 
             /// Basic unit conversion
             // outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
