@@ -84,7 +84,7 @@
   line-height: 1.2 !important; 
 }
 
-.selection-popup-button span {
+.tooltip-with-icons .selection-popup-button span {
   vertical-align: middle !important;
 }
 

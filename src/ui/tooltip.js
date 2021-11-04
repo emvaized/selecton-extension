@@ -95,6 +95,7 @@ function setUpNewTooltip(type, recreated = false) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.className = 'selection-tooltip selecton-entity';
+    if (configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel') tooltip.classList.add('tooltip-with-icons');
     tooltip.style.opacity = 0.0;
     tooltip.style.position = 'fixed';
     tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out`;
