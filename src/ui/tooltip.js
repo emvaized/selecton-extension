@@ -1017,7 +1017,6 @@ function addContextualButtons() {
                                 const interactiveButton = document.createElement('button');
                                 interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
                                 let linkText = document.createElement('span');
-
                                 let linkToDisplay = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
                                 linkText.textContent = linkToDisplay;
                                 linkText.classList.add('color-highlight');
@@ -1027,7 +1026,7 @@ function addContextualButtons() {
                                     interactiveButton.setAttribute('title', link);
 
                                 if (addButtonIcons)
-                                    interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon));
+                                    interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon, undefined, true));
                                 else interactiveButton.textContent = openLinkLabel + ' ';
 
                                 interactiveButton.appendChild(linkText);
