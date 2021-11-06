@@ -388,7 +388,7 @@
         "description": ""
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Попробовать сдвинуть панель вверх, когда сайт показывает свою",
+        "message": "Попробовать сдвинуть панель вверх, когда сайт показывает свою при выделении",
         "description": ""
     },
     "shouldOverrideWebsiteSelectionColor": {

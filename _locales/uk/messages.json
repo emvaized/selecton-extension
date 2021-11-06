@@ -56,11 +56,11 @@
         "description": "Label for field in settings"
     },
     "appearanceHeader": {
-        "message": "Вигляд панелі",
+        "message": "Зовнішній вигляд",
         "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
     },
     "behaviorHeader": {
-        "message": "Поведінка панелі",
+        "message": "Поведінка",
         "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
     },
     "borderRadius": {
@@ -372,7 +372,7 @@
         "description": ""
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Спробувати зрушити панель вгору, коли сайт показує свою",
+        "message": "Спробувати підняти панель вгору, коли сайт показує свою при виділенні тексту",
         "description": ""
     },
     "shouldOverrideWebsiteSelectionColor": {

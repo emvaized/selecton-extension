@@ -396,7 +396,7 @@
     "description": "Label for field in settings"
   },
   "shiftTooltipWhenWebsiteHasOwn": {
-    "message": "Try to shift selection tooltip up when website shows it's own",
+    "message": "Try to shift tooltip up when website shows it's own for text selection",
     "description": "Label for field in settings"
   },
   "shouldOverrideWebsiteSelectionColor": {
