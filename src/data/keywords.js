@@ -139,6 +139,7 @@ const convertionUnits = {
         "convertsTo": "gr",
         "ratio": 28.3495,
         "variations": [
+            'oz.',
             ' унций',
             ' унции',
             ' унция',
