@@ -171,6 +171,10 @@
         "message": "Панель можна перетягнути за стрілку",
         "description": ""
     },
+    "email": {
+        "message": "Пошта",
+        "description": "Label for field in settings"
+    },
     "enabled": {
         "message": "Включено",
         "description": ""

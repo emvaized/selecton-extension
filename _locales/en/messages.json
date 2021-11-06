@@ -191,6 +191,10 @@
     "message": "Enabled",
     "description": "Label for field in settings"
   },
+  "email": {
+    "message": "Email",
+    "description": "Label for field in settings"
+  },
   "excludedDomains": {
     "message": "Excluded domains",
     "description": "Label for option in settings"

@@ -774,11 +774,28 @@ function addContextualButtons() {
             const splitedByAt = selectedText.split('@');
             if (splitedByAt.length == 2 && splitedByAt[1].includes('.'))
                 try {
-                    var emailText = loweredSelectedText;
+                    const emailText = loweredSelectedText;
                     const emailButton = document.createElement('button');
                     emailButton.setAttribute('class', 'selection-popup-button button-with-border');
-                    emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText), true));
-                    emailButton.classList.add('color-highlight');
+
+                    if (configs.buttonsStyle == 'onlylabel') {
+                        emailButton.textContent = chrome.i18n.getMessage('email') + ' ';
+
+                        let emailLabel = document.createElement('div');
+                        emailLabel.style.display = 'inline';
+                        emailLabel.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
+                        emailLabel.classList.add('color-highlight');
+
+                        /// Add tooltip with full website on hover
+                        if (emailText.length > linkSymbolsToShow)
+                            emailButton.setAttribute('title', emailText);
+                        emailButton.appendChild(emailLabel);
+                    }
+                    else {
+                        emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText), true));
+                        emailButton.classList.add('color-highlight');
+                    }
+
 
                     emailButton.addEventListener("mousedown", function (e) {
                         let url = returnNewEmailUrl(emailText);

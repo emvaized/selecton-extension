@@ -183,6 +183,10 @@
         "message": "Панель можно перетащить за стрелку",
         "description": ""
     },
+    "email": {
+        "message": "Письмо",
+        "description": "Label for field in settings"
+    },
     "enabled": {
         "message": "Включено",
         "description": ""
