@@ -1,3 +1,11 @@
+#3.4.0
+- Added config "Action when click on conversion result", which now defaults to 'Copy'
+- Improved keywords detection for timezones and measure units
+- Improved popup appearance with button icons enabled
+- Only-text email button is now consistent in style with other buttons
+- Changed default animation duration config
+- Performance improvements
+
 #3.3.9
 - Fix wrong handles position when recreated after scroll
 - Improved dark background detection - now it detects dark background behind text selection instead of whole page
