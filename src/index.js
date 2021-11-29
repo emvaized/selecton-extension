@@ -251,14 +251,15 @@ function initMouseListeners() {
 
     /// Check if clicked on text field
     // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
-    if (e.detail == 1) checkTextField(e);
+    // if (e.detail == 1) checkTextField(e);
+    checkTextField(e);
 
     if (selectedText.length > 0) {
-      /// create tooltip anyway
+      /// create tooltip for selection
       setCssStyles();
       initTooltip(e);
     } else {
-      /// no selection on page - check if textfield is focused
+      /// no selection on page - check if textfield is focused to create 'Paste' tooltip
       if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
         setCssStyles();
         initTooltip(e);
