@@ -52,6 +52,9 @@ function checkSelectionToHaveDarkBackground(node) {
     let bgColor, isDarkPage = false;
     parentsCheckedCounter = 0;
 
+    if (configs.debugMode)
+        console.log('Checking selection background color...');
+
     try {
         bgColor = getFirstParentWithBackgroundColor(node.parentNode);
     } catch (e) { console.log(e); }
@@ -65,8 +68,7 @@ function checkSelectionToHaveDarkBackground(node) {
         }
 
         if (configs.debugMode) {
-            console.log('----------------')
-            console.log('detected background color: ');
+            console.log('Detected background color: ');
             console.log(bgColor);
         }
 
@@ -78,7 +80,7 @@ function checkSelectionToHaveDarkBackground(node) {
         if (colorLuminance <= 0.5) isDarkPage = true;
 
         if (configs.debugMode) {
-            console.log('is dark background:');
+            console.log('Is dark background:');
             console.log(isDarkPage);
         }
     }

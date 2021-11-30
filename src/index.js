@@ -232,6 +232,9 @@ function initMouseListeners() {
   });
 
   function setCssStyles() {
+    if (configs.debugMode)
+      console.log('--- Creating Selecton tooltip ---');
+
     /// Check page to have dark background
     setTimeout(function () {
       let isDarkPage = false;
@@ -394,11 +397,6 @@ function recreateTooltip() {
   }, 650);
 }
 
-function domLoadedListener() {
-  document.removeEventListener('DOMContentLoaded', domLoadedListener);
-  initConfigs(false);
-}
-
 function selectionChangeInitListener() {
   if (!configs.enabled) return;
   if (document.getSelection().toString().length < 1) return;
@@ -412,4 +410,11 @@ function selectionChangeInitListener() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', domLoadedListener);
+// function domLoadedListener() {
+//   document.removeEventListener('DOMContentLoaded', domLoadedListener);
+//   initConfigs(false);
+// }
+
+// document.addEventListener('DOMContentLoaded', domLoadedListener);
+
+initConfigs(false);

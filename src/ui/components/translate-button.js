@@ -1,9 +1,4 @@
 function addTranslateButton() {
-    if (configs.debugMode)
-        console.log('Checking if its needed to add Translate button...');
-
-    // var selectedText = selection.toString().trim();
-
     function proccessButton(shouldTranslate, languageOfSelectedText) {
         if (shouldTranslate == true) {
             const translateButton = document.createElement('button');
@@ -38,14 +33,15 @@ function addTranslateButton() {
     }
 
     try {
-
         if (!chrome.i18n.detectLanguage) proccessButton(true);
         else
             chrome.i18n.detectLanguage(selectedText, function (result) {
+                if (configs.debugMode)
+                    console.log('Checking if its needed to add Translate button...');
 
                 /// Show Translate button when language was not detected
-                let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
-                let shouldTranslate = isFirefox;
+                // let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+                let shouldTranslate = false;
 
                 if (configs.debugMode)
                     console.log(`User language is: ${configs.languageToTranslate}`);
@@ -56,12 +52,12 @@ function addTranslateButton() {
                 if (detectedLanguages !== null && detectedLanguages !== undefined) {
                     const langs = detectedLanguages.languages;
 
-                    if (langs !== []) {
+                    if (langs.length > 0) {
                         languageOfSelectedText = langs[0].language;
                         if (configs.debugMode) console.log('Detected language: ' + languageOfSelectedText);
 
                         // if (configs.debugMode)
-                        // console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
+                        //     console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
 
                         /// Don't show translate button if selected language is the same as desired
                         if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
@@ -69,7 +65,7 @@ function addTranslateButton() {
                         else shouldTranslate = true;
                     } else
                         if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
-                }
+                } else if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
 
                 if (configs.debugMode)
                     console.log(`Should translate: ${shouldTranslate}`);

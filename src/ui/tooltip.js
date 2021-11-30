@@ -1290,8 +1290,10 @@ function hideTooltip(animated = true) {
 
     document.removeEventListener("selectionchange", selectionChangeListener);
 
-    if (configs.debugMode)
-        console.log('Checking for existing Selecton tooltips...')
+    if (configs.debugMode) {
+        console.log('--- Hiding Selecton tooltips ---');
+        console.log('Checking for existing tooltips...');
+    }
 
     /// Hide all tooltips
     let oldTooltips = document.querySelectorAll('.selecton-entity');
@@ -1304,6 +1306,9 @@ function hideTooltip(animated = true) {
     if (oldTooltips !== null && oldTooltips.length !== 0) {
         tooltipIsShown = false;
 
+        if (configs.debugMode)
+            console.log(`Found ${oldTooltips.length} tooltips to hide`);
+
         for (let i = 0, l = oldTooltips.length; i < l; i++) {
             let oldTooltip = oldTooltips[i];
             if (!animated)
@@ -1314,7 +1319,11 @@ function hideTooltip(animated = true) {
                 oldTooltip.remove();
             }, animated ? configs.animationDuration : 0);
         }
+    } else {
+        if (configs.debugMode)
+            console.log('No existing tooltips found');
     }
+
 
     tooltip = null;
     secondaryTooltip = null;
