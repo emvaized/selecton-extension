@@ -76,45 +76,44 @@ function initConfigs(shouldCreateTooltip = false, e) {
         }
 
         /// Set font-size
-        document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
+        document.documentElement.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
 
         /// styles of tooltip button icon
-        document.body.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
+        document.documentElement.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
 
         /// Set border radius
-        document.body.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
+        document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
 
         /// pop-up buttons border
-        document.body.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
-        document.body.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+        document.documentElement.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
+        document.documentElement.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
 
         /// pop-up inner and button inner paddings
-        document.body.style.setProperty('--selecton-tooltip-inner-padding', '2px');
+        document.documentElement.style.setProperty('--selecton-tooltip-inner-padding', '2px');
 
-        // document.body.style.setProperty('--selecton-button-padding', addButtonIcons ? '3px 8px' : '4px 10px');
         switch (configs.buttonsStyle) {
           case 'onlylabel': {
-            document.body.style.setProperty('--selecton-button-padding', '4px 10px');
+            document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
           } break;
           case 'onlyicon': {
-            document.body.style.setProperty('--selecton-button-padding', '3px 10px');
+            document.documentElement.style.setProperty('--selecton-button-padding', '3px 10px');
           } break;
           case 'iconlabel': {
-            document.body.style.setProperty('--selecton-button-padding', '3px 8px');
+            document.documentElement.style.setProperty('--selecton-button-padding', '3px 8px');
           } break;
           default: {
-            document.body.style.setProperty('--selecton-button-padding', '4px 10px');
+            document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
           } break;
         }
 
         /// selection handle circle radius
-        document.body.style.setProperty('--selecton-handle-circle-radius', '12.5px');
+        document.documentElement.style.setProperty('--selecton-handle-circle-radius', '12.5px');
 
         /// search tooltip icon size
-        document.body.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
+        document.documentElement.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
 
         /// Anim duration
-        document.body.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
+        document.documentElement.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
 
         /// Check browser locales on first launch (language and metric system)
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
@@ -248,28 +247,28 @@ function initMouseListeners() {
       if (configs.useCustomStyle) {
         /// Custom style from settings
         const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
-        document.body.style.setProperty('--selecton-background-color', bgColor);
+        document.documentElement.style.setProperty('--selecton-background-color', bgColor);
         getTextColorForBackground(bgColor);
 
-        document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
-        document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
-        document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
+        document.documentElement.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
+        document.documentElement.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
+        document.documentElement.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
         secondaryColor = isDarkTooltip ? 'lightBlue' : 'royalBlue';
       } else {
         /// Default style
-        document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
-        document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
-        document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
-        document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
+        document.documentElement.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
+        document.documentElement.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
+        document.documentElement.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
+        document.documentElement.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
         secondaryColor = isDarkPage ? 'royalBlue' : 'lightBlue';
         isDarkTooltip = !isDarkPage;
       }
 
       /// Invert buttons icons when dark tooltip
-      document.body.style.setProperty('--selecton-button-icon-invert', `invert(${isDarkTooltip ? '100' : '0'}%)`);
+      document.documentElement.style.setProperty('--selecton-button-icon-invert', `invert(${isDarkTooltip ? '100' : '0'}%)`);
 
       /// Accent color for convert result buttons
-      document.body.style.setProperty('--selecton-secondary-color', secondaryColor);
+      document.documentElement.style.setProperty('--selecton-secondary-color', secondaryColor);
     }, 0);
   }
 
