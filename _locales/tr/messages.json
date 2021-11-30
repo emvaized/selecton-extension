@@ -510,5 +510,9 @@
     "hideTranslateButtonForUserLanguage": {
         "message": "Kullanıcının dili için çeviri düğmesini gizle",
         "description": "Label for field in settings"
+    },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Dil tanımlı değilse çeviri düğmesini göster",
+        "description": "Label for field in settings"
     }
 }

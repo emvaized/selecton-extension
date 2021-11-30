@@ -63,9 +63,14 @@ function addTranslateButton() {
                         if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
                             shouldTranslate = false;
                         else shouldTranslate = true;
-                    } else
+                    } else {
                         if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
-                } else if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
+                        shouldTranslate = configs.showTranslateIfLanguageUnknown ?? false;
+                    }
+                } else {
+                    if (configs.debugMode) console.log('Selecton failed to detect language of selected text');
+                    shouldTranslate = configs.showTranslateIfLanguageUnknown ?? false;
+                }
 
                 if (configs.debugMode)
                     console.log(`Should translate: ${shouldTranslate}`);

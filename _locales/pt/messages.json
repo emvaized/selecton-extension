@@ -502,5 +502,9 @@
     "hideTranslateButtonForUserLanguage": {
         "message": "Ocultar botão de tradução para o idioma do usuário",
         "description": "Label for field in settings"
+    },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Mostrar botão de tradução se o idioma não for detectado",
+        "description": "Label for field in settings"
     }
 }

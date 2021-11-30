@@ -399,6 +399,10 @@
         "message": "Schaltfläche zum Übersetzen anzeigen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Übersetzen-Schaltfläche anzeigen, wenn Sprache nicht erkannt wird",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Originalwert vor Konvertierung anzeigen",
         "description": "Bezeichnung für Schaltfläche in Einstellungen"

@@ -518,5 +518,9 @@
     "hideTranslateButtonForUserLanguage": {
         "message": "Скрыть кнопку перевода для языка пользователя",
         "description": "Ярлык для опции в настройках"
+    },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Показать кнопку перевода, если язык не определен",
+        "description": "Label for field in settings"
     }
 }

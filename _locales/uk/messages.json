@@ -510,5 +510,9 @@
     "hideTranslateButtonForUserLanguage": {
         "message": "Сховати кнопку перекладу для мови користувача",
         "description": "Label for field in settings"
+    },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Показати кнопку перекладу, якщо мова не визначена",
+        "description": "Label for field in settings"
     }
 }

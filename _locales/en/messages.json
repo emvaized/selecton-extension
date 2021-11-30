@@ -419,6 +419,10 @@
     "message": "Add button to show on map",
     "description": "Label for field in settings"
   },
+  "showTranslateIfLanguageUnknown": {
+    "message": "Show translate button if language is not detected",
+    "description": "Label for field in settings"
+  },
   "showSecondaryTooltipTitleOnHover": {
     "message": "Show title on hover",
     "description": "Label for option in settings"
