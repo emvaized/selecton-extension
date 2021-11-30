@@ -198,7 +198,7 @@ function initMouseListeners() {
   document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
     if (isDraggingTooltip) return;
-    if (tooltipIsShown) return;
+    if (tooltipIsShown && e.detail < 3) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;
