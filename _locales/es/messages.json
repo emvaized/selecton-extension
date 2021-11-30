@@ -32,7 +32,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "addPasteButton": {
-        "message": "Agregar botón 'Pegar'",
+        "message": "Mostrar el botón 'Pegar' al hacer clic en el campo de texto",
         "description": "Label for option in settings"
     },
     "addPhoneButton": {
@@ -500,7 +500,7 @@
         "description": "Etiqueta para la opción en la configuración"
     },
     "addPasteOnlyEmptyField": {
-        "message": "Agrega 'Pegar' solo cuando el campo esté vacío",
+        "message": "... solo cuando el campo está vacío",
         "description": "Etiqueta para la opción en la configuración"
     },
     "hideTranslateButtonForUserLanguage": {

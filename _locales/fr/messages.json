@@ -32,7 +32,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "addPasteButton": {
-        "message": "Ajouter le bouton 'Coller'",
+        "message": "Afficher le bouton «Coller» lorsque vous cliquez sur le champ de texte",
         "description": "Label for option in settings"
     },
     "addPhoneButton": {
@@ -500,7 +500,7 @@
         "description": "Libellé pour l'option dans les paramètres"
     },
     "addPasteOnlyEmptyField": {
-        "message": "Ajouter 'Coller' uniquement lorsque le champ est vide",
+        "message": "... uniquement lorsque le champ est vide",
         "description": "Libellé pour l'option dans les paramètres"
     },
     "hideTranslateButtonForUserLanguage": {

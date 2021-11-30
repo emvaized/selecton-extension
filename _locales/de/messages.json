@@ -32,7 +32,7 @@
         "description": "Beschriftung für Feld in Einstellungen"
     },
     "addPasteButton": {
-        "message": "Schaltfläche 'Einfügen' hinzufügen",
+        "message": "Schaltfläche 'Einfügen' anzeigen, wenn auf das Textfeld geklickt wird",
         "description": "Label for option in settings"
     },
     "addPhoneButton": {
@@ -500,7 +500,7 @@
         "description": "Label für Option in den Einstellungen"
     },
     "addPasteOnlyEmptyField": {
-        "message": "'Einfügen' nur hinzufügen, wenn das Feld leer ist",
+        "message": "... nur wenn Feld leer ist",
         "description": "Label für Option in den Einstellungen"
     },
     "hideTranslateButtonForUserLanguage": {

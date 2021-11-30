@@ -32,11 +32,11 @@
     "description": "Label for field in settings"
   },
   "addPasteButton": {
-    "message": "Add 'Paste' button",
+    "message": "Show 'Paste' button when click on text field",
     "description": "Label for option in settings"
   },
   "addPasteOnlyEmptyField": {
-    "message": "Add 'Paste' only when field is empty",
+    "message": "... only when field is empty",
     "description": "Label for option in settings"
   },
   "addPhoneButton": {

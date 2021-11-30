@@ -32,7 +32,7 @@
         "description": "Label for field in settings"
     },
     "addPasteButton": {
-        "message": "Добавить кнопку 'Вставить'",
+        "message": "Показать кнопку 'Вставить' при клике на поле",
         "description": "Label for option in settings"
     },
     "addPhoneButton": {
@@ -512,7 +512,7 @@
         "description": "Ярлык для поля в настройках"
     },
     "addPasteOnlyEmptyField": {
-        "message": "Показать 'Вставить', только если поле пустое",
+        "message": "... только если поле пустое",
         "description": "Ярлык для опции в настройках"
     },
     "hideTranslateButtonForUserLanguage": {

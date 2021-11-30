@@ -255,35 +255,35 @@ function addBasicTooltipButtons(layout) {
                 else
                     tooltip.appendChild(copyButton);
 
-                if (configs.addPasteButton) {
-                    /// Add paste button 
-                    const pasteButton = document.createElement('button');
-                    pasteButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                        pasteButton.setAttribute('title', pasteLabel);
-                    if (addButtonIcons)
-                        pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
-                    else
-                        pasteButton.textContent = pasteLabel;
+                // if (configs.addPasteButton) {
+                /// Add paste button 
+                const pasteButton = document.createElement('button');
+                pasteButton.setAttribute('class', `selection-popup-button button-with-border`);
+                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+                    pasteButton.setAttribute('title', pasteLabel);
+                if (addButtonIcons)
+                    pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
+                else
+                    pasteButton.textContent = pasteLabel;
 
-                    pasteButton.addEventListener("mousedown", function (e) {
-                        textField.focus();
+                pasteButton.addEventListener("mousedown", function (e) {
+                    textField.focus();
 
-                        if (textField.getAttribute('contenteditable') !== null) {
-                            let currentClipboardContent = getCurrentClipboard();
+                    if (textField.getAttribute('contenteditable') !== null) {
+                        let currentClipboardContent = getCurrentClipboard();
 
-                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                                document.execCommand("insertHTML", false, currentClipboardContent);
-                        } else
-                            document.execCommand('paste');
+                        if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
+                            document.execCommand("insertHTML", false, currentClipboardContent);
+                    } else
+                        document.execCommand('paste');
 
-                        removeSelectionOnPage();
-                    });
-                    if (configs.reverseTooltipButtonsOrder)
-                        tooltip.insertBefore(pasteButton, copyButton);
-                    else
-                        tooltip.appendChild(pasteButton);
-                }
+                    removeSelectionOnPage();
+                });
+                if (configs.reverseTooltipButtonsOrder)
+                    tooltip.insertBefore(pasteButton, copyButton);
+                else
+                    tooltip.appendChild(pasteButton);
+                // }
             } catch (e) { if (configs.debugMode) console.log(e) }
 
             /// Set border radius for buttons

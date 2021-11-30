@@ -32,7 +32,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "addPasteButton": {
-        "message": "Adicionar botão 'Colar'",
+        "message": "Mostrar o botão 'Colar' ao clicar no campo de texto",
         "description": "Label for option in settings"
     },
     "addPhoneButton": {
@@ -496,7 +496,7 @@
         "description": "Rótulo para opção nas configurações"
     },
     "addPasteOnlyEmptyField": {
-        "message": "Adicionar 'Colar' apenas quando o campo estiver vazio",
+        "message": "... somente quando o campo está vazio",
         "description": "Rótulo para opção nas configurações"
     },
     "hideTranslateButtonForUserLanguage": {

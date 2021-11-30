@@ -32,7 +32,7 @@
         "description": "Ayarlardaki alan etiketi"
     },
     "addPasteButton": {
-        "message": "'Yapıştır' düğmesi ekle",
+        "message": "Metin alanına tıklandığında 'Yapıştır' düğmesini göster",
         "description": "Ayarlardaki seçenek etiketi"
     },
     "addPhoneButton": {
@@ -504,7 +504,7 @@
         "description": "Ayarlarda seçenek etiketi"
     },
     "addPasteOnlyEmptyField": {
-        "message": "'Yapıştır'ı yalnızca alan boşken ekleyin",
+        "message": "... sadece alan boş olduğunda",
         "description": "Ayarlarda seçenek etiketi"
     },
     "hideTranslateButtonForUserLanguage": {
