@@ -16,7 +16,7 @@
         "description": "Label for field in settings"
     },
     "addDragHandles": {
-        "message": "Додати ручки перетягування виділення",
+        "message": "Додати ручки редагування виділення",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
     "addFontFormatButtons": {
