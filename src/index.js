@@ -36,7 +36,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
           }
         }
 
-        /// Check for faulty values
+        /// Check for incorrect values
         if (configs.animationDuration < 0) configs.animationDuration = 0;
         if (configs.updateRatesEveryDays < 0) configs.updateRatesEveryDays = 14;
 
@@ -59,8 +59,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
           showOnMapLabel = chrome.i18n.getMessage("showOnMap");
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
-          // boldLabel = chrome.i18n.getMessage("boldLabel");
-          // italicLabel = chrome.i18n.getMessage("italicLabel");
 
           if (configs.addActionButtonsForTextFields)
             initMouseListeners();
@@ -76,33 +74,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
             };
           }
         }
-
-        /// Check page to have dark background
-        // let isDarkPage = false;
-        // if (configs.invertColorOnDarkWebsite)
-        //   try { isDarkPage = checkWholePageToHaveDarkBg(); } catch (e) { isDarkPage = false; if (configs.debugMode) console.log(e); }
-
-        // /// Set css styles
-        // if (configs.useCustomStyle) {
-        //   /// Custom style from settings
-        //   const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
-        //   document.body.style.setProperty('--selecton-background-color', bgColor);
-        //   getTextColorForBackground(bgColor);
-
-        //   document.body.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
-        //   document.body.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
-        //   document.body.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
-        //   secondaryColor = isDarkTooltip ? 'lightBlue' : 'dodgerBlue';
-
-        // } else {
-        //   /// Default style
-        //   document.body.style.setProperty('--selecton-background-color', isDarkPage ? '#bfbfbf' : '#4c4c4c');
-        //   document.body.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
-        //   document.body.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
-        //   document.body.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
-        //   secondaryColor = isDarkPage ? 'dodgerBlue' : 'lightBlue';
-        //   isDarkTooltip = !isDarkPage;
-        // }
 
         /// Set font-size
         document.body.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
@@ -173,7 +144,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
               console.log('Date of last fetch: ' + dayOfNextFetch);
             }
 
-            //dayOfNextFetch.setDate(dayOfNextFetch.getDate() + configs.updateRatesEveryDays);
             today = today.getTime();
             dayOfNextFetch = new Date(dayOfNextFetch.getTime() + (configs.updateRatesEveryDays * oneDayInMilliseconds));
 
@@ -213,14 +183,10 @@ function setTextSelectionColor() {
     console.log('Selecton applied custom selection color')
 }
 
-let lastMouseDownEvent;
-
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
-
-    lastMouseDownEvent = e;
 
     /// Middle button click
     if (e.button == 1 && configs.middleClickHidesTooltip) {
@@ -251,7 +217,6 @@ function initMouseListeners() {
 
     /// Check if clicked on text field
     // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
-    // if (e.detail == 1) checkTextField(e);
     checkTextField(e);
 
     if (selectedText.length > 0) {
@@ -409,7 +374,6 @@ function initMouseListeners() {
     console.log('Selection initiated mouse listeners');
 }
 
-
 function recreateTooltip() {
   if (configs.recreateTooltipAfterScroll == false) return;
 
@@ -431,10 +395,9 @@ function recreateTooltip() {
   }, 650);
 }
 
-
 function domLoadedListener() {
-  initConfigs(false);
   document.removeEventListener('DOMContentLoaded', domLoadedListener);
+  initConfigs(false);
 }
 
 function selectionChangeInitListener() {

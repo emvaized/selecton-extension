@@ -28,7 +28,6 @@ const addressKeywords = [
     'праспект ',
 
     /// Spanish
-    ' calle',
     'calle ',
     'ciudad ',
 
