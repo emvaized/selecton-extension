@@ -514,5 +514,23 @@
     "showTranslateIfLanguageUnknown": {
         "message": "Показати кнопку перекладу, якщо мова не визначена",
         "description": "Label for field in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Показати сповіщення при оновленні",
+        "description": "Label for field in settings"
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton оновлено до $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
+    },
+    "updateNotificationMessage": {
+        "message": "Клікніть тут, щоб побачити що нового",
+        "description": ""
     }
 }

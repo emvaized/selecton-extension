@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -14,7 +13,7 @@
         <div class='option'> <label><input type="checkbox" id="enabled"> </label></div>
         <div id='all-options-container'>
             <div class='option'> <label><input type="text" id="excludedDomains"> </label></div>
-            <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
+            <div class='option'> <label><input type="checkbox" id="showUpdateNotification"></label></div>
             <div class='option'> <label><input type="checkbox" id="applyConfigsImmediately"></label></div>
 
             <br />
@@ -140,7 +139,6 @@
                             <option value="waze">Waze</option>
                             <option value="mapquest">Mapquest</option>
                             <option value="yandexmaps">Яндекс.Карты</option>
-                            <!-- <option value="2gis">2GIS</option> -->
                             <option value="2gisRU">2GIS (ru)</option>
                             <option value="2gisUA">2GIS (ua)</option>
                         </select>
@@ -218,27 +216,13 @@
             </div>
         </div>
 
-        <!-- Additional settings block -->
-        <!-- <div id='additional-settings-block' class='collapsible-content'>
-            <br />
-            <div style='padding: 15px;'>
-                <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
-
-                <div class='option'> <label>Custom CSS: <br /><textarea style="width: 100%"
-                            id='customCss'></textarea></label></div>
-            </div>
-        </div>
-        <div class='option' style="float: right;"> <label><input type="checkbox"
-                    id="showAdditionalSettingsButton">Расширенные</label></div>
-        <br />
-        <br /> -->
+        <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
 
         <br />
+
         <!-- Footer buttons -->
         <div id='footer-buttons'>
-            <!-- <button id='resetButton' type="reset">Restore defaults</button> -->
             <button id='writeAReviewButton'>Write a review</button>
-
             <button id='donateButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
                     src="https://image.flaticon.com/icons/png/128/3037/3037156.png" />
             </button>
@@ -254,6 +238,7 @@
 
         <div id='selecton-version'></div>
     </form>
+
 
     <script src="../src/data/configs.js"></script>
     <script src="options.js"></script>

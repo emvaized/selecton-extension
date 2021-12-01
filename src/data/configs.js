@@ -72,6 +72,7 @@ const configs = {
     'preferredTranslateService': 'google',
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'floatingOffscreenTooltip': false,
+    'showUpdateNotification': true,
     'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
     'customSearchButtons': [
         {

@@ -518,5 +518,23 @@
   "tooltipInvertedBackground": {
     "message": "Background color (dark page)",
     "description": "Label for field in settings"
+  },
+  "showUpdateNotification": {
+    "message": "Show notification on update",
+    "description": "Label for field in settings"
+  },
+  "updateNotificationTitle": {
+    "message": "Selecton was updated to $VERSION$",
+    "description": "",
+    "placeholders": {
+      "version": {
+        "content": "$1",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "updateNotificationMessage": {
+    "message": "Click here to see what's new",
+    "description": ""
   }
 }

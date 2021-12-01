@@ -510,5 +510,23 @@
     "showTranslateIfLanguageUnknown": {
         "message": "Mostrar el botón de traducción si no se detecta el idioma",
         "description": "Label for field in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Mostrar notificación de actualización",
+        "description": "Label for field in settings"
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton se actualizó a $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
+    },
+    "updateNotificationMessage": {
+        "message": "Haga clic aquí para ver las novedades",
+        "description": ""
     }
 }

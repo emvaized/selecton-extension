@@ -224,6 +224,7 @@ function initMouseListeners() {
       initTooltip(e);
     } else {
       /// no selection on page - check if textfield is focused to create 'Paste' tooltip
+      // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
       if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
         setCssStyles();
         initTooltip(e);

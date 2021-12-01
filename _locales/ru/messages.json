@@ -522,5 +522,23 @@
     "showTranslateIfLanguageUnknown": {
         "message": "Показать кнопку перевода, если язык не определен",
         "description": "Label for field in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Показать уведомление при обновлении",
+        "description": "Label for field in settings"
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton обновился до $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
+    },
+    "updateNotificationMessage": {
+        "message": "Кликните здесь, чтобы узнать что нового",
+        "description": ""
     }
 }

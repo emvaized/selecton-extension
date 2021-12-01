@@ -514,5 +514,23 @@
     "showTranslateIfLanguageUnknown": {
         "message": "Dil tanımlı değilse çeviri düğmesini göster",
         "description": "Label for field in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Güncellemede bildirimi göster",
+        "description": "Label for field in settings"
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton $VERSION$ olarak güncellendi",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
+    },
+    "updateNotificationMessage": {
+        "message": "Yenilikleri görmek için buraya tıklayın",
+        "description": ""
     }
 }

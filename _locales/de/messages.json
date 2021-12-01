@@ -510,5 +510,23 @@
     "hideTranslateButtonForUserLanguage": {
         "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden",
         "description": "Label for field in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Benachrichtigung bei Update anzeigen",
+        "description": "Label for field in settings"
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton wurde auf $VERSION$ aktualisiert",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
+    },
+    "updateNotificationMessage": {
+        "message": "Klicken Sie hier, um zu sehen, was neu ist",
+        "description": ""
     }
 }
