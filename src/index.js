@@ -127,6 +127,8 @@ function initConfigs(shouldCreateTooltip = false, e) {
           });
 
         /// Fetch or load currency rates from storage
+        // fetchCurrencyRates(); /// enforce rates fetch for testing
+
         if (configs.convertCurrencies) {
           ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
 
@@ -156,7 +158,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
             else loadCurrencyRatesFromMemory();
           }
         }
-        //fetchCurrencyRates(); /// enforce rates fetch for testing
 
         if (shouldCreateTooltip)
           createTooltip(e);

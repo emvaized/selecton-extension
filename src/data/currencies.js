@@ -41,31 +41,15 @@ const currenciesList = {
     "ZAR": { currencyName: "Rand", rate: 14.856969 },
 
     /// Crypto
-    "ETH": { currencyName: "Ethereum", rate: 0.0003208 },
-    "LTC": { currencyName: "Litecoin", rate: 0.006242 },
-    "ADA": { currencyName: "Cardano", rate: 0.4492 },
-    "MIOTA": { currencyName: "MIOTA", rate: 0.7418 },
-    "EOS": { currencyName: "EOS", rate: 0.2336 },
-    "BCH": { currencyName: "BCH", rate: 0.001843 },
-    "XRP": { currencyName: "XRP", rate: 1.016 },
-    "ZEC": { currencyName: "ZEC", rate: 0.008209 },
-    "XMR": { currencyName: "XMR", rate: 0.004037 },
-    "ZCL": { currencyName: "XMR", rate: 7.348 },
-    "DOGE": { currencyName: "DOGE", rate: 4.537 },
+    "ETH": { currencyName: "Ethereum", rate: 0.0003208, crypto: true },
+    "LTC": { currencyName: "Litecoin", rate: 0.006242, crypto: true },
+    "ADA": { currencyName: "Cardano", rate: 0.4492, crypto: true },
+    "MIOTA": { currencyName: "MIOTA", rate: 0.7418, crypto: true },
+    "EOS": { currencyName: "EOS", rate: 0.2336, crypto: true },
+    "BCH": { currencyName: "BCH", rate: 0.001843, crypto: true },
+    "XRP": { currencyName: "XRP", rate: 1.016, crypto: true },
+    "ZEC": { currencyName: "ZEC", rate: 0.008209, crypto: true },
+    "XMR": { currencyName: "XMR", rate: 0.004037, crypto: true },
+    "ZCL": { currencyName: "XMR", rate: 7.348, crypto: true },
+    "DOGE": { currencyName: "DOGE", rate: 4.537, crypto: true },
 }
-
-/// This list is used in server fetch method, to filter really huge response to only selected
-const cryptoCurrencies = [
-    "ETH",
-    "LTC",
-    "ADA",
-    "MIOTA",
-    "EOS",
-    "BCH",
-    "XRP",
-    "ZEC",
-    "XMR",
-    "ZCL",
-    "DOGE",
-]
-

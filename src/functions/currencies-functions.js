@@ -30,44 +30,53 @@ async function fetchCurrencyRates() {
 
         const date = jsonObj['date'];
         const val = jsonObj['rates'];
+        const cryptoCurrencies = [];
 
         let keys = Object.keys(currenciesList);
         for (let i = 0, l = keys.length; i < l; i++) {
+            let key = keys[i];
+
+            if (currenciesList[key]['crypto'] == true)
+                cryptoCurrencies.push(key);
+
             try {
-                let key = keys[i];
                 if (val[key] == null || val[key] == undefined) continue;
                 currenciesList[key]['rate'] = val[key];
                 ratesObject[key] = val[key];
-            } catch (e) { }
+            } catch (e) {
+                if (configs.debugMode) console.log(e);
+            }
         }
 
         if (configs.debugMode) console.log('Fetched regular currencies successfully');
 
         /// Fetch crypto currencies
         urlToFetch = urlToLoadCryptoCurrencies;
+
         const listOfParams = cryptoCurrencies.join(',');
         urlToFetch += '&tsyms=' + listOfParams;
 
-        try {
-            // await fetchCryptoRates(urlToFetch, ratesObject);
-            const cryptoResponse = await fetch(urlToFetch);
-            if (!cryptoResponse.ok) throw new Error(`An error has occured: ${cryptoResponse.status}`);
-            const cryptoVal = await cryptoResponse.json();
+        if (listOfParams.length > 0)
+            try {
+                // await fetchCryptoRates(urlToFetch, ratesObject);
+                const cryptoResponse = await fetch(urlToFetch);
+                if (!cryptoResponse.ok) throw new Error(`An error has occured: ${cryptoResponse.status}`);
+                const cryptoVal = await cryptoResponse.json();
 
-            for (let i = 0, l = cryptoCurrencies.length; i < l; i++) {
-                try {
-                    let currency = cryptoCurrencies[i];
-                    if (cryptoVal[currency] == null || cryptoVal[currency] == undefined) continue;
-                    currenciesList[currency]['rate'] = cryptoVal[currency];
-                    ratesObject[currency] = cryptoVal[currency];
-                } catch (e) { console.log(e); }
-            }
+                for (let i = 0, l = cryptoCurrencies.length; i < l; i++) {
+                    try {
+                        let currency = cryptoCurrencies[i];
+                        if (cryptoVal[currency] == null || cryptoVal[currency] == undefined) continue;
+                        currenciesList[currency]['rate'] = cryptoVal[currency];
+                        ratesObject[currency] = cryptoVal[currency];
+                    } catch (e) { console.log(e); }
+                }
 
-            if (configs.debugMode) console.log('Fetched crypto currencies successfully');
-        } catch (e) { if (configs.debugMode) console.log('Failed to fetch crypto currencies'); }
+                if (configs.debugMode) console.log('Fetched crypto currencies successfully');
+            } catch (e) { if (configs.debugMode) console.log('Failed to fetch crypto currencies: ' + e.toString()); }
 
         /// Save rates to memory
-        if (ratesObject != {})
+        if (Object.keys(ratesObject).length > 0)
             chrome.storage.local.set({
                 //'ratesLastFetchedDate': date,
                 'ratesLastFetchedDate': today,
@@ -89,50 +98,6 @@ async function fetchCurrencyRates() {
             console.log(error);
         }
     }
-
-    // fetch(urlToFetch).then(function (val) {
-    //     return val.json();
-    // }).then(function (jsonObj) {
-    //     const success = jsonObj['success'];
-    //     if (!success) {
-    //         if (configs.debugMode) console.log('Error while fetching currency rates from network');
-    //         return;
-    //     }
-
-    //     const date = jsonObj['date'];
-    //     const val = jsonObj['rates'];
-
-    //     let keys = Object.keys(currenciesList);
-    //     for (let i = 0, l = keys.length; i < l; i++) {
-    //         try {
-    //             let key = keys[i];
-    //             if (val[key] == null || val[key] == undefined) continue;
-
-    //             currenciesList[key]['rate'] = val[key];
-    //             ratesObject[key] = val[key];
-    //         } catch (e) { }
-    //     }
-
-    //     /// Save rates to memory
-    //     chrome.storage.local.set({
-    //         'ratesLastFetchedDate': date,
-    //         'rates': ratesObject
-    //     });
-
-    //     currencyRatesWereLoaded = true;
-
-    //     if (configs.debugMode) {
-    //         console.log('Updated currency rates from network:');
-    //         console.log(ratesObject);
-    //         console.log('Saved date of last fetch:');
-    //         console.log(date);
-    //     }
-    // }).catch(function (e) {
-    //     if (configs.debugMode) {
-    //         console.log('Error while loading currencies from network:');
-    //         console.log(e);
-    //     }
-    // });
 }
 
 function loadCurrencyRatesFromMemory() {
