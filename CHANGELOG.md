@@ -1,3 +1,13 @@
+#3.4.1
+- Performance improvement - now popup should be availalbe immediately after page shows up, no need to wait for full page load
+- Added browser notification on update (can be disabled in settings)
+- Added config "Show translate button if language not detected" (defaults to disabled, was always enabled in prev. versions)
+- Fix for popup styling not applied on some websites
+- Improved handling of triple click paragraph selection
+- Improved paste button behavior
+- Added South Korean Won to the list of supported currencies
+- Updated translations
+
 #3.4.0
 - Added config "Action when click on conversion result", which now defaults to 'Copy'
 - Improved keywords detection for timezones and measure units
