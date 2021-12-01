@@ -44,6 +44,7 @@ INR — Indian Rupee
 IRR — Iranian Rial
 JPY — Japanese Yen
 KPW — North Korean Won
+KRW — South Korean Won
 KZT — Kazakhstani Tenge
 MNT — Mongolian Tugrik 
 MXN — Mexican Peso
