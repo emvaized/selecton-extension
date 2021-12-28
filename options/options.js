@@ -243,10 +243,10 @@ function updateDisabledOptions() {
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.querySelector("#tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
+    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'visible-option' : 'hidden-option';
     document.querySelector("#showButtonLabelOnHover").parentNode.parentNode.className = document.querySelector("#buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#tooltipInvertedBackground").parentNode.parentNode.className = document.querySelector("#invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
     document.querySelector("#applyConfigsImmediatelyPerformanceTip").className = document.querySelector("#applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
@@ -262,28 +262,27 @@ function updateDisabledOptions() {
 
 function setCollapsibleHeaders() {
     var coll = document.getElementsByClassName("collapsible-header");
-    var i;
 
-    for (i = 0; i < coll.length; i++) {
+    for (let i = 0, l = coll.length; i < l; i++) {
+        const c = coll[i];
 
         /// Make section initially expanded
-        if (expandedSettingsSections.includes(coll[i].id)) {
+        if (expandedSettingsSections.includes(c.id)) {
             const it = coll[i];
             setTimeout(function (e) {
                 it.classList.toggle("active");
                 var content = it.nextElementSibling;
                 content.style.maxHeight = content.scrollHeight + "px";
             }, 50);
-
         }
 
-        coll[i].addEventListener("click", function () {
+        c.onclick = function () {
             this.classList.toggle("active");
-            var content = this.nextElementSibling;
+            let content = this.nextElementSibling;
             if (content.style.maxHeight) {
                 /// Collapse
                 content.style.maxHeight = null;
-                var indexInArray = expandedSettingsSections.indexOf(this.id);
+                let indexInArray = expandedSettingsSections.indexOf(this.id);
                 if (indexInArray > -1) {
                     expandedSettingsSections.splice(indexInArray, 1);
                 }
@@ -295,7 +294,7 @@ function setCollapsibleHeaders() {
                 // content.scrollIntoView({ block: 'nearest', inline: "end", behavior: "smooth" });
             }
             saveExpandedSections();
-        });
+        }
     }
 }
 
