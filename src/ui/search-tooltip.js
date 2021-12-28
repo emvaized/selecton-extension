@@ -85,7 +85,7 @@ function createSecondaryTooltip() {
             container.addEventListener("mousedown", function (e) {
                 let selectedText = selection.toString();
                 selectedText = encodeURI(selectedText);
-                selectedText = selectedText.replaceAll('&', '%26');
+                selectedText = selectedText.replaceAll('&', '%26').replaceAll('+', '%2B');
                 let urlToOpen = url.replaceAll('%s', selectedText);
 
                 if (urlToOpen.includes('%w'))
