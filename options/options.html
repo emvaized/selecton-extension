@@ -216,23 +216,38 @@
             </div>
         </div>
 
-        <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
+        <!-- <br /> -->
+        <hr />
 
+        <!-- Export/import block -->
+        <div>
+            <div style="margin-bottom: 6px; color: grey"><label id='exportImportSettings'>Export/import settings</label></div>
+            <div style="margin-bottom: 6px">
+                <input type="text" id="exportName" value='selecton-settings.json'>
+                <button type='button' style=' display: inline; float: right;' id='exportSettings'>Export</button>
+            </div>
+            <div>
+                <input type="file" id="importSettings" accept=".json">
+                <button type='button' style='display: inline; float: right;' id='importSettingsButton' disabled='true'>Import</button>
+            </div>
+        </div>
+
+        <br />
+        <hr />
+
+        <div class='option'> <label><input type="checkbox" id="debugMode"></label></div>
         <br />
 
         <!-- Footer buttons -->
         <div id='footer-buttons'>
-            <button id='writeAReviewButton'>Write a review</button>
-            <button id='donateButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
+            <button type='button' id='writeAReviewButton'>Write a review</button>
+            <button type='button' id='donateButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
                     src="https://image.flaticon.com/icons/png/128/3037/3037156.png" />
             </button>
-            <button id='githubButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
+            <button type='button' id='githubButton'> <img height='15px' width='15px' style="position: relative; left: 3px; top: 3px;"
                     src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
         </div>
-        <!-- <div>
-            <button style='width: 47.75%; display: inline;' id='exportSettings'>Export</button>
-            <button style='width: 47.75%; display: inline;' id='importSettings'>Import</button>
-        </div> -->
+
         <br />
         </div>
 

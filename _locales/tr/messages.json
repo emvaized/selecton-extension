@@ -532,5 +532,21 @@
     "updateNotificationMessage": {
         "message": "Yenilikleri görmek için buraya tıklayın",
         "description": ""
+    },
+    "export": {
+        "message": "İhracat",
+        "description": ""
+    },
+    "import": {
+        "message": "İçe aktarmak",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Dışa/içe aktarma ayarları",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?",
+        "description": ""
     }
 }

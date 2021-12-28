@@ -540,5 +540,21 @@
     "updateNotificationMessage": {
         "message": "Кликните здесь, чтобы узнать что нового",
         "description": ""
+    },
+    "export": {
+        "message": "Экспорт",
+        "description": ""
+    },
+    "import": {
+        "message": "Импорт",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Экспорт/импорт настроек",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Это действие перепишет текущие настройки Selecton. Вы уверены?",
+        "description": ""
     }
 }

@@ -4,6 +4,8 @@
 
 let userConfigs;
 const expandedSettingsSections = [];
+let exportFileName = 'selecton-settings.json';
+let importedConfigs;
 
 var keys = Object.keys(configs);
 
@@ -27,117 +29,136 @@ function loadSettings() {
     /// Load configs
     chrome.storage.local.get(keys, setInputs);
 
-    function setInputs(result) {
-        userConfigs = result;
+    /// Set options page
+    setTranslatedLabels();
+    setVersionLabel();
+    setCollapsibleHeaders();
+    setInportExportButtons();
+}
 
-        keys.forEach(function (key) {
-            // const input = document.getElementById(key);
-            var input = document.querySelector('#' + key.toString());
+function setInputs(result) {
+    userConfigs = result;
 
-            /// Set input value
-            if (input !== null && input !== undefined) {
-                if (input.type == 'checkbox') {
-                    if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
-                        input.setAttribute('checked', 0);
-                    else input.removeAttribute('checked', 0);
-                } else if (input.tagName == 'SELECT') {
-                    var options = input.querySelectorAll('option');
-                    if (options !== null)
-                        options.forEach(function (option) {
-                            let selectedValue = result[key] ?? configs[key];
-                            if (option.value == selectedValue) option.setAttribute('selected', true);
+    keys.forEach(function (key) {
+        // const input = document.getElementById(key);
+        let input = document.querySelector('#' + key.toString());
 
-                            try {
-                                if (chrome.i18n.getMessage(option.innerHTML) != '')
-                                    option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
-                                else if (chrome.i18n.getMessage(option['value']) != '')
-                                    option.innerHTML = chrome.i18n.getMessage(option['value']);
-                            } catch (e) { }
+        /// Set input value
+        if (input !== null && input !== undefined) {
+            if (input.type == 'checkbox') {
+                if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
+                    input.setAttribute('checked', 0);
+                else input.removeAttribute('checked', 0);
+            } else if (input.tagName == 'SELECT') {
+                let options = input.querySelectorAll('option');
+                if (options !== null)
+                    options.forEach(function (option) {
+                        let selectedValue = result[key] ?? configs[key];
+                        if (option.value == selectedValue) option.setAttribute('selected', true);
 
-                        });
-                } else {
-                    input.setAttribute('value', result[key] ?? configs[key]);
-                }
+                        try {
+                            if (chrome.i18n.getMessage(option.innerHTML) != '')
+                                option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                            else if (chrome.i18n.getMessage(option['value']) != '')
+                                option.innerHTML = chrome.i18n.getMessage(option['value']);
+                        } catch (e) { }
 
-                /// Set translated label for input
-                if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key))) {
-                    if (input.tagName == 'SELECT' || input.id == 'excludedDomains' || input.id == 'wordSnappingBlacklist')
-                        input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
-                    else
-                        input.parentNode.innerHTML += chrome.i18n.getMessage(key);
-                }
+                    });
+            } else {
+                input.setAttribute('value', result[key] ?? configs[key]);
+            }
 
-                input = document.querySelector('#' + key.toString());
+            /// Set translated label for input
+            if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key))) {
+                if (input.tagName == 'SELECT' || input.id == 'excludedDomains' || input.id == 'wordSnappingBlacklist')
+                    input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
+                else
+                    input.parentNode.innerHTML += chrome.i18n.getMessage(key);
+            }
 
-                /// Set event listener
-                input.addEventListener("input", function (e) {
-                    let id = input.getAttribute('id');
-                    let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
-                    userConfigs[id] = inputValue;
+            input = document.querySelector('#' + key.toString());
 
-                    saveAllSettings();
-                    updateDisabledOptions();
-                });
+            /// Set event listener
+            input.addEventListener("input", function (e) {
+                let id = input.getAttribute('id');
+                let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+                userConfigs[id] = inputValue;
 
+                saveAllSettings();
+                updateDisabledOptions();
+            });
+
+        }
+    });
+
+    /// Set event listeners
+    // var inputs = document.querySelectorAll(ids.join(','));
+    // inputs.forEach(function (input) {
+    //     input.addEventListener("input", function (e) {
+    //         let id = input.getAttribute('id');
+    //         let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+    //         userConfigs[id] = inputValue;
+
+    //         saveAllSettings();
+    //         updateDisabledOptions();
+    //     });
+    // });
+
+    /// Set custom style for 'Excluded domains' textfields
+    var excludedDomainsTextfields = document.querySelectorAll("#excludedDomains, #wordSnappingBlacklist");
+    excludedDomainsTextfields.forEach(function (excludedDomainsTextfield) {
+        excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
+        excludedDomainsTextfield.style.maxWidth = '200px';
+    })
+
+    updateDisabledOptions();
+
+    loadCustomSearchButtons();
+
+    setCurrenciesDropdown();
+
+}
+
+function setInportExportButtons() {
+    /// Export settings
+    const exportNameInput = document.getElementById('exportName');
+    exportNameInput.onchange = function () {
+        exportFileName = exportNameInput.value;
+    }
+
+    document.getElementById('exportSettings').onclick = function () {
+        chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: userConfigs, name: exportFileName });
+    }
+
+    /// Import settings
+    const fileSelector = document.getElementById('importSettings');
+    const importSettingsConfirmButton = document.getElementById('importSettingsButton');
+    importedConfigs = null;
+
+    fileSelector.addEventListener('change', (event) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', (event) => {
+            const result = event.target.result;
+            importedConfigs = JSON.parse(result);
+
+            if (importedConfigs != null && importedConfigs !== undefined && importedConfigs !== {} && importedConfigs.hasOwnProperty('enabled')) {
+                importSettingsConfirmButton.disabled = false;
             }
         });
+        reader.readAsText(event.target.files[0]);
+    });
 
-        /// Set event listeners
-        // var inputs = document.querySelectorAll(ids.join(','));
-        // inputs.forEach(function (input) {
-        //     input.addEventListener("input", function (e) {
-        //         let id = input.getAttribute('id');
-        //         let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
-        //         userConfigs[id] = inputValue;
+    importSettingsConfirmButton.addEventListener('click', function () {
+        console.log('imported configs:');
+        console.log(importedConfigs);
 
-        //         saveAllSettings();
-        //         updateDisabledOptions();
-        //     });
-        // });
+        if (window.confirm(chrome.i18n.getMessage("importAlert"))) {
+            userConfigs = importedConfigs;
+            setInputs(importedConfigs);
+            saveAllSettings();
+        }
 
-        /// Set custom style for 'Excluded domains' textfields
-        var excludedDomainsTextfields = document.querySelectorAll("#excludedDomains, #wordSnappingBlacklist");
-        excludedDomainsTextfields.forEach(function (excludedDomainsTextfield) {
-            excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
-            excludedDomainsTextfield.style.maxWidth = '200px';
-        })
-
-        setTranslatedLabels();
-
-        updateDisabledOptions();
-
-        loadCustomSearchButtons();
-
-        setCurrenciesDropdown();
-
-        setCollapsibleHeaders();
-
-        setVersionLabel();
-
-        /// Export settings
-        // document.getElementById('exportSettings').onclick = function () {
-        //     chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: configs });
-        // }
-
-        /// Import settings
-        // const pickerOpts = {
-        //     types: [
-        //         {
-        //             description: 'Config file',
-        //             accept: { 'text/*': ['.json'] }
-        //         },
-        //     ],
-        //     excludeAcceptAllOption: true,
-        //     multiple: false
-        // };
-
-        // let fileHandle;
-        // document.getElementById('importSettings').onclick = async function () {
-        //     [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-        //     console.log([fileHandle]);
-        // }
-
-    }
+    });
 }
 
 function setTranslatedLabels() {
@@ -150,7 +171,6 @@ function setTranslatedLabels() {
     document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
     document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
-
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
@@ -170,22 +190,19 @@ function setTranslatedLabels() {
     } catch (e) { }
 
     /// "All changes saved automatically" block
-    // var infoCircle = document.createElement('div');
-    // infoCircle.textContent = '🛈';
-    // infoCircle.setAttribute('style', 'display: inline;position: relative; top: 3px; left: 3px; color: grey; font-size: 18px;');
-
     let hintEl = document.querySelector("#allChangesSavedAutomaticallyHeader");
     hintEl.innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
-    // hintEl.appendChild(infoCircle);
     hintEl.innerHTML += '.<br />';
     hintEl.innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
 
     /// Translate footer buttons
-    // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
-    //document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview") + ' (Chrome Web Store)';
     document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
     document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
     document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
+
+    document.querySelector("#exportSettings").innerHTML = chrome.i18n.getMessage("export");
+    document.querySelector("#importSettingsButton").innerHTML = chrome.i18n.getMessage("import");
+    document.querySelector("#exportImportSettings").innerText = chrome.i18n.getMessage("exportImportSettings");
 }
 
 function setVersionLabel() {

@@ -528,5 +528,21 @@
     "updateNotificationMessage": {
         "message": "Cliquez ici pour voir les nouveautés",
         "description": ""
+    },
+    "export": {
+        "message": "Exportation",
+        "description": ""
+    },
+    "import": {
+        "message": "Importer",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Paramètres d'export/import",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Cette action remplacera les paramètres actuels de Selecton. Es-tu sûr?",
+        "description": ""
     }
 }

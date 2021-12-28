@@ -536,5 +536,21 @@
   "updateNotificationMessage": {
     "message": "Click here to see what's new",
     "description": ""
+  },
+  "export": {
+    "message": "Export",
+    "description": ""
+  },
+  "import": {
+    "message": "Import",
+    "description": ""
+  },
+  "exportImportSettings": {
+    "message": "Export/import settings",
+    "description": ""
+  },
+  "importAlert": {
+    "message": "This action will override current Selecton settings. Are you sure?",
+    "description": ""
   }
 }

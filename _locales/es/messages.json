@@ -528,5 +528,21 @@
     "updateNotificationMessage": {
         "message": "Haga clic aquí para ver las novedades",
         "description": ""
+    },
+    "export": {
+        "message": "Exportar",
+        "description": ""
+    },
+    "import": {
+        "message": "Importar",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Exportar / importar configuraciones",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Esta acción anulará la configuración actual de Selecton. ¿Está seguro?",
+        "description": ""
     }
 }
