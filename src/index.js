@@ -21,7 +21,9 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
       if (configs.enabled) {
         if (configs.changeTextSelectionColor)
-          setTextSelectionColor();
+          setTimeout(function () {
+            setTextSelectionColor();
+          }, 1);
 
         /// Assign loaded values to config variable
         const keys = Object.keys(configs);
@@ -60,10 +62,12 @@ function initConfigs(shouldCreateTooltip = false, e) {
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
 
-          if (configs.addActionButtonsForTextFields)
-            initMouseListeners();
-          else
-            document.addEventListener('selectionchange', selectionChangeInitListener);
+          setTimeout(function () {
+            if (configs.addActionButtonsForTextFields)
+              initMouseListeners();
+            else
+              document.addEventListener('selectionchange', selectionChangeInitListener);
+          }, 1);
 
           configsWereLoaded = true;
 
