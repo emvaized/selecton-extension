@@ -215,23 +215,24 @@
                 <hr />
             </div>
         </div>
-
-        <hr />
+        <!-- <hr /> -->
 
         <!-- Export/import block -->
-        <div>
-            <div style="margin-bottom: 6px; color: grey"><label id='exportImportSettings'>Export/import settings</label></div>
-            <div style="margin-bottom: 6px">
+        <h3 class='collapsible-header' id='exportImportSettings'>Export/import settings</h3>
+        <div class='collapsible-content'>
+            <div style="margin-bottom: 10px">
                 <input type="text" id="exportName" value='selecton-settings.json'>
                 <button type='button' style=' display: inline; float: right;' id='exportSettings'>Export</button>
             </div>
+
             <div>
                 <input type="file" id="importSettings" accept=".json">
                 <button type='button' style='display: inline; float: right;' id='importSettingsButton' disabled='true'>Import</button>
             </div>
+            <br />
+
         </div>
 
-        <br />
         <hr />
 
         <!-- Debug mode toggle -->

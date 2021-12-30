@@ -33,7 +33,7 @@ function loadSettings() {
     setTranslatedLabels();
     setVersionLabel();
     setCollapsibleHeaders();
-    setInportExportButtons();
+    setImportExportButtons();
 }
 
 function setInputs(result) {
@@ -119,7 +119,7 @@ function setInputs(result) {
 
 }
 
-function setInportExportButtons() {
+function setImportExportButtons() {
     /// Export settings
     const exportNameInput = document.getElementById('exportName');
     exportNameInput.onchange = function () {
@@ -156,6 +156,9 @@ function setInportExportButtons() {
             userConfigs = importedConfigs;
             setInputs(importedConfigs);
             saveAllSettings();
+
+            const fileSelector = document.getElementById('importSettings');
+            fileSelector.value = null;
         }
 
     });

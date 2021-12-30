@@ -161,6 +161,21 @@ content: "\2212";
   min-width: 100%; max-width: 100%; margin-top: 3px !important;
 }
 
+/* Collapsible header arrow  */
+.collapsible-header:after { 
+  content: '❮';  
+  font-size: 20px; 
+  font-weight: 50; 
+  float: right; 
+  opacity: 0.5; 
+  transform: translate(-7px, -3px) rotate(-90deg); 
+  transition: transform 150ms ease; 
+} 
+   
+.active:after { 
+  transform: translate(-7px, -3px) rotate(-270deg); 
+} 
+
 
 @media (min-width: 600px) {
   #footer-buttons { text-align: center; }
@@ -204,21 +219,5 @@ content: "\2212";
  
   hr { 
     opacity: 0.5; 
-  } 
- 
-  /* Collapsible header arrow */ 
-  .collapsible-header:after { 
-    /* content: 'ᐊ';  */ 
-    content: '❮';  
-    font-size: 20px; 
-    font-weight: 100; 
-    float: right; 
-    opacity: 0.5; 
-    transform: translate(-7px, -5px) rotate(-90deg); 
-    transition: transform 150ms ease; 
-  } 
-   
-  .active:after { 
-    transform: translate(-7px, -5px) rotate(-270deg); 
   } 
 }}
