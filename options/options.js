@@ -152,15 +152,15 @@ function setImportExportButtons() {
         console.log('imported configs:');
         console.log(importedConfigs);
 
-        if (window.confirm(chrome.i18n.getMessage("importAlert"))) {
-            userConfigs = importedConfigs;
-            setInputs(importedConfigs);
-            saveAllSettings();
+        // if (window.confirm(chrome.i18n.getMessage("importAlert"))) {
+        userConfigs = importedConfigs;
+        setInputs(importedConfigs);
+        saveAllSettings();
 
-            const fileSelector = document.getElementById('importSettings');
-            fileSelector.value = null;
-            importSettingsConfirmButton.disabled = true;
-        }
+        const fileSelector = document.getElementById('importSettings');
+        fileSelector.value = null;
+        importSettingsConfirmButton.disabled = true;
+        // }
 
     });
 }
