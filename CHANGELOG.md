@@ -1,3 +1,9 @@
+#3.4.2
+- First implementation of import/export functionality
+- Fix for plus sign "+" ignored by search button
+- Small options page design improvements
+- Add 1ms delay before applying page scripts, as attempt to fix it not being applied on some pages until reload
+
 #3.4.1
 - Performance improvement - now popup should be availalbe immediately after page shows up, no need to wait for full page load
 - Added browser notification on update (can be disabled in settings)

@@ -152,6 +152,11 @@ function setImportExportButtons() {
         console.log('imported configs:');
         console.log(importedConfigs);
 
+        /// Confirm prompt is disabled here, as on Chrome-based browsers, when options page is open full screen,
+        /// it doesn't work due to the Chromium bug:
+        /// https://bugs.chromium.org/p/chromium/issues/detail?id=476350
+        /// and I was too lazy to come up with other way to display warning prompt
+
         // if (window.confirm(chrome.i18n.getMessage("importAlert"))) {
         userConfigs = importedConfigs;
         setInputs(importedConfigs);
