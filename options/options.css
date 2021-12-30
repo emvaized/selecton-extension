@@ -164,16 +164,16 @@ content: "\2212";
 /* Collapsible header arrow  */
 .collapsible-header:after { 
   content: '❮';  
-  font-size: 20px; 
+  font-size: 18px; 
   font-weight: 50; 
   float: right; 
   opacity: 0.5; 
-  transform: translate(-7px, -3px) rotate(-90deg); 
+  transform: translate(-7px, -2px) rotate(-90deg); 
   transition: transform 150ms ease; 
 } 
    
 .active:after { 
-  transform: translate(-7px, -3px) rotate(-270deg); 
+  transform: translate(-7px, -2px) rotate(-270deg); 
 } 
 
 

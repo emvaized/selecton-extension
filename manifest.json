@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Selecton — selection tools. Copy and search",
+  "name": "Selecton — selection popup. Copy and search",
   "version": "3.4.1",
   "description": "__MSG_extensionDescription__",
   "icons": {

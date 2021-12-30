@@ -159,6 +159,7 @@ function setImportExportButtons() {
 
             const fileSelector = document.getElementById('importSettings');
             fileSelector.value = null;
+            importSettingsConfirmButton.disabled = true;
         }
 
     });
