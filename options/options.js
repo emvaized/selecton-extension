@@ -684,5 +684,5 @@ document.querySelector("#writeAReviewButton").addEventListener("click", function
     }
 
     let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
-    window.open(isFirefox ? 'https://addons.mozilla.org/ru/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
+    window.open(isFirefox ? 'https://addons.mozilla.org/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
 });
