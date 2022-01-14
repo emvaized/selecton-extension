@@ -12,7 +12,7 @@ Get customizable pop-up with action buttons on text selection!
 
 
 Download for Firefox:
-https://addons.mozilla.org/ru/firefox/addon/selection-actions/
+https://addons.mozilla.org/firefox/addon/selection-actions/
 
 Download for Chrome:
 https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
