@@ -63,6 +63,7 @@ function snapSelectionByWords(sel) {
         let symbolToCheck;
 
         const endNode = sel.focusNode, endOffset = sel.focusOffset;
+        const initialAnchorNode = sel.anchorNode;
 
         // Detect if selection is backwards
         let range = document.createRange();
@@ -86,6 +87,8 @@ function snapSelectionByWords(sel) {
 
         /// Snap selection to word backwards
         sel.modify("move", direction[1], "word");
+
+        /// Extend selection to the end
         sel.extend(endNode, endOffset);
 
         /// Check 1st symbol after modification
@@ -100,11 +103,37 @@ function snapSelectionByWords(sel) {
             sel.extend(endNode, endOffset);
         }
 
-        /// Snap selection to word forward (and trim empty space)
+        /// Selection included unwanted html element at the start - trim it
+        let needToUntrimFirstChar = false;
+
+        while (initialAnchorNode != sel.anchorNode) {
+            needToUntrimFirstChar = true;
+            sel.collapse(sel.anchorNode, sel.anchorOffset);
+            sel.modify("move", direction[0], "character");
+            sel.extend(endNode, endOffset);
+        }
+
+        if (needToUntrimFirstChar) {
+            sel.collapse(sel.anchorNode, sel.anchorOffset);
+            sel.modify("move", direction[1], "character");
+            sel.extend(endNode, endOffset);
+        }
+
+        /// Snap selection by word in the end (if it doesn't end with empty space)
         sel.modify("extend", direction[1], "character");
         symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
         if (symbolToCheck !== ' ' && symbolToCheck !== '')
             sel.modify("extend", direction[0], "word");
+
+        /// Selection included unwanted html element at the end - trim it
+        let shouldUntrimLastCh = false;
+        while (endNode != sel.focusNode) {
+            shouldUntrimLastCh = true;
+            sel.modify("extend", direction[1], "character");
+        }
+        if (shouldUntrimLastCh) {
+            sel.modify("extend", direction[0], "character");
+        }
 
         /// Check last symbol after modification
         /// If last symbol is undesirable, trim it
@@ -112,7 +141,7 @@ function snapSelectionByWords(sel) {
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
         symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
-        let shouldUntrimLastCh = false;
+        shouldUntrimLastCh = false;
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
             case ')': shouldUntrimLastCh = true; break;
@@ -123,7 +152,7 @@ function snapSelectionByWords(sel) {
             case '"': shouldUntrimLastCh = true; break;
             case "'": shouldUntrimLastCh = true; break;
             case ',': {
-                /// Also untrim if symbol before , is )
+                /// Also untrim if symbol before "," is " ")
                 if (selString[selString.length - 2] == ')') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
