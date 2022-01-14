@@ -104,13 +104,16 @@ function snapSelectionByWords(sel) {
         }
 
         /// Selection included unwanted html element at the start - trim it
-        let needToUntrimFirstChar = false;
+        let needToUntrimFirstChar = false, iteratorCounter = 0;
+        const maxCharIterations = 15;
 
         while (initialAnchorNode != sel.anchorNode) {
-            needToUntrimFirstChar = true;
+            if (iteratorCounter >= maxCharIterations) break;
+            iteratorCounter += 1;
             sel.collapse(sel.anchorNode, sel.anchorOffset);
             sel.modify("move", direction[0], "character");
             sel.extend(endNode, endOffset);
+            needToUntrimFirstChar = true;
         }
 
         if (needToUntrimFirstChar) {
@@ -127,7 +130,10 @@ function snapSelectionByWords(sel) {
 
         /// Selection included unwanted html element at the end - trim it
         let shouldUntrimLastCh = false;
+        iteratorCounter = 0;
         while (endNode != sel.focusNode) {
+            if (iteratorCounter >= maxCharIterations) break;
+            iteratorCounter += 1;
             shouldUntrimLastCh = true;
             sel.modify("extend", direction[1], "character");
         }
