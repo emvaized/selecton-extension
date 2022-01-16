@@ -12,13 +12,19 @@ chrome.runtime.onMessage.addListener(
             const filename = request.name ?? 'selecton-settings.json';
             const jsonStr = JSON.stringify(request.configs);
             let element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            element.style.position = 'absolute';
-            document.body.appendChild(element);
-            element.click();
-            element.remove();
+
+            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+                /// Safari-specific method, until 'download' attribute is properly supported
+                window.open('data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+            } else {
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                element.style.position = 'absolute';
+                document.body.appendChild(element);
+                element.click();
+                element.remove();
+            }
         }
     }
 );

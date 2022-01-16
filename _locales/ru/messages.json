@@ -199,6 +199,10 @@
         "message": "Всплывающая панель с действиями при выделении текста",
         "description": "Описание расширения"
     },
+    "fallbackExportLabel": {
+        "message": "Для экспорта сохраните, как файл .json",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Плавающая панель при прокрутке за пределы экрана",
         "description": "Label for option in settings"

@@ -183,6 +183,10 @@
         "message": "Ventana emergente personalizable con acciones en la selección de texto",
         "description": "Descripción de la extensión"
     },
+    "fallbackExportLabel": {
+        "message": "Para exportar, guardar como .json",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Panel flotante cuando se desplaza fuera de la pantalla",
         "description": "Label for option in settings"

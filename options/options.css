@@ -206,7 +206,7 @@ content: "\2212";
   } 
  
   button { 
-    padding: 6px 0px; cursor: auto;  
+    padding: 6px; cursor: auto;  
   } 
  
   button img { display: none; } 

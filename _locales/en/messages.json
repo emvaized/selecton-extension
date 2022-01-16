@@ -203,6 +203,10 @@
     "message": "Customizable popup with actions on text selection",
     "description": "Extension description"
   },
+  "fallbackExportLabel": {
+    "message": "To export, save as .json file",
+    "description": "Label for option in settings"
+  },
   "floatingOffscreenTooltip": {
     "message": "Floating panel when it's scrolled off-screen",
     "description": "Label for option in settings"

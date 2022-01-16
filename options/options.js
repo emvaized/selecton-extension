@@ -122,8 +122,19 @@ function setInputs(result) {
 function setImportExportButtons() {
     /// Export settings
     const exportNameInput = document.getElementById('exportName');
-    exportNameInput.onchange = function () {
-        exportFileName = exportNameInput.value;
+
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        /// Fallback method for Safari
+        exportNameInput.style.visibility = 'hidden';
+        exportNameInput.style.width = '1px';
+
+        let exportNote = document.createElement('span');
+        exportNote.innerText = chrome.i18n.getMessage('fallbackExportLabel');
+        exportNameInput.parentNode.prepend(exportNote);
+    } else {
+        exportNameInput.onchange = function () {
+            exportFileName = exportNameInput.value;
+        }
     }
 
     document.getElementById('exportSettings').onclick = function () {
