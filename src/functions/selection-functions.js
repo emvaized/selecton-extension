@@ -150,7 +150,6 @@ function snapSelectionByWords(sel) {
         shouldUntrimLastCh = false;
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
-            case ')': shouldUntrimLastCh = true; break;
             case '(': shouldUntrimLastCh = true; break;
             case ']': shouldUntrimLastCh = true; break;
             case '}': shouldUntrimLastCh = true; break;
