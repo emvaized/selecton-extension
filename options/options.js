@@ -2,11 +2,9 @@
 /// 1. On Firefox, using options page as a popup causes a bug - color picker closes the popup on init, and therefore selected color isn't saved
 /// Those are used on settings page
 
-let userConfigs;
+let userConfigs, importedConfigs, isSafari = false;
 const expandedSettingsSections = [];
 let exportFileName = 'selecton-settings.json';
-let importedConfigs;
-
 var keys = Object.keys(configs);
 
 function loadSettings() {
@@ -24,6 +22,12 @@ function loadSettings() {
         String.prototype.replaceAll = function (search, replacement) {
             return this.replace(new RegExp(search, 'g'), replacement);
         };
+    }
+
+    isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+        document.querySelector("#donateButton").style.display = 'none';
+        document.querySelector("#showUpdateNotification").parentNode.parentNode.style.display = 'none';
     }
 
     /// Load configs
@@ -123,8 +127,7 @@ function setImportExportButtons() {
     /// Export settings
     const exportNameInput = document.getElementById('exportName');
 
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        /// Fallback method for Safari
+    if (isSafari) {
         exportNameInput.style.visibility = 'hidden';
         exportNameInput.style.width = '1px';
 
@@ -195,7 +198,7 @@ function setTranslatedLabels() {
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
 
     /// Change CTRL key label on macs
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    if (isSafari) {
         let k = document.querySelector("#disableWordSnappingOnCtrlKey");
         k.parentNode.innerHTML = k.parentNode.innerHTML.replaceAll('CTRL', '⌘cmd');
     }
@@ -681,9 +684,6 @@ document.addEventListener("DOMContentLoaded", loadSettings);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
     window.open('https://emvaized.diaka.ua/donate', '_blank');
 });
-
-if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
-    document.querySelector("#donateButton").style.display = 'none';
 
 document.querySelector("#githubButton").addEventListener("click", function (val) {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
