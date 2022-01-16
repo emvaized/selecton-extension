@@ -187,6 +187,10 @@
         "message": "Спливаюча панель з кнопками дій при виділенні тексту",
         "description": "Опис розширення"
     },
+    "fallbackExportLabel": {
+        "message": "Для експорту зберегти у файлі .json",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Плаваюча панель при прокрученні за межі екрана",
         "description": "Label for option in settings"

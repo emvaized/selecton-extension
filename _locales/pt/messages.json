@@ -183,6 +183,10 @@
         "message": "Pop-up personalizável com ações na seleção de texto",
         "description": "description da extensão"
     },
+    "fallbackExportLabel": {
+        "message": "Para exportar, salve como .json",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Painel flutuante quando rolado para fora da tela",
         "description": "Label for option in settings"

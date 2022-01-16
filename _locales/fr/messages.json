@@ -183,6 +183,10 @@
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
         "description": "Description de l'extension"
     },
+    "fallbackExportLabel": {
+        "message": "Pour exporter, enregistrez sous .json",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Panneau flottant lorsqu'il défile hors écran",
         "description": "Label for option in settings"

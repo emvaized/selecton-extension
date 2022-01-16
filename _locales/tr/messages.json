@@ -187,6 +187,10 @@
         "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere",
         "description": "Uzantı açıklaması"
     },
+    "fallbackExportLabel": {
+        "message": ".json dosyası olarak kaydet",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Ekrandan kaydırıldığında kayan panel",
         "description": "Label for option in settings"

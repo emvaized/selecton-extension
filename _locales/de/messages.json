@@ -183,6 +183,10 @@
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
         "description": "Erweiterungsbeschreibung"
     },
+    "fallbackExportLabel": {
+        "message": "Als .json-Datei speichern",
+        "description": "Label for option in settings"
+    },
     "floatingOffscreenTooltip": {
         "message": "Schwebendes Panel, wenn es außerhalb des Bildschirms gescrollt wird",
         "description": "Label for option in settings"
