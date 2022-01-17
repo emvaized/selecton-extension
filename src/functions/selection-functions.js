@@ -64,6 +64,7 @@ function snapSelectionByWords(sel) {
 
         const endNode = sel.focusNode, endOffset = sel.focusOffset;
         const initialAnchorNode = sel.anchorNode;
+        const initialStringLength = selString.length;
 
         // Detect if selection is backwards
         let range = document.createRange();
@@ -105,21 +106,23 @@ function snapSelectionByWords(sel) {
 
         /// Selection included unwanted html element at the start - trim it
         let needToUntrimFirstChar = false, iteratorCounter = 0;
-        const maxCharIterations = 15;
+        const maxCharIterations = 15, maxCharsToCheckNodes = 50;
 
-        while (initialAnchorNode != sel.anchorNode) {
-            if (iteratorCounter >= maxCharIterations) break;
-            iteratorCounter += 1;
-            sel.collapse(sel.anchorNode, sel.anchorOffset);
-            sel.modify("move", direction[0], "character");
-            sel.extend(endNode, endOffset);
-            needToUntrimFirstChar = true;
-        }
+        if (initialStringLength < maxCharsToCheckNodes) { /// don't check nodes if selection length is big enough
+            while (initialAnchorNode != sel.anchorNode) {
+                if (iteratorCounter >= maxCharIterations) break;
+                iteratorCounter += 1;
+                sel.collapse(sel.anchorNode, sel.anchorOffset);
+                sel.modify("move", direction[0], "character");
+                sel.extend(endNode, endOffset);
+                needToUntrimFirstChar = true;
+            }
 
-        if (needToUntrimFirstChar) {
-            sel.collapse(sel.anchorNode, sel.anchorOffset);
-            sel.modify("move", direction[1], "character");
-            sel.extend(endNode, endOffset);
+            if (needToUntrimFirstChar) {
+                sel.collapse(sel.anchorNode, sel.anchorOffset);
+                sel.modify("move", direction[1], "character");
+                sel.extend(endNode, endOffset);
+            }
         }
 
         /// Snap selection by word in the end (if it doesn't end with empty space)
@@ -129,16 +132,18 @@ function snapSelectionByWords(sel) {
             sel.modify("extend", direction[0], "word");
 
         /// Selection included unwanted html element at the end - trim it
-        let shouldUntrimLastCh = false;
-        iteratorCounter = 0;
-        while (endNode != sel.focusNode) {
-            if (iteratorCounter >= maxCharIterations) break;
-            iteratorCounter += 1;
-            shouldUntrimLastCh = true;
-            sel.modify("extend", direction[1], "character");
-        }
-        if (shouldUntrimLastCh) {
-            sel.modify("extend", direction[0], "character");
+        if (initialStringLength < maxCharsToCheckNodes) {
+            let shouldUntrimLastCh = false;
+            iteratorCounter = 0;
+            while (endNode != sel.focusNode) {
+                if (iteratorCounter >= maxCharIterations) break;
+                iteratorCounter += 1;
+                shouldUntrimLastCh = true;
+                sel.modify("extend", direction[1], "character");
+            }
+            if (shouldUntrimLastCh) {
+                sel.modify("extend", direction[0], "character");
+            }
         }
 
         /// Check last symbol after modification
