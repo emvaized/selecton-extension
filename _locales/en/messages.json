@@ -556,5 +556,17 @@
   "importAlert": {
     "message": "This action will override current Selecton settings. Are you sure?",
     "description": ""
+  },
+  "translating": {
+    "message": "Translating",
+    "description": ""
+  },
+  "noTranslationFound": {
+    "message": "No translation found",
+    "description": ""
+  },
+  "delayToRevealTranslateTooltip": {
+    "message": "Delay before auto translate (ms)",
+    "description": ""
   }
 }

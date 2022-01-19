@@ -524,7 +524,7 @@
         "description": "Ярлык для опции в настройках"
     },
     "showTranslateIfLanguageUnknown": {
-        "message": "Показать кнопку перевода, если язык не определен",
+        "message": "Показывать кнопку перевода, если язык не определен",
         "description": "Label for field in settings"
     },
     "showUpdateNotification": {
@@ -559,6 +559,18 @@
     },
     "importAlert": {
         "message": "Это действие перепишет текущие настройки Selecton. Вы уверены?",
+        "description": ""
+    },
+    "translating": {
+        "message": "Перевод",
+        "description": ""
+    },
+    "noTranslationFound": {
+        "message": "Перевод не найден",
+        "description": ""
+    },
+    "delayToRevealTranslateTooltip": {
+        "message": "Задержка перед авто-переводом (мс)",
         "description": ""
     }
 }

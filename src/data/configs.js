@@ -74,6 +74,7 @@ const configs = {
     'floatingOffscreenTooltip': false,
     'showUpdateNotification': true,
     'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
+    'delayToRevealTranslateTooltip': 550,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

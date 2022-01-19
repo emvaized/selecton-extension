@@ -552,5 +552,17 @@
     "importAlert": {
         "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?",
         "description": ""
+    },
+    "translating": {
+        "message": "Çeviri",
+        "description": ""
+    },
+    "noTranslationFound": {
+        "message": "çeviri bulunamadı",
+        "description": ""
+    },
+    "delayToRevealTranslateTooltip": {
+        "message": "Otomatik çeviriden önceki gecikme (ms)",
+        "description": ""
     }
 }

@@ -260,8 +260,8 @@ function updateDisabledOptions() {
     document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked && document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
     document.querySelector("#hideTranslateButtonForUserLanguage").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#delayToRevealTranslateTooltip").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#liveTranslation").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showTranslateIfLanguageUnknown").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#hideTranslateButtonForUserLanguage").checked ? 'enabled-option' : 'disabled-option';
-    // document.querySelector("#addFontFormatButtons").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addPasteButton").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';

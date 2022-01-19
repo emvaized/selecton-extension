@@ -548,5 +548,17 @@
     "importAlert": {
         "message": "Diese Aktion überschreibt die aktuellen Selecton-Einstellungen. Bist du sicher?",
         "description": ""
+    },
+    "translating": {
+        "message": "Übersetzen",
+        "description": ""
+    },
+    "noTranslationFound": {
+        "message": "Keine Übersetzung gefunden",
+        "description": ""
+    },
+    "delayToRevealTranslateTooltip": {
+        "message": "Verzögerung vor automatischer Übersetzung (ms)",
+        "description": ""
     }
 }

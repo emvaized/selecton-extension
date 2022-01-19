@@ -552,5 +552,17 @@
     "importAlert": {
         "message": "Ця дія замінить поточні налаштування Selecton. Ви впевнені?",
         "description": ""
+    },
+    "translating": {
+        "message": "Переклад",
+        "description": ""
+    },
+    "noTranslationFound": {
+        "message": "Перекладу не знайдено",
+        "description": ""
+    },
+    "delayToRevealTranslateTooltip": {
+        "message": "Затримка перед автоматичним перекладом (ms)",
+        "description": ""
     }
 }

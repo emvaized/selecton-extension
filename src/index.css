@@ -105,6 +105,21 @@
   color: var(--selecton-secondary-color) !important;
 }
 
+.translation-selection-tooltip { 
+  all: revert; 
+  transition: opacity var(--selecton-anim-duration) ease-out; 
+  opacity: 0.0; 
+  z-index: 100001 !important; 
+  position: fixed; 
+  margin: 0px !important; 
+  padding: 6px !important; 
+  display: inline-block; 
+  line-height: 1.0 !important;  
+  border: 0.25px solid var(--selecton-outline-color); 
+  background: var(--selecton-background-color); 
+  /* text-align: start; */
+}
+
 /* Secondary tooltip (custom search options) */
 .secondary-selection-tooltip {
   all: revert;
