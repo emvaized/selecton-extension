@@ -20,6 +20,7 @@
     "icons/button-icons/open.svg",
     "icons/button-icons/paste.svg",
     "icons/button-icons/time.svg",
+    "icons/button-icons/dictionary.svg",
     "icons/button-icons/translate.svg"
   ],
   "browser_specific_settings": {
@@ -53,7 +54,9 @@
         "src/functions/input-functions.js",
         "src/functions/tooltip-functions.js",
         "src/functions/dark-page-detection.js",
+        "src/ui/utils/hover-buttons.js",
         "src/ui/components/translate-button.js",
+        "src/ui/components/dictionary-button.js",
         "src/ui/search-tooltip.js",
         "src/ui/tooltip.js",
         "src/ui/components/selection-handles.js",
@@ -75,10 +78,10 @@
     "https://translate.googleapis.com/*",
     "https://api.exchangerate.host/*",
     "https://min-api.cryptocompare.com/data/*",
+    "https://min-api.cryptocompare.com/data/*",
+    "https://*.wikipedia.org/w/*",
     "storage",
-    "notifications"
-  ],
-  "optional_permissions": [
+    "notifications",
     "clipboardRead"
   ],
   "browser_action": {

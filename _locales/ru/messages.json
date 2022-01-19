@@ -569,8 +569,24 @@
         "message": "Перевод не найден",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Поиск определений",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Словарь",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Не найдено определений",
+        "description": ""
+    },
     "delayToRevealTranslateTooltip": {
-        "message": "Задержка перед авто-переводом (мс)",
+        "message": "Задержка перед авто-переводом (ms)",
+        "description": ""
+    },
+    "showDictionaryButton": {
+        "message": "Добавить кнопку словаря (до 2 слов)",
         "description": ""
     }
 }

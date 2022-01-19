@@ -9,24 +9,11 @@ function addTranslateButton() {
                 tooltip.appendChild(translateButton);
 
             translateButton.addEventListener("mousedown", function (e) {
-                // let url = `https://translate.google.com/?sl=auto&tl=${configs.languageToTranslate}&text=${encodeURI(selectedText.trim())}`;
                 let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
                     returnTranslateUrl(selectedText, 'en') :
                     returnTranslateUrl(selectedText);
                 onTooltipButtonClick(e, url);
             });
-
-            // if (configs.liveTranslation && selectedText.split(' ').length <= 4 && configs.preferredTranslateService == 'google') {
-            //     try {
-            //         setLiveTranslatedButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
-            //     } catch (e) {
-            //         if (configs.debugMode) console.log(e);
-            //         translateButton.innerHTML = '';
-            //         setRegularTranslateButton(translateButton);
-            //     }
-            // } else {
-            //     setRegularTranslateButton(translateButton);
-            // }
 
             setRegularTranslateButton(translateButton);
 
@@ -111,52 +98,11 @@ function setRegularTranslateButton(translateButton) {
     //     });
     // }
 
-
     /// set live tranlsation listeners
     if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
         setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
     }
 
-}
-
-function correctTooltipPosition() {
-    if (configs.tooltipPosition == 'overCursor') {
-
-        /// Show tooltip over cursor
-        tooltip.style.left = `${lastMouseUpEvent.clientX - tooltip.clientWidth / 2}px`;
-
-    } else {
-        let resultingDx;
-        try {
-            /// New approach - place tooltip in horizontal center between two selection handles
-            let selStartDimensions = getSelectionCoordinates(true);
-            let selEndDimensions = getSelectionCoordinates(false);
-            let delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
-
-            if (selEndDimensions.dx > selStartDimensions.dx)
-                resultingDx = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-            else
-                resultingDx = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
-
-        } catch (e) {
-            if (configs.debugMode) console.log(e);
-
-            /// Fall back to old approach - place tooltip in horizontal center selection rect,
-            /// which may be in fact bigger than visible selection
-            resultingDx = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
-        }
-
-        tooltip.style.left = `${resultingDx}px`;
-    }
-
-    /// Correct last button's border radius
-    tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-    if (configs.reverseTooltipButtonsOrder)
-        tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-
-    checkTooltipForCollidingWithSideEdges();
 }
 
 function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateButton) {
@@ -165,6 +111,8 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
     let liveTranslationPanel;
     let isTranslateButtonHovered = false;
     let translated = false;
+
+    let hoverIndicator = addAstrixToHoverButton(translateButton);
 
     translateButton.addEventListener('mouseover', function () {
         try {
@@ -175,10 +123,11 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
 
         timeoutToRevealPanel = setTimeout(function () {
             // translateButton.classList.add("hovered-tooltip-button");
+            hideHoverIndicator(hoverIndicator);
 
             if (translated == false) {
                 liveTranslationPanel = document.createElement('div');
-                liveTranslationPanel.className = 'translation-selection-tooltip selecton-entity';
+                liveTranslationPanel.className = 'translation-selection-tooltip selecton-entity clearfix';
                 liveTranslationPanel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
                 liveTranslationPanel.style.pointerEvents = 'none';
                 liveTranslationPanel.innerHTML = `${chrome.i18n.getMessage("translating")}...`;
@@ -194,13 +143,21 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
                 if (translated == false) {
                     liveTranslationPanel.style.opacity = 0;
                     liveTranslationPanel.style.position = 'absolute';
-                    liveTranslationPanel.style.bottom = tooltipOnBottom ? '-110%' : '120%';
+                    if (tooltipOnBottom)
+                        liveTranslationPanel.style.top = '120%';
+                    else
+                        liveTranslationPanel.style.bottom = '120%';
                     liveTranslationPanel.style.pointerEvents = 'auto';
                     if (configs.reverseTooltipButtonsOrder)
                         liveTranslationPanel.style.left = '0px';
                     else
                         liveTranslationPanel.style.right = '0px';
                     translateButton.appendChild(liveTranslationPanel);
+
+                    setTimeout(function () {
+                        /// check if panel goes off-screen on top
+                        checkHoverPanelToOverflowOnTop(liveTranslationPanel);
+                    }, 3);
 
                     /// Fetch translation from Google Translate
                     translated = true;
@@ -209,7 +166,8 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
 
                 setTimeout(function () {
                     liveTranslationPanel.style.opacity = 1;
-                    liveTranslationPanel.style.transform = 'scale(1.0)';
+                    // liveTranslationPanel.style.transform = 'scale(1.0)';
+                    liveTranslationPanel.style.transform = 'scale(1.0) translate(25%, 0)';
                 }, 15);
 
             }, 1);
@@ -220,20 +178,18 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
     translateButton.addEventListener('mouseout', function () {
         clearTimeout(timeoutToRevealPanel);
 
-        // timerToRemoveSearchTooltip = setTimeout(function () {
-        // if (liveTranslationPanel == null) return;
+        if (!liveTranslationPanel) return;
 
         if (isTranslateButtonHovered == false) {
-            // translateButton.classList.remove("hovered-tooltip-button");
             liveTranslationPanel.style.opacity = 0.0;
             liveTranslationPanel.style.pointerEvents = 'none';
+            showHoverIndicator(hoverIndicator);
 
             setTimeout(function () {
-                if (secondaryTooltip == null) return;
+                if (liveTranslationPanel == null) return;
                 liveTranslationPanel.style.transform = 'scale(0.0)';
             }, 300);
         }
-        // }, 100);
     });
 }
 
@@ -265,7 +221,6 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
 
     if (result.response == null) {
         liveTranslationPanel.innerHTML = noTranslationLabel;
-        // setRegularTranslateButton(translateButton);
         return;
     }
 
@@ -291,8 +246,13 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
         // if (resultOfLiveTranslation.length > maxLengthForResult)
         //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 
-        liveTranslationPanel.innerHTML = resultOfLiveTranslation;
-        liveTranslationPanel.classList.add('selecton-live-translation')
+        liveTranslationPanel.innerText = resultOfLiveTranslation;
+        liveTranslationPanel.classList.add('selecton-live-translation');
+
+        setTimeout(function () {
+            /// check if panel goes off-screen on top
+            checkHoverPanelToOverflowOnTop(liveTranslationPanel);
+        }, 3);
 
         /// Create origin language label
         let originLabelWidth = configs.fontSize / 1.5;
@@ -309,6 +269,7 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
         liveTranslationPanel.innerHTML = noTranslationLabel;
     }
 }
+
 
 
 // async function setLiveTranslatedButton(word, sourceLang, targetLang, translateButton) {

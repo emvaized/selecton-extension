@@ -1,6 +1,7 @@
 const searchButtonIcon = chrome.runtime.getURL('icons/button-icons/search.svg');
 const copyButtonIcon = chrome.runtime.getURL('icons/button-icons/copy.svg');
 const translateButtonIcon = chrome.runtime.getURL('icons/button-icons/translate.svg');
+const dictionaryButtonIcon = chrome.runtime.getURL('icons/button-icons/dictionary.svg');
 const openLinkButtonIcon = chrome.runtime.getURL('icons/button-icons/open.svg');
 const cutButtonIcon = chrome.runtime.getURL('icons/button-icons/cut.svg');
 const pasteButtonIcon = chrome.runtime.getURL('icons/button-icons/paste.svg');

@@ -61,6 +61,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
           showOnMapLabel = chrome.i18n.getMessage("showOnMap");
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
+          dictionaryLabel = chrome.i18n.getMessage("dictionaryLabel");
 
           setTimeout(function () {
             if (configs.addActionButtonsForTextFields)

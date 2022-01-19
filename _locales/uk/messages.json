@@ -564,5 +564,9 @@
     "delayToRevealTranslateTooltip": {
         "message": "Затримка перед автоматичним перекладом (ms)",
         "description": ""
+    },
+    "showDictionaryButton": {
+        "message": "Показати кнопку словника (до 2 слів)",
+        "description": ""
     }
 }

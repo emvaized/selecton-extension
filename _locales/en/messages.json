@@ -565,8 +565,24 @@
     "message": "No translation found",
     "description": ""
   },
+  "searchingDefinitions": {
+    "message": "Searching for definitions",
+    "description": ""
+  },
+  "dictionaryLabel": {
+    "message": "Dictionary",
+    "description": "Label for Dictionary button"
+  },
+  "noDefinitionFound": {
+    "message": "No definition found",
+    "description": ""
+  },
   "delayToRevealTranslateTooltip": {
     "message": "Delay before auto translate (ms)",
+    "description": ""
+  },
+  "showDictionaryButton": {
+    "message": "Show the dictionary button (up to 2 words)",
     "description": ""
   }
 }

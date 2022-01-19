@@ -270,17 +270,17 @@ function addBasicTooltipButtons(layout) {
                     textField.focus();
 
                     if (textField.getAttribute('contenteditable') !== null) {
-                        chrome.permissions.request({
-                            permissions: ['clipboardRead'],
-                        }, (granted) => {
-                            if (granted) {
-                                let currentClipboardContent = getCurrentClipboard();
-                                if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                                    document.execCommand("insertHTML", false, currentClipboardContent);
-                            } else {
-                                chrome.runtime.sendMessage({ type: 'selecton-no-clipboard-permission-message' });
-                            }
-                        });
+                        // chrome.permissions.request({
+                        //     permissions: ['clipboardRead'],
+                        // }, (granted) => {
+                        //     if (granted) {
+                        let currentClipboardContent = getCurrentClipboard();
+                        if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
+                            document.execCommand("insertHTML", false, currentClipboardContent);
+                        //     } else {
+                        //         chrome.runtime.sendMessage({ type: 'selecton-no-clipboard-permission-message' });
+                        //     }
+                        // });
 
                     } else
                         document.execCommand('paste');
@@ -381,13 +381,13 @@ function addContextualButtons() {
 
     var selectedText = selection.toString().trim();
     const loweredSelectedText = selectedText.toLowerCase();
-    var wordsCount = selectedText.split(' ').length;
+    const wordsCount = selectedText.split(' ').length;
+    const selectionContainsSpaces = selectedText.includes(' ');
     let isFileName = false;
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
         var numberToConvert;
         var unitLabelColor = isDarkTooltip ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
-        const selectionContainsSpaces = selectedText.includes(' ');
 
         /// Convert currency button
         if (configs.convertCurrencies) {
@@ -1080,9 +1080,19 @@ function addContextualButtons() {
             }
     }
 
-    /// Add Translate button when enabled, and no other contextual buttons were added 
-    if (configs.showTranslateButton && tooltip.children.length < 4 && isFileName == false) {
-        addTranslateButton();
+    if (tooltip.children.length < 4 && isFileName == false) {
+        const containsSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(selectedText);
+
+        /// Add Translate button when enabled, and no other contextual buttons were added 
+        if (configs.showTranslateButton) {
+            if (!(containsSymbols && !selectionContainsSpaces)) /// don't show for code
+                addTranslateButton();
+        }
+
+        /// Add dictionary button
+        if (configs.showDictionaryButton && wordsCount < 3 && !containsSymbols) {
+            addDictionaryButton();
+        }
     }
 
 }

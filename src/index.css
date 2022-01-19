@@ -82,6 +82,7 @@
   text-align: center !important;
   font-size: var(--selecton-font-size) !important;
   line-height: 1.2 !important; 
+  position: relative;
 }
 
 .tooltip-with-icons .selection-popup-button span {
@@ -99,6 +100,7 @@
   cursor: pointer;
   color: white !important;
   transition: background-color 25ms ease-in-out !important;
+  position: relative;
 }
 
 .selecton-live-translation {
@@ -118,6 +120,10 @@
   border: 0.25px solid var(--selecton-outline-color); 
   background: var(--selecton-background-color); 
   /* text-align: start; */
+  width: 200% !important;
+  /* transform: translate(25%, 0) !important; */
+  /* right: 0;
+  left: 0; */
 }
 
 /* Secondary tooltip (custom search options) */
@@ -202,4 +208,19 @@
   width: var(--selecton-search-tooltip-icon-size);
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
+}
+
+.selecton-hover-button-indicator {
+  opacity: 0.25;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width:4px;
+  height:4px;
+  top: 1px;
+  margin: 0 auto !important;
+  background-color:var(--selection-button-foreground);
+  border-radius: 50%;
+  transition: opacity 100ms ease;
+  pointer-events: none;
 }

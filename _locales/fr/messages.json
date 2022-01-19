@@ -560,5 +560,9 @@
     "delayToRevealTranslateTooltip": {
         "message": "Délai avant traduction auto (ms)",
         "description": ""
+    },
+    "showDictionaryButton": {
+        "message": "Afficher le bouton Dictionnaire (jusqu'à 2 mots)",
+        "description": ""
     }
 }

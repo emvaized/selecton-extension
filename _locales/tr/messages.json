@@ -564,5 +564,9 @@
     "delayToRevealTranslateTooltip": {
         "message": "Otomatik çeviriden önceki gecikme (ms)",
         "description": ""
+    },
+    "showDictionaryButton": {
+        "message": "Sözlük düğmesini göster (2 kelimeye kadar)",
+        "description": ""
     }
 }

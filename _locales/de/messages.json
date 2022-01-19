@@ -560,5 +560,9 @@
     "delayToRevealTranslateTooltip": {
         "message": "Verzögerung vor automatischer Übersetzung (ms)",
         "description": ""
+    },
+    "showDictionaryButton": {
+        "message": "Wörterbuch-Schaltfläche anzeigen (bis zu 2 Wörter)",
+        "description": ""
     }
 }
