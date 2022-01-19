@@ -76,7 +76,9 @@
     "https://api.exchangerate.host/*",
     "https://min-api.cryptocompare.com/data/*",
     "storage",
-    "notifications",
+    "notifications"
+  ],
+  "optional_permissions": [
     "clipboardRead"
   ],
   "browser_action": {

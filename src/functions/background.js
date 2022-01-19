@@ -8,7 +8,10 @@ chrome.runtime.onMessage.addListener(
                 url: request.url, active: request.focused, index: sender.tab.index + 1
             });
             return true;
-        } else if (request.type == 'selecton-export-configs') {
+        } else if (request.type == 'selecton-no-clipboard-permission-message') {
+            displayNotification('Clipboard access was not granted', 'Could not paste to this field without clipboard access');
+            return true;
+        } if (request.type == 'selecton-export-configs') {
             const filename = request.name ?? 'selecton-settings.json';
             const jsonStr = JSON.stringify(request.configs);
             let element = document.createElement('a');
@@ -25,6 +28,7 @@ chrome.runtime.onMessage.addListener(
                 element.click();
                 element.remove();
             }
+            return true;
         }
     }
 );

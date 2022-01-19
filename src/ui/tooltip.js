@@ -270,10 +270,18 @@ function addBasicTooltipButtons(layout) {
                     textField.focus();
 
                     if (textField.getAttribute('contenteditable') !== null) {
-                        let currentClipboardContent = getCurrentClipboard();
+                        chrome.permissions.request({
+                            permissions: ['clipboardRead'],
+                        }, (granted) => {
+                            if (granted) {
+                                let currentClipboardContent = getCurrentClipboard();
+                                if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
+                                    document.execCommand("insertHTML", false, currentClipboardContent);
+                            } else {
+                                chrome.runtime.sendMessage({ type: 'selecton-no-clipboard-permission-message' });
+                            }
+                        });
 
-                        if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                            document.execCommand("insertHTML", false, currentClipboardContent);
                     } else
                         document.execCommand('paste');
 
