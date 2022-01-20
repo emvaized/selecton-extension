@@ -2,7 +2,6 @@ body {
   margin: 9px;
 }
 
-
 .option {
   padding: 4px;
 }
@@ -181,6 +180,11 @@ content: "\2212";
   #footer-buttons { text-align: center; }
   #footer-buttons button { width: unset;  display: inline; }
   #allChangesSavedAutomaticallyHeader { text-align: center; }
+}
+
+@-moz-document url-prefix() {
+  body { font-size: 14px; }
+  h3 {font-size: 18px; font-weight: 600;}
 }
 
 
