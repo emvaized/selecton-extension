@@ -228,7 +228,7 @@
         "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
     },
     "liveTranslation": {
-        "message": "Live-Übersetzung (von Google Translate)",
+        "message": "Live-Übersetzung beim Hovern der Schaltfläche (Google Translate)",
         "description": "Label for field in settings"
     },
     "mailto": {
@@ -561,8 +561,24 @@
         "message": "Verzögerung vor automatischer Übersetzung (ms)",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Suche nach Definitionen",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Wörterbuch",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Keine Definition gefunden",
+        "description": ""
+    },
     "showDictionaryButton": {
-        "message": "Wörterbuch-Schaltfläche anzeigen (bis zu 2 Wörter)",
+        "message": "Wörterbuch-Schaltfläche anzeigen",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Wörter belaufen sich auf die Wörterbuchschaltfläche",
         "description": ""
     },
     "exportSettingsLabel": {

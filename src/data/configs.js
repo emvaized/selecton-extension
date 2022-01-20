@@ -76,6 +76,7 @@ const configs = {
     'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
     'delayToRevealTranslateTooltip': 550,
     'showDictionaryButton': true,
+    'dictionaryButtonWordsAmount': 1,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

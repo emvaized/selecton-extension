@@ -228,7 +228,7 @@
         "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
     },
     "liveTranslation": {
-        "message": "Traduction en direct (depuis Google Translate)",
+        "message": "Traduction en direct au survol du bouton (Google Translate)",
         "description": "Label for field in settings"
     },
     "mailto": {
@@ -561,8 +561,24 @@
         "message": "Délai avant traduction auto (ms)",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Recherche de définitions",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Dictionnaire",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Aucune définition trouvée",
+        "description": ""
+    },
     "showDictionaryButton": {
-        "message": "Afficher le bouton Dictionnaire (jusqu'à 2 mots)",
+        "message": "Afficher le bouton Dictionnaire",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Les mots s'élèvent pour montrer le bouton",
         "description": ""
     },
     "exportSettingsLabel": {

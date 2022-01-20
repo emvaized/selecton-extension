@@ -1090,7 +1090,7 @@ function addContextualButtons() {
         }
 
         /// Add dictionary button
-        if (configs.showDictionaryButton && wordsCount < 3 && !containsSymbols) {
+        if (configs.showDictionaryButton && wordsCount <= (configs.dictionaryButtonWordsAmount ?? 2) && !containsSymbols) {
             addDictionaryButton();
         }
     }

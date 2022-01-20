@@ -256,7 +256,7 @@
     "description": "Label for field in settings, incorporating inline link"
   },
   "liveTranslation": {
-    "message": "Live translation (from Google Translate)",
+    "message": "Live translation on button hover (Google Translate)",
     "description": "Label for field in settings"
   },
   "mailto": {
@@ -582,7 +582,11 @@
     "description": ""
   },
   "showDictionaryButton": {
-    "message": "Show the dictionary button (up to 2 words)",
+    "message": "Show the dictionary button",
+    "description": ""
+  },
+  "dictionaryButtonWordsAmount": {
+    "message": "Words to show dictionary button",
     "description": ""
   },
   "exportSettingsLabel": {

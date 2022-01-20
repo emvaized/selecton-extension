@@ -232,7 +232,7 @@
         "description": ""
     },
     "liveTranslation": {
-        "message": "Живий переклад (з Google Translate)",
+        "message": "Живий переклад при наведенні на кнопку (Google Translate)",
         "description": "Label for field in settings"
     },
     "mailto": {
@@ -565,8 +565,24 @@
         "message": "Затримка перед автоматичним перекладом (ms)",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Пошук визначень",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Словник",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Не знайдено жодного визначення",
+        "description": ""
+    },
     "showDictionaryButton": {
-        "message": "Показати кнопку словника (до 2 слів)",
+        "message": "Показати кнопку словника",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Кількість слів для відображення кнопки",
         "description": ""
     },
     "exportSettingsLabel": {

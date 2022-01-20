@@ -236,7 +236,7 @@
         "description": "Satır içi bağlantıyı içeren ayarlardaki alan etiketi"
     },
     "liveTranslation": {
-        "message": "Canlı çeviri (Google Çeviri'den)",
+        "message": "Üzerine gelindiğinde canlı çeviri (Google Çeviri)",
         "description": "Ayarlardaki alan etiketi"
     },
     "mailto": {
@@ -565,8 +565,24 @@
         "message": "Otomatik çeviriden önceki gecikme (ms)",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Tanımları arama",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Sözlük",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Tanım bulunamadı",
+        "description": ""
+    },
     "showDictionaryButton": {
-        "message": "Sözlük düğmesini göster (2 kelimeye kadar)",
+        "message": "Sözlük düğmesini göster",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Düğmeyi göstermek için kelimeler miktarı",
         "description": ""
     },
     "exportSettingsLabel": {

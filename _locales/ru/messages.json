@@ -248,7 +248,7 @@
         "description": ""
     },
     "liveTranslation": {
-        "message": "Живой перевод (Google Translate)",
+        "message": "Живой перевод при наведении на кнопку (Google Translate)",
         "description": "Label for field in settings"
     },
     "mailto": {
@@ -586,7 +586,11 @@
         "description": ""
     },
     "showDictionaryButton": {
-        "message": "Добавить кнопку словаря (до 2 слов)",
+        "message": "Добавить кнопку словаря",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Количество слов, чтобы показать кнопку",
         "description": ""
     },
     "importSettingsLabel": {

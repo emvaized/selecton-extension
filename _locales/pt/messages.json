@@ -228,7 +228,7 @@
         "description": "Rótulo para campo nas configurações, incorporando link embutido"
     },
     "liveTranslation": {
-        "message": "Tradução ao vivo (do Google Translate)",
+        "message": "Tradução ao vivo ao passar o mouse no botão (Google Translate)",
         "description": "Label for field in settings"
     },
     "mailto": {
@@ -557,8 +557,24 @@
         "message": "Atraso antes da tradução automática (ms)",
         "description": ""
     },
+    "searchingDefinitions": {
+        "message": "Procurando por definições",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Dicionário",
+        "description": "Label for Dictionary button"
+    },
+    "noDefinitionFound": {
+        "message": "Nenhuma definição encontrada",
+        "description": ""
+    },
     "showDictionaryButton": {
-        "message": "Mostrar o botão do dicionário (até 2 palavras)",
+        "message": "Mostrar o botão do dicionário",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "As palavras somam para mostrar o botão",
         "description": ""
     },
     "exportSettingsLabel": {
