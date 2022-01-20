@@ -596,5 +596,9 @@
     "dictionaryButtonRemark": {
         "message": "Recherche les définitions de Wikipedia au survol",
         "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Nombre maximum de caractères à afficher comme résultat",
+        "description": ""
     }
 }

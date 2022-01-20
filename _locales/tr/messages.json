@@ -600,5 +600,9 @@
     "dictionaryButtonRemark": {
         "message": "Vurguluyken Wikipedia tanımlarını arar",
         "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı",
+        "description": ""
     }
 }

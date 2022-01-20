@@ -77,6 +77,7 @@ const configs = {
     'delayToRevealTranslateTooltip': 550,
     'showDictionaryButton': true,
     'dictionaryButtonWordsAmount': 1,
+    'dictionaryButtonResponseCharsAmount': 300,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

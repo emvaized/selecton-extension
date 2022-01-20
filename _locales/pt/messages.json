@@ -592,5 +592,9 @@
     "dictionaryButtonRemark": {
         "message": "Procura as definições da Wikipedia ao passar o mouse",
         "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Número máximo de caracteres a serem exibidos como resultado",
+        "description": ""
     }
 }

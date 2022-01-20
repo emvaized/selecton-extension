@@ -600,5 +600,9 @@
     "dictionaryButtonRemark": {
         "message": "Шукає визначення в Вікіпедії при наведенні",
         "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Макс. кіль-сть символів для відображення в результаті",
+        "description": ""
     }
 }

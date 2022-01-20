@@ -207,7 +207,7 @@ async function fetchDefinition(text, lang, definitionPanel, wikiButton) {
             // console.log(`Selecton Browser Extension ${chrome.runtime.getManifest().version}`);
 
             /// Fetch data from Wiktionary
-            const res = await fetch(`https://${langToFetch}.wikipedia.org/w/api.php?action=query&exsectionformat=plain&prop=extracts&origin=*&exchars=300&exlimit=1&explaintext=0&formatversion=2&format=json&titles=${textToSearch}`, {
+            const res = await fetch(`https://${langToFetch}.wikipedia.org/w/api.php?action=query&exsectionformat=plain&prop=extracts&origin=*&exchars=${configs.dictionaryButtonResponseCharsAmount ?? 300}&exlimit=1&explaintext=0&formatversion=2&format=json&titles=${textToSearch}`, {
                 method: 'GET',
                 headers: {
                     // 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0',

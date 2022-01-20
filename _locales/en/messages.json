@@ -604,5 +604,9 @@
   "dictionaryButtonRemark": {
     "message": "Looks up Wikipedia definitions on hover",
     "description": ""
+  },
+  "dictionaryButtonResponseCharsAmount": {
+    "message": "Max number of chars to display as a result",
+    "description": ""
   }
 }

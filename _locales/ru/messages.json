@@ -608,5 +608,9 @@
     "dictionaryButtonRemark": {
         "message": "Ищет определения из Википедии при наведении",
         "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Макс. кол-во символов для отображения в результате",
+        "description": ""
     }
 }
