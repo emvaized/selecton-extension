@@ -213,11 +213,14 @@
 .selecton-hover-button-indicator {
   opacity: 0.3;
   position: absolute;
-  right: 0;
-  left: 0;
-  width: 3.5px;
-  height:3.5px;
-  top: 1px;
+  /* right: 0;
+  top: 0;
+  left: 0; */
+  right: 3px;
+  top: 3px;
+  width: 4px;
+  height: 4px;
+  transform: translate(0px, 0.5px);
   margin: 0 auto !important;
   background-color:var(--selection-button-foreground);
   border-radius: 50% !important;

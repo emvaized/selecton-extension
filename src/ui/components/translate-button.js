@@ -167,7 +167,7 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
                 setTimeout(function () {
                     liveTranslationPanel.style.opacity = 1;
                     // liveTranslationPanel.style.transform = 'scale(1.0)';
-                    liveTranslationPanel.style.transform = 'scale(1.0) translate(25%, 0)';
+                    liveTranslationPanel.style.transform = `scale(1.0) translate(${configs.reverseTooltipButtonsOrder ? '-25%' : '25%'}, 0)`;
                 }, 15);
 
             }, 1);
