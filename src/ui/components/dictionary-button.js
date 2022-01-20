@@ -8,7 +8,7 @@ function addDictionaryButton() {
             tooltip.appendChild(wikiButton);
 
         wikiButton.onmousedown = function (e) {
-            let url = url = `https://wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
+            let url = `https://wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
             onTooltipButtonClick(e, url);
         }
 
@@ -70,19 +70,15 @@ function setRegularWikiButton(wikiButton, languageOfSelectedText) {
     correctTooltipPosition();
 
     /// set fetch on hover listeners
-    if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
+    // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
+    if (selectedText.length < 500) {
         setLiveWikiButton(selectedText, languageOfSelectedText, wikiButton);
     }
 
 }
 
 function setLiveWikiButton(word, lang, wikiButton) {
-    let timerToRemovePanel;
-    let timeoutToRevealPanel;
-    let definitionPanel;
-    let isTranslateButtonHovered = false;
-    let fetched = false;
-
+    let timerToRemovePanel, timeoutToRevealPanel, definitionPanel, fetched = false;
     let hoverIndicator = addAstrixToHoverButton(wikiButton);
 
     wikiButton.addEventListener('mouseover', function () {
