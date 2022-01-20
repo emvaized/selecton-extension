@@ -141,7 +141,7 @@ function setImportExportButtons() {
     }
 
     document.getElementById('exportSettings').onclick = function () {
-        chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: userConfigs, name: exportFileName });
+        chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: !userConfigs ? {} : userConfigs, name: exportFileName });
     }
 
     /// Import settings
