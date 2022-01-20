@@ -144,9 +144,9 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
                     liveTranslationPanel.style.opacity = 0;
                     liveTranslationPanel.style.position = 'absolute';
                     if (tooltipOnBottom)
-                        liveTranslationPanel.style.top = '120%';
+                        liveTranslationPanel.style.top = '125%';
                     else
-                        liveTranslationPanel.style.bottom = '120%';
+                        liveTranslationPanel.style.bottom = '125%';
                     liveTranslationPanel.style.pointerEvents = 'auto';
                     if (configs.reverseTooltipButtonsOrder)
                         liveTranslationPanel.style.left = '0px';

@@ -111,9 +111,9 @@ function setLiveWikiButton(word, lang, wikiButton) {
                     definitionPanel.style.opacity = 0;
                     definitionPanel.style.position = 'absolute';
                     if (tooltipOnBottom)
-                        definitionPanel.style.top = '120%';
+                        definitionPanel.style.top = '125%';
                     else
-                        definitionPanel.style.bottom = '120%';
+                        definitionPanel.style.bottom = '125%';
                     definitionPanel.style.pointerEvents = 'auto';
                     if (configs.reverseTooltipButtonsOrder)
                         definitionPanel.style.left = '0px';
@@ -204,7 +204,7 @@ async function fetchDefinition(text, lang, definitionPanel, wikiButton) {
             if (langToFetch.includes('-')) langToFetch = langToFetch.split('-')[0];
             if (langToFetch.includes('_')) langToFetch = langToFetch.split('_')[0];
 
-            console.log(`Selecton Browser Extension ${chrome.runtime.getManifest().version}`);
+            // console.log(`Selecton Browser Extension ${chrome.runtime.getManifest().version}`);
 
             /// Fetch data from Wiktionary
             const res = await fetch(`https://${langToFetch}.wikipedia.org/w/api.php?action=query&exsectionformat=plain&prop=extracts&origin=*&exchars=500&exlimit=1&explaintext=0&formatversion=2&format=json&titles=${textToSearch}`, {

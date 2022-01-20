@@ -211,16 +211,16 @@
 }
 
 .selecton-hover-button-indicator {
-  opacity: 0.25;
+  opacity: 0.3;
   position: absolute;
   right: 0;
   left: 0;
-  width:4px;
-  height:4px;
+  width: 3.5px;
+  height:3.5px;
   top: 1px;
   margin: 0 auto !important;
   background-color:var(--selection-button-foreground);
-  border-radius: 50%;
+  border-radius: 50% !important;
   transition: opacity 100ms ease;
   pointer-events: none;
 }

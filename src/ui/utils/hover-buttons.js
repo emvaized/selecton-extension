@@ -12,7 +12,7 @@ function addAstrixToHoverButton(button) {
 }
 
 function showHoverIndicator(indicator) {
-    indicator.style.opacity = 0.25;
+    indicator.style.opacity = 0.3;
 }
 
 function hideHoverIndicator(indicator) {
@@ -24,7 +24,7 @@ function checkHoverPanelToOverflowOnTop(liveTranslationPanel) {
     const panelRect = liveTranslationPanel.getBoundingClientRect();
     if (panelRect.top < 0) {
         liveTranslationPanel.style.bottom = 'unset';
-        liveTranslationPanel.style.top = '120%';
+        liveTranslationPanel.style.top = '125%';
     }
 }
 
