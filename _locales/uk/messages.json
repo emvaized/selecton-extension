@@ -596,5 +596,9 @@
     "chooseFileFirst": {
         "message": "Спочатку виберіть файл",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Шукає визначення в Вікіпедії при наведенні",
+        "description": ""
     }
 }

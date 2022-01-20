@@ -596,5 +596,9 @@
     "chooseFileFirst": {
         "message": "Önce dosyayı seçin",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Vurguluyken Wikipedia tanımlarını arar",
+        "description": ""
     }
 }

@@ -588,5 +588,9 @@
     "chooseFileFirst": {
         "message": "Escolha o arquivo primeiro",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Procura as definições da Wikipedia ao passar o mouse",
+        "description": ""
     }
 }

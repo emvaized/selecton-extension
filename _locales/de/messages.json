@@ -592,5 +592,9 @@
     "chooseFileFirst": {
         "message": "Wähle zuerst die Datei aus",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Sucht Wikipedia-Definitionen beim Hover nach",
+        "description": ""
     }
 }

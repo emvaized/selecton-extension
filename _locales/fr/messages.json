@@ -592,5 +592,9 @@
     "chooseFileFirst": {
         "message": "Choisissez d'abord le fichier",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Recherche les définitions de Wikipedia au survol",
+        "description": ""
     }
 }

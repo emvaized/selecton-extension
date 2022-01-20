@@ -600,5 +600,9 @@
   "chooseFileFirst": {
     "message": "Choose the file first",
     "description": ""
+  },
+  "dictionaryButtonRemark": {
+    "message": "Looks up Wikipedia definitions on hover",
+    "description": ""
   }
 }

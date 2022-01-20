@@ -604,5 +604,9 @@
     "chooseFileFirst": {
         "message": "Сперва выберите файл",
         "description": ""
+    },
+    "dictionaryButtonRemark": {
+        "message": "Ищет определения из Википедии при наведении",
+        "description": ""
     }
 }

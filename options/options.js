@@ -200,6 +200,7 @@ function setTranslatedLabels() {
     /// Set translated headers
     document.querySelector("#importSettingsLabel").innerText = chrome.i18n.getMessage("importSettingsLabel");
     document.querySelector("#exportSettingsLabel").innerText = chrome.i18n.getMessage("exportSettingsLabel");
+    document.querySelector("#dictionaryButtonRemark").innerText = chrome.i18n.getMessage("dictionaryButtonRemark");
     document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
     document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
     document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
