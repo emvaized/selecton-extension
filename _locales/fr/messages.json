@@ -564,5 +564,17 @@
     "showDictionaryButton": {
         "message": "Afficher le bouton Dictionnaire (jusqu'à 2 mots)",
         "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Exporter les paramètres",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Importer les paramètres",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Choisissez d'abord le fichier",
+        "description": ""
     }
 }

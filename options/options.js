@@ -15,6 +15,8 @@ function loadSettings() {
             val.expandedSettingsSections.forEach(function (v) {
                 expandedSettingsSections.push(v);
             })
+
+        setCollapsibleHeaders();
     });
 
     /// Fix for older browsers
@@ -36,7 +38,6 @@ function loadSettings() {
     /// Set options page
     setTranslatedLabels();
     setVersionLabel();
-    setCollapsibleHeaders();
     setImportExportButtons();
 }
 
@@ -147,6 +148,8 @@ function setImportExportButtons() {
     /// Import settings
     const fileSelector = document.getElementById('importSettings');
     const importSettingsConfirmButton = document.getElementById('importSettingsButton');
+    disableImportButton();
+
     importedConfigs = null;
 
     fileSelector.addEventListener('change', (event) => {
@@ -156,7 +159,7 @@ function setImportExportButtons() {
             importedConfigs = JSON.parse(result);
 
             if (importedConfigs != null && importedConfigs !== undefined && importedConfigs !== {} && importedConfigs.hasOwnProperty('enabled')) {
-                importSettingsConfirmButton.disabled = false;
+                enableImportButton();
             }
         });
         reader.readAsText(event.target.files[0]);
@@ -178,14 +181,25 @@ function setImportExportButtons() {
 
         const fileSelector = document.getElementById('importSettings');
         fileSelector.value = null;
-        importSettingsConfirmButton.disabled = true;
+        disableImportButton();
         // }
-
     });
+
+    function enableImportButton() {
+        importSettingsConfirmButton.disabled = false;
+        importSettingsConfirmButton.title = '';
+    }
+
+    function disableImportButton() {
+        importSettingsConfirmButton.disabled = true;
+        importSettingsConfirmButton.title = chrome.i18n.getMessage('chooseFileFirst');
+    }
 }
 
 function setTranslatedLabels() {
     /// Set translated headers
+    document.querySelector("#importSettingsLabel").innerText = chrome.i18n.getMessage("importSettingsLabel");
+    document.querySelector("#exportSettingsLabel").innerText = chrome.i18n.getMessage("exportSettingsLabel");
     document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
     document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
     document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");

@@ -564,5 +564,17 @@
     "showDictionaryButton": {
         "message": "Wörterbuch-Schaltfläche anzeigen (bis zu 2 Wörter)",
         "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Die Einstellungen exportieren",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Die Einstellungen importieren",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Wähle zuerst die Datei aus",
+        "description": ""
     }
 }

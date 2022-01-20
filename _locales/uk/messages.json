@@ -568,5 +568,17 @@
     "showDictionaryButton": {
         "message": "Показати кнопку словника (до 2 слів)",
         "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Експортувати налаштування",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Імпортувати налаштування",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Спочатку виберіть файл",
+        "description": ""
     }
 }

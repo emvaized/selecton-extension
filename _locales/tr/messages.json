@@ -568,5 +568,17 @@
     "showDictionaryButton": {
         "message": "Sözlük düğmesini göster (2 kelimeye kadar)",
         "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Ayarları dışa aktar",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Ayarları içe aktar",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Önce dosyayı seçin",
+        "description": ""
     }
 }

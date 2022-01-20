@@ -588,5 +588,17 @@
     "showDictionaryButton": {
         "message": "Добавить кнопку словаря (до 2 слов)",
         "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Импорт настроек",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Экспорт настроек",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Сперва выберите файл",
+        "description": ""
     }
 }
