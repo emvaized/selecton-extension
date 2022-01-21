@@ -119,6 +119,7 @@
   line-height: 1.0 !important;  
   border: 0.25px solid var(--selecton-outline-color); 
   background: var(--selecton-background-color); 
+  font-size: var(--selecton-font-size) !important;
   /* text-align: start; */
   width: 200% !important;
   /* transform: translate(25%, 0) !important; */

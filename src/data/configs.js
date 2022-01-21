@@ -59,7 +59,7 @@ const configs = {
     'fontSize': 12.5,
     'maxIconsInRow': 5,
     'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
-    'liveTranslation': false,
+    'liveTranslation': true,
     'reverseTooltipButtonsOrder': false,
     'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
