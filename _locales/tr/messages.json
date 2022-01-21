@@ -604,5 +604,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Fareyle üzerine gelme olayı olan düğmelerde noktayı göster",
+        "description": ""
     }
 }

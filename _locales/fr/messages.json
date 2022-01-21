@@ -600,5 +600,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Nombre maximum de caractères à afficher comme résultat",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Afficher le point sur les boutons avec un événement de survol",
+        "description": ""
     }
 }

@@ -76,6 +76,7 @@ const configs = {
     'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
     'delayToRevealTranslateTooltip': 550,
     'showDictionaryButton': true,
+    'showDotForHoverButtons': true,
     'dictionaryButtonWordsAmount': 1,
     'dictionaryButtonResponseCharsAmount': 300,
     'customSearchButtons': [

@@ -604,5 +604,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Макс. кіль-сть символів для відображення в результаті",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Показати крапку на кнопках із подією наведення",
+        "description": ""
     }
 }

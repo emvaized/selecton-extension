@@ -612,5 +612,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Макс. кол-во символов для отображения в результате",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Показывать точку на кнопках с событием наведения",
+        "description": ""
     }
 }

@@ -2,6 +2,8 @@
 /// First of all, Live translate button and Dictionary button
 
 function addAstrixToHoverButton(button) {
+    if (configs.showDotForHoverButtons == false) return;
+
     /// add astrix indicator when hover enabled
     let astrix = document.createElement('span');
     astrix.className = 'selecton-hover-button-indicator';
@@ -12,10 +14,12 @@ function addAstrixToHoverButton(button) {
 }
 
 function showHoverIndicator(indicator) {
+    if (configs.showDotForHoverButtons == false) return;
     indicator.style.opacity = 0.3;
 }
 
 function hideHoverIndicator(indicator) {
+    if (configs.showDotForHoverButtons == false) return;
     indicator.style.opacity = 0;
 }
 

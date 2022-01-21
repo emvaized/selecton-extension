@@ -596,5 +596,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Número máximo de caracteres a serem exibidos como resultado",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Mostrar ponto nos botões com evento de foco",
+        "description": ""
     }
 }

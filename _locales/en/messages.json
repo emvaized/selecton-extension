@@ -608,5 +608,9 @@
   "dictionaryButtonResponseCharsAmount": {
     "message": "Max number of chars to display as a result",
     "description": ""
+  },
+  "showDotForHoverButtons": {
+    "message": "Show dot on buttons with hover event",
+    "description": ""
   }
 }

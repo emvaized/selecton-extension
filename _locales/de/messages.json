@@ -600,5 +600,9 @@
     "dictionaryButtonResponseCharsAmount": {
         "message": "Maximale Anzahl von Zeichen, die als Ergebnis angezeigt werden",
         "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Punkt auf Schaltflächen mit Hover-Ereignis anzeigen",
+        "description": ""
     }
 }
