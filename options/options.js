@@ -159,7 +159,7 @@ function setImportExportButtons() {
             const result = event.target.result;
             importedConfigs = JSON.parse(result);
 
-            if (importedConfigs != null && importedConfigs !== undefined && importedConfigs !== {} && importedConfigs.hasOwnProperty('enabled')) {
+            if (importedConfigs != null && importedConfigs !== undefined && importedConfigs !== {}) {
                 enableImportButton();
             }
         });
