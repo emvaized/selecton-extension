@@ -36,7 +36,6 @@ function loadSettings() {
     chrome.storage.local.get(keys, setInputs);
 
     /// Set options page
-    setTranslatedLabels();
     setVersionLabel();
     setImportExportButtons();
 }
@@ -114,7 +113,9 @@ function setInputs(result) {
     excludedDomainsTextfields.forEach(function (excludedDomainsTextfield) {
         excludedDomainsTextfield.setAttribute('placeholder', 'example.com, another.example.com');
         excludedDomainsTextfield.style.maxWidth = '200px';
-    })
+    });
+
+    setTranslatedLabels();
 
     updateDisabledOptions();
 
