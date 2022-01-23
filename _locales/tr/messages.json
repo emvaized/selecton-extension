@@ -35,6 +35,10 @@
         "message": "Metin alanına tıklandığında 'Yapıştır' düğmesini göster",
         "description": "Ayarlardaki seçenek etiketi"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... sadece alan boş olduğunda",
+        "description": "Ayarlarda seçenek etiketi"
+    },
     "addPhoneButton": {
         "message": "Telefon numarası ekle düğmesi",
         "description": "Ayarlardaki seçenek etiketi"
@@ -59,6 +63,10 @@
         "message": "Panel görünümü",
         "description": "Ayarlarda görünüm kategorisi üstbilgisi"
     },
+    "applyConfigsImmediately": {
+        "message": "Yapılandırmaları hemen uygulayın",
+        "description": "Header for appearance category in settings"
+    },
     "behaviorHeader": {
         "message": "Panel davranışı",
         "description": "Ayarlarda görünüm kategorisi üstbilgisi"
@@ -82,6 +90,10 @@
     "changeTextSelectionColor": {
         "message": "Metin seçimini özelleştirme",
         "description": "Ayarlardaki alan etiketi"
+    },
+    "chooseFileFirst": {
+        "message": "Önce dosyayı seçin",
+        "description": ""
     },
     "contextualButtonsHeader": {
         "message": "Düğme",
@@ -155,9 +167,33 @@
         "message": "Paneli göstermeden önceki gecikme (ms)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Otomatik çeviriden önceki gecikme (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Silmek",
         "description": "Sil düğmesinin etiketi"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Vurguluyken Wikipedia tanımlarını arar",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Düğmeyi göstermek için kelimeler miktarı",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Sözlük",
+        "description": "Label for Dictionary button"
+    },
+    "disableForBetterPerformance": {
+        "message": "Daha iyi performans için devre dışı bırakın",
+        "description": "Label for option in settings"
     },
     "disableWordSnapForCode": {
         "message": "Kod için sözcük yakalamayı devre dışı bırak",
@@ -182,6 +218,18 @@
     "excludedDomains": {
         "message": "Dışlanan etki alanları",
         "description": "Ayarlardaki seçenek etiketi"
+    },
+    "export": {
+        "message": "İhracat",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Dışa/içe aktarma ayarları",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Ayarları dışa aktar",
+        "description": ""
     },
     "extensionDescription": {
         "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere",
@@ -215,6 +263,10 @@
         "message": "Kaydırmada araç ipucuni gizle",
         "description": "Ayarlardaki alan etiketi"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Kullanıcının dili için çeviri düğmesini gizle",
+        "description": "Label for field in settings"
+    },
     "horizontalLayout": {
         "message": "Yatay",
         "description": "Ayarlardaki alan etiketi"
@@ -226,6 +278,22 @@
     "imperial": {
         "message": "Imperial",
         "description": "Variant of metrics system for dropdown"
+    },
+    "import": {
+        "message": "İçe aktarmak",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Ayarları içe aktar",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Karanlık web sitesinde rengi ters çevir",
+        "description": "Ayarlarda alan etiketi"
     },
     "italicLabel": {
         "message": "İtalik",
@@ -242,6 +310,10 @@
     "mailto": {
         "message": "E-posta istemcisi",
         "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
+    },
+    "maxIconsInRow": {
+        "message": "Satırdaki simge miktarı",
+        "description": "Ayarlarda seçenek etiketi"
     },
     "metric": {
         "message": "Metrik",
@@ -267,9 +339,17 @@
         "message": "Yukarı taşı",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
+    "noDefinitionFound": {
+        "message": "Tanım bulunamadı",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Etkisi yok",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "noTranslationFound": {
+        "message": "çeviri bulunamadı",
+        "description": ""
     },
     "onlyicon": {
         "message": "Yalnızca simgeler",
@@ -347,6 +427,10 @@
         "message": "Aramak",
         "description": "Arama metni eylemi etiketi"
     },
+    "searchingDefinitions": {
+        "message": "Tanımları arama",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Araç ipucu etkin",
         "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
@@ -387,6 +471,14 @@
         "message": "Vurgulu düğme etiketini göster",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
+    "showDictionaryButton": {
+        "message": "Sözlük düğmesini göster",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Fareyle üzerine gelme olayı olan düğmelerde noktayı göster",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "E-posta ekle düğmesi",
         "description": "Ayarlardaki alan etiketi"
@@ -407,9 +499,17 @@
         "message": "Çevir düğmesini göster",
         "description": "Ayarlardaki alan etiketi"
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Dil tanımlı değilse çeviri düğmesini göster",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Dönüştürmeden önce orijinal değeri göster",
         "description": "Ayarlardaki düğme etiketi"
+    },
+    "showUpdateNotification": {
+        "message": "Güncellemede bildirimi göster",
+        "description": "Label for field in settings"
     },
     "snapSelectionToWord": {
         "message": "Metin seçimini sözcükle yaslama",
@@ -431,6 +531,10 @@
         "message": "Arka plan rengi",
         "description": "Ayarlardaki alan etiketi"
     },
+    "tooltipInvertedBackground": {
+        "message": "Arka plan rengi (koyu sayfa)",
+        "description": "Ayarlarda alan etiketi"
+    },
     "tooltipOpacity": {
         "message": "Araç ipucu opaklığı",
         "description": "Ayarlardaki alan etiketi"
@@ -446,6 +550,24 @@
     "translateLabel": {
         "message": "Çevir",
         "description": "Çevirme eylemi etiketi"
+    },
+    "translating": {
+        "message": "Çeviri",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Yenilikleri görmek için buraya tıklayın",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton $VERSION$ olarak güncellendi",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Değişiklikleri görmek için sayfayı yenileme",
@@ -486,127 +608,5 @@
     "writeAReview": {
         "message": "Yorum yazma",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
-    },
-    "applyConfigsImmediately": {
-        "message": "Yapılandırmaları hemen uygulayın",
-        "description": "Header for appearance category in settings"
-    },
-    "disableForBetterPerformance": {
-        "message": "Daha iyi performans için devre dışı bırakın",
-        "description": "Label for option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Karanlık web sitesinde rengi ters çevir",
-        "description": "Ayarlarda alan etiketi"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Arka plan rengi (koyu sayfa)",
-        "description": "Ayarlarda alan etiketi"
-    },
-    "maxIconsInRow": {
-        "message": "Satırdaki simge miktarı",
-        "description": "Ayarlarda seçenek etiketi"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... sadece alan boş olduğunda",
-        "description": "Ayarlarda seçenek etiketi"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Kullanıcının dili için çeviri düğmesini gizle",
-        "description": "Label for field in settings"
-    },
-    "showTranslateIfLanguageUnknown": {
-        "message": "Dil tanımlı değilse çeviri düğmesini göster",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Güncellemede bildirimi göster",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton $VERSION$ olarak güncellendi",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Yenilikleri görmek için buraya tıklayın",
-        "description": ""
-    },
-    "export": {
-        "message": "İhracat",
-        "description": ""
-    },
-    "import": {
-        "message": "İçe aktarmak",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Dışa/içe aktarma ayarları",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Çeviri",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "çeviri bulunamadı",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Otomatik çeviriden önceki gecikme (ms)",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Tanımları arama",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Sözlük",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Tanım bulunamadı",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Sözlük düğmesini göster",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "Düğmeyi göstermek için kelimeler miktarı",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Ayarları dışa aktar",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Ayarları içe aktar",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Önce dosyayı seçin",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Vurguluyken Wikipedia tanımlarını arar",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Fareyle üzerine gelme olayı olan düğmelerde noktayı göster",
-        "description": ""
     }
 }

@@ -35,6 +35,10 @@
         "message": "Показать кнопку 'Вставить' при клике на поле",
         "description": "Label for option in settings"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... только если поле пустое",
+        "description": "Ярлык для опции в настройках"
+    },
     "addPhoneButton": {
         "message": "Добавить кнопку номера телефона",
         "description": "Label for option in settings"
@@ -85,6 +89,10 @@
     },
     "changeTextSelectionColor": {
         "message": "Изменить стиль выделения текста",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Сперва выберите файл",
         "description": ""
     },
     "contextualButtonsHeader": {
@@ -159,9 +167,29 @@
         "message": "Задержка перед открытием панели (мс)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Задержка перед авто-переводом (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Удалить",
         "description": "Ярлык для кнопки удаления"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Ищет определения из Википедии при наведении",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Макс. кол-во символов для отображения в результате",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Количество слов, чтобы показать кнопку",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Словарь",
+        "description": "Label for Dictionary button"
     },
     "disableForBetterPerformance": {
         "message": "Отключите для лучшей производительности",
@@ -195,6 +223,18 @@
         "message": "Исключенные домены",
         "description": "Label for option in settings"
     },
+    "export": {
+        "message": "Экспорт",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Экспорт/импорт настроек",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Экспорт настроек",
+        "description": ""
+    },
     "extensionDescription": {
         "message": "Всплывающая панель с действиями при выделении текста",
         "description": "Описание расширения"
@@ -227,6 +267,10 @@
         "message": "Прятать при прокрутке",
         "description": "Label for field in settings"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Скрыть кнопку перевода для языка пользователя",
+        "description": "Ярлык для опции в настройках"
+    },
     "horizontalLayout": {
         "message": "Горизонтальное",
         "description": "Label for field in settings"
@@ -238,6 +282,22 @@
     "imperial": {
         "message": "Английская",
         "description": "Variant of metrics system for dropdown"
+    },
+    "import": {
+        "message": "Импорт",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Это действие перепишет текущие настройки Selecton. Вы уверены?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Импорт настроек",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Инвертировать цвет на темном сайте",
+        "description": "Ярлык для поля в настройках"
     },
     "italicLabel": {
         "message": "Курсив",
@@ -254,6 +314,10 @@
     "mailto": {
         "message": "Открыть почтовый клиент",
         "description": "Option label for new email method setting"
+    },
+    "maxIconsInRow": {
+        "message": "Кол-во иконок в ряду",
+        "description": "Ярлык для поля в настройках"
     },
     "metric": {
         "message": "Метрическая",
@@ -279,9 +343,17 @@
         "message": "Снизу",
         "description": "Label for buttons style option in settings"
     },
+    "noDefinitionFound": {
+        "message": "Не найдено определений",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Без эффекта",
         "description": "Label for buttons style option in settings"
+    },
+    "noTranslationFound": {
+        "message": "Перевод не найден",
+        "description": ""
     },
     "onlyicon": {
         "message": "Только иконки",
@@ -363,6 +435,10 @@
         "message": "Искать",
         "description": "Label for search text action"
     },
+    "searchingDefinitions": {
+        "message": "Поиск определений",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Панель активирована",
         "description": "Label for add new search option button"
@@ -403,6 +479,14 @@
         "message": "Показывать текст кнопки при наведении",
         "description": "Label for buttons style option in settings"
     },
+    "showDictionaryButton": {
+        "message": "Добавить кнопку словаря",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Показывать точку на кнопках с событием наведения",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "Добавить кнопку электронной почты",
         "description": "Label for field in settings"
@@ -423,9 +507,17 @@
         "message": "Показывать кнопку перевода",
         "description": ""
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Показывать кнопку перевода, если язык не определен",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Показывать изначальное значение до конвертации",
         "description": "Label for button in settings"
+    },
+    "showUpdateNotification": {
+        "message": "Показать уведомление при обновлении",
+        "description": "Label for field in settings"
     },
     "snapSelectionToWord": {
         "message": "Привязка выделения текста по слову",
@@ -447,6 +539,10 @@
         "message": "Цвет фона",
         "description": ""
     },
+    "tooltipInvertedBackground": {
+        "message": "Цвет фона (темная страница)",
+        "description": "Ярлык для поля в настройках"
+    },
     "tooltipOpacity": {
         "message": "Прозрачность панели",
         "description": ""
@@ -462,6 +558,24 @@
     "translateLabel": {
         "message": "Перевести",
         "description": "Label for translate action"
+    },
+    "translating": {
+        "message": "Перевод",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Кликните здесь, чтобы узнать что нового",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton обновился до $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Обновите страницу, чтобы увидеть изменения",
@@ -502,119 +616,5 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Инвертировать цвет на темном сайте",
-        "description": "Ярлык для поля в настройках"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Цвет фона (темная страница)",
-        "description": "Ярлык для поля в настройках"
-    },
-    "maxIconsInRow": {
-        "message": "Кол-во иконок в ряду",
-        "description": "Ярлык для поля в настройках"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... только если поле пустое",
-        "description": "Ярлык для опции в настройках"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Скрыть кнопку перевода для языка пользователя",
-        "description": "Ярлык для опции в настройках"
-    },
-    "showTranslateIfLanguageUnknown": {
-        "message": "Показывать кнопку перевода, если язык не определен",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Показать уведомление при обновлении",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton обновился до $VERSION$",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Кликните здесь, чтобы узнать что нового",
-        "description": ""
-    },
-    "export": {
-        "message": "Экспорт",
-        "description": ""
-    },
-    "import": {
-        "message": "Импорт",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Экспорт/импорт настроек",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Это действие перепишет текущие настройки Selecton. Вы уверены?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Перевод",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "Перевод не найден",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Поиск определений",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Словарь",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Не найдено определений",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Задержка перед авто-переводом (ms)",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Добавить кнопку словаря",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "Количество слов, чтобы показать кнопку",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Импорт настроек",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Экспорт настроек",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Сперва выберите файл",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Ищет определения из Википедии при наведении",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Макс. кол-во символов для отображения в результате",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Показывать точку на кнопках с событием наведения",
-        "description": ""
     }
 }

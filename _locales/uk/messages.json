@@ -35,6 +35,10 @@
         "message": "Показати кнопку «Вставити» при кліку на текстове поле",
         "description": "Label for option in settings"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... тільки якщо поле пусте",
+        "description": "Мітка для параметра в налаштуваннях"
+    },
     "addPhoneButton": {
         "message": "Додати кнопку номера телефону",
         "description": "Label for option in settings"
@@ -59,6 +63,10 @@
         "message": "Зовнішній вигляд",
         "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
     },
+    "applyConfigsImmediately": {
+        "message": "Застосувати налаштування відразу",
+        "description": "Header for appearance category in settings"
+    },
     "behaviorHeader": {
         "message": "Поведінка",
         "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
@@ -77,6 +85,10 @@
     },
     "changeTextSelectionColor": {
         "message": "Змінити стиль виділення тексту",
+        "description": ""
+    },
+    "chooseFileFirst": {
+        "message": "Спочатку виберіть файл",
         "description": ""
     },
     "contextualButtonsHeader": {
@@ -151,9 +163,33 @@
         "message": "Затримка перед показом панелі (мс)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Затримка перед автоматичним перекладом (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Видалити",
         "description": "Ярлик для кнопки видалення"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Шукає визначення в Вікіпедії при наведенні",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Макс. кіль-сть символів для відображення в результаті",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Кількість слів для відображення кнопки",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Словник",
+        "description": "Label for Dictionary button"
+    },
+    "disableForBetterPerformance": {
+        "message": "Вимкніть для кращої швидкодії",
+        "description": "Label for option in settings"
     },
     "disableWordSnapForCode": {
         "message": "Вимкнути прив’язку до слів для коду",
@@ -182,6 +218,18 @@
     "excludedDomains": {
         "message": "Виключені домени",
         "description": "Label for option in settings"
+    },
+    "export": {
+        "message": "Експорт",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Експорт/імпорт налаштувань",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Експортувати налаштування",
+        "description": ""
     },
     "extensiondescription": {
         "message": "Спливаюча панель з кнопками дій при виділенні тексту",
@@ -215,6 +263,10 @@
         "message": "Ховати при прокручуванні",
         "description": "Label for field in settings"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Сховати кнопку перекладу для мови користувача",
+        "description": "Label for field in settings"
+    },
     "horizontalLayout": {
         "message": "Горизонтальна",
         "description": "Label for field in settings"
@@ -227,6 +279,22 @@
         "message": "Англійська",
         "description": "Variant of metrics system for dropdown"
     },
+    "import": {
+        "message": "Імпорт",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Ця дія замінить поточні налаштування Selecton. Ви впевнені?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Імпортувати налаштування",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Інвертувати колір на темному веб-сайті",
+        "description": "Мітка для поля в налаштуваннях"
+    },
     "languageToTranslate": {
         "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
@@ -238,6 +306,10 @@
     "mailto": {
         "message": "Відкрити поштовий клієнт",
         "description": "Option label for new email method setting"
+    },
+    "maxIconsInRow": {
+        "message": "Кіл-сть іконок у рядку",
+        "description": "Мітка для параметра в налаштуваннях"
     },
     "metric": {
         "message": "Метрична",
@@ -263,9 +335,17 @@
         "message": "Зверху",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "noDefinitionFound": {
+        "message": "Не знайдено жодного визначення",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Без ефекту",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "noTranslationFound": {
+        "message": "Перекладу не знайдено",
+        "description": ""
     },
     "onlyicon": {
         "message": "Тільки іконки",
@@ -347,6 +427,10 @@
         "message": "Шукати",
         "description": "Label for search text action"
     },
+    "searchingDefinitions": {
+        "message": "Пошук визначень",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Панель активована",
         "description": "Label for add new search option button"
@@ -387,6 +471,14 @@
         "message": "Показати текст кнопки при наведенні",
         "description": "Label for option in settings"
     },
+    "showDictionaryButton": {
+        "message": "Показати кнопку словника",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Показати крапку на кнопках із подією наведення",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "Додати кнопку електронної пошти",
         "description": "Label for field in settings"
@@ -407,9 +499,17 @@
         "message": "Показувати кнопку перекладу",
         "description": ""
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Показати кнопку перекладу, якщо мова не визначена",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Показати вихідне значення перед перетворенням",
         "description": "Мітка для кнопки в налаштуваннях"
+    },
+    "showUpdateNotification": {
+        "message": "Показати сповіщення при оновленні",
+        "description": "Label for field in settings"
     },
     "snapSelectionToWord": {
         "message": "Прив'язка виділення тексту по слову",
@@ -431,6 +531,10 @@
         "message": "Колір фону",
         "description": ""
     },
+    "tooltipInvertedBackground": {
+        "message": "Колір фону (темна сторінка)",
+        "description": "Мітка для поля в налаштуваннях"
+    },
     "tooltipOpacity": {
         "message": "Прозорість панелі",
         "description": ""
@@ -446,6 +550,24 @@
     "translateLabel": {
         "message": "Перевести",
         "description": "Label for translate action"
+    },
+    "translating": {
+        "message": "Переклад",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Клікніть тут, щоб побачити що нового",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton оновлено до $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Оновіть сторінку, щоб побачити зміни",
@@ -486,127 +608,5 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
-    },
-    "applyConfigsImmediately": {
-        "message": "Застосувати налаштування відразу",
-        "description": "Header for appearance category in settings"
-    },
-    "disableForBetterPerformance": {
-        "message": "Вимкніть для кращої швидкодії",
-        "description": "Label for option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Інвертувати колір на темному веб-сайті",
-        "description": "Мітка для поля в налаштуваннях"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Колір фону (темна сторінка)",
-        "description": "Мітка для поля в налаштуваннях"
-    },
-    "maxIconsInRow": {
-        "message": "Кіл-сть іконок у рядку",
-        "description": "Мітка для параметра в налаштуваннях"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... тільки якщо поле пусте",
-        "description": "Мітка для параметра в налаштуваннях"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Сховати кнопку перекладу для мови користувача",
-        "description": "Label for field in settings"
-    },
-    "showTranslateIfLanguageUnknown": {
-        "message": "Показати кнопку перекладу, якщо мова не визначена",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Показати сповіщення при оновленні",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton оновлено до $VERSION$",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Клікніть тут, щоб побачити що нового",
-        "description": ""
-    },
-    "export": {
-        "message": "Експорт",
-        "description": ""
-    },
-    "import": {
-        "message": "Імпорт",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Експорт/імпорт налаштувань",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Ця дія замінить поточні налаштування Selecton. Ви впевнені?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Переклад",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "Перекладу не знайдено",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Затримка перед автоматичним перекладом (ms)",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Пошук визначень",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Словник",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Не знайдено жодного визначення",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Показати кнопку словника",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "Кількість слів для відображення кнопки",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Експортувати налаштування",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Імпортувати налаштування",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Спочатку виберіть файл",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Шукає визначення в Вікіпедії при наведенні",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Макс. кіль-сть символів для відображення в результаті",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Показати крапку на кнопках із подією наведення",
-        "description": ""
     }
 }

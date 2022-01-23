@@ -35,6 +35,10 @@
         "message": "Afficher le bouton «Coller» lorsque vous cliquez sur le champ de texte",
         "description": "Label for option in settings"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... uniquement lorsque le champ est vide",
+        "description": "Libellé pour l'option dans les paramètres"
+    },
     "addPhoneButton": {
         "message": "Bouton Ajouter un numéro de téléphone",
         "description": "Libellé de l'option dans les paramètres"
@@ -59,6 +63,10 @@
         "message": "Apparence du panneau",
         "description": "En-tête de la catégorie d'apparence dans les paramètres"
     },
+    "applyConfigsImmediately": {
+        "message": "Appliquer les configurations immédiatement",
+        "description": "Header for appearance category in settings"
+    },
     "behaviorHeader": {
         "message": "Comportement du panneau",
         "description": "En-tête de la catégorie d'apparence dans les paramètres"
@@ -78,6 +86,10 @@
     "changeTextSelectionColor": {
         "message": "Personnaliser la sélection de texte",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "chooseFileFirst": {
+        "message": "Choisissez d'abord le fichier",
+        "description": ""
     },
     "contextualButtonsHeader": {
         "message": "Boutons",
@@ -151,9 +163,33 @@
         "message": "Délai avant révélation du panneau (ms)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Délai avant traduction auto (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Supprimer",
         "description": "Libellé du bouton de suppression"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Recherche les définitions de Wikipedia au survol",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Nombre maximum de caractères à afficher comme résultat",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Les mots s'élèvent pour montrer le bouton",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Dictionnaire",
+        "description": "Label for Dictionary button"
+    },
+    "disableForBetterPerformance": {
+        "message": "Désactiver pour de meilleures performances",
+        "description": "Label for option in settings"
     },
     "disableWordSnapForCode": {
         "message": "Désactiver la capture de mots pour le code",
@@ -178,6 +214,18 @@
     "excludedDomains": {
         "message": "Domaines exclus",
         "description": "Libellé de l'option dans les paramètres"
+    },
+    "export": {
+        "message": "Exportation",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Paramètres d'export/import",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Exporter les paramètres",
+        "description": ""
     },
     "extensionDescription": {
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte",
@@ -211,6 +259,10 @@
         "message": "Masquer l'info-bulle lors du défilement",
         "description": "Libellé du champ dans les paramètres"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Masquer le bouton de traduction pour la langue de l'utilisateur",
+        "description": "Label for field in settings"
+    },
     "horizontalLayout": {
         "message": "Horizontale",
         "description": "Label for field in settings"
@@ -223,6 +275,22 @@
         "message": "Imperial",
         "description": "Variante du système de métriques pour le menu déroulant"
     },
+    "import": {
+        "message": "Importer",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Cette action remplacera les paramètres actuels de Selecton. Es-tu sûr?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Importer les paramètres",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Inverser la couleur sur un site Web sombre",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "languageToTranslate": {
         "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
         "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
@@ -234,6 +302,10 @@
     "mailto": {
         "message": "Client de messagerie de bureau",
         "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
+    },
+    "maxIconsInRow": {
+        "message": "Nombre d'icônes en ligne",
+        "description": "Libellé pour l'option dans les paramètres"
     },
     "metric": {
         "message": "Métrique",
@@ -259,9 +331,17 @@
         "message": "Monter",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "noDefinitionFound": {
+        "message": "Aucune définition trouvée",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Aucun effet",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "noTranslationFound": {
+        "message": "Aucune traduction trouvée",
+        "description": ""
     },
     "onlyicon": {
         "message": "Icônes uniquement",
@@ -343,6 +423,10 @@
         "message": "Rechercher",
         "description": "Libellé de l'action de texte de recherche"
     },
+    "searchingDefinitions": {
+        "message": "Recherche de définitions",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Info-bulle activée",
         "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
@@ -383,6 +467,14 @@
         "message": "Afficher le libellé du bouton au survol",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "showDictionaryButton": {
+        "message": "Afficher le bouton Dictionnaire",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Afficher le point sur les boutons avec un événement de survol",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "Ajouter un bouton e-mail",
         "description": "Libellé du champ dans les paramètres"
@@ -403,9 +495,17 @@
         "message": "Afficher le bouton de traduction",
         "description": "Libellé du champ dans les paramètres"
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Afficher le bouton de traduction si la langue n'est pas détectée",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Afficher la valeur d'origine avant la conversion",
         "description": "Libellé du bouton dans les paramètres"
+    },
+    "showUpdateNotification": {
+        "message": "Afficher la notification lors de la mise à jour",
+        "description": "Label for field in settings"
     },
     "snapSelectionToWord": {
         "message": "Sélection de texte par mot",
@@ -427,6 +527,10 @@
         "message": "Couleur d'arrière-plan",
         "description": "Libellé du champ dans les paramètres"
     },
+    "tooltipInvertedBackground": {
+        "message": "Couleur de fond (page sombre)",
+        "description": "Libellé du champ dans les paramètres"
+    },
     "tooltipOpacity": {
         "message": "Opacité de l'info-bulle",
         "description": "Libellé du champ dans les paramètres"
@@ -442,6 +546,24 @@
     "translateLabel": {
         "message": "Traduire",
         "description": "Libellé de l'action de traduction"
+    },
+    "translating": {
+        "message": "Traduire",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Cliquez ici pour voir les nouveautés",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton a été mis à jour à $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Actualisez la page pour voir les modifications",
@@ -482,127 +604,5 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
-    },
-    "applyConfigsImmediately": {
-        "message": "Appliquer les configurations immédiatement",
-        "description": "Header for appearance category in settings"
-    },
-    "disableForBetterPerformance": {
-        "message": "Désactiver pour de meilleures performances",
-        "description": "Label for option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Inverser la couleur sur un site Web sombre",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Couleur de fond (page sombre)",
-        "description": "Libellé du champ dans les paramètres"
-    },
-    "maxIconsInRow": {
-        "message": "Nombre d'icônes en ligne",
-        "description": "Libellé pour l'option dans les paramètres"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... uniquement lorsque le champ est vide",
-        "description": "Libellé pour l'option dans les paramètres"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Masquer le bouton de traduction pour la langue de l'utilisateur",
-        "description": "Label for field in settings"
-    },
-    "showTranslateIfLanguageUnknown": {
-        "message": "Afficher le bouton de traduction si la langue n'est pas détectée",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Afficher la notification lors de la mise à jour",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton a été mis à jour à $VERSION$",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Cliquez ici pour voir les nouveautés",
-        "description": ""
-    },
-    "export": {
-        "message": "Exportation",
-        "description": ""
-    },
-    "import": {
-        "message": "Importer",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Paramètres d'export/import",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Cette action remplacera les paramètres actuels de Selecton. Es-tu sûr?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Traduire",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "Aucune traduction trouvée",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Délai avant traduction auto (ms)",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Recherche de définitions",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Dictionnaire",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Aucune définition trouvée",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Afficher le bouton Dictionnaire",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "Les mots s'élèvent pour montrer le bouton",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Exporter les paramètres",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Importer les paramètres",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Choisissez d'abord le fichier",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Recherche les définitions de Wikipedia au survol",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Nombre maximum de caractères à afficher comme résultat",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Afficher le point sur les boutons avec un événement de survol",
-        "description": ""
     }
 }

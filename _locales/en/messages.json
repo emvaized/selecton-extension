@@ -91,6 +91,10 @@
     "message": "Customize text selection",
     "description": "Label for field in settings"
   },
+  "chooseFileFirst": {
+    "message": "Choose the file first",
+    "description": ""
+  },
   "contextualButtonsHeader": {
     "message": "Buttons",
     "description": "Header for contextual buttons category in settings"
@@ -163,9 +167,29 @@
     "message": "Delay before reveal panel (ms)",
     "description": "Label for the delete button"
   },
+  "delayToRevealTranslateTooltip": {
+    "message": "Delay before auto translate (ms)",
+    "description": ""
+  },
   "deleteLabel": {
     "message": "Delete",
     "description": "Label for the delete button"
+  },
+  "dictionaryButtonRemark": {
+    "message": "Looks up Wikipedia definitions on hover",
+    "description": ""
+  },
+  "dictionaryButtonResponseCharsAmount": {
+    "message": "Max number of chars to display as a result",
+    "description": ""
+  },
+  "dictionaryButtonWordsAmount": {
+    "message": "Words to show dictionary button",
+    "description": ""
+  },
+  "dictionaryLabel": {
+    "message": "Dictionary",
+    "description": "Label for Dictionary button"
   },
   "disableForBetterPerformance": {
     "message": "Disable for better performance",
@@ -187,17 +211,29 @@
     "message": "Panel can be dragged by the arrow",
     "description": "Label for field in settings"
   },
-  "enabled": {
-    "message": "Enabled",
-    "description": "Label for field in settings"
-  },
   "email": {
     "message": "Email",
+    "description": "Label for field in settings"
+  },
+  "enabled": {
+    "message": "Enabled",
     "description": "Label for field in settings"
   },
   "excludedDomains": {
     "message": "Excluded domains",
     "description": "Label for option in settings"
+  },
+  "export": {
+    "message": "Export",
+    "description": ""
+  },
+  "exportImportSettings": {
+    "message": "Export/import settings",
+    "description": ""
+  },
+  "exportSettingsLabel": {
+    "message": "Export settings",
+    "description": ""
   },
   "extensionDescription": {
     "message": "Customizable popup with actions on text selection",
@@ -247,6 +283,22 @@
     "message": "Imperial",
     "description": "Variant of metrics system for dropdown"
   },
+  "import": {
+    "message": "Import",
+    "description": ""
+  },
+  "importAlert": {
+    "message": "This action will override current Selecton settings. Are you sure?",
+    "description": ""
+  },
+  "importSettingsLabel": {
+    "message": "Import settings",
+    "description": ""
+  },
+  "invertColorOnDarkWebsite": {
+    "message": "Invert color on dark website",
+    "description": "Label for field in settings"
+  },
   "italicLabel": {
     "message": "Italic",
     "description": "Label for field in settings"
@@ -291,9 +343,17 @@
     "message": "Move up",
     "description": "Label for buttons style option in settings"
   },
+  "noDefinitionFound": {
+    "message": "No definition found",
+    "description": ""
+  },
   "noTooltipEffect": {
     "message": "No effect",
     "description": "Label for buttons style option in settings"
+  },
+  "noTranslationFound": {
+    "message": "No translation found",
+    "description": ""
   },
   "onlyicon": {
     "message": "Icons only",
@@ -371,6 +431,10 @@
     "message": "Search",
     "description": "Label for search text action"
   },
+  "searchingDefinitions": {
+    "message": "Searching for definitions",
+    "description": ""
+  },
   "secondaryTooltipEnabled": {
     "message": "Tooltip enabled",
     "description": "Label for add new search option button"
@@ -411,6 +475,14 @@
     "message": "Show button label on hover",
     "description": "Label for buttons style option in settings"
   },
+  "showDictionaryButton": {
+    "message": "Show the dictionary button",
+    "description": ""
+  },
+  "showDotForHoverButtons": {
+    "message": "Show dot on buttons with hover event",
+    "description": ""
+  },
   "showEmailButton": {
     "message": "Add email button",
     "description": "Label for field in settings"
@@ -423,10 +495,6 @@
     "message": "Add button to show on map",
     "description": "Label for field in settings"
   },
-  "showTranslateIfLanguageUnknown": {
-    "message": "Show translate button if language is not detected",
-    "description": "Label for field in settings"
-  },
   "showSecondaryTooltipTitleOnHover": {
     "message": "Show title on hover",
     "description": "Label for option in settings"
@@ -435,9 +503,17 @@
     "message": "Show translate button",
     "description": "Label for field in settings"
   },
+  "showTranslateIfLanguageUnknown": {
+    "message": "Show translate button if language is not detected",
+    "description": "Label for field in settings"
+  },
   "showUnconvertedValue": {
     "message": "Show original value before conversion",
     "description": "Label for button in settings"
+  },
+  "showUpdateNotification": {
+    "message": "Show notification on update",
+    "description": "Label for field in settings"
   },
   "snapSelectionToWord": {
     "message": "Snap text selection by word",
@@ -459,6 +535,10 @@
     "message": "Background color",
     "description": "Label for field in settings"
   },
+  "tooltipInvertedBackground": {
+    "message": "Background color (dark page)",
+    "description": "Label for field in settings"
+  },
   "tooltipOpacity": {
     "message": "Tooltip opacity",
     "description": "Label for field in settings"
@@ -474,6 +554,24 @@
   "translateLabel": {
     "message": "Translate",
     "description": "Label for translate action"
+  },
+  "translating": {
+    "message": "Translating",
+    "description": ""
+  },
+  "updateNotificationMessage": {
+    "message": "Click here to see what's new",
+    "description": ""
+  },
+  "updateNotificationTitle": {
+    "message": "Selecton was updated to $VERSION$",
+    "description": "",
+    "placeholders": {
+      "version": {
+        "content": "$1",
+        "example": "1.0.0"
+      }
+    }
   },
   "updatePageToSeeChanges": {
     "message": "Refresh the page to see the changes",
@@ -514,103 +612,5 @@
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"
-  },
-  "invertColorOnDarkWebsite": {
-    "message": "Invert color on dark website",
-    "description": "Label for field in settings"
-  },
-  "tooltipInvertedBackground": {
-    "message": "Background color (dark page)",
-    "description": "Label for field in settings"
-  },
-  "showUpdateNotification": {
-    "message": "Show notification on update",
-    "description": "Label for field in settings"
-  },
-  "updateNotificationTitle": {
-    "message": "Selecton was updated to $VERSION$",
-    "description": "",
-    "placeholders": {
-      "version": {
-        "content": "$1",
-        "example": "1.0.0"
-      }
-    }
-  },
-  "updateNotificationMessage": {
-    "message": "Click here to see what's new",
-    "description": ""
-  },
-  "export": {
-    "message": "Export",
-    "description": ""
-  },
-  "import": {
-    "message": "Import",
-    "description": ""
-  },
-  "exportImportSettings": {
-    "message": "Export/import settings",
-    "description": ""
-  },
-  "importAlert": {
-    "message": "This action will override current Selecton settings. Are you sure?",
-    "description": ""
-  },
-  "translating": {
-    "message": "Translating",
-    "description": ""
-  },
-  "noTranslationFound": {
-    "message": "No translation found",
-    "description": ""
-  },
-  "searchingDefinitions": {
-    "message": "Searching for definitions",
-    "description": ""
-  },
-  "dictionaryLabel": {
-    "message": "Dictionary",
-    "description": "Label for Dictionary button"
-  },
-  "noDefinitionFound": {
-    "message": "No definition found",
-    "description": ""
-  },
-  "delayToRevealTranslateTooltip": {
-    "message": "Delay before auto translate (ms)",
-    "description": ""
-  },
-  "showDictionaryButton": {
-    "message": "Show the dictionary button",
-    "description": ""
-  },
-  "dictionaryButtonWordsAmount": {
-    "message": "Words to show dictionary button",
-    "description": ""
-  },
-  "exportSettingsLabel": {
-    "message": "Export settings",
-    "description": ""
-  },
-  "importSettingsLabel": {
-    "message": "Import settings",
-    "description": ""
-  },
-  "chooseFileFirst": {
-    "message": "Choose the file first",
-    "description": ""
-  },
-  "dictionaryButtonRemark": {
-    "message": "Looks up Wikipedia definitions on hover",
-    "description": ""
-  },
-  "dictionaryButtonResponseCharsAmount": {
-    "message": "Max number of chars to display as a result",
-    "description": ""
-  },
-  "showDotForHoverButtons": {
-    "message": "Show dot on buttons with hover event",
-    "description": ""
   }
 }

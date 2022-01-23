@@ -35,6 +35,10 @@
         "message": "Schaltfläche 'Einfügen' anzeigen, wenn auf das Textfeld geklickt wird",
         "description": "Label for option in settings"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... nur wenn Feld leer ist",
+        "description": "Label für Option in den Einstellungen"
+    },
     "addPhoneButton": {
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
         "description": "Bezeichnung für Option in Einstellungen"
@@ -59,6 +63,10 @@
         "message": "Panel-Erscheinungsbild",
         "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
     },
+    "applyConfigsImmediately": {
+        "message": "Wenden Sie Konfigurationen sofort an",
+        "description": "Header for appearance category in settings"
+    },
     "behaviourHeader": {
         "message": "Panel Behaviour",
         "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
@@ -79,6 +87,10 @@
         "message": "Textauswahl anpassen",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
+    "chooseFileFirst": {
+        "message": "Wähle zuerst die Datei aus",
+        "description": ""
+    },
     "contextualButtonsHeader": {
         "message": "Knöpfe",
         "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
@@ -87,13 +99,13 @@
         "message": "Währungen umrechnen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
-    "convertResultClickAction": {
-        "message": "Aktion beim Klick auf Ergebnis",
-        "description": "Label for field in settings"
-    },
     "convertMetrics": {
         "message": "Metriken konvertieren",
         "description": "Beschriftung für Feld in Einstellungen"
+    },
+    "convertResultClickAction": {
+        "message": "Aktion beim Klick auf Ergebnis",
+        "description": "Label for field in settings"
     },
     "convertTime": {
         "message": "Zeit umrechnen",
@@ -151,9 +163,33 @@
         "message": "Verzögerung vor dem Aufdecken des Panels (ms)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Verzögerung vor automatischer Übersetzung (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Löschen",
         "description": "Bezeichnung für die Schaltfläche 'Löschen'"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Sucht Wikipedia-Definitionen beim Hover nach",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Maximale Anzahl von Zeichen, die als Ergebnis angezeigt werden",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "Wörter belaufen sich auf die Wörterbuchschaltfläche",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Wörterbuch",
+        "description": "Label for Dictionary button"
+    },
+    "disableForBetterPerformance": {
+        "message": "Für bessere Leistung deaktivieren",
+        "description": "Label for option in settings"
     },
     "disableWordSnapForCode": {
         "message": "Wortfang für Code deaktivieren",
@@ -178,6 +214,18 @@
     "excludedDomains": {
         "message": "Ausgeschlossene Domains",
         "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "export": {
+        "message": "Export",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Export-/Importeinstellungen",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Die Einstellungen exportieren",
+        "description": ""
     },
     "extensionDescription": {
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
@@ -211,6 +259,10 @@
         "message": "Tooltip beim Scrollen ausblenden",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden",
+        "description": "Label for field in settings"
+    },
     "horizontalLayout": {
         "message": "Horizontal",
         "description": "Label for field in settings"
@@ -223,6 +275,22 @@
         "message": "Kaiserliche",
         "description": "Variante des Metriksystems für Dropdown"
     },
+    "import": {
+        "message": "Import",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Diese Aktion überschreibt die aktuellen Selecton-Einstellungen. Bist du sicher?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Die Einstellungen importieren",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Farbe auf dunkler Website invertieren",
+        "description": "Beschriftung für Feld in den Einstellungen"
+    },
     "languageToTranslate": {
         "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
         "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
@@ -234,6 +302,10 @@
     "mailto": {
         "message": "Desktop-E-Mail-Client",
         "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+    },
+    "maxIconsInRow": {
+        "message": "Anzahl der Symbole in der Reihe",
+        "description": "Label für Option in den Einstellungen"
     },
     "metric": {
         "message": "Metrisch",
@@ -259,9 +331,17 @@
         "message": "Aufrücken",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "noDefinitionFound": {
+        "message": "Keine Definition gefunden",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Keine Wirkung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "noTranslationFound": {
+        "message": "Keine Übersetzung gefunden",
+        "description": ""
     },
     "onlyicon": {
         "message": "Nur Symbole",
@@ -343,6 +423,10 @@
         "message": "Suche",
         "description": "Bezeichnung für Suchtextaktion"
     },
+    "searchingDefinitions": {
+        "message": "Suche nach Definitionen",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Tooltip aktiviert",
         "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
@@ -383,6 +467,14 @@
         "message": "Tastenbeschriftung beim Hover anzeigen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "showDictionaryButton": {
+        "message": "Wörterbuch-Schaltfläche anzeigen",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Punkt auf Schaltflächen mit Hover-Ereignis anzeigen",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "E-Mail-Schaltfläche hinzufügen",
         "description": "Beschriftung für Feld in Einstellungen"
@@ -411,6 +503,10 @@
         "message": "Originalwert vor Konvertierung anzeigen",
         "description": "Bezeichnung für Schaltfläche in Einstellungen"
     },
+    "showUpdateNotification": {
+        "message": "Benachrichtigung bei Update anzeigen",
+        "description": "Label for field in settings"
+    },
     "snapSelectionToWord": {
         "message": "Textauswahl nach Wort ausrichten",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -431,6 +527,10 @@
         "message": "Hintergrundfarbe",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "tooltipInvertedBackground": {
+        "message": "Hintergrundfarbe (dunkle Seite)",
+        "description": "Beschriftung für Feld in den Einstellungen"
+    },
     "tooltipOpacity": {
         "message": "Tooltip-Deckkraft",
         "description": "Beschriftung für Feld in Einstellungen"
@@ -446,6 +546,24 @@
     "translateLabel": {
         "message": "Übersetzen",
         "description": "Bezeichnung für Übersetzungsaktion"
+    },
+    "translating": {
+        "message": "Übersetzen",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Klicken Sie hier, um zu sehen, was neu ist",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton wurde auf $VERSION$ aktualisiert",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Aktualisiere die Seite, um die Änderungen zu sehen",
@@ -486,123 +604,5 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
-    },
-    "applyConfigsImmediately": {
-        "message": "Wenden Sie Konfigurationen sofort an",
-        "description": "Header for appearance category in settings"
-    },
-    "disableForBetterPerformance": {
-        "message": "Für bessere Leistung deaktivieren",
-        "description": "Label for option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Farbe auf dunkler Website invertieren",
-        "description": "Beschriftung für Feld in den Einstellungen"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Hintergrundfarbe (dunkle Seite)",
-        "description": "Beschriftung für Feld in den Einstellungen"
-    },
-    "maxIconsInRow": {
-        "message": "Anzahl der Symbole in der Reihe",
-        "description": "Label für Option in den Einstellungen"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... nur wenn Feld leer ist",
-        "description": "Label für Option in den Einstellungen"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Benachrichtigung bei Update anzeigen",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton wurde auf $VERSION$ aktualisiert",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Klicken Sie hier, um zu sehen, was neu ist",
-        "description": ""
-    },
-    "export": {
-        "message": "Export",
-        "description": ""
-    },
-    "import": {
-        "message": "Import",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Export-/Importeinstellungen",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Diese Aktion überschreibt die aktuellen Selecton-Einstellungen. Bist du sicher?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Übersetzen",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "Keine Übersetzung gefunden",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Verzögerung vor automatischer Übersetzung (ms)",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Suche nach Definitionen",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Wörterbuch",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Keine Definition gefunden",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Wörterbuch-Schaltfläche anzeigen",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "Wörter belaufen sich auf die Wörterbuchschaltfläche",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Die Einstellungen exportieren",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Die Einstellungen importieren",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Wähle zuerst die Datei aus",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Sucht Wikipedia-Definitionen beim Hover nach",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Maximale Anzahl von Zeichen, die als Ergebnis angezeigt werden",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Punkt auf Schaltflächen mit Hover-Ereignis anzeigen",
-        "description": ""
     }
 }

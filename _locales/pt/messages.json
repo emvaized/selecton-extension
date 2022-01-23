@@ -35,6 +35,10 @@
         "message": "Mostrar o botão 'Colar' ao clicar no campo de texto",
         "description": "Label for option in settings"
     },
+    "addPasteOnlyEmptyField": {
+        "message": "... somente quando o campo está vazio",
+        "description": "Rótulo para opção nas configurações"
+    },
     "addPhoneButton": {
         "message": "Adicionar botão de número de telefone",
         "description": "Rótulo para opção nas configurações"
@@ -59,6 +63,10 @@
         "message": "Aparência do painel",
         "description": "Cabeçalho da categoria de aparência nas configurações"
     },
+    "applyConfigsImmediately": {
+        "message": "Aplicar configurações imediatamente",
+        "description": "Header for appearance category in settings"
+    },
     "behaviorHeader": {
         "message": "Comportamento do painel",
         "description": "Cabeçalho da categoria de aparência nas configurações"
@@ -78,6 +86,10 @@
     "changeTextSelectionColor": {
         "message": "Personalizar seleção de texto",
         "description": "Rótulo para o campo nas configurações"
+    },
+    "chooseFileFirst": {
+        "message": "Escolha o arquivo primeiro",
+        "description": ""
     },
     "contextualButtonsHeader": {
         "message": "Botões",
@@ -151,9 +163,33 @@
         "message": "Atraso para revelar o painel (ms)",
         "description": "Label for option in settings"
     },
+    "delayToRevealTranslateTooltip": {
+        "message": "Atraso antes da tradução automática (ms)",
+        "description": ""
+    },
     "deleteLabel": {
         "message": "Excluir",
         "description": "Rótulo para o botão de exclusão"
+    },
+    "dictionaryButtonRemark": {
+        "message": "Procura as definições da Wikipedia ao passar o mouse",
+        "description": ""
+    },
+    "dictionaryButtonResponseCharsAmount": {
+        "message": "Número máximo de caracteres a serem exibidos como resultado",
+        "description": ""
+    },
+    "dictionaryButtonWordsAmount": {
+        "message": "As palavras somam para mostrar o botão",
+        "description": ""
+    },
+    "dictionaryLabel": {
+        "message": "Dicionário",
+        "description": "Label for Dictionary button"
+    },
+    "disableForBetterPerformance": {
+        "message": "Desabilite para melhor desempenho",
+        "description": "Label for option in settings"
     },
     "disableWordSnapForCode": {
         "message": "Desativar ajuste de palavras para código",
@@ -178,6 +214,18 @@
     "excludedDomains": {
         "message": "Domínios excluídos",
         "description": "Rótulo para opção nas configurações"
+    },
+    "export": {
+        "message": "Exportar",
+        "description": ""
+    },
+    "exportImportSettings": {
+        "message": "Exportar / importar configurações",
+        "description": ""
+    },
+    "exportSettingsLabel": {
+        "message": "Exportar configurações",
+        "description": ""
     },
     "extensionDescription": {
         "message": "Pop-up personalizável com ações na seleção de texto",
@@ -211,6 +259,10 @@
         "message": "Ocultar dica de ferramenta na rolagem",
         "description": "Rótulo para o campo nas configurações"
     },
+    "hideTranslateButtonForUserLanguage": {
+        "message": "Ocultar botão de tradução para o idioma do usuário",
+        "description": "Label for field in settings"
+    },
     "horizontalLayout": {
         "message": "Horizontal",
         "description": "Label for field in settings"
@@ -223,6 +275,22 @@
         "message": "Imperial",
         "description": "Variante do sistema de métricas para lista suspensa"
     },
+    "import": {
+        "message": "Importar",
+        "description": ""
+    },
+    "importAlert": {
+        "message": "Esta ação substituirá as configurações atuais do Selecton. Tem certeza?",
+        "description": ""
+    },
+    "importSettingsLabel": {
+        "message": "Importar configurações",
+        "description": ""
+    },
+    "invertColorOnDarkWebsite": {
+        "message": "Inverter cor no site escuro",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "languageToTranslate": {
         "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Rótulo para campo nas configurações, incorporando link embutido"
@@ -234,6 +302,10 @@
     "mailto": {
         "message": "Cliente de e-mail",
         "description": "Rótulo de opção para a configuração do novo método de e-mail"
+    },
+    "maxIconsInRow": {
+        "message": "Quantidade de ícones em linha",
+        "description": "Rótulo para opção nas configurações"
     },
     "metric": {
         "message": "Métrica",
@@ -259,9 +331,17 @@
         "message": "Mover para cima",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "noDefinitionFound": {
+        "message": "Nenhuma definição encontrada",
+        "description": ""
+    },
     "noTooltipEffect": {
         "message": "Sem efeito",
         "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "noTranslationFound": {
+        "message": "Nenhuma tradução encontrada",
+        "description": ""
     },
     "onlyicon": {
         "message": "Apenas ícones",
@@ -339,6 +419,10 @@
         "message": "Pesquisar",
         "description": "Rótulo para ação de texto de pesquisa"
     },
+    "searchingDefinitions": {
+        "message": "Procurando por definições",
+        "description": ""
+    },
     "secondaryTooltipEnabled": {
         "message": "Tooltip enabled",
         "description": "Rótulo para adicionar novo botão de opção de pesquisa"
@@ -379,6 +463,14 @@
         "message": "Mostrar rótulo do botão ao passar o mouse",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "showDictionaryButton": {
+        "message": "Mostrar o botão do dicionário",
+        "description": ""
+    },
+    "showDotForHoverButtons": {
+        "message": "Mostrar ponto nos botões com evento de foco",
+        "description": ""
+    },
     "showEmailButton": {
         "message": "Adicionar botão de e-mail",
         "description": "Rótulo para o campo nas configurações"
@@ -399,9 +491,17 @@
         "message": "Mostrar botão de tradução",
         "description": "Rótulo para o campo nas configurações"
     },
+    "showTranslateIfLanguageUnknown": {
+        "message": "Mostrar botão de tradução se o idioma não for detectado",
+        "description": "Label for field in settings"
+    },
     "showUnconvertedValue": {
         "message": "Mostrar valor original antes da conversão",
         "description": "Rótulo para o botão nas configurações"
+    },
+    "showUpdateNotification": {
+        "message": "Mostrar notificação na atualização",
+        "description": "Label for field in settings"
     },
     "snapSelectionToWord": {
         "message": "Seleção de texto por palavra",
@@ -423,6 +523,10 @@
         "message": "Cor de fundo",
         "description": "Rótulo para o campo nas configurações"
     },
+    "tooltipInvertedBackground": {
+        "message": "Cor de fundo (página escura)",
+        "description": "Rótulo para o campo nas configurações"
+    },
     "tooltipOpacity": {
         "message": "Opacidade da dica de ferramenta",
         "description": "Rótulo para o campo nas configurações"
@@ -438,6 +542,24 @@
     "translateLabel": {
         "message": "Traduzir",
         "description": "Rótulo para ação de tradução"
+    },
+    "translating": {
+        "message": "Traduzindo",
+        "description": ""
+    },
+    "updateNotificationMessage": {
+        "message": "Clique aqui para ver o que há de novo",
+        "description": ""
+    },
+    "updateNotificationTitle": {
+        "message": "Selecton foi atualizado para $VERSION$",
+        "description": "",
+        "placeholders": {
+            "version": {
+                "content": "$1",
+                "example": "1.0.0"
+            }
+        }
     },
     "updatePageToSeeChanges": {
         "message": "Atualize a página para ver as mudanças",
@@ -478,127 +600,5 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
-    },
-    "applyConfigsImmediately": {
-        "message": "Aplicar configurações imediatamente",
-        "description": "Header for appearance category in settings"
-    },
-    "disableForBetterPerformance": {
-        "message": "Desabilite para melhor desempenho",
-        "description": "Label for option in settings"
-    },
-    "invertColorOnDarkWebsite": {
-        "message": "Inverter cor no site escuro",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "tooltipInvertedBackground": {
-        "message": "Cor de fundo (página escura)",
-        "description": "Rótulo para o campo nas configurações"
-    },
-    "maxIconsInRow": {
-        "message": "Quantidade de ícones em linha",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "addPasteOnlyEmptyField": {
-        "message": "... somente quando o campo está vazio",
-        "description": "Rótulo para opção nas configurações"
-    },
-    "hideTranslateButtonForUserLanguage": {
-        "message": "Ocultar botão de tradução para o idioma do usuário",
-        "description": "Label for field in settings"
-    },
-    "showTranslateIfLanguageUnknown": {
-        "message": "Mostrar botão de tradução se o idioma não for detectado",
-        "description": "Label for field in settings"
-    },
-    "showUpdateNotification": {
-        "message": "Mostrar notificação na atualização",
-        "description": "Label for field in settings"
-    },
-    "updateNotificationTitle": {
-        "message": "Selecton foi atualizado para $VERSION$",
-        "description": "",
-        "placeholders": {
-            "version": {
-                "content": "$1",
-                "example": "1.0.0"
-            }
-        }
-    },
-    "updateNotificationMessage": {
-        "message": "Clique aqui para ver o que há de novo",
-        "description": ""
-    },
-    "export": {
-        "message": "Exportar",
-        "description": ""
-    },
-    "import": {
-        "message": "Importar",
-        "description": ""
-    },
-    "exportImportSettings": {
-        "message": "Exportar / importar configurações",
-        "description": ""
-    },
-    "importAlert": {
-        "message": "Esta ação substituirá as configurações atuais do Selecton. Tem certeza?",
-        "description": ""
-    },
-    "translating": {
-        "message": "Traduzindo",
-        "description": ""
-    },
-    "noTranslationFound": {
-        "message": "Nenhuma tradução encontrada",
-        "description": ""
-    },
-    "delayToRevealTranslateTooltip": {
-        "message": "Atraso antes da tradução automática (ms)",
-        "description": ""
-    },
-    "searchingDefinitions": {
-        "message": "Procurando por definições",
-        "description": ""
-    },
-    "dictionaryLabel": {
-        "message": "Dicionário",
-        "description": "Label for Dictionary button"
-    },
-    "noDefinitionFound": {
-        "message": "Nenhuma definição encontrada",
-        "description": ""
-    },
-    "showDictionaryButton": {
-        "message": "Mostrar o botão do dicionário",
-        "description": ""
-    },
-    "dictionaryButtonWordsAmount": {
-        "message": "As palavras somam para mostrar o botão",
-        "description": ""
-    },
-    "exportSettingsLabel": {
-        "message": "Exportar configurações",
-        "description": ""
-    },
-    "importSettingsLabel": {
-        "message": "Importar configurações",
-        "description": ""
-    },
-    "chooseFileFirst": {
-        "message": "Escolha o arquivo primeiro",
-        "description": ""
-    },
-    "dictionaryButtonRemark": {
-        "message": "Procura as definições da Wikipedia ao passar o mouse",
-        "description": ""
-    },
-    "dictionaryButtonResponseCharsAmount": {
-        "message": "Número máximo de caracteres a serem exibidos como resultado",
-        "description": ""
-    },
-    "showDotForHoverButtons": {
-        "message": "Mostrar ponto nos botões com evento de foco",
-        "description": ""
     }
 }
