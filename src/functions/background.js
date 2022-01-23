@@ -14,12 +14,12 @@ chrome.runtime.onMessage.addListener(
         } if (request.type == 'selecton-export-configs') {
             const filename = request.name ?? 'selecton-settings.json';
             const jsonStr = JSON.stringify(request.configs);
-            let element = document.createElement('a');
 
             if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
                 /// Safari-specific method, until 'download' attribute is properly supported
                 window.open('data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
             } else {
+                let element = document.createElement('a');
                 element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
                 element.setAttribute('download', filename);
                 element.style.display = 'none';
