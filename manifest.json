@@ -78,7 +78,6 @@
     "https://translate.googleapis.com/*",
     "https://api.exchangerate.host/*",
     "https://min-api.cryptocompare.com/data/*",
-    "https://min-api.cryptocompare.com/data/*",
     "https://*.wikipedia.org/w/*",
     "storage",
     "notifications",
