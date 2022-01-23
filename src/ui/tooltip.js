@@ -534,8 +534,8 @@ function addContextualButtons() {
             let convertedUnit;
 
             /// Feet ' and inches " handling
-            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && /['||"]/.test(selectedText)) /// don't proccess if text includes letters
-                // if (!/[a-zA-Z]/g.test(selectedText) && !/[а-яА-Я]/g.test(selectedText))
+            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && /['||"]/.test(selectedText))
+                /// don't proccess if text includes letters
                 if (!/[a-zA-Z]/g.test(selectedText))
                     if (selectedText.includes("'")) {
                         let feet;
@@ -571,12 +571,8 @@ function addContextualButtons() {
                         }
                     }
 
-            /// Basic unit conversion
-            // outerloop: for (const [key, value] of Object.entries(convertionUnits)) {
-
             /// Check for keywords in text
             let includesKeyword = false;
-
             const unitsKeywords = configs.preferredMetricsSystem == 'metric' ? convertionUnits : imprerialConvertionUnits;
             const unitKeys = Object.keys(unitsKeywords);
 
@@ -585,7 +581,8 @@ function addContextualButtons() {
 
                 let nonConvertedUnit = key;
                 if (selectedText.includes(nonConvertedUnit)) {
-                    if ((nonConvertedUnit == 'pound') && tooltip.children.length == 4) return;
+                    /// don't duplicate when found 'pound' (as it's also a currency)
+                    if (nonConvertedUnit == 'pound' && tooltip.children.length == 4) return;
                     if (configs.debugMode) console.log('found key: ' + nonConvertedUnit);
                     includesKeyword = i; break;
                 } else if (unitsKeywords[key]['variations']) {
@@ -602,7 +599,7 @@ function addContextualButtons() {
 
             /// Calculate value
             if (includesKeyword !== false) {
-                /// Special handling for prices where coma separates fractional digits instead of thousandths
+                /// Special handling for values where coma separates fractional digits instead of thousandths
                 if (selectedText.includes(',')) {
                     let parts = selectedText.split(',');
                     if (parts.length == 2)
@@ -645,14 +642,12 @@ function addContextualButtons() {
                     interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
 
                 const converted = document.createElement('span');
-                // converted.textContent = ` ${convertedNumber} ${convertedUnit}`;
                 converted.textContent = ` ${convertedNumber}`;
                 converted.classList.add('color-highlight');
                 interactiveButton.appendChild(converted);
 
                 const unitLabelEl = document.createElement('span');
                 unitLabelEl.textContent = ` ${convertedUnit}`;
-                // unitLabelEl.setAttribute('style', `color: ${unitLabelColor}`);
                 unitLabelEl.style.color = unitLabelColor;
                 interactiveButton.appendChild(unitLabelEl);
 
@@ -794,7 +789,7 @@ function addContextualButtons() {
                         emailLabel.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
                         emailLabel.classList.add('color-highlight');
 
-                        /// Add tooltip with full website on hover
+                        /// Add tooltip with full text on hover
                         if (emailText.length > linkSymbolsToShow)
                             emailButton.setAttribute('title', emailText);
                         emailButton.appendChild(emailLabel);
@@ -850,7 +845,7 @@ function addContextualButtons() {
                 colorButton.setAttribute('class', 'selection-popup-button button-with-border');
 
                 const colorCircle = document.createElement('div');
-                colorCircle.setAttribute('class', `selection-popup-color-preview-circle`);
+                colorCircle.setAttribute('class', 'selection-popup-color-preview-circle');
                 colorCircle.style.background = colorText;
 
                 /// Add red/green/blue tooltip on hover
@@ -895,7 +890,6 @@ function addContextualButtons() {
                     if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
                         if (configs.debugMode)
                             console.log('converting from 12h to 24...');
-                        // textToProccess = textToProccess.replaceAll(numbers + (textToProccess.includes('PM') ? ' PM' : ' AM'), convertTime12to24(textToProccess))
                         textToProccess = convertTime12to24(textToProccess);
                         if (configs.debugMode)
                             console.log('result: ' + textToProccess);
@@ -904,7 +898,6 @@ function addContextualButtons() {
                     if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
                         if (configs.debugMode)
                             console.log('converting from 12h to 24...');
-                        // textToProccess = textToProccess.replaceAll(numbers.join(':'), convertTime24to12(textToProccess))
                         textToProccess = convertTime24to12(textToProccess);
 
                         if (configs.debugMode)
@@ -1005,7 +998,7 @@ function addContextualButtons() {
             if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {
                 let link = selectedText;
                 const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
-                let domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
+                const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
 
                 if (selectedText.includes('://') || ((splittedByDots.length == 2 || splittedByDots.length == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
 
