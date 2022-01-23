@@ -1039,41 +1039,34 @@ function addContextualButtons() {
                         if (lastSymbol == "'" || lastSymbol == '"' || lastSymbol == "»" || lastSymbol == '”')
                             link = link.substring(0, linkLength - 1);
 
-                        try {
-                            /// Filtering out non-links
-                            const lastWordAfterDot = splittedByDots[splittedByDots.length - 1];
+                        /// Add open link button
+                        const interactiveButton = document.createElement('button');
+                        interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
+                        let linkText = document.createElement('div');
+                        linkText.style.display = 'inline';
+                        linkText.textContent = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                        linkText.classList.add('color-highlight');
 
-                            if ((1 < lastWordAfterDot.length < 4) || lastWordAfterDot.includes('/') || link.includes('://')) {
-                                /// Adding  open link button
-                                const interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                                let linkText = document.createElement('div');
-                                linkText.style.display = 'inline';
-                                linkText.textContent = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                                linkText.classList.add('color-highlight');
+                        /// Add tooltip with full website on hover
+                        if (link.length > linkSymbolsToShow)
+                            interactiveButton.setAttribute('title', link);
 
-                                /// Add tooltip with full website on hover
-                                if (link.length > linkSymbolsToShow)
-                                    interactiveButton.setAttribute('title', link);
+                        if (addButtonIcons)
+                            interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon, undefined, true));
+                        else interactiveButton.textContent = openLinkLabel + ' ';
 
-                                if (addButtonIcons)
-                                    interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon, undefined, true));
-                                else interactiveButton.textContent = openLinkLabel + ' ';
+                        interactiveButton.appendChild(linkText);
+                        interactiveButton.addEventListener("mousedown", function (e) {
+                            if (!link.includes('://') && !link.includes('about:'))
+                                link = 'https://' + link;
 
-                                interactiveButton.appendChild(linkText);
-                                interactiveButton.addEventListener("mousedown", function (e) {
-                                    if (!link.includes('://') && !link.includes('about:'))
-                                        link = 'https://' + link;
+                            onTooltipButtonClick(e, link);
+                        });
 
-                                    onTooltipButtonClick(e, link);
-                                });
-
-                                if (configs.reverseTooltipButtonsOrder)
-                                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                                else
-                                    tooltip.appendChild(interactiveButton);
-                            }
-                        } catch (e) { console.log(e) }
+                        if (configs.reverseTooltipButtonsOrder)
+                            tooltip.insertBefore(interactiveButton, tooltip.children[1]);
+                        else
+                            tooltip.appendChild(interactiveButton);
                     }
 
                 }
