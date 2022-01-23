@@ -1,3 +1,11 @@
+#3.5.0
+- New 'Dictionary' button, which fetches definition from Wikipedia on hover
+- Improvements for 'Translate' button - live translation is now getting fetched on hover, and enabled by default
+- Improved snapping text selection by words
+- Improved URL detection for 'Open link' button
+- Fixes for import/export functionality
+- Options page improvements and fixes - expanded sections are now restored on re-open
+
 #3.4.2
 - First implementation of import/export functionality
 - Fix for plus sign "+" ignored by search button

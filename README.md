@@ -5,10 +5,14 @@ Get customizable pop-up with action buttons on text selection!
 * Customizable appearance for tooltip and custom text selection color
 * Currency converter (supports 30+ currencies & 10+ crypto currencies)
 * Basic units converter (metric/imperial) and timezones conversion
-* Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map', CSS color display and more 
-* Enable snapping selection by words, so you'll never loose that last letter again
-* Selection handles, which allow to quickly edit text selection
-* Live translation of the selected text (up to 3 words)
+* Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map', CSS color preview and more 
+* Automatic snapping of text selection by words, so you'll never lose that last letter again
+* Selection handles, which allow to quickly edit the selection
+* Live translation of the selected text on hovering "Translate" button
+* Dictionary button, which fetches definition from Wikipedia on hover
+... and many more
+
+<img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
 
 
 Download for Firefox:
@@ -78,7 +82,7 @@ ____
 
 ### FAQ
 
-**On Firefox, can't change colors from extension popup**
+**On Firefox, can't change colors or import settings from extension popup**
 
 * This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1378527).
 To change colors on Firefox, open settings in new tab by clicking button in top-right corner of the popup
