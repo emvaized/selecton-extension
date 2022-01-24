@@ -10,7 +10,6 @@ Get customizable pop-up with action buttons on text selection!
 * Selection handles, which allow to quickly edit the selection
 * Live translation of the selected text on hovering "Translate" button
 * Dictionary button, which fetches definition from Wikipedia on hover
-... and many more
 
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
 
