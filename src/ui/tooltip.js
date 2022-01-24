@@ -999,8 +999,9 @@ function addContextualButtons() {
                 let link = selectedText;
                 const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
                 const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
+                const includesUrlMarker = selectedText.includes('://');
 
-                if (selectedText.includes('://') || ((splittedByDots.length == 2 || splittedByDots.length == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
+                if (includesUrlMarker || ((splittedByDots.length == 2 || splittedByDots.length == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
 
                     /// Don't recognize if selected text looks like filename
                     for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
@@ -1010,7 +1011,7 @@ function addContextualButtons() {
                         }
                     }
 
-                    if (isFileName == false) {
+                    if (isFileName == false || includesUrlMarker) {
                         link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
                         let linkLength = link.length;
                         let lastSymbol = link[linkLength - 1];
