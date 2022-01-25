@@ -149,8 +149,9 @@ function snapSelectionByWords(sel) {
         /// Check last symbol after modification
         /// If last symbol is undesirable, trim it
         selString = sel.toString();
+        const selStringLength = selString.length;
         firstSymbolOfSelection = selString[0];
-        lastSymbolOfSelection = selString[selString.length - 1];
+        lastSymbolOfSelection = selString[selStringLength - 1];
         symbolToCheck = backwards ? firstSymbolOfSelection : lastSymbolOfSelection;
         shouldUntrimLastCh = false;
         switch (symbolToCheck) {
@@ -164,7 +165,7 @@ function snapSelectionByWords(sel) {
             // case "»": shouldUntrimLastCh = true; break;
             case ',': {
                 /// Also untrim if symbol before "," is " ")
-                if (selString[selString.length - 2] == ')') sel.modify("extend", direction[1], "character");
+                if (selString[selStringLength - 2] == ')') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
             case ':': {
