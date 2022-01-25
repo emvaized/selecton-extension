@@ -161,6 +161,7 @@ function snapSelectionByWords(sel) {
             case '>': shouldUntrimLastCh = true; break;
             case '"': shouldUntrimLastCh = true; break;
             case "'": shouldUntrimLastCh = true; break;
+            case "»": shouldUntrimLastCh = true; break;
             case ',': {
                 /// Also untrim if symbol before "," is " ")
                 if (selString[selString.length - 2] == ')') sel.modify("extend", direction[1], "character");
