@@ -81,6 +81,21 @@ ____
 
 ### FAQ
 
+**How to disable word snapping?**
+
+* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped by word.
+To permanently disable word snapping, add website to word-snapping blacklist or uncheck:
+"Settings > Text selection > Snap text selection by word"
+
+**How to enable tooltip for text fields?**
+
+* "Selecton settings > Buttons > Use special panel for text fields"
+This is disabled by default because with this option on extension will use a little bit more resources by analyzing every mouse click
+
+**Disable selection handles on the right and left?**
+
+* Settings > Text selection > Add selection drag handles
+
 **On Firefox, can't change colors or import settings from extension popup**
 
 * This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1378527).
@@ -88,20 +103,11 @@ To change colors on Firefox, open settings in new tab by clicking button in top-
 
 **Change fetch interval for currency rates?**
 
-* Settings > Conversion > Rates update interval
-
-**Disable selection handles on the right and left?**
-
-* Settings > Text selection > Add selection drag handles
-
-**How to disable word snapping?**
-
-* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped by word.
-To permanently disable word snapping, add website to word-snapping blacklist or uncheck:
-"Settings > Text selection > Snap text selection by word"
+* "Settings > Conversion > Rates update interval"
+This is set to "18" by default, because rates tend to not change drastically so often, and it is better to reduce load on free service we're using for fetching new rates.
 
 **Why extension doesn't work on new tab page?**
-* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages (`chrome://`, `about:`, etc.) and on extensions store.
+* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages (`chrome://`, `about:`, etc.) and in extensions store.
 
 **Additional search buttons do not show on hovering Search button?**
 
