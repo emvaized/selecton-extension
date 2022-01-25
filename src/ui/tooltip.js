@@ -30,7 +30,7 @@ function createTooltip(e, recreated = false) {
                             }
 
                         if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
-                            if (domainIsBlacklistedForSnapping == false && e.detail < 3 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                            if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                                 snapSelectionByWords(selection);
                     }
                 }
