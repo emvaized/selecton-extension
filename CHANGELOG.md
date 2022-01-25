@@ -1,3 +1,8 @@
+#3.5.1
+- Improved URL detection for 'open link' button
+- Improved snapping selection by word
+- Other small fixes and improvements
+
 #3.5.0
 - New 'Dictionary' button, which fetches definition from Wikipedia on hover
 - Improvements for 'Translate' button - live translation is now getting fetched on hover, and enabled by default

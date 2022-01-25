@@ -6,9 +6,9 @@ Get customizable pop-up with action buttons on text selection!
 * Currency converter (supports 30+ currencies & 10+ crypto currencies)
 * Basic units converter (metric/imperial) and timezones conversion
 * Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map', CSS color preview and more 
-* Automatic snapping of text selection by words, so you'll never lose that last letter again
+* Smart selection - automatic snapping of text selection by words, so you'll never lose that last letter again
 * Selection handles, which allow to quickly edit the selection
-* Live translation of the selected text on hovering "Translate" button
+* Live translation of the selected text on hovering the "Translate" button
 * Dictionary button, which fetches definition from Wikipedia on hover
 
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
