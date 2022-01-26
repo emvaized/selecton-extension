@@ -169,6 +169,7 @@ async function fetchDefinition(text, lang, definitionPanel, wikiButton) {
 
     if (resultDefinition == null || resultDefinition == undefined || resultDefinition == '') {
         /// try to fetch from english Wiki
+        locale = 'en';
         await fetchFromWikipedia('en');
     }
 
@@ -187,12 +188,12 @@ async function fetchDefinition(text, lang, definitionPanel, wikiButton) {
 
     /// Create origin language label
     let originLabelWidth = configs.fontSize / 1.5;
-    let originLabelPadding = 3.5;
+    let originLabelPadding = 6;
     let langLabel;
-    if (lang !== null && lang !== undefined && lang !== '') {
+    if (locale !== null && locale !== undefined && locale !== '') {
         langLabel = document.createElement('span');
-        langLabel.textContent = lang;
-        langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
+        langLabel.textContent = locale;
+        langLabel.setAttribute('style', `opacity: 0.7; position: absolute; right: ${originLabelPadding}px; bottom: ${originLabelPadding}px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
         definitionPanel.appendChild(langLabel);
     }
 
