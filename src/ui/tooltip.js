@@ -1,96 +1,128 @@
 function createTooltip(e, recreated = false) {
+
     if (isDraggingTooltip) return;
+    if (dontShowTooltip == true) return;
+    if (e !== undefined && e !== null && e.button !== 0) return;
 
-    if (dontShowTooltip !== true)
-        setTimeout(
-            function () {
-                if (e !== undefined && e !== null && e.button !== 0) return;
-                if (selection == null) return;
+    setTimeout(function () {
+        lastMouseUpEvent = e;
+        if (selection == null || selection == undefined) return;
+        // hideTooltip();
 
-                lastMouseUpEvent = e;
-                // hideTooltip();
+        if (configs.snapSelectionToWord) {
+            if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
+                if (configs.debugMode)
+                    console.log('Word snapping rejected while textfield is focused');
+            } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
+                if (configs.debugMode)
+                    console.log('Word snapping rejected due to pressed CTRL key');
+            } else {
 
-                if (configs.snapSelectionToWord) {
-                    if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
-                        if (configs.debugMode)
-                            console.log('Word snapping rejected while textfield is focused');
-                    } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
-                        if (configs.debugMode)
-                            console.log('Word snapping rejected due to pressed CTRL key');
-                    } else {
+                selectedText = selection.toString();
 
-                        selectedText = selection.toString();
-
-                        let selectedTextIsCode = false;
-                        if (configs.disableWordSnapForCode)
-                            for (let i = 0, l = codeMarkers.length; i < l; i++) {
-                                if (selectedText.includes(codeMarkers[i])) {
-                                    selectedTextIsCode = true; break;
-                                }
-                            }
-
-                        if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
-                            if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
-                                snapSelectionByWords(selection);
-                    }
-                }
-
-                /// Special tooltip for text fields
-                if (isTextFieldFocused) {
-                    if (configs.addActionButtonsForTextFields == false) return;
-
-                    /// Create text field tooltip
-                    setUpNewTooltip('textfield');
-                    if (tooltip.children.length < 2) return;
-
-                    document.body.appendChild(tooltip);
-
-                    /// Check resulting DY to be out of view
-                    let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 9;
-                    let vertOutOfView = resultDy <= 0;
-                    if (vertOutOfView) {
-                        resultDy = e.clientY + arrow.clientHeight;
-                        arrow.classList.add('arrow-on-bottom');
+                let selectedTextIsCode = false;
+                if (configs.disableWordSnapForCode)
+                    for (let i = 0, l = codeMarkers.length; i < l; i++) {
+                        if (selectedText.includes(codeMarkers[i])) {
+                            selectedTextIsCode = true; break;
+                        }
                     }
 
-                    showTooltip(e.clientX - (tooltip.clientWidth / 2), resultDy);
-                    return;
-                }
+                if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
+                    if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                        snapSelectionByWords(selection);
+            }
+        }
 
-                /// Hide previous tooltip if exists
-                if (tooltip !== null && tooltip !== undefined) hideTooltip();
+        /// Special tooltip for text fields
+        if (isTextFieldFocused) {
+            if (configs.addActionButtonsForTextFields == false) return;
 
-                /// Check text selection again
-                /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
-                selection = window.getSelection();
-                selectedText = selection.toString().trim();
+            /// Create text field tooltip
+            setUpTooltip();
+            addBasicTooltipButtons('textfield');
 
-                if (selectedText == '') {
-                    hideDragHandles();
-                    return;
-                }
+            if (tooltip.children.length < 2) {
+                /// Don't add tooltip with no buttons
+                tooltip.remove();
+                return;
+            }
 
-                setUpNewTooltip(null, recreated);
+            document.body.appendChild(tooltip);
 
-                if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
-                    addContextualButtons();
+            /// Check resulting DY to be out of view
+            let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 9;
+            let vertOutOfView = resultDy <= 0;
+            if (vertOutOfView) {
+                resultDy = e.clientY + arrow.clientHeight;
+                arrow.classList.add('arrow-on-bottom');
+            }
 
-                    setTimeout(function () {
-                        /// Set border radius for first and last buttons
-                        tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-                        tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
+            showTooltip(e.clientX, resultDy);
+            return;
+        }
 
-                        //oldTooltips.push(tooltip);
-                        document.body.appendChild(tooltip);
-                        calculateTooltipPosition(e);
-                    }, 1);
-                } else hideTooltip();
+        /// Hide previous tooltip if exists
+        if (tooltip !== null && tooltip !== undefined) hideTooltip();
 
-            }, 2
-        );
+        /// Check text selection again
+        /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
+        selection = window.getSelection();
+        selectedText = selection.toString().trim();
+
+        if (selectedText == '') {
+            hideDragHandles();
+            return;
+        }
+
+        setUpTooltip(recreated);
+
+        /// Add basic buttons (Copy, Search, etc)
+        addBasicTooltipButtons(null);
+
+        if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
+            addContextualButtons();
+
+            setTimeout(function () {
+                /// Set border radius for first and last buttons
+                setBorderRadiusForSideButtons(tooltip);
+
+                /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
+                setTimeout(function () {
+                    calculateTooltipPosition(e);
+                }, 0);
+                // let coords = calculateTooltipPosition(e);
+                // showTooltip(coords[0], coords[1]);
+
+                /// Append tooltip to the DOM
+                document.body.appendChild(tooltip);
+
+                /// Create search tooltip for custom search options)
+                setTimeout(function () {
+                    // correctTooltipPosition();
+                    if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+                        setHoverForSearchButton(searchButton);
+                }, 5);
+
+                /// Check for colliding with side edges
+                setTimeout(function () {
+                    if (!tooltipIsShown) return;
+                    checkTooltipForCollidingWithSideEdges();
+                }, 10);
+
+                /// Selection change listener
+                setTimeout(function () {
+                    if (tooltipIsShown == false) return;
+                    document.addEventListener("selectionchange", selectionChangeListener);
+                }, configs.animationDuration);
+            }, 0);
+
+        } else hideTooltip();
+
+    }, 0);
 }
 
-function setUpNewTooltip(type, recreated = false) {
+function setUpTooltip(recreated = false) {
 
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
@@ -126,18 +158,15 @@ function setUpNewTooltip(type, recreated = false) {
         }
     }
 
+    /// Add tooltip arrow
     arrow = document.createElement('div');
     arrow.setAttribute('class', 'selection-tooltip-arrow');
-    let arrowChild = document.createElement('div');
-    arrowChild.setAttribute('class', 'selection-tooltip-arrow-child');
-
-    arrow.appendChild(arrowChild);
     tooltip.appendChild(arrow);
 
-    // Make the tooltip draggable by arrow
+    /// Make the tooltip draggable by arrow
     if (configs.draggableTooltip) {
-        arrowChild.style.cursor = 'move';
-        arrowChild.onmousedown = function (e) {
+        arrow.style.cursor = 'move';
+        arrow.onmousedown = function (e) {
             isDraggingTooltip = true;
             e.preventDefault();
             if (configs.debugMode)
@@ -172,12 +201,12 @@ function setUpNewTooltip(type, recreated = false) {
                 tooltip.style.pointerEvents = 'auto';
 
                 /// Recreate secondary tooltip
-                if (configs.secondaryTooltipEnabled) {
-                    if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
-                        secondaryTooltip.parentNode.removeChild(secondaryTooltip);
-                        createSecondaryTooltip();
-                    }
-                }
+                // if (configs.secondaryTooltipEnabled) {
+                //     if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
+                //         secondaryTooltip.parentNode.removeChild(secondaryTooltip);
+                //         setHoverForSearchButton();
+                //     }
+                // }
 
                 if (configs.debugMode)
                     console.log('Dragging tooltip finished');
@@ -194,893 +223,16 @@ function setUpNewTooltip(type, recreated = false) {
         /// Set rounded corners for buttons
         firstButtonBorderRadius = `${configs.borderRadius / 1.5}px 0px 0px ${configs.borderRadius / 1.5}px`;
         lastButtonBorderRadius = `0px ${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px 0px`;
+        onlyButtonBorderRadius = `${configs.borderRadius / 1.5}px`;
     } else {
         /// Set default corners for buttons
         firstButtonBorderRadius = '3px 0px 0px 3px';
         lastButtonBorderRadius = '0px 3px 3px 0px';
+        onlyButtonBorderRadius = '3px';
     }
 
     if (configs.debugMode)
         console.log('Selecton tooltip was created');
-
-    /// Add basic buttons (Copy, Search, etc)
-    addBasicTooltipButtons(type);
-}
-
-function addBasicTooltipButtons(layout) {
-    if (layout == 'textfield') {
-        const textField = document.activeElement;
-
-        if (selection.toString() !== '') {
-            try {
-                /// Add a cut button 
-                const cutButton = document.createElement('button');
-                cutButton.setAttribute('class', `selection-popup-button`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    cutButton.setAttribute('title', cutLabel);
-
-                if (addButtonIcons)
-                    cutButton.appendChild(createImageIconNew(cutButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : cutLabel));
-                else
-                    cutButton.textContent = cutLabel;
-                cutButton.style.borderRadius = firstButtonBorderRadius;
-                cutButton.addEventListener("mousedown", function (e) {
-                    document.execCommand('cut');
-                    hideTooltip();
-                    // removeSelectionOnPage();
-                });
-                tooltip.appendChild(cutButton);
-
-                /// Add copy button 
-                const copyButton = document.createElement('button');
-                copyButton.setAttribute('class', `selection-popup-button button-with-border`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    copyButton.setAttribute('title', copyLabel);
-                if (addButtonIcons)
-                    copyButton.appendChild(createImageIconNew(copyButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : copyLabel));
-                else
-                    copyButton.textContent = copyLabel;
-
-                copyButton.addEventListener("mousedown", function (e) {
-                    try {
-                        textField.focus();
-                        document.execCommand('copy');
-                        hideTooltip();
-                        removeSelectionOnPage();
-
-                    } catch (e) { console.log(e); }
-                });
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(copyButton, cutButton);
-                else
-                    tooltip.appendChild(copyButton);
-
-                // if (configs.addPasteButton) {
-                /// Add paste button 
-                const pasteButton = document.createElement('button');
-                pasteButton.setAttribute('class', `selection-popup-button button-with-border`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    pasteButton.setAttribute('title', pasteLabel);
-                if (addButtonIcons)
-                    pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
-                else
-                    pasteButton.textContent = pasteLabel;
-
-                pasteButton.addEventListener("mousedown", function (e) {
-                    textField.focus();
-
-                    if (textField.getAttribute('contenteditable') !== null) {
-                        // chrome.permissions.request({
-                        //     permissions: ['clipboardRead'],
-                        // }, (granted) => {
-                        //     if (granted) {
-                        let currentClipboardContent = getCurrentClipboard();
-                        if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                            document.execCommand("insertHTML", false, currentClipboardContent);
-                        //     } else {
-                        //         chrome.runtime.sendMessage({ type: 'selecton-no-clipboard-permission-message' });
-                        //     }
-                        // });
-
-                    } else
-                        document.execCommand('paste');
-
-                    removeSelectionOnPage();
-                });
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(pasteButton, copyButton);
-                else
-                    tooltip.appendChild(pasteButton);
-                // }
-            } catch (e) { if (configs.debugMode) console.log(e) }
-
-            /// Set border radius for buttons
-            tooltip.children[1].style.borderRadius = firstButtonBorderRadius;
-            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-
-        } else {
-            if (configs.addPasteButton)
-                try {
-                    /// Add only paste button 
-                    const pasteButton = document.createElement('button');
-                    pasteButton.setAttribute('class', `selection-popup-button`);
-                    pasteButton.style.borderRadius = configs.useCustomStyle ? `${configs.borderRadius}px` : '3px';
-
-                    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                        pasteButton.setAttribute('title', pasteLabel);
-
-                    if (addButtonIcons)
-                        pasteButton.appendChild(createImageIconNew(pasteButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : pasteLabel));
-                    else
-                        pasteButton.textContent = pasteLabel;
-
-                    pasteButton.addEventListener("mousedown", function (e) {
-                        textField.focus();
-
-                        if (textField.getAttribute('contenteditable') !== null) {
-                            let currentClipboardContent = getCurrentClipboard();
-
-                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                                document.execCommand("insertHTML", false, currentClipboardContent);
-                        } else
-                            document.execCommand('paste');
-
-                        removeSelectionOnPage();
-                    });
-                    tooltip.appendChild(pasteButton);
-                } catch (e) { if (configs.debugMode) console.log(e); }
-        }
-
-    } else {
-        /// Add search button
-        searchButton = document.createElement('button');
-        searchButton.setAttribute('class', 'selection-popup-button');
-
-        // if (configs.showButtonLabelOnHover)
-        //     searchButton.setAttribute('title', configs.preferredSearchEngine);
-        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-            searchButton.setAttribute('title', searchLabel);
-
-        if (addButtonIcons)
-            searchButton.appendChild(createImageIconNew(searchButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : searchLabel));
-        else
-            searchButton.textContent = searchLabel;
-
-        searchButton.addEventListener("mousedown", function (e) {
-            let selectedText = selection.toString();
-            onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
-        });
-        tooltip.appendChild(searchButton);
-
-        /// Add copy button 
-        const copyButton = document.createElement('button');
-        copyButton.setAttribute('class', `selection-popup-button button-with-border`);
-        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-            copyButton.setAttribute('title', copyLabel);
-        if (addButtonIcons)
-            copyButton.appendChild(createImageIconNew(copyButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : copyLabel));
-        else
-            copyButton.textContent = copyLabel;
-        copyButton.addEventListener("mousedown", function (e) {
-            document.execCommand('copy');
-            removeSelectionOnPage();
-        });
-
-        if (configs.reverseTooltipButtonsOrder)
-            tooltip.insertBefore(copyButton, searchButton);
-        else
-            tooltip.appendChild(copyButton);
-    }
-}
-
-function addContextualButtons() {
-    if (configs.debugMode)
-        console.log('Checking to add contextual buttons...');
-
-    if (selection == null) return;
-
-    var selectedText = selection.toString().trim();
-    const loweredSelectedText = selectedText.toLowerCase();
-    const wordsCount = selectedText.split(' ').length;
-    const selectionContainsSpaces = selectedText.includes(' ');
-    let isFileName = false;
-
-    if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
-        var numberToConvert;
-        var unitLabelColor = isDarkTooltip ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.75)';
-
-        /// Convert currency button
-        if (configs.convertCurrencies) {
-            let currency, amount, currencyRate, currencySymbol;
-            // var amount;
-            // var currencyRate;
-            // var currencySymbol;
-
-            let match = false;
-
-            // const keys = Object.keys(currenciesList);
-            // for (let i = 0, l = keys.length; i < l; i++) {
-            //     let key = keys[i];
-            //     let value = currenciesList[key];
-
-            for (const [key, value] of Object.entries(currenciesList)) {
-                if (selectedText.includes(' ' + key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
-                    if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
-                    match = true;
-                } else {
-                    const currencyKeywords = value["currencyKeywords"];
-                    if (currencyKeywords !== null && currencyKeywords !== undefined)
-                        for (i in currencyKeywords) {
-                            if (loweredSelectedText.includes(currencyKeywords[i])) {
-                                if (configs.debugMode) console.log('found currency match for: ' + currencyKeywords[i]);
-                                match = true;
-                            }
-                        }
-                }
-
-                if (match) {
-                    currency = key;
-                    currencyRate = value["rate"];
-                    currencySymbol = value["currencySymbol"];
-
-                    /// Special handling for prices where coma separates fractional digits instead of thousandths
-                    if (selectedText.includes(',')) {
-                        let parts = selectedText.split(',');
-                        if (parts.length == 2) {
-                            if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
-                                selectedText = selectedText.replaceAll(',', '.');
-                            }
-                        }
-                    }
-
-                    /// Find the amount
-                    amount = extractAmountFromSelectedText(selectedText);
-                    break;
-                }
-            }
-
-            if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null && amount !== undefined) {
-
-                /// Rates are already locally stored (should be initially)
-                if (currencyRate !== null && currencyRate !== undefined) {
-                    if (configs.debugMode) {
-                        console.log(`Found rate for currency ${currency}: ${currencyRate}`);
-                        console.log('User currency is: ' + configs.convertToCurrency);
-                    }
-
-                    // for (const [key, value] of Object.entries(currenciesList)) {
-                    // if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
-                    const value = currenciesList[configs.convertToCurrency];
-                    if (value && value['rate'] !== null && value['rate'] !== undefined) {
-
-                        let rateOfDesiredCurrency = value['rate'];
-
-                        /// Check for literal multipliers (million, billion and so on)
-                        for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { amount *= 1000000000; break; } }
-                        for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { amount *= 1000000; break; } }
-                        for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { amount *= 1000; break; } }
-
-                        let resultingRate = rateOfDesiredCurrency / currencyRate;
-                        if (configs.debugMode) console.log('conversion rate: ' + resultingRate);
-                        let convertedAmount = amount * resultingRate;
-
-                        if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
-                            /// Round result
-                            try {
-                                convertedAmount = parseFloat(convertedAmount);
-                                convertedAmount = convertedAmount.toFixed(2);
-                            } catch (e) { console.log(e); }
-
-                            /// Separate resulting numbers in groups of 3 digits
-                            let convertedAmountString = convertedAmount.toString();
-                            convertedAmountString = splitNumberInGroups(convertedAmountString);
-
-                            /// Create and add currency button with result of conversion
-                            const currencyButton = document.createElement('button');
-                            currencyButton.setAttribute('class', 'selection-popup-button button-with-border');
-
-                            /// Show value before convertion
-                            if (configs.showUnconvertedValue) {
-                                if (configs.preferCurrencySymbol && currencySymbol !== undefined)
-                                    currencyButton.textContent = ` ${amount} ${currencySymbol} →`;
-                                else
-                                    currencyButton.textContent = ` ${amount} ${currency} →`;
-                            }
-
-                            /// Show value after converion
-                            const converted = document.createElement('span');
-                            const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
-
-                            if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
-                                converted.textContent = ` ${convertedAmountString}`;
-                            else
-                                converted.textContent = ` ${convertedAmountString}`;
-
-                            converted.classList.add('color-highlight');
-                            currencyButton.appendChild(converted);
-
-                            /// Add currency symbol with different color
-                            const currencyLabel = document.createElement('span');
-                            currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
-                            currencyLabel.style.color = unitLabelColor;
-                            currencyButton.appendChild(currencyLabel);
-
-                            currencyButton.addEventListener("mousedown", function (e) {
-                                let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
-                                onTooltipButtonClick(e, url, convertedAmountString + ` ${configs.convertToCurrency}`);
-                            });
-
-                            if (configs.reverseTooltipButtonsOrder)
-                                tooltip.insertBefore(currencyButton, tooltip.children[1]);
-                            else
-                                tooltip.appendChild(currencyButton);
-
-                            /// Correct tooltip's dx
-                            tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (currencyButton.clientWidth / 2))}px`;
-
-                            /// Correct last button's border radius
-                            tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                            tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-                        }
-                    }
-                }
-            }
-        }
-
-        /// Unit conversion button
-        if (configs.convertMetrics) {
-            let convertedNumber;
-            let fromUnit;
-            let convertedUnit;
-
-            /// Feet ' and inches " handling
-            if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && /['||"]/.test(selectedText))
-                /// don't proccess if text includes letters
-                if (!/[a-zA-Z]/g.test(selectedText))
-                    if (selectedText.includes("'")) {
-                        let feet;
-                        let inches;
-
-                        let parts = selectedText.split("'");
-                        if (parts.length == 2 || parts.length == 4) {
-                            feet = extractAmountFromSelectedText(parts[0]);
-                            inches = extractAmountFromSelectedText(parts[1].split('"')[0])
-                        } else if (parts.length == 1) {
-                            /// Only feet available
-                            feet = extractAmountFromSelectedText(parts[0]);
-                        }
-
-                        if (feet !== null) {
-                            if (inches == null) inches = 0.0;
-                            convertedNumber = (feet * convertionUnits['feet']['ratio'] * 100) + (inches * convertionUnits['inch']['ratio']);
-                            fromUnit = '';
-                            convertedUnit = 'cm';
-                            numberToConvert = selectedText;
-                        }
-
-                    } else if (selectedText.includes('"')) {
-                        /// Only inches present
-                        let parts = selectedText.split('"')
-
-                        if (parts.length == 2) {
-                            inches = extractAmountFromSelectedText(selectedText);
-                            convertedNumber = inches * convertionUnits['inch']['ratio'];
-                            fromUnit = '';
-                            convertedUnit = 'cm';
-                            numberToConvert = selectedText;
-                        }
-                    }
-
-            /// Check for keywords in text
-            let includesKeyword = false;
-            const unitsKeywords = configs.preferredMetricsSystem == 'metric' ? convertionUnits : imprerialConvertionUnits;
-            const unitKeys = Object.keys(unitsKeywords);
-
-            for (let i = 0, l = unitKeys.length; i < l; i++) {
-                const key = unitKeys[i];
-
-                let nonConvertedUnit = key;
-                if (selectedText.includes(nonConvertedUnit)) {
-                    /// don't duplicate when found 'pound' (as it's also a currency)
-                    if (nonConvertedUnit == 'pound' && tooltip.children.length == 4) return;
-                    if (configs.debugMode) console.log('found key: ' + nonConvertedUnit);
-                    includesKeyword = i; break;
-                } else if (unitsKeywords[key]['variations']) {
-                    const keyVariations = unitsKeywords[key]['variations'];
-
-                    for (let i2 = 0, l2 = keyVariations.length; i2 < l2; i2++) {
-                        if (selectedText.includes(keyVariations[i2])) {
-                            if (configs.debugMode) console.log('found key: ' + keyVariations[i2]);
-                            includesKeyword = i; break;
-                        }
-                    }
-                }
-            }
-
-            /// Calculate value
-            if (includesKeyword !== false) {
-                /// Special handling for values where coma separates fractional digits instead of thousandths
-                if (selectedText.includes(',')) {
-                    let parts = selectedText.split(',');
-                    if (parts.length == 2)
-                        selectedText = selectedText.replaceAll(',', '.');
-                }
-
-                numberToConvert = extractAmountFromSelectedText(selectedText);
-
-                if (numberToConvert !== null && numberToConvert !== '' && numberToConvert !== NaN && numberToConvert !== undefined) {
-                    let key = unitKeys[includesKeyword];
-                    let value = unitsKeywords[key];
-
-                    /// Check selected text for literal multipliers
-                    for (i in billionMultipliers) { if (loweredSelectedText.includes(billionMultipliers[i])) { numberToConvert *= 1000000000; break; } }
-                    for (i in millionMultipliers) { if (loweredSelectedText.includes(millionMultipliers[i].toLowerCase())) { numberToConvert *= 1000000; break; } }
-                    for (i in thousandMultipliers) { if (loweredSelectedText.includes(thousandMultipliers[i].toLowerCase())) { numberToConvert *= 1000; break; } }
-
-                    fromUnit = key;
-                    convertedUnit = value['convertsTo'];
-
-                    if (fromUnit.includes('°')) {
-                        convertedNumber = value['convertFunction'](numberToConvert);
-                    } else {
-                        convertedNumber = configs.preferredMetricsSystem == 'metric' ? numberToConvert * value['ratio'] : numberToConvert / value['ratio'];
-                    }
-                }
-            }
-
-            /// Show result button
-            if (convertedNumber !== null && convertedNumber !== undefined && convertedNumber !== 0 && !isNaN(convertedNumber)) {
-                /// Round doubles to the first 2 symbols after dot
-                convertedNumber = convertedNumber.toFixed(2);
-
-                /// Separate resulting numbers in groups of 3 digits
-                convertedNumber = splitNumberInGroups(convertedNumber.toString());
-
-                const interactiveButton = document.createElement('button');
-                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                if (configs.showUnconvertedValue)
-                    interactiveButton.textContent = numberToConvert + ' ' + fromUnit + ' →';
-
-                const converted = document.createElement('span');
-                converted.textContent = ` ${convertedNumber}`;
-                converted.classList.add('color-highlight');
-                interactiveButton.appendChild(converted);
-
-                const unitLabelEl = document.createElement('span');
-                unitLabelEl.textContent = ` ${convertedUnit}`;
-                unitLabelEl.style.color = unitLabelColor;
-                interactiveButton.appendChild(unitLabelEl);
-
-                interactiveButton.addEventListener("mousedown", function (e) {
-                    let url = returnSearchUrl(`${numberToConvert + ' ' + fromUnit.trim()} to ${convertedUnit}`);
-                    onTooltipButtonClick(e, url, `${convertedNumber} ${convertedUnit}`);
-                });
-
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(interactiveButton);
-            }
-        }
-
-        /// Phone number button
-        if (configs.addPhoneButton && selectedText.includes('+') && !selectionContainsSpaces && selectedText.length == 13 && selectedText[0] == '+') {
-            const phoneButton = document.createElement('button');
-            phoneButton.setAttribute('class', `selection-popup-button button-with-border`);
-            phoneButton.appendChild(createImageIconNew(phoneIcon, selectedText));
-            phoneButton.classList.add('color-highlight');
-            phoneButton.addEventListener("mousedown", function (e) {
-                hideTooltip();
-                removeSelectionOnPage();
-
-                /// Open system handler
-                window.open(`tel:${selectedText}`);
-                // onTooltipButtonClick(e, `tel:${selectedText.trim()}`);
-            });
-            if (configs.reverseTooltipButtonsOrder)
-                tooltip.insertBefore(phoneButton, tooltip.children[1]);
-            else
-                tooltip.appendChild(phoneButton);
-        }
-
-        /// Do simple math calculations
-        if (numberToConvert == null && configs.performSimpleMathOperations && selectedText[0] !== '+' && !selectedText.includes('{')) {
-            if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('^'))
-                try {
-                    let numbersFromString = selectedText.match(/[+-]?\d+(\.\d)?/g);
-
-                    if (numbersFromString != null && numbersFromString.length > 0) {
-                        let calculatedExpression = calculateString(selectedText.replaceAll(' ', '').replaceAll('}', ''));
-                        if (calculatedExpression !== null && calculatedExpression !== undefined && calculatedExpression !== '' && calculatedExpression !== NaN) {
-
-                            let number;
-                            let numbersArray = calculatedExpression.toString().match(/[+-]?\d+(\.\d)?/g);
-                            number = numbersArray[0];
-
-                            if (number !== null) {
-                                const interactiveButton = document.createElement('button');
-                                interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                                if (configs.showUnconvertedValue)
-                                    interactiveButton.textContent = selectedText + ' →';
-
-                                const converted = document.createElement('span');
-                                converted.textContent = ` ${calculatedExpression}`;
-                                converted.classList.add('color-highlight');
-                                interactiveButton.appendChild(converted);
-
-                                interactiveButton.addEventListener("mousedown", function (e) {
-                                    let url = returnSearchUrl(selectedText.replaceAll('+', '%2B'));
-                                    onTooltipButtonClick(e, url, calculatedExpression);
-                                });
-
-                                if (configs.reverseTooltipButtonsOrder)
-                                    tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                                else
-                                    tooltip.appendChild(interactiveButton);
-                                try {
-                                    tooltip.style.left = `${(parseInt(tooltip.style.left.replaceAll('px', ''), 10) - interactiveButton.clientWidth - 5) * 2}px`;
-                                } catch (e) {
-                                    if (configs.debugMode)
-                                        console.log(e);
-                                }
-                            }
-                        }
-                    }
-                } catch (e) {
-                    if (configs.debugMode)
-                        console.log(e);
-                }
-        }
-
-        /// Add "open on map" button
-        if (configs.showOnMapButtonEnabled) {
-            let containsAddress = false;
-
-            for (let i = 0, l = addressKeywords.length; i < l; i++) {
-                if (loweredSelectedText.includes(addressKeywords[i])) {
-                    containsAddress = true; break;
-                }
-            }
-
-            if (containsAddress) {
-                const mapButton = document.createElement('button');
-                mapButton.setAttribute('class', `selection-popup-button button-with-border`);
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    mapButton.setAttribute('title', showOnMapLabel);
-
-                if (addButtonIcons)
-                    mapButton.appendChild(createImageIconNew(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel));
-                else
-                    mapButton.textContent = showOnMapLabel;
-                mapButton.addEventListener("mousedown", function (e) {
-                    /// Open maps service set by user (defaults to Google Maps)
-                    let url = returnShowOnMapUrl(selectedText);
-                    onTooltipButtonClick(e, url);
-                });
-
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(mapButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(mapButton);
-
-                /// Correct tooltip's dx
-                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (mapButton.clientWidth / 2))}px`;
-
-                /// Correct last button's border radius
-                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-            }
-        }
-
-        /// Add email button
-        if (configs.showEmailButton && selectedText.includes('@') && !selectionContainsSpaces) {
-            const splitedByAt = selectedText.split('@');
-            if (splitedByAt.length == 2 && splitedByAt[1].includes('.'))
-                try {
-                    const emailText = loweredSelectedText;
-                    const emailButton = document.createElement('button');
-                    emailButton.setAttribute('class', 'selection-popup-button button-with-border');
-
-                    if (configs.buttonsStyle == 'onlylabel') {
-                        emailButton.textContent = chrome.i18n.getMessage('email') + ' ';
-
-                        let emailLabel = document.createElement('div');
-                        emailLabel.style.display = 'inline';
-                        emailLabel.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
-                        emailLabel.classList.add('color-highlight');
-
-                        /// Add tooltip with full text on hover
-                        if (emailText.length > linkSymbolsToShow)
-                            emailButton.setAttribute('title', emailText);
-                        emailButton.appendChild(emailLabel);
-                    }
-                    else {
-                        emailButton.appendChild(createImageIconNew(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText), true));
-                        emailButton.classList.add('color-highlight');
-                    }
-
-
-                    emailButton.addEventListener("mousedown", function (e) {
-                        let url = returnNewEmailUrl(emailText);
-                        onTooltipButtonClick(e, url);
-                    });
-
-                    if (configs.reverseTooltipButtonsOrder)
-                        tooltip.insertBefore(emailButton, tooltip.children[1]);
-                    else
-                        tooltip.appendChild(emailButton);
-
-                    /// Correct tooltip's dx
-                    tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (emailButton.clientWidth / 2))}px`;
-
-                    /// Correct last button's border radius
-                    tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                    tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-                } catch (error) {
-                    console.log(error);
-                }
-        }
-
-        /// Add HEX color preview button
-        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces && selectedText.length == 7) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
-            try {
-                let colorText;
-                if (selectedText.includes('rgb')) {
-                    /// Try to convert rgb value to hex
-                    try {
-                        let string = selectedText.toUpperCase().split('(')[1].split(')')[0];
-                        let colors = string.replaceAll(' ', '').split(',');
-                        for (i in colors) {
-                            colors[i] = parseInt(colors[i], 10);
-                        }
-                        colorText = rgbToHex(colors[0], colors[1], colors[2]).toUpperCase();
-                    } catch (e) {
-                        colorText = selectedText.toUpperCase();
-                    }
-                } else
-                    colorText = selectedText.toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
-
-                colorText = colorText.toLowerCase();
-                const colorButton = document.createElement('button');
-                colorButton.setAttribute('class', 'selection-popup-button button-with-border');
-
-                const colorCircle = document.createElement('div');
-                colorCircle.setAttribute('class', 'selection-popup-color-preview-circle');
-                colorCircle.style.background = colorText;
-
-                /// Add red/green/blue tooltip on hover
-                const rgbColor = hexToRgb(colorText);
-                colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
-
-                colorButton.appendChild(colorCircle);
-                colorButton.insertAdjacentHTML('beforeend', ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText));
-                colorButton.classList.add('color-highlight');
-
-                colorButton.addEventListener("mousedown", function (e) {
-                    let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
-                    onTooltipButtonClick(e, url, colorText);
-                });
-
-                if (configs.reverseTooltipButtonsOrder)
-                    tooltip.insertBefore(colorButton, tooltip.children[1]);
-                else
-                    tooltip.appendChild(colorButton);
-
-                /// Correct tooltip's dx
-                tooltip.style.left = `${(parseFloat(tooltip.style.left.replaceAll('px', ''), 10) - (colorButton.clientWidth / 2))}px`;
-
-                /// Correct last button's border radius
-                tooltip.children[tooltip.children.length - 2].style.borderRadius = '0px';
-                tooltip.children[tooltip.children.length - 1].style.borderRadius = lastButtonBorderRadius;
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-        /// Time convert button
-        if (configs.convertTime) {
-            try {
-                let textToProccess = selectedText;
-
-                /// 12H - 24H conversion
-                // let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
-
-                // if (numbers !== null) {
-                if (configs.preferredMetricsSystem == 'metric') {
-                    if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = convertTime12to24(textToProccess);
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                } else {
-                    if (textToProccess.includes(':') && !textToProccess.includes(' ') && !textToProccess.includes('AM') && !textToProccess.includes('PM')) {
-                        if (configs.debugMode)
-                            console.log('converting from 12h to 24...');
-                        textToProccess = convertTime24to12(textToProccess);
-
-                        if (configs.debugMode)
-                            console.log('result: ' + textToProccess);
-                    }
-                }
-                // }
-
-                const timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
-                let convertedTime, timeWord, marker;
-
-                for (let i = 0, l = timeZoneKeywordsKeys.length; i < l; i++) {
-                    marker = timeZoneKeywordsKeys[i];
-
-                    if (selectedText.includes(' ' + marker)) {
-                        let words = selectedText.trim().split(' ');
-
-                        for (i in words) {
-                            let word = words[i];
-
-                            if (word.includes(':')) {
-                                timeWord = word;
-                                break;
-                            }
-                        }
-
-
-                        if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
-                            let numbers = timeWord.split(':');
-
-                            if (numbers.length == 2 || numbers.length == 3) {
-
-                                let today = new Date();
-                                if (configs.debugMode) {
-                                    console.log('today:');
-                                    console.log(today);
-                                }
-
-                                let modifier = selectedText.includes(' PM') ? ' PM' : selectedText.includes(' AM') ? ' AM' : '';
-                                let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
-
-                                if (configs.debugMode) {
-                                    console.log('setting date from:');
-                                    console.log(dateStringWithTimeReplaced);
-                                }
-
-                                let d = new Date(dateStringWithTimeReplaced); /// '6/29/2011 4:52:48 PM UTC'
-                                if (configs.debugMode) {
-                                    console.log('setted date:');
-                                    console.log(d.toString())
-                                }
-
-                                convertedTime = d.toLocaleTimeString().substring(0, 5);
-                                if (configs.debugMode) {
-                                    console.log('converted time:');
-                                    console.log(convertedTime);
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                if ((convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval') || textToProccess !== selectedText) {
-                    const timeButton = document.createElement('button');
-                    timeButton.setAttribute('class', `selection-popup-button button-with-border`);
-                    timeButton.classList.add('color-highlight');
-
-                    const timeStringToShow = textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
-
-                    if (addButtonIcons)
-                        timeButton.appendChild(createImageIconNew(clockIcon, convertedTime ?? timeStringToShow, true));
-                    else
-                        timeButton.textContent = convertedTime ?? timeStringToShow;
-
-                    timeButton.addEventListener("mousedown", function (e) {
-                        hideTooltip();
-                        removeSelectionOnPage();
-
-                        /// Open system handler
-                        if (convertedTime !== null && convertedTime !== undefined && convertedTime !== '' && convertedTime !== 'Inval')
-                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess), convertedTime ?? timeStringToShow)
-                        else
-                            onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess), convertedTime ?? timeStringToShow)
-
-                    });
-                    if (configs.reverseTooltipButtonsOrder)
-                        tooltip.insertBefore(timeButton, tooltip.children[1]);
-                    else
-                        tooltip.appendChild(timeButton);
-                }
-
-            } catch (e) { if (configs.debugMode) console.log(e); }
-        }
-
-        /// Add 'open link' button
-        if (configs.addOpenLinks)
-            if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {
-                let link = selectedText;
-                const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
-                const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
-                const includesUrlMarker = selectedText.includes('://');
-
-                if (includesUrlMarker || ((splittedByDots.length == 2 || splittedByDots.length == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
-
-                    /// Don't recognize if selected text looks like filename
-                    for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
-                        if (domain.includes(filetypesToIgnoreAsDomains[i])) {
-                            isFileName = true;
-                            break;
-                        }
-                    }
-
-                    if (isFileName == false || includesUrlMarker) {
-                        link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                        let linkLength = link.length;
-                        let lastSymbol = link[linkLength - 1];
-
-                        if (lastSymbol == '.' || lastSymbol == ',')
-                            link = link.substring(0, linkLength - 1);
-
-                        /// Remove '/' on the end of link, just for better looks in pop-up
-                        lastSymbol = link[link.length - 1];
-                        if (lastSymbol == '/')
-                            link = link.substring(0, link.length - 1);
-
-                        /// Remove quotes in start and end of the link
-                        const firstSymbol = link[0];
-                        linkLength = link.length;
-                        lastSymbol = link[linkLength - 1];
-                        if (firstSymbol == "'" || firstSymbol == '"' || firstSymbol == '«' || firstSymbol == '“')
-                            link = link.substring(1, linkLength);
-                        if (lastSymbol == "'" || lastSymbol == '"' || lastSymbol == "»" || lastSymbol == '”')
-                            link = link.substring(0, linkLength - 1);
-
-                        /// Add open link button
-                        const interactiveButton = document.createElement('button');
-                        interactiveButton.setAttribute('class', 'selection-popup-button button-with-border');
-                        let linkText = document.createElement('div');
-                        linkText.style.display = 'inline';
-                        linkText.textContent = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
-                        linkText.classList.add('color-highlight');
-
-                        /// Add tooltip with full website on hover
-                        if (link.length > linkSymbolsToShow)
-                            interactiveButton.setAttribute('title', link);
-
-                        if (addButtonIcons)
-                            interactiveButton.appendChild(createImageIconNew(openLinkButtonIcon, undefined, true));
-                        else interactiveButton.textContent = openLinkLabel + ' ';
-
-                        interactiveButton.appendChild(linkText);
-                        interactiveButton.addEventListener("mousedown", function (e) {
-                            if (!link.includes('://') && !link.includes('about:'))
-                                link = 'https://' + link;
-
-                            onTooltipButtonClick(e, link);
-                        });
-
-                        if (configs.reverseTooltipButtonsOrder)
-                            tooltip.insertBefore(interactiveButton, tooltip.children[1]);
-                        else
-                            tooltip.appendChild(interactiveButton);
-                    }
-
-                }
-            }
-    }
-
-    if (tooltip.children.length < 4 && isFileName == false) {
-        const containsSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(selectedText);
-
-        /// Add Translate button when enabled, and no other contextual buttons were added 
-        if (configs.showTranslateButton) {
-            if (!(containsSymbols && !selectionContainsSpaces)) /// don't show for code
-                addTranslateButton();
-        }
-
-        /// Add dictionary button
-        if (configs.showDictionaryButton && wordsCount <= (configs.dictionaryButtonWordsAmount ?? 1) && !containsSymbols) {
-            addDictionaryButton();
-        }
-    }
 
 }
 
@@ -1093,21 +245,22 @@ function calculateTooltipPosition(e) {
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
     let dyForFloatingTooltip = 15;
     let dyWhenOffscreen = window.innerHeight / 3;
+    let tooltipHeight = tooltip.clientHeight;
 
     let dxToShowTooltip, dyToShowTooltip;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
         /// Show it on top of selection, dx aligned to cursor
-        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2);
+        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2);
 
-        dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - (arrow.clientHeight / 1.5) - 2;
+        dyToShowTooltip = selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
 
-            let possibleDyToShowTooltip = selEndDimensions.dy + tooltip.clientHeight + 5;
+            let possibleDyToShowTooltip = selEndDimensions.dy + tooltipHeight + 5;
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;
@@ -1120,17 +273,18 @@ function calculateTooltipPosition(e) {
         if (dyToShowTooltip < 0 && tooltipOnBottom == false) dyToShowTooltip = dyWhenOffscreen;
 
         /// Calculating DX
-        dxToShowTooltip = e.clientX - tooltip.clientWidth / 2;
+        // dxToShowTooltip = e.clientX - tooltip.clientWidth / 2;
+        dxToShowTooltip = e.clientX;
 
     } else {
         /// Calculating DY
-        dyToShowTooltip = selStartDimensions.dy - tooltip.clientHeight - arrow.clientHeight;
+        dyToShowTooltip = selStartDimensions.dy - tooltipHeight - arrow.clientHeight;
 
         /// If tooltip is going off-screen on top...
         let vertOutOfView = dyToShowTooltip <= 0;
         if (vertOutOfView) {
             /// check to display on bottom
-            let resultingDyOnBottom = selEndDimensions.dy + tooltip.clientHeight + arrow.clientHeight;
+            let resultingDyOnBottom = selEndDimensions.dy + tooltipHeight + arrow.clientHeight;
             if (resultingDyOnBottom < window.innerHeight) {
                 dyToShowTooltip = resultingDyOnBottom;
                 arrow.classList.add('arrow-on-bottom');
@@ -1150,9 +304,9 @@ function calculateTooltipPosition(e) {
             const delta = selEndDimensions.dx > selStartDimensions.dx ? selEndDimensions.dx - selStartDimensions.dx : selStartDimensions.dx - selEndDimensions.dx;
 
             if (selEndDimensions.dx > selStartDimensions.dx)
-                dxToShowTooltip = selStartDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+                dxToShowTooltip = selStartDimensions.dx + (delta / 2);
             else
-                dxToShowTooltip = selEndDimensions.dx + (delta / 2) - (tooltip.clientWidth / 2);
+                dxToShowTooltip = selEndDimensions.dx + (delta / 2);
         } catch (e) {
             if (configs.debugMode)
                 console.log(e);
@@ -1160,7 +314,7 @@ function calculateTooltipPosition(e) {
             /// Fall back to old approach - place tooltip in horizontal center selection rect,
             /// which may be in fact bigger than visible selection
             const selDimensions = getSelectionRectDimensions();
-            dxToShowTooltip = selDimensions.dx + (selDimensions.width / 2) - (tooltip.clientWidth / 2);
+            dxToShowTooltip = selDimensions.dx + (selDimensions.width / 2);
         }
     }
 
@@ -1172,20 +326,20 @@ function calculateTooltipPosition(e) {
             floatingTooltipTop = window.scrollY;
             tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         } else if (dyToShowTooltip > window.innerHeight) {
-            dyToShowTooltip = window.innerHeight - (tooltip.clientHeight ?? 50) - dyForFloatingTooltip;
+            dyToShowTooltip = window.innerHeight - (tooltipHeight ?? 50) - dyForFloatingTooltip;
             floatingTooltipBottom = window.scrollY;
             tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         }
     }
 
-    showTooltip(dxToShowTooltip, dyToShowTooltip);
+    setTimeout(function () {
+        showTooltip(dxToShowTooltip, dyToShowTooltip);
+    }, 0)
 
     if (configs.addDragHandles && canAddDragHandles)
         setDragHandles(selStartDimensions, selEndDimensions);
 
-    setTimeout(function () {
-        checkTooltipForCollidingWithSideEdges();
-    }, 2);
+    // return [dxToShowTooltip, dyToShowTooltip];
 }
 
 function showTooltip(dx, dy) {
@@ -1194,22 +348,17 @@ function showTooltip(dx, dy) {
     tooltip.style.left = `${dx}px`;
     tooltip.style.opacity = configs.useCustomStyle ? configs.tooltipOpacity : 1.0;
 
-    if (configs.tooltipRevealEffect == 'moveUpTooltipEffect') {
-        /// Make tooltip not-interactive in first half of animation
-        tooltip.style.pointerEvents = 'none';
-        setTimeout(function () {
-            if (tooltip !== null)
-                tooltip.style.pointerEvents = 'all';
-        }, configs.animationDuration);
-    }
+    /// Make tooltip not-interactive during show-up transition
+    // if (configs.tooltipRevealEffect == 'moveUpTooltipEffect') {
+    tooltip.style.pointerEvents = 'none';
+    setTimeout(function () {
+        if (tooltipIsShown == false || tooltip == null) return;
+        tooltip.style.pointerEvents = 'all';
+    }, configs.animationDuration);
+    // }
 
     /// Set reveal animation type
     tooltip.style.transform = returnTooltipRevealTransform(true);
-
-    /// Selection change listener
-    setTimeout(function () {
-        document.addEventListener("selectionchange", selectionChangeListener);
-    }, 300)
 
     if (configs.debugMode)
         console.log('Selecton tooltip is shown');
@@ -1279,15 +428,6 @@ function showTooltip(dx, dy) {
             }
 
         }, configs.animationDuration);
-
-    /// Create secondary tooltip (for custom search options)
-    /// Add a delay to be sure currency and translate buttons were already added
-    if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
-        setTimeout(function () {
-            try {
-                createSecondaryTooltip();
-            } catch (e) { console.log(e); }
-        }, 3);
 }
 
 function hideTooltip(animated = true) {
@@ -1334,33 +474,4 @@ function hideTooltip(animated = true) {
     secondaryTooltip = null;
     timerToRecreateOverlays = null;
     isTextFieldFocused = false;
-}
-
-function createImageIconNew(url, title, shouldAlwaysAddSpacing = false) {
-    let container = document.createDocumentFragment();
-
-    let img = document.createElement('img');
-    img.setAttribute('src', url);
-    img.setAttribute('class', 'selecton-button-img-icon');
-
-    const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
-    img.style.opacity = configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5;
-    // if (!onlyIconStyle) img.style.marginRight = '4px';
-    if (!onlyIconStyle || shouldAlwaysAddSpacing) img.style.marginRight = '3px';
-    container.appendChild(img);
-
-    if (title != undefined && title != '') {
-        let label = document.createElement('span');
-        label.textContent = title;
-        container.appendChild(label);
-    }
-
-    return container;
-}
-
-function splitNumberInGroups(stringNumber) {
-    const parts = stringNumber.split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    if (parts[1] == '00') parts[1] = ''; /// Remove empty .00 on end
-    return parts[1] == '' ? parts[0] : parts.join('.');
 }

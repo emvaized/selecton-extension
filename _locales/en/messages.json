@@ -84,7 +84,7 @@
     "description": "Label for option in settings"
   },
   "buyMeCoffee": {
-    "message": "Support development",
+    "message": "Support project",
     "description": ""
   },
   "changeTextSelectionColor": {
@@ -116,7 +116,7 @@
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
-    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See info</a>)",
+    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info</a>)",
     "description": "Label for field in settings"
   },
   "convertToCurrencyHint": {
@@ -380,7 +380,7 @@
     "description": "Label for paste action"
   },
   "performSimpleMathOperations": {
-    "message": "Do simple math calculations",
+    "message": "Perform simple math calculations",
     "description": "Label for field in settings"
   },
   "preferCurrencySymbol": {
@@ -611,6 +611,62 @@
   },
   "writeAReview": {
     "message": "Write a review",
+    "description": "Label for buttons style option in settings"
+  },
+  "collapseButtons": {
+    "message": "Hide exceeding buttons under 'More' button",
+    "description": "Label for buttons style option in settings"
+  },
+  "maxTooltipButtonsToShow": {
+    "message": "Max buttons to show in the tooltip",
+    "description": "Label for buttons style option in settings"
+  },
+  "delayToRevealHoverPanels": {
+    "message": "Delay before revealing panels on hover (ms)",
+    "description": "Label for buttons style option in settings"
+  },
+  "markerLabel": {
+    "message": "Highlight",
+    "description": "Label for buttons style option in settings"
+  },
+  "addMarkerButton": {
+    "message": "Add 'Highlight' button",
+    "description": "Label for buttons style option in settings"
+  },
+  "showStatsOnCopyButtonHover": {
+    "message": "Show stats on Copy button hover",
+    "description": "Label for buttons style option in settings"
+  },
+  "wordsCount": {
+    "message": "Words",
+    "description": "Label for buttons style option in settings"
+  },
+  "symbolsCount": {
+    "message": "Symbols",
+    "description": "Label for buttons style option in settings"
+  },
+  "recentMarkersLabel": {
+    "message": "Recent highlights",
+    "description": "Label for buttons style option in settings"
+  },
+  "markedLabel": {
+    "message": "Marked",
+    "description": "Label for buttons style option in settings"
+  },
+  "strikeLabel": {
+    "message": "Strike",
+    "description": "Label for buttons style option in settings"
+  },
+  "showButtonBorders": {
+    "message": "Show button dividers",
+    "description": "Label for buttons style option in settings"
+  },
+  "callLabel": {
+    "message": "Call",
+    "description": "Label for buttons style option in settings"
+  },
+  "maxMarkerPagesToStore": {
+    "message": "Max pages to store highlights",
     "description": "Label for buttons style option in settings"
   }
 }

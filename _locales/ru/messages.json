@@ -84,7 +84,7 @@
         "description": "Label for option in settings"
     },
     "buyMeCoffee": {
-        "message": "Поддержать разработку",
+        "message": "Поддержать проект",
         "description": ""
     },
     "changeTextSelectionColor": {
@@ -615,6 +615,62 @@
     },
     "writeAReview": {
         "message": "Написать отзыв",
+        "description": "Label for buttons style option in settings"
+    },
+    "collapseButtons": {
+        "message": "Спрятать лишние кнопки под кнопкой 'Больше'",
+        "description": "Label for buttons style option in settings"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Макс. кол-во видимых кнопок в панели",
+        "description": "Label for buttons style option in settings"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Задержка перед отображением панели при наведении (ms)",
+        "description": "Label for buttons style option in settings"
+    },
+    "markerLabel": {
+        "message": "Маркер",
+        "description": "Label for buttons style option in settings"
+    },
+    "addMarkerButton": {
+        "message": "Использовать кнопку 'Маркер'",
+        "description": "Label for buttons style option in settings"
+    },
+    "showStatsOnCopyButtonHover": {
+        "message": "Показывать инфо-цию при наведении на кнопку Копировать",
+        "description": "Label for buttons style option in settings"
+    },
+    "wordsCount": {
+        "message": "Слов",
+        "description": "Label for buttons style option in settings"
+    },
+    "symbolsCount": {
+        "message": "Символов",
+        "description": "Label for buttons style option in settings"
+    },
+    "recentMarkersLabel": {
+        "message": "Последние маркеры",
+        "description": "Label for buttons style option in settings"
+    },
+    "markedLabel": {
+        "message": "Выделено",
+        "description": "Label for buttons style option in settings"
+    },
+    "strikeLabel": {
+        "message": "Зачеркн.",
+        "description": "Label for buttons style option in settings"
+    },
+    "showButtonBorders": {
+        "message": "Показывать разделители кнопок",
+        "description": "Label for buttons style option in settings"
+    },
+    "callLabel": {
+        "message": "Позвонить",
+        "description": "Label for buttons style option in settings"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Макс. кол-во страниц для хранения маркеров",
         "description": "Label for buttons style option in settings"
     }
 }

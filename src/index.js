@@ -62,12 +62,21 @@ function initConfigs(shouldCreateTooltip = false, e) {
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
           dictionaryLabel = chrome.i18n.getMessage("dictionaryLabel");
+          markerLabel = chrome.i18n.getMessage("markerLabel");
+
+          italicLabel = chrome.i18n.getMessage("italicLabel");
+          boldLabel = chrome.i18n.getMessage("boldLabel");
+          strikeLabel = chrome.i18n.getMessage("strikeLabel");
 
           setTimeout(function () {
             if (configs.addActionButtonsForTextFields)
               initMouseListeners();
-            else
+            else {
               document.addEventListener('selectionchange', selectionChangeInitListener);
+            }
+
+            if (configs.addMarkerButton)
+              initMarkersRestore();
           }, 1);
 
           configsWereLoaded = true;
@@ -204,7 +213,7 @@ function initMouseListeners() {
   document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
     if (isDraggingTooltip) return;
-    if (tooltipIsShown && e.detail < 3) return;
+    // if (tooltipIsShown && e.detail < 3) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;
@@ -258,6 +267,7 @@ function initMouseListeners() {
         /// Custom style from settings
         const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
         document.documentElement.style.setProperty('--selecton-background-color', bgColor);
+        // document.documentElement.style.setProperty('--selecton-background-color', 'rgba(0,0,0,0.5)');
         getTextColorForBackground(bgColor);
 
         document.documentElement.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
@@ -282,7 +292,7 @@ function initMouseListeners() {
     }, 0);
   }
 
-  function checkTextField() {
+  function checkTextField(e) {
     /// check if textfield is focused
 
     const activeEl = document.activeElement;
@@ -302,7 +312,8 @@ function initMouseListeners() {
         }
       }
 
-      if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
+      // if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
+      if (tooltipIsShown) hideTooltip(); /// Hide previous 'paste' button
 
       if (configs.addPasteOnlyEmptyField) {
         /// Ignore single click on text field with inputted value
@@ -310,7 +321,7 @@ function initMouseListeners() {
           if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
             isTextFieldFocused = false;
           else
-            if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
+            if (activeEl.value && activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
         } catch (e) { console.log(e); }
       }
     }

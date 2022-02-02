@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Selecton — selection popup. Copy and search",
-  "version": "3.5.1",
+  "name": "Selecton — selection tooltip. Copy and search",
+  "version": "3.5.2",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",
@@ -14,13 +14,15 @@
     "icons/button-icons/call.svg",
     "icons/button-icons/copy.svg",
     "icons/button-icons/cut.svg",
+    "icons/button-icons/dictionary.svg",
     "icons/button-icons/email.svg",
     "icons/button-icons/italic.svg",
+    "icons/button-icons/marker.svg",
     "icons/button-icons/map.svg",
     "icons/button-icons/open.svg",
     "icons/button-icons/paste.svg",
+    "icons/button-icons/strike.svg",
     "icons/button-icons/time.svg",
-    "icons/button-icons/dictionary.svg",
     "icons/button-icons/translate.svg"
   ],
   "browser_specific_settings": {
@@ -49,23 +51,30 @@
         "src/functions/locale-functions.js",
         "src/functions/selection-functions.js",
         "src/functions/currencies-functions.js",
+        "src/functions/clipboard-functions.js",
         "src/functions/color-functions.js",
         "src/functions/conversion-functions.js",
-        "src/functions/input-functions.js",
+        "src/functions/text-functions.js",
         "src/functions/tooltip-functions.js",
         "src/functions/dark-page-detection.js",
-        "src/ui/utils/hover-buttons.js",
-        "src/ui/components/translate-button.js",
-        "src/ui/components/dictionary-button.js",
-        "src/ui/search-tooltip.js",
+        "src/functions/hover-buttons-functions.js",
+        "src/functions/marker.js",
+        "src/ui/buttons/basic-buttons.js",
+        "src/ui/buttons/contextual-buttons.js",
+        "src/ui/buttons/hover-buttons/translate-button.js",
+        "src/ui/buttons/hover-buttons/dictionary-button.js",
+        "src/ui/buttons/hover-buttons/collapse-button.js",
+        "src/ui/buttons/hover-buttons/marker.js",
+        "src/ui/buttons/hover-buttons/search-button.js",
+        "src/ui/selection-handles.js",
         "src/ui/tooltip.js",
-        "src/ui/components/selection-handles.js",
         "src/index.js"
       ],
       "css": [
         "src/index.css"
       ],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "all_frames": true
     }
   ],
   "options_ui": {

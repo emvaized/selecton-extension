@@ -6,6 +6,7 @@ let userConfigs, importedConfigs, isSafari = false;
 const expandedSettingsSections = [];
 let exportFileName = 'selecton-settings.json';
 var keys = Object.keys(configs);
+let markersData;
 
 function loadSettings() {
 
@@ -38,6 +39,11 @@ function loadSettings() {
     /// Set options page
     setVersionLabel();
     setImportExportButtons();
+
+    chrome.storage.local.get(['websiteMarkers'], function (value) {
+        setMarkerSection(value);
+    });
+
 }
 
 function setInputs(result) {
@@ -143,6 +149,7 @@ function setImportExportButtons() {
     }
 
     document.getElementById('exportSettings').onclick = function () {
+        if (markersData && markersData !== {}) userConfigs['websiteMarkers'] = markersData;
         chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: !userConfigs ? {} : userConfigs, name: exportFileName });
     }
 
@@ -167,22 +174,31 @@ function setImportExportButtons() {
     });
 
     importSettingsConfirmButton.addEventListener('click', function () {
-        console.log('imported configs:');
-        console.log(importedConfigs);
 
-        /// Confirm prompt is disabled here, as on Chrome-based browsers, when options page is open full screen,
+        /// Confirm prompt is disabled here, as on Chrome-based browsers, when options page is open fullscreen,
         /// it doesn't work due to the Chromium bug:
         /// https://bugs.chromium.org/p/chromium/issues/detail?id=476350
         /// and I was too lazy to come up with other way to display warning prompt
 
         // if (window.confirm(chrome.i18n.getMessage("importAlert"))) {
+
+        /// restore configs
         userConfigs = importedConfigs;
         setInputs(importedConfigs);
         saveAllSettings();
 
+        /// disable import button
         const fileSelector = document.getElementById('importSettings');
         fileSelector.value = null;
         disableImportButton();
+
+        /// restore markers
+        let restoredMarkers = importedConfigs['websiteMarkers'];
+        if (restoredMarkers) {
+            chrome.storage.local.set({ 'websiteMarkers': restoredMarkers });
+            setMarkerSection({ 'websiteMarkers': restoredMarkers });
+        }
+
         // }
     });
 
@@ -202,16 +218,19 @@ function setTranslatedLabels() {
     document.querySelector("#importSettingsLabel").innerText = chrome.i18n.getMessage("importSettingsLabel");
     document.querySelector("#exportSettingsLabel").innerText = chrome.i18n.getMessage("exportSettingsLabel");
     document.querySelector("#dictionaryButtonRemark").innerText = chrome.i18n.getMessage("dictionaryButtonRemark");
-    document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearanceHeader");
-    document.querySelector("#behaviorHeader").innerHTML = chrome.i18n.getMessage("behaviorHeader");
-    document.querySelector("#convertionHeader").innerHTML = chrome.i18n.getMessage("convertionHeader");
-    document.querySelector("#actionButtonsHeader").innerHTML = chrome.i18n.getMessage("contextualButtonsHeader");
-    document.querySelector("#customSearchTooltip").innerHTML = chrome.i18n.getMessage("customSearchTooltip");
-    document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
-    document.querySelector("#selectionHeader").innerHTML = chrome.i18n.getMessage("selectionHeader");
-    document.querySelector("#customSearchButtonsHeader").innerHTML = chrome.i18n.getMessage("customSearchButtonsHeader");
+    document.querySelector("#appearanceHeader").innerText = chrome.i18n.getMessage("appearanceHeader");
+    document.querySelector("#behaviorHeader").innerText = chrome.i18n.getMessage("behaviorHeader");
+    document.querySelector("#convertionHeader").innerText = chrome.i18n.getMessage("convertionHeader");
+    document.querySelector("#actionButtonsHeader").innerText = chrome.i18n.getMessage("contextualButtonsHeader");
+    document.querySelector("#customSearchTooltip").innerText = chrome.i18n.getMessage("customSearchTooltip");
+    document.querySelector("#customSearchTooltipHint").innerText = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
+    document.querySelector("#selectionHeader").innerText = chrome.i18n.getMessage("selectionHeader");
+    document.querySelector("#customSearchButtonsHeader").innerText = chrome.i18n.getMessage("customSearchButtonsHeader");
+    document.querySelector("#highlightHeader").innerText = chrome.i18n.getMessage("markerLabel");
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
+    document.getElementById('recentMarkersLabel').innerText = chrome.i18n.getMessage('recentMarkersLabel');
+    // document.getElementById('markerHintHeader').innerText = chrome.i18n.getMessage('markerHint');
 
     /// Change CTRL key label on macs
     if (isSafari) {
@@ -274,9 +293,10 @@ function updateDisabledOptions() {
     document.querySelector("#wordSnappingBlacklist").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#disableWordSnapForCode").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked && document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#addFontFormatButtons").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
     document.querySelector("#hideTranslateButtonForUserLanguage").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#delayToRevealTranslateTooltip").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#liveTranslation").checked ? 'enabled-option' : 'disabled-option';
+    // document.querySelector("#delayToRevealTranslateTooltip").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#liveTranslation").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#showTranslateIfLanguageUnknown").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#hideTranslateButtonForUserLanguage").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#addPasteButton").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
@@ -285,6 +305,7 @@ function updateDisabledOptions() {
     document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#dictionaryButtonWordsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#dictionaryButtonResponseCharsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#maxTooltipButtonsToShow").parentNode.className = document.querySelector("#collapseButtons").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
@@ -312,7 +333,7 @@ function setCollapsibleHeaders() {
             const it = coll[i];
             setTimeout(function (e) {
                 it.classList.toggle("active");
-                var content = it.nextElementSibling;
+                let content = it.nextElementSibling;
                 content.style.maxHeight = content.scrollHeight + "px";
             }, 50);
         }
@@ -622,80 +643,266 @@ function saveAllSettings() {
     chrome.storage.local.set(userConfigs);
 }
 
-function resetSettings() {
-    /// Reset custom search engines
-    customSearchButtonsList = [
-        {
-            'url': 'https://www.youtube.com/results?search_query=%s',
-            'title': 'YouTube',
-            'enabled': true
-        },
-        {
-            'url': 'https://open.spotify.com/search/%s',
-            'title': 'Spotify',
-            'enabled': true
-        },
-        {
-            'url': 'https://aliexpress.com/wholesale?SearchText=%s',
-            'title': 'Aliexpress',
-            'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
-            'enabled': true
-        },
-        {
-            'url': 'https://www.amazon.com/s?k=%s',
-            'title': 'Amazon',
-            'enabled': true
-        },
-        {
-            'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
-            'title': 'Wikipedia',
-            'enabled': false
-        },
-        {
-            'url': 'https://www.imdb.com/find?s=alt&q=%s',
-            'title': 'IMDB',
-            'enabled': false
-        },
-    ];
-    saveCustomSearchButtons();
-    setTimeout(function () {
-        generateCustomSearchButtonsList();
-    }, 50);
+// function resetSettings() {
+//     /// Reset custom search engines
+//     customSearchButtonsList = [
+//         {
+//             'url': 'https://www.youtube.com/results?search_query=%s',
+//             'title': 'YouTube',
+//             'enabled': true
+//         },
+//         {
+//             'url': 'https://open.spotify.com/search/%s',
+//             'title': 'Spotify',
+//             'enabled': true
+//         },
+//         {
+//             'url': 'https://aliexpress.com/wholesale?SearchText=%s',
+//             'title': 'Aliexpress',
+//             'icon': 'https://symbols.getvecta.com/stencil_73/76_aliexpress-icon.a7d3b2e325.png',
+//             'enabled': true
+//         },
+//         {
+//             'url': 'https://www.amazon.com/s?k=%s',
+//             'title': 'Amazon',
+//             'enabled': true
+//         },
+//         {
+//             'url': 'https://wikipedia.org/wiki/SpecialSearch?search=%s',
+//             'title': 'Wikipedia',
+//             'enabled': false
+//         },
+//         {
+//             'url': 'https://www.imdb.com/find?s=alt&q=%s',
+//             'title': 'IMDB',
+//             'enabled': false
+//         },
+//     ];
+//     saveCustomSearchButtons();
+//     setTimeout(function () {
+//         generateCustomSearchButtonsList();
+//     }, 50);
 
-    /// Reset regular options
-    var dataToSave = {};
-    defaultConfigs.forEach(function (value, key) {
-        dataToSave[key] = value;
+//     /// Reset regular options
+//     var dataToSave = {};
+//     defaultConfigs.forEach(function (value, key) {
+//         dataToSave[key] = value;
+//     });
+
+//     chrome.storage.local.set(dataToSave);
+
+//     defaultConfigs.forEach(function (value, key) {
+//         var input = document.getElementById(key);
+
+//         /// Set input value
+//         if (input !== null && input !== undefined) {
+//             if (input.type == 'checkbox') {
+//                 if ((value !== null && value == true) || (value == null && value == true))
+//                     input.setAttribute('checked', 0);
+//                 else input.removeAttribute('checked', 0);
+//             } else if (input.tagName == 'SELECT') {
+//                 var options = input.querySelectorAll('option');
+//                 if (options !== null)
+//                     options.forEach(function (option) {
+//                         var selectedValue = value;
+//                         if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
+//                             option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+//                         if (option.value == selectedValue) option.setAttribute('selected', true);
+//                         else option.setAttribute('selected', false);
+//                     });
+//             }
+//             else {
+//                 input.setAttribute('value', value);
+//             }
+//         }
+//     });
+// }
+
+const expandedMarkerSections = [];
+
+function setMarkerSection(value) {
+    if (!value) return;
+    let container = document.getElementById('website-markers-list');
+
+    markersData = value['websiteMarkers'];
+    let markerKeys = Object.keys(markersData);
+
+    if (!markersData || markerKeys.length == 0) {
+        container.innerText = '—';
+        return;
+    }
+
+    container.innerText = null;
+
+    /// sort pages by timeUpdated
+    markerKeys.sort(function (a, b) {
+        return a.timeUpdated > b.timeUpdated ? 1 : -1;
     });
 
-    chrome.storage.local.set(dataToSave);
+    markerKeys.forEach(function (url) {
+        /// create website tile
+        let tile = document.createElement('div');
+        tile.className = 'option marker-website-tile';
 
-    defaultConfigs.forEach(function (value, key) {
-        var input = document.getElementById(key);
+        let favicon = document.createElement('img');
+        favicon.className = 'marker-website-favicon';
+        favicon.height = '15px';
+        favicon.width = '15px';
+        favicon.src = 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2];
+        tile.appendChild(favicon);
 
-        /// Set input value
-        if (input !== null && input !== undefined) {
-            if (input.type == 'checkbox') {
-                if ((value !== null && value == true) || (value == null && value == true))
-                    input.setAttribute('checked', 0);
-                else input.removeAttribute('checked', 0);
-            } else if (input.tagName == 'SELECT') {
-                var options = input.querySelectorAll('option');
-                if (options !== null)
-                    options.forEach(function (option) {
-                        var selectedValue = value;
-                        if (chrome.i18n.getMessage(option.innerHTML) !== (null || undefined || ''))
-                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
-                        if (option.value == selectedValue) option.setAttribute('selected', true);
-                        else option.setAttribute('selected', false);
-                    });
+        let link = document.createElement('span');
+        let title = markersData[url]['title'];
+        link.innerText = title ?? url;
+        if (title)
+            link.title = url;
+        // if (url == window.location.href) link.style.color = 'blue';
+        tile.appendChild(link);
+
+        container.appendChild(tile);
+
+        /// expand if previously expanded
+        if (expandedMarkerSections.includes(url)) {
+            setTimeout(function () {
+                let content = tile.nextElementSibling;
+                content.style.maxHeight = content.scrollHeight + "px";
+            }, 50)
+        }
+
+        /// create markers
+        let markersContainer = document.createElement('div');
+        markersContainer.className = 'collapsible-content';
+        markersContainer.style.marginLeft = '20px';
+
+        let websiteMarkers = markersData[url]['markers'];
+
+        /// add counter
+        let counter = document.createElement('div');
+        counter.className = 'markers-counter-circle';
+        counter.textContent = websiteMarkers.length;
+        tile.appendChild(counter);
+
+        /// sort markers by dateAdded
+        websiteMarkers.sort(function (a, b) {
+            return a.dateAdded > b.dateAdded ? -1 : 1;
+        });
+
+        /// append tiles for each marker
+        websiteMarkers.forEach(function (marker) {
+            let tile = document.createElement('div');
+            tile.className = 'option marker-tile';
+
+            /// color preview
+            const colorCircle = document.createElement('div');
+            colorCircle.setAttribute('class', 'marker-color-preview');
+            colorCircle.style.background = marker.background;
+            tile.appendChild(colorCircle);
+
+            /// set text
+            tile.innerHTML += marker.text;
+
+            /// show time added on hover
+            if (marker.timeAdded)
+                tile.title = new Date(marker.timeAdded).toLocaleString();
+
+            /// append delete button
+            let deleteButton = document.createElement('div');
+            deleteButton.className = 'marker-highlight-delete';
+            deleteButton.innerText = '✕';
+            deleteButton.title = chrome.i18n.getMessage('deleteLabel');
+            tile.appendChild(deleteButton);
+
+            deleteButton.onclick = async function (e) {
+                e.stopPropagation();
+
+                // remove data
+                const indexOfMarker = websiteMarkers.indexOf(marker);
+                if (indexOfMarker > -1) websiteMarkers.splice(indexOfMarker, 1);
+                markersData[url]['markers'] = websiteMarkers;
+                if (websiteMarkers.length <= 0)
+                    delete markersData[url];
+
+                /// save updated markers
+                try {
+                    chrome.storage.local.set({ 'websiteMarkers': markersData });
+                } catch (e) {
+                    alert(e);
+                }
+
+                /// Recreate the view
+                setTimeout(function () {
+                    container.innerHTML = '';
+                    setMarkerSection({ 'websiteMarkers': markersData });
+                }, 5);
             }
-            else {
-                input.setAttribute('value', value);
+
+            markersContainer.appendChild(tile);
+            markersContainer.appendChild(document.createElement('hr'));
+
+            /// add click listener
+            tile.onclick = function () {
+                /// open page
+
+                // let w = window.open(url, '_blank');
+                // setTimeout(function () {
+                //     w.postMessage("selecton-scroll-to-marker-message:" + marker.hintDy.toString(), url);
+                // }, 1500);
+
+                chrome.tabs.create({ url: url, active: true }, async tab => {
+                    let timeoutToDispatch, isTabLoaded = false, timeout = 5000;
+
+                    chrome.tabs.onUpdated.addListener(onTabLoad);
+
+                    timeoutToDispatch = setTimeout(function () {
+                        if (isTabLoaded) return;
+                        chrome.tabs.onUpdated.removeListener(onTabLoad);
+                    }, timeout);
+
+                    function onTabLoad(tabId, info) {
+                        if (info.status === 'complete' && tabId === tab.id) {
+                            chrome.tabs.onUpdated.removeListener(onTabLoad);
+                            isTabLoaded = true;
+                            clearTimeout(timeoutToDispatch);
+
+                            chrome.tabs.sendMessage(
+                                tabId,
+                                { command: "selecton-scroll-to-marker-message:" + marker.hintDy.toString() }
+                            ).then(response => { }).catch(error => { });
+                        }
+                    }
+                });
+            }
+        });
+
+        container.appendChild(markersContainer);
+
+        /// set expand/collapse on hover
+        tile.onclick = function () {
+            // this.classList.toggle("active");
+            let content = markersContainer;
+            if (content.style.maxHeight) {
+                /// Collapse
+                content.style.maxHeight = null;
+
+                let indexInArray = expandedMarkerSections.indexOf(url);
+                if (indexInArray > -1) {
+                    expandedMarkerSections.splice(indexInArray, 1);
+                }
+            } else {
+                if (!expandedMarkerSections.includes(url))
+                    expandedMarkerSections.push(url);
+
+                /// Expand
+                content.style.maxHeight = content.scrollHeight + "px";
+                setTimeout(function () {
+                    tile.parentNode.parentNode.style.maxHeight = tile.parentNode.parentNode.scrollHeight + "px";
+                }, 201)
             }
         }
-    });
+    })
 }
+
+
 
 document.addEventListener("DOMContentLoaded", loadSettings);
 

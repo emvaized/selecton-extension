@@ -80,7 +80,7 @@
         "description": "Libellé de l'option dans les paramètres"
     },
     "buyMeCoffee": {
-        "message": "Soutenir le développement",
+        "message": "Soutenir le projet",
         "description": ""
     },
     "changeTextSelectionColor": {

@@ -10,4 +10,6 @@ const emailButtonIcon = chrome.runtime.getURL('icons/button-icons/email.svg');
 const phoneIcon = chrome.runtime.getURL('icons/button-icons/call.svg');
 const boldTextIcon = chrome.runtime.getURL('icons/button-icons/bold.svg');
 const italicTextIcon = chrome.runtime.getURL('icons/button-icons/italic.svg');
+const strikeTextIcon = chrome.runtime.getURL('icons/button-icons/strike.svg');
 const clockIcon = chrome.runtime.getURL('icons/button-icons/time.svg');
+const markerIcon = chrome.runtime.getURL('icons/button-icons/marker.svg');
