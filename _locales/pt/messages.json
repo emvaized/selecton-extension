@@ -144,7 +144,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
-        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. <br/>Use %s como um marcador de posição para a consulta <br/>%w é um espaço reservado para o domínio atual (para pesquisa de site)",
+        "message": "É revelado ao passar o mouse sobre o botão 'Pesquisar'. Use %s como um marcador de posição para a consulta, %w é um espaço reservado para o domínio atual (para pesquisa de site)",
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchUrl": {

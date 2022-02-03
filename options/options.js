@@ -3,6 +3,7 @@
 /// Those are used on settings page
 
 let userConfigs, importedConfigs, isSafari = false;
+const settingsHeaders = [];
 const expandedSettingsSections = [];
 let exportFileName = 'selecton-settings.json';
 var keys = Object.keys(configs);
@@ -223,7 +224,8 @@ function setTranslatedLabels() {
     document.querySelector("#convertionHeader").innerText = chrome.i18n.getMessage("convertionHeader");
     document.querySelector("#actionButtonsHeader").innerText = chrome.i18n.getMessage("contextualButtonsHeader");
     document.querySelector("#customSearchTooltip").innerText = chrome.i18n.getMessage("customSearchTooltip");
-    document.querySelector("#customSearchTooltipHint").innerText = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
+    // document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
+    document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
     document.querySelector("#selectionHeader").innerText = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerText = chrome.i18n.getMessage("customSearchButtonsHeader");
     document.querySelector("#highlightHeader").innerText = chrome.i18n.getMessage("markerLabel");
@@ -322,11 +324,27 @@ function updateDisabledOptions() {
     }
 }
 
+// window.onscroll = function () {
+//     for (let i = 0, l = settingsHeaders.length; i < l; i++) {
+//         let header = settingsHeaders[i];
+//         let posiiton = header.offsetTop;
+
+//         // if (window.pageYOffset > posiiton && header.classList.includes('active')) {
+//         if (window.scrollY > posiiton) {
+//             header.classList.add("sticky-header");
+//         } else {
+//             header.classList.remove("sticky-header");
+//         }
+//     }
+// };
+
 function setCollapsibleHeaders() {
     var coll = document.getElementsByClassName("collapsible-header");
 
     for (let i = 0, l = coll.length; i < l; i++) {
         const c = coll[i];
+
+        // settingsHeaders.push(c);
 
         /// Make section initially expanded
         if (expandedSettingsSections.includes(c.id)) {

@@ -144,7 +144,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchTooltipHint": {
-        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. <br/>Utilice %s como marcador de posición para la consulta <br/>%w es un marcador de posición para el dominio actual (para búsqueda en sitios)",
+        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. Utilice %s como marcador de posición para la consulta, %w es un marcador de posición para el dominio actual (para búsqueda en sitios)",
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchUrl": {

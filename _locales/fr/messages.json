@@ -144,7 +144,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchTooltipHint": {
-        "message": "S'affiche en survolant le bouton 'Rechercher'. <br/>Utilisez %s comme espace réservé pour la requête <br/>%w est un espace réservé pour le domaine actuel (pour la recherche sur le site)",
+        "message": "S'affiche en survolant le bouton 'Rechercher'. Utilisez %s comme espace réservé pour la requête, %w est un espace réservé pour le domaine actuel (pour la recherche sur le site)",
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchUrl": {
