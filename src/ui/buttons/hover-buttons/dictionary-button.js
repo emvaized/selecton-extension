@@ -22,7 +22,7 @@ function addDictionaryButton() {
 
 function setLiveWikiButton(word, wikiButton) {
     let fetched = false;
-    let definitionPanel = createVerticalHoverPanelForButton(wikiButton, `${chrome.i18n.getMessage("searchingDefinitions") ?? 'Searching'}...`, onShow);
+    let definitionPanel = createHoverPanelForButton(wikiButton, `${chrome.i18n.getMessage("searchingDefinitions") ?? 'Searching'}...`, onShow);
     wikiButton.appendChild(definitionPanel);
 
     function onShow() {

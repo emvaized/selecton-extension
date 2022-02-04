@@ -119,13 +119,13 @@
 }
 
 
-/* Buttons with panel on hover */
-.button-with-vertical-top-hover-panel {
-  clip-path: polygon(-1000% -1000%,  1000% -1000%,  1000% 100%,  -1000% 100%) !important;
+/* Clip content in buttons with hover panels */
+.button-with-top-hover-panel {
+  clip-path: polygon(-2000% -2000%,  2000% -2000%,  2000% 100%,  -2000% 100%) !important;
 }
 
-.button-with-vertical-bottom-hover-panel {
-  clip-path: polygon(-1000% 0%,  1000% 0%,  1000% 1000%,  -1000% 1000%) !important;
+.button-with-bottom-hover-panel {
+  clip-path: polygon(-2000% 0%,  2000% 0%,  2000% 2000%,  -2000% 2000%) !important;
 }
 
 .hover-vertical-tooltip { 

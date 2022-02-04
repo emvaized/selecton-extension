@@ -1,7 +1,7 @@
 
 function setHoverForSearchButton(searchButton) {
     /// Create color chooser panel
-    let searchPanel = createVerticalHoverPanelForButton(searchButton, undefined, undefined, true);
+    let searchPanel = createHoverPanelForButton(searchButton, undefined, undefined, true);
     searchPanel.classList.add('no-padding-tooltip');
     searchPanel.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
 

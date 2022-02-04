@@ -207,6 +207,10 @@ function initMouseListeners() {
       selection = null;
       hideTooltip();
       hideDragHandles();
+      // } else if (e.button == 0 && e.detail == 1) {
+    } else if (e.button == 0) {
+      hideTooltip();
+      hideDragHandles();
     }
   });
 
@@ -220,31 +224,36 @@ function initMouseListeners() {
     if (documentActiveElTag == 'A' || documentActiveElTag == 'BUTTON') return;
 
     /// Special handling for triple mouse click (paragraph selection)
-    if (e.detail == 3) {
-      hideDragHandles(false);
-      return;
-    }
+    // if (e.detail == 3) {
+    //   hideTooltip();
+    //   hideDragHandles(false);
+    //   // return;
+    // }
 
-    /// Get page selection
-    selection = window.getSelection();
-    selectedText = selection.toString().trim();
+    setTimeout(function () {
 
-    /// Check if clicked on text field
-    // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
-    checkTextField(e);
+      /// Get page selection
+      selection = window.getSelection();
+      selectedText = selection.toString().trim();
 
-    if (selectedText.length > 0) {
-      /// create tooltip for selection
-      setCssStyles();
-      initTooltip(e);
-    } else {
-      /// no selection on page - check if textfield is focused to create 'Paste' tooltip
-      // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
-      if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+      /// Check if clicked on text field
+      // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
+      checkTextField(e);
+
+      if (selectedText.length > 0) {
+        /// create tooltip for selection
         setCssStyles();
         initTooltip(e);
+      } else {
+        /// no selection on page - check if textfield is focused to create 'Paste' tooltip
+        // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+        if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+          setCssStyles();
+          initTooltip(e);
+        }
       }
-    }
+
+    }, e.detail == 3 ? 200 : 0)
   });
 
   function setCssStyles() {
@@ -312,8 +321,9 @@ function initMouseListeners() {
         }
       }
 
-      // if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
-      if (tooltipIsShown) hideTooltip(); /// Hide previous 'paste' button
+      /// Hide previous 'paste' button
+      // if (selectedText == '') hideTooltip(); 
+      // if (tooltipIsShown) hideTooltip();
 
       if (configs.addPasteOnlyEmptyField) {
         /// Ignore single click on text field with inputted value

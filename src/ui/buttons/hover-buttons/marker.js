@@ -26,11 +26,9 @@ function addMarkerButton() {
     });
 
     /// Create color chooser panel
-    // const colorChooserPanel = createHorizontalHoverPanelForButton(markerButton);
     setTimeout(function () {
-        let colorChooserPanel = createVerticalHoverPanelForButton(markerButton, undefined, undefined, false, true);
+        let colorChooserPanel = createHoverPanelForButton(markerButton, undefined, undefined, false, true, false, false);
         colorChooserPanel.style.maxWidth = '500%';
-        // colorChooserPanel.classList.add('no-padding-tooltip');
         colorChooserPanel.classList.add('default-padding-tooltip');
 
         /// Reverse color buttons

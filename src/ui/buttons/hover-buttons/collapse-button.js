@@ -21,7 +21,9 @@ function collapseButtons() {
 
         /// Create panel
         // setTimeout(function () {
-        const collapsedButtonsPanel = createHorizontalHoverPanelForButton(moreButton, true);
+        const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, false, true, false);
+        collapsedButtonsPanel.style.maxWidth = 'unset';
+        collapsedButtonsPanel.classList.add('default-padding-tooltip');
 
         /// Append buttons to panel
         if (configs.reverseTooltipButtonsOrder) {

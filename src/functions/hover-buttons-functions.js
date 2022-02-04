@@ -23,90 +23,10 @@ function hideHoverIndicator(indicator) {
     indicator.style.opacity = 0;
 }
 
-function createHorizontalHoverPanelForButton(button, pinOnClick = false) {
-    let panel = document.createElement('div');
-    panel.className = 'selection-tooltip selecton-entity';
-    panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
-    panel.style.pointerEvents = 'none';
-    panel.style.width = 'max-content';
-    panel.style.opacity = 0;
-    if (tooltipOnBottom)
-        panel.style.top = '125%';
-    else
-        panel.style.bottom = '125%';
-    if (configs.reverseTooltipButtonsOrder)
-        panel.style.left = '0px';
-    else
-        panel.style.right = '0px';
 
-    const dxTransformValue = configs.reverseTooltipButtonsOrder ? '-2px' : '2px';
-    panel.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out`;
-
-    /// Add shadow to panel
-    if (configs.addTooltipShadow) {
-        panel.style.boxShadow = `0 1px 5px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
-    }
-
-    /// Check if panel will go off-screen on top
-    let panelOnBottom = false;
-
-    if (tooltipOnBottom) {
-        panelOnBottom = true;
-        movePanelToBottom(panel);
-        panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-    } else
-        /// Check if panel will go off-screen
-        setTimeout(function () {
-            if (!tooltipIsShown) return;
-            panelOnBottom = checkHoverPanelToOverflowOnTop(panel);
-            panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-        }, configs.animationDuration);
-
-    panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? '-100' : '100'}%)`;
-
-    if (button) {
-        let timerToHide, timerToAllowPointer, millsToWait = 150;
-        let panelIsPinned = false;
-
-        if (pinOnClick)
-            button.addEventListener('click', function () {
-                panelIsPinned = !panelIsPinned;
-
-                // if (panelIsPinned)
-                button.classList.toggle('highlighted-popup-button');
-                // else 
-                // button.classList.add('highlighted-popup-button');
-            });
-
-        button.addEventListener('mouseover', function () {
-            clearTimeout(timerToHide);
-            panel.style.opacity = 1;
-            panel.style.transform = `translate(${dxTransformValue}, 0)`;
-
-            timerToAllowPointer = setTimeout(function () {
-                panel.style.pointerEvents = 'auto';
-            }, configs.animationDuration / 2);
-        });
-
-        button.addEventListener('mouseout', function () {
-            if (panelIsPinned) return;
-
-            clearTimeout(timerToAllowPointer);
-
-            timerToHide = setTimeout(function () {
-                panel.style.opacity = 0;
-                panel.style.pointerEvents = 'none';
-                panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-            }, millsToWait);
-        });
-    }
-
-    return panel;
-}
-
-function createVerticalHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, isHorizontal = false) {
+function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true) {
     let timerToRemovePanel, timeoutToRevealPanel;
-    const hoverIndicator = addAstrixToHoverButton(button);
+    const hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
 
     /// Set panel
     let panel = document.createElement('div');
@@ -125,7 +45,7 @@ function createVerticalHoverPanelForButton(button, initialHtml, onHoverCallback,
         panel.style.bottom = '125%';
 
     if (reverseOrder) {
-        /// specifically for the Search button
+        /// specially for the Search button
         if (configs.reverseTooltipButtonsOrder)
             panel.style.right = '0px';
         else
@@ -137,41 +57,70 @@ function createVerticalHoverPanelForButton(button, initialHtml, onHoverCallback,
             panel.style.right = '0px';
     }
 
-    /// Add shadow
+    /// Add panel shadow
     if (configs.addTooltipShadow) {
         panel.style.boxShadow = `0 1px 5px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
     }
 
-    /// Check if panel will go off-screen on top
-    const dxTransformValue = configs.reverseTooltipButtonsOrder || reverseOrder ? '-2px' : '2px';
+    /// Checks to execute after panel was added to the DOM
+    let dxTransformValue = configs.reverseTooltipButtonsOrder || reverseOrder ? '-2px' : '2px';
     let panelOnBottom = false;
 
-    if (tooltipOnBottom) {
-        panelOnBottom = true;
-        movePanelToBottom(panel);
-        panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-    } else
-        /// Check if panel will go off-screen
-        setTimeout(function () {
-            if (!tooltipIsShown) return;
-            panelOnBottom = checkHoverPanelToOverflowOnTop(panel);
-            panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+    setTimeout(function () {
+        if (!tooltipIsShown) return;
 
-            /// Clip content on edge for better looking animation
-            button.classList.add(panelOnBottom ? 'button-with-vertical-bottom-hover-panel' : 'button-with-vertical-top-hover-panel');
-        }, 15);
+        /// Check if panel will go off-screen
+        if (tooltipOnBottom) {
+            panelOnBottom = true;
+            movePanelToBottom(panel);
+        } else {
+            panelOnBottom = checkHoverPanelToOverflowOnTop(panel);
+        }
+
+        /// Clip content on edge for better looking animation
+        if (unknownHeight)
+            button.classList.add(panelOnBottom ? 'button-with-bottom-hover-panel' : 'button-with-top-hover-panel');
+
+        /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
+        if (!reverseOrder) {
+            let parentButtons = button.parentNode.children;
+            if (parentButtons.length < 2) return;
+
+            let positionOfButton = Array.prototype.indexOf.call(parentButtons, button);
+
+            if (positionOfButton == 0) {
+                panel.style.left = '0px';
+                panel.style.right = 'unset';
+                dxTransformValue = '-2px';
+            }
+        }
+
+        /// Set initial transform position for panel
+        panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+    }, 15);
 
 
     /// Set mouse listeners
     if (button) {
-        let delayToRevealOnHover = configs.delayToRevealHoverPanels ?? 400;
+        let delayToRevealOnHover = revealAfterDelay ? (configs.delayToRevealHoverPanels ?? 400) : 0;
+        let panelIsPinned = false;
+
+        if (pinOnClick)
+            button.addEventListener('click', function () {
+                panelIsPinned = !panelIsPinned;
+
+                // if (panelIsPinned)
+                button.classList.toggle('highlighted-popup-button');
+                // else 
+                // button.classList.add('highlighted-popup-button');
+            });
 
         function revealPanel() {
             panel.style.visibility = 'visible';
             setTimeout(function () {
                 panel.style.opacity = 1;
                 panel.style.transform = `translate(${dxTransformValue},0)`;
-            }, 2);
+            }, 3);
 
             setTimeout(function () {
                 if (!panel || !tooltipIsShown) return;
@@ -200,12 +149,13 @@ function createVerticalHoverPanelForButton(button, initialHtml, onHoverCallback,
 
             timeoutToRevealPanel = setTimeout(function () {
                 revealPanel();
-                hideHoverIndicator(hoverIndicator);
+                if (revealAfterDelay) hideHoverIndicator(hoverIndicator);
                 if (onHoverCallback) onHoverCallback();
             }, delayToRevealOnHover);
         });
 
         button.addEventListener('mouseout', function () {
+            if (panelIsPinned) return;
             clearTimeout(timeoutToRevealPanel);
 
             timerToRemovePanel = setTimeout(function () {
@@ -213,16 +163,9 @@ function createVerticalHoverPanelForButton(button, initialHtml, onHoverCallback,
                 if (panelIsHovered) return;
 
                 hidePanel();
-                showHoverIndicator(hoverIndicator);
+                if (revealAfterDelay) showHoverIndicator(hoverIndicator);
             }, 100);
         });
-
-        // panel.addEventListener('mouseover', function () {
-        //     panelIsHovered = true;
-        // });
-        // panel.addEventListener('mouseout', function () {
-        //     panelIsHovered = false;
-        // });
     }
 
     return panel;

@@ -80,7 +80,7 @@ function setRegularTranslateButton(languageOfSelectedText) {
 
 function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateButton) {
     let fetched = false;
-    let liveTranslationPanel = createVerticalHoverPanelForButton(translateButton, `${chrome.i18n.getMessage("translating") ?? 'Translating'}...`, onShow);
+    let liveTranslationPanel = createHoverPanelForButton(translateButton, `${chrome.i18n.getMessage("translating") ?? 'Translating'}...`, onShow);
     translateButton.appendChild(liveTranslationPanel);
 
     function onShow() {
