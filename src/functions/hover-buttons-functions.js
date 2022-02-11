@@ -26,14 +26,15 @@ function hideHoverIndicator(indicator) {
 
 function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true) {
     let timerToRemovePanel, timeoutToRevealPanel;
-    const hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
+    let hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
 
     /// Set panel
     let panel = document.createElement('div');
     panel.className = 'hover-vertical-tooltip  selecton-entity';
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
-    panel.style.visibility = 'collapse';
+    // panel.style.visibility = 'collapse';
+    panel.style.height = '0px';
     panel.style.pointerEvents = 'none';
 
     if (initialHtml)
@@ -67,7 +68,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     let panelOnBottom = false;
 
     setTimeout(function () {
-        if (!tooltipIsShown) return;
+        // if (!tooltipIsShown) return;
+        if (!panel.isConnected) return;
 
         /// Check if panel will go off-screen
         if (tooltipOnBottom) {
@@ -87,7 +89,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             if (parentButtons.length < 2) return;
 
             let positionOfButton = Array.prototype.indexOf.call(parentButtons, button);
-
             if (positionOfButton == 0) {
                 panel.style.left = '0px';
                 panel.style.right = 'unset';
@@ -97,7 +98,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
         /// Set initial transform position for panel
         panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-    }, 15);
+    }, 25);
 
 
     /// Set mouse listeners
@@ -106,37 +107,11 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         let panelIsPinned = false;
 
         if (pinOnClick)
-            button.addEventListener('click', function () {
+            button.addEventListener('mousedown', function (e) {
+                e.stopPropagation();
                 panelIsPinned = !panelIsPinned;
-
-                // if (panelIsPinned)
                 button.classList.toggle('highlighted-popup-button');
-                // else 
-                // button.classList.add('highlighted-popup-button');
             });
-
-        function revealPanel() {
-            panel.style.visibility = 'visible';
-            setTimeout(function () {
-                panel.style.opacity = 1;
-                panel.style.transform = `translate(${dxTransformValue},0)`;
-            }, 3);
-
-            setTimeout(function () {
-                if (!panel || !tooltipIsShown) return;
-                panel.style.pointerEvents = 'all';
-            }, configs.animationDuration);
-        }
-
-        function hidePanel() {
-            panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-            panel.style.opacity = 0.0;
-            panel.style.pointerEvents = 'none';
-
-            setTimeout(function () {
-                if (!panel || !tooltipIsShown) return;
-            }, configs.animationDuration)
-        }
 
         let panelIsHovered = false;
 
@@ -148,7 +123,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             timerToRemovePanel = null;
 
             timeoutToRevealPanel = setTimeout(function () {
-                revealPanel();
+                revealHoverPanel(panel, dxTransformValue);
                 if (revealAfterDelay) hideHoverIndicator(hoverIndicator);
                 if (onHoverCallback) onHoverCallback();
             }, delayToRevealOnHover);
@@ -162,7 +137,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
                 if (!panel) return;
                 if (panelIsHovered) return;
 
-                hidePanel();
+                hideHoverPanel(panel, dxTransformValue, panelOnBottom);
                 if (revealAfterDelay) showHoverIndicator(hoverIndicator);
             }, 100);
         });
@@ -175,10 +150,6 @@ function checkHoverPanelToOverflowOnTop(panel) {
     /// check to hover panel overflow on screen top
     let panelRect = panel.getBoundingClientRect();
 
-    // console.log(panel);
-    // console.log(`${panelRect.top} - ${panel.clientHeight} `);
-    // console.log(panelRect.top - panel.clientHeight);
-
     if (panelRect.top - panel.clientHeight - 12 < 5) {
         movePanelToBottom(panel);
         return true;
@@ -190,4 +161,29 @@ function movePanelToBottom(panel) {
     panel.style.top = '125%';
     if (panel.parentNode)
         panel.parentNode.classList.add('higher-z-index');
+}
+
+function revealHoverPanel(panel, dxTransformValue) {
+    // panel.style.visibility = 'visible';
+    panel.style.height = 'unset';
+
+    setTimeout(function () {
+        panel.style.opacity = 1;
+        panel.style.transform = `translate(${dxTransformValue},0%)`;
+    }, 3);
+
+    setTimeout(function () {
+        if (!panel || !tooltipIsShown) return;
+        panel.style.pointerEvents = 'all';
+    }, configs.animationDuration);
+}
+
+function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
+    panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+    panel.style.opacity = 0.0;
+    panel.style.pointerEvents = 'none';
+
+    // setTimeout(function () {
+    //     if (!panel || !tooltipIsShown) return;
+    // }, configs.animationDuration)
 }

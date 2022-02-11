@@ -344,19 +344,10 @@ function calculateTooltipPosition(e) {
 }
 
 function showTooltip(dx, dy) {
-    tooltip.style.pointerEvents = 'auto';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.opacity = configs.useCustomStyle ? configs.tooltipOpacity : 1.0;
     tooltip.style.top = `${dy}px`;
     tooltip.style.left = `${dx}px`;
-    tooltip.style.opacity = configs.useCustomStyle ? configs.tooltipOpacity : 1.0;
-
-    /// Make tooltip not-interactive during show-up transition
-    // if (configs.tooltipRevealEffect == 'moveUpTooltipEffect') {
-    tooltip.style.pointerEvents = 'none';
-    setTimeout(function () {
-        if (tooltipIsShown == false || tooltip == null) return;
-        tooltip.style.pointerEvents = 'all';
-    }, configs.animationDuration);
-    // }
 
     /// Set reveal animation type
     tooltip.style.transform = returnTooltipRevealTransform(true);
@@ -364,6 +355,12 @@ function showTooltip(dx, dy) {
     if (configs.debugMode)
         console.log('Selecton tooltip is shown');
     tooltipIsShown = true;
+
+    /// Make tooltip interactive only after transition ends
+    setTimeout(function () {
+        if (tooltipIsShown == false || tooltip == null) return;
+        tooltip.style.pointerEvents = 'all';
+    }, configs.animationDuration);
 
     /// Check for website existing tooltip
     if (configs.shiftTooltipWhenWebsiteHasOwn && configs.tooltipPosition !== 'overCursor')
@@ -434,8 +431,6 @@ function showTooltip(dx, dy) {
 function hideTooltip(animated = true) {
     if (tooltip == null || tooltip == undefined) return;
 
-    document.removeEventListener("selectionchange", selectionChangeListener);
-
     if (configs.debugMode) {
         console.log('--- Hiding Selecton tooltips ---');
         console.log('Checking for existing tooltips...');
@@ -443,11 +438,6 @@ function hideTooltip(animated = true) {
 
     /// Hide all tooltips
     let oldTooltips = document.querySelectorAll('.selecton-entity');
-    // if (configs.debugMode) {
-    //     console.log(`Found ${oldTooltips.length} Selecton tooltips:`);
-    //     if (oldTooltips.length !== 0)
-    //         console.log(oldTooltips);
-    // }
 
     if (oldTooltips !== null && oldTooltips.length !== 0) {
         tooltipIsShown = false;
@@ -460,6 +450,7 @@ function hideTooltip(animated = true) {
             if (!animated)
                 oldTooltip.style.transition = '';
             oldTooltip.style.opacity = 0.0;
+            oldTooltip.style.pointerEvents = 'none';
 
             setTimeout(function () {
                 oldTooltip.remove();
@@ -470,9 +461,10 @@ function hideTooltip(animated = true) {
             console.log('No existing tooltips found');
     }
 
-
     tooltip = null;
     secondaryTooltip = null;
     timerToRecreateOverlays = null;
     isTextFieldFocused = false;
+
+    document.removeEventListener("selectionchange", selectionChangeListener);
 }
