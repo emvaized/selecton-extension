@@ -83,7 +83,7 @@ function addBasicTooltipButtons(layout) {
             if (configs.addPasteButton)
                 try {
                     /// Add only paste button 
-                    let pasteButton = addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
+                    addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
                         textField.focus();
 
                         if (textField.getAttribute('contenteditable') !== null) {
@@ -95,10 +95,8 @@ function addBasicTooltipButtons(layout) {
                             document.execCommand('paste');
 
                         removeSelectionOnPage();
-                        hideTooltip();
+                        // hideTooltip();
                     }, true);
-                    // pasteButton.style.borderRadius = onlyButtonBorderRadius;
-
                 } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
