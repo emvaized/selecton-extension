@@ -83,7 +83,6 @@
   cursor: pointer;
   border: none !important;
   box-shadow: none !important;
-  /* z-index: 100000 !important; */
   padding:  var(--selecton-button-padding) !important;
   vertical-align: top !important;
   font-family: Arial, Helvetica, sans-serif !important;
@@ -213,20 +212,19 @@
 }
 
 .selection-tooltip-draghandle-circle {
-  border: 0.25px solid var(--selecton-outline-color);z-index: 99998;border-radius: 50%;background: var(--selecton-background-color);position: relative;
+  border: 0.25px solid var(--selecton-outline-color); z-index: 99998; border-radius: 50%; background: var(--selecton-background-color); position: relative;
   height: var(--selecton-handle-circle-radius); width: var(--selecton-handle-circle-radius);
 }
 
 .selecton-button-img-icon {
   all: revert; fill: white; 
-  vertical-align: top !important; display: unset !important;  transform: translate(0, -1px);
+  vertical-align: top !important; display: unset !important; transform: translate(0, -1px);
   height: var(--selecton-button-icon-height); max-height: var(--selecton-button-icon-height) !important;
   filter: var(--selecton-button-icon-invert) !important;
 }
 
 .selecton-search-tooltip-icon {
-  filter: none;
-  width: var(--selecton-search-tooltip-icon-size);
+  filter: none; width: var(--selecton-search-tooltip-icon-size);
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
 }
@@ -234,17 +232,16 @@
 .selecton-hover-button-indicator {
   opacity: 0.3;
   position: absolute;
-  right: 4px;
-  top: 2px;
-  width: 4px;
-  height: 4px;
+  right: 4px !important;
+  top: 2px !important;
+  width: 4px !important;
+  height: 4px !important;
   transform: translate(0px, 0.5px);
   margin: 0 auto !important;
-  background-color:var(--selection-button-foreground);
+  background-color: var(--selection-button-foreground) !important;
   border-radius: 50% !important;
-  transition: opacity 100ms ease;
+  transition: opacity 100ms ease !important;
   pointer-events: none;
-  /* z-index: 2 !important; */
 }
 
 /* Marker */
@@ -275,14 +272,10 @@
   pointer-events: none !important;
   position: absolute;
   z-index: 2147483647 !important;
-  bottom: 0;
-  right: 120%;
+  bottom: 0; right: 120%;
   width: max-content !important;
   text-align: start !important;
-  
-  /* Fade in tooltip */
-  opacity: 0;
-  transition: opacity 250ms, visibility 250ms !important; 
+  opacity: 0; transition: opacity 250ms, visibility 250ms !important; 
 }
 
 .marker-scrollbar-tooltip-bottom {
