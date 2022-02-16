@@ -1,17 +1,9 @@
 function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
-    // switch (configs.tooltipRevealEffect) {
-    //     case 'noTooltipEffect': return ``;
-    //     case 'moveUpTooltipEffect': return endPosition ? `translate(0,0)` : `translate(0, 100%)`;
-    //     case 'moveDownTooltipEffect': return endPosition ? `translate(0,0)` : `translate(0, -100%)`;
-    //     case 'scaleUpTooltipEffect': return endPosition ? `scale(1.0)` : `scale(0.0)`;
-    // }
-
     let dxOffset = shouldShift ? '-50%' : '0';
 
     switch (configs.tooltipRevealEffect) {
         case 'noTooltipEffect': return ``;
         case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, 100%)`;
-        // case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},-100%)` : `translate(${dxOffset}, 0)`;
         case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -100%)`;
         case 'scaleUpTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
     }
@@ -155,7 +147,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     }, 5);
 }
 
-function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, indexToInsert) {
+function addBasicTooltipButton(label, icon, onClick, isFirstButton = false) {
     /// Used for basic button with action label + icon, when enabled
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
@@ -169,9 +161,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, inde
 
     button.addEventListener("mousedown", onClick);
 
-    if (indexToInsert !== null && indexToInsert !== undefined)
-        tooltip.insertBefore(button, tooltip.children[indexToInsert + 1]);
-    else if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
+    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
     else
         tooltip.appendChild(button);

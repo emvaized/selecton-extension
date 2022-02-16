@@ -34,7 +34,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
     // panel.style.visibility = 'collapse';
-    panel.style.height = '0px';
+    panel.style.width = '0px';
     panel.style.pointerEvents = 'none';
 
     if (initialHtml)
@@ -98,7 +98,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
         /// Set initial transform position for panel
         panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-    }, 25);
+        // }, 25);
+    }, configs.animationDuration);
 
 
     /// Set mouse listeners
@@ -148,12 +149,12 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
 function checkHoverPanelToOverflowOnTop(panel) {
     /// check to hover panel overflow on screen top
-    let panelRect = panel.getBoundingClientRect();
-
-    if (panelRect.top - panel.clientHeight - 12 < 5) {
-        movePanelToBottom(panel);
-        return true;
-    } else return false;
+    try {
+        if (panel.getBoundingClientRect().top < 0) {
+            movePanelToBottom(panel);
+            return true;
+        } else return false;
+    } catch (e) { return false; }
 }
 
 function movePanelToBottom(panel) {
@@ -165,7 +166,7 @@ function movePanelToBottom(panel) {
 
 function revealHoverPanel(panel, dxTransformValue) {
     // panel.style.visibility = 'visible';
-    panel.style.height = 'unset';
+    panel.style.width = 'unset';
 
     setTimeout(function () {
         panel.style.opacity = 1;
@@ -182,5 +183,4 @@ function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
     panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
     panel.style.opacity = 0.0;
     panel.style.pointerEvents = 'none';
-
 }
