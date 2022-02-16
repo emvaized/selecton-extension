@@ -140,7 +140,7 @@
   border: 0.25px solid var(--selecton-outline-color); 
   background: var(--selecton-background-color) !important; 
   font-size: var(--selecton-font-size) !important;
-  width: max-content !important;
+  /* width: max-content !important; */
   max-width: 400%;
   pointer-events: none;
   color: var(--selection-button-foreground);

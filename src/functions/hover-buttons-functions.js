@@ -30,7 +30,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     /// Set panel
     let panel = document.createElement('div');
-    panel.className = 'hover-vertical-tooltip  selecton-entity';
+    panel.className = 'hover-vertical-tooltip selecton-entity';
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
     // panel.style.visibility = 'collapse';
@@ -166,7 +166,7 @@ function movePanelToBottom(panel) {
 
 function revealHoverPanel(panel, dxTransformValue) {
     // panel.style.visibility = 'visible';
-    panel.style.width = 'unset';
+    panel.style.width = 'max-content';
 
     setTimeout(function () {
         panel.style.opacity = 1;
