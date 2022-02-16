@@ -7,8 +7,6 @@ function addAstrixToHoverButton(button) {
     /// add astrix indicator when hover enabled
     let astrix = document.createElement('span');
     astrix.className = 'selecton-hover-button-indicator';
-    // astrix.innerText = '*';
-    // button.style.position = 'relative';
     button.appendChild(astrix);
     return astrix;
 }
@@ -98,7 +96,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
         /// Set initial transform position for panel
         panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-        // }, 25);
     }, configs.animationDuration);
 
 
