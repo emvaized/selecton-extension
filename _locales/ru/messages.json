@@ -633,6 +633,10 @@
         "message": "Маркер",
         "description": "Label for buttons style option in settings"
     },
+    "markersLabel": {
+        "message": "Маркеры",
+        "description": "Label for buttons style option in settings"
+    },
     "addMarkerButton": {
         "message": "Использовать кнопку 'Маркер'",
         "description": "Label for buttons style option in settings"

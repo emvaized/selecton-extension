@@ -629,6 +629,10 @@
     "message": "Highlight",
     "description": "Label for buttons style option in settings"
   },
+  "markersLabel": {
+    "message": "Highlights",
+    "description": "Label for buttons style option in settings"
+  },
   "addMarkerButton": {
     "message": "Add 'Highlight' button",
     "description": "Label for buttons style option in settings"

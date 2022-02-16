@@ -72,7 +72,7 @@ const configs = {
     'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
     'floatingOffscreenTooltip': false,
     'showUpdateNotification': true,
-    'convertResultClickAction': 'copy', /// Possible values: 'copy', 'search'
+    'convertResultClickAction': 'search', /// Possible values: 'copy', 'search'
     'delayToRevealSearchTooltip': 350,
     'delayToRevealTranslateTooltip': 550,
     'delayToRevealHoverPanels': 500,

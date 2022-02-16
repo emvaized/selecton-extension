@@ -66,7 +66,7 @@ function setRegularTranslateButton(languageOfSelectedText) {
             returnTranslateUrl(selectedText, 'en') :
             returnTranslateUrl(selectedText);
         onTooltipButtonClick(e, url);
-    });
+    }, false);
 
     translateButton.setAttribute('id', 'selecton-translate-button');
 

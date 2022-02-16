@@ -183,7 +183,4 @@ function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
     panel.style.opacity = 0.0;
     panel.style.pointerEvents = 'none';
 
-    // setTimeout(function () {
-    //     if (!panel || !tooltipIsShown) return;
-    // }, configs.animationDuration)
 }

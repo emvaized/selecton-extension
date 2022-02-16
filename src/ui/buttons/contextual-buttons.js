@@ -612,26 +612,21 @@ function addContextualButtons() {
     }
 
     setCopyButtonTitle(copyButton, selectedText.length, wordsCount);
+    const canAddHoverButtons = !(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(selectedText)) && isFileName == false;
 
-    /// Add hover buttons
-    if (tooltip.children.length < 4 && isFileName == false) {
-        const containsSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(selectedText);
+    /// Add hover buttons when enabled, and no other contextual buttons were added 
+    // if (tooltip.children.length < 4 && isFileName == false) {
+    if (configs.showTranslateButton && canAddHoverButtons) {
+        addTranslateButton(addFinalButtons);
+    } else addFinalButtons();
+
+    function addFinalButtons() {
 
         /// Add dictionary button
-        if (configs.showDictionaryButton && wordsCount <= (configs.dictionaryButtonWordsAmount ?? 1) && !containsSymbols) {
+        if (configs.showDictionaryButton && canAddHoverButtons && wordsCount <= configs.dictionaryButtonWordsAmount) {
             addDictionaryButton();
         }
 
-        /// Add Translate button when enabled, and no other contextual buttons were added 
-        if (configs.showTranslateButton) {
-            if (!(containsSymbols && !selectionContainsSpaces)) /// don't show for code
-                addTranslateButton(addFinalButtons);
-            else addFinalButtons();
-        }
-    } else addFinalButtons()
-
-
-    function addFinalButtons() {
         if (configs.addMarkerButton)
             addMarkerButton();
 
@@ -640,4 +635,6 @@ function addContextualButtons() {
                 collapseButtons();
             } catch (e) { if (configs.debugMode) console.log(e); }
     }
+
 }
+

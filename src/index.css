@@ -164,7 +164,7 @@
 .custom-search-image-button {
   all: revert;
   padding: 6px;
-  vertical-align: middle;
+  vertical-align: middle !important;
   height: max-content;
   font-size: var(--selecton-font-size) !important;
   font-family: Arial, Helvetica, sans-serif !important;
@@ -178,7 +178,7 @@
 }
 
 .custom-search-image-button span {
-  display: inline; vertical-align: top; opacity: 0.75; padding: 2px 5px;
+  display: inline; vertical-align: top !important; opacity: 0.75; padding: 2px 5px !important;
 }
 
 .custom-search-image-button img {
@@ -186,7 +186,7 @@
 }
 
 .selection-popup-color-preview-circle {
-  max-width: 9px; max-height: 9px; padding: 0px 7.5px; border-radius: 50%; 
+  max-width: 9px; max-height: 9px; padding: 0px 7.5px !important; border-radius: 50%; 
   border:solid 1px var(--selection-button-background-hover); 
   /* margin-right: 4.5px; */
   display: inline;
@@ -227,6 +227,7 @@
   filter: none; width: var(--selecton-search-tooltip-icon-size);
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
+  vertical-align: top !important;
 }
 
 .selecton-hover-button-indicator {

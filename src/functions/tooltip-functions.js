@@ -155,7 +155,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     }, 5);
 }
 
-function addBasicTooltipButton(label, icon, onClick, isFirstButton = false) {
+function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, indexToInsert) {
     /// Used for basic button with action label + icon, when enabled
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
@@ -169,7 +169,9 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false) {
 
     button.addEventListener("mousedown", onClick);
 
-    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
+    if (indexToInsert !== null && indexToInsert !== undefined)
+        tooltip.insertBefore(button, tooltip.children[indexToInsert + 1]);
+    else if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
     else
         tooltip.appendChild(button);
