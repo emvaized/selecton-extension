@@ -324,20 +324,6 @@ function updateDisabledOptions() {
     }
 }
 
-// window.onscroll = function () {
-//     for (let i = 0, l = settingsHeaders.length; i < l; i++) {
-//         let header = settingsHeaders[i];
-//         let posiiton = header.offsetTop;
-
-//         // if (window.pageYOffset > posiiton && header.classList.includes('active')) {
-//         if (window.scrollY > posiiton) {
-//             header.classList.add("sticky-header");
-//         } else {
-//             header.classList.remove("sticky-header");
-//         }
-//     }
-// };
-
 function setCollapsibleHeaders() {
     var coll = document.getElementsByClassName("collapsible-header");
 
@@ -353,7 +339,7 @@ function setCollapsibleHeaders() {
                 it.classList.toggle("active");
                 let content = it.nextElementSibling;
                 content.style.maxHeight = content.scrollHeight + "px";
-            }, 50);
+            }, 30);
         }
 
         c.onclick = function () {
@@ -944,3 +930,23 @@ document.querySelector("#writeAReviewButton").addEventListener("click", function
     let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
     window.open(isFirefox ? 'https://addons.mozilla.org/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
 });
+
+
+
+/// Experiments to restore previous scroll position when window is re-opened
+// var timerToSaveScrollPosition;
+
+// window.onscroll = function (e) {
+//     clearTimeout(timerToSaveScrollPosition);
+
+//     timerToSaveScrollPosition = setTimeout(function () {
+//         chrome.storage.local.set({ 'optionsScrollProgress': window.scrollY });
+//     }, 50);
+// };
+
+// setTimeout(function () {
+//     chrome.storage.local.get(['optionsScrollProgress'], function (val) {
+//         if (val.optionsScrollProgress !== null && val.optionsScrollProgress !== undefined)
+//             window.scrollTo(0, val.optionsScrollProgress);
+//     });
+// }, 100)

@@ -239,12 +239,6 @@ content: "\2212";
 }
 
 
-.sticky-header {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
 
 @media (min-width: 600px) {
   #footer-buttons { text-align: center; }
