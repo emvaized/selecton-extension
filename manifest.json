@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Selecton — selection tooltip. Copy and search",
-  "version": "3.5.2",
+  "name": "Selecton — selection popup. Copy and search",
+  "version": "3.5.5",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/logo-48.png",

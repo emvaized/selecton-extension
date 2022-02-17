@@ -1,4 +1,4 @@
-# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon - text selection actions
+# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon — text selection actions
 
 Get customizable pop-up with action buttons on text selection
 * Copy or search any text in one click - especially useful for laptops
@@ -118,9 +118,9 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extensions
 
-**Highlight button cuts my text selection**
+**Highlight button cuts the text selection**
 
-* To make it work reliably, please highlight single words or sentences — highlighter trims selection within one HTML node, otherwise page layout may be broken when highlight gets restored
+* To make this function work reliably, highlight single words or sentences — highlighter trims selection within one HTML node, otherwise page layout may be broken when highlight gets restored
 
 ----
 
