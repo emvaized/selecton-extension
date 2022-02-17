@@ -62,7 +62,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     }
 
     /// Checks to execute after panel was added to the DOM
-    let dxTransformValue = configs.reverseTooltipButtonsOrder || reverseOrder ? '-2px' : '2px';
+    let dxTransformValue = configs.reverseTooltipButtonsOrder ? (reverseOrder ? '2px' : '-2px') : (reverseOrder ? '-2px' : '2px');
     let panelOnBottom = false;
 
     setTimeout(function () {
@@ -83,11 +83,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
         /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
         if (!reverseOrder) {
-            let parentButtons = button.parentNode.children;
-            if (parentButtons.length < 2) return;
-
-            let positionOfButton = Array.prototype.indexOf.call(parentButtons, button);
-            if (positionOfButton == 0) {
+            if (!button.classList.contains('button-with-border') && button.parentNode.children.length > 1) {
                 panel.style.left = '0px';
                 panel.style.right = 'unset';
                 dxTransformValue = '-2px';

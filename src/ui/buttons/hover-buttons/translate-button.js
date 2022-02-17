@@ -85,7 +85,7 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
 
     function onShow() {
         if (fetched == false) {
-            /// Fetch definition from Wikipedia
+            /// Fetch definition from Google Translate
             fetched = true;
             fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel)
         }

@@ -58,6 +58,10 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
     definitionPanel.innerText = resultDefinition;
     definitionPanel.classList.add('selecton-live-translation');
 
+    /// If text contains line breaks, align by the left side
+    if (resultDefinition.includes(`
+`)) definitionPanel.style.textAlign = 'start';
+
     /// Create origin language label
     let originLabelWidth = configs.fontSize / 1.5;
     let originLabelPadding = 6;
