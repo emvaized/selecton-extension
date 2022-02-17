@@ -5,9 +5,10 @@ function collapseButtons() {
     if (buttonsCount > maxButtons) {
         /// Create button
         const moreButton = document.createElement('button');
-        moreButton.setAttribute('class', 'selection-popup-button button-with-border');
+        moreButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
         moreButton.innerText = '⋮';
 
+        /// Experiments to display svg instead of unicode symbol
         // let icon = document.createElement('img');
         // icon.setAttribute('src', menuIcon);
         // icon.setAttribute('class', 'selecton-button-img-icon');
@@ -20,7 +21,6 @@ function collapseButtons() {
             tooltip.appendChild(moreButton);
 
         /// Create panel
-        // setTimeout(function () {
         const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, false, true, false);
         collapsedButtonsPanel.style.maxWidth = 'unset';
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
@@ -40,9 +40,6 @@ function collapseButtons() {
 
         setBorderRadiusForSideButtons(collapsedButtonsPanel, 0);
 
-        /// Add button
         moreButton.appendChild(collapsedButtonsPanel);
-        // }, 0)
-
     }
 }

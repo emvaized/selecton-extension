@@ -2,7 +2,7 @@
 - Implemented new 'Highlight' button, which allows to highlight specific parts of text on page
 - Implemented 'Hide exceeding buttons' option, which will hide buttons more than set in settings (default: 3)
 - Brought back text format buttons for text fields (Bold, Italic, Strikethrough)
-- Add 'Show stats on Copy button hover' option
+- Add 'Show stats on Copy button hover' and 'Show button dividers' options
 - Great code refactor and performance optimizations
 - Added permission to run extension in iframes
 - Increased extension popup's height a bit

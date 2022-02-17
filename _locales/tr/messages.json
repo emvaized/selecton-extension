@@ -23,6 +23,10 @@
         "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
+    "addMarkerButton": {
+        "message": "'Vurgula' düğmesi ekle",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "addNewSearchOption": {
         "message": "Yeni arama seçeneği ekle",
         "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
@@ -87,6 +91,10 @@
         "message": "Projeyi destekleyin",
         "description": ""
     },
+    "callLabel": {
+        "message": "Ara",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "changeTextSelectionColor": {
         "message": "Metin seçimini özelleştirme",
         "description": "Ayarlardaki alan etiketi"
@@ -94,6 +102,10 @@
     "chooseFileFirst": {
         "message": "Önce dosyayı seçin",
         "description": ""
+    },
+    "collapseButtons": {
+        "message": "'Daha Fazla' düğmesinin altındaki aşan düğmeleri gizle",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "contextualButtonsHeader": {
         "message": "Düğme",
@@ -162,6 +174,10 @@
     "debugMode": {
         "message": "Hata ayıklama modu",
         "description": "Ayarlardaki seçenek etiketi"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Vurguluyken panelleri göstermeden önce gecikme (ms)",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "delayToRevealSearchTooltip": {
         "message": "Paneli göstermeden önceki gecikme (ms)",
@@ -311,9 +327,29 @@
         "message": "E-posta istemcisi",
         "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
     },
+    "markedLabel": {
+        "message": "Vurgulanan",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "markerLabel": {
+        "message": "Vurgula",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "markersLabel": {
+        "message": "Öne çıkanlar",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "maxIconsInRow": {
         "message": "Satırdaki simge miktarı",
         "description": "Ayarlarda seçenek etiketi"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Öne çıkanları saklamak için maksimum sayfa",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Araç ipucunda gösterilecek en fazla düğme",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "metric": {
         "message": "Metrik",
@@ -399,6 +435,10 @@
         "message": "Çeviri hizmeti",
         "description": "Ayarlardaki alan etiketi"
     },
+    "recentMarkersLabel": {
+        "message": "Son öne çıkanlar",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "recreateTooltipAfterScroll": {
         "message": "Kaydırma veya pencere yeniden boyutlandırma işleminden sonra araç ipucunu yeniden oluşturun",
         "description": "Label for field in settings"
@@ -467,6 +507,10 @@
         "message": "Sayfanın vurgu renginin üzerine yaz",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
+    "showButtonBorders": {
+        "message": "Düğme bölücülerini göster",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "showButtonLabelOnHover": {
         "message": "Vurgulu düğme etiketini göster",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
@@ -495,6 +539,10 @@
         "message": "Başlığı vurgulu olarak göster",
         "description": "Ayarlardaki seçenek etiketi"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Kopyala düğmesinin üzerine gelindiğinde istatistikleri göster",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
     "showTranslateButton": {
         "message": "Çevir düğmesini göster",
         "description": "Ayarlardaki alan etiketi"
@@ -514,6 +562,14 @@
     "snapSelectionToWord": {
         "message": "Metin seçimini sözcükle yaslama",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "strikeLabel": {
+        "message": "Grev",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
+    },
+    "symbolsCount": {
+        "message": "Semboller",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "textSelectionBackground": {
         "message": "Seçim rengi",
@@ -600,6 +656,10 @@
     "whatsNew": {
         "message": "Yenilikler",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "wordsCount": {
+        "message": "Kelimeler",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "wordSnappingBlacklist": {
         "message": "Dışlayacak etki alanları",

@@ -23,6 +23,10 @@
         "message": "Adicionar botões de formato de fonte (itálico, negrito)",
         "description": "Label for buttons style option in settings"
     },
+    "addMarkerButton": {
+        "message": "Adicionar botão 'Destacar'",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "addNewSearchOption": {
         "message": "Adicionar nova opção de pesquisa",
         "description": "Rótulo para adicionar novo botão de opção de pesquisa"
@@ -83,6 +87,10 @@
         "message": "Apoie o projeto",
         "description": ""
     },
+    "callLabel": {
+        "message": "Ligar",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "changeTextSelectionColor": {
         "message": "Personalizar seleção de texto",
         "description": "Rótulo para o campo nas configurações"
@@ -90,6 +98,10 @@
     "chooseFileFirst": {
         "message": "Escolha o arquivo primeiro",
         "description": ""
+    },
+    "collapseButtons": {
+        "message": "Ocultar botões excedentes no botão 'Mais'",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
     },
     "contextualButtonsHeader": {
         "message": "Botões",
@@ -159,6 +171,10 @@
         "message": "Modo de depuração",
         "description": "Rótulo para opção nas configurações"
     },
+    "delayToRevealHoverPanels": {
+        "message": "Atraso antes de revelar painéis em foco (ms)",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "delayToRevealSearchTooltip": {
         "message": "Atraso para revelar o painel (ms)",
         "description": "Label for option in settings"
@@ -208,7 +224,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "enabled": {
-        "message": "ativado",
+        "message": "Ativado",
         "description": "Rótulo para o campo nas configurações"
     },
     "excludedDomains": {
@@ -303,9 +319,29 @@
         "message": "Cliente de e-mail",
         "description": "Rótulo de opção para a configuração do novo método de e-mail"
     },
+    "markedLabel": {
+        "message": "Realçado",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
+    "markerLabel": {
+        "message": "Destacar",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
+    "markersLabel": {
+        "message": "Destaques",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "maxIconsInRow": {
         "message": "Quantidade de ícones em linha",
         "description": "Rótulo para opção nas configurações"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Máximo de páginas para armazenar destaques",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Max botões para mostrar na dica de ferramenta",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
     },
     "metric": {
         "message": "Métrica",
@@ -391,6 +427,10 @@
         "message": "Serviço de tradução",
         "description": "Label for field in settings"
     },
+    "recentMarkersLabel": {
+        "message": "Destaques recentes",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "recreateTooltipAfterScroll": {
         "message": "Recriar a dica de ferramenta após a rolagem",
         "description": "Label for field in settings"
@@ -459,6 +499,10 @@
         "message": "Reescrever a cor de destaque do site",
         "description": "Rótulo para opção de estilo de botões nas configurações"
     },
+    "showButtonBorders": {
+        "message": "Mostrar divisores de botão",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "showButtonLabelOnHover": {
         "message": "Mostrar rótulo do botão ao passar o mouse",
         "description": "Rótulo para opção de estilo de botões nas configurações"
@@ -487,6 +531,10 @@
         "message": "Mostrar título ao passar o mouse",
         "description": "Rótulo para opção nas configurações"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Mostrar estatísticas ao passar o mouse sobre o botão Copiar",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
     "showTranslateButton": {
         "message": "Mostrar botão de tradução",
         "description": "Rótulo para o campo nas configurações"
@@ -506,6 +554,14 @@
     "snapSelectionToWord": {
         "message": "Seleção de texto por palavra",
         "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "strikeLabel": {
+        "message": "Ataque",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
+    },
+    "symbolsCount": {
+        "message": "Símbolos",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
     },
     "textSelectionBackground": {
         "message": "Cor de seleção",
@@ -596,6 +652,10 @@
     "wordSnappingBlacklist": {
         "message": "Domínios a serem excluídos",
         "description": "Label for buttons style option in settings"
+    },
+    "wordsCount": {
+        "message": "Palavras",
+        "description": "Etiqueta para opção de estilo de botões nas configurações"
     },
     "writeAReview": {
         "message": "Escreva um comentário",

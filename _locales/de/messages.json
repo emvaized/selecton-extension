@@ -21,7 +21,11 @@
     },
     "addFontFormatButtons": {
         "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)",
-        "description": "Label for buttons style option in settings"
+        "description": ""
+    },
+    "addMarkerButton": {
+        "message": "Verwenden Sie die Schaltfläche 'Markieren'",
+        "description": ""
     },
     "addNewSearchOption": {
         "message": "Neue Suchoption hinzufügen",
@@ -83,12 +87,20 @@
         "message": "Das Projekt unterstützen",
         "description": ""
     },
+    "callLabel": {
+        "message": "Rufe",
+        "description": ""
+    },
     "changeTextSelectionColor": {
         "message": "Textauswahl anpassen",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "chooseFileFirst": {
         "message": "Wähle zuerst die Datei aus",
+        "description": ""
+    },
+    "collapseButtons": {
+        "message": "Überzählige Schaltflächen unter der Schaltfläche „Mehr“ ausblenden",
         "description": ""
     },
     "contextualButtonsHeader": {
@@ -158,6 +170,10 @@
     "debugMode": {
         "message": "Debug mode",
         "description": "Bezeichnung für Option in Einstellungen"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Verzögerung vor dem Anzeigen von Panels beim Hover (ms)",
+        "description": ""
     },
     "delayToRevealSearchTooltip": {
         "message": "Verzögerung vor dem Aufdecken des Panels (ms)",
@@ -303,9 +319,29 @@
         "message": "Desktop-E-Mail-Client",
         "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
     },
+    "markedLabel": {
+        "message": "Markiert",
+        "description": ""
+    },
+    "markerLabel": {
+        "message": "Markieren",
+        "description": ""
+    },
+    "markersLabel": {
+        "message": "Markierungen",
+        "description": ""
+    },
     "maxIconsInRow": {
         "message": "Anzahl der Symbole in der Reihe",
         "description": "Label für Option in den Einstellungen"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Maximale Seiten zum Speichern von Markierungen",
+        "description": ""
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Max. Schaltflächen, die im Tooltip angezeigt werden sollen",
+        "description": ""
     },
     "metric": {
         "message": "Metrisch",
@@ -395,6 +431,10 @@
         "message": "Währungssymbole anstelle von Codes bevorzugen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "recentMarkersLabel": {
+        "message": "Neueste Markierungen",
+        "description": ""
+    },
     "recreateTooltipAfterScroll": {
         "message": "Tooltip nach Scrollen oder Fenstergröße neu erstellen",
         "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
@@ -463,6 +503,10 @@
         "message": "Site-Hervorhebungsfarbe neu schreiben",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
     },
+    "showButtonBorders": {
+        "message": "Buttonteiler anzeigen",
+        "description": ""
+    },
     "showButtonLabelOnHover": {
         "message": "Tastenbeschriftung beim Hover anzeigen",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -491,6 +535,10 @@
         "message": "Titel beim Hover anzeigen",
         "description": "Bezeichnung für Option in Einstellungen"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Statistiken anzeigen, wenn der Mauszeiger auf die Schaltfläche 'Kopieren' zeigt",
+        "description": ""
+    },
     "showTranslateButton": {
         "message": "Schaltfläche zum Übersetzen anzeigen",
         "description": "Beschriftung für Feld in Einstellungen"
@@ -510,6 +558,14 @@
     "snapSelectionToWord": {
         "message": "Textauswahl nach Wort ausrichten",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "strikeLabel": {
+        "message": "Durchgestrichen",
+        "description": ""
+    },
+    "symbolsCount": {
+        "message": "Symbole",
+        "description": "Label for option in settings"
     },
     "textSelectionBackground": {
         "message": "Auswahlfarbe",
@@ -599,7 +655,11 @@
     },
     "wordSnappingBlacklist": {
         "message": "Auszuschließende Domains",
-        "description": "Label for buttons style option in settings"
+        "description": ""
+    },
+    "wordsCount": {
+        "message": "Wörter",
+        "description": "Label for option in settings"
     },
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
