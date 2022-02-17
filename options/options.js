@@ -791,6 +791,7 @@ function setMarkerSection(value) {
         let markersContainer = document.createElement('div');
         markersContainer.className = 'collapsible-content';
         markersContainer.style.marginLeft = '20px';
+        markersContainer.style.marginBottom = '10px';
 
         let websiteMarkers = markersData[url]['markers'];
 
@@ -806,8 +807,8 @@ function setMarkerSection(value) {
         });
 
         /// append tiles for each marker
-        websiteMarkers.forEach(function (marker) {
-            let tile = document.createElement('div');
+        for (let i = 0, websiteMarkersLength = websiteMarkers.length; i < websiteMarkersLength; i++) {
+            const marker = websiteMarkers[i], tile = document.createElement('div');
             tile.className = 'option marker-tile';
 
             /// color preview
@@ -855,11 +856,13 @@ function setMarkerSection(value) {
             }
 
             markersContainer.appendChild(tile);
-            markersContainer.appendChild(document.createElement('hr'));
+
+            if (i !== websiteMarkersLength - 1)
+                markersContainer.appendChild(document.createElement('hr'));
 
             /// add click listener
             tile.onclick = function () {
-                /// open page
+                /// open page, and scroll to selected marker
 
                 // let w = window.open(url, '_blank');
                 // setTimeout(function () {
@@ -890,7 +893,8 @@ function setMarkerSection(value) {
                     }
                 });
             }
-        });
+        }
+        // );
 
         container.appendChild(markersContainer);
 

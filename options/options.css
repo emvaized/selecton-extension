@@ -140,7 +140,7 @@ content: "\2212";
   width: 100%;
 }
 
-#customSearchTooltipHint {
+#customSearchTooltipHint, #markerHintHeader {
   margin: 0px 0px 15px;
 }
 

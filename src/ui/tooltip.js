@@ -166,7 +166,9 @@ function setUpTooltip(recreated = false) {
 
     /// Make the tooltip draggable by arrow
     if (configs.draggableTooltip) {
-        arrow.style.cursor = 'move';
+        // arrow.style.cursor = 'move';
+        arrow.style.cursor = 'grab';
+
         arrow.onmousedown = function (e) {
             isDraggingTooltip = true;
             e.preventDefault();
@@ -176,7 +178,8 @@ function setUpTooltip(recreated = false) {
             tooltip.style.left = `0px`;
             tooltip.style.top = `0px`;
             tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-            document.body.style.cursor = 'move';
+            // document.body.style.cursor = 'move';
+            document.body.style.cursor = 'grabbing';
 
             const tooltipOnBottom = arrow.classList.contains('arrow-on-bottom');
             tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px)`;
