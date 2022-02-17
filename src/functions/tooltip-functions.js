@@ -143,7 +143,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     if (configs.showStatsOnCopyButtonHover == false) return;
 
     setTimeout(function () {
-        copyButton.title = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}, ${words ?? selection.toString().split(' ').length} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
+        copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}, ${words ?? selection.toString().split(' ').length} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
     }, 5);
 }
 

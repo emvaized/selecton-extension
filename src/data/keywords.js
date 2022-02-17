@@ -17,7 +17,6 @@ const addressKeywords = [
 
     /// Ukrainian
     'вулиця ',
-    'вул. ',
     'м. ',
     'місто ',
 

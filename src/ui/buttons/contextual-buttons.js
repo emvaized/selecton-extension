@@ -612,7 +612,6 @@ function addContextualButtons() {
     }
 
     setCopyButtonTitle(copyButton, selectedText.length, wordsCount);
-    // const canAddHoverButtons = !(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(selectedText)) && isFileName == false;
     const canAddHoverButtons = !(/[`#$^*_+\-=\[\]{};\\|<>\/~]/.test(selectedText)) && isFileName == false;
 
     /// Add hover buttons when enabled, and no other contextual buttons were added 

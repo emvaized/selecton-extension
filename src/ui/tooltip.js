@@ -109,7 +109,7 @@ function createTooltip(e, recreated = false) {
             setTimeout(function () {
                 if (!tooltipIsShown) return;
                 checkTooltipForCollidingWithSideEdges();
-            }, 10);
+            }, configs.animationDuration / 4);
 
             /// Selection change listener
             setTimeout(function () {
