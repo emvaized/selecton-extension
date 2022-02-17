@@ -1,5 +1,5 @@
 /// Functions used for buttons with on-hover functionality
-/// First of all, Live translate button and Dictionary button
+/// First of all, Live translate and Dictionary buttons
 
 function addAstrixToHoverButton(button) {
     if (configs.showDotForHoverButtons == false) return;

@@ -1,12 +1,10 @@
 /* Tooltip */
 .selection-tooltip {
   all: revert;
-  /* background: #4c4c4c; */
   background: var(--selecton-background-color);
   opacity: 0;
   display: inline-block;
   position: absolute;
-  /* padding: 2px; */
   padding: var(--selecton-tooltip-inner-padding);
   color: white;
   border-radius: var(--selecton-border-radius);
@@ -18,16 +16,21 @@
   line-height: 1.0 !important; 
   box-sizing: unset !important;
   border: 0.25px solid var(--selecton-outline-color);
-  /* backdrop-filter: blur(4px) !important; */
+
+  /* backdrop-filter: blur(5px) !important; */
 }
 
-/* Blur */
-/* .selection-tooltip::before, .hover-vertical-tooltip::before {
+/* Blur experiments */
+/* .selection-tooltip::before {
   content: '';
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
   backdrop-filter: blur(5px) !important;
-} */
+}
+
+.hover-vertical-tooltip {
+  backdrop-filter: blur(5px) !important;
+}*/
 
 
 /* Tooltip arrow */
