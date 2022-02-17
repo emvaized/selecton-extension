@@ -106,7 +106,7 @@ function checkTooltipForCollidingWithSideEdges() {
     }
 }
 
-function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false) {
+function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, opacity) {
     let container = document.createDocumentFragment();
 
     let img = document.createElement('img');
@@ -114,7 +114,7 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false) {
     img.setAttribute('class', 'selecton-button-img-icon');
 
     const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
-    img.style.opacity = configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5;
+    img.style.opacity = opacity ?? (configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5);
     if (!onlyIconStyle || shouldAlwaysAddSpacing) img.style.marginRight = '3px';
     container.appendChild(img);
 
@@ -147,7 +147,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     }, 5);
 }
 
-function addBasicTooltipButton(label, icon, onClick, isFirstButton = false) {
+function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity) {
     /// Used for basic button with action label + icon, when enabled
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
@@ -155,7 +155,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false) {
     if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
         button.setAttribute('title', label);
     if (addButtonIcons)
-        button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label));
+        button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
     else
         button.textContent = label;
 

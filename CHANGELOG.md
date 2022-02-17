@@ -3,6 +3,7 @@
 - Implemented 'Hide exceeding buttons' option, which will hide buttons more than set in settings (defaults to 3)
 - Brought back text format buttons for text fields (Bold, Italic, Strikethrough)
 - Add 'Show stats on Copy button hover' and 'Show button dividers' options
+- 'Open link' button now recognizes Reddit, like r/somesubreddit
 - Great code refactor and performance optimization
 - Added permission to run extension in iframes
 - Increased extension popup height a bit

@@ -608,6 +608,18 @@ function addContextualButtons() {
                     }
 
                 }
+            } else if (!selectionContainsSpaces && selectedText[0] == 'r' && selectedText[1] == '/') {
+                /// Add Reddit button
+                let redditButton = addBasicTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'http://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png', function (e) {
+                    onTooltipButtonClick(e, 'https://www.reddit.com/' + selectedText);
+                }, false, 1.0);
+
+                let highlightedText = document.createElement('div');
+                highlightedText.style.display = 'inline';
+                highlightedText.textContent = ' reddit';
+                highlightedText.classList.add('color-highlight');
+
+                redditButton.appendChild(highlightedText);
             }
     }
 
