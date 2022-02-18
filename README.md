@@ -15,11 +15,14 @@ Get customizable pop-up with action buttons on text selection
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
 
 
+Download for Chrome:
+https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+
 Download for Firefox:
 https://addons.mozilla.org/firefox/addon/selection-actions/
 
-Download for Chrome:
-https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+Download for Safari:
+https://apps.apple.com/app/selecton-selection-actions/id1594013341
 
 ____
 
