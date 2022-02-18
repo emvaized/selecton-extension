@@ -23,6 +23,10 @@
         "message": "Ajouter des boutons de format de police (italique, gras)",
         "description": "Label for buttons style option in settings"
     },
+    "addMarkerButton": {
+        "message": "Ajouter un bouton 'Surligneurs'",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Ajouter une nouvelle option de recherche",
         "description": "Libellé pour ajouter un nouveau bouton d'option de recherche"
@@ -80,8 +84,12 @@
         "description": "Libellé de l'option dans les paramètres"
     },
     "buyMeCoffee": {
-        "message": "Soutenir le développement",
+        "message": "Soutenir le projet",
         "description": ""
+    },
+    "callLabel": {
+        "message": "Appelez le",
+        "description": "Label for buttons style option in settings"
     },
     "changeTextSelectionColor": {
         "message": "Personnaliser la sélection de texte",
@@ -90,6 +98,10 @@
     "chooseFileFirst": {
         "message": "Choisissez d'abord le fichier",
         "description": ""
+    },
+    "collapseButtons": {
+        "message": "Masquer les boutons excédentaires sous le bouton 'Plus'",
+        "description": "Label for buttons style option in settings"
     },
     "contextualButtonsHeader": {
         "message": "Boutons",
@@ -144,7 +156,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchTooltipHint": {
-        "message": "S'affiche en survolant le bouton 'Rechercher'. <br/>Utilisez %s comme espace réservé pour la requête <br/>%w est un espace réservé pour le domaine actuel (pour la recherche sur le site)",
+        "message": "S'affiche en survolant le bouton 'Rechercher'. Utilisez %s comme espace réservé pour la requête, %w est un espace réservé pour le domaine actuel (pour la recherche sur le site)",
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchUrl": {
@@ -158,6 +170,10 @@
     "debugMode": {
         "message": "Mode débogage",
         "description": "Libellé de l'option dans les paramètres"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Délai avant de révéler les panneaux au survol (ms)",
+        "description": "Label for buttons style option in settings"
     },
     "delayToRevealSearchTooltip": {
         "message": "Délai avant révélation du panneau (ms)",
@@ -303,9 +319,29 @@
         "message": "Client de messagerie de bureau",
         "description": "Libellé d'option pour le nouveau paramètre de méthode d'e-mail"
     },
+    "markedLabel": {
+        "message": "Surlignées",
+        "description": "Label for buttons style option in settings"
+    },
+    "markerLabel": {
+        "message": "Surligneur",
+        "description": "Label for buttons style option in settings"
+    },
+    "markersLabel": {
+        "message": "Surligneurs",
+        "description": "Label for buttons style option in settings"
+    },
     "maxIconsInRow": {
         "message": "Nombre d'icônes en ligne",
         "description": "Libellé pour l'option dans les paramètres"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Max pages pour stocker les surligneurs",
+        "description": "Label for buttons style option in settings"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Max boutons à afficher dans le panneau",
+        "description": "Label for buttons style option in settings"
     },
     "metric": {
         "message": "Métrique",
@@ -395,6 +431,10 @@
         "message": "Service de traduction",
         "description": "Label for field in settings"
     },
+    "recentMarkersLabel": {
+        "message": "Derniers surligneurs",
+        "description": "Label for buttons style option in settings"
+    },
     "recreateTooltipAfterScroll": {
         "message": "Recréer l'info-bulle après le défilement ou le redimensionnement de la fenêtre",
         "description": "Label for field in settings"
@@ -463,6 +503,10 @@
         "message": "Réécrire la couleur de surbrillance du site",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
+    "showButtonBorders": {
+        "message": "Afficher les séparateurs de boutons",
+        "description": "Label for buttons style option in settings"
+    },
     "showButtonLabelOnHover": {
         "message": "Afficher le libellé du bouton au survol",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
@@ -491,6 +535,10 @@
         "message": "Afficher le titre en survol",
         "description": "Libellé de l'option dans les paramètres"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Afficher les statistiques au survol du bouton Copier",
+        "description": "Label for buttons style option in settings"
+    },
     "showTranslateButton": {
         "message": "Afficher le bouton de traduction",
         "description": "Libellé du champ dans les paramètres"
@@ -510,6 +558,14 @@
     "snapSelectionToWord": {
         "message": "Sélection de texte par mot",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "strikeLabel": {
+        "message": "Barré",
+        "description": "Label for buttons style option in settings"
+    },
+    "symbolsCount": {
+        "message": "Symboles",
+        "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {
         "message": "Couleur de sélection",
@@ -599,6 +655,10 @@
     },
     "wordSnappingBlacklist": {
         "message": "Domaines à exclure",
+        "description": "Label for buttons style option in settings"
+    },
+    "wordsCount": {
+        "message": "Mots",
         "description": "Label for buttons style option in settings"
     },
     "writeAReview": {

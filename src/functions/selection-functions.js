@@ -17,9 +17,6 @@ function getSelectionCoordinates(atStart) {
     // get client rect
     range.collapse(atStart);
 
-    // let rects = range.getClientRects();
-    // if (rects.length <= 0) return null;
-    // let rect = rects[0];
     let rect = range.getBoundingClientRect();
 
     // Detect if selection is backwards

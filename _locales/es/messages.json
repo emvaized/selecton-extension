@@ -23,6 +23,10 @@
         "message": "Agregar botones de formato de fuente (cursiva, negrita)",
         "description": "Label for buttons style option in settings"
     },
+    "addMarkerButton": {
+        "message": "Añadir el botón 'Marca'",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Agregar nueva opción de búsqueda",
         "description": "Etiqueta para agregar un nuevo botón de opción de búsqueda"
@@ -80,8 +84,12 @@
         "description": "Etiqueta para la opción en la configuración"
     },
     "buyMeCoffee": {
-        "message": "Desarrollo de soporte",
+        "message": "Apoya el proyecto",
         "description": ""
+    },
+    "callLabel": {
+        "message": "Llama al",
+        "description": "Label for buttons style option in settings"
     },
     "changeTextSelectionColor": {
         "message": "Personalizar la selección de texto",
@@ -90,6 +98,10 @@
     "chooseFileFirst": {
         "message": "Elija el archivo primero",
         "description": ""
+    },
+    "collapseButtons": {
+        "message": "Ocultar botones en exceso debajo del botón 'Más'",
+        "description": "Label for buttons style option in settings"
     },
     "contextualButtonsHeader": {
         "message": "Botones",
@@ -144,7 +156,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchTooltipHint": {
-        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. <br/>Utilice %s como marcador de posición para la consulta <br/>%w es un marcador de posición para el dominio actual (para búsqueda en sitios)",
+        "message": "Se revela al pasar el cursor sobre el botón 'Buscar'. Utilice %s como marcador de posición para la consulta, %w es un marcador de posición para el dominio actual (para búsqueda en sitios)",
         "description": "Etiqueta para el campo en la configuración"
     },
     "customSearchUrl": {
@@ -158,6 +170,10 @@
     "debugMode": {
         "message": "Modo de depuración",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Retraso antes de revelar paneles al pasar el mouse (ms)",
+        "description": "Label for buttons style option in settings"
     },
     "delayToRevealSearchTooltip": {
         "message": "Retraso antes de revelar el panel (ms)",
@@ -303,9 +319,29 @@
         "message": "Cliente de correo electrónico de escritorio",
         "description": "Etiqueta de opción para la configuración del nuevo método de correo electrónico"
     },
+    "markedLabel": {
+        "message": "Destacado",
+        "description": "Label for buttons style option in settings"
+    },
+    "markerLabel": {
+        "message": "Marca",
+        "description": "Label for buttons style option in settings"
+    },
+    "markersLabel": {
+        "message": "Marcas",
+        "description": "Label for buttons style option in settings"
+    },
     "maxIconsInRow": {
         "message": "Cantidad de iconos en fila",
         "description": "Etiqueta para la opción en la configuración"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Max páginas para almacenar destacados",
+        "description": "Label for buttons style option in settings"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Max botones para mostrar en el panel",
+        "description": "Label for buttons style option in settings"
     },
     "metric": {
         "message": "Métrica",
@@ -395,6 +431,10 @@
         "message": "Servicio de traduccion",
         "description": "Label for field in settings"
     },
+    "recentMarkersLabel": {
+        "message": "Últimas marcas",
+        "description": "Label for buttons style option in settings"
+    },
     "recreateTooltipAfterScroll": {
         "message": "Recrear información sobre herramientas después de desplazarse",
         "description": "Label for field in settings"
@@ -463,6 +503,10 @@
         "message": "Reescribir el color de resaltado del sitio",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
     },
+    "showButtonBorders": {
+        "message": "Mostrar divisores de botones",
+        "description": "Label for buttons style option in settings"
+    },
     "showButtonLabelOnHover": {
         "message": "Mostrar la etiqueta del botón al pasar el mouse",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
@@ -491,6 +535,10 @@
         "message": "Mostrar título al pasar el mouse",
         "description": "Etiqueta para la opción en la configuración"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Mostrar estadísticas al pasar el botón Copiar",
+        "description": "Label for buttons style option in settings"
+    },
     "showTranslateButton": {
         "message": "Mostrar botón de traducción",
         "description": "Etiqueta para el campo en la configuración"
@@ -510,6 +558,14 @@
     "snapSelectionToWord": {
         "message": "Ajustar selección de texto por palabra",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
+    },
+    "strikeLabel": {
+        "message": "Tachado",
+        "description": "Label for buttons style option in settings"
+    },
+    "symbolsCount": {
+        "message": "Simbolos",
+        "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {
         "message": "Color de selección",
@@ -599,6 +655,10 @@
     },
     "wordSnappingBlacklist": {
         "message": "Dominios para excluir",
+        "description": "Label for buttons style option in settings"
+    },
+    "wordsCount": {
+        "message": "Palabras",
         "description": "Label for buttons style option in settings"
     },
     "writeAReview": {

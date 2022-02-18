@@ -1,3 +1,15 @@
+#3.5.5
+- Implemented new 'Highlight' button, which allows to highlight specific parts of text on page
+- Implemented 'Hide exceeding buttons' option, which will hide buttons more than set in settings (defaults to 3)
+- Brought back text format buttons for text fields (Bold, Italic, Strikethrough)
+- Add 'Show stats on Copy button hover' and 'Show button dividers' options
+- 'Open link' button now recognizes Reddit, like r/somesubreddit
+- Great code refactor and performance optimization
+- Added permission to run extension in iframes
+- Increased extension popup height a bit
+- Attempt to improve behavior on triple mouse click
+- Various bug fixes and improvements
+
 #3.5.1
 - Improved URL detection for 'open link' button
 - Improved snapping selection by word

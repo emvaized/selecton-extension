@@ -23,6 +23,10 @@
         "message": "Додати кнопки формату шрифту (курсив, жирний)",
         "description": "Label for buttons style option in settings"
     },
+    "addMarkerButton": {
+        "message": "Використовувати кнопку 'Маркер'",
+        "description": "Label for buttons style option in settings"
+    },
     "addNewSearchOption": {
         "message": "Додати нову опцію пошуку",
         "description": "Ярлик для кнопки додавання нового пошуку"
@@ -80,8 +84,12 @@
         "description": "Мітка для опції в налаштуваннях"
     },
     "buyMeCoffee": {
-        "message": "Підтримати розробку",
+        "message": "Підтримати проект",
         "description": ""
+    },
+    "callLabel": {
+        "message": "Подзвонити",
+        "description": "Label for buttons style option in settings"
     },
     "changeTextSelectionColor": {
         "message": "Змінити стиль виділення тексту",
@@ -90,6 +98,10 @@
     "chooseFileFirst": {
         "message": "Спочатку виберіть файл",
         "description": ""
+    },
+    "collapseButtons": {
+        "message": "Сховати зайві кнопки під кнопкою 'Більше'",
+        "description": "Label for buttons style option in settings"
     },
     "contextualButtonsHeader": {
         "message": "Кнопки",
@@ -144,7 +156,7 @@
         "description": "Ярлик для поля в настройках"
     },
     "customSearchTooltipHint": {
-        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. <br/> Використовуйте %s у якості плейсхолдера для запиту <br/>%w - плейсхолдер поточного домену (для пошуку по сайту)",
+        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. Використовуйте %s у якості плейсхолдера для запиту, %w - плейсхолдера поточного домену (для пошуку по сайту)",
         "description": "Ярлик для поля в настройках"
     },
     "customSearchUrl": {
@@ -158,6 +170,10 @@
     "debugMode": {
         "message": "Режим відлагодження",
         "description": "Мітка для опції в налаштуваннях"
+    },
+    "delayToRevealHoverPanels": {
+        "message": "Затримка перед відображенням панелі при наведенні (ms)",
+        "description": "Label for buttons style option in settings"
     },
     "delayToRevealSearchTooltip": {
         "message": "Затримка перед показом панелі (мс)",
@@ -307,9 +323,29 @@
         "message": "Відкрити поштовий клієнт",
         "description": "Option label for new email method setting"
     },
+    "markedLabel": {
+        "message": "Відмічено",
+        "description": "Label for buttons style option in settings"
+    },
+    "markerLabel": {
+        "message": "Маркер",
+        "description": "Label for buttons style option in settings"
+    },
+    "markersLabel": {
+        "message": "Маркери",
+        "description": "Label for buttons style option in settings"
+    },
     "maxIconsInRow": {
         "message": "Кіл-сть іконок у рядку",
         "description": "Мітка для параметра в налаштуваннях"
+    },
+    "maxMarkerPagesToStore": {
+        "message": "Макс. кількість сторінок для зберігання маркерів",
+        "description": "Label for buttons style option in settings"
+    },
+    "maxTooltipButtonsToShow": {
+        "message": "Макс. кількість видимих кнопок в панелі",
+        "description": "Label for buttons style option in settings"
     },
     "metric": {
         "message": "Метрична",
@@ -399,6 +435,10 @@
         "message": "Сервіс перекладу",
         "description": "Label for field in settings"
     },
+    "recentMarkersLabel": {
+        "message": "Останні маркери",
+        "description": "Label for buttons style option in settings"
+    },
     "recreateTooltipAfterScroll": {
         "message": "Перестворити панель після прокрутки або зміни розміру вікна",
         "description": "Label for field in settings"
@@ -467,6 +507,10 @@
         "message": "Переписати колір виділення сайту",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
     },
+    "showButtonBorders": {
+        "message": "Показувати роздільники кнопок",
+        "description": "Label for buttons style option in settings"
+    },
     "showButtonLabelOnHover": {
         "message": "Показати текст кнопки при наведенні",
         "description": "Label for option in settings"
@@ -495,6 +539,10 @@
         "message": "Показати заголовок при наведенні",
         "description": "Label for option in settings"
     },
+    "showStatsOnCopyButtonHover": {
+        "message": "Показувати інформацію при наведенні на кнопку Копіювати",
+        "description": "Label for buttons style option in settings"
+    },
     "showTranslateButton": {
         "message": "Показувати кнопку перекладу",
         "description": ""
@@ -514,6 +562,14 @@
     "snapSelectionToWord": {
         "message": "Прив'язка виділення тексту по слову",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "strikeLabel": {
+        "message": "Закреслен.",
+        "description": "Label for buttons style option in settings"
+    },
+    "symbolsCount": {
+        "message": "Символів",
+        "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {
         "message": "Колір виділення",
@@ -603,6 +659,10 @@
     },
     "wordSnappingBlacklist": {
         "message": "Домени для виключення",
+        "description": "Label for buttons style option in settings"
+    },
+    "wordsCount": {
+        "message": "Слів",
         "description": "Label for buttons style option in settings"
     },
     "writeAReview": {

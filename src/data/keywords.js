@@ -10,7 +10,6 @@ const addressKeywords = [
     /// Russian
     'ул.',
     'пр.',
-    'г.',
     'улица ',
     'переулок ',
     'город ',
@@ -18,7 +17,6 @@ const addressKeywords = [
 
     /// Ukrainian
     'вулиця ',
-    'вул. ',
     'м. ',
     'місто ',
 

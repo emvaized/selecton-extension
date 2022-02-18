@@ -62,12 +62,21 @@ function initConfigs(shouldCreateTooltip = false, e) {
           cutLabel = chrome.i18n.getMessage("cutLabel");
           pasteLabel = chrome.i18n.getMessage("pasteLabel");
           dictionaryLabel = chrome.i18n.getMessage("dictionaryLabel");
+          markerLabel = chrome.i18n.getMessage("markerLabel");
+
+          italicLabel = chrome.i18n.getMessage("italicLabel");
+          boldLabel = chrome.i18n.getMessage("boldLabel");
+          strikeLabel = chrome.i18n.getMessage("strikeLabel");
 
           setTimeout(function () {
             if (configs.addActionButtonsForTextFields)
               initMouseListeners();
-            else
+            else {
               document.addEventListener('selectionchange', selectionChangeInitListener);
+            }
+
+            if (configs.addMarkerButton)
+              initMarkersRestore();
           }, 1);
 
           configsWereLoaded = true;
@@ -198,44 +207,53 @@ function initMouseListeners() {
       selection = null;
       hideTooltip();
       hideDragHandles();
+      // } else if (e.button == 0 && e.detail == 1) {
+    } else if (e.button == 0) {
+      hideTooltip();
+      hideDragHandles();
     }
   });
 
   document.addEventListener("mouseup", function (e) {
     if (!configs.enabled) return;
     if (isDraggingTooltip) return;
-    if (tooltipIsShown && e.detail < 3) return;
+    // if (tooltipIsShown && e.detail < 3) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
     const documentActiveElTag = document.activeElement.tagName;
     if (documentActiveElTag == 'A' || documentActiveElTag == 'BUTTON') return;
 
     /// Special handling for triple mouse click (paragraph selection)
-    if (e.detail == 3) {
-      hideDragHandles(false);
-      return;
-    }
+    // if (e.detail == 3) {
+    //   hideTooltip();
+    //   hideDragHandles(false);
+    //   // return;
+    // }
 
-    /// Get page selection
-    selection = window.getSelection();
-    selectedText = selection.toString().trim();
+    setTimeout(function () {
 
-    /// Check if clicked on text field
-    // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
-    checkTextField(e);
+      /// Get page selection
+      selection = window.getSelection();
+      selectedText = selection.toString().trim();
 
-    if (selectedText.length > 0) {
-      /// create tooltip for selection
-      setCssStyles();
-      initTooltip(e);
-    } else {
-      /// no selection on page - check if textfield is focused to create 'Paste' tooltip
-      // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
-      if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+      /// Check if clicked on text field
+      // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
+      checkTextField(e);
+
+      if (selectedText.length > 0) {
+        /// create tooltip for selection
         setCssStyles();
         initTooltip(e);
+      } else {
+        /// no selection on page - check if textfield is focused to create 'Paste' tooltip
+        // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+        if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
+          setCssStyles();
+          initTooltip(e);
+        }
       }
-    }
+
+    }, e.detail == 3 ? 200 : 0)
   });
 
   function setCssStyles() {
@@ -258,6 +276,7 @@ function initMouseListeners() {
         /// Custom style from settings
         const bgColor = isDarkPage ? configs.tooltipInvertedBackground : configs.tooltipBackground;
         document.documentElement.style.setProperty('--selecton-background-color', bgColor);
+        // document.documentElement.style.setProperty('--selecton-background-color', 'rgba(0,0,0,0.5)');
         getTextColorForBackground(bgColor);
 
         document.documentElement.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
@@ -282,7 +301,7 @@ function initMouseListeners() {
     }, 0);
   }
 
-  function checkTextField() {
+  function checkTextField(e) {
     /// check if textfield is focused
 
     const activeEl = document.activeElement;
@@ -302,7 +321,9 @@ function initMouseListeners() {
         }
       }
 
-      if (selectedText == '') hideTooltip(); /// Hide previous 'paste' button
+      /// Hide previous 'paste' button
+      // if (selectedText == '') hideTooltip(); 
+      // if (tooltipIsShown) hideTooltip();
 
       if (configs.addPasteOnlyEmptyField) {
         /// Ignore single click on text field with inputted value
@@ -310,7 +331,7 @@ function initMouseListeners() {
           if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
             isTextFieldFocused = false;
           else
-            if (activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
+            if (activeEl.value && activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
         } catch (e) { console.log(e); }
       }
     }

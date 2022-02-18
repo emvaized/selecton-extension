@@ -23,6 +23,10 @@
     "message": "Add font format buttons (italic, bold)",
     "description": "Label for buttons style option in settings"
   },
+  "addMarkerButton": {
+    "message": "Add 'Highlight' button",
+    "description": "Label for buttons style option in settings"
+  },
   "addNewSearchOption": {
     "message": "Add new search option",
     "description": "Label for add new search option button"
@@ -84,8 +88,12 @@
     "description": "Label for option in settings"
   },
   "buyMeCoffee": {
-    "message": "Support development",
+    "message": "Support project",
     "description": ""
+  },
+  "callLabel": {
+    "message": "Call",
+    "description": "Label for buttons style option in settings"
   },
   "changeTextSelectionColor": {
     "message": "Customize text selection",
@@ -94,6 +102,10 @@
   "chooseFileFirst": {
     "message": "Choose the file first",
     "description": ""
+  },
+  "collapseButtons": {
+    "message": "Hide exceeding buttons under 'More' button",
+    "description": "Label for buttons style option in settings"
   },
   "contextualButtonsHeader": {
     "message": "Buttons",
@@ -116,7 +128,7 @@
     "description": "Label for field in settings"
   },
   "convertToCurrency": {
-    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See info</a>)",
+    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info</a>)",
     "description": "Label for field in settings"
   },
   "convertToCurrencyHint": {
@@ -148,7 +160,7 @@
     "description": "Label for field in settings"
   },
   "customSearchTooltipHint": {
-    "message": "Gets revealed on hovering over the 'Search' button. <br/>Use %s as a placeholder for search query <br/>%w is a placeholder for current domain (for website search)",
+    "message": "Gets revealed on hovering over the 'Search' button. Use %s as a placeholder for search query, %w is a placeholder for current domain (for website search)",
     "description": "Label for field in settings"
   },
   "customSearchUrl": {
@@ -162,6 +174,10 @@
   "debugMode": {
     "message": "Debug mode",
     "description": "Label for option in settings"
+  },
+  "delayToRevealHoverPanels": {
+    "message": "Delay before revealing panels on hover (ms)",
+    "description": "Label for buttons style option in settings"
   },
   "delayToRevealSearchTooltip": {
     "message": "Delay before reveal panel (ms)",
@@ -315,9 +331,29 @@
     "message": "Email client",
     "description": "Option label for new email method setting"
   },
+  "markedLabel": {
+    "message": "Highlighted",
+    "description": "Label for buttons style option in settings"
+  },
+  "markerLabel": {
+    "message": "Highlight",
+    "description": "Label for buttons style option in settings"
+  },
+  "markersLabel": {
+    "message": "Highlights",
+    "description": "Label for buttons style option in settings"
+  },
   "maxIconsInRow": {
     "message": "Amount of icons in row",
     "description": "Option label for new email method setting"
+  },
+  "maxMarkerPagesToStore": {
+    "message": "Max pages to store highlights",
+    "description": "Label for buttons style option in settings"
+  },
+  "maxTooltipButtonsToShow": {
+    "message": "Max buttons to show in the tooltip",
+    "description": "Label for buttons style option in settings"
   },
   "metric": {
     "message": "Metric",
@@ -380,7 +416,7 @@
     "description": "Label for paste action"
   },
   "performSimpleMathOperations": {
-    "message": "Do simple math calculations",
+    "message": "Perform simple math calculations",
     "description": "Label for field in settings"
   },
   "preferCurrencySymbol": {
@@ -402,6 +438,10 @@
   "preferredTranslateService": {
     "message": "Translation service",
     "description": "Label for field in settings"
+  },
+  "recentMarkersLabel": {
+    "message": "Recent highlights",
+    "description": "Label for buttons style option in settings"
   },
   "recreateTooltipAfterScroll": {
     "message": "Recreate tooltip after scroll or window resize",
@@ -471,6 +511,10 @@
     "message": "Overwrite page's highlight color",
     "description": "Label for buttons style option in settings"
   },
+  "showButtonBorders": {
+    "message": "Show button dividers",
+    "description": "Label for buttons style option in settings"
+  },
   "showButtonLabelOnHover": {
     "message": "Show button label on hover",
     "description": "Label for buttons style option in settings"
@@ -499,6 +543,10 @@
     "message": "Show title on hover",
     "description": "Label for option in settings"
   },
+  "showStatsOnCopyButtonHover": {
+    "message": "Show stats on Copy button hover",
+    "description": "Label for buttons style option in settings"
+  },
   "showTranslateButton": {
     "message": "Show translate button",
     "description": "Label for field in settings"
@@ -517,6 +565,14 @@
   },
   "snapSelectionToWord": {
     "message": "Snap text selection by word",
+    "description": "Label for buttons style option in settings"
+  },
+  "strikeLabel": {
+    "message": "Strike",
+    "description": "Label for buttons style option in settings"
+  },
+  "symbolsCount": {
+    "message": "Symbols",
     "description": "Label for buttons style option in settings"
   },
   "textSelectionBackground": {
@@ -607,6 +663,10 @@
   },
   "wordSnappingBlacklist": {
     "message": "Domains to exclude",
+    "description": "Label for buttons style option in settings"
+  },
+  "wordsCount": {
+    "message": "Words",
     "description": "Label for buttons style option in settings"
   },
   "writeAReview": {

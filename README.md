@@ -1,24 +1,28 @@
-# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon - text selection actions
+# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon — text selection actions
 
-Get customizable pop-up with action buttons on text selection!
+Get customizable pop-up with action buttons on text selection
 * Copy or search any text in one click - especially useful for laptops
 * Customizable appearance for tooltip and custom text selection color
 * Currency converter (supports 30+ currencies & 10+ crypto currencies)
 * Basic units converter (metric/imperial) and timezones conversion
 * Contextual buttons depending on selected text, such as 'Open link', 'Translate', 'Show on map', CSS color preview and more 
 * Smart selection - automatic snapping of text selection by words, so you'll never lose that last letter again
-* Selection handles, which allow to quickly edit the selection
+* Selection handles, which allow to quickly edit text selection
 * Live translation of the selected text on hovering the "Translate" button
 * Dictionary button, which fetches definition from Wikipedia on hover
+* Highlighter button, which allows to highlight specific text on page and quickly find it later
 
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
 
 
+Download for Chrome:
+https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+
 Download for Firefox:
 https://addons.mozilla.org/firefox/addon/selection-actions/
 
-Download for Chrome:
-https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+Download for Safari:
+https://apps.apple.com/app/selecton-selection-actions/id1594013341
 
 ____
 
@@ -117,6 +121,10 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extensions
 
+**Highlight button cuts the text selection**
+
+* To make this function work reliably, highlight single words or sentences — highlighter trims selection within one HTML node, otherwise page layout may be broken when highlight gets restored
+
 ----
 
 ### Contributing
@@ -126,10 +134,10 @@ You can make Selecton better without even knowing how to code:
 - Selecton relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](https://github.com/emvaized/selecton-extension/blob/master/src/data/keywords.js)
 
 Make your changes, and then create pull request here on GitHub so I can merge it.
-
 Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share your ideas and suggestions.
 
+**Ideas for future releases**
 
-
-
-
+- Advanced editor with preview, which allows to quickly turn on/off buttons and change their order with drag'n'drop
+- Cloud sync of settings using browser account sync
+- Ability to turn on/off background blur for tooltip and hover panels
