@@ -225,6 +225,7 @@ function initMouseListeners() {
     if (activeEl.tagName == 'BUTTON') return;
 
     setTimeout(function () {
+      if (e.detail == 3) hideDragHandles(false);
 
       /// Get page selection
       selection = window.getSelection();
