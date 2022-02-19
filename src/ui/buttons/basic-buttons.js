@@ -82,7 +82,7 @@ function addBasicTooltipButtons(layout) {
         } else {
             if (configs.addPasteButton)
                 try {
-                    /// Add only paste button 
+                    /// Add paste button 
                     addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
                         textField.focus();
 
@@ -97,7 +97,21 @@ function addBasicTooltipButtons(layout) {
                         removeSelectionOnPage();
                         // hideTooltip();
                     }, true);
+
                 } catch (e) { if (configs.debugMode) console.log(e); }
+
+            /// Add 'clear' button
+            if (configs.addClearButton && isTextFieldEmpty == false)
+                addBasicTooltipButton(clearLabel, clearIcon, function (e) {
+                    removeSelectionOnPage();
+                    textField.focus();
+
+                    if (textField.getAttribute('contenteditable') !== null)
+                        textField.innerHTML = '';
+                    else {
+                        textField.value = '';
+                    }
+                });
         }
 
     } else {

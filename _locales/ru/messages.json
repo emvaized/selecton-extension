@@ -676,5 +676,17 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
+    },
+    "clearLabel": {
+        "message": "Очистить",
+        "description": "Label for buttons style option in settings"
+    },
+    "addClearButton": {
+        "message": "Добавить кнопку Очистить",
+        "description": "Label for buttons style option in settings"
+    },
+    "testPageButton": {
+        "message": "Тестировать настройки",
+        "description": "Label for buttons style option in settings"
     }
 }

@@ -232,6 +232,7 @@ function setTranslatedLabels() {
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.getElementById('recentMarkersLabel').innerText = chrome.i18n.getMessage('recentMarkersLabel');
+    document.getElementById('testPageButton').innerText = chrome.i18n.getMessage('testPageButton');
     // document.getElementById('markerHintHeader').innerText = chrome.i18n.getMessage('markerHint');
 
     /// Change CTRL key label on macs
@@ -308,6 +309,7 @@ function updateDisabledOptions() {
     document.querySelector("#dictionaryButtonWordsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#dictionaryButtonResponseCharsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.querySelector("#maxTooltipButtonsToShow").parentNode.className = document.querySelector("#collapseButtons").checked ? 'enabled-option' : 'disabled-option';
+    document.querySelector("#addClearButton").parentNode.className = document.querySelector("#addPasteOnlyEmptyField").checked || !document.querySelector("#addPasteButton").checked ? 'disabled-option' : 'enabled-option';
 
     /// Fully hide options unless condition is met
     document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
@@ -927,6 +929,11 @@ document.querySelector("#writeAReviewButton").addEventListener("click", function
 
     let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
     window.open(isFirefox ? 'https://addons.mozilla.org/firefox/addon/selection-actions/' : 'https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews', '_blank');
+});
+
+document.querySelector('#testPageButton').addEventListener('click', function (e) {
+    let newWindow = window.open();
+    newWindow.location.href = chrome.runtime.getURL('options/test-page.html');
 });
 
 

@@ -4,104 +4,62 @@ function createTooltip(e, recreated = false) {
     if (dontShowTooltip == true) return;
     if (e !== undefined && e !== null && e.button !== 0) return;
 
-    // setTimeout(function () {
+    setTimeout(function () {
 
-    lastMouseUpEvent = e;
-    if (selection == null || selection == undefined) return;
-    // hideTooltip();
+        lastMouseUpEvent = e;
+        if (selection == null || selection == undefined) return;
+        // hideTooltip();
 
-    if (configs.snapSelectionToWord) {
-        if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
-            if (configs.debugMode)
-                console.log('Word snapping rejected while textfield is focused');
-        } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
-            if (configs.debugMode)
-                console.log('Word snapping rejected due to pressed CTRL key');
-        } else {
+        if (configs.snapSelectionToWord) {
+            if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
+                if (configs.debugMode)
+                    console.log('Word snapping rejected while textfield is focused');
+            } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
+                if (configs.debugMode)
+                    console.log('Word snapping rejected due to pressed CTRL key');
+            } else {
 
-            selectedText = selection.toString();
+                selectedText = selection.toString();
 
-            let selectedTextIsCode = false;
-            if (configs.disableWordSnapForCode)
-                for (let i = 0, l = codeMarkers.length; i < l; i++) {
-                    if (selectedText.includes(codeMarkers[i])) {
-                        selectedTextIsCode = true; break;
+                let selectedTextIsCode = false;
+                if (configs.disableWordSnapForCode)
+                    for (let i = 0, l = codeMarkers.length; i < l; i++) {
+                        if (selectedText.includes(codeMarkers[i])) {
+                            selectedTextIsCode = true; break;
+                        }
                     }
-                }
 
-            if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
-                if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
-                    snapSelectionByWords(selection);
-        }
-    }
-
-    /// Special tooltip for text fields
-    if (isTextFieldFocused) {
-        if (configs.addActionButtonsForTextFields == false) return;
-
-        /// Create text field tooltip
-        setUpTooltip();
-        addBasicTooltipButtons('textfield');
-
-        if (tooltip.children.length < 2) {
-            /// Don't add tooltip with no buttons
-            tooltip.remove();
-            return;
+                if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
+                    if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                        snapSelectionByWords(selection);
+            }
         }
 
-        document.body.appendChild(tooltip);
+        /// Special tooltip for text fields
+        if (isTextFieldFocused) {
+            if (configs.addActionButtonsForTextFields == false) return;
 
-        /// Check resulting DY to be out of view
-        let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 9;
-        let vertOutOfView = resultDy <= 0;
-        if (vertOutOfView) {
-            resultDy = e.clientY + arrow.clientHeight;
-            arrow.classList.add('arrow-on-bottom');
-        }
+            /// Create text field tooltip
+            setUpTooltip();
+            addBasicTooltipButtons('textfield');
 
-        showTooltip(e.clientX, resultDy);
-        return;
-    }
+            if (tooltip.children.length < 2) {
+                /// Don't add tooltip with no buttons
+                tooltip.remove();
+                return;
+            }
 
-    /// Hide previous tooltip if exists
-    if (tooltip !== null && tooltip !== undefined) hideTooltip();
-
-    /// Check text selection again
-    /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
-    selection = window.getSelection();
-    selectedText = selection.toString().trim();
-
-    if (selectedText == '') {
-        hideDragHandles();
-        return;
-    }
-
-    setUpTooltip(recreated);
-
-    /// Add basic buttons (Copy, Search, etc)
-    addBasicTooltipButtons(null);
-
-    if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
-        addContextualButtons();
-
-        setTimeout(function () {
-            /// Set border radius for first and last buttons
-            setBorderRadiusForSideButtons(tooltip);
-
-            /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
-            setTimeout(function () {
-                calculateTooltipPosition(e);
-            }, 0);
-
-            /// Append tooltip to the DOM
             document.body.appendChild(tooltip);
 
-            /// Create search tooltip for custom search options)
-            setTimeout(function () {
-                // correctTooltipPosition();
-                if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
-                    setHoverForSearchButton(searchButton);
-            }, 5);
+            /// Check resulting DY to be out of view
+            let resultDy = e.clientY - tooltip.clientHeight - arrow.clientHeight - 9;
+            let vertOutOfView = resultDy <= 0;
+            if (vertOutOfView) {
+                resultDy = e.clientY + arrow.clientHeight;
+                arrow.classList.add('arrow-on-bottom');
+            }
+
+            showTooltip(e.clientX, resultDy);
 
             /// Check for colliding with side edges
             setTimeout(function () {
@@ -109,16 +67,65 @@ function createTooltip(e, recreated = false) {
                 checkTooltipForCollidingWithSideEdges();
             }, configs.animationDuration / 4);
 
-            /// Selection change listener
+            return;
+        }
+
+        /// Hide previous tooltip if exists
+        if (tooltip !== null && tooltip !== undefined) hideTooltip();
+
+        /// Check text selection again
+        /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
+        selection = window.getSelection();
+        selectedText = selection.toString().trim();
+
+        if (selectedText == '') {
+            hideDragHandles();
+            return;
+        }
+
+        setUpTooltip(recreated);
+
+        /// Add basic buttons (Copy, Search, etc)
+        addBasicTooltipButtons(null);
+
+        if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
+            addContextualButtons();
+
             setTimeout(function () {
-                if (tooltipIsShown == false) return;
-                document.addEventListener("selectionchange", selectionChangeListener);
-            }, configs.animationDuration);
-        }, 0);
+                /// Set border radius for first and last buttons
+                setBorderRadiusForSideButtons(tooltip);
 
-    } else hideTooltip();
+                /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
+                setTimeout(function () {
+                    calculateTooltipPosition(e);
+                }, 0);
 
-    // }, 0);
+                /// Append tooltip to the DOM
+                document.body.appendChild(tooltip);
+
+                /// Create search tooltip for custom search options)
+                setTimeout(function () {
+                    // correctTooltipPosition();
+                    if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+                        setHoverForSearchButton(searchButton);
+                }, 5);
+
+                /// Check for colliding with side edges
+                setTimeout(function () {
+                    if (!tooltipIsShown) return;
+                    checkTooltipForCollidingWithSideEdges();
+                }, configs.animationDuration / 4);
+
+                /// Selection change listener
+                setTimeout(function () {
+                    if (tooltipIsShown == false) return;
+                    document.addEventListener("selectionchange", selectionChangeListener);
+                }, configs.animationDuration);
+            }, 0);
+
+        } else hideTooltip();
+
+    }, 0);
 }
 
 function setUpTooltip(recreated = false) {
@@ -334,9 +341,7 @@ function calculateTooltipPosition(e) {
         }
     }
 
-    setTimeout(function () {
-        showTooltip(dxToShowTooltip, dyToShowTooltip);
-    }, 0)
+    showTooltip(dxToShowTooltip, dyToShowTooltip);
 
     if (configs.addDragHandles && canAddDragHandles)
         setDragHandles(selStartDimensions, selEndDimensions);

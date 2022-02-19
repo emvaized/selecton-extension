@@ -67,6 +67,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
           italicLabel = chrome.i18n.getMessage("italicLabel");
           boldLabel = chrome.i18n.getMessage("boldLabel");
           strikeLabel = chrome.i18n.getMessage("strikeLabel");
+          clearLabel = chrome.i18n.getMessage("clearLabel");
 
           setTimeout(function () {
             if (configs.addActionButtonsForTextFields)
@@ -326,15 +327,17 @@ function initMouseListeners() {
       // if (selectedText == '') hideTooltip(); 
       // if (tooltipIsShown) hideTooltip();
 
-      if (configs.addPasteOnlyEmptyField) {
-        /// Ignore single click on text field with inputted value
-        try {
-          if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>')
-            isTextFieldFocused = false;
-          else
-            if (activeEl.value && activeEl.value.trim() !== '' && selectedText == '') isTextFieldFocused = false;
-        } catch (e) { console.log(e); }
-      }
+      /// Ignore single click on text field with inputted value
+      try {
+        isTextFieldEmpty = true;
+        if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>') {
+          isTextFieldEmpty = false;
+          if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
+        } else if (activeEl.value && activeEl.value.trim() !== '' && selectedText == '') {
+          isTextFieldEmpty = false;
+          if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
+        }
+      } catch (e) { console.log(e); }
     }
   }
 

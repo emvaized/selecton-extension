@@ -142,6 +142,20 @@ const convertionUnits = {
             ' унция',
         ],
     },
+    " qt": {
+        "convertsTo": "L",
+        "ratio": 0.95,
+        "variations": [
+            ' quarts',
+        ],
+    },
+    " gal": {
+        "convertsTo": "L",
+        "ratio": 4.54609,
+        "variations": [
+            ' gallon',
+        ],
+    },
     "°F": {
         "convertsTo": "°C",
         "convertFunction": function (value) {
@@ -203,6 +217,10 @@ const imprerialConvertionUnits = {
             ' gramm',
             ' gramos',
         ],
+    },
+    " liters": {
+        "convertsTo": "gal",
+        "ratio": 4.54609,
     },
     "°C": {
         "convertsTo": "°F",

@@ -20,6 +20,7 @@ var markerLabel = 'Highlight';
 var italicLabel = 'Italic';
 var boldLabel = 'Bold';
 var strikeLabel = 'Strike';
+var clearLabel = 'Clear';
 
 var ratesLastFetchedDate;
 var tooltip;
@@ -51,6 +52,7 @@ var tooltipOnBottom = false;
 var configsWereLoaded = false;
 var currencyRatesWereLoaded = false;
 var isTextFieldFocused = false;
+var isTextFieldEmpty = true;
 var domainIsBlacklistedForSnapping;
 
 var timerToRecreateOverlays;

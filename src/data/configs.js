@@ -83,6 +83,7 @@ const configs = {
     'showStatsOnCopyButtonHover': true,
     'addFontFormatButtons': true,
     'showButtonBorders': true,
+    'addClearButton': true,
     'maxTooltipButtonsToShow': 4,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,

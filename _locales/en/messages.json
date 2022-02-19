@@ -672,5 +672,17 @@
   "writeAReview": {
     "message": "Write a review",
     "description": "Label for buttons style option in settings"
+  },
+  "clearLabel": {
+    "message": "Clear",
+    "description": "Label for buttons style option in settings"
+  },
+  "addClearButton": {
+    "message": "Add Clear button",
+    "description": "Label for buttons style option in settings"
+  },
+  "testPageButton": {
+    "message": "Test settings",
+    "description": "Label for buttons style option in settings"
   }
 }
