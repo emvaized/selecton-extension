@@ -330,8 +330,6 @@ function setCollapsibleHeaders() {
     for (let i = 0, l = coll.length; i < l; i++) {
         const c = coll[i];
 
-        // settingsHeaders.push(c);
-
         /// Make section initially expanded
         if (expandedSettingsSections.includes(c.id)) {
             const it = coll[i];
@@ -339,7 +337,7 @@ function setCollapsibleHeaders() {
                 it.classList.toggle("active");
                 let content = it.nextElementSibling;
                 content.style.maxHeight = content.scrollHeight + "px";
-            }, 30);
+            }, 65);
         }
 
         c.onclick = function () {
