@@ -198,21 +198,20 @@ function setTextSelectionColor() {
     console.log('Selecton applied custom selection color')
 }
 
+
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
 
-    // if (e.button == 1 && configs.middleClickHidesTooltip) {
-    /// Middle button click
-    //   selection = null;
-    //   hideTooltip();
-    //   hideDragHandles();
-    //   // } else if (e.button == 0 && e.detail == 1) {
-    // } else
     if (e.button == 0) {
       hideTooltip();
       hideDragHandles();
+
+      /// Remove text selection when clicked on link, to prevent creating new tooltip over link
+      try {
+        if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
+      } catch (e) { }
     }
   });
 
@@ -222,15 +221,8 @@ function initMouseListeners() {
     // if (tooltipIsShown && e.detail < 3) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
-    const documentActiveElTag = document.activeElement.tagName;
-    if (documentActiveElTag == 'A' || documentActiveElTag == 'BUTTON') return;
-
-    /// Special handling for triple mouse click (paragraph selection)
-    // if (e.detail == 3) {
-    //   hideTooltip();
-    //   hideDragHandles(false);
-    //   // return;
-    // }
+    const activeEl = document.activeElement;
+    if (activeEl.tagName == 'BUTTON') return;
 
     setTimeout(function () {
 
@@ -239,8 +231,7 @@ function initMouseListeners() {
       selectedText = selection.toString().trim();
 
       /// Check if clicked on text field
-      // if (configs.addActionButtonsForTextFields && e.detail == 1) checkTextField(e);
-      checkTextField(e);
+      checkTextField(e, activeEl);
 
       if (selectedText.length > 0) {
         /// create tooltip for selection
@@ -248,14 +239,13 @@ function initMouseListeners() {
         initTooltip(e);
       } else {
         /// no selection on page - check if textfield is focused to create 'Paste' tooltip
-        // if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
         if (configs.addActionButtonsForTextFields && isTextFieldFocused) {
           setCssStyles();
           initTooltip(e);
         }
       }
 
-    }, e.detail == 3 ? 200 : 0)
+    }, e.detail == 3 ? 200 : 0) /// special handling for triple mouse click (paragraph selection)
   });
 
   function setCssStyles() {
@@ -303,10 +293,10 @@ function initMouseListeners() {
     }, 0);
   }
 
-  function checkTextField(e) {
+  function checkTextField(e, activeEl) {
     /// check if textfield is focused
 
-    const activeEl = document.activeElement;
+    // const activeEl = document.activeElement;
     isTextFieldFocused = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text') || activeEl.getAttribute('name') == 'text') ||
       activeEl.tagName === "TEXTAREA" ||
       activeEl.getAttribute('contenteditable') !== null;

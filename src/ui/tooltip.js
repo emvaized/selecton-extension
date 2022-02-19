@@ -363,9 +363,11 @@ function showTooltip(dx, dy) {
     tooltipIsShown = true;
 
     /// Make tooltip interactive only after transition ends
+    let currentTooltip = tooltip;
     setTimeout(function () {
         if (tooltipIsShown == false || tooltip == null) return;
-        tooltip.style.pointerEvents = 'all';
+        // tooltip.style.pointerEvents = 'all';
+        currentTooltip.style.pointerEvents = 'all';
     }, configs.animationDuration);
 
     /// Check for website existing tooltip
