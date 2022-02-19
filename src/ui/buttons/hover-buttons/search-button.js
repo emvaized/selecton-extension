@@ -70,7 +70,7 @@ function setHoverForSearchButton(searchButton) {
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
-                onButtonClick(url);
+                onButtonClick(e, url);
                 hideTooltip();
                 removeSelectionOnPage();
             });
@@ -96,7 +96,7 @@ function setHoverForSearchButton(searchButton) {
     searchButton.appendChild(searchPanel);
 }
 
-function onButtonClick(url) {
+function onButtonClick(e, url) {
     let selectedText = selection.toString();
     selectedText = encodeURI(selectedText);
     selectedText = selectedText.replaceAll('&', '%26').replaceAll('+', '%2B');
