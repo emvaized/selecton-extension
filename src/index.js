@@ -202,13 +202,14 @@ function initMouseListeners() {
     if (isDraggingTooltip || isDraggingDragHandle) return;
     if (tooltipIsShown == false) return;
 
+    // if (e.button == 1 && configs.middleClickHidesTooltip) {
     /// Middle button click
-    if (e.button == 1 && configs.middleClickHidesTooltip) {
-      selection = null;
-      hideTooltip();
-      hideDragHandles();
-      // } else if (e.button == 0 && e.detail == 1) {
-    } else if (e.button == 0) {
+    //   selection = null;
+    //   hideTooltip();
+    //   hideDragHandles();
+    //   // } else if (e.button == 0 && e.detail == 1) {
+    // } else
+    if (e.button == 0) {
       hideTooltip();
       hideDragHandles();
     }
