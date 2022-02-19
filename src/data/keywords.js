@@ -283,6 +283,7 @@ const filetypesToIgnoreAsDomains = [
     "html",
     "css",
     "log",
+    "php",
 ];
 
 /// Search for these keywords to detect if selected text looks like code (in order to disable word snapping)

@@ -71,8 +71,8 @@ function setHoverForSearchButton(searchButton) {
             container.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
                 onButtonClick(e, url);
-                hideTooltip();
-                removeSelectionOnPage();
+                // hideTooltip();
+                // removeSelectionOnPage();
             });
         }
     }

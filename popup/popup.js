@@ -3,22 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let openSettingsInTabButton = document.getElementById('openSettingsInTabButton');
     openSettingsInTabButton.setAttribute('title', chrome.i18n.getMessage("openInNewTab") ?? 'Open in new tab');
-    openSettingsInTabButton.addEventListener('click', function () {
-        chrome.runtime.openOptionsPage();
-        window.close();
+    openSettingsInTabButton.addEventListener('mouseup', function (e) {
+        if (e.button == 0) {
+            chrome.runtime.openOptionsPage();
+            window.close();
+        } else if (e.button == 1) {
+            let newWindow = window.open();
+            newWindow.location.href = chrome.runtime.getURL('options/options.html');
+            window.close();
+        }
     });
 
-    // let donateCircleButton = document.getElementById('donateCircleButton');
-    // donateCircleButton.setAttribute('title', chrome.i18n.getMessage("buyMeCoffee") ?? 'Support development');
-    // donateCircleButton.addEventListener('click', function () {
-    //     window.close();
-    //     window.open('https://emvaized.diaka.ua/donate', '_blank');
-    // });
-
-    // let emailCircleButton = document.getElementById('emailCircleButton');
-    // emailCircleButton.setAttribute('title', 'Email');
-    // emailCircleButton.addEventListener('click', function () {
-    //     window.close();
-    //     window.open('mailto:maximtsyba@gmail.com');
-    // });
 });
