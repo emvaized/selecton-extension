@@ -62,9 +62,8 @@ function setHoverForSearchButton(searchButton) {
 
             searchPanel.appendChild(container);
 
-            if (!verticalSecondaryTooltip && (i % (maxIconsInRow - 1) === 0) && i > 0) {
-                // if (!verticalSecondaryTooltip && (i % maxIconsInRow === 0) && i > 0) {
-                // searchPanel.insertAdjacentHTML('beforeend', '<br />');
+            // if (!verticalSecondaryTooltip && (i % (maxIconsInRow - 1) === 0) && i > 0) {
+            if (!verticalSecondaryTooltip && ((i + 1) % maxIconsInRow === 0)) {
                 searchPanel.appendChild(document.createElement('br'));
             }
 

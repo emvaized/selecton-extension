@@ -92,8 +92,6 @@ function createTooltip(e, recreated = false) {
             setTimeout(function () {
                 calculateTooltipPosition(e);
             }, 0);
-            // let coords = calculateTooltipPosition(e);
-            // showTooltip(coords[0], coords[1]);
 
             /// Append tooltip to the DOM
             document.body.appendChild(tooltip);
