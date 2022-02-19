@@ -18,8 +18,15 @@
     cursor: pointer;
 }
 
+#popup-header {
+    padding: 6px; border-bottom: 1px solid lightGrey; vertical-align: bottom;
+    height: 25px;
+}
+
 iframe {
-    display: block; margin: 0px !important; width: 100%; height: 100%; min-width: 400px; min-height: 500px; max-height: 500px;
+    display: block; margin: 0px !important; width: 100%; 
+    height: 525px; 
+    min-width: 400px; 
 }
 
 
@@ -28,7 +35,7 @@ iframe {
         color: black; opacity: 0.65;
     }
 
-    iframe {
+    /* iframe {
         min-height: 500px;
-    }
+    } */
 }}

@@ -8,7 +8,6 @@ function addBasicTooltipButtons(layout) {
                 /// Add a cut button 
                 addBasicTooltipButton(cutLabel, cutButtonIcon, function () {
                     document.execCommand('cut');
-                    hideTooltip();
                 }, true);
 
                 /// Add copy button 
@@ -17,7 +16,6 @@ function addBasicTooltipButtons(layout) {
                         textField.focus();
                         document.execCommand('copy');
                         removeSelectionOnPage();
-                        hideTooltip();
                     } catch (e) { console.log(e); }
                 });
                 setCopyButtonTitle(copyButton);
@@ -97,7 +95,7 @@ function addBasicTooltipButtons(layout) {
                             document.execCommand('paste');
 
                         removeSelectionOnPage();
-                        hideTooltip();
+                        // hideTooltip();
                     }, true);
 
                 } catch (e) { if (configs.debugMode) console.log(e); }
@@ -106,8 +104,6 @@ function addBasicTooltipButtons(layout) {
             if (configs.addClearButton && isTextFieldEmpty == false)
                 addBasicTooltipButton(clearLabel, clearIcon, function (e) {
                     removeSelectionOnPage();
-                    hideTooltip();
-
                     textField.focus();
 
                     if (textField.getAttribute('contenteditable') !== null)

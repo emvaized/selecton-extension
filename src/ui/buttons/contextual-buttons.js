@@ -548,6 +548,7 @@ function addContextualButtons() {
             if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {
                 let link = selectedText;
                 const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
+                if (splittedByDots[0].length == 0) return;
                 const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
                 const includesUrlMarker = selectedText.includes('://');
 
