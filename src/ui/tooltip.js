@@ -462,6 +462,7 @@ function hideTooltip(animated = true) {
             console.log('No existing tooltips found');
     }
 
+    tooltip.style.pointerEvents = 'none';
     tooltip = null;
     secondaryTooltip = null;
     timerToRecreateOverlays = null;
