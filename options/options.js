@@ -932,8 +932,9 @@ document.querySelector("#writeAReviewButton").addEventListener("click", function
 });
 
 document.querySelector('#testPageButton').addEventListener('click', function (e) {
-    let newWindow = window.open();
-    newWindow.location.href = chrome.runtime.getURL('options/test-page.html');
+    window.open(chrome.runtime.getURL('options/test-page.html'));
+    // let newWindow = window.open();
+    // newWindow.location.href = chrome.runtime.getURL('options/test-page.html');
 });
 
 

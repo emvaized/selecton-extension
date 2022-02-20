@@ -84,7 +84,7 @@ const configs = {
     'addFontFormatButtons': true,
     'showButtonBorders': true,
     'addClearButton': true,
-    'maxTooltipButtonsToShow': 4,
+    'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
     'dictionaryButtonResponseCharsAmount': 300,

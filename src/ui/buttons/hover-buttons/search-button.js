@@ -6,7 +6,9 @@ function setHoverForSearchButton(searchButton) {
     searchPanel.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
 
     /// Generate buttons for panel
-    const searchButtonsLength = configs.customSearchButtons.length;
+    let searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
+
+    const searchButtonsLength = searchButtons.length;
     if (searchButtonsLength == 0) return;
 
     const containerPrototype = document.createElement('div');
@@ -17,7 +19,7 @@ function setHoverForSearchButton(searchButton) {
     const maxIconsInRow = configs.maxIconsInRow;
 
     for (var i = 0; i < searchButtonsLength; i++) {
-        const item = configs.customSearchButtons[i];
+        const item = searchButtons[i];
 
         const url = item['url'];
         const optionEnabled = item['enabled'];
@@ -80,17 +82,17 @@ function setHoverForSearchButton(searchButton) {
     containerPrototype.remove();
 
     /// Set border radius for first and last buttons
-    const borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
-    const firstSearchButtonBorderRadius = verticalSecondaryTooltip ?
-        `${borderRadiusForButton}px ${borderRadiusForButton}px 0px 0px`
-        : firstButtonBorderRadius;
-    const lastSearchButtonBorderRadius = verticalSecondaryTooltip ?
-        `0px 0px ${borderRadiusForButton}px ${borderRadiusForButton}px`
-        : lastButtonBorderRadius;
+    // const borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
+    // const firstSearchButtonBorderRadius = verticalSecondaryTooltip ?
+    //     `${borderRadiusForButton}px ${borderRadiusForButton}px 0px 0px`
+    //     : firstButtonBorderRadius;
+    // const lastSearchButtonBorderRadius = verticalSecondaryTooltip ?
+    //     `0px 0px ${borderRadiusForButton}px ${borderRadiusForButton}px`
+    //     : lastButtonBorderRadius;
 
-    let buttons = searchPanel.children;
-    buttons[0].style.borderRadius = firstSearchButtonBorderRadius;
-    buttons[buttons.length - 1].style.borderRadius = lastSearchButtonBorderRadius;
+    // let buttons = searchPanel.children;
+    // buttons[0].style.borderRadius = firstSearchButtonBorderRadius;
+    // buttons[buttons.length - 1].style.borderRadius = lastSearchButtonBorderRadius;
 
     /// Append panel
     searchButton.appendChild(searchPanel);
