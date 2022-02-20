@@ -41,10 +41,11 @@ function loadSettings() {
     setVersionLabel();
     setImportExportButtons();
 
-    chrome.storage.local.get(['websiteMarkers'], function (value) {
-        setMarkerSection(value);
-    });
-
+    setTimeout(function () {
+        chrome.storage.local.get(['websiteMarkers'], function (value) {
+            setMarkerSection(value);
+        });
+    }, 0)
 }
 
 function setInputs(result) {
@@ -126,9 +127,12 @@ function setInputs(result) {
 
     updateDisabledOptions();
 
-    loadCustomSearchButtons();
-
     setCurrenciesDropdown();
+
+    setTimeout(function () {
+        loadCustomSearchButtons();
+    }, 1);
+
 
 }
 
@@ -274,50 +278,50 @@ function setVersionLabel() {
 
 function updateDisabledOptions() {
     /// Grey out unavailable optoins
-    document.querySelector("#all-options-container").className = document.querySelector("#enabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#convertToCurrencyDropdown").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMetricsSystem").parentNode.className = document.querySelector("#convertMetrics").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#languageToTranslate").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#customStylesSection").className = document.querySelector("#useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#fullOpacityOnHover").parentNode.className = document.querySelector("#tooltipOpacity").value < 1.0 ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionBackground").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#textSelectionBackgroundOpacity").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shouldOverrideWebsiteSelectionColor").parentNode.className = document.querySelector("#changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredNewEmailMethod").parentNode.className = document.querySelector("#showEmailButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredMapsService").parentNode.className = document.querySelector("#showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#secondaryTooltipIconSize").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferCurrencySymbol").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#disableWordSnappingOnCtrlKey").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#dontSnapTextfieldSelection").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#secondaryTooltipLayout").parentNode.className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#wordSnappingBlacklist").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#disableWordSnapForCode").parentNode.className = document.querySelector("#snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#addPasteOnlyEmptyField").parentNode.className = document.querySelector("#addPasteButton").checked && document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#addFontFormatButtons").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#liveTranslation").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#hideTranslateButtonForUserLanguage").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    // document.querySelector("#delayToRevealTranslateTooltip").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#liveTranslation").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#showTranslateIfLanguageUnknown").parentNode.className = document.querySelector("#showTranslateButton").checked && document.querySelector("#hideTranslateButtonForUserLanguage").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#addPasteButton").parentNode.className = document.querySelector("#addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#updateRatesEveryDays").parentNode.className = document.querySelector("#convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#preferredTranslateService").parentNode.className = document.querySelector("#showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.querySelector("#tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
-    document.querySelector("#customSearchButtonsContainer").className = document.querySelector("#secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#dictionaryButtonWordsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#dictionaryButtonResponseCharsAmount").parentNode.className = document.querySelector("#showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#maxTooltipButtonsToShow").parentNode.className = document.querySelector("#collapseButtons").checked ? 'enabled-option' : 'disabled-option';
-    document.querySelector("#addClearButton").parentNode.className = document.querySelector("#addPasteOnlyEmptyField").checked || !document.querySelector("#addPasteButton").checked ? 'disabled-option' : 'enabled-option';
+    document.getElementById("all-options-container").className = document.getElementById("enabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("convertToCurrencyDropdown").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("preferredMetricsSystem").parentNode.className = document.getElementById("convertMetrics").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("languageToTranslate").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("customStylesSection").className = document.getElementById("useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("fullOpacityOnHover").parentNode.className = document.getElementById("tooltipOpacity").value < 1.0 ? 'enabled-option' : 'disabled-option';
+    document.getElementById("shadowOpacity").parentNode.className = document.getElementById("addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("textSelectionBackground").parentNode.className = document.getElementById("changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("textSelectionColor").parentNode.className = document.getElementById("changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("textSelectionBackgroundOpacity").parentNode.className = document.getElementById("changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("shouldOverrideWebsiteSelectionColor").parentNode.className = document.getElementById("changeTextSelectionColor").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("preferredNewEmailMethod").parentNode.className = document.getElementById("showEmailButton").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("preferredMapsService").parentNode.className = document.getElementById("showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("secondaryTooltipIconSize").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("preferCurrencySymbol").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("disableWordSnappingOnCtrlKey").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("dontSnapTextfieldSelection").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("secondaryTooltipLayout").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("wordSnappingBlacklist").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("disableWordSnapForCode").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("addPasteOnlyEmptyField").parentNode.className = document.getElementById("addPasteButton").checked && document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("addFontFormatButtons").parentNode.className = document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("liveTranslation").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
+    document.getElementById("hideTranslateButtonForUserLanguage").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    // document.getElementById("delayToRevealTranslateTooltip").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("liveTranslation").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("showTranslateIfLanguageUnknown").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("hideTranslateButtonForUserLanguage").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("addPasteButton").parentNode.className = document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("updateRatesEveryDays").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("preferredTranslateService").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
+    document.getElementById("customSearchButtonsContainer").className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("dictionaryButtonWordsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("dictionaryButtonResponseCharsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("maxTooltipButtonsToShow").parentNode.className = document.getElementById("collapseButtons").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("addClearButton").parentNode.className = document.getElementById("addPasteOnlyEmptyField").checked || !document.getElementById("addPasteButton").checked ? 'disabled-option' : 'enabled-option';
 
     /// Fully hide options unless condition is met
-    document.querySelector("#customSearchUrl").parentNode.parentNode.className = document.querySelector("#preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#showButtonLabelOnHover").parentNode.parentNode.className = document.querySelector("#buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#tooltipInvertedBackground").parentNode.parentNode.className = document.querySelector("#invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
-    document.querySelector("#applyConfigsImmediatelyPerformanceTip").className = document.querySelector("#applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
-    document.querySelector("#showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
-    document.querySelector("#maxIconsInRow").parentNode.parentNode.className = document.querySelector("#secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
+    document.getElementById("customSearchUrl").parentNode.parentNode.className = document.getElementById("preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
+    document.getElementById("showButtonLabelOnHover").parentNode.parentNode.className = document.getElementById("buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
+    document.getElementById("tooltipInvertedBackground").parentNode.parentNode.className = document.getElementById("invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
+    document.getElementById("applyConfigsImmediatelyPerformanceTip").className = document.getElementById("applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
+    document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
+    document.getElementById("maxIconsInRow").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
 
     /// Hide language detection option if current browser doesn't support it
     if (!chrome.i18n.detectLanguage) {
