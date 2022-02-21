@@ -684,5 +684,9 @@
   "testPageButton": {
     "message": "Test settings",
     "description": "Label for buttons style option in settings"
+  },
+  "scaleUpFromBottomTooltipEffect": {
+    "message": "Scale up (from bottom)",
+    "description": "Label for buttons style option in settings"
   }
 }

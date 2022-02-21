@@ -53,7 +53,7 @@ const configs = {
     'wordSnappingBlacklist': '',
     'disableWordSnapForCode': true,
     'dontSnapTextfieldSelection': true,
-    'tooltipRevealEffect': 'moveUpTooltipEffect', /// Possible values: 'moveUpTooltipEffect', 'moveDownTooltipEffect', 'scaleUpTooltipEffect', 'noTooltipEffect'
+    'tooltipRevealEffect': 'moveUpTooltipEffect', /// Possible values: 'moveUpTooltipEffect', 'moveDownTooltipEffect', 'scaleUpTooltipEffect', 'scaleUpFromBottomTooltipEffect', 'noTooltipEffect'
     'textSelectionBackgroundOpacity': 1.0,
     'updateRatesEveryDays': 18,
     'fontSize': 12.5,

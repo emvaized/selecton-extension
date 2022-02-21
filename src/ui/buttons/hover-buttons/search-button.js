@@ -61,11 +61,6 @@ function setHoverForSearchButton(searchButton) {
 
             searchPanel.appendChild(container);
 
-            /// old method to create grid effect for horizontal panel
-            // if (!verticalSecondaryTooltip && ((i + 1) % maxIconsInRow === 0)) {
-            //     searchPanel.appendChild(document.createElement('br'));
-            // }
-
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
                 e.stopPropagation();

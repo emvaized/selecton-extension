@@ -688,5 +688,9 @@
     "testPageButton": {
         "message": "Тестировать настройки",
         "description": "Label for buttons style option in settings"
+    },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Увеличение (снизу)",
+        "description": "Label for buttons style option in settings"
     }
 }

@@ -139,7 +139,8 @@ function setUpTooltip(recreated = false) {
     tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out`;
     if (recreated) tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
     tooltip.style.transform = returnTooltipRevealTransform(false);
-    tooltip.style.transformOrigin = '50% 100% 0';
+    // tooltip.style.transformOrigin = '50% 100% 0';
+    tooltip.style.transformOrigin = configs.tooltipRevealEffect == 'scaleUpTooltipEffect' ? '50% 40% 0' : configs.tooltipRevealEffect == 'scaleUpFromBottomTooltipEffect' ? '50% 125% 0' : '50% 100% 0';
 
     if (configs.useCustomStyle && configs.tooltipOpacity != 1.0 && configs.tooltipOpacity != 1 && configs.fullOpacityOnHover) {
         tooltip.onmouseover = function () {
