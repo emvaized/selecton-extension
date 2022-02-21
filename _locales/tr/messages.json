@@ -11,6 +11,10 @@
         "message": "Düğme simgelerini göster",
         "description": "Ayarlardaki alan etiketi"
     },
+    "addClearButton": {
+        "message": "Temizle düğmesi ekle",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Renk önizleme düğmesi ekle (#ffffff gibi CSS renkleri için)",
         "description": "Ayarlardaki alan etiketi"
@@ -102,6 +106,10 @@
     "chooseFileFirst": {
         "message": "Önce dosyayı seçin",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Temiz",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "'Daha Fazla' düğmesinin altındaki aşan düğmeleri gizle",
@@ -459,6 +467,10 @@
         "message": "Düğmelerin sırasını tersine çevirme",
         "description": "Ayarlar için etiket düğmesi"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Ölçeği büyütme (alttan)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
         "message": "Ölçeği büyütme",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
@@ -571,6 +583,10 @@
         "message": "Semboller",
         "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
+    "testPageButton": {
+        "message": "Ayarları test edin",
+        "description": "Label for buttons style option in settings"
+    },
     "textSelectionBackground": {
         "message": "Seçim rengi",
         "description": "Ayarlardaki alan etiketi"
@@ -657,13 +673,13 @@
         "message": "Yenilikler",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
     },
-    "wordsCount": {
-        "message": "Kelimeler",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
-    },
     "wordSnappingBlacklist": {
         "message": "Dışlayacak etki alanları",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "wordsCount": {
+        "message": "Kelimeler",
+        "description": "Ayarlarda düğme stili seçeneği için etiket"
     },
     "writeAReview": {
         "message": "Yorum yazma",

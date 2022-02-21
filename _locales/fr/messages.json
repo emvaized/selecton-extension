@@ -11,6 +11,10 @@
         "message": "Afficher les icônes des boutons",
         "description": "Libellé du champ dans les paramètres"
     },
+    "addClearButton": {
+        "message": "Ajouter un bouton Effacer",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Ajouter un bouton de couleur (pour les couleurs CSS comme #ffffff)",
         "description": "Libellé du champ dans les paramètres"
@@ -98,6 +102,10 @@
     "chooseFileFirst": {
         "message": "Choisissez d'abord le fichier",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Effacer",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "Masquer les boutons excédentaires sous le bouton 'Plus'",
@@ -455,8 +463,12 @@
         "message": "Inverser l'ordre des boutons",
         "description": "Label for settings button"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Effet d'échelle (à partir du bas)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
-        "message": "Scale up",
+        "message": "Effet d'échelle",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
     },
     "searchLabel": {
@@ -565,6 +577,10 @@
     },
     "symbolsCount": {
         "message": "Symboles",
+        "description": "Label for buttons style option in settings"
+    },
+    "testPageButton": {
+        "message": "Testez les paramètres",
         "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {

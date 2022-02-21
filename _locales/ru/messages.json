@@ -11,6 +11,10 @@
         "message": "Показывать иконки кнопок",
         "description": ""
     },
+    "addClearButton": {
+        "message": "Добавить кнопку Очистить",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Добавить кнопку цвета (для CSS цветов вроде #ffffff)",
         "description": "Label for field in settings"
@@ -102,6 +106,10 @@
     "chooseFileFirst": {
         "message": "Сперва выберите файл",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Очистить",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "Спрятать лишние кнопки под кнопкой 'Больше'",
@@ -467,6 +475,10 @@
         "message": "Обратный порядок кнопок",
         "description": "Label for settings button"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Увеличение (снизу)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
         "message": "Увеличение",
         "description": "Label for buttons style option in settings"
@@ -579,6 +591,10 @@
         "message": "Символов",
         "description": "Label for buttons style option in settings"
     },
+    "testPageButton": {
+        "message": "Тестировать настройки",
+        "description": "Label for buttons style option in settings"
+    },
     "textSelectionBackground": {
         "message": "Цвет выделения",
         "description": ""
@@ -675,22 +691,6 @@
     },
     "writeAReview": {
         "message": "Написать отзыв",
-        "description": "Label for buttons style option in settings"
-    },
-    "clearLabel": {
-        "message": "Очистить",
-        "description": "Label for buttons style option in settings"
-    },
-    "addClearButton": {
-        "message": "Добавить кнопку Очистить",
-        "description": "Label for buttons style option in settings"
-    },
-    "testPageButton": {
-        "message": "Тестировать настройки",
-        "description": "Label for buttons style option in settings"
-    },
-    "scaleUpFromBottomTooltipEffect": {
-        "message": "Увеличение (снизу)",
         "description": "Label for buttons style option in settings"
     }
 }

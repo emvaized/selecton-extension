@@ -11,6 +11,10 @@
         "message": "Mostrar iconos para botones",
         "description": "Etiqueta para el campo en la configuración"
     },
+    "addClearButton": {
+        "message": "Añadir botón Borrar",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Botón Agregar color (para colores CSS como #ffffff)",
         "description": "Etiqueta para el campo en la configuración"
@@ -98,6 +102,10 @@
     "chooseFileFirst": {
         "message": "Elija el archivo primero",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Borrar",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "Ocultar botones en exceso debajo del botón 'Más'",
@@ -455,6 +463,10 @@
         "message": "Invertir el orden de los botones",
         "description": "Label for settings button"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Escalar hacia arriba (desde abajo)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
         "message": "Escalar hacia arriba",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
@@ -565,6 +577,10 @@
     },
     "symbolsCount": {
         "message": "Simbolos",
+        "description": "Label for buttons style option in settings"
+    },
+    "testPageButton": {
+        "message": "Pruebe los ajustes",
         "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {

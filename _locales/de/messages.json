@@ -11,6 +11,10 @@
         "message": "Symbole für Schaltflächen anzeigen",
         "description": "Beschriftung für Feld in Einstellungen"
     },
+    "addClearButton": {
+        "message": "Schaltfläche 'Löschen' hinzufügen",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)",
         "description": "Bezeichnung für Feld in Einstellungen"
@@ -98,6 +102,10 @@
     "chooseFileFirst": {
         "message": "Wähle zuerst die Datei aus",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Löschen",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "Überzählige Schaltflächen unter der Schaltfläche „Mehr“ ausblenden",
@@ -455,6 +463,10 @@
         "message": "Kehren Sie die Reihenfolge der Tasten",
         "description": "Label for settings button"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Aufwärts skalieren (von unten)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
         "message": "Vergrößern",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -566,6 +578,10 @@
     "symbolsCount": {
         "message": "Symbole",
         "description": "Label for option in settings"
+    },
+    "testPageButton": {
+        "message": "Testen Sie die Einstellungen",
+        "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {
         "message": "Auswahlfarbe",

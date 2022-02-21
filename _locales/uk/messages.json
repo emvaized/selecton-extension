@@ -11,6 +11,10 @@
         "message": "Показувати іконки кнопок",
         "description": ""
     },
+    "addClearButton": {
+        "message": "Додати кнопку Очистити",
+        "description": "Label for buttons style option in settings"
+    },
     "addColorPreviewButton": {
         "message": "Додати кнопку кольору (для CSS кольорів на кшталт #ffffff)",
         "description": "Label for field in settings"
@@ -98,6 +102,10 @@
     "chooseFileFirst": {
         "message": "Спочатку виберіть файл",
         "description": ""
+    },
+    "clearLabel": {
+        "message": "Очистити",
+        "description": "Label for buttons style option in settings"
     },
     "collapseButtons": {
         "message": "Сховати зайві кнопки під кнопкою 'Більше'",
@@ -459,6 +467,10 @@
         "message": "Зворотний порядок кнопок",
         "description": "Label for settings button"
     },
+    "scaleUpFromBottomTooltipEffect": {
+        "message": "Збільшення (знизу)",
+        "description": "Label for buttons style option in settings"
+    },
     "scaleUpTooltipEffect": {
         "message": "Збільшення",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
@@ -569,6 +581,10 @@
     },
     "symbolsCount": {
         "message": "Символів",
+        "description": "Label for buttons style option in settings"
+    },
+    "testPageButton": {
+        "message": "Перевірити налаштування",
         "description": "Label for buttons style option in settings"
     },
     "textSelectionBackground": {
