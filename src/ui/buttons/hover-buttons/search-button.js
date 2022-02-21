@@ -40,9 +40,6 @@ function setHoverForSearchButton(searchButton) {
 
             /// Set title
             let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
-            // if (configs.showSecondaryTooltipTitleOnHover && url !== null && url !== undefined && url !== '')
-            // imgButton.setAttribute('title', titleText);
-
             const container = containerPrototype.cloneNode(true);
 
             /// Add label in vertical style
@@ -64,22 +61,26 @@ function setHoverForSearchButton(searchButton) {
 
             searchPanel.appendChild(container);
 
-            // if (!verticalSecondaryTooltip && (i % (maxIconsInRow - 1) === 0) && i > 0) {
-            if (!verticalSecondaryTooltip && ((i + 1) % maxIconsInRow === 0)) {
-                searchPanel.appendChild(document.createElement('br'));
-            }
+            /// old method to create grid effect for horizontal panel
+            // if (!verticalSecondaryTooltip && ((i + 1) % maxIconsInRow === 0)) {
+            //     searchPanel.appendChild(document.createElement('br'));
+            // }
 
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
                 onButtonClick(e, url);
-                // hideTooltip();
-                // removeSelectionOnPage();
             });
         }
     }
 
     containerPrototype.remove();
+
+    /// Create grid style to horizontal panel, to limit amount of icons in row
+    if (!verticalSecondaryTooltip && searchButtonsLength > maxIconsInRow) {
+        searchPanel.style.display = 'grid';
+        searchPanel.style.gridTemplateColumns = `repeat(${maxIconsInRow}, 1fr)`;
+    }
 
     /// Set border radius for first and last buttons
     // const borderRadiusForButton = configs.useCustomStyle ? configs.borderRadius : 3;
