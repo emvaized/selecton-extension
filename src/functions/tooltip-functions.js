@@ -2,7 +2,8 @@ function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
     let dxOffset = shouldShift ? '-50%' : '0';
 
     switch (configs.tooltipRevealEffect) {
-        case 'noTooltipEffect': return ``;
+        // case 'noTooltipEffect': return ``;
+        case 'noTooltipEffect': return `translate(${dxOffset},0)`;
         case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, 100%)`;
         case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -100%)`;
         case 'scaleUpTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;

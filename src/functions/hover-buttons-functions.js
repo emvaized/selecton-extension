@@ -107,8 +107,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
                 button.classList.toggle('highlighted-popup-button');
             });
 
-        let panelIsHovered = false;
-
         button.addEventListener('mouseover', function () {
             try {
                 clearTimeout(timerToRemovePanel);
@@ -129,12 +127,17 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
             timerToRemovePanel = setTimeout(function () {
                 if (!panel) return;
-                if (panelIsHovered) return;
 
                 hideHoverPanel(panel, dxTransformValue, panelOnBottom);
                 if (revealAfterDelay) showHoverIndicator(hoverIndicator);
             }, 100);
         });
+
+        button.addEventListener('mousedown', function (e) {
+            try {
+                clearTimeout(timeoutToRevealPanel);
+            } catch (e) { }
+        })
     }
 
     return panel;
