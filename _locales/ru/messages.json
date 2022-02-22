@@ -12,7 +12,7 @@
         "description": ""
     },
     "addClearButton": {
-        "message": "Добавить кнопку Очистить",
+        "message": "Показать кнопку 'Очистить' при клике на непустое поле",
         "description": "Label for buttons style option in settings"
     },
     "addColorPreviewButton": {

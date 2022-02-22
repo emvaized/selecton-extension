@@ -12,7 +12,7 @@
         "description": "Ayarlardaki alan etiketi"
     },
     "addClearButton": {
-        "message": "Temizle düğmesi ekle",
+        "message": "Tıklandığında boş olmayan metin alanında 'Temizle' düğmesini göster",
         "description": "Label for buttons style option in settings"
     },
     "addColorPreviewButton": {

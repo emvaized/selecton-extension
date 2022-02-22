@@ -11,6 +11,10 @@
     "message": "Show icons for buttons",
     "description": "Label for field in settings"
   },
+  "addClearButton": {
+    "message": "Show 'Clear' button on click non-empty field",
+    "description": "Label for buttons style option in settings"
+  },
   "addColorPreviewButton": {
     "message": "Add color preview button (for CSS colors like #ffffff)",
     "description": "Label for field in settings"
@@ -102,6 +106,10 @@
   "chooseFileFirst": {
     "message": "Choose the file first",
     "description": ""
+  },
+  "clearLabel": {
+    "message": "Clear",
+    "description": "Label for buttons style option in settings"
   },
   "collapseButtons": {
     "message": "Hide exceeding buttons under 'More' button",
@@ -463,6 +471,10 @@
     "message": "Reverse the order of buttons",
     "description": "Label for settings button"
   },
+  "scaleUpFromBottomTooltipEffect": {
+    "message": "Scale up (from bottom)",
+    "description": "Label for buttons style option in settings"
+  },
   "scaleUpTooltipEffect": {
     "message": "Scale up",
     "description": "Label for buttons style option in settings"
@@ -575,6 +587,10 @@
     "message": "Symbols",
     "description": "Label for buttons style option in settings"
   },
+  "testPageButton": {
+    "message": "Test the settings",
+    "description": "Label for buttons style option in settings"
+  },
   "textSelectionBackground": {
     "message": "Selection color",
     "description": "Label for field in settings"
@@ -671,22 +687,6 @@
   },
   "writeAReview": {
     "message": "Write a review",
-    "description": "Label for buttons style option in settings"
-  },
-  "clearLabel": {
-    "message": "Clear",
-    "description": "Label for buttons style option in settings"
-  },
-  "addClearButton": {
-    "message": "Add Clear button",
-    "description": "Label for buttons style option in settings"
-  },
-  "testPageButton": {
-    "message": "Test the settings",
-    "description": "Label for buttons style option in settings"
-  },
-  "scaleUpFromBottomTooltipEffect": {
-    "message": "Scale up (from bottom)",
     "description": "Label for buttons style option in settings"
   }
 }

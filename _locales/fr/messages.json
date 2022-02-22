@@ -12,7 +12,7 @@
         "description": "Libellé du champ dans les paramètres"
     },
     "addClearButton": {
-        "message": "Ajouter un bouton Effacer",
+        "message": "Afficher le bouton 'Effacer' en cliquant sur un champ non vide",
         "description": "Label for buttons style option in settings"
     },
     "addColorPreviewButton": {

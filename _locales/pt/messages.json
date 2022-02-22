@@ -12,7 +12,7 @@
         "description": "Rótulo para o campo nas configurações"
     },
     "addClearButton": {
-        "message": "Adicionar botão Limpar",
+        "message": "Mostrar o botão 'Limpar' ao clicar no campo não vazio",
         "description": "Label for buttons style option in settings"
     },
     "addColorPreviewButton": {

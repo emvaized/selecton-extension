@@ -12,7 +12,7 @@
         "description": "Etiqueta para el campo en la configuración"
     },
     "addClearButton": {
-        "message": "Añadir botón Borrar",
+        "message": "Mostrar el botón 'Borrar' al hacer clic en un campo no vacío",
         "description": "Label for buttons style option in settings"
     },
     "addColorPreviewButton": {
