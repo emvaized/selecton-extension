@@ -219,7 +219,7 @@ function initMouseListeners() {
     if (!configs.enabled) return;
     if (isDraggingTooltip) return;
 
-    /// Don't recreate tooltip when some text selected on page — and user clicked on link or button
+    /// Don't recreate tooltip when some text selected on page — and user clicked a button
     const activeEl = document.activeElement;
     if (activeEl.tagName == 'BUTTON') return;
 
@@ -229,6 +229,9 @@ function initMouseListeners() {
       /// Get page selection
       selection = window.getSelection();
       selectedText = selection.toString().trim();
+
+      /// Fix for recreating tooltip when clicked on <a> link with active text selection on the screen
+      if (activeEl.tagName == 'A' && selection.focusNode.parentNode !== activeEl) return;
 
       /// Check if clicked on text field
       checkTextField(e, activeEl);
