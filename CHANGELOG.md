@@ -1,3 +1,16 @@
+#3.5.6
+- Implemented test page to quickly check settings
+- Added Clear button for non-empty text fields
+- Added few more imperial measure units
+
+Bug fixes:
+- Fixed bug with wrong positioning in horizontal custom search options
+- Fixed bug with middle click on custom search option
+- Fixed wrong tooltip alignment when 'No effect' is selected
+- Fixed issue with tooltip not showing up for links
+(in browsers which support link selection)
+- Other bug fixes & improvements
+
 #3.5.5
 - Implemented new 'Highlight' button, which allows to highlight specific parts of text on page
 - Implemented 'Hide exceeding buttons' option, which will hide buttons more than set in settings (defaults to 3)
