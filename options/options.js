@@ -52,8 +52,8 @@ function setInputs(result) {
     userConfigs = result;
 
     keys.forEach(function (key) {
-        // const input = document.getElementById(key);
-        let input = document.querySelector('#' + key.toString());
+        // let input = document.querySelector('#' + key.toString());
+        let input = document.getElementById(key.toString());
 
         /// Set input value
         if (input !== null && input !== undefined) {
@@ -331,7 +331,7 @@ function updateDisabledOptions() {
 }
 
 function setCollapsibleHeaders() {
-    var coll = document.getElementsByClassName("collapsible-header");
+    let coll = document.getElementsByClassName("collapsible-header");
 
     for (let i = 0, l = coll.length; i < l; i++) {
         const c = coll[i];
@@ -361,7 +361,6 @@ function setCollapsibleHeaders() {
                 content.style.maxHeight = content.scrollHeight + "px";
                 if (!expandedSettingsSections.includes(this.id))
                     expandedSettingsSections.push(this.id);
-                // content.scrollIntoView({ block: 'nearest', inline: "end", behavior: "smooth" });
             }
             saveExpandedSections();
         }
@@ -937,10 +936,23 @@ document.querySelector("#writeAReviewButton").addEventListener("click", function
 
 document.querySelector('#testPageButton').addEventListener('click', function (e) {
     window.open(chrome.runtime.getURL('options/test-page.html'));
-    // let newWindow = window.open();
-    // newWindow.location.href = chrome.runtime.getURL('options/test-page.html');
 });
 
+
+
+/// Experiments to add search field
+// document.getElementById('searchOptionsField').addEventListener('input', function (e) {
+//     let allInputs = document.getElementsByClassName('option');
+
+//     for (let i = 0, l = allInputs.length; i < l; i++) {
+//         let opt = allInputs[i];
+
+//         if (opt.innerText.toLowerCase().includes(e.target.value.toLowerCase()))
+//             opt.style.display = 'block';
+//         else
+//             opt.style.display = 'none';
+//     }
+// })
 
 
 /// Experiments to restore previous scroll position when window is re-opened
