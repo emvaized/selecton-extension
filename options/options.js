@@ -344,7 +344,7 @@ function setCollapsibleHeaders() {
                 it.classList.toggle("active");
                 let content = it.nextElementSibling;
                 content.style.maxHeight = content.scrollHeight + "px";
-            }, 65);
+            }, 80);
         }
 
         c.onclick = function () {
