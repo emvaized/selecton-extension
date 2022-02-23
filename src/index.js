@@ -231,10 +231,12 @@ function initMouseListeners() {
       selectedText = selection.toString().trim();
 
       /// Fix for recreating tooltip when clicked on <a> link with active text selection on the screen
-      if (activeEl.tagName == 'A') {
-        let selectionNode = selection.focusNode.parentNode;
-        if (selectionNode !== activeEl && selectionNode.parentNode !== activeEl) return;
-      }
+      try {
+        if (activeEl.tagName == 'A') {
+          let selectionNode = selection.focusNode.parentNode;
+          if (selectionNode !== activeEl && selectionNode.parentNode !== activeEl) return;
+        }
+      } catch (e) { }
 
       /// Check if clicked on text field
       checkTextField(e, activeEl);
