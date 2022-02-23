@@ -301,7 +301,8 @@ function updateDisabledOptions() {
     document.getElementById("disableWordSnapForCode").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("addPasteOnlyEmptyField").parentNode.className = document.getElementById("addPasteButton").checked && document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("addFontFormatButtons").parentNode.className = document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("liveTranslation").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
+    // document.getElementById("liveTranslation").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("preferredTranslateService").value == 'google' ? 'enabled-option' : 'disabled-option';
+    document.getElementById("liveTranslation").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("hideTranslateButtonForUserLanguage").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     // document.getElementById("delayToRevealTranslateTooltip").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("liveTranslation").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("showTranslateIfLanguageUnknown").parentNode.className = document.getElementById("showTranslateButton").checked && document.getElementById("hideTranslateButtonForUserLanguage").checked ? 'enabled-option' : 'disabled-option';

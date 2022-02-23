@@ -71,7 +71,8 @@ function setRegularTranslateButton(languageOfSelectedText) {
     translateButton.setAttribute('id', 'selecton-translate-button');
 
     /// set live tranlsation listeners
-    if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
+    // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
+    if (configs.liveTranslation && selectedText.length < 500) {
         setTimeout(function () {
             setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
         }, 5);
