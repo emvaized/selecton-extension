@@ -257,7 +257,7 @@ function addContextualButtons() {
         }
 
         /// Phone number button
-        if (configs.addPhoneButton && selectedText.includes('+') && !selectionContainsSpaces && selectedText.length == 13 && selectedText[0] == '+') {
+        if (configs.addPhoneButton && !selectionContainsSpaces && selectedText[0] == '+' && selectedText.length == 13) {
             const phoneButton = addContextualTooltipButton(function (e) {
                 hideTooltip();
                 removeSelectionOnPage();
@@ -287,8 +287,6 @@ function addContextualButtons() {
                 phoneButton.classList.add('color-highlight');
             }
 
-            // phoneButton.appendChild(createImageIconForButton(phoneIcon, selectedText));
-            // phoneButton.classList.add('color-highlight');
         }
 
         /// Do simple math calculations

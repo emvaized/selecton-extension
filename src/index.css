@@ -166,7 +166,7 @@
 /* Search tooltip with custom search options */
 .custom-search-image-button {
   all: revert;
-  padding: 6px;
+  padding: 6px 9px;
   vertical-align: middle !important;
   height: max-content;
   font-size: var(--selecton-font-size) !important;

@@ -238,7 +238,7 @@ function restoreMarkers() {
             console.log(value);
         }
 
-        if (value['websiteMarkers'][window.location.href]) {
+        if (value['websiteMarkers'] && value['websiteMarkers'][window.location.href]) {
             let markersForCurrentPage = value['websiteMarkers'][window.location.href]['markers'];
 
             if (markersForCurrentPage) {
