@@ -92,8 +92,7 @@ function createTooltip(e, recreated = false) {
             addContextualButtons();
 
             setTimeout(function () {
-                /// Set border radius for first and last buttons
-                setBorderRadiusForSideButtons(tooltip);
+
 
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
@@ -121,6 +120,12 @@ function createTooltip(e, recreated = false) {
                     if (tooltipIsShown == false) return;
                     document.addEventListener("selectionchange", selectionChangeListener);
                 }, configs.animationDuration);
+
+                /// Set border radius for first and last buttons
+                setTimeout(function () {
+                    setBorderRadiusForSideButtons(tooltip);
+                }, 5);
+
             }, 0);
 
         } else hideTooltip();
