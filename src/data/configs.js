@@ -88,6 +88,7 @@ const configs = {
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
     'dictionaryButtonResponseCharsAmount': 300,
+    'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

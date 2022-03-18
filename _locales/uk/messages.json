@@ -160,7 +160,7 @@
         "description": "Header for settings section"
     },
     "customSearchTooltip": {
-        "message": "Панель варіантів пошуку",
+        "message": "Свої варіанти пошуку",
         "description": "Ярлик для поля в настройках"
     },
     "customSearchTooltipHint": {
@@ -684,5 +684,17 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Стиль відображення параметрів пошуку",
+        "description": "Label for option in settings"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Показати при наведенні на кнопку пошуку",
+        "description": "Label for option in settings"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Показати на основній панелі",
+        "description": "Label for option in settings"
     }
 }

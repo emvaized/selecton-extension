@@ -209,24 +209,32 @@
 
 
             <!-- Custom search tooltip -->
-            <h3 class='collapsible-header' id='customSearchTooltip'>Custom search tooltip</h3>
+            <h3 class='collapsible-header' id='customSearchTooltip'>Custom search options</h3>
             <div class='collapsible-content'>
                 <h4 id='customSearchTooltipHint'>Gets revealed on
                     hovering over the 'Search' button
                 </h4>
-                <div class='option'> <label><input type="checkbox" id="secondaryTooltipEnabled"></label></div>
-                <!-- <div class='option'> <label><input type="number" min='0' step='50' id="delayToRevealSearchTooltip"></label></div> -->
-                <div class='option'> <label><input type="number" min='0' max='50' step='1' id="secondaryTooltipIconSize"></label></div>
-                <!-- <div class='option'> <label><input type="checkbox" id="verticalSecondaryTooltip"></label></div> -->
-                <div class='option'><label><select id="secondaryTooltipLayout">
-                            <option value="verticalLayout">Vertical</option>
-                            <option value="horizontalLayout">Horizontal</option>
+
+                <div class='option'><label><select id="customSearchOptionsDisplay">
+                            <option value="hoverCustomSearchStyle">Show on search button hover</option>
+                            <option value="panelCustomSearchStyle">Show in main panel</option>
                         </select>
                     </label>
                 </div>
-                <div class='option'> <label><input type="checkbox" id="showSecondaryTooltipTitleOnHover"></label>
-                </div>
-                <div class='option'> <label><input type="number" min='1' max='10' step='1' id="maxIconsInRow"></label>
+
+                <div id="hoverSearchPanelOptions">
+                    <div class='option'> <label><input type="checkbox" id="secondaryTooltipEnabled"></label></div>
+                    <div class='option'> <label><input type="number" min='0' max='50' step='1' id="secondaryTooltipIconSize"></label></div>
+                    <div class='option'><label><select id="secondaryTooltipLayout">
+                                <option value="verticalLayout">Vertical</option>
+                                <option value="horizontalLayout">Horizontal</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class='option'> <label><input type="checkbox" id="showSecondaryTooltipTitleOnHover"></label>
+                    </div>
+                    <div class='option'> <label><input type="number" min='1' max='10' step='1' id="maxIconsInRow"></label>
+                    </div>
                 </div>
 
                 <br />

@@ -13,7 +13,7 @@
   },
   "addClearButton": {
     "message": "Show 'Clear' button on click non-empty field",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "addColorPreviewButton": {
     "message": "Add color preview button (for CSS colors like #ffffff)",
@@ -21,15 +21,15 @@
   },
   "addDragHandles": {
     "message": "Add selection drag handles",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "addFontFormatButtons": {
     "message": "Add font format buttons (italic, bold)",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "addMarkerButton": {
     "message": "Add 'Highlight' button",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "addNewSearchOption": {
     "message": "Add new search option",
@@ -97,7 +97,7 @@
   },
   "callLabel": {
     "message": "Call",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "changeTextSelectionColor": {
     "message": "Customize text selection",
@@ -109,11 +109,11 @@
   },
   "clearLabel": {
     "message": "Clear",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "collapseButtons": {
     "message": "Hide exceeding buttons under 'More' button",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "contextualButtonsHeader": {
     "message": "Buttons",
@@ -164,7 +164,7 @@
     "description": "Header for settings section"
   },
   "customSearchTooltip": {
-    "message": "Custom search tooltip",
+    "message": "Custom search options",
     "description": "Label for field in settings"
   },
   "customSearchTooltipHint": {
@@ -185,7 +185,7 @@
   },
   "delayToRevealHoverPanels": {
     "message": "Delay before revealing panels on hover (ms)",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "delayToRevealSearchTooltip": {
     "message": "Delay before reveal panel (ms)",
@@ -301,7 +301,7 @@
   },
   "iconlabel": {
     "message": "Icons + text",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "imperial": {
     "message": "Imperial",
@@ -341,15 +341,15 @@
   },
   "markedLabel": {
     "message": "Highlighted",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "markerLabel": {
     "message": "Highlight",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "markersLabel": {
     "message": "Highlights",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "maxIconsInRow": {
     "message": "Amount of icons in row",
@@ -357,11 +357,11 @@
   },
   "maxMarkerPagesToStore": {
     "message": "Max pages to store highlights",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "maxTooltipButtonsToShow": {
     "message": "Max buttons to show in the tooltip",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "metric": {
     "message": "Metric",
@@ -377,7 +377,7 @@
   },
   "moveDownTooltipEffect": {
     "message": "Move down",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "moveUpLabel": {
     "message": "Move up",
@@ -385,7 +385,7 @@
   },
   "moveUpTooltipEffect": {
     "message": "Move up",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "noDefinitionFound": {
     "message": "No definition found",
@@ -393,7 +393,7 @@
   },
   "noTooltipEffect": {
     "message": "No effect",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "noTranslationFound": {
     "message": "No translation found",
@@ -401,11 +401,11 @@
   },
   "onlyicon": {
     "message": "Icons only",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "onlylabel": {
     "message": "Text only",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "openInNewTab": {
     "message": "Open in new tab",
@@ -429,7 +429,7 @@
   },
   "preferCurrencySymbol": {
     "message": "Prefer currency symbols instead of codes",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "preferredMetricsSystem": {
     "message": "Preferred metrics system",
@@ -449,7 +449,7 @@
   },
   "recentMarkersLabel": {
     "message": "Recent highlights",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "recreateTooltipAfterScroll": {
     "message": "Recreate tooltip after scroll or window resize",
@@ -473,11 +473,11 @@
   },
   "scaleUpFromBottomTooltipEffect": {
     "message": "Scale up (from bottom)",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "scaleUpTooltipEffect": {
     "message": "Scale up",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "searchLabel": {
     "message": "Search",
@@ -521,15 +521,15 @@
   },
   "shouldOverrideWebsiteSelectionColor": {
     "message": "Overwrite page's highlight color",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "showButtonBorders": {
     "message": "Show button dividers",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "showButtonLabelOnHover": {
     "message": "Show button label on hover",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "showDictionaryButton": {
     "message": "Show the dictionary button",
@@ -557,7 +557,7 @@
   },
   "showStatsOnCopyButtonHover": {
     "message": "Show stats on Copy button hover",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "showTranslateButton": {
     "message": "Show translate button",
@@ -577,19 +577,19 @@
   },
   "snapSelectionToWord": {
     "message": "Snap text selection by word",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "strikeLabel": {
     "message": "Strike",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "symbolsCount": {
     "message": "Symbols",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "testPageButton": {
     "message": "Test the settings",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "textSelectionBackground": {
     "message": "Selection color",
@@ -621,7 +621,7 @@
   },
   "tooltipRevealEffect": {
     "message": "Tooltip reveal effect",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "translateLabel": {
     "message": "Translate",
@@ -651,7 +651,7 @@
   },
   "updateRatesEveryDays": {
     "message": "Rates update interval (days)",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "useCustomStyle": {
     "message": "Use custom style for tooltip",
@@ -675,18 +675,30 @@
   },
   "whatsNew": {
     "message": "What's new",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "wordSnappingBlacklist": {
     "message": "Domains to exclude",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "wordsCount": {
     "message": "Words",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
   },
   "writeAReview": {
     "message": "Write a review",
-    "description": "Label for buttons style option in settings"
+    "description": "Label for option in settings"
+  },
+  "customSearchOptionsDisplay": {
+    "message": "Style to display custom search options",
+    "description": "Label for option in settings"
+  },
+  "hoverCustomSearchStyle": {
+    "message": "Show on search button hover",
+    "description": "Label for option in settings"
+  },
+  "panelCustomSearchStyle": {
+    "message": "Show in main panel",
+    "description": "Label for option in settings"
   }
 }

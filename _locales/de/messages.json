@@ -160,7 +160,7 @@
         "description": "Header for settings section"
     },
     "customSearchTooltip": {
-        "message": "Tooltip für Suche",
+        "message": "Suchoptionen",
         "description": "Bezeichnung für Feld in Einstellungen"
     },
     "customSearchTooltipHint": {
@@ -680,5 +680,17 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Stil zur Anzeige benutzerdefinierter Suchoptionen",
+        "description": "Label für Option in den Einstellungen"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Beim Hover der Suchschaltfläche",
+        "description": "Label für Option in den Einstellungen"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Im Hauptfenster anzeigen",
+        "description": "Label für Option in den Einstellungen"
     }
 }

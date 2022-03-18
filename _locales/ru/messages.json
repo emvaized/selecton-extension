@@ -164,7 +164,7 @@
         "description": "Header for settings section"
     },
     "customSearchTooltip": {
-        "message": "Панель вариантов поиска",
+        "message": "Свои варианты поиска",
         "description": "Ярлык для поля в настройках"
     },
     "customSearchTooltipHint": {
@@ -692,5 +692,17 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Стиль отображения опций поиска",
+        "description": "Ярлык для опции в настройках"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Показывать при наведении на кнопку поиска",
+        "description": "Ярлык для опции в настройках"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Показывать на главной панели",
+        "description": "Ярлык для опции в настройках"
     }
 }

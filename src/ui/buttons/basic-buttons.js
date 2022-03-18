@@ -121,6 +121,24 @@ function addBasicTooltipButtons(layout) {
             onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
         }, true);
 
+        if (configs.customSearchOptionsDisplay == 'panelCustomSearchStyle') {
+            if (configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+                for (var i = 0, l = configs.customSearchButtons.length; i < l; i++) {
+                    const item = configs.customSearchButtons[i];
+
+                    const url = item['url'];
+                    const optionEnabled = item['enabled'];
+                    const title = item['title'];
+                    const icon = item['icon'];
+
+                    if (optionEnabled)
+                        addBasicTooltipButton(title ?? url, icon, function (e) {
+                            // let selectedText = selection.toString();
+                            onTooltipButtonClick(e, url);
+                        });
+                }
+        }
+
         /// Add copy button 
         copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
             document.execCommand('copy');

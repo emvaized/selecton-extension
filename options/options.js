@@ -323,6 +323,7 @@ function updateDisabledOptions() {
     document.getElementById("applyConfigsImmediatelyPerformanceTip").className = document.getElementById("applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
     document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("maxIconsInRow").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
+    document.getElementById("hoverSearchPanelOptions").className = document.getElementById("customSearchOptionsDisplay").value == 'panelCustomSearchStyle' ? 'hidden-option' : 'visible-option';
 
     /// Hide language detection option if current browser doesn't support it
     if (!chrome.i18n.detectLanguage) {

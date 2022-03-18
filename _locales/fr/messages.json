@@ -160,7 +160,7 @@
         "description": "Header for settings section"
     },
     "customSearchTooltip": {
-        "message": "Info-bulle de recherche",
+        "message": "Options de recherche",
         "description": "Libellé du champ dans les paramètres"
     },
     "customSearchTooltipHint": {
@@ -680,5 +680,17 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Style pour afficher les options de recherche",
+        "description": "Label for option in settings"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Afficher au survol du bouton de recherche",
+        "description": "Label for option in settings"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Afficher dans le panneau principal",
+        "description": "Label for option in settings"
     }
 }

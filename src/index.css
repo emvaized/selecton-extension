@@ -16,7 +16,6 @@
   line-height: 1.0 !important; 
   box-sizing: unset !important;
   border: 0.25px solid var(--selecton-outline-color);
-
   /* backdrop-filter: blur(5px) !important; */
 }
 
@@ -138,12 +137,10 @@
   position: absolute; 
   margin: 0px !important; 
   padding: 6px !important; 
-  /* display: none;  */
   line-height: 1.0 !important;  
   border: 0.25px solid var(--selecton-outline-color); 
   background: var(--selecton-background-color) !important; 
   font-size: var(--selecton-font-size) !important;
-  /* width: max-content !important; */
   max-width: 400%;
   pointer-events: none;
   color: var(--selection-button-foreground);

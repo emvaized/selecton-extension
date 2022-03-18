@@ -103,11 +103,12 @@ function createTooltip(e, recreated = false) {
                 document.body.appendChild(tooltip);
 
                 /// Create search tooltip for custom search options)
-                setTimeout(function () {
-                    // correctTooltipPosition();
-                    if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
-                        setHoverForSearchButton(searchButton);
-                }, 5);
+                if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
+                    setTimeout(function () {
+                        // correctTooltipPosition();
+                        if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+                            setHoverForSearchButton(searchButton);
+                    }, 5);
 
                 /// Check for colliding with side edges
                 setTimeout(function () {

@@ -164,7 +164,7 @@
         "description": "Ayarlar bölümü için üstbilgi"
     },
     "customSearchTooltip": {
-        "message": "Özel arama aracı ipucu",
+        "message": "Özel arama seçenekleri",
         "description": "Ayarlardaki alan etiketi"
     },
     "customSearchTooltipHint": {
@@ -684,5 +684,17 @@
     "writeAReview": {
         "message": "Yorum yazma",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Özel arama seçeneklerini görüntüleme stili",
+        "description": "Label for option in settings"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Arama düğmesinin üzerine gelindiğinde göster",
+        "description": "Label for option in settings"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Ana panelde göster",
+        "description": "Label for option in settings"
     }
 }

@@ -160,7 +160,7 @@
         "description": "Header for settings section"
     },
     "customSearchTooltip": {
-        "message": "Painel de pesquisa",
+        "message": "Opções de pesquisa",
         "description": "Rótulo para o campo nas configurações"
     },
     "customSearchTooltipHint": {
@@ -676,5 +676,17 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
+    },
+    "customSearchOptionsDisplay": {
+        "message": "Estilo para exibir as opções de pesquisa",
+        "description": "Label for option in settings"
+    },
+    "hoverCustomSearchStyle": {
+        "message": "Mostrar ao passar o mouse sobre o botão de pesquisa",
+        "description": "Label for option in settings"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Mostrar no painel principal",
+        "description": "Label for option in settings"
     }
 }
