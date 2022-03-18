@@ -45,7 +45,7 @@ function loadSettings() {
         chrome.storage.local.get(['websiteMarkers'], function (value) {
             setMarkerSection(value);
         });
-    }, 0)
+    }, 15)
 }
 
 function setInputs(result) {
