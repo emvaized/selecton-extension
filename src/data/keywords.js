@@ -292,6 +292,7 @@ const filetypesToIgnoreAsDomains = [
     "7z",
     "mp3",
     "mp4",
+    "png",
     "jpg",
     "wav",
     "exe",

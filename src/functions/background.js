@@ -36,8 +36,8 @@ chrome.runtime.onMessage.addListener(
 
 /// Show notification on extension update
 chrome.runtime.onInstalled.addListener(function (details) {
-    if (details.reason == 'update') {
-        // show update notification
+    if (details.reason == 'update' && !details.temporary) {
+        // show notification on extension update
         let shouldShowNotification = true;
         const storageKey = 'showUpdateNotification';
 
@@ -48,6 +48,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
             if (shouldShowNotification) {
                 // get manifest for new version number
                 const manifest = chrome.runtime.getManifest();
+
                 // show update notification and open changelog on click
                 displayNotification(
                     chrome.i18n.getMessage('updateNotificationTitle', manifest.version),

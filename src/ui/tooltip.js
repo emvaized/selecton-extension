@@ -124,7 +124,7 @@ function createTooltip(e, recreated = false) {
                 /// Set border radius for first and last buttons
                 setTimeout(function () {
                     setBorderRadiusForSideButtons(tooltip);
-                }, 5);
+                }, 10);
 
             }, 0);
 
@@ -177,7 +177,6 @@ function setUpTooltip(recreated = false) {
 
     /// Make the tooltip draggable by arrow
     if (configs.draggableTooltip) {
-        // arrow.style.cursor = 'move';
         arrow.style.cursor = 'grab';
 
         arrow.onmousedown = function (e) {
@@ -189,7 +188,6 @@ function setUpTooltip(recreated = false) {
             tooltip.style.left = `0px`;
             tooltip.style.top = `0px`;
             tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-            // document.body.style.cursor = 'move';
             document.body.style.cursor = 'grabbing';
 
             const tooltipOnBottom = arrow.classList.contains('arrow-on-bottom');
