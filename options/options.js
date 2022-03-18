@@ -920,7 +920,7 @@ function setMarkerSection(value) {
 document.addEventListener("DOMContentLoaded", loadSettings);
 
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-    window.open('https://emvaized.diaka.ua/donate', '_blank');
+    window.open('https://ko-fi.com/emvaized', '_blank');
 });
 
 document.querySelector("#githubButton").addEventListener("click", function (val) {
