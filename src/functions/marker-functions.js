@@ -176,20 +176,23 @@ function markTextSelection(bg, fg, text, restoredMarker) {
 
 
 function getNodeSelector(el) {
-    let names = [];
-    do {
-        index = 0;
-        var cursorElement = el;
-        while (cursorElement !== null) {
-            ++index;
-            cursorElement = cursorElement.previousElementSibling;
-        };
-        if (el.tagName !== undefined)
-            names.unshift(el.tagName + ":nth-child(" + index + ")");
-        el = el.parentElement;
-    } while (el !== null && el !== undefined);
+    return UTILS.cssPath(el);
 
-    return names.join(" > ");
+    // let names = [];
+    // do {
+    //     let index = 0;
+    //     var cursorElement = el;
+    //     while (cursorElement !== null) {
+    //         ++index;
+    //         cursorElement = cursorElement.previousElementSibling;
+    //     };
+    //     if (el.tagName !== undefined)
+    //         // names.unshift(el.tagName + ":nth-child(" + index + ")");
+    //         names.unshift(el.tagName + ":nth-of-type(" + index + ")");
+    //     el = el.parentElement;
+    // } while (el !== null && el !== undefined);
+
+    // return names.join(" > ");
 }
 
 function saveAllMarkers() {

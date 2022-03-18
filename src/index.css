@@ -276,6 +276,7 @@
   bottom: 0; right: 120%;
   width: max-content !important;
   text-align: start !important;
+  font-size: 12px !important;
   opacity: 0; transition: opacity 250ms, visibility 250ms !important; 
 }
 

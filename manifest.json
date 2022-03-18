@@ -60,6 +60,7 @@
         "src/functions/dark-page-detection.js",
         "src/functions/hover-buttons-functions.js",
         "src/functions/marker-functions.js",
+        "src/functions/css-path-for-node.js",
         "src/ui/buttons/basic-buttons.js",
         "src/ui/buttons/contextual-buttons.js",
         "src/ui/buttons/hover-buttons/translate-button.js",
