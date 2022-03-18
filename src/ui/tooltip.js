@@ -123,9 +123,7 @@ function createTooltip(e, recreated = false) {
                 }, configs.animationDuration);
 
                 /// Set border radius for first and last buttons
-                setTimeout(function () {
-                    setBorderRadiusForSideButtons(tooltip);
-                }, 10);
+                setBorderRadiusForSideButtons(tooltip);
 
             }, 0);
 

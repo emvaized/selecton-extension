@@ -2,7 +2,6 @@ function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
     let dxOffset = shouldShift ? '-50%' : '0';
 
     switch (configs.tooltipRevealEffect) {
-        // case 'noTooltipEffect': return ``;
         case 'noTooltipEffect': return `translate(${dxOffset},0)`;
         case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, 100%)`;
         case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -100%)`;
@@ -131,14 +130,16 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
 
 function setBorderRadiusForSideButtons(parent, startFrom = 1) {
     /// Set border radius for first and last buttons of horizontal tooltip
-    let children = parent.children;
+    setTimeout(function () {
+        let children = parent.children;
 
-    if (children.length == 1) {
-        children[startFrom].style.borderRadius = onlyButtonBorderRadius;
-    } else {
-        children[startFrom].style.borderRadius = firstButtonBorderRadius;
-        children[children.length - 1].style.borderRadius = lastButtonBorderRadius;
-    }
+        if (children.length == 1) {
+            children[startFrom].style.borderRadius = onlyButtonBorderRadius;
+        } else {
+            children[startFrom].style.borderRadius = firstButtonBorderRadius;
+            children[children.length - 1].style.borderRadius = lastButtonBorderRadius;
+        }
+    }, 50);
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
