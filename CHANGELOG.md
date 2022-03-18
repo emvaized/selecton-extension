@@ -1,3 +1,8 @@
+3.5.8
+- Add option to display custom search options in main panel instead of hover panel
+- Changed support/donate link to the new Ki-Fi page
+- Small fixes and improvements
+
 3.5.7
 - Add DeepL translation option on click
 - Fix for recreating tooltip when clicked on A link with active selection on page

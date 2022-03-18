@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
-  "default_locale": "en",
   "name": "Selecton — selection popup. Copy and search",
-  "version": "3.5.7",
+  "version": "3.5.8",
+  "author": "emvaized",
   "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "icons": {
     "48": "icons/logo-48.png",
     "96": "icons/logo-96.png"
@@ -83,6 +84,11 @@
     "chrome_style": true,
     "open_in_tab": false
   },
+  "browser_action": {
+    "default_icon": "icons/logo-96.png",
+    "default_title": "Selecton",
+    "default_popup": "popup/popup.html"
+  },
   "permissions": [
     "https://translate.googleapis.com/*",
     "https://api.exchangerate.host/*",
@@ -91,10 +97,5 @@
     "storage",
     "notifications",
     "clipboardRead"
-  ],
-  "browser_action": {
-    "default_icon": "icons/logo-96.png",
-    "default_title": "Selecton",
-    "default_popup": "popup/popup.html"
-  }
+  ]
 }
