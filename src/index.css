@@ -220,7 +220,7 @@
   all: revert; fill: white; 
   vertical-align: top !important; display: unset !important; transform: translate(0, -1px);
   height: var(--selecton-button-icon-height); max-height: var(--selecton-button-icon-height) !important;
-  filter: var(--selecton-button-icon-invert) !important;
+  filter: var(--selecton-button-icon-invert) !important; width: unset !important;
 }
 
 .selecton-search-tooltip-icon {
