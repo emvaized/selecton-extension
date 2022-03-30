@@ -263,7 +263,7 @@ function setTranslatedLabels() {
     hintEl.innerHTML += chrome.i18n.getMessage("updatePageToSeeChanges");
 
     /// Translate footer buttons
-    document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
+    document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview") + document.querySelector("#writeAReviewButton").innerHTML;
     document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
     document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
