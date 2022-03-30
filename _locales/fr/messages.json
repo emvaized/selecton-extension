@@ -159,6 +159,10 @@
         "message": "Boutons de recherche",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Style pour afficher les options de recherche",
+        "description": "Label for option in settings"
+    },
     "customSearchTooltip": {
         "message": "Options de recherche",
         "description": "Libellé du champ dans les paramètres"
@@ -291,6 +295,10 @@
         "message": "Horizontale",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Afficher au survol du bouton de recherche",
+        "description": "Label for option in settings"
+    },
     "iconlabel": {
         "message": "Icônes + texte",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
@@ -318,6 +326,10 @@
     "languageToTranslate": {
         "message": "Langue à traduire (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>code ISO 639-1</a>)",
         "description": "Libellé du champ dans les paramètres, incorporant un lien en ligne"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Le clic gauche ouvre le lien comme onglet d'arrière-plan",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Traduction en direct au survol du bouton (Google Translate)",
@@ -406,6 +418,10 @@
     "overCursor": {
         "message": "Sur le curseur",
         "description": "Libellé du champ dans les paramètres"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Afficher dans le panneau principal",
+        "description": "Label for option in settings"
     },
     "pasteLabel": {
         "message": "Coller",
@@ -680,21 +696,5 @@
     "writeAReview": {
         "message": "Rédiger un avis",
         "description": "Libellé de l'option de style des boutons dans les paramètres"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Style pour afficher les options de recherche",
-        "description": "Label for option in settings"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Afficher au survol du bouton de recherche",
-        "description": "Label for option in settings"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Afficher dans le panneau principal",
-        "description": "Label for option in settings"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Le clic gauche ouvre le lien comme onglet d'arrière-plan",
-        "description": "Label for option in settings"
     }
 }

@@ -159,6 +159,10 @@
         "message": "Suchschaltflächen",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Stil zur Anzeige benutzerdefinierter Suchoptionen",
+        "description": "Label für Option in den Einstellungen"
+    },
     "customSearchTooltip": {
         "message": "Suchoptionen",
         "description": "Bezeichnung für Feld in Einstellungen"
@@ -291,6 +295,10 @@
         "message": "Horizontal",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Beim Hover der Suchschaltfläche",
+        "description": "Label für Option in den Einstellungen"
+    },
     "iconlabel": {
         "message": "Icons + text",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
@@ -318,6 +326,10 @@
     "languageToTranslate": {
         "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
         "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Linksklick öffnet Link als Hintergrund-Tab",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Live-Übersetzung beim Hovern der Schaltfläche (Google Translate)",
@@ -406,6 +418,10 @@
     "overCursor": {
         "message": "Over cursor",
         "description": "Bezeichnung für Feld in Einstellungen"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Im Hauptfenster anzeigen",
+        "description": "Label für Option in den Einstellungen"
     },
     "pasteLabel": {
         "message": "Einfügen",
@@ -680,21 +696,5 @@
     "writeAReview": {
         "message": "Schreibe eine Bewertung",
         "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Stil zur Anzeige benutzerdefinierter Suchoptionen",
-        "description": "Label für Option in den Einstellungen"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Beim Hover der Suchschaltfläche",
-        "description": "Label für Option in den Einstellungen"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Im Hauptfenster anzeigen",
-        "description": "Label für Option in den Einstellungen"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Linksklick öffnet Link als Hintergrund-Tab",
-        "description": "Label for option in settings"
     }
 }

@@ -159,6 +159,10 @@
         "message": "Кнопки пошуку",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Стиль відображення параметрів пошуку",
+        "description": "Label for option in settings"
+    },
     "customSearchTooltip": {
         "message": "Свої варіанти пошуку",
         "description": "Ярлик для поля в настройках"
@@ -295,6 +299,10 @@
         "message": "Горизонтальна",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Показати при наведенні на кнопку пошуку",
+        "description": "Label for option in settings"
+    },
     "iconlabel": {
         "message": "Іконки + текст",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
@@ -322,6 +330,10 @@
     "languageToTranslate": {
         "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
+    },
+    "leftClickBackgroundTab": {
+        "message": "Лівий клік відкриває у фоновій вкладці",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Живий переклад при наведенні на кнопку (Google Translate)",
@@ -410,6 +422,10 @@
     "overCursor": {
         "message": "По курсору",
         "description": "Мітка для поля в налаштуваннях"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Показати на основній панелі",
+        "description": "Label for option in settings"
     },
     "pasteLabel": {
         "message": "Вставити",
@@ -684,21 +700,5 @@
     "writeAReview": {
         "message": "Залишити відгук",
         "description": "Мітка для параметра стилю кнопок у налаштуваннях"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Стиль відображення параметрів пошуку",
-        "description": "Label for option in settings"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Показати при наведенні на кнопку пошуку",
-        "description": "Label for option in settings"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Показати на основній панелі",
-        "description": "Label for option in settings"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Лівий клік відкриває у фоновій вкладці",
-        "description": "Label for option in settings"
     }
 }

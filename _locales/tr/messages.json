@@ -163,6 +163,10 @@
         "message": "Arama düğmeleri",
         "description": "Ayarlar bölümü için üstbilgi"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Özel arama seçeneklerini görüntüleme stili",
+        "description": "Label for option in settings"
+    },
     "customSearchTooltip": {
         "message": "Özel arama seçenekleri",
         "description": "Ayarlardaki alan etiketi"
@@ -295,6 +299,10 @@
         "message": "Yatay",
         "description": "Ayarlardaki alan etiketi"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Arama düğmesinin üzerine gelindiğinde göster",
+        "description": "Label for option in settings"
+    },
     "iconlabel": {
         "message": "Simgeler + metin",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
@@ -326,6 +334,10 @@
     "languageToTranslate": {
         "message": "Çevrilecek dil (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 kodu</a>)",
         "description": "Satır içi bağlantıyı içeren ayarlardaki alan etiketi"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Üzerine gelindiğinde canlı çeviri (Google Çeviri)",
@@ -414,6 +426,10 @@
     "overCursor": {
         "message": "imlecin üzerinde",
         "description": "Ayarlardaki alan etiketi"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Ana panelde göster",
+        "description": "Label for option in settings"
     },
     "pasteLabel": {
         "message": "Yapıştırmak",
@@ -684,21 +700,5 @@
     "writeAReview": {
         "message": "Yorum yazma",
         "description": "Ayarlarda düğmeler için etiket stili seçeneği"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Özel arama seçeneklerini görüntüleme stili",
-        "description": "Label for option in settings"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Arama düğmesinin üzerine gelindiğinde göster",
-        "description": "Label for option in settings"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Ana panelde göster",
-        "description": "Label for option in settings"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar",
-        "description": "Label for option in settings"
     }
 }

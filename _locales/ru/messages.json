@@ -163,6 +163,10 @@
         "message": "Кнопки поиска",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Стиль отображения опций поиска",
+        "description": "Ярлык для опции в настройках"
+    },
     "customSearchTooltip": {
         "message": "Свои варианты поиска",
         "description": "Ярлык для поля в настройках"
@@ -299,6 +303,10 @@
         "message": "Горизонтальное",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Показывать при наведении на кнопку поиска",
+        "description": "Ярлык для опции в настройках"
+    },
     "iconlabel": {
         "message": "Иконки + текст",
         "description": "Label for buttons style option in settings"
@@ -330,6 +338,10 @@
     "languageToTranslate": {
         "message": "Язык пользователя (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
         "description": ""
+    },
+    "leftClickBackgroundTab": {
+        "message": "Щелчок левой кнопкой открывает в фоновой вкладке",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Живой перевод при наведении на кнопку (Google Translate)",
@@ -418,6 +430,10 @@
     "overCursor": {
         "message": "Возле курсора",
         "description": "Label for field in settings"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Показывать на главной панели",
+        "description": "Ярлык для опции в настройках"
     },
     "pasteLabel": {
         "message": "Вставить",
@@ -692,21 +708,5 @@
     "writeAReview": {
         "message": "Написать отзыв",
         "description": "Label for buttons style option in settings"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Стиль отображения опций поиска",
-        "description": "Ярлык для опции в настройках"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Показывать при наведении на кнопку поиска",
-        "description": "Ярлык для опции в настройках"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Показывать на главной панели",
-        "description": "Ярлык для опции в настройках"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Щелчок левой кнопкой открывает в фоновой вкладке",
-        "description": "Label for option in settings"
     }
 }

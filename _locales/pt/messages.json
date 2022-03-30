@@ -159,6 +159,10 @@
         "message": "Botões de pesquisa",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Estilo para exibir as opções de pesquisa",
+        "description": "Label for option in settings"
+    },
     "customSearchTooltip": {
         "message": "Opções de pesquisa",
         "description": "Rótulo para o campo nas configurações"
@@ -291,6 +295,10 @@
         "message": "Horizontal",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Mostrar ao passar o mouse sobre o botão de pesquisa",
+        "description": "Label for option in settings"
+    },
     "iconlabel": {
         "message": "Ícones + texto",
         "description": "Rótulo para opção de estilo de botões nas configurações"
@@ -318,6 +326,10 @@
     "languageToTranslate": {
         "message": "Idioma a ser traduzido (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Rótulo para campo nas configurações, incorporando link embutido"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Clique esquerdo abre o link como guia de fundo",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Tradução ao vivo ao passar o mouse no botão (Google Translate)",
@@ -406,6 +418,10 @@
     "overCursor": {
         "message": "Sobre o cursor",
         "description": "Rótulo para o campo nas configurações"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Mostrar no painel principal",
+        "description": "Label for option in settings"
     },
     "pasteLabel": {
         "message": "Colar",
@@ -676,21 +692,5 @@
     "writeAReview": {
         "message": "Escreva um comentário",
         "description": "Rótulo para opção de estilo de botões nas configurações"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Estilo para exibir as opções de pesquisa",
-        "description": "Label for option in settings"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Mostrar ao passar o mouse sobre o botão de pesquisa",
-        "description": "Label for option in settings"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Mostrar no painel principal",
-        "description": "Label for option in settings"
-    },
-    "leftClickBackgroundTab": {
-        "message": "Clique esquerdo abre o link como guia de fundo",
-        "description": "Label for option in settings"
     }
 }

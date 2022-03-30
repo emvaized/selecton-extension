@@ -163,6 +163,10 @@
     "message": "Search buttons",
     "description": "Header for settings section"
   },
+  "customSearchOptionsDisplay": {
+    "message": "Style to display custom search options",
+    "description": "Label for option in settings"
+  },
   "customSearchTooltip": {
     "message": "Custom search options",
     "description": "Label for field in settings"
@@ -299,6 +303,10 @@
     "message": "Horizontal",
     "description": "Label for field in settings"
   },
+  "hoverCustomSearchStyle": {
+    "message": "Show on search button hover",
+    "description": "Label for option in settings"
+  },
   "iconlabel": {
     "message": "Icons + text",
     "description": "Label for option in settings"
@@ -330,6 +338,10 @@
   "languageToTranslate": {
     "message": "User's language (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
     "description": "Label for field in settings, incorporating inline link"
+  },
+  "leftClickBackgroundTab": {
+    "message": "Left click opens link as background tab",
+    "description": "Label for option in settings"
   },
   "liveTranslation": {
     "message": "Live translation on button hover (Google Translate)",
@@ -418,6 +430,10 @@
   "overCursor": {
     "message": "Over cursor",
     "description": "Label for field in settings"
+  },
+  "panelCustomSearchStyle": {
+    "message": "Show in main panel",
+    "description": "Label for option in settings"
   },
   "pasteLabel": {
     "message": "Paste",
@@ -687,22 +703,6 @@
   },
   "writeAReview": {
     "message": "Write a review",
-    "description": "Label for option in settings"
-  },
-  "customSearchOptionsDisplay": {
-    "message": "Style to display custom search options",
-    "description": "Label for option in settings"
-  },
-  "hoverCustomSearchStyle": {
-    "message": "Show on search button hover",
-    "description": "Label for option in settings"
-  },
-  "panelCustomSearchStyle": {
-    "message": "Show in main panel",
-    "description": "Label for option in settings"
-  },
-  "leftClickBackgroundTab": {
-    "message": "Left click opens link as background tab",
     "description": "Label for option in settings"
   }
 }

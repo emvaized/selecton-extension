@@ -159,6 +159,10 @@
         "message": "Botones de búsqueda",
         "description": "Header for settings section"
     },
+    "customSearchOptionsDisplay": {
+        "message": "Estilo para mostrar opciones de búsqueda personalizadas",
+        "description": "Label for option in settings"
+    },
     "customSearchTooltip": {
         "message": "Opciones de búsqueda",
         "description": "Etiqueta para el campo en la configuración"
@@ -291,6 +295,10 @@
         "message": "Horizontal",
         "description": "Label for field in settings"
     },
+    "hoverCustomSearchStyle": {
+        "message": "Mostrar al pasar el botón de búsqueda",
+        "description": "Label for option in settings"
+    },
     "iconlabel": {
         "message": "Iconos + texto",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
@@ -318,6 +326,10 @@
     "languageToTranslate": {
         "message": "Idioma para traducir (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código ISO 639-1</a>)",
         "description": "Etiqueta para el campo en la configuración, incorporando un enlace en línea"
+    },
+    "leftClickBackgroundTab": {
+        "message": "El clic izquierdo abre el enlace como pestaña de fondo",
+        "description": "Label for option in settings"
     },
     "liveTranslation": {
         "message": "Traducción en vivo al pasar el botón (Google Translate)",
@@ -406,6 +418,10 @@
     "overCursor": {
         "message": "Sobre el cursor",
         "description": "Etiqueta para el campo en la configuración"
+    },
+    "panelCustomSearchStyle": {
+        "message": "Mostrar en el panel principal",
+        "description": "Label for option in settings"
     },
     "pasteLabel": {
         "message": "Pegar",
@@ -680,21 +696,5 @@
     "writeAReview": {
         "message": "Escribe una reseña",
         "description": "Etiqueta para la opción de estilo de botones en la configuración"
-    },
-    "customSearchOptionsDisplay": {
-        "message": "Estilo para mostrar opciones de búsqueda personalizadas",
-        "description": "Label for option in settings"
-    },
-    "hoverCustomSearchStyle": {
-        "message": "Mostrar al pasar el botón de búsqueda",
-        "description": "Label for option in settings"
-    },
-    "panelCustomSearchStyle": {
-        "message": "Mostrar en el panel principal",
-        "description": "Label for option in settings"
-    },
-    "leftClickBackgroundTab": {
-        "message": "El clic izquierdo abre el enlace como pestaña de fondo",
-        "description": "Label for option in settings"
     }
 }
