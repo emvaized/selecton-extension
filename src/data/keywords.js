@@ -294,6 +294,7 @@ const filetypesToIgnoreAsDomains = [
     "mp4",
     "png",
     "jpg",
+    "gif",
     "wav",
     "exe",
     "cfg",
@@ -324,32 +325,3 @@ const codeMarkers = [
     `("`,
     `": "`,
 ];
-
-
-/// Keywords to recognize selected text as a website
-/// Not in use
-// const websiteKeywords = [
-//     '.com',
-//     '.org',
-//     '.net',
-//     '.int',
-//     '.edu',
-//     '.gov',
-//     '.mil',
-//     '.xyz',
-//     '.website',
-//     '.video',
-//     '.travel',
-//     '.support',
-//     '.store',
-//     '.site',
-//     '.pub',
-//     '.photo',
-//     '.info',
-//     '.eu',
-
-//     /// Russian/Ukrainian domains
-//     '.ru',
-//     '.ру',
-//     '.ua',
-// ];
