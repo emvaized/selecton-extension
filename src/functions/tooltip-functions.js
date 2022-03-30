@@ -27,7 +27,7 @@ function onTooltipButtonClick(e, url, text) {
                 if (configs.convertResultClickAction == 'copy' && text)
                     copyManuallyToClipboard(text);
                 else
-                    chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: true });
+                    chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: configs.leftClickBackgroundTab ? false : true });
 
             } else if (evt.button == 1) {
                 /// Middle button click

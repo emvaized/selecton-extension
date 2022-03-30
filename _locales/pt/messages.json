@@ -688,5 +688,9 @@
     "panelCustomSearchStyle": {
         "message": "Mostrar no painel principal",
         "description": "Label for option in settings"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Clique esquerdo abre o link como guia de fundo",
+        "description": "Label for option in settings"
     }
 }

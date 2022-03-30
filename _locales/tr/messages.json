@@ -696,5 +696,9 @@
     "panelCustomSearchStyle": {
         "message": "Ana panelde göster",
         "description": "Label for option in settings"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar",
+        "description": "Label for option in settings"
     }
 }

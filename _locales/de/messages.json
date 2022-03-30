@@ -692,5 +692,9 @@
     "panelCustomSearchStyle": {
         "message": "Im Hauptfenster anzeigen",
         "description": "Label für Option in den Einstellungen"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Linksklick öffnet Link als Hintergrund-Tab",
+        "description": "Label for option in settings"
     }
 }

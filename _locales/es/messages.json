@@ -692,5 +692,9 @@
     "panelCustomSearchStyle": {
         "message": "Mostrar en el panel principal",
         "description": "Label for option in settings"
+    },
+    "leftClickBackgroundTab": {
+        "message": "El clic izquierdo abre el enlace como pestaña de fondo",
+        "description": "Label for option in settings"
     }
 }

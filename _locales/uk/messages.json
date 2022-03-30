@@ -696,5 +696,9 @@
     "panelCustomSearchStyle": {
         "message": "Показати на основній панелі",
         "description": "Label for option in settings"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Лівий клік відкриває у фоновій вкладці",
+        "description": "Label for option in settings"
     }
 }

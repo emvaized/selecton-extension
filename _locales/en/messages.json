@@ -700,5 +700,9 @@
   "panelCustomSearchStyle": {
     "message": "Show in main panel",
     "description": "Label for option in settings"
+  },
+  "leftClickBackgroundTab": {
+    "message": "Left click opens link as background tab",
+    "description": "Label for option in settings"
   }
 }

@@ -692,5 +692,9 @@
     "panelCustomSearchStyle": {
         "message": "Afficher dans le panneau principal",
         "description": "Label for option in settings"
+    },
+    "leftClickBackgroundTab": {
+        "message": "Le clic gauche ouvre le lien comme onglet d'arrière-plan",
+        "description": "Label for option in settings"
     }
 }
