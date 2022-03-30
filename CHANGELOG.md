@@ -1,3 +1,8 @@
+3.5.9
+- Fix for not showing translate button for some texts
+- Add option "Left click opens link as background tab"
+- Options page fixes & small design improvements
+
 3.5.8
 - Add option to display custom search options in main panel instead of hover panel
 - Changed support/donate link to the new Ki-Fi page
