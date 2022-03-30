@@ -17,8 +17,6 @@ function loadSettings() {
             val.expandedSettingsSections.forEach(function (v) {
                 expandedSettingsSections.push(v);
             })
-
-        setCollapsibleHeaders();
     });
 
     /// Fix for older browsers
@@ -131,8 +129,12 @@ function setInputs(result) {
 
     setTimeout(function () {
         loadCustomSearchButtons();
-    }, 1);
 
+        setTimeout(function (e) {
+            setCollapsibleHeaders();
+        }, 100);
+
+    }, 1);
 
 }
 
@@ -341,11 +343,9 @@ function setCollapsibleHeaders() {
         /// Make section initially expanded
         if (expandedSettingsSections.includes(c.id)) {
             const it = coll[i];
-            setTimeout(function (e) {
-                it.classList.toggle("active");
-                let content = it.nextElementSibling;
-                content.style.maxHeight = content.scrollHeight + "px";
-            }, 80);
+            it.classList.toggle("active");
+            let content = it.nextElementSibling;
+            content.style.maxHeight = content.scrollHeight + "px";
         }
 
         c.onclick = function () {
