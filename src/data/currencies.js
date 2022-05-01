@@ -3,7 +3,8 @@
 /// 
 /// New rates will be downloaded automatically with from network by looking for each currency key in server response
 /// Period of update specified in configs.updateRatesEveryDays
-/// Currently used url can be found in: src/functions/currencies-functions.js -> urlToLoadCurrencyRates
+/// Currently used urls can be found in: src/functions/currencies-functions.js
+
 const currenciesList = {
     "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", rate: 1.29009, currencyKeywords: ['australian dollar', 'австралийских доллар'] },
     "BGN": { currencyName: "Bulgarian Lev", currencySymbol: "лв", rate: 1.640562 },
@@ -19,6 +20,7 @@ const currenciesList = {
     "EUR": { currencyName: "Euro", currencySymbol: "€", rate: 0.8378, currencyKeywords: ['euro', 'евро'], },
     "GBP": { currencyName: "British Pound", currencySymbol: "£", rate: 0.721124, currencyKeywords: ['фунтов стерлингов', 'british pound'], },
     "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", rate: 7.765632 },
+    "HUF": { currencyName: "Hungarian forint", rate: 316.005504 },
     "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", rate: 3.310401 },
     "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", rate: 72.452006, currencyKeywords: ['rupees', 'рупий'], },
     "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", rate: 42105.017329 },
