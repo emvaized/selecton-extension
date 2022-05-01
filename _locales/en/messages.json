@@ -575,6 +575,10 @@
     "message": "Show stats on Copy button hover",
     "description": "Label for option in settings"
   },
+  "showTooltipArrow": {
+    "message": "Show tooltip arrow",
+    "description": "Label for field in settings"
+  },
   "showTranslateButton": {
     "message": "Show translate button",
     "description": "Label for field in settings"

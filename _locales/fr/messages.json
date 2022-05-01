@@ -567,6 +567,10 @@
         "message": "Afficher les statistiques au survol du bouton Copier",
         "description": "Label for buttons style option in settings"
     },
+    "showTooltipArrow": {
+        "message": "Montrer la flèche",
+        "description": "Label for field in settings"
+    },
     "showTranslateButton": {
         "message": "Afficher le bouton de traduction",
         "description": "Libellé du champ dans les paramètres"

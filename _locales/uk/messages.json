@@ -571,6 +571,10 @@
         "message": "Показувати інформацію при наведенні на кнопку Копіювати",
         "description": "Label for buttons style option in settings"
     },
+    "showTooltipArrow": {
+        "message": "Показувати стрілку внизу панелі",
+        "description": "Label for field in settings"
+    },
     "showTranslateButton": {
         "message": "Показувати кнопку перекладу",
         "description": ""

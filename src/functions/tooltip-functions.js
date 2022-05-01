@@ -71,9 +71,10 @@ function checkTooltipForCollidingWithSideEdges() {
         tooltip.style.transform = returnTooltipRevealTransform(true, false);
 
         /// Shift the arrow to match new position
-        var newLeftPercentForArrow = (-dx + 5) / tooltipWidth * 100;
-        if (arrow !== null && arrow !== undefined)
+        if (configs.showTooltipArrow && arrow !== null && arrow !== undefined) {
+            const newLeftPercentForArrow = (-dx + 5) / tooltipWidth * 100;
             arrow.style.left = `${50 - newLeftPercentForArrow}%`;
+        }
 
     } else {
         /// Check tooltip to be off-screen on the right
@@ -81,25 +82,21 @@ function checkTooltipForCollidingWithSideEdges() {
             || document.documentElement.clientWidth
             || document.body.clientWidth;
 
-        // let screenWidth = document.body.clientWidth;
-
         let offscreenAmount = (dx + tooltipWidth) - screenWidth;
-        // let offscreenAmount = panelRect.right * -1;
 
         /// Tooltip is off-screen on the right
         if (offscreenAmount > 0) {
             if (configs.debugMode)
                 console.log('Tooltip is colliding with right edge. Fixing...');
 
-            // tooltip.style.left = `${dx - offscreenAmount - 5}px`;
             tooltip.style.transform = returnTooltipRevealTransform(true, false);
             tooltip.style.left = `${dx - offscreenAmount - 5}px`;
 
             /// Shift the arrow to match new position
-            // let newLeftPercentForArrow = (dx - (dx - offscreenAmount - 5)) / tooltipWidth * 100;
-            let newLeftPercentForArrow = offscreenAmount / tooltipWidth * 100;
-
-            arrow.style.left = `${50 + (newLeftPercentForArrow / 2)}%`;
+            if (configs.showTooltipArrow) {
+                const newLeftPercentForArrow = offscreenAmount / tooltipWidth * 100;
+                arrow.style.left = `${50 + (newLeftPercentForArrow / 2)}%`;
+            }
         } else {
             if (configs.debugMode)
                 console.log('Tooltip is not colliding with side edges');

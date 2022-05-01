@@ -171,11 +171,11 @@ function setUpTooltip(recreated = false) {
 
     /// Add tooltip arrow
     arrow = document.createElement('div');
-    arrow.setAttribute('class', 'selection-tooltip-arrow');
+    if (configs.showTooltipArrow) arrow.setAttribute('class', 'selection-tooltip-arrow');
     tooltip.appendChild(arrow);
 
     /// Make the tooltip draggable by arrow
-    if (configs.draggableTooltip) {
+    if (configs.showTooltipArrow && configs.draggableTooltip) {
         arrow.style.cursor = 'grab';
 
         arrow.onmousedown = function (e) {

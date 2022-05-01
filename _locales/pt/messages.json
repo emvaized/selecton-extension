@@ -563,6 +563,10 @@
         "message": "Mostrar estatísticas ao passar o mouse sobre o botão Copiar",
         "description": "Etiqueta para opção de estilo de botões nas configurações"
     },
+    "showTooltipArrow": {
+        "message": "Mostre a flecha",
+        "description": "Label for field in settings"
+    },
     "showTranslateButton": {
         "message": "Mostrar botão de tradução",
         "description": "Rótulo para o campo nas configurações"
