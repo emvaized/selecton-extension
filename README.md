@@ -120,7 +120,7 @@ This is set to "18" by default, because rates tend to not change drastically so 
 * Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services. In this case you would like to use **vertical layout** for custom search panel to get at least labels shown, or visit *Settings > Custom search tooltip* and set your own icon for each option. It may also be that current website blocks all external requests at all, which prevents Selecton from loading favicons.
 
 **How to add new search option**
-* Let's use [YouTube](https://youtube.com) as an example. Go on a website and search for something, like "gold" – your URL will look something like this: (https://www.youtube.com/results?search_query=gold)[https://www.youtube.com/results?search_query=gold]. You have to grab this url, replace "gold" with "%s" (placeholder for searched text), and use it as url for the new search option (Extension options > Custom search options > Add new search option).
+* Let's use [YouTube](https://youtube.com) as an example. Go on a website and search for something, like "gold" – your URL will look something like this: [https://www.youtube.com/results?search_query=gold](https://www.youtube.com/results?search_query=gold). You have to grab this url, replace `gold` with `%s` (placeholder for the searched text), and use it as url for the new search option (Extension options > Custom search options > Add new search option).
 
 **How to add Selecton settings as Vivaldi side panel?**
 
