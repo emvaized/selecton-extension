@@ -119,13 +119,16 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services. In this case you would like to use **vertical layout** for custom search panel to get at least labels shown, or visit *Settings > Custom search tooltip* and set your own icon for each option. It may also be that current website blocks all external requests at all, which prevents Selecton from loading favicons.
 
+**How to add new search option**
+* Let's use [YouTube](https://youtube.com) as an example. Go on a website and search for something, like "gold" – your URL will look something like this: (https://www.youtube.com/results?search_query=gold)[https://www.youtube.com/results?search_query=gold]. You have to grab this url, replace "gold" with "%s" (placeholder for searched text), and use it as url for the new search option (Extension options > Custom search options > Add new search option).
+
 **How to add Selecton settings as Vivaldi side panel?**
 
 * Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extensions
 
 **Highlight button cuts the text selection**
 
-* To make this function work reliably, highlight single words or sentences — highlighter trims selection within one HTML node, otherwise page layout may be broken when highlight gets restored
+* To make this tool work reliably, please highlight only single words or sentences. Highlighter trims text selection within one HTML node – otherwise page layout may be broken when highlight gets restored after page reload.
 
 ----
 
@@ -140,6 +143,6 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 
 **Ideas for future releases**
 
-- Advanced editor with preview, which allows to quickly turn on/off buttons and change their order with drag'n'drop
+- Advanced buttons editor, which allows to quickly turn on/off buttons and change their order with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
