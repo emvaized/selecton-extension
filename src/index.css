@@ -183,6 +183,7 @@
 
 .custom-search-image-button img {
   all: revert;
+  filter: none !important;
 }
 
 .selection-popup-color-preview-circle {
