@@ -259,7 +259,7 @@ const timeZoneKeywords = {
     'WAT': '+0100',
     'BST': '+0100',
     'MET': '+0100',
-    'CEST': '+0100',
+    'CEST': '+0200',
     'EET': '+0200',
     'EEST': '+0200',
     'EET': '+0200',

@@ -443,8 +443,6 @@ function addContextualButtons() {
 
                 /// 12H - 24H conversion
                 // let numbers = extractAmountFromSelectedText(textToProccess);   /// Check if selected text contains numbers
-
-                // if (numbers !== null) {
                 if (configs.preferredMetricsSystem == 'metric') {
                     if (textToProccess.includes(' PM') || textToProccess.includes(' AM')) {
                         if (configs.debugMode)
@@ -463,7 +461,6 @@ function addContextualButtons() {
                             console.log('result: ' + textToProccess);
                     }
                 }
-                // }
 
                 const timeZoneKeywordsKeys = Object.keys(timeZoneKeywords);
                 let convertedTime, timeWord, marker;
@@ -483,17 +480,26 @@ function addContextualButtons() {
                             }
                         }
 
-
                         if (timeWord !== null && timeWord !== undefined && timeWord !== '') {
                             let numbers = timeWord.split(':');
 
                             if (numbers.length == 2 || numbers.length == 3) {
-
                                 let today = new Date();
                                 if (configs.debugMode) {
                                     console.log('today:');
                                     console.log(today);
                                 }
+
+                                /// correct timezone to dst
+                                function isDST(d) {
+                                    let jan = new Date(d.getFullYear(), 0, 1).getTimezoneOffset();
+                                    let jul = new Date(d.getFullYear(), 6, 1).getTimezoneOffset();
+                                    return Math.max(jan, jul) !== d.getTimezoneOffset();
+                                }
+
+                                const isDst = isDST(today);
+                                if (marker == 'EST' && isDst) marker = 'EDT';
+                                if (marker == 'CET' && isDst) marker = 'CEST';
 
                                 let modifier = selectedText.includes(' PM') ? ' PM' : selectedText.includes(' AM') ? ' AM' : '';
                                 let dateStringWithTimeReplaced = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()} ${numbers[0]}:${numbers[1]}${modifier} ${timeZoneKeywords[marker]}`;
@@ -506,7 +512,7 @@ function addContextualButtons() {
                                 let d = new Date(dateStringWithTimeReplaced); /// '6/29/2011 4:52:48 PM UTC'
                                 if (configs.debugMode) {
                                     console.log('setted date:');
-                                    console.log(d.toString())
+                                    console.log(d)
                                 }
 
                                 convertedTime = d.toLocaleTimeString().substring(0, 5);

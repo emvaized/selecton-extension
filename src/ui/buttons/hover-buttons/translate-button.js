@@ -97,9 +97,7 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
     // let maxLengthForResult = 100;
     let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
 
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(
-        word
-    )}`;
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(word)}`;
     const xhr = new XMLHttpRequest();
     xhr.responseType = "json";
     xhr.open("GET", url);
