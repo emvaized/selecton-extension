@@ -1,3 +1,8 @@
+3.6.0
+- Add option to disable tooltip arrow
+- Add support for HUF and MYR currency
+- Improved time conversion according to DST
+
 3.5.9
 - Fix for not showing translate button for some texts
 - Add option "Left click opens link as background tab"

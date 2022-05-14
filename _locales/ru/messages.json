@@ -188,7 +188,7 @@
         "description": "Label for option in settings"
     },
     "delayToRevealHoverPanels": {
-        "message": "Задержка перед отображением панели при наведении (ms)",
+        "message": "Задержка перед отображением панелей наведения (ms)",
         "description": "Label for buttons style option in settings"
     },
     "delayToRevealSearchTooltip": {
