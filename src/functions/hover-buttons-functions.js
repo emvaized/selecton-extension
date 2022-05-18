@@ -62,7 +62,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     }
 
     /// Checks to execute after panel was added to the DOM
-    let dxTransformValue = configs.reverseTooltipButtonsOrder ? (reverseOrder ? '2px' : '-2px') : (reverseOrder ? '-2px' : '2px');
+    let dxTransformValue = configs.verticalLayoutTooltip ? '2px' :
+        configs.reverseTooltipButtonsOrder ? (reverseOrder ? '2px' : '-2px') : (reverseOrder ? '-2px' : '2px');
     let panelOnBottom = false;
 
     setTimeout(function () {
@@ -91,7 +92,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         }
 
         /// Set initial transform position for panel
-        panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+        panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
     }, configs.animationDuration);
 
 
@@ -161,12 +162,11 @@ function movePanelToBottom(panel) {
 }
 
 function revealHoverPanel(panel, dxTransformValue) {
-    // panel.style.visibility = 'visible';
     panel.style.width = 'max-content';
 
     setTimeout(function () {
         panel.style.opacity = 1;
-        panel.style.transform = `translate(${dxTransformValue},0%)`;
+        panel.style.transform = `translate(${dxTransformValue},0)`;
     }, 3);
 
     setTimeout(function () {
@@ -176,7 +176,7 @@ function revealHoverPanel(panel, dxTransformValue) {
 }
 
 function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
-    panel.style.transform = `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+    panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
     panel.style.opacity = 0.0;
     panel.style.pointerEvents = 'none';
 }

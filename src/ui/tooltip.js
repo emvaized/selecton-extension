@@ -5,7 +5,6 @@ function createTooltip(e, recreated = false) {
     if (e !== undefined && e !== null && e.button !== 0) return;
 
     setTimeout(function () {
-
         lastMouseUpEvent = e;
         if (selection == null || selection == undefined) return;
         // hideTooltip();
@@ -137,6 +136,10 @@ function setUpTooltip(recreated = false) {
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
     tooltip.className = 'selection-tooltip selecton-entity';
+    if (configs.verticalLayoutTooltip) {
+        tooltip.classList.add('vertical-layout-tooltip');
+        tooltip.classList.add('reversed-order');
+    }
     if (configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel') tooltip.classList.add('tooltip-with-icons');
     tooltip.style.opacity = 0.0;
     tooltip.style.position = 'fixed';
@@ -265,19 +268,18 @@ function calculateTooltipPosition(e) {
 
         /// Show it on top of selection, dx aligned to cursor
         // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2);
-
         dyToShowTooltip = selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
-
-            let possibleDyToShowTooltip = selEndDimensions.dy + tooltipHeight + 5;
+            let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 20 : tooltipHeight) + 5;
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;
                 tooltipOnBottom = true;
                 arrow.classList.add('arrow-on-bottom');
+                if (configs.verticalLayoutTooltip) tooltip.classList.remove('reversed-order');
             }
         }
 
@@ -296,11 +298,12 @@ function calculateTooltipPosition(e) {
         let vertOutOfView = dyToShowTooltip <= 0;
         if (vertOutOfView) {
             /// check to display on bottom
-            let resultingDyOnBottom = selEndDimensions.dy + tooltipHeight + arrow.clientHeight;
+            let resultingDyOnBottom = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + arrow.clientHeight;
             if (resultingDyOnBottom < window.innerHeight) {
                 dyToShowTooltip = resultingDyOnBottom;
                 arrow.classList.add('arrow-on-bottom');
                 tooltipOnBottom = true;
+                if (configs.verticalLayoutTooltip) tooltip.classList.remove('reversed-order');
             } else {
                 /// if it will be off-screen as well, use off-screen dy
                 dyToShowTooltip = dyWhenOffscreen;

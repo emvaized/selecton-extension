@@ -685,6 +685,10 @@
     "message": "Vertical",
     "description": "Label for field in settings"
   },
+  "verticalLayoutTooltip": {
+    "message": "Vertical tooltip layout",
+    "description": "Label for field in settings"
+  },
   "verticalSecondaryTooltip": {
     "message": "Display as vertical list (disable for horizontal)",
     "description": "Label for field in settings"

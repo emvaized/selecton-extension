@@ -13,7 +13,7 @@
   z-index: 100001 !important;
   max-height: 24px !important;
   margin: 0px !important;
-  line-height: 1.0 !important; 
+  line-height: 1.0 !important;
   box-sizing: unset !important;
   border: 0.25px solid var(--selecton-outline-color);
   /* backdrop-filter: blur(5px) !important; */
@@ -71,7 +71,7 @@
   background: var(--selecton-background-color);
 
   /* apply clip-path for future blurred tooltip option */
-  /* clip-path: polygon(0% 100%, 100% 0%, 100% 100%) !important; */ 
+  /* clip-path: polygon(0% 100%, 100% 0%, 100% 100%) !important; */
 }
 
 /* Buttons */
@@ -85,7 +85,7 @@
   cursor: pointer;
   border: none !important;
   box-shadow: none !important;
-  padding:  var(--selecton-button-padding) !important;
+  padding: var(--selecton-button-padding) !important;
   vertical-align: top !important;
   font-family: Arial, Helvetica, sans-serif !important;
   height: 100% !important;
@@ -96,7 +96,7 @@
   outline: none !important;
   text-align: center !important;
   font-size: var(--selecton-font-size) !important;
-  line-height: 1.2 !important; 
+  line-height: 1.2 !important;
   position: relative;
 }
 
@@ -107,8 +107,9 @@
 .color-highlight {
   color: var(--selecton-secondary-color) !important;
 }
-    
-.selection-popup-button:hover, .highlighted-popup-button {
+
+.selection-popup-button:hover,
+.highlighted-popup-button {
   all: revert;
   background-color: var(--selection-button-background-hover) !important;
   background-clip: padding-box !important;
@@ -121,25 +122,25 @@
 
 /* Clip content in buttons with hover panels */
 .button-with-top-hover-panel {
-  clip-path: polygon(-2000% -2000%,  2000% -2000%,  2000% 100%,  -2000% 100%) !important;
+  clip-path: polygon(-2000% -2000%, 2000% -2000%, 2000% 100%, -2000% 100%) !important;
 }
 
 .button-with-bottom-hover-panel {
-  clip-path: polygon(-2000% 0%,  2000% 0%,  2000% 2000%,  -2000% 2000%) !important;
+  clip-path: polygon(-2000% 0%, 2000% 0%, 2000% 2000%, -2000% 2000%) !important;
 }
 
-.hover-vertical-tooltip { 
-  all: revert; 
-  transition: transform var(--selecton-anim-duration) ease-out, opacity var(--selecton-anim-duration) ease-out !important; 
-  opacity: 0.0; 
+.hover-vertical-tooltip {
+  all: revert;
+  transition: transform var(--selecton-anim-duration) ease-out, opacity var(--selecton-anim-duration) ease-out !important;
+  opacity: 0.0;
   /* z-index: 100001 !important; */
   z-index: -1;
-  position: absolute; 
-  margin: 0px !important; 
-  padding: 6px !important; 
-  line-height: 1.0 !important;  
-  border: 0.25px solid var(--selecton-outline-color); 
-  background: var(--selecton-background-color) !important; 
+  position: absolute;
+  margin: 0px !important;
+  padding: 6px !important;
+  line-height: 1.0 !important;
+  border: 0.25px solid var(--selecton-outline-color);
+  background: var(--selecton-background-color) !important;
   font-size: var(--selecton-font-size) !important;
   max-width: 400%;
   pointer-events: none;
@@ -178,7 +179,10 @@
 }
 
 .custom-search-image-button span {
-  display: inline; vertical-align: top !important; opacity: 0.75; padding: 2px 5px !important;
+  display: inline;
+  vertical-align: top !important;
+  opacity: 0.75;
+  padding: 2px 5px !important;
 }
 
 .custom-search-image-button img {
@@ -187,8 +191,11 @@
 }
 
 .selection-popup-color-preview-circle {
-  max-width: 9px; max-height: 9px; padding: 0px 7.5px !important; border-radius: 50%; 
-  border:solid 1px var(--selection-button-background-hover); 
+  max-width: 9px;
+  max-height: 9px;
+  padding: 0px 7.5px !important;
+  border-radius: 50%;
+  border: solid 1px var(--selection-button-background-hover);
   display: inline;
 }
 
@@ -203,28 +210,46 @@
 }
 
 .selection-tooltip-draghandle {
-  position: fixed; z-index: 99998; left: 0px; top: 0px; opacity:0; 
+  position: fixed;
+  z-index: 99998;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
   /* background: var(--selecton-background-color) !important; */
 }
 
 .selection-tooltip-draghandle-line {
-  background: var(--selecton-background-color); opacity: 0.7; position: absolute; border-radius: 4px;
+  background: var(--selecton-background-color);
+  opacity: 0.7;
+  position: absolute;
+  border-radius: 4px;
 }
 
 .selection-tooltip-draghandle-circle {
-  border: 0.25px solid var(--selecton-outline-color); z-index: 99998; border-radius: 50%; background: var(--selecton-background-color); position: relative;
-  height: var(--selecton-handle-circle-radius); width: var(--selecton-handle-circle-radius);
+  border: 0.25px solid var(--selecton-outline-color);
+  z-index: 99998;
+  border-radius: 50%;
+  background: var(--selecton-background-color);
+  position: relative;
+  height: var(--selecton-handle-circle-radius);
+  width: var(--selecton-handle-circle-radius);
 }
 
 .selecton-button-img-icon {
-  all: revert; fill: white; 
-  vertical-align: top !important; display: unset !important; transform: translate(0, -1px);
-  height: var(--selecton-button-icon-height); max-height: var(--selecton-button-icon-height) !important;
-  filter: var(--selecton-button-icon-invert) !important; width: unset !important;
+  all: revert;
+  fill: white;
+  vertical-align: top !important;
+  display: unset !important;
+  transform: translate(0, -1px);
+  height: var(--selecton-button-icon-height);
+  max-height: var(--selecton-button-icon-height) !important;
+  filter: var(--selecton-button-icon-invert) !important;
+  width: unset !important;
 }
 
 .selecton-search-tooltip-icon {
-  filter: none; width: var(--selecton-search-tooltip-icon-size);
+  filter: none;
+  width: var(--selecton-search-tooltip-icon-size);
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
   vertical-align: top !important;
@@ -253,11 +278,11 @@
   width: 15px !important;
   cursor: pointer;
   transition: width 200ms ease-in-out;
-  z-index: 2147483646 !important; 
+  z-index: 2147483646 !important;
   opacity: 0.55;
 }
 
-.marker-scrollbar-hint:hover{
+.marker-scrollbar-hint:hover {
   opacity: 1.0;
 }
 
@@ -273,11 +298,13 @@
   pointer-events: none !important;
   position: absolute;
   z-index: 2147483647 !important;
-  bottom: 0; right: 120%;
+  bottom: 0;
+  right: 120%;
   width: max-content !important;
   text-align: start !important;
   font-size: 12px !important;
-  opacity: 0; transition: opacity 250ms, visibility 250ms !important; 
+  opacity: 0;
+  transition: opacity 250ms, visibility 250ms !important;
 }
 
 .marker-scrollbar-tooltip-bottom {
@@ -314,4 +341,44 @@
 
 .marker-highlight-delete:hover {
   background: red;
+}
+
+
+/* Vertical layout for tooltip */
+.selection-tooltip.vertical-layout-tooltip {
+  max-height: unset !important;
+}
+
+.selection-tooltip.reversed-order {
+  display: flex !important;
+  flex-direction: column-reverse;
+}
+
+.selection-tooltip.reversed-order .selection-popup-button {
+  flex: 0 0 auto;
+}
+
+.vertical-layout-tooltip .selection-popup-button {
+  display: block !important;
+  width: 100% !important;
+  border-radius: unset !important;
+  clip-path: none !important;
+}
+
+.vertical-layout-tooltip .hover-vertical-tooltip {
+  left: 101% !important;
+  top: 0 !important;
+  max-height: fit-content !important;
+}
+
+
+.vertical-layout-tooltip .button-with-border {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 1px solid var(--selection-button-background-hover) !important;
+}
+
+.vertical-layout-tooltip.reversed-order .button-with-border {
+  border-top: unset !important;
+  border-bottom: 1px solid var(--selection-button-background-hover) !important;
 }

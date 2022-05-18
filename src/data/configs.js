@@ -86,6 +86,7 @@ const configs = {
     'addClearButton': true,
     'leftClickBackgroundTab': false,
     'showTooltipArrow': true,
+    'verticalLayoutTooltip': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
