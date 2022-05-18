@@ -30,7 +30,7 @@ const currenciesList = {
     "KZT": { currencyName: "Kazakhstani Tenge", currencySymbol: "₸", rate: 418.821319, currencyKeywords: ['тенге'] },
     "MNT": { currencyName: "Mongolian Tugrik", currencySymbol: "₮", rate: 2849.930035 },
     "MXN": { currencyName: "Mexican Peso", currencySymbol: "peso", rate: 20.655212, currencyKeywords: ['peso', 'песо'] },
-    "MYR": { currencyName: "Malaysian Ringgit", currencySymbol: "RM", rate: 4.208613, currencyKeywords: ['rm', 'myr'] },
+    "MYR": { currencyName: "Malaysian Ringgit", currencySymbol: "RM", rate: 4.208613, currencyKeywords: ['myr'] },
     "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", rate: 410.317377 },
     "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", rate: 8.51191 },
     "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", rate: 3.845051 },
