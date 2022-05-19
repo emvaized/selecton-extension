@@ -235,6 +235,7 @@ function setTranslatedLabels() {
     document.querySelector("#selectionHeader").innerText = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerText = chrome.i18n.getMessage("customSearchButtonsHeader");
     document.querySelector("#highlightHeader").innerText = chrome.i18n.getMessage("markersLabel");
+    document.querySelector("#textFieldsHeader").innerText = chrome.i18n.getMessage("textFieldsHeader");
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.getElementById('recentMarkersLabel').innerText = chrome.i18n.getMessage('recentMarkersLabel');

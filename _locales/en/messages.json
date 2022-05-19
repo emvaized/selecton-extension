@@ -716,5 +716,9 @@
   "hideTooltipWhenCursorMovesAway": {
     "message": "Hide tooltip when cursor moves away",
     "description": "Label for option in settings"
+  },
+  "textFieldsHeader": {
+    "message": "Text fields",
+    "description": "Header for section in settings"
   }
 }
