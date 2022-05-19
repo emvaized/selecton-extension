@@ -273,7 +273,7 @@ function calculateTooltipPosition(e) {
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
-            let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 20 : tooltipHeight) + 5;
+            let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + 5;
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;

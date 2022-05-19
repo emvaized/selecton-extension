@@ -27,7 +27,10 @@ function collapseButtons() {
         } else {
             for (let i = buttonsCount; i > maxButtons; i--) {
                 if (i == (maxButtons * 1) + 1) tooltip.children[i].classList.remove('button-with-border');
-                collapsedButtonsPanel.prepend(tooltip.children[i]);
+                // collapsedButtonsPanel.prepend(tooltip.children[i]);
+                if (configs.verticalLayoutTooltip && !tooltipOnBottom)
+                    collapsedButtonsPanel.appendChild(tooltip.children[i]);
+                else collapsedButtonsPanel.prepend(tooltip.children[i]);
             }
         }
 

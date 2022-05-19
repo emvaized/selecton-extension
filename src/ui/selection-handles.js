@@ -47,7 +47,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         if (selStartDimensions == null || selEndDimensions == null) { return; }
 
         /// When tooltip is on bottom, revert drag handle by placing circleDiv on top of handle (to avoid overlaps)
-        let dragHandleIsReverted = dragHandleIndex == 1 && tooltipOnBottom;
+        let dragHandleIsReverted = tooltipOnBottom;
 
         let dragHandle = document.createElement('div');
         dragHandle.className = 'selection-tooltip-draghandle';
