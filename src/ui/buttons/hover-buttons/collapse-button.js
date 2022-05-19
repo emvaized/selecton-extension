@@ -6,14 +6,7 @@ function collapseButtons() {
         /// Create button
         const moreButton = document.createElement('button');
         moreButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
-        moreButton.innerText = '⋮';
-
-        /// Experiments to display svg instead of unicode symbol
-        // let icon = document.createElement('img');
-        // icon.setAttribute('src', menuIcon);
-        // icon.setAttribute('class', 'selecton-button-img-icon');
-        // icon.style.opacity = 1.0;
-        // moreButton.appendChild(icon);
+        moreButton.innerText = configs.verticalLayoutTooltip ? '⋯' : '⋮';
 
         if (configs.reverseTooltipButtonsOrder)
             tooltip.insertBefore(moreButton, tooltip.children[2]);

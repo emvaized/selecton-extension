@@ -365,12 +365,20 @@
   clip-path: none !important;
 }
 
+.vertical-layout-tooltip .selection-popup-button img {
+  float: left;
+}
+
+.vertical-layout-tooltip .selecton-hover-button-indicator {
+  top: 50% !important;
+  right: 2px !important;
+}
+
 .vertical-layout-tooltip .hover-vertical-tooltip {
   left: 101% !important;
   top: 0 !important;
   max-height: fit-content !important;
 }
-
 
 .vertical-layout-tooltip .button-with-border {
   border-left: none !important;

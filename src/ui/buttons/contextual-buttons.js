@@ -598,7 +598,8 @@ function addContextualButtons() {
 
                         let linkText = document.createElement('div');
                         linkText.style.display = 'inline';
-                        linkText.textContent = link.length > linkSymbolsToShow ? link.substring(0, linkSymbolsToShow) + '...' : link;
+                        let linkToShow = link.replaceAll('http://', '').replaceAll('https://', '');
+                        linkText.textContent = linkToShow.length > linkSymbolsToShow ? linkToShow.substring(0, linkSymbolsToShow) + '...' : linkToShow;
                         linkText.classList.add('color-highlight');
 
                         /// Add tooltip with full website on hover

@@ -686,7 +686,7 @@
     "description": "Label for field in settings"
   },
   "verticalLayoutTooltip": {
-    "message": "Vertical tooltip layout",
+    "message": "Use vertical tooltip layout",
     "description": "Label for field in settings"
   },
   "verticalSecondaryTooltip": {
