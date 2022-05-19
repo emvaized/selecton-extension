@@ -343,6 +343,29 @@ function initMouseListeners() {
       initConfigs(true, e); /// createTooltip will be called after checking for updated configs
     else
       createTooltip(e);
+
+    /// Listener to hide tooltip when cursor moves away
+    if (configs.hideTooltipWhenCursorMovesAway) {
+      function mouseMoveToHideListener(ev) {
+        if (tooltipIsShown == false) {
+          window.removeEventListener('mousemove', mouseMoveToHideListener);
+          return;
+        }
+
+        if (Math.abs(ev.clientX - e.clientX) > this.window.screen.width / 3 ||
+          Math.abs(ev.clientY - e.clientY) > this.window.screen.height / 3) {
+          window.removeEventListener('mousemove', mouseMoveToHideListener);
+
+          try {
+            hideTooltip();
+            hideDragHandles();
+          } catch (e) { }
+        }
+      }
+
+      window.addEventListener('mousemove', mouseMoveToHideListener);
+    }
+
   }
 
   try {

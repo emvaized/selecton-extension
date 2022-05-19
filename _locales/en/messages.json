@@ -685,10 +685,6 @@
     "message": "Vertical",
     "description": "Label for field in settings"
   },
-  "verticalLayoutTooltip": {
-    "message": "Use vertical tooltip layout",
-    "description": "Label for field in settings"
-  },
   "verticalSecondaryTooltip": {
     "message": "Display as vertical list (disable for horizontal)",
     "description": "Label for field in settings"
@@ -711,6 +707,14 @@
   },
   "writeAReview": {
     "message": "Write a review",
+    "description": "Label for option in settings"
+  },
+  "verticalLayoutTooltip": {
+    "message": "Use vertical tooltip layout",
+    "description": "Label for option in settings"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "Hide tooltip when cursor moves away",
     "description": "Label for option in settings"
   }
 }

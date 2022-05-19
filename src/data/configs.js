@@ -87,6 +87,7 @@ const configs = {
     'leftClickBackgroundTab': false,
     'showTooltipArrow': true,
     'verticalLayoutTooltip': true,
+    'hideTooltipWhenCursorMovesAway': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
