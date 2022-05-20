@@ -647,6 +647,23 @@ function addContextualButtons() {
         if (configs.addMarkerButton)
             addMarkerButton();
 
+        /// Add button to copy link to selected text
+        if (configs.addButtonToCopyLinkToText) {
+            // let isChromium = window.chrome !== null &&
+            //     typeof window.chrome !== "undefined" &&
+            //     window.navigator.vendor === "Google Inc.";
+
+            // if (isChromium) {
+            const copyTextLinkBtn = addBasicTooltipButton(chrome.i18n.getMessage('linkToTextLabel'), linkIcon, function () {
+                let urlWithText = window.location.href + '#:~:text=' + encodeURIComponent(selectedText);
+                copyManuallyToClipboard(urlWithText);
+                removeSelectionOnPage();
+            });
+
+            copyTextLinkBtn.title = chrome.i18n.getMessage('linkToTextDescription');
+            // }
+        }
+
         if (configs.collapseButtons)
             try {
                 collapseButtons();

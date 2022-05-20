@@ -351,11 +351,11 @@
 
 .selection-tooltip.reversed-order {
   display: flex !important;
-  flex-direction: column-reverse;
+  flex-direction: column-reverse !important;
 }
 
 .selection-tooltip.reversed-order .selection-popup-button {
-  flex: 0 0 auto;
+  flex: 0 0 auto !important;
 }
 
 .vertical-layout-tooltip .selection-popup-button {
@@ -376,7 +376,8 @@
 
 .vertical-layout-tooltip .hover-vertical-tooltip {
   left: 101% !important;
-  top: 0 !important;
+  top: 0px !important;
+  height: fit-content !important;
   max-height: fit-content !important;
 }
 

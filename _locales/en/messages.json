@@ -710,7 +710,7 @@
     "description": "Label for option in settings"
   },
   "verticalLayoutTooltip": {
-    "message": "Use vertical tooltip layout",
+    "message": "Use vertical tooltip layout (experimental)",
     "description": "Label for option in settings"
   },
   "hideTooltipWhenCursorMovesAway": {
@@ -720,5 +720,17 @@
   "textFieldsHeader": {
     "message": "Text fields",
     "description": "Header for section in settings"
+  },
+  "linkToTextLabel": {
+    "message": "Copy link",
+    "description": "Label for tooltip button"
+  },
+  "addButtonToCopyLinkToText": {
+    "message": "Add button to copy link to selected text",
+    "description": "Label for tooltip button"
+  },
+  "linkToTextDescription": {
+    "message": "Copy page link pointing to the selected text (opens only in Chrome)",
+    "description": "Label for tooltip button"
   }
 }
