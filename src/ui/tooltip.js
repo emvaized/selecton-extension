@@ -236,8 +236,14 @@ function setUpTooltip(recreated = false) {
             arrow.style.boxShadow = `1px 1px 3px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
         }
         /// Set rounded corners for buttons
-        firstButtonBorderRadius = `${configs.borderRadius / 1.5}px 0px 0px ${configs.borderRadius / 1.5}px`;
-        lastButtonBorderRadius = `0px ${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px 0px`;
+        if (configs.verticalLayoutTooltip) {
+            firstButtonBorderRadius = `0px 0px ${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px`;
+            lastButtonBorderRadius = `${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px 0px 0px`;
+        } else {
+            firstButtonBorderRadius = `${configs.borderRadius / 1.5}px 0px 0px ${configs.borderRadius / 1.5}px`;
+            lastButtonBorderRadius = `0px ${configs.borderRadius / 1.5}px ${configs.borderRadius / 1.5}px 0px`;
+        }
+
         onlyButtonBorderRadius = `${configs.borderRadius / 1.5}px`;
     } else {
         /// Set default corners for buttons
@@ -482,4 +488,5 @@ function hideTooltip(animated = true) {
     isTextFieldFocused = false;
 
     document.removeEventListener("selectionchange", selectionChangeListener);
+    window.removeEventListener('mousemove', mouseMoveToHideListener);
 }

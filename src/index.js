@@ -346,23 +346,6 @@ function initMouseListeners() {
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
-      function mouseMoveToHideListener(ev) {
-        if (tooltipIsShown == false) {
-          window.removeEventListener('mousemove', mouseMoveToHideListener);
-          return;
-        }
-
-        if (Math.abs(ev.clientX - e.clientX) > this.window.screen.width / 4 ||
-          Math.abs(ev.clientY - e.clientY) > this.window.screen.height / 4) {
-          window.removeEventListener('mousemove', mouseMoveToHideListener);
-
-          try {
-            hideTooltip();
-            hideDragHandles();
-          } catch (e) { }
-        }
-      }
-
       window.addEventListener('mousemove', mouseMoveToHideListener);
     }
 

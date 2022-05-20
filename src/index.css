@@ -361,7 +361,7 @@
 .vertical-layout-tooltip .selection-popup-button {
   display: block !important;
   width: 100% !important;
-  border-radius: unset !important;
+  /* border-radius: unset !important; */
   clip-path: none !important;
 }
 

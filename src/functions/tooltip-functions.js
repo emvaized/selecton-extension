@@ -133,8 +133,9 @@ function setBorderRadiusForSideButtons(parent, startFrom = 1) {
         if (children.length == 1) {
             children[startFrom].style.borderRadius = onlyButtonBorderRadius;
         } else {
-            children[startFrom].style.borderRadius = firstButtonBorderRadius;
-            children[children.length - 1].style.borderRadius = lastButtonBorderRadius;
+            const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
+            children[startFrom].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
+            children[children.length - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
         }
     }, 50);
 }
@@ -185,4 +186,23 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
         tooltip.appendChild(button);
 
     return button;
+}
+
+
+function mouseMoveToHideListener(mouseMoveEvent) {
+    /// Hide tooltip when mouse moved far from text selection
+    if (tooltipIsShown == false) {
+        window.removeEventListener('mousemove', mouseMoveToHideListener);
+        return;
+    }
+
+    if (Math.abs(mouseMoveEvent.clientX - lastMouseUpEvent.clientX) > this.window.screen.width / 4 ||
+        Math.abs(mouseMoveEvent.clientY - lastMouseUpEvent.clientY) > this.window.screen.height / 4) {
+        window.removeEventListener('mousemove', mouseMoveToHideListener);
+
+        try {
+            hideTooltip();
+            hideDragHandles();
+        } catch (e) { }
+    }
 }

@@ -659,7 +659,6 @@ function addContextualButtons() {
                 copyManuallyToClipboard(urlWithText);
                 removeSelectionOnPage();
             });
-
             copyTextLinkBtn.title = chrome.i18n.getMessage('linkToTextDescription');
             // }
         }
