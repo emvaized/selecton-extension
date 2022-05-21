@@ -56,10 +56,15 @@ function checkTooltipForCollidingWithSideEdges() {
     // let tooltipWidth = panelRect.width + 20;
 
     let tooltipWidth = 24.0;
-    for (let i = 0, l = tooltip.children.length; i < l; i++) {
-        if (i == 0) continue; /// ignore arrow element
-        tooltipWidth += tooltip.children[i].offsetWidth;
+    if (configs.verticalLayoutTooltip) {
+        tooltipWidth = 120;
+    } else {
+        for (let i = 0, l = tooltip.children.length; i < l; i++) {
+            if (i == 0) continue; /// ignore arrow element
+            tooltipWidth += tooltip.children[i].offsetWidth;
+        }
     }
+
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {

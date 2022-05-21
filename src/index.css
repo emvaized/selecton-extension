@@ -204,6 +204,11 @@
   border-right: var(--selecton-button-border-right) !important;
 }
 
+.hover-vertical-tooltip .button-with-border {
+  border-right: var(--selecton-button-border-left) !important;
+  border-left: var(--selecton-button-border-right) !important;
+}
+
 /* Highter z-index for search tooltip on bottom */
 .higher-z-index {
   z-index: 100002 !important;
@@ -361,8 +366,11 @@
 .vertical-layout-tooltip .selection-popup-button {
   display: block !important;
   width: 100% !important;
-  /* border-radius: unset !important; */
   clip-path: none !important;
+}
+
+.vertical-layout-tooltip .hover-vertical-tooltip .selection-popup-button {
+  border-radius: unset !important;
 }
 
 .vertical-layout-tooltip .selection-popup-button img {
@@ -376,7 +384,7 @@
 
 .vertical-layout-tooltip .hover-vertical-tooltip {
   left: 101% !important;
-  top: 0px !important;
+  top: -2px !important;
   height: fit-content !important;
   max-height: fit-content !important;
 }

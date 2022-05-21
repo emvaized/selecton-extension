@@ -26,11 +26,15 @@ function collapseButtons() {
             }
         } else {
             for (let i = buttonsCount; i > maxButtons; i--) {
-                if (i == (maxButtons * 1) + 1) tooltip.children[i].classList.remove('button-with-border');
-                // collapsedButtonsPanel.prepend(tooltip.children[i]);
-                if (configs.verticalLayoutTooltip && tooltipOnBottom)
-                    collapsedButtonsPanel.appendChild(tooltip.children[i]);
-                else collapsedButtonsPanel.prepend(tooltip.children[i]);
+                const button = tooltip.children[i];
+                if (!configs.verticalLayoutTooltip && i == (maxButtons * 1) + 1) button.classList.remove('button-with-border');
+
+                // collapsedButtonsPanel.prepend(button);
+                if (configs.verticalLayoutTooltip)
+                    collapsedButtonsPanel.prepend(button);
+                else {
+                    collapsedButtonsPanel.appendChild(button);
+                }
             }
         }
 

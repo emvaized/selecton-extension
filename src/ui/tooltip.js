@@ -92,11 +92,10 @@ function createTooltip(e, recreated = false) {
 
             setTimeout(function () {
 
-
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
                     calculateTooltipPosition(e);
-                }, 0);
+                }, 3);
 
                 /// Append tooltip to the DOM
                 document.body.appendChild(tooltip);
@@ -215,14 +214,6 @@ function setUpTooltip(recreated = false) {
                 tooltip.style.transform = null;
                 tooltip.style.pointerEvents = 'auto';
 
-                /// Recreate secondary tooltip
-                // if (configs.secondaryTooltipEnabled) {
-                //     if (secondaryTooltip !== null && secondaryTooltip !== undefined) {
-                //         secondaryTooltip.parentNode.removeChild(secondaryTooltip);
-                //         setHoverForSearchButton();
-                //     }
-                // }
-
                 if (configs.debugMode)
                     console.log('Dragging tooltip finished');
             };
@@ -267,7 +258,6 @@ function calculateTooltipPosition(e) {
     let dyForFloatingTooltip = 15;
     let dyWhenOffscreen = window.innerHeight / 3;
     let tooltipHeight = tooltip.clientHeight;
-
     let dxToShowTooltip, dyToShowTooltip;
 
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
