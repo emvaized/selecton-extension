@@ -95,7 +95,7 @@ function createTooltip(e, recreated = false) {
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
                     calculateTooltipPosition(e);
-                }, 3);
+                }, configs.verticalLayoutTooltip ? 5 : 0);
 
                 /// Append tooltip to the DOM
                 document.body.appendChild(tooltip);
