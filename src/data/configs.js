@@ -88,6 +88,7 @@ const configs = {
     'showTooltipArrow': true,
     'verticalLayoutTooltip': false,
     'addButtonToCopyLinkToText': true,
+    'addCalendarButton': true,
     'hideTooltipWhenCursorMovesAway': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,

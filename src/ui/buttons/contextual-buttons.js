@@ -547,6 +547,10 @@ function addContextualButtons() {
             } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
+        /// Check if selection contains date
+        if (configs.addCalendarButton)
+            checkToAddCalendarButton(selectedText);
+
         /// Add 'open link' button
         if (configs.addOpenLinks)
             if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {

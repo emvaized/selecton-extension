@@ -1,10 +1,6 @@
 let possibleMarkerColors = [
     {
-        'color': 'red',
-        'foreground': 'white'
-    },
-    {
-        'color': 'lightgreen',
+        'color': 'yellow',
         'foreground': 'black'
     },
     {
@@ -12,8 +8,12 @@ let possibleMarkerColors = [
         'foreground': 'black'
     },
     {
-        'color': 'yellow',
+        'color': 'lightgreen',
         'foreground': 'black'
+    },
+    {
+        'color': 'red',
+        'foreground': 'white'
     },
 ];
 
@@ -55,7 +55,7 @@ function addMarkerButton() {
                 removeSelectionOnPage();
             });
 
-            colorChooserPanel.appendChild(button);
+            colorChooserPanel.prepend(button);
         }
 
         setBorderRadiusForSideButtons(colorChooserPanel, 0);

@@ -15,3 +15,4 @@ const clockIcon = chrome.runtime.getURL('icons/button-icons/time.svg');
 const markerIcon = chrome.runtime.getURL('icons/button-icons/marker.svg');
 const clearIcon = chrome.runtime.getURL('icons/button-icons/clear.svg');
 const linkIcon = chrome.runtime.getURL('icons/button-icons/link.svg');
+const calendarIcon = chrome.runtime.getURL('icons/button-icons/calendar.svg');
