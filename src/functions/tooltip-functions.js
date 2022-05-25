@@ -130,27 +130,30 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
     return container;
 }
 
-function setBorderRadiusForSideButtons(parent, startFrom = 1) {
+function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     /// Set border radius for first and last buttons of horizontal tooltip
     setTimeout(function () {
-        let children = parent.children;
+        let children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
 
         if (children.length == 1) {
-            children[startFrom].style.borderRadius = onlyButtonBorderRadius;
+            children[0].style.borderRadius = onlyButtonBorderRadius;
         } else {
             const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
-            children[startFrom].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
+            console.log(children)
+            children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
             children[children.length - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
         }
     }, 50);
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
-    // setTimeout(function () {
-    const infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}, ${words ?? selection.toString().split(' ').length} ${(words == 1 ? chrome.i18n.getMessage('wordsCountSingle') : chrome.i18n.getMessage('wordsCount')).toLowerCase()}`;
+    const infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()} · ${words ?? selection.toString().split(' ').length} ${(words == 1 ? chrome.i18n.getMessage('wordsCountSingle') : chrome.i18n.getMessage('wordsCount')).toLowerCase()}`;
 
-    if (configs.showStatsOnCopyButtonHover && copyButton.isConnected)
-        copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+    if (configs.showStatsOnCopyButtonHover)
+        setTimeout(function () {
+            if (copyButton.isConnected)
+                copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+        }, 3)
 
     /// add info panel
     if (configs.showInfoPanel) {
@@ -161,7 +164,6 @@ function setCopyButtonTitle(copyButton, symbols, words) {
         configs.verticalLayoutTooltip ? tooltip.appendChild(infoPanel) : tooltip.insertBefore(infoPanel, tooltip.children[1]);
         makeTooltipElementDraggable(infoPanel, false);
     }
-    // }, 3);
 }
 
 function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity) {
@@ -226,7 +228,7 @@ function setTooltipOnBottom() {
     arrow.classList.add('arrow-on-bottom');
     tooltipOnBottom = true;
 
-    if (configs.showInfoPanel) {
+    if (configs.showInfoPanel && infoPanel) {
         infoPanel.classList.add('info-panel-on-bottom');
         let newInfoPanel = infoPanel.cloneNode(true);
         tooltip.appendChild(newInfoPanel);
@@ -235,7 +237,7 @@ function setTooltipOnBottom() {
     }
 }
 
-
+/// Makes tooltip draggable by given element (for example, arrow)
 function makeTooltipElementDraggable(element, compensateTooltipHeight = true) {
     element.style.cursor = 'grab';
     element.onmousedown = function (e) {

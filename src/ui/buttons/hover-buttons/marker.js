@@ -58,7 +58,7 @@ function addMarkerButton() {
             colorChooserPanel.prepend(button);
         }
 
-        setBorderRadiusForSideButtons(colorChooserPanel, 0);
+        setBorderRadiusForSideButtons(colorChooserPanel, false);
 
         /// Append panel
         markerButton.appendChild(colorChooserPanel);

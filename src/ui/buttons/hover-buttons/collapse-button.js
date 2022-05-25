@@ -40,6 +40,6 @@ function collapseButtons() {
         }
 
         moreButton.appendChild(collapsedButtonsPanel);
-        setBorderRadiusForSideButtons(collapsedButtonsPanel, 0);
+        setBorderRadiusForSideButtons(collapsedButtonsPanel, false);
     }
 }

@@ -92,13 +92,13 @@ function createTooltip(e, recreated = false) {
 
             setTimeout(function () {
 
+                /// Append tooltip to the DOM
+                document.body.appendChild(tooltip);
+
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
                     calculateTooltipPosition(e);
-                }, configs.verticalLayoutTooltip ? 5 : 0);
-
-                /// Append tooltip to the DOM
-                document.body.appendChild(tooltip);
+                }, 3);
 
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
@@ -122,7 +122,6 @@ function createTooltip(e, recreated = false) {
 
                 /// Set border radius for first and last buttons
                 setBorderRadiusForSideButtons(tooltip);
-
             }, 0);
 
         } else hideTooltip();
