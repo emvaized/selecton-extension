@@ -39,3 +39,22 @@ iframe {
         min-height: 500px;
     } */
 }}
+
+ @media (prefers-color-scheme: dark) {
+    body {
+        background: rgb(40,41,44);
+        color: white;
+    }
+
+    #selecton-settings-label {
+        color: lightgray;
+    }
+
+    #openSettingsInTabButton {
+        filter: invert(100%);
+    }
+
+    #popup-header {
+        border-bottom: 1px solid gray;
+    }
+}

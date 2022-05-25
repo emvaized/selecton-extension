@@ -139,7 +139,6 @@ function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
             children[0].style.borderRadius = onlyButtonBorderRadius;
         } else {
             const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
-            console.log(children)
             children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
             children[children.length - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
         }

@@ -98,7 +98,7 @@ function createTooltip(e, recreated = false) {
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
                     calculateTooltipPosition(e);
-                }, 3);
+                }, 4);
 
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')

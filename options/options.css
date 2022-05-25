@@ -289,3 +289,23 @@ content: "\2212";
     opacity: 0.5; 
   } 
 }}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: rgb(40,41,44);
+        color: white;
+    }
+
+    h4 {
+      opacity: 0.7;
+    }
+
+    .collapsible-header {
+      background-color: rgba(238, 238, 238, 0.528);
+      color: white;
+    }
+
+    .collapsible-header:hover {
+      background-color: rgba(204, 204, 204, 0.503);
+    }
+ }

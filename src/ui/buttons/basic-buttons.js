@@ -18,7 +18,6 @@ function addBasicTooltipButtons(layout) {
                         removeSelectionOnPage();
                     } catch (e) { console.log(e); }
                 });
-                setCopyButtonTitle(copyButton);
 
                 /// Add paste button 
                 addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
@@ -74,11 +73,10 @@ function addBasicTooltipButtons(layout) {
                         collapseButtons();
                     } catch (e) { if (configs.debugMode) console.log(e); }
 
+                setCopyButtonTitle(copyButton);
+
             } catch (e) { if (configs.debugMode) console.log(e) }
 
-            setTimeout(function () {
-                setBorderRadiusForSideButtons(tooltip);
-            }, 0)
         } else {
             if (configs.addPasteButton)
                 try {
@@ -113,6 +111,10 @@ function addBasicTooltipButtons(layout) {
                     }
                 });
         }
+
+        setTimeout(function () {
+            setBorderRadiusForSideButtons(tooltip);
+        }, 0);
 
     } else {
         /// Add copy button in vertical style
