@@ -16,6 +16,7 @@
   line-height: 1.0 !important;
   box-sizing: unset !important;
   border: 0.25px solid var(--selecton-outline-color);
+  min-width: fit-content !important;
   /* backdrop-filter: blur(5px) !important; */
 }
 

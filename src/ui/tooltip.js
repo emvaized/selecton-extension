@@ -59,13 +59,6 @@ function createTooltip(e, recreated = false) {
             }
 
             showTooltip(e.clientX, resultDy);
-
-            /// Check for colliding with side edges
-            setTimeout(function () {
-                if (!tooltipIsShown) return;
-                checkTooltipForCollidingWithSideEdges();
-            }, configs.animationDuration / 4);
-
             return;
         }
 
@@ -107,12 +100,6 @@ function createTooltip(e, recreated = false) {
                         if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
                             setHoverForSearchButton(searchButton);
                     }, 5);
-
-                /// Check for colliding with side edges
-                setTimeout(function () {
-                    if (!tooltipIsShown) return;
-                    checkTooltipForCollidingWithSideEdges();
-                }, configs.animationDuration / 4);
 
                 /// Selection change listener
                 setTimeout(function () {
@@ -319,6 +306,9 @@ function showTooltip(dx, dy) {
 
     /// Set reveal animation type
     tooltip.style.transform = returnTooltipRevealTransform(true);
+
+    /// Check for colliding with side edges
+    checkTooltipForCollidingWithSideEdges();
 
     if (configs.debugMode)
         console.log('Selecton tooltip is shown');

@@ -57,14 +57,15 @@ function checkTooltipForCollidingWithSideEdges() {
     // let tooltipWidth = panelRect.width + 20;
 
     let tooltipWidth = 24.0;
-    if (configs.verticalLayoutTooltip) {
-        tooltipWidth = 120;
-    } else {
-        for (let i = 0, l = tooltip.children.length; i < l; i++) {
-            if (i == 0) continue; /// ignore arrow element
-            tooltipWidth += tooltip.children[i].offsetWidth;
-        }
-    }
+    tooltipWidth = tooltip.clientWidth;
+    // if (configs.verticalLayoutTooltip) {
+    //     tooltipWidth = 120;
+    // } else {
+    //     for (let i = 0, l = tooltip.children.length; i < l; i++) {
+    //         if (i == 0) continue; /// ignore arrow element
+    //         tooltipWidth += tooltip.children[i].offsetWidth;
+    //     }
+    // }
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {
@@ -95,12 +96,12 @@ function checkTooltipForCollidingWithSideEdges() {
                 console.log('Tooltip is colliding with right edge. Fixing...');
 
             tooltip.style.transform = returnTooltipRevealTransform(true, false);
-            tooltip.style.left = `${dx - offscreenAmount - 5}px`;
+            tooltip.style.left = `${dx - offscreenAmount - 10}px`;
 
             /// Shift the arrow to match new position
             if (configs.showTooltipArrow) {
                 const newLeftPercentForArrow = offscreenAmount / tooltipWidth * 100;
-                arrow.style.left = `${50 + (newLeftPercentForArrow / 2)}%`;
+                arrow.style.left = `${50 + newLeftPercentForArrow}%`;
             }
         } else {
             if (configs.debugMode)
