@@ -178,46 +178,7 @@ function setUpTooltip(recreated = false) {
 
     /// Make the tooltip draggable by arrow
     if (configs.showTooltipArrow && configs.draggableTooltip) {
-        arrow.style.cursor = 'grab';
-
-        arrow.onmousedown = function (e) {
-            isDraggingTooltip = true;
-            e.preventDefault();
-            if (configs.debugMode)
-                console.log('Started dragging tooltip...');
-
-            tooltip.style.left = `0px`;
-            tooltip.style.top = `0px`;
-            tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
-            document.body.style.cursor = 'grabbing';
-
-            const tooltipOnBottom = arrow.classList.contains('arrow-on-bottom');
-            tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px)`;
-            tooltip.style.pointerEvents = 'none';
-
-            document.onmousemove = function (e) {
-                e.preventDefault();
-
-                /// Move main tooltip
-                tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px)`;
-            };
-
-            document.onmouseup = function (e) {
-                e.preventDefault();
-                document.onmousemove = null;
-                document.onmouseup = null;
-                isDraggingTooltip = false;
-                document.body.style.cursor = 'unset';
-
-                tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
-                tooltip.style.top = `${tooltipOnBottom ? (e.clientY + (arrow.clientHeight / 3)) : (e.clientY - tooltip.clientHeight - (arrow.clientHeight / 2))}px`;
-                tooltip.style.transform = null;
-                tooltip.style.pointerEvents = 'auto';
-
-                if (configs.debugMode)
-                    console.log('Dragging tooltip finished');
-            };
-        }
+        makeTooltipElementDraggable(arrow);
     }
 
     /// Apply custom stylings
@@ -242,6 +203,7 @@ function setUpTooltip(recreated = false) {
         lastButtonBorderRadius = '0px 3px 3px 0px';
         onlyButtonBorderRadius = '3px';
     }
+
 
     if (configs.debugMode)
         console.log('Selecton tooltip was created');
@@ -273,8 +235,8 @@ function calculateTooltipPosition(e) {
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;
-                tooltipOnBottom = true;
-                arrow.classList.add('arrow-on-bottom');
+                setTooltipOnBottom();
+
                 if (configs.verticalLayoutTooltip) tooltip.classList.remove('reversed-order');
             }
         }
@@ -297,8 +259,7 @@ function calculateTooltipPosition(e) {
             let resultingDyOnBottom = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + arrow.clientHeight;
             if (resultingDyOnBottom < window.innerHeight) {
                 dyToShowTooltip = resultingDyOnBottom;
-                arrow.classList.add('arrow-on-bottom');
-                tooltipOnBottom = true;
+                setTooltipOnBottom();
                 if (configs.verticalLayoutTooltip) tooltip.classList.remove('reversed-order');
             } else {
                 /// if it will be off-screen as well, use off-screen dy
@@ -335,11 +296,11 @@ function calculateTooltipPosition(e) {
         if (dyToShowTooltip < 0) {
             dyToShowTooltip = dyForFloatingTooltip;
             floatingTooltipTop = window.scrollY;
-            tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
+            // tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         } else if (dyToShowTooltip > window.innerHeight) {
             dyToShowTooltip = window.innerHeight - (tooltipHeight ?? 50) - dyForFloatingTooltip;
             floatingTooltipBottom = window.scrollY;
-            tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
+            // tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         }
     }
 

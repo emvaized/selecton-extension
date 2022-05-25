@@ -16,6 +16,7 @@ function collapseButtons() {
         /// Create panel
         const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, false, true, false);
         collapsedButtonsPanel.style.maxWidth = 'unset';
+        collapsedButtonsPanel.style.zIndex = '2';
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
 
         /// Append buttons to panel

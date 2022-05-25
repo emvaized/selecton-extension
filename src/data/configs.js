@@ -90,6 +90,7 @@ const configs = {
     'addButtonToCopyLinkToText': true,
     'addCalendarButton': true,
     'hideTooltipWhenCursorMovesAway': true,
+    'showInfoPanel': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,

@@ -1,4 +1,4 @@
-function addDictionaryButton() {
+function addDictionaryButton(selectionLength) {
     try {
 
         const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, function (e) {
@@ -8,8 +8,7 @@ function addDictionaryButton() {
         // wikiButton.setAttribute('id', 'selecton-translate-button');
 
         /// set fetch on hover listener
-        // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
-        if (selectedText.length < 500) {
+        if (selectionLength < 500) {
             setLiveWikiButton(selectedText, wikiButton);
         }
 

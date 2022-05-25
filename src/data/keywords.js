@@ -31,7 +31,7 @@ const addressKeywords = [
 
     /// French
     'ville ',
-    'rue ',
+    ' rue',
 
     /// German
     'straße',

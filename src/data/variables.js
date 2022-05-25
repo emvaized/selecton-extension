@@ -26,6 +26,7 @@ var ratesLastFetchedDate;
 var tooltip;
 var secondaryTooltip;
 var arrow;
+var infoPanel;
 var selection;
 var selectedText;
 var dontShowTooltip = false;

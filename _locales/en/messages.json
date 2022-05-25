@@ -736,5 +736,13 @@
   "addCalendarButton": {
     "message": "Add calendar button for dates",
     "description": "Label for option in settings"
+  },
+  "wordsCountSingle": {
+    "message": "Word",
+    "description": ""
+  },
+  "showInfoPanel": {
+    "message": "Show info panel (word and symbols count)",
+    "description": ""
   }
 }

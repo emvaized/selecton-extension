@@ -1,4 +1,4 @@
-function addTranslateButton(onFinish) {
+function addTranslateButton(onFinish, selectionLength) {
     try {
         if (!chrome.i18n.detectLanguage) proccessButton(true);
         else
@@ -52,14 +52,14 @@ function addTranslateButton(onFinish) {
 
     function proccessButton(shouldTranslate, languageOfSelectedText) {
         if (shouldTranslate == true) {
-            setRegularTranslateButton(languageOfSelectedText);
+            setRegularTranslateButton(languageOfSelectedText, selectionLength);
         }
         if (onFinish) onFinish();
     }
 }
 
 
-function setRegularTranslateButton(languageOfSelectedText) {
+function setRegularTranslateButton(languageOfSelectedText, selectionLength) {
 
     const translateButton = addBasicTooltipButton(translateLabel, translateButtonIcon, function (e) {
         let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
@@ -72,7 +72,7 @@ function setRegularTranslateButton(languageOfSelectedText) {
 
     /// set live tranlsation listeners
     // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
-    if (configs.liveTranslation && selectedText.length < 500) {
+    if (configs.liveTranslation && selectionLength < 500) {
         setTimeout(function () {
             setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
         }, 5);

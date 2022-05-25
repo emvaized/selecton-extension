@@ -14,7 +14,7 @@ function checkToAddCalendarButton(text) {
             const mon = dateKeywords.month[j];
             if (word.includes(mon)) {
                 month = dateKeywords.month[j % 12];
-                mayBeDate = true;
+                // mayBeDate = true;
                 continue loop;
             }
         }
@@ -54,13 +54,17 @@ function checkToAddCalendarButton(text) {
                 continue;
 
             if (day && !year) year = word;
-            else day = word;
+            else {
+                day = word;
+                mayBeDate = true;
+            }
             continue;
         }
 
         /// check for year
         if (wordIsNumeric && wordLength == 4) {
             year = word;
+            if (month) mayBeDate = true;
             continue;
         }
 
@@ -132,7 +136,9 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
     if (showDateInsteadOfWeekday) {
         buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
     } else
-        if (diffDays < -30 && diffDays > -360) {
+        if (diffDays < -360) {
+            buttonLabel = `${-1 * Math.floor(diffDays / 360)} years ago`;
+        } else if (diffDays < -30 && diffDays > -360) {
             buttonLabel = `${-1 * Math.floor(diffDays / 30)} months ago`;
         } else if (diffDays < 0 && diffDays >= -30) {
             buttonLabel = `${-1 * diffDays} days ago`;

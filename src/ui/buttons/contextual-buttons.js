@@ -8,6 +8,7 @@ function addContextualButtons() {
     const loweredSelectedText = selectedText.toLowerCase();
     const wordsCount = selectedText.split(' ').length;
     const selectionContainsSpaces = selectedText.includes(' ');
+    const selectionLength = selectedText.length;
     let isFileName = false;
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
@@ -257,7 +258,7 @@ function addContextualButtons() {
         }
 
         /// Phone number button
-        if (configs.addPhoneButton && !selectionContainsSpaces && selectedText[0] == '+' && selectedText.length == 13) {
+        if (configs.addPhoneButton && !selectionContainsSpaces && selectedText[0] == '+' && selectionLength == 13) {
             const phoneButton = addContextualTooltipButton(function (e) {
                 hideTooltip();
                 removeSelectionOnPage();
@@ -388,7 +389,7 @@ function addContextualButtons() {
         }
 
         /// Add HEX color preview button
-        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces && selectedText.length == 7) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
+        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces && selectionLength == 7) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
             try {
                 let colorText;
                 if (selectedText.includes('rgb')) {
@@ -633,19 +634,18 @@ function addContextualButtons() {
             }
     }
 
-    setCopyButtonTitle(copyButton, selectedText.length, wordsCount);
     const canAddHoverButtons = !(/[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText)) && isFileName == false;
 
     /// Add hover buttons when enabled, and no other contextual buttons were added 
     if (configs.showTranslateButton && canAddHoverButtons) {
-        addTranslateButton(addFinalButtons);
+        addTranslateButton(addFinalButtons, selectionLength);
     } else addFinalButtons();
 
     function addFinalButtons() {
 
         /// Add dictionary button
         if (configs.showDictionaryButton && canAddHoverButtons && wordsCount <= configs.dictionaryButtonWordsAmount) {
-            addDictionaryButton();
+            addDictionaryButton(selectionLength);
         }
 
         if (configs.addMarkerButton)
@@ -671,7 +671,8 @@ function addContextualButtons() {
             try {
                 collapseButtons();
             } catch (e) { if (configs.debugMode) console.log(e); }
-    }
 
+        setCopyButtonTitle(copyButton, selectionLength, wordsCount);
+    }
 }
 

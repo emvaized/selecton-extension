@@ -11,7 +11,7 @@
   font-stretch: condensed;
   text-decoration: none;
   z-index: 100001 !important;
-  max-height: 24px !important;
+  /* max-height: 24px !important; */
   margin: 0px !important;
   line-height: 1.0 !important;
   box-sizing: unset !important;
@@ -42,11 +42,6 @@
   background: none !important;
   box-shadow: none !important;
   left: 50%;
-  top: 100%;
-  transform: translate(-12.5px, -1px);
-}
-
-.arrow-on-top {
   top: 100%;
   transform: translate(-12.5px, -1px);
 }
@@ -398,4 +393,24 @@
 .vertical-layout-tooltip.reversed-order .button-with-border {
   border-top: unset !important;
   border-bottom: 1px solid var(--selection-button-background-hover) !important;
+}
+
+
+/* Info panel */
+.selecton-info-panel {
+  text-align: center !important;
+  font: status-bar !important;
+  font-size: 9px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  /* color: rgba(256, 256, 256, 0.7); */
+  color: var(--selecton-info-panel-color) !important;
+  border-bottom: 1px solid var(--selection-button-background-hover) !important;
+  padding: 0 0 2px 0 !important;
+}
+
+.info-panel-on-bottom {
+  border-bottom: unset !important;
+  border-top: 1px solid var(--selection-button-background-hover) !important;
+  padding: 2px 0 0 0 !important;
 }

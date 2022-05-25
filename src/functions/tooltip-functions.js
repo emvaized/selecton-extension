@@ -1,10 +1,11 @@
 function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
-    let dxOffset = shouldShift ? '-50%' : '0';
+    const dxOffset = shouldShift ? '-50%' : '0';
+    const dyPercentOffset = configs.verticalLayoutTooltip ? 30 : 100;
 
     switch (configs.tooltipRevealEffect) {
         case 'noTooltipEffect': return `translate(${dxOffset},0)`;
-        case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, 100%)`;
-        case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -100%)`;
+        case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, ${dyPercentOffset}%)`;
+        case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -${dyPercentOffset}%)`;
         case 'scaleUpTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
         case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
     }
@@ -64,7 +65,6 @@ function checkTooltipForCollidingWithSideEdges() {
             tooltipWidth += tooltip.children[i].offsetWidth;
         }
     }
-
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {
@@ -146,12 +146,22 @@ function setBorderRadiusForSideButtons(parent, startFrom = 1) {
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
-    if (configs.showStatsOnCopyButtonHover == false) return;
+    // setTimeout(function () {
+    const infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}, ${words ?? selection.toString().split(' ').length} ${(words == 1 ? chrome.i18n.getMessage('wordsCountSingle') : chrome.i18n.getMessage('wordsCount')).toLowerCase()}`;
 
-    setTimeout(function () {
-        if (!copyButton.isConnected) return;
-        copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}, ${words ?? selection.toString().split(' ').length} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
-    }, 5);
+    if (configs.showStatsOnCopyButtonHover && copyButton.isConnected)
+        copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+
+    /// add info panel
+    if (configs.showInfoPanel) {
+        infoPanel = document.createElement('div');
+        infoPanel.className = 'selecton-info-panel';
+        infoPanel.innerText = infoString;
+
+        configs.verticalLayoutTooltip ? tooltip.appendChild(infoPanel) : tooltip.insertBefore(infoPanel, tooltip.children[1]);
+        makeTooltipElementDraggable(infoPanel, false);
+    }
+    // }, 3);
 }
 
 function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity) {
@@ -193,10 +203,9 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
     return button;
 }
 
-
+/// Hide tooltip when mouse moved far from text selection
 function mouseMoveToHideListener(mouseMoveEvent) {
-    /// Hide tooltip when mouse moved far from text selection
-    if (tooltipIsShown == false) {
+    if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false) {
         window.removeEventListener('mousemove', mouseMoveToHideListener);
         return;
     }
@@ -209,5 +218,67 @@ function mouseMoveToHideListener(mouseMoveEvent) {
             hideTooltip();
             hideDragHandles();
         } catch (e) { }
+    }
+}
+
+/// Set tooltip styling to be on bottom of text selection
+function setTooltipOnBottom() {
+    arrow.classList.add('arrow-on-bottom');
+    tooltipOnBottom = true;
+
+    if (configs.showInfoPanel) {
+        infoPanel.classList.add('info-panel-on-bottom');
+        let newInfoPanel = infoPanel.cloneNode(true);
+        tooltip.appendChild(newInfoPanel);
+        tooltip.removeChild(infoPanel);
+        infoPanel = newInfoPanel;
+    }
+}
+
+
+function makeTooltipElementDraggable(element, compensateTooltipHeight = true) {
+    element.style.cursor = 'grab';
+    element.onmousedown = function (e) {
+        isDraggingTooltip = true;
+        e.preventDefault();
+        if (configs.debugMode)
+            console.log('Started dragging tooltip...');
+
+        tooltip.style.left = `0px`;
+        tooltip.style.top = `0px`;
+        tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;
+        document.body.style.cursor = 'grabbing';
+
+        // const tooltipOnBottom = arrow.classList.contains('arrow-on-bottom');
+        const tooltipHeightCompensation = tooltipOnBottom ? (arrow.clientHeight / 3) : compensateTooltipHeight ? tooltip.clientHeight : 0;
+        tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + tooltipHeightCompensation) : (e.clientY - tooltipHeightCompensation)}px)`;
+        tooltip.style.pointerEvents = 'none';
+
+        document.onmousemove = function (e) {
+            e.preventDefault();
+
+            /// Move main tooltip
+            tooltip.style.transform = `translate(${e.clientX - tooltip.clientWidth / 2}px, ${tooltipOnBottom ? (e.clientY + tooltipHeightCompensation) : (e.clientY - tooltipHeightCompensation)}px)`;
+        };
+
+        document.onmouseup = function (e) {
+            e.preventDefault();
+            document.onmousemove = null;
+            document.onmouseup = null;
+            isDraggingTooltip = false;
+            document.body.style.cursor = 'unset';
+
+            tooltip.style.left = `${e.clientX - tooltip.clientWidth / 2}px`;
+            tooltip.style.top = `${tooltipOnBottom ? (e.clientY + tooltipHeightCompensation) : (e.clientY - tooltipHeightCompensation)}px`;
+            tooltip.style.transform = null;
+            tooltip.style.pointerEvents = 'auto';
+
+            if (configs.debugMode)
+                console.log('Dragging tooltip finished');
+        };
+
+        if (configs.hideTooltipWhenCursorMovesAway) {
+            window.removeEventListener('mousemove', mouseMoveToHideListener);
+        }
     }
 }
