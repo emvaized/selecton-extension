@@ -26,9 +26,9 @@ function addTranslateButton(onFinish, selectionLength) {
                         if (configs.showInfoPanel && detectedLanguages.isReliable && !configs.verticalLayoutTooltip)
                             setTimeout(function () {
                                 if (infoPanel && infoPanel.isConnected) {
-                                    // infoPanel.innerText += ' · ' + languageOfSelectedText;
-                                    let languageNames = new Intl.DisplayNames([configs.languageToTranslate], { type: 'language' });
-                                    infoPanel.innerText += ' · ' + languageNames.of(languageOfSelectedText);
+                                    infoPanel.innerText += ' · ' + languageOfSelectedText;
+                                    // let languageNames = new Intl.DisplayNames([configs.languageToTranslate], { type: 'language' });
+                                    // infoPanel.innerText += ' · ' + languageNames.of(languageOfSelectedText);
                                 }
                             }, 5)
 

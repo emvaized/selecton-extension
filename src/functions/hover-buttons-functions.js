@@ -5,7 +5,7 @@ function addAstrixToHoverButton(button) {
     if (configs.showDotForHoverButtons == false) return;
 
     /// add astrix indicator when hover enabled
-    let astrix = document.createElement('span');
+    const astrix = document.createElement('span');
     astrix.className = 'selecton-hover-button-indicator';
     button.appendChild(astrix);
     return astrix;
@@ -84,13 +84,13 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
                 button.classList.add(panelOnBottom ? 'button-with-bottom-hover-panel' : 'button-with-top-hover-panel');
 
             /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
-            if (!reverseOrder) {
-                if (!button.classList.contains('button-with-border') && button.parentNode.children.length > 1) {
-                    panel.style.left = '0px';
-                    panel.style.right = 'unset';
-                    dxTransformValue = '-2px';
-                }
-            }
+            // if (!reverseOrder) {
+            //     if (!button.classList.contains('button-with-border') && button.parentNode.children.length > 1) {
+            //         panel.style.left = '0px';
+            //         panel.style.right = 'unset';
+            //         dxTransformValue = '-2px';
+            //     }
+            // }
         }
 
         /// Set initial transform position for panel

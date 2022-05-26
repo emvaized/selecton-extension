@@ -248,6 +248,10 @@
   width: unset !important;
 }
 
+.no-filter-icon {
+  filter: none !important;
+}
+
 .selecton-search-tooltip-icon {
   filter: none;
   width: var(--selecton-search-tooltip-icon-size);

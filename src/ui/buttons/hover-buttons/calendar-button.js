@@ -137,9 +137,9 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
         buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
     } else
         if (diffDays < -360) {
-            buttonLabel = `${-1 * Math.floor(diffDays / 360)} years ago`;
+            buttonLabel = `${-1 * Math.ceil(diffDays / 360)} years ago`;
         } else if (diffDays < -30 && diffDays > -360) {
-            buttonLabel = `${-1 * Math.floor(diffDays / 30)} months ago`;
+            buttonLabel = `${-1 * Math.ceil(diffDays / 30)} months ago`;
         } else if (diffDays < 0 && diffDays >= -30) {
             buttonLabel = `${-1 * diffDays} days ago`;
         } else if (diffDays == 0) {
@@ -157,4 +157,6 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
     });
     dateButton.title = date.toLocaleDateString();
     dateButton.classList.add('color-highlight');
+
+    if (configs.buttonsStyle == 'onlyicon') dateButton.innerHTML += ' ' + buttonLabel;
 }

@@ -554,7 +554,7 @@ function addContextualButtons() {
 
         /// Add 'open link' button
         if (configs.addOpenLinks)
-            if (!selectionContainsSpaces && selectedText.includes('.') && tooltip.children.length < 4) {
+            if (!selectionContainsSpaces && selectedText.includes('.') && !tooltip.children[3]) {
                 let link = selectedText;
                 const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
                 if (splittedByDots[0].length == 0) return;
@@ -616,12 +616,24 @@ function addContextualButtons() {
                         else linkButton.textContent = openLinkLabel + ' ';
 
                         linkButton.appendChild(linkText);
+
+                        /// try fetching link favicon
+                        // let openIcon = linkButton.querySelector('.selecton-button-img-icon');
+                        // if (openIcon) {
+                        //     let originalSrc = openIcon.src;
+                        //     openIcon.src = 'https://www.google.com/s2/favicons?domain=' + linkToShow.split('/')[0];
+                        //     openIcon.classList.add('no-filter-icon');
+                        //     openIcon.onerror = function (e) {
+                        //         openIcon.src = originalSrc;
+                        //         openIcon.classList.remove('no-filter-icon');
+                        //     };
+                        // }
                     }
 
                 }
             } else if (!selectionContainsSpaces && selectedText[0] == 'r' && selectedText[1] == '/') {
                 /// Add Reddit button
-                let redditButton = addBasicTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'http://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png', function (e) {
+                let redditButton = addBasicTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png', function (e) {
                     onTooltipButtonClick(e, 'https://www.reddit.com/' + selectedText);
                 }, false, 1.0);
 
@@ -629,22 +641,25 @@ function addContextualButtons() {
                 highlightedText.style.display = 'inline';
                 highlightedText.textContent = ' reddit';
                 highlightedText.classList.add('color-highlight');
-
                 redditButton.appendChild(highlightedText);
+
+                let redditFavicon = redditButton.querySelector('.selecton-button-img-icon');
+                if (redditFavicon) redditFavicon.classList.add('no-filter-icon');
             }
     }
 
     const containsSpecialSymbols = (/[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText)) || isFileName == true;
+    const contextButtonWasAdded = tooltip.children[3];
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
-    if (configs.showTranslateButton && !containsSpecialSymbols && tooltip.children.length == 3) {
+    if (configs.showTranslateButton && !containsSpecialSymbols && !contextButtonWasAdded) {
         addTranslateButton(addFinalButtons, selectionLength);
     } else addFinalButtons();
 
     function addFinalButtons() {
 
         /// Add dictionary button
-        if (configs.showDictionaryButton && !containsSpecialSymbols && wordsCount <= configs.dictionaryButtonWordsAmount) {
+        if (configs.showDictionaryButton && !containsSpecialSymbols && !contextButtonWasAdded && wordsCount <= configs.dictionaryButtonWordsAmount) {
             addDictionaryButton(selectionLength);
         }
 
