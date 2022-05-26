@@ -117,18 +117,11 @@ function addBasicTooltipButtons(layout) {
         }, 0);
 
     } else {
-        /// Add copy button in vertical style
-        if (configs.verticalLayoutTooltip)
-            copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
-                document.execCommand('copy');
-                removeSelectionOnPage();
-            }, true);
-
         /// Add search button
         searchButton = addBasicTooltipButton(searchLabel, searchButtonIcon, function (e) {
             let selectedText = selection.toString();
             onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
-        }, !configs.verticalLayoutTooltip);
+        }, true);
 
         /// Populate panel with custom search buttons, when enabled
         if (configs.customSearchOptionsDisplay == 'panelCustomSearchStyle') {
@@ -149,11 +142,10 @@ function addBasicTooltipButtons(layout) {
                 }
         }
 
-        /// Add copy button in horizontal style
-        if (!configs.verticalLayoutTooltip)
-            copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
-                document.execCommand('copy');
-                removeSelectionOnPage();
-            });
+        /// Add copy button
+        copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
+            document.execCommand('copy');
+            removeSelectionOnPage();
+        });
     }
 }

@@ -7,7 +7,6 @@ function addTranslateButton(onFinish, selectionLength) {
                     console.log('Checking if its needed to add Translate button...');
 
                 /// Show Translate button when language was not detected
-                // let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
                 let shouldTranslate = false;
 
                 if (configs.debugMode)
@@ -22,6 +21,16 @@ function addTranslateButton(onFinish, selectionLength) {
                     if (langs.length > 0) {
                         languageOfSelectedText = langs[0].language;
                         if (configs.debugMode) console.log('Detected language: ' + languageOfSelectedText);
+
+                        /// Show detected language on info panel
+                        if (configs.showInfoPanel && detectedLanguages.isReliable && !configs.verticalLayoutTooltip)
+                            setTimeout(function () {
+                                if (infoPanel && infoPanel.isConnected) {
+                                    // infoPanel.innerText += ' · ' + languageOfSelectedText;
+                                    let languageNames = new Intl.DisplayNames([configs.languageToTranslate], { type: 'language' });
+                                    infoPanel.innerText += ' · ' + languageNames.of(languageOfSelectedText);
+                                }
+                            }, 5)
 
                         // if (configs.debugMode)
                         //     console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);

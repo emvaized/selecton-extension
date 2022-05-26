@@ -147,7 +147,8 @@ function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
-    const infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()} · ${words ?? selection.toString().split(' ').length} ${(words == 1 ? chrome.i18n.getMessage('wordsCountSingle') : chrome.i18n.getMessage('wordsCount')).toLowerCase()}`;
+    let infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}`;
+    if (words && words > 1) infoString += ` · ${words} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
 
     if (configs.showStatsOnCopyButtonHover)
         setTimeout(function () {
@@ -190,11 +191,9 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
 
 
 function addContextualTooltipButton(onClick, isFirstButton = false) {
-    /// Used for more complex button, which contents are created in code
-
+    /// Used for more custom button, which contents will be created in code
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
-
     button.addEventListener("mousedown", onClick);
 
     if (configs.reverseTooltipButtonsOrder)

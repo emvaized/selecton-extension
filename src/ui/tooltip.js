@@ -282,11 +282,9 @@ function calculateTooltipPosition(e) {
         if (dyToShowTooltip < 0) {
             dyToShowTooltip = dyForFloatingTooltip;
             floatingTooltipTop = window.scrollY;
-            // tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         } else if (dyToShowTooltip > window.innerHeight) {
             dyToShowTooltip = window.innerHeight - (tooltipHeight ?? 50) - dyForFloatingTooltip;
             floatingTooltipBottom = window.scrollY;
-            // tooltip.children[2].setAttribute('title', selectedText.length < 300 ? selectedText : selectedText.substring(0, 300) + ' ...');
         }
     }
 
@@ -294,8 +292,6 @@ function calculateTooltipPosition(e) {
 
     if (configs.addDragHandles && canAddDragHandles)
         setDragHandles(selStartDimensions, selEndDimensions);
-
-    // return [dxToShowTooltip, dyToShowTooltip];
 }
 
 function showTooltip(dx, dy) {
@@ -318,7 +314,6 @@ function showTooltip(dx, dy) {
     let currentTooltip = tooltip;
     setTimeout(function () {
         if (tooltipIsShown == false || tooltip == null) return;
-        // tooltip.style.pointerEvents = 'all';
         currentTooltip.style.pointerEvents = 'all';
     }, configs.animationDuration);
 
@@ -397,7 +392,7 @@ function hideTooltip(animated = true) {
     }
 
     /// Hide all tooltips
-    let oldTooltips = document.querySelectorAll('.selecton-entity');
+    const oldTooltips = document.querySelectorAll('.selecton-entity');
 
     if (oldTooltips !== null && oldTooltips.length !== 0) {
         tooltipIsShown = false;
@@ -406,7 +401,7 @@ function hideTooltip(animated = true) {
             console.log(`Found ${oldTooltips.length} tooltips to hide`);
 
         for (let i = 0, l = oldTooltips.length; i < l; i++) {
-            let oldTooltip = oldTooltips[i];
+            const oldTooltip = oldTooltips[i];
             if (!animated)
                 oldTooltip.style.transition = '';
             oldTooltip.style.opacity = 0.0;

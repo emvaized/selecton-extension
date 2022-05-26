@@ -130,23 +130,21 @@ function addContextualButtons() {
 
         /// Unit conversion button
         if (configs.convertMetrics) {
-            let convertedNumber;
-            let fromUnit;
-            let convertedUnit;
+            let convertedNumber, fromUnit, convertedUnit;
 
             /// Feet ' and inches " handling
             if (!selectionContainsSpaces && configs.preferredMetricsSystem == 'metric' && /['||"]/.test(selectedText))
                 /// don't proccess if text includes letters
                 if (!/[a-zA-Z]/g.test(selectedText))
                     if (selectedText.includes("'")) {
-                        let feet;
-                        let inches;
+                        let feet, inches;
+                        const parts = selectedText.split("'");
+                        const partsL = parts.length;
 
-                        let parts = selectedText.split("'");
-                        if (parts.length == 2 || parts.length == 4) {
+                        if (partsL == 2 || partsL == 4) {
                             feet = extractAmountFromSelectedText(parts[0]);
                             inches = extractAmountFromSelectedText(parts[1].split('"')[0])
-                        } else if (parts.length == 1) {
+                        } else if (partsL == 1) {
                             /// Only feet available
                             feet = extractAmountFromSelectedText(parts[0]);
                         }
@@ -160,8 +158,8 @@ function addContextualButtons() {
                         }
 
                     } else if (selectedText.includes('"')) {
-                        /// Only inches present
-                        let parts = selectedText.split('"')
+                        /// Only inches are present
+                        const parts = selectedText.split('"')
 
                         if (parts.length == 2) {
                             inches = extractAmountFromSelectedText(selectedText);
@@ -287,10 +285,9 @@ function addContextualButtons() {
                 phoneButton.appendChild(createImageIconForButton(phoneIcon, phoneText, true));
                 phoneButton.classList.add('color-highlight');
             }
-
         }
 
-        /// Do simple math calculations
+        /// Perform simple math calculations
         if (numberToConvert == null && configs.performSimpleMathOperations && selectedText[0] !== '+' && !selectedText.includes('{')) {
             if (selectedText.includes('+') || selectedText.includes('-') || selectedText.includes('*') || selectedText.includes('^'))
                 try {
@@ -354,7 +351,7 @@ function addContextualButtons() {
         }
 
         /// Add email button
-        if (configs.showEmailButton && selectedText.includes('@') && !selectionContainsSpaces) {
+        if (configs.showEmailButton && !selectionContainsSpaces && selectedText.includes('@')) {
             const splitedByAt = selectedText.split('@');
             if (splitedByAt.length == 2 && splitedByAt[1].includes('.'))
                 try {
@@ -389,51 +386,54 @@ function addContextualButtons() {
         }
 
         /// Add HEX color preview button
-        if (configs.addColorPreviewButton && ((selectedText.includes('#') && !selectionContainsSpaces && selectionLength == 7) || (selectedText.includes('rgb') && selectedText.includes('(')))) {
-            try {
-                let colorText;
-                if (selectedText.includes('rgb')) {
-                    /// Try to convert rgb value to hex
-                    try {
-                        let string = selectedText.toUpperCase().split('(')[1].split(')')[0];
-                        let colors = string.replaceAll(' ', '').split(',');
-                        for (i in colors) {
-                            colors[i] = parseInt(colors[i], 10);
+        if (configs.addColorPreviewButton) {
+            if ((!selectionContainsSpaces && selectionLength == 7 && selectedText.includes('#')) ||
+                (selectedText.includes('rgb') && selectedText.includes('('))) {
+                try {
+                    let colorText;
+                    if (selectedText.includes('rgb')) {
+                        /// Try to convert rgb value to hex
+                        try {
+                            let string = selectedText.toUpperCase().split('(')[1].split(')')[0];
+                            let colors = string.replaceAll(' ', '').split(',');
+                            for (i in colors) {
+                                colors[i] = parseInt(colors[i], 10);
+                            }
+                            colorText = rgbToHex(colors[0], colors[1], colors[2]).toUpperCase();
+                        } catch (e) {
+                            colorText = selectedText.toUpperCase();
                         }
-                        colorText = rgbToHex(colors[0], colors[1], colors[2]).toUpperCase();
-                    } catch (e) {
-                        colorText = selectedText.toUpperCase();
-                    }
-                } else
-                    colorText = selectedText.toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
+                    } else
+                        colorText = selectedText.toUpperCase().replaceAll(',', '').replaceAll('.', '').replaceAll("'", "").replaceAll('"', '');
 
-                colorText = colorText.toLowerCase();
+                    colorText = colorText.toLowerCase();
 
-                const colorButton = addContextualTooltipButton(function (e) {
-                    console.log(colorText.replaceAll('#', '%23'));
+                    const colorButton = addContextualTooltipButton(function (e) {
+                        console.log(colorText.replaceAll('#', '%23'));
 
-                    let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
-                    onTooltipButtonClick(e, url, colorText);
-                })
+                        let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
+                        onTooltipButtonClick(e, url, colorText);
+                    })
 
-                // const colorButton = document.createElement('button');
-                // colorButton.setAttribute('class', 'selection-popup-button button-with-border');
+                    // const colorButton = document.createElement('button');
+                    // colorButton.setAttribute('class', 'selection-popup-button button-with-border');
 
-                const colorCircle = document.createElement('div');
-                colorCircle.setAttribute('class', 'selection-popup-color-preview-circle');
-                colorCircle.style.background = colorText;
-                colorCircle.style.marginRight = '4.5px';
+                    const colorCircle = document.createElement('div');
+                    colorCircle.setAttribute('class', 'selection-popup-color-preview-circle');
+                    colorCircle.style.background = colorText;
+                    colorCircle.style.marginRight = '4.5px';
 
-                /// Add red/green/blue tooltip on hover
-                const rgbColor = hexToRgb(colorText);
-                colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
+                    /// Add red/green/blue tooltip on hover
+                    const rgbColor = hexToRgb(colorText);
+                    colorButton.setAttribute('title', `red: ${rgbColor.red}, green: ${rgbColor.green}, blue: ${rgbColor.blue}`);
 
-                colorButton.appendChild(colorCircle);
-                colorButton.insertAdjacentHTML('beforeend', ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText));
-                colorButton.classList.add('color-highlight');
+                    colorButton.appendChild(colorCircle);
+                    colorButton.insertAdjacentHTML('beforeend', ' ' + (colorText.length > linkSymbolsToShow ? colorText.substring(0, linkSymbolsToShow) + '...' : colorText));
+                    colorButton.classList.add('color-highlight');
 
-            } catch (error) {
-                console.log(error);
+                } catch (error) {
+                    console.log(error);
+                }
             }
         }
 
@@ -548,7 +548,7 @@ function addContextualButtons() {
             } catch (e) { if (configs.debugMode) console.log(e); }
         }
 
-        /// Check if selection contains date
+        /// Calendar button for dates
         if (configs.addCalendarButton)
             checkToAddCalendarButton(selectedText);
 
@@ -634,44 +634,41 @@ function addContextualButtons() {
             }
     }
 
-    const canAddHoverButtons = !(/[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText)) && isFileName == false;
+    const containsSpecialSymbols = (/[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText)) || isFileName == true;
 
-    /// Add hover buttons when enabled, and no other contextual buttons were added 
-    if (configs.showTranslateButton && canAddHoverButtons) {
+    /// Add hover buttons when enabled, and no other contextual buttons were added
+    if (configs.showTranslateButton && !containsSpecialSymbols && tooltip.children.length == 3) {
         addTranslateButton(addFinalButtons, selectionLength);
     } else addFinalButtons();
 
     function addFinalButtons() {
 
         /// Add dictionary button
-        if (configs.showDictionaryButton && canAddHoverButtons && wordsCount <= configs.dictionaryButtonWordsAmount) {
+        if (configs.showDictionaryButton && !containsSpecialSymbols && wordsCount <= configs.dictionaryButtonWordsAmount) {
             addDictionaryButton(selectionLength);
         }
 
+        /// Add marker button
         if (configs.addMarkerButton)
             addMarkerButton();
 
         /// Add button to copy link to selected text
         if (configs.addButtonToCopyLinkToText) {
-            // let isChromium = window.chrome !== null &&
-            //     typeof window.chrome !== "undefined" &&
-            //     window.navigator.vendor === "Google Inc.";
-
-            // if (isChromium) {
             const copyTextLinkBtn = addBasicTooltipButton(chrome.i18n.getMessage('linkToTextLabel'), linkIcon, function () {
                 let urlWithText = window.location.href + '#:~:text=' + encodeURIComponent(selectedText);
                 copyManuallyToClipboard(urlWithText);
                 removeSelectionOnPage();
             });
             copyTextLinkBtn.title = chrome.i18n.getMessage('linkToTextDescription');
-            // }
         }
 
+        /// Collapse exceeding buttons under 'more' hover button
         if (configs.collapseButtons)
             try {
                 collapseButtons();
             } catch (e) { if (configs.debugMode) console.log(e); }
 
+        /// Set info panel & title for the Copy button
         setCopyButtonTitle(copyButton, selectionLength, wordsCount);
     }
 }

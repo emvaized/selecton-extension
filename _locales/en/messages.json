@@ -730,16 +730,12 @@
     "description": "Label for tooltip button"
   },
   "linkToTextDescription": {
-    "message": "Copy page link pointing to the selected text (opens only in Chrome)",
+    "message": "Copy page link pointing to the selected text (opens only in Chrome 90+)",
     "description": "Label for tooltip button"
   },
   "addCalendarButton": {
     "message": "Add calendar button for dates",
     "description": "Label for option in settings"
-  },
-  "wordsCountSingle": {
-    "message": "Word",
-    "description": ""
   },
   "showInfoPanel": {
     "message": "Show info panel (word and symbols count)",
