@@ -618,16 +618,27 @@ function addContextualButtons() {
                         linkButton.appendChild(linkText);
 
                         /// try fetching link favicon
-                        // let openIcon = linkButton.querySelector('.selecton-button-img-icon');
-                        // if (openIcon) {
-                        //     let originalSrc = openIcon.src;
-                        //     openIcon.src = 'https://www.google.com/s2/favicons?domain=' + linkToShow.split('/')[0];
-                        //     openIcon.classList.add('no-filter-icon');
-                        //     openIcon.onerror = function (e) {
-                        //         openIcon.src = originalSrc;
-                        //         openIcon.classList.remove('no-filter-icon');
-                        //     };
-                        // }
+                        const openLinkIcon = linkButton.querySelector('.selecton-button-img-icon');
+                        if (openLinkIcon) {
+                            openLinkIcon.style.backgroundImage = 'url(' + openLinkButtonIcon + ')';
+                            openLinkIcon.src = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=24&url=https://' + linkToShow.split('/')[0];
+
+                            openLinkIcon.onload = function (e) {
+                                openLinkIcon.style.backgroundImage = 'none';
+
+                                if (openLinkIcon.naturalHeight == 16) {
+                                    openLinkIcon.src = openLinkButtonIcon;
+                                } else {
+                                    openLinkIcon.classList.add('no-filter-icon');
+                                    openLinkIcon.style.opacity = 1.0;
+                                }
+                            }
+
+                            openLinkIcon.onerror = function (e) {
+                                openLinkIcon.style.backgroundImage = 'none';
+                                openLinkIcon.src = originalSrc;
+                            }
+                        }
                     }
 
                 }

@@ -246,10 +246,15 @@
   max-height: var(--selecton-button-icon-height) !important;
   filter: var(--selecton-button-icon-invert) !important;
   width: unset !important;
+  background-color: transparent;
+  width: var(--selecton-button-icon-height) !important;
+  background-repeat: no-repeat !important;
+  background-size: fill !important;
 }
 
 .no-filter-icon {
   filter: none !important;
+  opacity: 1.0 !important;
 }
 
 .selecton-search-tooltip-icon {

@@ -56,6 +56,7 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
     /// Set definition view
     definitionPanel.innerText = resultDefinition;
     definitionPanel.classList.add('selecton-live-translation');
+    definitionPanel.style.maxWidth = '600%';
 
     /// If text contains line breaks, align by the left side
     if (resultDefinition.includes(`

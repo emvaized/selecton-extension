@@ -74,9 +74,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         if (!configs.verticalLayoutTooltip) {
             if (tooltipOnBottom) {
                 panelOnBottom = true;
-                movePanelToBottom(panel);
+                movePanelToBottom(panel, button);
             } else {
-                panelOnBottom = checkHoverPanelToOverflowOnTop(panel);
+                panelOnBottom = checkHoverPanelToOverflowOnTop(panel, button);
             }
 
             /// Clip content on edge for better looking animation
@@ -146,20 +146,23 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     return panel;
 }
 
-function checkHoverPanelToOverflowOnTop(panel) {
+function checkHoverPanelToOverflowOnTop(panel, button) {
     /// check to hover panel overflow on screen top
     try {
         if (panel.getBoundingClientRect().top < 0) {
-            movePanelToBottom(panel);
+            movePanelToBottom(panel, button);
             return true;
         } else return false;
     } catch (e) { return false; }
 }
 
-function movePanelToBottom(panel) {
+function movePanelToBottom(panel, button) {
     panel.style.bottom = 'unset';
     panel.style.top = '125%';
-    if (panel.parentNode)
+
+    if (button)
+        button.classList.add('higher-z-index');
+    else if (panel.parentNode)
         panel.parentNode.classList.add('higher-z-index');
 }
 
