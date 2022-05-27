@@ -305,13 +305,14 @@ function addContextualButtons() {
                                 const mathButton = addContextualTooltipButton(function (e) {
                                     let url = returnSearchUrl(selectedText.replaceAll('+', '%2B'));
                                     onTooltipButtonClick(e, url, calculatedExpression);
-                                })
+                                });
 
                                 if (configs.showUnconvertedValue)
                                     mathButton.textContent = selectedText + ' →';
 
                                 const converted = document.createElement('span');
-                                converted.textContent = ` ${calculatedExpression}`;
+                                if (!configs.showUnconvertedValue) converted.textContent = '=';
+                                converted.textContent += ` ${calculatedExpression}`;
                                 converted.classList.add('color-highlight');
                                 mathButton.appendChild(converted);
                             }

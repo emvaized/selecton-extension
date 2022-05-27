@@ -136,18 +136,25 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
     if (showDateInsteadOfWeekday) {
         buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
     } else
-        if (diffDays < -360) {
-            buttonLabel = `${-1 * Math.ceil(diffDays / 360)} years ago`;
+        if (diffDays <= -360) {
+            const years = -1 * Math.ceil(diffDays / 360);
+            buttonLabel = years == 1 ? chrome.i18n.getMessage('yearAgo') : chrome.i18n.getMessage('yearsAgo', `${years}`);
         } else if (diffDays < -30 && diffDays > -360) {
-            buttonLabel = `${-1 * Math.ceil(diffDays / 30)} months ago`;
+            const months = -1 * Math.ceil(diffDays / 30);
+            buttonLabel = months == 1 ? chrome.i18n.getMessage('monthAgo') : chrome.i18n.getMessage('monthsAgo', `${months}`);
         } else if (diffDays < 0 && diffDays >= -30) {
-            buttonLabel = `${-1 * diffDays} days ago`;
+            const days = -1 * diffDays;
+            buttonLabel = days == 1 ? chrome.i18n.getMessage('dayAgo') : chrome.i18n.getMessage('daysAgo', `${days}`);
         } else if (diffDays == 0) {
-            buttonLabel = 'Today';
+            buttonLabel = chrome.i18n.getMessage('today');
         } else if (diffDays > 0 && diffDays < 30) {
-            buttonLabel = `In ${diffDays} days`;
+            buttonLabel = diffDays == 1 ? chrome.i18n.getMessage('inDay') : chrome.i18n.getMessage('inDays', `${diffDays}`);
         } else if (diffDays >= 29 && diffDays < 360) {
-            buttonLabel = `In ${Math.floor(diffDays / 30)} months`;
+            const months = Math.floor(diffDays / 30);
+            buttonLabel = months == 1 ? chrome.i18n.getMessage('inMonth') : chrome.i18n.getMessage('inMonths', `${months}`);
+        } else if (diffDays >= 360) {
+            const years = Math.floor(diffDays / 360);
+            buttonLabel = years == 1 ? chrome.i18n.getMessage('inYear') : chrome.i18n.getMessage('inYears', `${years}`);
         } else {
             buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
         }

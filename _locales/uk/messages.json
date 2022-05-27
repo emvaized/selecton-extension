@@ -1,659 +1,574 @@
 {
     "actionButtonsHeader": {
-        "message": "Кнопки дій",
-        "description": "Header for action buttons category in settings"
+        "message": "Кнопки дій"
     },
     "addActionButtonsForTextFields": {
-        "message": "Використовувати спеціальну панель для полів введення",
-        "description": ""
+        "message": "Використовувати спеціальну панель для полів введення"
     },
     "addButtonIcons": {
-        "message": "Показувати іконки кнопок",
-        "description": ""
+        "message": "Показувати іконки кнопок"
+    },
+    "addButtonToCopyLinkToText": {
+        "message": "Додати кнопку копiювання посилання на текст"
+    },
+    "addCalendarButton": {
+        "message": "Додати кнопку календаря для дат"
     },
     "addClearButton": {
-        "message": "Показати кнопку «Очистити» по кліку непорожнього поля",
-        "description": "Label for buttons style option in settings"
+        "message": "Показати кнопку «Очистити» по кліку непорожнього поля"
     },
     "addColorPreviewButton": {
-        "message": "Додати кнопку кольору (для CSS кольорів на кшталт #ffffff)",
-        "description": "Label for field in settings"
+        "message": "Додати кнопку кольору (для CSS кольорів на кшталт #ffffff)"
     },
     "addDragHandles": {
-        "message": "Додати ручки редагування виділення",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Додати ручки редагування виділення"
     },
     "addFontFormatButtons": {
-        "message": "Додати кнопки формату шрифту (курсив, жирний)",
-        "description": "Label for buttons style option in settings"
+        "message": "Додати кнопки формату шрифту (курсив, жирний)"
     },
     "addMarkerButton": {
-        "message": "Використовувати кнопку 'Маркер'",
-        "description": "Label for buttons style option in settings"
+        "message": "Використовувати кнопку 'Маркер'"
     },
     "addNewSearchOption": {
-        "message": "Додати нову опцію пошуку",
-        "description": "Ярлик для кнопки додавання нового пошуку"
+        "message": "Додати нову опцію пошуку"
     },
     "addOpenLinks": {
-        "message": "Додати кнопку відкриття посилання",
-        "description": "Label for field in settings"
+        "message": "Додати кнопку відкриття посилання"
     },
     "addPasteButton": {
-        "message": "Показати кнопку «Вставити» при кліку на текстове поле",
-        "description": "Label for option in settings"
+        "message": "Показати кнопку «Вставити» при кліку на текстове поле"
     },
     "addPasteOnlyEmptyField": {
-        "message": "... тільки якщо поле пусте",
-        "description": "Мітка для параметра в налаштуваннях"
+        "message": "... тільки якщо поле пусте"
     },
     "addPhoneButton": {
-        "message": "Додати кнопку номера телефону",
-        "description": "Label for option in settings"
+        "message": "Додати кнопку номера телефону"
     },
     "addScaleUpEffect": {
-        "message": "Додати ефект збільшення при появі",
-        "description": "Label for button in settings"
+        "message": "Додати ефект збільшення при появі"
     },
     "addTooltipShadow": {
-        "message": "Показувати тінь панелі",
-        "description": ""
+        "message": "Показувати тінь панелі"
     },
     "allChangesSavedAutomatically": {
-        "message": "Усі налаштування зберігаються автоматично",
-        "description": ""
+        "message": "Усі налаштування зберігаються автоматично"
     },
     "animationDuration": {
-        "message": "Тривалість анімацій (мс)",
-        "description": "Label for field in settings"
+        "message": "Тривалість анімацій (мс)"
     },
     "appearanceHeader": {
-        "message": "Зовнішній вигляд",
-        "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
+        "message": "Зовнішній вигляд"
     },
     "applyConfigsImmediately": {
-        "message": "Застосувати налаштування відразу",
-        "description": "Header for appearance category in settings"
+        "message": "Застосувати налаштування відразу"
     },
     "behaviorHeader": {
-        "message": "Поведінка",
-        "description": "Заголовок для категорії зовнішнього вигляду в налаштуваннях"
+        "message": "Поведінка"
     },
     "borderRadius": {
-        "message": "Закруглення кутів (px)",
-        "description": ""
+        "message": "Закруглення кутів (px)"
     },
     "buttonStyle": {
-        "message": "Стиль кнопок",
-        "description": "Мітка для опції в налаштуваннях"
+        "message": "Стиль кнопок"
     },
     "buyMeCoffee": {
-        "message": "Підтримати проект",
-        "description": ""
+        "message": "Підтримати проект"
     },
     "callLabel": {
-        "message": "Подзвонити",
-        "description": "Label for buttons style option in settings"
+        "message": "Подзвонити"
     },
     "changeTextSelectionColor": {
-        "message": "Змінити стиль виділення тексту",
-        "description": ""
+        "message": "Змінити стиль виділення тексту"
     },
     "chooseFileFirst": {
-        "message": "Спочатку виберіть файл",
-        "description": ""
+        "message": "Спочатку виберіть файл"
     },
     "clearLabel": {
-        "message": "Очистити",
-        "description": "Label for buttons style option in settings"
+        "message": "Очистити"
     },
     "collapseButtons": {
-        "message": "Сховати зайві кнопки під кнопкою 'Більше'",
-        "description": "Label for buttons style option in settings"
+        "message": "Сховати зайві кнопки під кнопкою 'Більше'"
     },
     "contextualButtonsHeader": {
-        "message": "Кнопки",
-        "description": "Header for contextual buttons category in settings"
+        "message": "Кнопки"
     },
     "convertCurrencies": {
-        "message": "Конвертувати валюту",
-        "description": "Label for field in settings"
+        "message": "Конвертувати валюту"
     },
     "convertMetrics": {
-        "message": "Конвертувати довжину/масу",
-        "description": "Label for field in settings"
+        "message": "Конвертувати довжину/масу"
     },
     "convertResultClickAction": {
-        "message": "Дія при кліку на результат",
-        "description": "Label for field in settings"
+        "message": "Дія при кліку на результат"
     },
     "convertTime": {
-        "message": "Конвертувати час",
-        "description": "Label for field in settings"
+        "message": "Конвертувати час"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Дізнатися більше</a>)",
-        "description": "Label for field in settings"
+        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Дізнатися більше</a>)"
     },
     "convertToCurrencyHint": {
-        "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>",
-        "description": "Currency code hint for 'convert to currency' field in settings"
+        "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>"
     },
     "convertionHeader": {
-        "message": "Конвертація",
-        "description": "Header for convertion category in settings"
+        "message": "Конвертація"
     },
     "copyLabel": {
-        "message": "Копіювати",
-        "description": "Label for copy text action"
+        "message": "Копіювати"
     },
     "customIcon": {
-        "message": "Своя іконка",
-        "description": "Label for button in settings"
+        "message": "Своя іконка"
     },
     "customIconUrl": {
-        "message": "URL іконки",
-        "description": "Label for option in settings"
+        "message": "URL іконки"
     },
     "customSearchButtonsHeader": {
-        "message": "Кнопки пошуку",
-        "description": "Header for settings section"
+        "message": "Кнопки пошуку"
     },
     "customSearchOptionsDisplay": {
-        "message": "Стиль відображення параметрів пошуку",
-        "description": "Label for option in settings"
+        "message": "Стиль відображення параметрів пошуку"
     },
     "customSearchTooltip": {
-        "message": "Свої варіанти пошуку",
-        "description": "Ярлик для поля в настройках"
+        "message": "Свої варіанти пошуку"
     },
     "customSearchTooltipHint": {
-        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. Використовуйте %s у якості плейсхолдера для запиту, %w - плейсхолдера поточного домену (для пошуку по сайту)",
-        "description": "Ярлик для поля в настройках"
+        "message": "Відкривається при наведенні курсору на кнопку 'Пошук'. Використовуйте %s у якості плейсхолдера для запиту, %w - плейсхолдера поточного домену (для пошуку по сайту)"
     },
     "customSearchUrl": {
-        "message": "URL пошуку <br /> (використовуйте %s у якості плейсхолдера для запиту)",
-        "description": "Ярлик для поля в настройках"
+        "message": "URL пошуку <br /> (використовуйте %s у якості плейсхолдера для запиту)"
     },
     "cutLabel": {
-        "message": "Вирізати",
-        "description": "Label for cut action"
+        "message": "Вирізати"
+    },
+    "dayAgo": {
+        "message": "День тому"
+    },
+    "daysAgo": {
+        "message": "$DAYS$ днiв тому",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
     },
     "debugMode": {
-        "message": "Режим відлагодження",
-        "description": "Мітка для опції в налаштуваннях"
+        "message": "Режим відлагодження"
     },
     "delayToRevealHoverPanels": {
-        "message": "Затримка перед відображенням панелі при наведенні (ms)",
-        "description": "Label for buttons style option in settings"
+        "message": "Затримка перед відображенням панелі при наведенні (ms)"
     },
     "delayToRevealSearchTooltip": {
-        "message": "Затримка перед показом панелі (мс)",
-        "description": "Label for option in settings"
+        "message": "Затримка перед показом панелі (мс)"
     },
     "delayToRevealTranslateTooltip": {
-        "message": "Затримка перед автоматичним перекладом (ms)",
-        "description": ""
+        "message": "Затримка перед автоматичним перекладом (ms)"
     },
     "deleteLabel": {
-        "message": "Видалити",
-        "description": "Ярлик для кнопки видалення"
+        "message": "Видалити"
     },
     "dictionaryButtonRemark": {
-        "message": "Шукає визначення в Вікіпедії при наведенні",
-        "description": ""
+        "message": "Шукає визначення в Вікіпедії при наведенні"
     },
     "dictionaryButtonResponseCharsAmount": {
-        "message": "Макс. кіль-сть символів для відображення в результаті",
-        "description": ""
+        "message": "Макс. кіль-сть символів для відображення в результаті"
     },
     "dictionaryButtonWordsAmount": {
-        "message": "Кількість слів для відображення кнопки",
-        "description": ""
+        "message": "Кількість слів для відображення кнопки"
     },
     "dictionaryLabel": {
-        "message": "Словник",
-        "description": "Label for Dictionary button"
+        "message": "Словник"
     },
     "disableForBetterPerformance": {
-        "message": "Вимкніть для кращої швидкодії",
-        "description": "Label for option in settings"
+        "message": "Вимкніть для кращої швидкодії"
     },
     "disableWordSnapForCode": {
-        "message": "Вимкнути прив’язку до слів для коду",
-        "description": "Label for option in settings"
+        "message": "Вимкнути прив’язку до слів для коду"
     },
     "disableWordSnappingOnCtrlKey": {
-        "message": "Не виділяти по словам, якщо натиснута клавіша CTRL",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Не виділяти по словам, якщо натиснута клавіша CTRL"
     },
     "dontSnapTextfieldSelection": {
-        "message": "Не виділяти по словам у полях вводу",
-        "description": "Label for option in settings"
+        "message": "Не виділяти по словам у полях вводу"
     },
     "draggableTooltip": {
-        "message": "Панель можна перетягнути за стрілку",
-        "description": ""
+        "message": "Панель можна перетягнути за стрілку"
     },
     "email": {
-        "message": "Пошта",
-        "description": "Label for field in settings"
+        "message": "Пошта"
     },
     "enabled": {
-        "message": "Включено",
-        "description": ""
+        "message": "Включено"
     },
     "excludedDomains": {
-        "message": "Виключені домени",
-        "description": "Label for option in settings"
+        "message": "Виключені домени"
     },
     "export": {
-        "message": "Експорт",
-        "description": ""
+        "message": "Експорт"
     },
     "exportImportSettings": {
-        "message": "Експорт/імпорт налаштувань",
-        "description": ""
+        "message": "Експорт/імпорт налаштувань"
     },
     "exportSettingsLabel": {
-        "message": "Експортувати налаштування",
-        "description": ""
+        "message": "Експортувати налаштування"
     },
     "extensiondescription": {
-        "message": "Спливаюча панель з кнопками дій при виділенні тексту",
-        "description": "Опис розширення"
+        "message": "Спливаюча панель з кнопками дій при виділенні тексту"
     },
     "fallbackExportLabel": {
-        "message": "Для експорту зберегти у файлі .json",
-        "description": "Label for option in settings"
+        "message": "Для експорту зберегти у файлі .json"
     },
     "floatingOffscreenTooltip": {
-        "message": "Плаваюча панель при прокрученні за межі екрана",
-        "description": "Label for option in settings"
+        "message": "Плаваюча панель при прокрученні за межі екрана"
     },
     "fontSize": {
-        "message": "Розмір шрифту",
-        "description": "Label for option in settings"
+        "message": "Розмір шрифту"
     },
     "fullOpacityOnHover": {
-        "message": "Повна непрозорість при наведенні",
-        "description": "Label for option in settings"
+        "message": "Повна непрозорість при наведенні"
     },
     "gmail": {
-        "message": "Новий лист Gmail",
-        "description": "Option label for new email method setting"
+        "message": "Новий лист Gmail"
     },
     "hideOnKeypress": {
-        "message": "Ховати при натисканні кнопок клавіатури",
-        "description": "Label for field in settings"
+        "message": "Ховати при натисканні кнопок клавіатури"
     },
     "hideOnScroll": {
-        "message": "Ховати при прокручуванні",
-        "description": "Label for field in settings"
+        "message": "Ховати при прокручуванні"
+    },
+    "hideTooltipWhenCursorMovesAway": {
+        "message": "Приховати панель, коли курсор далеко"
     },
     "hideTranslateButtonForUserLanguage": {
-        "message": "Сховати кнопку перекладу для мови користувача",
-        "description": "Label for field in settings"
+        "message": "Сховати кнопку перекладу для мови користувача"
     },
     "horizontalLayout": {
-        "message": "Горизонтальна",
-        "description": "Label for field in settings"
+        "message": "Горизонтальна"
     },
     "hoverCustomSearchStyle": {
-        "message": "Показати при наведенні на кнопку пошуку",
-        "description": "Label for option in settings"
+        "message": "Показати при наведенні на кнопку пошуку"
     },
     "iconlabel": {
-        "message": "Іконки + текст",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Іконки + текст"
     },
     "imperial": {
-        "message": "Англійська",
-        "description": "Variant of metrics system for dropdown"
+        "message": "Англійська"
     },
     "import": {
-        "message": "Імпорт",
-        "description": ""
+        "message": "Імпорт"
     },
     "importAlert": {
-        "message": "Ця дія замінить поточні налаштування Selecton. Ви впевнені?",
-        "description": ""
+        "message": "Ця дія замінить поточні налаштування Selecton. Ви впевнені?"
     },
     "importSettingsLabel": {
-        "message": "Імпортувати налаштування",
-        "description": ""
+        "message": "Імпортувати налаштування"
+    },
+    "inDay": {
+        "message": "Через день"
+    },
+    "inDays": {
+        "message": "Через $DAYS$ днiв",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
+    },
+    "inMonth": {
+        "message": "Через мiсяць"
+    },
+    "inMonths": {
+        "message": "Через $MONTHS$ мiсяцiв",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
+    },
+    "inYear": {
+        "message": "Через рiк"
+    },
+    "inYears": {
+        "message": "Через $YEARS$ рокiв",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     },
     "invertColorOnDarkWebsite": {
-        "message": "Інвертувати колір на темному веб-сайті",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Інвертувати колір на темному веб-сайті"
     },
     "languageToTranslate": {
-        "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)",
-        "description": ""
+        "message": "Мова для перекладу (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>Код ISO 639-1</a>)"
     },
     "leftClickBackgroundTab": {
-        "message": "Лівий клік відкриває у фоновій вкладці",
-        "description": "Label for option in settings"
+        "message": "Лівий клік відкриває у фоновій вкладці"
+    },
+    "linkToTextDescription": {
+        "message": "Копiювати посилання на текст (відкриється лише в Chrome 90+)"
+    },
+    "linkToTextLabel": {
+        "message": "Посилання"
     },
     "liveTranslation": {
-        "message": "Живий переклад при наведенні на кнопку (Google Translate)",
-        "description": "Label for field in settings"
+        "message": "Живий переклад при наведенні на кнопку (Google Translate)"
     },
     "mailto": {
-        "message": "Відкрити поштовий клієнт",
-        "description": "Option label for new email method setting"
+        "message": "Відкрити поштовий клієнт"
     },
     "markedLabel": {
-        "message": "Відмічено",
-        "description": "Label for buttons style option in settings"
+        "message": "Відмічено"
     },
     "markerLabel": {
-        "message": "Маркер",
-        "description": "Label for buttons style option in settings"
+        "message": "Маркер"
     },
     "markersLabel": {
-        "message": "Маркери",
-        "description": "Label for buttons style option in settings"
+        "message": "Маркери"
     },
     "maxIconsInRow": {
-        "message": "Кіл-сть іконок у рядку",
-        "description": "Мітка для параметра в налаштуваннях"
+        "message": "Кіл-сть іконок у рядку"
     },
     "maxMarkerPagesToStore": {
-        "message": "Макс. кількість сторінок для зберігання маркерів",
-        "description": "Label for buttons style option in settings"
+        "message": "Макс. кількість сторінок для зберігання маркерів"
     },
     "maxTooltipButtonsToShow": {
-        "message": "Макс. кількість видимих кнопок в панелі",
-        "description": "Label for buttons style option in settings"
+        "message": "Макс. кількість видимих кнопок в панелі"
     },
     "metric": {
-        "message": "Метрична",
-        "description": "Variant of metrics system for dropdown"
+        "message": "Метрична"
     },
     "middleClickHidesTooltip": {
-        "message": "Середній клік (щоб відкрити у фоновому режимі) приховує панель",
-        "description": "Label for option in settings"
+        "message": "Середній клік (щоб відкрити у фоновому режимі) приховує панель"
+    },
+    "monthAgo": {
+        "message": "Мiсяць тому"
+    },
+    "monthsAgo": {
+        "message": "$MONTHS$ мiсяцiв тому",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
     },
     "moveDownLabel": {
-        "message": "Опустити",
-        "description": "Tooltip for 'move button down' button"
+        "message": "Опустити"
     },
     "moveDownTooltipEffect": {
-        "message": "Знизу",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Знизу"
     },
     "moveUpLabel": {
-        "message": "Підняти",
-        "description": "Tooltip for 'move button up' button"
+        "message": "Підняти"
     },
     "moveUpTooltipEffect": {
-        "message": "Зверху",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Зверху"
     },
     "noDefinitionFound": {
-        "message": "Не знайдено жодного визначення",
-        "description": ""
+        "message": "Не знайдено жодного визначення"
     },
     "noTooltipEffect": {
-        "message": "Без ефекту",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Без ефекту"
     },
     "noTranslationFound": {
-        "message": "Перекладу не знайдено",
-        "description": ""
+        "message": "Перекладу не знайдено"
     },
     "onlyicon": {
-        "message": "Тільки іконки",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Тільки іконки"
     },
     "onlylabel": {
-        "message": "Тільки текст",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Тільки текст"
     },
     "openInNewTab": {
-        "message": "Відкрити в новій вкладці",
-        "description": "Label for open link action"
+        "message": "Відкрити в новій вкладці"
     },
     "openLinkLabel": {
-        "message": "Відкрити",
-        "description": "Label for open link action"
+        "message": "Відкрити"
     },
     "overCursor": {
-        "message": "По курсору",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "По курсору"
     },
     "panelCustomSearchStyle": {
-        "message": "Показати на основній панелі",
-        "description": "Label for option in settings"
+        "message": "Показати на основній панелі"
     },
     "pasteLabel": {
-        "message": "Вставити",
-        "description": "Label for paste action"
+        "message": "Вставити"
     },
     "performSimpleMathOperations": {
-        "message": "Виконувати прості математичні розрахунки",
-        "description": "Label for field in settings"
+        "message": "Виконувати прості математичні розрахунки"
     },
     "preferCurrencySymbol": {
-        "message": "Віддавати перевагу символам валют замість кодів",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Віддавати перевагу символам валют замість кодів"
     },
     "preferredMapsService": {
-        "message": "Бажаний сервіс карт",
-        "description": "Label for field in settings"
+        "message": "Бажаний сервіс карт"
     },
     "preferredMetricsSystem": {
-        "message": "Бажана система мір",
-        "description": "Label for field in settings"
+        "message": "Бажана система мір"
     },
     "preferredNewEmailMethod": {
-        "message": "Спосіб створення імейлу",
-        "description": "Label for field in settings"
+        "message": "Спосіб створення імейлу"
     },
     "preferredSearchEngine": {
-        "message": "Пошукова система",
-        "description": ""
+        "message": "Пошукова система"
     },
     "preferredTranslateService": {
-        "message": "Сервіс перекладу",
-        "description": "Label for field in settings"
+        "message": "Сервіс перекладу"
     },
     "recentMarkersLabel": {
-        "message": "Останні маркери",
-        "description": "Label for buttons style option in settings"
+        "message": "Останні маркери"
     },
     "recreateTooltipAfterScroll": {
-        "message": "Перестворити панель після прокрутки або зміни розміру вікна",
-        "description": "Label for field in settings"
+        "message": "Перестворити панель після прокрутки або зміни розміру вікна"
     },
     "removeCustomIcon": {
-        "message": "Прибрати свою іконку",
-        "description": "Tooltip for button to remove custom icon"
+        "message": "Прибрати свою іконку"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": "Прибрати виділення після виконаної дії",
-        "description": ""
+        "message": "Прибрати виділення після виконаної дії"
     },
     "resetDefaults": {
-        "message": "Скинути настройки",
-        "description": ""
+        "message": "Скинути настройки"
     },
     "reverseTooltipButtonsOrder": {
-        "message": "Зворотний порядок кнопок",
-        "description": "Label for settings button"
+        "message": "Зворотний порядок кнопок"
     },
     "scaleUpFromBottomTooltipEffect": {
-        "message": "Збільшення (знизу)",
-        "description": "Label for buttons style option in settings"
+        "message": "Збільшення (знизу)"
     },
     "scaleUpTooltipEffect": {
-        "message": "Збільшення",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Збільшення"
     },
     "searchLabel": {
-        "message": "Шукати",
-        "description": "Label for search text action"
+        "message": "Шукати"
     },
     "searchingDefinitions": {
-        "message": "Пошук визначень",
-        "description": ""
+        "message": "Пошук визначень"
     },
     "secondaryTooltipEnabled": {
-        "message": "Панель активована",
-        "description": "Label for add new search option button"
+        "message": "Панель активована"
     },
     "secondaryTooltipIconSize": {
-        "message": "Розмір іконок (px)",
-        "description": "Label for add new search option button"
+        "message": "Розмір іконок (px)"
     },
     "secondaryTooltipLayout": {
-        "message": "Розмітка кнопок",
-        "description": "Label for field in settings"
+        "message": "Розмітка кнопок"
     },
     "selectionCenter": {
-        "message": "Центр виділення",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Центр виділення"
     },
     "selectionHeader": {
-        "message": "Виділення тексту",
-        "description": "Заголовок категорії в налаштуваннях"
+        "message": "Виділення тексту"
     },
     "selectonSettings": {
-        "message": "Налаштування Selecton",
-        "description": "Label for popup header"
+        "message": "Налаштування Selecton"
     },
     "shadowOpacity": {
-        "message": "Прозорість тіні",
-        "description": ""
+        "message": "Прозорість тіні"
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Спробувати підняти панель вгору, коли сайт показує свою при виділенні тексту",
-        "description": ""
+        "message": "Спробувати підняти панель вгору, коли сайт показує свою при виділенні тексту"
     },
     "shouldOverrideWebsiteSelectionColor": {
-        "message": "Переписати колір виділення сайту",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Переписати колір виділення сайту"
     },
     "showButtonBorders": {
-        "message": "Показувати роздільники кнопок",
-        "description": "Label for buttons style option in settings"
+        "message": "Показувати роздільники кнопок"
     },
     "showButtonLabelOnHover": {
-        "message": "Показати текст кнопки при наведенні",
-        "description": "Label for option in settings"
+        "message": "Показати текст кнопки при наведенні"
     },
     "showDictionaryButton": {
-        "message": "Показати кнопку словника",
-        "description": ""
+        "message": "Показати кнопку словника"
     },
     "showDotForHoverButtons": {
-        "message": "Показати крапку на кнопках із подією наведення",
-        "description": ""
+        "message": "Показати крапку на кнопках із подією наведення"
     },
     "showEmailButton": {
-        "message": "Додати кнопку електронної пошти",
-        "description": "Label for field in settings"
+        "message": "Додати кнопку електронної пошти"
+    },
+    "showInfoPanel": {
+        "message": "Показати інфо-панель (кіл-ть слів та символів)"
     },
     "showOnMap": {
-        "message": "На мапі",
-        "description": "Label for show on map action"
+        "message": "На мапі"
     },
     "showOnMapButtonEnabled": {
-        "message": "Додати кнопку 'Показати на карті'",
-        "description": "Label for field in settings"
+        "message": "Додати кнопку 'Показати на карті'"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Показати заголовок при наведенні",
-        "description": "Label for option in settings"
+        "message": "Показати заголовок при наведенні"
     },
     "showStatsOnCopyButtonHover": {
-        "message": "Показувати інформацію при наведенні на кнопку Копіювати",
-        "description": "Label for buttons style option in settings"
+        "message": "Показувати інформацію при наведенні на кнопку Копіювати"
     },
     "showTooltipArrow": {
-        "message": "Показувати стрілку внизу панелі",
-        "description": "Label for field in settings"
+        "message": "Показувати стрілку внизу панелі"
     },
     "showTranslateButton": {
-        "message": "Показувати кнопку перекладу",
-        "description": ""
+        "message": "Показувати кнопку перекладу"
     },
     "showTranslateIfLanguageUnknown": {
-        "message": "Показати кнопку перекладу, якщо мова не визначена",
-        "description": "Label for field in settings"
+        "message": "Показати кнопку перекладу, якщо мова не визначена"
     },
     "showUnconvertedValue": {
-        "message": "Показати вихідне значення перед перетворенням",
-        "description": "Мітка для кнопки в налаштуваннях"
+        "message": "Показати вихідне значення перед перетворенням"
     },
     "showUpdateNotification": {
-        "message": "Показати сповіщення при оновленні",
-        "description": "Label for field in settings"
+        "message": "Показати сповіщення при оновленні"
     },
     "snapSelectionToWord": {
-        "message": "Прив'язка виділення тексту по слову",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Прив'язка виділення тексту по слову"
     },
     "strikeLabel": {
-        "message": "Закреслен.",
-        "description": "Label for buttons style option in settings"
+        "message": "Закреслен."
     },
     "symbolsCount": {
-        "message": "Символів",
-        "description": "Label for buttons style option in settings"
+        "message": "Символів"
     },
     "testPageButton": {
-        "message": "Перевірити налаштування",
-        "description": "Label for buttons style option in settings"
+        "message": "Перевірити налаштування"
+    },
+    "textFieldsHeader": {
+        "message": "Текстові поля"
     },
     "textSelectionBackground": {
-        "message": "Колір виділення",
-        "description": ""
+        "message": "Колір виділення"
     },
     "textSelectionBackgroundOpacity": {
-        "message": "Прозорість фону",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Прозорість фону"
     },
     "textSelectionColor": {
-        "message": "Колір тексту",
-        "description": ""
+        "message": "Колір тексту"
+    },
+    "today": {
+        "message": "Сегодня"
     },
     "tooltipBackground": {
-        "message": "Колір фону",
-        "description": ""
+        "message": "Колір фону"
     },
     "tooltipInvertedBackground": {
-        "message": "Колір фону (темна сторінка)",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Колір фону (темна сторінка)"
     },
     "tooltipOpacity": {
-        "message": "Прозорість панелі",
-        "description": ""
+        "message": "Прозорість панелі"
     },
     "tooltipPosition": {
-        "message": "Горизонтальне вирівнювання панелі",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Горизонтальне вирівнювання панелі"
     },
     "tooltipRevealEffect": {
-        "message": "Ефект появи панелі",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Ефект появи панелі"
     },
     "translateLabel": {
-        "message": "Переклад",
-        "description": "Label for translate action"
+        "message": "Переклад"
     },
     "translating": {
-        "message": "Переклад",
-        "description": ""
+        "message": "Переклад"
     },
     "updateNotificationMessage": {
-        "message": "Клікніть тут, щоб побачити що нового",
-        "description": ""
+        "message": "Клікніть тут, щоб побачити що нового"
     },
     "updateNotificationTitle": {
         "message": "Selecton оновлено до $VERSION$",
-        "description": "",
         "placeholders": {
             "version": {
                 "content": "$1",
@@ -662,47 +577,50 @@
         }
     },
     "updatePageToSeeChanges": {
-        "message": "Оновіть сторінку, щоб побачити зміни",
-        "description": ""
+        "message": "Оновіть сторінку, щоб побачити зміни"
     },
     "updateRatesEveryDays": {
-        "message": "Інтервал оновлення рейтів (дні)",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Інтервал оновлення рейтів (дні)"
     },
     "useCustomStyle": {
-        "message": "Змінити стиль панелі",
-        "description": ""
+        "message": "Змінити стиль панелі"
     },
     "useIconFromGoogle": {
-        "message": "Іконка від Google",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Іконка від Google"
     },
     "verticalLayout": {
-        "message": "Вертикальна",
-        "description": "Label for field in settings"
+        "message": "Вертикальна"
+    },
+    "verticalLayoutTooltip": {
+        "message": "Використовувати вертикальний стиль панелі (експериментально)"
     },
     "verticalSecondaryTooltip": {
-        "message": "Відображати як вертикальний список (відключити для горизонтального)",
-        "description": "Мітка для поля в налаштуваннях"
+        "message": "Відображати як вертикальний список (відключити для горизонтального)"
     },
     "visitGithub": {
-        "message": "Відвідати сторінку на GitHub",
-        "description": ""
+        "message": "Відвідати сторінку на GitHub"
     },
     "whatsNew": {
-        "message": "Що нового",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Що нового"
     },
     "wordSnappingBlacklist": {
-        "message": "Домени для виключення",
-        "description": "Label for buttons style option in settings"
+        "message": "Домени для виключення"
     },
     "wordsCount": {
-        "message": "Слів",
-        "description": "Label for buttons style option in settings"
+        "message": "Слів"
     },
     "writeAReview": {
-        "message": "Залишити відгук",
-        "description": "Мітка для параметра стилю кнопок у налаштуваннях"
+        "message": "Залишити відгук"
+    },
+    "yearAgo": {
+        "message": "Рiк тому"
+    },
+    "yearsAgo": {
+        "message": "$YEARS$ рокiв тому",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     }
 }

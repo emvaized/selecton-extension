@@ -1,663 +1,577 @@
 {
   "actionButtonsHeader": {
-    "message": "Action buttons",
-    "description": "Header for action buttons category in settings"
+    "message": "Action buttons"
   },
   "addActionButtonsForTextFields": {
-    "message": "Use special panel for text fields",
-    "description": "Label for field in settings"
+    "message": "Use special panel for text fields"
   },
   "addButtonIcons": {
-    "message": "Show icons for buttons",
-    "description": "Label for field in settings"
+    "message": "Show icons for buttons"
+  },
+  "addButtonToCopyLinkToText": {
+    "message": "Add button to copy link to selected text"
+  },
+  "addCalendarButton": {
+    "message": "Add calendar button for dates"
   },
   "addClearButton": {
-    "message": "Show 'Clear' button on click non-empty field",
-    "description": "Label for option in settings"
+    "message": "Show 'Clear' button on click non-empty field"
   },
   "addColorPreviewButton": {
-    "message": "Add color preview button (for CSS colors like #ffffff)",
-    "description": "Label for field in settings"
+    "message": "Add color preview button (for CSS colors like #ffffff)"
   },
   "addDragHandles": {
-    "message": "Add selection drag handles",
-    "description": "Label for option in settings"
+    "message": "Add selection drag handles"
   },
   "addFontFormatButtons": {
-    "message": "Add font format buttons (italic, bold)",
-    "description": "Label for option in settings"
+    "message": "Add font format buttons (italic, bold)"
   },
   "addMarkerButton": {
-    "message": "Add 'Highlight' button",
-    "description": "Label for option in settings"
+    "message": "Add 'Highlight' button"
   },
   "addNewSearchOption": {
-    "message": "Add new search option",
-    "description": "Label for add new search option button"
+    "message": "Add new search option"
   },
   "addOpenLinks": {
-    "message": "Add button to open link",
-    "description": "Label for field in settings"
+    "message": "Add button to open link"
   },
   "addPasteButton": {
-    "message": "Show 'Paste' button when click on text field",
-    "description": "Label for option in settings"
+    "message": "Show 'Paste' button when click on text field"
   },
   "addPasteOnlyEmptyField": {
-    "message": "... only when field is empty",
-    "description": "Label for option in settings"
+    "message": "... only when field is empty"
   },
   "addPhoneButton": {
-    "message": "Add phone number button",
-    "description": "Label for option in settings"
+    "message": "Add phone number button"
   },
   "addScaleUpEffect": {
-    "message": "Use scale-up effect on reveal",
-    "description": "Label for option in settings"
+    "message": "Use scale-up effect on reveal"
   },
   "addTooltipShadow": {
-    "message": "Add tooltip shadow",
-    "description": "Label for field in settings"
+    "message": "Add tooltip shadow"
   },
   "allChangesSavedAutomatically": {
-    "message": "All settings are saved automatically",
-    "description": ""
+    "message": "All settings are saved automatically"
   },
   "animationDuration": {
-    "message": "Animations duration (ms)",
-    "description": "Label for field in settings"
+    "message": "Animations duration (ms)"
   },
   "appearanceHeader": {
-    "message": "Appearance",
-    "description": "Header for appearance category in settings"
+    "message": "Appearance"
   },
   "applyConfigsImmediately": {
-    "message": "Apply configs immediately",
-    "description": "Header for appearance category in settings"
+    "message": "Apply configs immediately"
   },
   "behaviorHeader": {
-    "message": "Behavior",
-    "description": "Header for behavior category in settings"
+    "message": "Behavior"
   },
   "boldLabel": {
-    "message": "Bold",
-    "description": "Label for field in settings"
+    "message": "Bold"
   },
   "borderRadius": {
-    "message": "Border radius",
-    "description": "Label for field in settings"
+    "message": "Border radius"
   },
   "buttonsStyle": {
-    "message": "Buttons style",
-    "description": "Label for option in settings"
+    "message": "Buttons style"
   },
   "buyMeCoffee": {
-    "message": "Support project",
-    "description": ""
+    "message": "Support project"
   },
   "callLabel": {
-    "message": "Call",
-    "description": "Label for option in settings"
+    "message": "Call"
   },
   "changeTextSelectionColor": {
-    "message": "Customize text selection",
-    "description": "Label for field in settings"
+    "message": "Customize text selection"
   },
   "chooseFileFirst": {
-    "message": "Choose the file first",
-    "description": ""
+    "message": "Choose the file first"
   },
   "clearLabel": {
-    "message": "Clear",
-    "description": "Label for option in settings"
+    "message": "Clear"
   },
   "collapseButtons": {
-    "message": "Hide exceeding buttons under 'More' button",
-    "description": "Label for option in settings"
+    "message": "Hide exceeding buttons under 'More' button"
   },
   "contextualButtonsHeader": {
-    "message": "Buttons",
-    "description": "Header for contextual buttons category in settings"
+    "message": "Buttons"
   },
   "convertCurrencies": {
-    "message": "Convert currencies",
-    "description": "Label for field in settings"
+    "message": "Convert currencies"
   },
   "convertMetrics": {
-    "message": "Convert metrics",
-    "description": "Label for field in settings"
+    "message": "Convert metrics"
   },
   "convertResultClickAction": {
-    "message": "Action when click on result",
-    "description": "Label for field in settings"
+    "message": "Action when click on result"
   },
   "convertTime": {
-    "message": "Convert time",
-    "description": "Label for field in settings"
+    "message": "Convert time"
   },
   "convertToCurrency": {
-    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info</a>)",
-    "description": "Label for field in settings"
+    "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info</a>)"
   },
   "convertToCurrencyHint": {
-    "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference",
-    "description": "Currency code hint for 'convert to currency' field in settings"
+    "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference"
   },
   "convertionHeader": {
-    "message": "Conversion",
-    "description": "Header for convertion category in settings"
+    "message": "Conversion"
   },
   "copyLabel": {
-    "message": "Copy",
-    "description": "Label for copy text action"
+    "message": "Copy"
   },
   "customIcon": {
-    "message": "Custom icon",
-    "description": "Label for field in settings"
+    "message": "Custom icon"
   },
   "customIconUrl": {
-    "message": "Custom icon URL",
-    "description": "Label for option in settings"
+    "message": "Custom icon URL"
   },
   "customSearchButtonsHeader": {
-    "message": "Search buttons",
-    "description": "Header for settings section"
+    "message": "Search buttons"
   },
   "customSearchOptionsDisplay": {
-    "message": "Style to display custom search options",
-    "description": "Label for option in settings"
+    "message": "Style to display custom search options"
   },
   "customSearchTooltip": {
-    "message": "Custom search options",
-    "description": "Label for field in settings"
+    "message": "Custom search options"
   },
   "customSearchTooltipHint": {
-    "message": "Gets revealed on hovering over the 'Search' button. Use %s as a placeholder for search query, %w is a placeholder for current domain (for website search)",
-    "description": "Label for field in settings"
+    "message": "Gets revealed on hovering over the 'Search' button. Use %s as a placeholder for search query, %w is a placeholder for current domain (for website search)"
   },
   "customSearchUrl": {
-    "message": "Custom search URL <br />(use %s as a placeholder for query)",
-    "description": "Label for field in settings"
+    "message": "Custom search URL <br />(use %s as a placeholder for query)"
   },
   "cutLabel": {
-    "message": "Cut",
-    "description": "Label for cut action"
+    "message": "Cut"
+  },
+  "dayAgo": {
+    "message": "Day ago"
+  },
+  "daysAgo": {
+    "message": "$DAYS$ days ago",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
   },
   "debugMode": {
-    "message": "Debug mode",
-    "description": "Label for option in settings"
+    "message": "Debug mode"
   },
   "delayToRevealHoverPanels": {
-    "message": "Delay before revealing panels on hover (ms)",
-    "description": "Label for option in settings"
+    "message": "Delay before revealing panels on hover (ms)"
   },
   "delayToRevealSearchTooltip": {
-    "message": "Delay before reveal panel (ms)",
-    "description": "Label for the delete button"
+    "message": "Delay before reveal panel (ms)"
   },
   "delayToRevealTranslateTooltip": {
-    "message": "Delay before auto translate (ms)",
-    "description": ""
+    "message": "Delay before auto translate (ms)"
   },
   "deleteLabel": {
-    "message": "Delete",
-    "description": "Label for the delete button"
+    "message": "Delete"
   },
   "dictionaryButtonRemark": {
-    "message": "Looks up Wikipedia definitions on hover",
-    "description": ""
+    "message": "Looks up Wikipedia definitions on hover"
   },
   "dictionaryButtonResponseCharsAmount": {
-    "message": "Max number of chars to display as a result",
-    "description": ""
+    "message": "Max number of chars to display as a result"
   },
   "dictionaryButtonWordsAmount": {
-    "message": "Words to show dictionary button",
-    "description": ""
+    "message": "Words to show dictionary button"
   },
   "dictionaryLabel": {
-    "message": "Dictionary",
-    "description": "Label for Dictionary button"
+    "message": "Dictionary"
   },
   "disableForBetterPerformance": {
-    "message": "Disable for better performance",
-    "description": "Label for option in settings"
+    "message": "Disable for better performance"
   },
   "disableWordSnapForCode": {
-    "message": "Disable word snapping for code",
-    "description": "Label for option in settings"
+    "message": "Disable word snapping for code"
   },
   "disableWordSnappingOnCtrlKey": {
-    "message": "Do not select by words if the CTRL key is pressed",
-    "description": "Label for option in settings"
+    "message": "Do not select by words if the CTRL key is pressed"
   },
   "dontSnapTextfieldSelection": {
-    "message": "Do not snap selection in text fields",
-    "description": "Label for option in settings"
+    "message": "Do not snap selection in text fields"
   },
   "draggableTooltip": {
-    "message": "Panel can be dragged by the arrow",
-    "description": "Label for field in settings"
+    "message": "Panel can be dragged by the arrow"
   },
   "email": {
-    "message": "Email",
-    "description": "Label for field in settings"
+    "message": "Email"
   },
   "enabled": {
-    "message": "Enabled",
-    "description": "Label for field in settings"
+    "message": "Enabled"
   },
   "excludedDomains": {
-    "message": "Excluded domains",
-    "description": "Label for option in settings"
+    "message": "Excluded domains"
   },
   "export": {
-    "message": "Export",
-    "description": ""
+    "message": "Export"
   },
   "exportImportSettings": {
-    "message": "Export/import settings",
-    "description": ""
+    "message": "Export/import settings"
   },
   "exportSettingsLabel": {
-    "message": "Export settings",
-    "description": ""
+    "message": "Export settings"
   },
   "extensionDescription": {
-    "message": "Customizable popup with actions on text selection",
-    "description": "Extension description"
+    "message": "Customizable popup with actions on text selection"
   },
   "fallbackExportLabel": {
-    "message": "To export, save as .json file",
-    "description": "Label for option in settings"
+    "message": "To export, save as .json file"
   },
   "floatingOffscreenTooltip": {
-    "message": "Floating panel when it's scrolled off-screen",
-    "description": "Label for option in settings"
+    "message": "Floating panel when it's scrolled off-screen"
   },
   "fontSize": {
-    "message": "Font size",
-    "description": "Label for option in settings"
+    "message": "Font size"
   },
   "fullOpacityOnHover": {
-    "message": "Full opacity on hover",
-    "description": "Label for option in settings"
+    "message": "Full opacity on hover"
   },
   "gmail": {
-    "message": "Gmail new email",
-    "description": "Option label for new email method setting"
+    "message": "Gmail new email"
   },
   "hideOnKeypress": {
-    "message": "Hide on key press",
-    "description": "Label for field in settings"
+    "message": "Hide on key press"
   },
   "hideOnScroll": {
-    "message": "Hide tooltip on scroll",
-    "description": "Label for field in settings"
+    "message": "Hide tooltip on scroll"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "Hide tooltip when cursor moves away"
   },
   "hideTranslateButtonForUserLanguage": {
-    "message": "Hide translate button for user's language",
-    "description": "Label for field in settings"
+    "message": "Hide translate button for user's language"
   },
   "horizontalLayout": {
-    "message": "Horizontal",
-    "description": "Label for field in settings"
+    "message": "Horizontal"
   },
   "hoverCustomSearchStyle": {
-    "message": "Show on search button hover",
-    "description": "Label for option in settings"
+    "message": "Show on search button hover"
   },
   "iconlabel": {
-    "message": "Icons + text",
-    "description": "Label for option in settings"
+    "message": "Icons + text"
   },
   "imperial": {
-    "message": "Imperial",
-    "description": "Variant of metrics system for dropdown"
+    "message": "Imperial"
   },
   "import": {
-    "message": "Import",
-    "description": ""
+    "message": "Import"
   },
   "importAlert": {
-    "message": "This action will override current Selecton settings. Are you sure?",
-    "description": ""
+    "message": "This action will override current Selecton settings. Are you sure?"
   },
   "importSettingsLabel": {
-    "message": "Import settings",
-    "description": ""
+    "message": "Import settings"
+  },
+  "inDay": {
+    "message": "In a day"
+  },
+  "inDays": {
+    "message": "In $DAYS$ days",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "inMonth": {
+    "message": "In month"
+  },
+  "inMonths": {
+    "message": "In $MONTHS$ months",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
+  },
+  "inYear": {
+    "message": "In year"
+  },
+  "inYears": {
+    "message": "In $YEARS$ years",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
   },
   "invertColorOnDarkWebsite": {
-    "message": "Invert color on dark website",
-    "description": "Label for field in settings"
+    "message": "Invert color on dark website"
   },
   "italicLabel": {
-    "message": "Italic",
-    "description": "Label for field in settings"
+    "message": "Italic"
   },
   "languageToTranslate": {
-    "message": "User's language (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)",
-    "description": "Label for field in settings, incorporating inline link"
+    "message": "User's language (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)"
   },
   "leftClickBackgroundTab": {
-    "message": "Left click opens link as background tab",
-    "description": "Label for option in settings"
+    "message": "Left click opens link as background tab"
+  },
+  "linkToTextDescription": {
+    "message": "Copy page link pointing to the selected text (opens only in Chrome 90+)"
+  },
+  "linkToTextLabel": {
+    "message": "Copy link"
   },
   "liveTranslation": {
-    "message": "Live translation on button hover (Google Translate)",
-    "description": "Label for field in settings"
+    "message": "Live translation on button hover (Google Translate)"
   },
   "mailto": {
-    "message": "Email client",
-    "description": "Option label for new email method setting"
+    "message": "Email client"
   },
   "markedLabel": {
-    "message": "Highlighted",
-    "description": "Label for option in settings"
+    "message": "Highlighted"
   },
   "markerLabel": {
-    "message": "Highlight",
-    "description": "Label for option in settings"
+    "message": "Highlight"
   },
   "markersLabel": {
-    "message": "Highlights",
-    "description": "Label for option in settings"
+    "message": "Highlights"
   },
   "maxIconsInRow": {
-    "message": "Amount of icons in row",
-    "description": "Option label for new email method setting"
+    "message": "Amount of icons in row"
   },
   "maxMarkerPagesToStore": {
-    "message": "Max pages to store highlights",
-    "description": "Label for option in settings"
+    "message": "Max pages to store highlights"
   },
   "maxTooltipButtonsToShow": {
-    "message": "Max buttons to show in the tooltip",
-    "description": "Label for option in settings"
+    "message": "Max buttons to show in the tooltip"
   },
   "metric": {
-    "message": "Metric",
-    "description": "Variant of metrics system for dropdown"
+    "message": "Metric"
   },
   "middleClickHidesTooltip": {
-    "message": "Middle click (to open in background) hides panel",
-    "description": "Label for option in settings"
+    "message": "Middle click (to open in background) hides panel"
+  },
+  "monthAgo": {
+    "message": "Month ago"
+  },
+  "monthsAgo": {
+    "message": "$MONTHS$ months ago",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
   },
   "moveDownLabel": {
-    "message": "Move down",
-    "description": "Tooltip for 'move button down' button"
+    "message": "Move down"
   },
   "moveDownTooltipEffect": {
-    "message": "Move down",
-    "description": "Label for option in settings"
+    "message": "Move down"
   },
   "moveUpLabel": {
-    "message": "Move up",
-    "description": "Tooltip for 'move button up' button"
+    "message": "Move up"
   },
   "moveUpTooltipEffect": {
-    "message": "Move up",
-    "description": "Label for option in settings"
+    "message": "Move up"
   },
   "noDefinitionFound": {
-    "message": "No definition found",
-    "description": ""
+    "message": "No definition found"
   },
   "noTooltipEffect": {
-    "message": "No effect",
-    "description": "Label for option in settings"
+    "message": "No effect"
   },
   "noTranslationFound": {
-    "message": "No translation found",
-    "description": ""
+    "message": "No translation found"
   },
   "onlyicon": {
-    "message": "Icons only",
-    "description": "Label for option in settings"
+    "message": "Icons only"
   },
   "onlylabel": {
-    "message": "Text only",
-    "description": "Label for option in settings"
+    "message": "Text only"
   },
   "openInNewTab": {
-    "message": "Open in new tab",
-    "description": "Label for open link action"
+    "message": "Open in new tab"
   },
   "openLinkLabel": {
-    "message": "Open",
-    "description": "Label for open link action"
+    "message": "Open"
   },
   "overCursor": {
-    "message": "Over cursor",
-    "description": "Label for field in settings"
+    "message": "Over cursor"
   },
   "panelCustomSearchStyle": {
-    "message": "Show in main panel",
-    "description": "Label for option in settings"
+    "message": "Show in main panel"
   },
   "pasteLabel": {
-    "message": "Paste",
-    "description": "Label for paste action"
+    "message": "Paste"
   },
   "performSimpleMathOperations": {
-    "message": "Perform simple math calculations",
-    "description": "Label for field in settings"
+    "message": "Perform simple math calculations"
   },
   "preferCurrencySymbol": {
-    "message": "Prefer currency symbols instead of codes",
-    "description": "Label for option in settings"
+    "message": "Prefer currency symbols instead of codes"
   },
   "preferredMetricsSystem": {
-    "message": "Preferred metrics system",
-    "description": "Label for field in settings"
+    "message": "Preferred metrics system"
   },
   "preferredNewEmailMethod": {
-    "message": "Preferred method for creating new email",
-    "description": "Label for field in settings"
+    "message": "Preferred method for creating new email"
   },
   "preferredSearchEngine": {
-    "message": "Search engine",
-    "description": "Label for field in settings"
+    "message": "Search engine"
   },
   "preferredTranslateService": {
-    "message": "Translation service",
-    "description": "Label for field in settings"
+    "message": "Translation service"
   },
   "recentMarkersLabel": {
-    "message": "Recent highlights",
-    "description": "Label for option in settings"
+    "message": "Recent highlights"
   },
   "recreateTooltipAfterScroll": {
-    "message": "Recreate tooltip after scroll or window resize",
-    "description": "Label for field in settings"
+    "message": "Recreate tooltip after scroll or window resize"
   },
   "removeCustomIcon": {
-    "message": "Remove custom icon",
-    "description": "Tooltip for button to remove custom icon"
+    "message": "Remove custom icon"
   },
   "removeSelectionOnActionButtonClick": {
-    "message": "Remove text selection after selected action",
-    "description": ""
+    "message": "Remove text selection after selected action"
   },
   "resetDefaults": {
-    "message": "Restore defaults",
-    "description": "Label for settings button to restore default settings"
+    "message": "Restore defaults"
   },
   "reverseTooltipButtonsOrder": {
-    "message": "Reverse the order of buttons",
-    "description": "Label for settings button"
+    "message": "Reverse the order of buttons"
   },
   "scaleUpFromBottomTooltipEffect": {
-    "message": "Scale up (from bottom)",
-    "description": "Label for option in settings"
+    "message": "Scale up (from bottom)"
   },
   "scaleUpTooltipEffect": {
-    "message": "Scale up",
-    "description": "Label for option in settings"
+    "message": "Scale up"
   },
   "searchLabel": {
-    "message": "Search",
-    "description": "Label for search text action"
+    "message": "Search"
   },
   "searchingDefinitions": {
-    "message": "Searching for definitions",
-    "description": ""
+    "message": "Searching for definitions"
   },
   "secondaryTooltipEnabled": {
-    "message": "Tooltip enabled",
-    "description": "Label for add new search option button"
+    "message": "Tooltip enabled"
   },
   "secondaryTooltipIconSize": {
-    "message": "Icon size (px)",
-    "description": "Label for add new search option button"
+    "message": "Icon size (px)"
   },
   "secondaryTooltipLayout": {
-    "message": "Button layout",
-    "description": "Label for field in settings"
+    "message": "Button layout"
   },
   "selectionCenter": {
-    "message": "Center of selection",
-    "description": "Label for field in settings"
+    "message": "Center of selection"
   },
   "selectionHeader": {
-    "message": "Text selection",
-    "description": "Header for category in settings"
+    "message": "Text selection"
   },
   "selectonSettings": {
-    "message": "Selecton settings",
-    "description": "Label for popup header"
+    "message": "Selecton settings"
   },
   "shadowOpacity": {
-    "message": "Shadow opacity",
-    "description": "Label for field in settings"
+    "message": "Shadow opacity"
   },
   "shiftTooltipWhenWebsiteHasOwn": {
-    "message": "Try to shift tooltip up when website shows it's own for text selection",
-    "description": "Label for field in settings"
+    "message": "Try to shift tooltip up when website shows it's own for text selection"
   },
   "shouldOverrideWebsiteSelectionColor": {
-    "message": "Overwrite page's highlight color",
-    "description": "Label for option in settings"
+    "message": "Overwrite page's highlight color"
   },
   "showButtonBorders": {
-    "message": "Show button dividers",
-    "description": "Label for option in settings"
+    "message": "Show button dividers"
   },
   "showButtonLabelOnHover": {
-    "message": "Show button label on hover",
-    "description": "Label for option in settings"
+    "message": "Show button label on hover"
   },
   "showDictionaryButton": {
-    "message": "Show the dictionary button",
-    "description": ""
+    "message": "Show the dictionary button"
   },
   "showDotForHoverButtons": {
-    "message": "Show dot on buttons with hover event",
-    "description": ""
+    "message": "Show dot on buttons with hover event"
   },
   "showEmailButton": {
-    "message": "Add email button",
-    "description": "Label for field in settings"
+    "message": "Add email button"
+  },
+  "showInfoPanel": {
+    "message": "Show info panel (word and symbols count)"
   },
   "showOnMap": {
-    "message": "Show on map",
-    "description": "Label for show on map action"
+    "message": "Show on map"
   },
   "showOnMapButtonEnabled": {
-    "message": "Add button to show on map",
-    "description": "Label for field in settings"
+    "message": "Add button to show on map"
   },
   "showSecondaryTooltipTitleOnHover": {
-    "message": "Show title on hover",
-    "description": "Label for option in settings"
+    "message": "Show title on hover"
   },
   "showStatsOnCopyButtonHover": {
-    "message": "Show stats on Copy button hover",
-    "description": "Label for option in settings"
+    "message": "Show stats on Copy button hover"
   },
   "showTooltipArrow": {
-    "message": "Show tooltip arrow",
-    "description": "Label for field in settings"
+    "message": "Show tooltip arrow"
   },
   "showTranslateButton": {
-    "message": "Show translate button",
-    "description": "Label for field in settings"
+    "message": "Show translate button"
   },
   "showTranslateIfLanguageUnknown": {
-    "message": "Show translate button if language is not detected",
-    "description": "Label for field in settings"
+    "message": "Show translate button if language is not detected"
   },
   "showUnconvertedValue": {
-    "message": "Show original value before conversion",
-    "description": "Label for button in settings"
+    "message": "Show original value before conversion"
   },
   "showUpdateNotification": {
-    "message": "Show notification on update",
-    "description": "Label for field in settings"
+    "message": "Show notification on update"
   },
   "snapSelectionToWord": {
-    "message": "Snap text selection by word",
-    "description": "Label for option in settings"
+    "message": "Snap text selection by word"
   },
   "strikeLabel": {
-    "message": "Strike",
-    "description": "Label for option in settings"
+    "message": "Strike"
   },
   "symbolsCount": {
-    "message": "Symbols",
-    "description": "Label for option in settings"
+    "message": "Symbols"
   },
   "testPageButton": {
-    "message": "Test the settings",
-    "description": "Label for option in settings"
+    "message": "Test the settings"
+  },
+  "textFieldsHeader": {
+    "message": "Text fields"
   },
   "textSelectionBackground": {
-    "message": "Selection color",
-    "description": "Label for field in settings"
+    "message": "Selection color"
   },
   "textSelectionBackgroundOpacity": {
-    "message": "Background opacity",
-    "description": "Label for field in settings"
+    "message": "Background opacity"
   },
   "textSelectionColor": {
-    "message": "Text color",
-    "description": "Label for field in settings"
+    "message": "Text color"
+  },
+  "today": {
+    "message": "Today"
   },
   "tooltipBackground": {
-    "message": "Background color",
-    "description": "Label for field in settings"
+    "message": "Background color"
   },
   "tooltipInvertedBackground": {
-    "message": "Background color (dark page)",
-    "description": "Label for field in settings"
+    "message": "Background color (dark page)"
   },
   "tooltipOpacity": {
-    "message": "Tooltip opacity",
-    "description": "Label for field in settings"
+    "message": "Tooltip opacity"
   },
   "tooltipPosition": {
-    "message": "Horizontal alignment of tooltip",
-    "description": "Label for field in settings"
+    "message": "Horizontal alignment of tooltip"
   },
   "tooltipRevealEffect": {
-    "message": "Tooltip reveal effect",
-    "description": "Label for option in settings"
+    "message": "Tooltip reveal effect"
   },
   "translateLabel": {
-    "message": "Translate",
-    "description": "Label for translate action"
+    "message": "Translate"
   },
   "translating": {
-    "message": "Translating",
-    "description": ""
+    "message": "Translating"
   },
   "updateNotificationMessage": {
-    "message": "Click here to see what's new",
-    "description": ""
+    "message": "Click here to see what's new"
   },
   "updateNotificationTitle": {
     "message": "Selecton was updated to $VERSION$",
-    "description": "",
     "placeholders": {
       "version": {
         "content": "$1",
@@ -666,79 +580,50 @@
     }
   },
   "updatePageToSeeChanges": {
-    "message": "Refresh the page to see the changes",
-    "description": ""
+    "message": "Refresh the page to see the changes"
   },
   "updateRatesEveryDays": {
-    "message": "Rates update interval (days)",
-    "description": "Label for option in settings"
+    "message": "Rates update interval (days)"
   },
   "useCustomStyle": {
-    "message": "Use custom style for tooltip",
-    "description": "Label for field in settings"
+    "message": "Use custom style for tooltip"
   },
   "useIconFromGoogle": {
-    "message": "Use icon from Google",
-    "description": "Label for field in settings"
+    "message": "Use icon from Google"
   },
   "verticalLayout": {
-    "message": "Vertical",
-    "description": "Label for field in settings"
-  },
-  "verticalSecondaryTooltip": {
-    "message": "Display as vertical list (disable for horizontal)",
-    "description": "Label for field in settings"
-  },
-  "visitGithub": {
-    "message": "Visit GitHub page",
-    "description": "Label for settings button leading to GitHub page"
-  },
-  "whatsNew": {
-    "message": "What's new",
-    "description": "Label for option in settings"
-  },
-  "wordSnappingBlacklist": {
-    "message": "Domains to exclude",
-    "description": "Label for option in settings"
-  },
-  "wordsCount": {
-    "message": "Words",
-    "description": "Label for option in settings"
-  },
-  "writeAReview": {
-    "message": "Write a review",
-    "description": "Label for option in settings"
+    "message": "Vertical"
   },
   "verticalLayoutTooltip": {
-    "message": "Use vertical tooltip layout (experimental)",
-    "description": "Label for option in settings"
+    "message": "Use vertical tooltip layout (experimental)"
   },
-  "hideTooltipWhenCursorMovesAway": {
-    "message": "Hide tooltip when cursor moves away",
-    "description": "Label for option in settings"
+  "verticalSecondaryTooltip": {
+    "message": "Display as vertical list (disable for horizontal)"
   },
-  "textFieldsHeader": {
-    "message": "Text fields",
-    "description": "Header for section in settings"
+  "visitGithub": {
+    "message": "Visit GitHub page"
   },
-  "linkToTextLabel": {
-    "message": "Copy link",
-    "description": "Label for tooltip button"
+  "whatsNew": {
+    "message": "What's new"
   },
-  "addButtonToCopyLinkToText": {
-    "message": "Add button to copy link to selected text",
-    "description": "Label for tooltip button"
+  "wordSnappingBlacklist": {
+    "message": "Domains to exclude"
   },
-  "linkToTextDescription": {
-    "message": "Copy page link pointing to the selected text (opens only in Chrome 90+)",
-    "description": "Label for tooltip button"
+  "wordsCount": {
+    "message": "Words"
   },
-  "addCalendarButton": {
-    "message": "Add calendar button for dates",
-    "description": "Label for option in settings"
+  "writeAReview": {
+    "message": "Write a review"
   },
-  "showInfoPanel": {
-    "message": "Show info panel (word and symbols count)",
-    "description": ""
+  "yearAgo": {
+    "message": "Year ago"
+  },
+  "yearsAgo": {
+    "message": "$YEARS$ years ago",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
   }
 }

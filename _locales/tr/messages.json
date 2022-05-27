@@ -1,659 +1,574 @@
 {
     "actionButtonsHeader": {
-        "message": "Eylem düğmeleri",
-        "description": "Ayarlarda eylem düğmeleri kategorisi üstbilgisi"
+        "message": "Eylem düğmeleri"
     },
     "addActionButtonsForTextFields": {
-        "message": "Metin alanları için özel panel kullanma",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Metin alanları için özel panel kullanma"
     },
     "addButtonIcons": {
-        "message": "Düğme simgelerini göster",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Düğme simgelerini göster"
+    },
+    "addButtonToCopyLinkToText": {
+        "message": "Seçilen metne linki kopyalamak için düğme ekle"
+    },
+    "addCalendarButton": {
+        "message": "Tarihler için takvim düğmesi ekle"
     },
     "addClearButton": {
-        "message": "Tıklandığında boş olmayan metin alanında 'Temizle' düğmesini göster",
-        "description": "Label for buttons style option in settings"
+        "message": "Tıklandığında boş olmayan metin alanında 'Temizle' düğmesini göster"
     },
     "addColorPreviewButton": {
-        "message": "Renk önizleme düğmesi ekle (#ffffff gibi CSS renkleri için)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Renk önizleme düğmesi ekle (#ffffff gibi CSS renkleri için)"
     },
     "addDragHandles": {
-        "message": "Seçim sürükleme tutamaçları ekleme",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Seçim sürükleme tutamaçları ekleme"
     },
     "addFontFormatButtons": {
-        "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)"
     },
     "addMarkerButton": {
-        "message": "'Vurgula' düğmesi ekle",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "'Vurgula' düğmesi ekle"
     },
     "addNewSearchOption": {
-        "message": "Yeni arama seçeneği ekle",
-        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
+        "message": "Yeni arama seçeneği ekle"
     },
     "addOpenLinks": {
-        "message": "Bağlantıyı açmak için düğme ekle",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Bağlantıyı açmak için düğme ekle"
     },
     "addPasteButton": {
-        "message": "Metin alanına tıklandığında 'Yapıştır' düğmesini göster",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Metin alanına tıklandığında 'Yapıştır' düğmesini göster"
     },
     "addPasteOnlyEmptyField": {
-        "message": "... sadece alan boş olduğunda",
-        "description": "Ayarlarda seçenek etiketi"
+        "message": "... sadece alan boş olduğunda"
     },
     "addPhoneButton": {
-        "message": "Telefon numarası ekle düğmesi",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Telefon numarası ekle düğmesi"
     },
     "addScaleUpEffect": {
-        "message": "Ortaya çıkanda ölçek büyütme efektlerini kullanma",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Ortaya çıkanda ölçek büyütme efektlerini kullanma"
     },
     "addTooltipShadow": {
-        "message": "Araç ipucu gölgesi ekleme",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Araç ipucu gölgesi ekleme"
     },
     "allChangesSavedAutomatically": {
-        "message": "Tüm ayarlar otomatik olarak kaydedilir",
-        "description": ""
+        "message": "Tüm ayarlar otomatik olarak kaydedilir"
     },
     "animationDuration": {
-        "message": "Animasyon süresi (ms)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Animasyon süresi (ms)"
     },
     "appearanceHeader": {
-        "message": "Panel görünümü",
-        "description": "Ayarlarda görünüm kategorisi üstbilgisi"
+        "message": "Panel görünümü"
     },
     "applyConfigsImmediately": {
-        "message": "Yapılandırmaları hemen uygulayın",
-        "description": "Header for appearance category in settings"
+        "message": "Yapılandırmaları hemen uygulayın"
     },
     "behaviorHeader": {
-        "message": "Panel davranışı",
-        "description": "Ayarlarda görünüm kategorisi üstbilgisi"
+        "message": "Panel davranışı"
     },
     "boldLabel": {
-        "message": "Kalın",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Kalın"
     },
     "borderRadius": {
-        "message": "Kenarlık yarıçapı",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Kenarlık yarıçapı"
     },
     "buttonsStyle": {
-        "message": "Düğme stili",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Düğme stili"
     },
     "buyMeCoffee": {
-        "message": "Projeyi destekleyin",
-        "description": ""
+        "message": "Projeyi destekleyin"
     },
     "callLabel": {
-        "message": "Ara",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Ara"
     },
     "changeTextSelectionColor": {
-        "message": "Metin seçimini özelleştirme",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Metin seçimini özelleştirme"
     },
     "chooseFileFirst": {
-        "message": "Önce dosyayı seçin",
-        "description": ""
+        "message": "Önce dosyayı seçin"
     },
     "clearLabel": {
-        "message": "Temiz",
-        "description": "Label for buttons style option in settings"
+        "message": "Temiz"
     },
     "collapseButtons": {
-        "message": "'Daha Fazla' düğmesinin altındaki aşan düğmeleri gizle",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "'Daha Fazla' düğmesinin altındaki aşan düğmeleri gizle"
     },
     "contextualButtonsHeader": {
-        "message": "Düğme",
-        "description": "Ayarlarda bağlamsal düğmeler kategorisi üstbilgisi"
+        "message": "Düğme"
     },
     "convertCurrencies": {
-        "message": "Para birimlerini dönüştürme",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Para birimlerini dönüştürme"
     },
     "convertMetrics": {
-        "message": "Ölçümleri dönüştürme",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Ölçümleri dönüştürme"
     },
     "convertResultClickAction": {
-        "message": "Sonuç tıklandığında yapılacak işlem",
-        "description": "Label for field in settings"
+        "message": "Sonuç tıklandığında yapılacak işlem"
     },
     "convertTime": {
-        "message": "Zamanı dönüştürme",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Zamanı dönüştürme"
     },
     "convertToCurrency": {
-        "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See bilgileri</a>)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See bilgileri</a>)"
     },
     "convertToCurrencyHint": {
-        "message": "Referans için 'Kod' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> bakın",
-        "description": "Ayarlardaki 'para birimine dönüştür' alanı için para birimi kodu ipucu"
+        "message": "Referans için 'Kod' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> bakın"
     },
     "convertionHeader": {
-        "message": "Dönüşüm",
-        "description": "Ayarlarda dönüştürme kategorisi üstbilgisi"
+        "message": "Dönüşüm"
     },
     "copyLabel": {
-        "message": "Kopya",
-        "description": "Metin kopyalama eylemi etiketi"
+        "message": "Kopya"
     },
     "customIcon": {
-        "message": "Özel simge",
-        "description": "Ayarlarda düğme etiketi"
+        "message": "Özel simge"
     },
     "customIconUrl": {
-        "message": "Özel simge URL'si",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Özel simge URL'si"
     },
     "customSearchButtonsHeader": {
-        "message": "Arama düğmeleri",
-        "description": "Ayarlar bölümü için üstbilgi"
+        "message": "Arama düğmeleri"
     },
     "customSearchOptionsDisplay": {
-        "message": "Özel arama seçeneklerini görüntüleme stili",
-        "description": "Label for option in settings"
+        "message": "Özel arama seçeneklerini görüntüleme stili"
     },
     "customSearchTooltip": {
-        "message": "Özel arama seçenekleri",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Özel arama seçenekleri"
     },
     "customSearchTooltipHint": {
-        "message": "'Ara' düğmesinin üzerine gelindiğinde ortaya çıkar. %s öğesini arama sorgusu için yer tutucu olarak kullan, %w geçerli etki alanı (web sitesi araması için) için bir yer tutucudur",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "'Ara' düğmesinin üzerine gelindiğinde ortaya çıkar. %s öğesini arama sorgusu için yer tutucu olarak kullan, %w geçerli etki alanı (web sitesi araması için) için bir yer tutucudur"
     },
     "customSearchUrl": {
-        "message": "Özel arama URL'si <br />(sorgu için yer tutucu olarak %s kullanın)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Özel arama URL'si <br />(sorgu için yer tutucu olarak %s kullanın)"
     },
     "cutLabel": {
-        "message": "Kesmek",
-        "description": "Kesme eylemi etiketi"
+        "message": "Kesmek"
+    },
+    "dayAgo": {
+        "message": "Gün önce"
+    },
+    "daysAgo": {
+        "message": "$DAYS$ gün önce",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
     },
     "debugMode": {
-        "message": "Hata ayıklama modu",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Hata ayıklama modu"
     },
     "delayToRevealHoverPanels": {
-        "message": "Vurguluyken panelleri göstermeden önce gecikme (ms)",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Vurguluyken panelleri göstermeden önce gecikme (ms)"
     },
     "delayToRevealSearchTooltip": {
-        "message": "Paneli göstermeden önceki gecikme (ms)",
-        "description": "Label for option in settings"
+        "message": "Paneli göstermeden önceki gecikme (ms)"
     },
     "delayToRevealTranslateTooltip": {
-        "message": "Otomatik çeviriden önceki gecikme (ms)",
-        "description": ""
+        "message": "Otomatik çeviriden önceki gecikme (ms)"
     },
     "deleteLabel": {
-        "message": "Silmek",
-        "description": "Sil düğmesinin etiketi"
+        "message": "Silmek"
     },
     "dictionaryButtonRemark": {
-        "message": "Vurguluyken Wikipedia tanımlarını arar",
-        "description": ""
+        "message": "Vurguluyken Wikipedia tanımlarını arar"
     },
     "dictionaryButtonResponseCharsAmount": {
-        "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı",
-        "description": ""
+        "message": "Sonuç olarak görüntülenecek maksimum karakter sayısı"
     },
     "dictionaryButtonWordsAmount": {
-        "message": "Düğmeyi göstermek için kelimeler miktarı",
-        "description": ""
+        "message": "Düğmeyi göstermek için kelimeler miktarı"
     },
     "dictionaryLabel": {
-        "message": "Sözlük",
-        "description": "Label for Dictionary button"
+        "message": "Sözlük"
     },
     "disableForBetterPerformance": {
-        "message": "Daha iyi performans için devre dışı bırakın",
-        "description": "Label for option in settings"
+        "message": "Daha iyi performans için devre dışı bırakın"
     },
     "disableWordSnapForCode": {
-        "message": "Kod için sözcük yakalamayı devre dışı bırak",
-        "description": "Label for option in settings"
+        "message": "Kod için sözcük yakalamayı devre dışı bırak"
     },
     "disableWordSnappingOnCtrlKey": {
-        "message": "CTRL tuşuna basıldığında sözcüklere göre seçme",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "CTRL tuşuna basıldığında sözcüklere göre seçme"
     },
     "dontSnapTextfieldSelection": {
-        "message": "Metin alanlarında seçimi tutturma",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Metin alanlarında seçimi tutturma"
     },
     "draggableTooltip": {
-        "message": "Panel okla sürüklenebilir",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Panel okla sürüklenebilir"
     },
     "enabled": {
-        "message": "Etkin",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Etkin"
     },
     "excludedDomains": {
-        "message": "Dışlanan etki alanları",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Dışlanan etki alanları"
     },
     "export": {
-        "message": "İhracat",
-        "description": ""
+        "message": "İhracat"
     },
     "exportImportSettings": {
-        "message": "Dışa/içe aktarma ayarları",
-        "description": ""
+        "message": "Dışa/içe aktarma ayarları"
     },
     "exportSettingsLabel": {
-        "message": "Ayarları dışa aktar",
-        "description": ""
+        "message": "Ayarları dışa aktar"
     },
     "extensionDescription": {
-        "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere",
-        "description": "Uzantı açıklaması"
+        "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere"
     },
     "fallbackExportLabel": {
-        "message": ".json dosyası olarak kaydet",
-        "description": "Label for option in settings"
+        "message": ".json dosyası olarak kaydet"
     },
     "floatingOffscreenTooltip": {
-        "message": "Ekrandan kaydırıldığında kayan panel",
-        "description": "Label for option in settings"
+        "message": "Ekrandan kaydırıldığında kayan panel"
     },
     "fontSize": {
-        "message": "Yazı tipi boyutu",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Yazı tipi boyutu"
     },
     "fullOpacityOnHover": {
-        "message": "Fareyle üzerine gelindiğinde tam opaklık",
-        "description": "Label for option in settings"
+        "message": "Fareyle üzerine gelindiğinde tam opaklık"
     },
     "gmail": {
-        "message": "Gmail yeni e-posta",
-        "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
+        "message": "Gmail yeni e-posta"
     },
     "hideOnKeypress": {
-        "message": "Tuşa basıldığında gizle",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Tuşa basıldığında gizle"
     },
     "hideOnScroll": {
-        "message": "Kaydırmada araç ipucuni gizle",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Kaydırmada araç ipucuni gizle"
+    },
+    "hideTooltipWhenCursorMovesAway": {
+        "message": "İmleç uzaklaştığında paneli gizle"
     },
     "hideTranslateButtonForUserLanguage": {
-        "message": "Kullanıcının dili için çeviri düğmesini gizle",
-        "description": "Label for field in settings"
+        "message": "Kullanıcının dili için çeviri düğmesini gizle"
     },
     "horizontalLayout": {
-        "message": "Yatay",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Yatay"
     },
     "hoverCustomSearchStyle": {
-        "message": "Arama düğmesinin üzerine gelindiğinde göster",
-        "description": "Label for option in settings"
+        "message": "Arama düğmesinin üzerine gelindiğinde göster"
     },
     "iconlabel": {
-        "message": "Simgeler + metin",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Simgeler + metin"
     },
     "imperial": {
-        "message": "Imperial",
-        "description": "Variant of metrics system for dropdown"
+        "message": "Imperial"
     },
     "import": {
-        "message": "İçe aktarmak",
-        "description": ""
+        "message": "İçe aktarmak"
     },
     "importAlert": {
-        "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?",
-        "description": ""
+        "message": "Bu eylem, mevcut Selecton ayarlarını geçersiz kılacaktır. Emin misin?"
     },
     "importSettingsLabel": {
-        "message": "Ayarları içe aktar",
-        "description": ""
+        "message": "Ayarları içe aktar"
+    },
+    "inDay": {
+        "message": "Bir günde"
+    },
+    "inDays": {
+        "message": "$DAYS$ gün içinde",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
+    },
+    "inMonth": {
+        "message": "Ay içinde"
+    },
+    "inMonths": {
+        "message": "$MONTHS$ ay içinde",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
+    },
+    "inYear": {
+        "message": "Yıl içinde"
+    },
+    "inYears": {
+        "message": "$YEARS$ ay içinde",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     },
     "invertColorOnDarkWebsite": {
-        "message": "Karanlık web sitesinde rengi ters çevir",
-        "description": "Ayarlarda alan etiketi"
+        "message": "Karanlık web sitesinde rengi ters çevir"
     },
     "italicLabel": {
-        "message": "İtalik",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "İtalik"
     },
     "languageToTranslate": {
-        "message": "Çevrilecek dil (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 kodu</a>)",
-        "description": "Satır içi bağlantıyı içeren ayarlardaki alan etiketi"
+        "message": "Çevrilecek dil (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 kodu</a>)"
     },
     "leftClickBackgroundTab": {
-        "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar",
-        "description": "Label for option in settings"
+        "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar"
+    },
+    "linkToTextDescription": {
+        "message": "Seçilen metne işaret eden sayfa linki (yalnızca Chrome 90+'da açılır)"
+    },
+    "linkToTextLabel": {
+        "message": "Linki kopyala"
     },
     "liveTranslation": {
-        "message": "Üzerine gelindiğinde canlı çeviri (Google Çeviri)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Üzerine gelindiğinde canlı çeviri (Google Çeviri)"
     },
     "mailto": {
-        "message": "E-posta istemcisi",
-        "description": "Yeni e-posta yöntemi ayarı için seçenek etiketi"
+        "message": "E-posta istemcisi"
     },
     "markedLabel": {
-        "message": "Vurgulanan",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Vurgulanan"
     },
     "markerLabel": {
-        "message": "Vurgula",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Vurgula"
     },
     "markersLabel": {
-        "message": "Öne çıkanlar",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Öne çıkanlar"
     },
     "maxIconsInRow": {
-        "message": "Satırdaki simge miktarı",
-        "description": "Ayarlarda seçenek etiketi"
+        "message": "Satırdaki simge miktarı"
     },
     "maxMarkerPagesToStore": {
-        "message": "Öne çıkanları saklamak için maksimum sayfa",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Öne çıkanları saklamak için maksimum sayfa"
     },
     "maxTooltipButtonsToShow": {
-        "message": "Araç ipucunda gösterilecek en fazla düğme",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Araç ipucunda gösterilecek en fazla düğme"
     },
     "metric": {
-        "message": "Metrik",
-        "description": "Açılır menüsü için ölçüm sisteminin varyantı"
+        "message": "Metrik"
     },
     "middleClickHidesTooltip": {
-        "message": "Orta tıklama (arka planda açmak için) paneli gizler",
-        "description": "Label for option in settings"
+        "message": "Orta tıklama (arka planda açmak için) paneli gizler"
+    },
+    "monthAgo": {
+        "message": "Ay önce"
+    },
+    "monthsAgo": {
+        "message": "$MONTHS$ years ago",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
     },
     "moveDownLabel": {
-        "message": "Aşağı gitme",
-        "description": "'Düğmeyi aşağı taşı' düğmesi için araç ipucu"
+        "message": "Aşağı gitme"
     },
     "moveDownTooltipEffect": {
-        "message": "Aşağı gitme",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Aşağı gitme"
     },
     "moveUpLabel": {
-        "message": "Yukarı taşı",
-        "description": "'Düğmeyi yukarı taşı' düğmesi için araç ipucu"
+        "message": "Yukarı taşı"
     },
     "moveUpTooltipEffect": {
-        "message": "Yukarı taşı",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yukarı taşı"
     },
     "noDefinitionFound": {
-        "message": "Tanım bulunamadı",
-        "description": ""
+        "message": "Tanım bulunamadı"
     },
     "noTooltipEffect": {
-        "message": "Etkisi yok",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Etkisi yok"
     },
     "noTranslationFound": {
-        "message": "çeviri bulunamadı",
-        "description": ""
+        "message": "çeviri bulunamadı"
     },
     "onlyicon": {
-        "message": "Yalnızca simgeler",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yalnızca simgeler"
     },
     "onlylabel": {
-        "message": "Yalnızca metin",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yalnızca metin"
     },
     "openInNewTab": {
-        "message": "Yeni sekmede aç",
-        "description": "Açık bağlantı eylemi etiketi"
+        "message": "Yeni sekmede aç"
     },
     "openLinkLabel": {
-        "message": "Açık",
-        "description": "Açık bağlantı eylemi etiketi"
+        "message": "Açık"
     },
     "overCursor": {
-        "message": "imlecin üzerinde",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "imlecin üzerinde"
     },
     "panelCustomSearchStyle": {
-        "message": "Ana panelde göster",
-        "description": "Label for option in settings"
+        "message": "Ana panelde göster"
     },
     "pasteLabel": {
-        "message": "Yapıştırmak",
-        "description": "Yapıştırma eylemi etiketi"
+        "message": "Yapıştırmak"
     },
     "performSimpleMathOperations": {
-        "message": "Basit matematik hesaplamaları yapın",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Basit matematik hesaplamaları yapın"
     },
     "preferCurrencySymbol": {
-        "message": "Kodlar yerine para birimi simgelerini tercih edin",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Kodlar yerine para birimi simgelerini tercih edin"
     },
     "preferredMetricsSystem": {
-        "message": "Tercih edilen ölçüm sistemi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Tercih edilen ölçüm sistemi"
     },
     "preferredNewEmailMethod": {
-        "message": "Yeni e-posta oluşturmak için tercih edilen yöntem",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Yeni e-posta oluşturmak için tercih edilen yöntem"
     },
     "preferredSearchEngine": {
-        "message": "Arama motoru",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Arama motoru"
     },
     "preferredTranslateService": {
-        "message": "Çeviri hizmeti",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Çeviri hizmeti"
     },
     "recentMarkersLabel": {
-        "message": "Son öne çıkanlar",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Son öne çıkanlar"
     },
     "recreateTooltipAfterScroll": {
-        "message": "Kaydırma veya pencere yeniden boyutlandırma işleminden sonra araç ipucunu yeniden oluşturun",
-        "description": "Label for field in settings"
+        "message": "Kaydırma veya pencere yeniden boyutlandırma işleminden sonra araç ipucunu yeniden oluşturun"
     },
     "removeCustomIcon": {
-        "message": "Özel simgeyi kaldır",
-        "description": "Özel simgeyi kaldırmak için düğme için araç ipucu"
+        "message": "Özel simgeyi kaldır"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": "Seçili eylemden sonra metin seçimini kaldırma",
-        "description": ""
+        "message": "Seçili eylemden sonra metin seçimini kaldırma"
     },
     "resetDefaults": {
-        "message": "Varsayılanları geri yükleme",
-        "description": "Varsayılan ayarları geri yüklemek için ayarlar düğmesi etiketi"
+        "message": "Varsayılanları geri yükleme"
     },
     "reverseTooltipButtonsOrder": {
-        "message": "Düğmelerin sırasını tersine çevirme",
-        "description": "Ayarlar için etiket düğmesi"
+        "message": "Düğmelerin sırasını tersine çevirme"
     },
     "scaleUpFromBottomTooltipEffect": {
-        "message": "Ölçeği büyütme (alttan)",
-        "description": "Label for buttons style option in settings"
+        "message": "Ölçeği büyütme (alttan)"
     },
     "scaleUpTooltipEffect": {
-        "message": "Ölçeği büyütme",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Ölçeği büyütme"
     },
     "searchLabel": {
-        "message": "Aramak",
-        "description": "Arama metni eylemi etiketi"
+        "message": "Aramak"
     },
     "searchingDefinitions": {
-        "message": "Tanımları arama",
-        "description": ""
+        "message": "Tanımları arama"
     },
     "secondaryTooltipEnabled": {
-        "message": "Araç ipucu etkin",
-        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
+        "message": "Araç ipucu etkin"
     },
     "secondaryTooltipIconSize": {
-        "message": "Simge boyutu (px)",
-        "description": "Yeni arama seçeneği ekle düğmesinin etiketi"
+        "message": "Simge boyutu (px)"
     },
     "secondaryTooltipLayout": {
-        "message": "Düğme düzeni",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Düğme düzeni"
     },
     "selectionCenter": {
-        "message": "Seçim merkezi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Seçim merkezi"
     },
     "selectionHeader": {
-        "message": "Metin seçimi",
-        "description": "Ayarlarda kategori üstbilgisi"
+        "message": "Metin seçimi"
     },
     "selectonSettings": {
-        "message": "Selecton ayarları",
-        "description": "Açılır üstbilgi etiketi"
+        "message": "Selecton ayarları"
     },
     "shadowOpacity": {
-        "message": "Gölge opaklığı",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Gölge opaklığı"
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Web sitesi kendi olduğunu gösterdiğinde seçim araç ipucunı kaydırmaya çalışın",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Web sitesi kendi olduğunu gösterdiğinde seçim araç ipucunı kaydırmaya çalışın"
     },
     "shouldOverrideWebsiteSelectionColor": {
-        "message": "Sayfanın vurgu renginin üzerine yaz",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Sayfanın vurgu renginin üzerine yaz"
     },
     "showButtonBorders": {
-        "message": "Düğme bölücülerini göster",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Düğme bölücülerini göster"
     },
     "showButtonLabelOnHover": {
-        "message": "Vurgulu düğme etiketini göster",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Vurgulu düğme etiketini göster"
     },
     "showDictionaryButton": {
-        "message": "Sözlük düğmesini göster",
-        "description": ""
+        "message": "Sözlük düğmesini göster"
     },
     "showDotForHoverButtons": {
-        "message": "Fareyle üzerine gelme olayı olan düğmelerde noktayı göster",
-        "description": ""
+        "message": "Fareyle üzerine gelme olayı olan düğmelerde noktayı göster"
     },
     "showEmailButton": {
-        "message": "E-posta ekle düğmesi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "E-posta ekle düğmesi"
+    },
+    "showInfoPanel": {
+        "message": "Bilgi panelini göster (kelime ve sembol sayımı)"
     },
     "showOnMap": {
-        "message": "Haritada",
-        "description": "Harita eyleminde gösterme etiketi"
+        "message": "Haritada"
     },
     "showOnMapButtonEnabled": {
-        "message": "Haritada göstermek için düğme ekle",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Haritada göstermek için düğme ekle"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Başlığı vurgulu olarak göster",
-        "description": "Ayarlardaki seçenek etiketi"
+        "message": "Başlığı vurgulu olarak göster"
     },
     "showStatsOnCopyButtonHover": {
-        "message": "Kopyala düğmesinin üzerine gelindiğinde istatistikleri göster",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Kopyala düğmesinin üzerine gelindiğinde istatistikleri göster"
     },
     "showTooltipArrow": {
-        "message": "Panelin okunu göster",
-        "description": "Label for field in settings"
+        "message": "Panelin okunu göster"
     },
     "showTranslateButton": {
-        "message": "Çevir düğmesini göster",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Çevir düğmesini göster"
     },
     "showTranslateIfLanguageUnknown": {
-        "message": "Dil tanımlı değilse çeviri düğmesini göster",
-        "description": "Label for field in settings"
+        "message": "Dil tanımlı değilse çeviri düğmesini göster"
     },
     "showUnconvertedValue": {
-        "message": "Dönüştürmeden önce orijinal değeri göster",
-        "description": "Ayarlardaki düğme etiketi"
+        "message": "Dönüştürmeden önce orijinal değeri göster"
     },
     "showUpdateNotification": {
-        "message": "Güncellemede bildirimi göster",
-        "description": "Label for field in settings"
+        "message": "Güncellemede bildirimi göster"
     },
     "snapSelectionToWord": {
-        "message": "Metin seçimini sözcükle yaslama",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Metin seçimini sözcükle yaslama"
     },
     "strikeLabel": {
-        "message": "Grev",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Grev"
     },
     "symbolsCount": {
-        "message": "Semboller",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Semboller"
     },
     "testPageButton": {
-        "message": "Ayarları test edin",
-        "description": "Label for buttons style option in settings"
+        "message": "Ayarları test edin"
+    },
+    "textFieldsHeader": {
+        "message": "Metin girişi alanları"
     },
     "textSelectionBackground": {
-        "message": "Seçim rengi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Seçim rengi"
     },
     "textSelectionBackgroundOpacity": {
-        "message": "Arka plan opaklığı",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Arka plan opaklığı"
     },
     "textSelectionColor": {
-        "message": "Metin rengi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Metin rengi"
+    },
+    "today": {
+        "message": "Bugün"
     },
     "tooltipBackground": {
-        "message": "Arka plan rengi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Arka plan rengi"
     },
     "tooltipInvertedBackground": {
-        "message": "Arka plan rengi (koyu sayfa)",
-        "description": "Ayarlarda alan etiketi"
+        "message": "Arka plan rengi (koyu sayfa)"
     },
     "tooltipOpacity": {
-        "message": "Araç ipucu opaklığı",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Araç ipucu opaklığı"
     },
     "tooltipPosition": {
-        "message": "Araç ipucunun yatay hizalaması",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Araç ipucunun yatay hizalaması"
     },
     "tooltipRevealEffect": {
-        "message": "Araç ipucu gösterme efekti",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Araç ipucu gösterme efekti"
     },
     "translateLabel": {
-        "message": "Çevir",
-        "description": "Çevirme eylemi etiketi"
+        "message": "Çevir"
     },
     "translating": {
-        "message": "Çeviri",
-        "description": ""
+        "message": "Çeviri"
     },
     "updateNotificationMessage": {
-        "message": "Yenilikleri görmek için buraya tıklayın",
-        "description": ""
+        "message": "Yenilikleri görmek için buraya tıklayın"
     },
     "updateNotificationTitle": {
         "message": "Selecton $VERSION$ olarak güncellendi",
-        "description": "",
         "placeholders": {
             "version": {
                 "content": "$1",
@@ -662,47 +577,50 @@
         }
     },
     "updatePageToSeeChanges": {
-        "message": "Değişiklikleri görmek için sayfayı yenileme",
-        "description": ""
+        "message": "Değişiklikleri görmek için sayfayı yenileme"
     },
     "updateRatesEveryDays": {
-        "message": "Oran güncelleştirme aralığı (gün)",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Oran güncelleştirme aralığı (gün)"
     },
     "useCustomStyle": {
-        "message": "Araç ipucu için özel stil kullanma",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Araç ipucu için özel stil kullanma"
     },
     "useIconFromGoogle": {
-        "message": "Google'dan kullan simgesi",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Google'dan kullan simgesi"
     },
     "verticalLayout": {
-        "message": "Dikey",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Dikey"
+    },
+    "verticalLayoutTooltip": {
+        "message": "Dikey Panel Düzeni (Deneysel) kullanın"
     },
     "verticalSecondaryTooltip": {
-        "message": "Dikey liste olarak görüntüle (yatay olarak devre dışı bırak)",
-        "description": "Ayarlardaki alan etiketi"
+        "message": "Dikey liste olarak görüntüle (yatay olarak devre dışı bırak)"
     },
     "visitGithub": {
-        "message": "GitHub sayfasını ziyaret edin",
-        "description": "GitHub sayfasına giden ayarlar düğmesi için etiket"
+        "message": "GitHub sayfasını ziyaret edin"
     },
     "whatsNew": {
-        "message": "Yenilikler",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yenilikler"
     },
     "wordSnappingBlacklist": {
-        "message": "Dışlayacak etki alanları",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Dışlayacak etki alanları"
     },
     "wordsCount": {
-        "message": "Kelimeler",
-        "description": "Ayarlarda düğme stili seçeneği için etiket"
+        "message": "Kelimeler"
     },
     "writeAReview": {
-        "message": "Yorum yazma",
-        "description": "Ayarlarda düğmeler için etiket stili seçeneği"
+        "message": "Yorum yazma"
+    },
+    "yearAgo": {
+        "message": "Yıl önce"
+    },
+    "yearsAgo": {
+        "message": "$YEARS$ yıl önce",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     }
 }

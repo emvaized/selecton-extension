@@ -1,655 +1,571 @@
 {
     "actionButtonsHeader": {
-        "message": "Aktionsschaltflächen",
-        "description": "Header für die Kategorie der Aktionsschaltflächen in den Einstellungen"
+        "message": "Aktionsschaltflächen"
     },
     "addActionButtonsForTextFields": {
-        "message": "Spezialbedienfeld für Textfelder verwenden",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Spezialbedienfeld für Textfelder verwenden"
     },
     "addButtonIcons": {
-        "message": "Symbole für Schaltflächen anzeigen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Symbole für Schaltflächen anzeigen"
+    },
+    "addButtonToCopyLinkToText": {
+        "message": "Schaltfläche hinzufügen, um den Link zum ausgewählten Text zu kopieren"
+    },
+    "addCalendarButton": {
+        "message": "Kalendertaste für das Datum hinzufügen"
     },
     "addClearButton": {
-        "message": "Schaltfläche 'Löschen' anzeigen, wenn auf nicht leeres Feld geklickt wird",
-        "description": "Label for buttons style option in settings"
+        "message": "Schaltfläche 'Löschen' anzeigen, wenn auf nicht leeres Feld geklickt wird"
     },
     "addColorPreviewButton": {
-        "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Schaltfläche 'Farbe hinzufügen' (für CSS-Farben wie #ffffff)"
     },
     "addDragHandles": {
-        "message": "Auswahl-Ziehpunkte hinzufügen",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Auswahl-Ziehpunkte hinzufügen"
     },
     "addFontFormatButtons": {
-        "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)",
-        "description": ""
+        "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)"
     },
     "addMarkerButton": {
-        "message": "Verwenden Sie die Schaltfläche 'Markieren'",
-        "description": ""
+        "message": "Verwenden Sie die Schaltfläche 'Markieren'"
     },
     "addNewSearchOption": {
-        "message": "Neue Suchoption hinzufügen",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+        "message": "Neue Suchoption hinzufügen"
     },
     "addOpenLinks": {
-        "message": "Schaltfläche zum Öffnen des Links hinzufügen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Schaltfläche zum Öffnen des Links hinzufügen"
     },
     "addPasteButton": {
-        "message": "Schaltfläche 'Einfügen' anzeigen, wenn auf das Textfeld geklickt wird",
-        "description": "Label for option in settings"
+        "message": "Schaltfläche 'Einfügen' anzeigen, wenn auf das Textfeld geklickt wird"
     },
     "addPasteOnlyEmptyField": {
-        "message": "... nur wenn Feld leer ist",
-        "description": "Label für Option in den Einstellungen"
+        "message": "... nur wenn Feld leer ist"
     },
     "addPhoneButton": {
-        "message": "Schaltfläche zum Hinzufügen einer Telefonnummer",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Schaltfläche zum Hinzufügen einer Telefonnummer"
     },
     "addScaleUpEffect": {
-        "message": "Scale-up-Effekt bei Enthüllung hinzufügen",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Scale-up-Effekt bei Enthüllung hinzufügen"
     },
     "addTooltipShadow": {
-        "message": "Tooltip-Schatten hinzufügen",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Tooltip-Schatten hinzufügen"
     },
     "allChangesSavedAutomatically": {
-        "message": "Alle Einstellungen werden automatisch gespeichert",
-        "description": ""
+        "message": "Alle Einstellungen werden automatisch gespeichert"
     },
     "animationDuration": {
-        "message": "Animationsdauer (ms)",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Animationsdauer (ms)"
     },
     "appearanceHeader": {
-        "message": "Panel-Erscheinungsbild",
-        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+        "message": "Panel-Erscheinungsbild"
     },
     "applyConfigsImmediately": {
-        "message": "Wenden Sie Konfigurationen sofort an",
-        "description": "Header for appearance category in settings"
+        "message": "Wenden Sie Konfigurationen sofort an"
     },
     "behaviourHeader": {
-        "message": "Panel Behaviour",
-        "description": "Kopfzeile für Erscheinungskategorie in den Einstellungen"
+        "message": "Panel Behaviour"
     },
     "borderRadius": {
-        "message": "Randradius",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Randradius"
     },
     "buttonStyle": {
-        "message": "Buttons Stil",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Buttons Stil"
     },
     "buyMeCoffee": {
-        "message": "Das Projekt unterstützen",
-        "description": ""
+        "message": "Das Projekt unterstützen"
     },
     "callLabel": {
-        "message": "Rufe",
-        "description": ""
+        "message": "Rufe"
     },
     "changeTextSelectionColor": {
-        "message": "Textauswahl anpassen",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Textauswahl anpassen"
     },
     "chooseFileFirst": {
-        "message": "Wähle zuerst die Datei aus",
-        "description": ""
+        "message": "Wähle zuerst die Datei aus"
     },
     "clearLabel": {
-        "message": "Löschen",
-        "description": "Label for buttons style option in settings"
+        "message": "Löschen"
     },
     "collapseButtons": {
-        "message": "Überzählige Schaltflächen unter der Schaltfläche „Mehr“ ausblenden",
-        "description": ""
+        "message": "Überzählige Schaltflächen unter der Schaltfläche „Mehr“ ausblenden"
     },
     "contextualButtonsHeader": {
-        "message": "Knöpfe",
-        "description": "Header für die Kategorie der Kontextschaltflächen in den Einstellungen"
+        "message": "Knöpfe"
     },
     "convertCurrencies": {
-        "message": "Währungen umrechnen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Währungen umrechnen"
     },
     "convertMetrics": {
-        "message": "Metriken konvertieren",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Metriken konvertieren"
     },
     "convertResultClickAction": {
-        "message": "Aktion beim Klick auf Ergebnis",
-        "description": "Label for field in settings"
+        "message": "Aktion beim Klick auf Ergebnis"
     },
     "convertTime": {
-        "message": "Zeit umrechnen",
-        "description": "Label for field in settings"
+        "message": "Zeit umrechnen"
     },
     "convertToCurrency": {
-        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)"
     },
     "convertToCurrencyHint": {
-        "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>hier</a> als Referenz",
-        "description": "Währungscode-Hinweis für das Feld 'In Währung konvertieren' in den Einstellungen"
+        "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>hier</a> als Referenz"
     },
     "convertionHeader": {
-        "message": "Umrechnung",
-        "description": "Header für Konvertierungskategorie in Einstellungen"
+        "message": "Umrechnung"
     },
     "copyLabel": {
-        "message": "Kopieren",
-        "description": "Beschriftung für Kopiertextaktion"
+        "message": "Kopieren"
     },
     "customIcon": {
-        "message": "Benutzerdefiniertes Symbol",
-        "description": "Bezeichnung für Schaltfläche in Einstellungen"
+        "message": "Benutzerdefiniertes Symbol"
     },
     "customIconUrl": {
-        "message": "Benutzerdefinierte Symbol-URL",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Benutzerdefinierte Symbol-URL"
     },
     "customSearchButtonsHeader": {
-        "message": "Suchschaltflächen",
-        "description": "Header for settings section"
+        "message": "Suchschaltflächen"
     },
     "customSearchOptionsDisplay": {
-        "message": "Stil zur Anzeige benutzerdefinierter Suchoptionen",
-        "description": "Label für Option in den Einstellungen"
+        "message": "Stil zur Anzeige benutzerdefinierter Suchoptionen"
     },
     "customSearchTooltip": {
-        "message": "Suchoptionen",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Suchoptionen"
     },
     "customSearchTooltipHint": {
-        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. %s als Platzhalter für Abfragen verwenden, %w als Platzhalter für die aktuelle Domain (für die Website-Suche).",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Wird beim Bewegen des Mauszeigers über die Schaltfläche 'Suchen' angezeigt. %s als Platzhalter für Abfragen verwenden, %w als Platzhalter für die aktuelle Domain (für die Website-Suche)."
     },
     "customSearchUrl": {
-        "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Benutzerdefinierte Such-URL <br />(%s als Platzhalter für Abfragen verwenden)"
     },
     "cutLabel": {
-        "message": "Schnitt",
-        "description": "Label for cut action"
+        "message": "Schnitt"
+    },
+    "dayAgo": {
+        "message": "Vor einem Tag"
+    },
+    "daysAgo": {
+        "message": "Vor $DAYS$ Tagen",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
     },
     "debugMode": {
-        "message": "Debug mode",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Debug mode"
     },
     "delayToRevealHoverPanels": {
-        "message": "Verzögerung vor dem Anzeigen von Panels beim Hover (ms)",
-        "description": ""
+        "message": "Verzögerung vor dem Anzeigen von Panels beim Hover (ms)"
     },
     "delayToRevealSearchTooltip": {
-        "message": "Verzögerung vor dem Aufdecken des Panels (ms)",
-        "description": "Label for option in settings"
+        "message": "Verzögerung vor dem Aufdecken des Panels (ms)"
     },
     "delayToRevealTranslateTooltip": {
-        "message": "Verzögerung vor automatischer Übersetzung (ms)",
-        "description": ""
+        "message": "Verzögerung vor automatischer Übersetzung (ms)"
     },
     "deleteLabel": {
-        "message": "Löschen",
-        "description": "Bezeichnung für die Schaltfläche 'Löschen'"
+        "message": "Löschen"
     },
     "dictionaryButtonRemark": {
-        "message": "Sucht Wikipedia-Definitionen beim Hover nach",
-        "description": ""
+        "message": "Sucht Wikipedia-Definitionen beim Hover nach"
     },
     "dictionaryButtonResponseCharsAmount": {
-        "message": "Maximale Anzahl von Zeichen, die als Ergebnis angezeigt werden",
-        "description": ""
+        "message": "Maximale Anzahl von Zeichen, die als Ergebnis angezeigt werden"
     },
     "dictionaryButtonWordsAmount": {
-        "message": "Wörter belaufen sich auf die Wörterbuchschaltfläche",
-        "description": ""
+        "message": "Wörter belaufen sich auf die Wörterbuchschaltfläche"
     },
     "dictionaryLabel": {
-        "message": "Wörterbuch",
-        "description": "Label for Dictionary button"
+        "message": "Wörterbuch"
     },
     "disableForBetterPerformance": {
-        "message": "Für bessere Leistung deaktivieren",
-        "description": "Label for option in settings"
+        "message": "Für bessere Leistung deaktivieren"
     },
     "disableWordSnapForCode": {
-        "message": "Wortfang für Code deaktivieren",
-        "description": "Label for option in settings"
+        "message": "Wortfang für Code deaktivieren"
     },
     "disableWordSnappingOnCtrlKey": {
-        "message": "Nicht mit Worten auswählen, wenn die STRG-Taste gedrückt wird",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Nicht mit Worten auswählen, wenn die STRG-Taste gedrückt wird"
     },
     "dontSnapTextfieldSelection": {
-        "message": "Auswahl in Textfeldern nicht einrasten",
-        "description": "Label for option in settings"
+        "message": "Auswahl in Textfeldern nicht einrasten"
     },
     "draggableTooltip": {
-        "message": "Panel kann durch den Pfeil gezogen werden",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Panel kann durch den Pfeil gezogen werden"
     },
     "enabled": {
-        "message": "Aktiviert",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Aktiviert"
     },
     "excludedDomains": {
-        "message": "Ausgeschlossene Domains",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Ausgeschlossene Domains"
     },
     "export": {
-        "message": "Export",
-        "description": ""
+        "message": "Export"
     },
     "exportImportSettings": {
-        "message": "Export-/Importeinstellungen",
-        "description": ""
+        "message": "Export-/Importeinstellungen"
     },
     "exportSettingsLabel": {
-        "message": "Die Einstellungen exportieren",
-        "description": ""
+        "message": "Die Einstellungen exportieren"
     },
     "extensionDescription": {
-        "message": "Anpassbares Popup mit Aktionen zur Textauswahl",
-        "description": "Erweiterungsbeschreibung"
+        "message": "Anpassbares Popup mit Aktionen zur Textauswahl"
     },
     "fallbackExportLabel": {
-        "message": "Als .json-Datei speichern",
-        "description": "Label for option in settings"
+        "message": "Als .json-Datei speichern"
     },
     "floatingOffscreenTooltip": {
-        "message": "Schwebendes Panel, wenn es außerhalb des Bildschirms gescrollt wird",
-        "description": "Label for option in settings"
+        "message": "Schwebendes Panel, wenn es außerhalb des Bildschirms gescrollt wird"
     },
     "fontSize": {
-        "message": "Schriftgröße",
-        "description": "Label for option in settings"
+        "message": "Schriftgröße"
     },
     "fullOpacityOnHover": {
-        "message": "Volle Deckkraft beim Schweben",
-        "description": "Label for option in settings"
+        "message": "Volle Deckkraft beim Schweben"
     },
     "gmail": {
-        "message": "Google Mail neue E-Mail",
-        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+        "message": "Google Mail neue E-Mail"
     },
     "hideOnKeypress": {
-        "message": "Bei Tastendruck ausblenden",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Bei Tastendruck ausblenden"
     },
     "hideOnScroll": {
-        "message": "Tooltip beim Scrollen ausblenden",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Tooltip beim Scrollen ausblenden"
+    },
+    "hideTooltipWhenCursorMovesAway": {
+        "message": "Panel verbergen, wenn sich Cursor bewegt"
     },
     "hideTranslateButtonForUserLanguage": {
-        "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden",
-        "description": "Label for field in settings"
+        "message": "Übersetzen-Schaltfläche für die Sprache des Benutzers ausblenden"
     },
     "horizontalLayout": {
-        "message": "Horizontal",
-        "description": "Label for field in settings"
+        "message": "Horizontal"
     },
     "hoverCustomSearchStyle": {
-        "message": "Beim Hover der Suchschaltfläche",
-        "description": "Label für Option in den Einstellungen"
+        "message": "Beim Hover der Suchschaltfläche"
     },
     "iconlabel": {
-        "message": "Icons + text",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Icons + text"
     },
     "imperial": {
-        "message": "Kaiserliche",
-        "description": "Variante des Metriksystems für Dropdown"
+        "message": "Kaiserliche"
     },
     "import": {
-        "message": "Import",
-        "description": ""
+        "message": "Import"
     },
     "importAlert": {
-        "message": "Diese Aktion überschreibt die aktuellen Selecton-Einstellungen. Bist du sicher?",
-        "description": ""
+        "message": "Diese Aktion überschreibt die aktuellen Selecton-Einstellungen. Bist du sicher?"
     },
     "importSettingsLabel": {
-        "message": "Die Einstellungen importieren",
-        "description": ""
+        "message": "Die Einstellungen importieren"
+    },
+    "inDay": {
+        "message": "In einem Tag"
+    },
+    "inDays": {
+        "message": "In $DAYS$ Tagen",
+        "placeholders": {
+            "days": {
+                "content": "$1"
+            }
+        }
+    },
+    "inMonth": {
+        "message": "In einem Monat"
+    },
+    "inMonths": {
+        "message": "In $MONTHS$ Monaten",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
+    },
+    "inYear": {
+        "message": "In einem Jahr"
+    },
+    "inYears": {
+        "message": "In $YEARS$ Jahren",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     },
     "invertColorOnDarkWebsite": {
-        "message": "Farbe auf dunkler Website invertieren",
-        "description": "Beschriftung für Feld in den Einstellungen"
+        "message": "Farbe auf dunkler Website invertieren"
     },
     "languageToTranslate": {
-        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)",
-        "description": "Bezeichnung für Feld in den Einstellungen mit Inline-Link"
+        "message": "Zu übersetzende Sprache (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1-Code</a>)"
     },
     "leftClickBackgroundTab": {
-        "message": "Linksklick öffnet Link als Hintergrund-Tab",
-        "description": "Label for option in settings"
+        "message": "Linksklick öffnet Link als Hintergrund-Tab"
+    },
+    "linkToTextDescription": {
+        "message": "Kopieren Sie den Seitenlink und zeigen auf den Text (öffnet sich in Chrome 90+)"
+    },
+    "linkToTextLabel": {
+        "message": "Link kopieren"
     },
     "liveTranslation": {
-        "message": "Live-Übersetzung beim Hovern der Schaltfläche (Google Translate)",
-        "description": "Label for field in settings"
+        "message": "Live-Übersetzung beim Hovern der Schaltfläche (Google Translate)"
     },
     "mailto": {
-        "message": "Desktop-E-Mail-Client",
-        "description": "Optionsbezeichnung für neue E-Mail-Methodeneinstellung"
+        "message": "Desktop-E-Mail-Client"
     },
     "markedLabel": {
-        "message": "Markiert",
-        "description": ""
+        "message": "Markiert"
     },
     "markerLabel": {
-        "message": "Markieren",
-        "description": ""
+        "message": "Markieren"
     },
     "markersLabel": {
-        "message": "Markierungen",
-        "description": ""
+        "message": "Markierungen"
     },
     "maxIconsInRow": {
-        "message": "Anzahl der Symbole in der Reihe",
-        "description": "Label für Option in den Einstellungen"
+        "message": "Anzahl der Symbole in der Reihe"
     },
     "maxMarkerPagesToStore": {
-        "message": "Maximale Seiten zum Speichern von Markierungen",
-        "description": ""
+        "message": "Maximale Seiten zum Speichern von Markierungen"
     },
     "maxTooltipButtonsToShow": {
-        "message": "Max. Schaltflächen, die im Tooltip angezeigt werden sollen",
-        "description": ""
+        "message": "Max. Schaltflächen, die im Tooltip angezeigt werden sollen"
     },
     "metric": {
-        "message": "Metrisch",
-        "description": "Variante des Metriksystems für Dropdown"
+        "message": "Metrisch"
     },
     "middleClickHidesTooltip": {
-        "message": "Mittlerer Klick (um im Hintergrund zu öffnen) blendet das Panel aus",
-        "description": "Label for option in settings"
+        "message": "Mittlerer Klick (um im Hintergrund zu öffnen) blendet das Panel aus"
+    },
+    "monthAgo": {
+        "message": "Vor einem Monat"
+    },
+    "monthsAgo": {
+        "message": "Vor $MONTHS$ Monaten",
+        "placeholders": {
+            "months": {
+                "content": "$1"
+            }
+        }
     },
     "moveDownLabel": {
-        "message": "Absteigen",
-        "description": "Tooltip für 'move button down' button"
+        "message": "Absteigen"
     },
     "moveDownTooltipEffect": {
-        "message": "Absteigen",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Absteigen"
     },
     "moveUpLabel": {
-        "message": "Rücken",
-        "description": "Tooltip für die Schaltfläche 'Schaltfläche nach oben verschieben'"
+        "message": "Rücken"
     },
     "moveUpTooltipEffect": {
-        "message": "Aufrücken",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Aufrücken"
     },
     "noDefinitionFound": {
-        "message": "Keine Definition gefunden",
-        "description": ""
+        "message": "Keine Definition gefunden"
     },
     "noTooltipEffect": {
-        "message": "Keine Wirkung",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Keine Wirkung"
     },
     "noTranslationFound": {
-        "message": "Keine Übersetzung gefunden",
-        "description": ""
+        "message": "Keine Übersetzung gefunden"
     },
     "onlyicon": {
-        "message": "Nur Symbole",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Nur Symbole"
     },
     "onlylabel": {
-        "message": "Nur Text",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Nur Text"
     },
     "openInNewTab": {
-        "message": "Öffnen Sie in der Registerkarte",
-        "description": "Label for open link action"
+        "message": "Öffnen Sie in der Registerkarte"
     },
     "openLinkLabel": {
-        "message": "Öffnen",
-        "description": "Label für Open Link-Aktion"
+        "message": "Öffnen"
     },
     "overCursor": {
-        "message": "Over cursor",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Over cursor"
     },
     "panelCustomSearchStyle": {
-        "message": "Im Hauptfenster anzeigen",
-        "description": "Label für Option in den Einstellungen"
+        "message": "Im Hauptfenster anzeigen"
     },
     "pasteLabel": {
-        "message": "Einfügen",
-        "description": "Beschriftung für Einfügemaßnahme"
+        "message": "Einfügen"
     },
     "performSimpleMathOperations": {
-        "message": "Einfache mathematische Berechnungen durchführen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Einfache mathematische Berechnungen durchführen"
     },
     "preferredMapsService": {
-        "message": "Bevorzugter Kartendienst",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Bevorzugter Kartendienst"
     },
     "preferredMetricsSystem": {
-        "message": "Bevorzugtes Metriksystem",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Bevorzugtes Metriksystem"
     },
     "preferredNewEmailMethod": {
-        "message": "Bevorzugte Methode zum Erstellen neuer E-Mails",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Bevorzugte Methode zum Erstellen neuer E-Mails"
     },
     "preferredSearchEngine": {
-        "message": "Suchmaschine",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Suchmaschine"
     },
     "preferredTranslateService": {
-        "message": "Übersetzungsdienst",
-        "description": "Label for field in settings"
+        "message": "Übersetzungsdienst"
     },
     "prepareCurrencySymbol": {
-        "message": "Währungssymbole anstelle von Codes bevorzugen",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Währungssymbole anstelle von Codes bevorzugen"
     },
     "recentMarkersLabel": {
-        "message": "Neueste Markierungen",
-        "description": ""
+        "message": "Neueste Markierungen"
     },
     "recreateTooltipAfterScroll": {
-        "message": "Tooltip nach Scrollen oder Fenstergröße neu erstellen",
-        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
+        "message": "Tooltip nach Scrollen oder Fenstergröße neu erstellen"
     },
     "removeCustomIcon": {
-        "message": "Benutzerdefiniertes Symbol entfernen",
-        "description": "Tooltip für die Schaltfläche zum Entfernen des benutzerdefinierten Symbols"
+        "message": "Benutzerdefiniertes Symbol entfernen"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": "Auswahl nach ausgeführter Aktion entfernen",
-        "description": ""
+        "message": "Auswahl nach ausgeführter Aktion entfernen"
     },
     "resetDefaults": {
-        "message": "Standardeinstellungen wiederherstellen",
-        "description": "Schaltfläche 'Beschriftung für Einstellungen' zum Wiederherstellen der Standardeinstellungen"
+        "message": "Standardeinstellungen wiederherstellen"
     },
     "reverseTooltipButtonsOrder": {
-        "message": "Kehren Sie die Reihenfolge der Tasten",
-        "description": "Label for settings button"
+        "message": "Kehren Sie die Reihenfolge der Tasten"
     },
     "scaleUpFromBottomTooltipEffect": {
-        "message": "Aufwärts skalieren (von unten)",
-        "description": "Label for buttons style option in settings"
+        "message": "Aufwärts skalieren (von unten)"
     },
     "scaleUpTooltipEffect": {
-        "message": "Vergrößern",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Vergrößern"
     },
     "searchLabel": {
-        "message": "Suche",
-        "description": "Bezeichnung für Suchtextaktion"
+        "message": "Suche"
     },
     "searchingDefinitions": {
-        "message": "Suche nach Definitionen",
-        "description": ""
+        "message": "Suche nach Definitionen"
     },
     "secondaryTooltipEnabled": {
-        "message": "Tooltip aktiviert",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+        "message": "Tooltip aktiviert"
     },
     "secondaryTooltipIconSize": {
-        "message": "Symbolgröße (px)",
-        "description": "Bezeichnung für neue Suchoptionsschaltfläche hinzufügen"
+        "message": "Symbolgröße (px)"
     },
     "secondaryTooltipLayout": {
-        "message": "Tastenlayout",
-        "description": "Label for field in settings"
+        "message": "Tastenlayout"
     },
     "selectionCenter": {
-        "message": "Auswahlzentrum",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Auswahlzentrum"
     },
     "selectionHeader": {
-        "message": "Textauswahl",
-        "description": "Header für Kategorie in Einstellungen"
+        "message": "Textauswahl"
     },
     "selectonSettings": {
-        "message": "Selecton Einstellungen",
-        "description": "Label for popup header"
+        "message": "Selecton Einstellungen"
     },
     "shadowOpacity": {
-        "message": "Schattenopazität",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Schattenopazität"
     },
     "shiftTooltipWhenWebsiteHasOwn": {
-        "message": "Versuchen Sie, den Auswahl-Tooltip nach oben zu verschieben, wenn die Website ihre eigene anzeigt",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Versuchen Sie, den Auswahl-Tooltip nach oben zu verschieben, wenn die Website ihre eigene anzeigt"
     },
     "shouldOverrideWebsiteSelectionColor": {
-        "message": "Site-Hervorhebungsfarbe neu schreiben",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Site-Hervorhebungsfarbe neu schreiben"
     },
     "showButtonBorders": {
-        "message": "Buttonteiler anzeigen",
-        "description": ""
+        "message": "Buttonteiler anzeigen"
     },
     "showButtonLabelOnHover": {
-        "message": "Tastenbeschriftung beim Hover anzeigen",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Tastenbeschriftung beim Hover anzeigen"
     },
     "showDictionaryButton": {
-        "message": "Wörterbuch-Schaltfläche anzeigen",
-        "description": ""
+        "message": "Wörterbuch-Schaltfläche anzeigen"
     },
     "showDotForHoverButtons": {
-        "message": "Punkt auf Schaltflächen mit Hover-Ereignis anzeigen",
-        "description": ""
+        "message": "Punkt auf Schaltflächen mit Hover-Ereignis anzeigen"
     },
     "showEmailButton": {
-        "message": "E-Mail-Schaltfläche hinzufügen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "E-Mail-Schaltfläche hinzufügen"
+    },
+    "showInfoPanel": {
+        "message": "Info Panel anzeigen (Wort und Symbole zählen)"
     },
     "showOnMap": {
-        "message": "Auf der Karte",
-        "description": "Beschriftung für Aktion auf Karte anzeigen"
+        "message": "Auf der Karte"
     },
     "showOnMapButtonEnabled": {
-        "message": "Schaltfläche Hinzufügen, um auf der Karte angezeigt zu werden",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Schaltfläche Hinzufügen, um auf der Karte angezeigt zu werden"
     },
     "showSecondaryTooltipTitleOnHover": {
-        "message": "Titel beim Hover anzeigen",
-        "description": "Bezeichnung für Option in Einstellungen"
+        "message": "Titel beim Hover anzeigen"
     },
     "showStatsOnCopyButtonHover": {
-        "message": "Statistiken anzeigen, wenn der Mauszeiger auf die Schaltfläche 'Kopieren' zeigt",
-        "description": ""
+        "message": "Statistiken anzeigen, wenn der Mauszeiger auf die Schaltfläche 'Kopieren' zeigt"
     },
     "showTooltipArrow": {
-        "message": "Tooltip Arrow anzeigen",
-        "description": "Label for field in settings"
+        "message": "Tooltip Arrow anzeigen"
     },
     "showTranslateButton": {
-        "message": "Schaltfläche zum Übersetzen anzeigen",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Schaltfläche zum Übersetzen anzeigen"
     },
     "showTranslateIfLanguageUnknown": {
-        "message": "Übersetzen-Schaltfläche anzeigen, wenn Sprache nicht erkannt wird",
-        "description": "Label for field in settings"
+        "message": "Übersetzen-Schaltfläche anzeigen, wenn Sprache nicht erkannt wird"
     },
     "showUnconvertedValue": {
-        "message": "Originalwert vor Konvertierung anzeigen",
-        "description": "Bezeichnung für Schaltfläche in Einstellungen"
+        "message": "Originalwert vor Konvertierung anzeigen"
     },
     "showUpdateNotification": {
-        "message": "Benachrichtigung bei Update anzeigen",
-        "description": "Label for field in settings"
+        "message": "Benachrichtigung bei Update anzeigen"
     },
     "snapSelectionToWord": {
-        "message": "Textauswahl nach Wort ausrichten",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Textauswahl nach Wort ausrichten"
     },
     "strikeLabel": {
-        "message": "Durchgestrichen",
-        "description": ""
+        "message": "Durchgestrichen"
     },
     "symbolsCount": {
-        "message": "Symbole",
-        "description": "Label for option in settings"
+        "message": "Symbole"
     },
     "testPageButton": {
-        "message": "Testen Sie die Einstellungen",
-        "description": "Label for buttons style option in settings"
+        "message": "Testen Sie die Einstellungen"
+    },
+    "textFieldsHeader": {
+        "message": "Textfelder"
     },
     "textSelectionBackground": {
-        "message": "Auswahlfarbe",
-        "description": "Bezeichnung für Feld in Einstellungen"
+        "message": "Auswahlfarbe"
     },
     "textSelectionBackgroundOpacity": {
-        "message": "Hintergrundopazität",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Hintergrundopazität"
     },
     "textSelectionColor": {
-        "message": "Textfarbe",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Textfarbe"
+    },
+    "today": {
+        "message": "Heute"
     },
     "tooltipBackground": {
-        "message": "Hintergrundfarbe",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Hintergrundfarbe"
     },
     "tooltipInvertedBackground": {
-        "message": "Hintergrundfarbe (dunkle Seite)",
-        "description": "Beschriftung für Feld in den Einstellungen"
+        "message": "Hintergrundfarbe (dunkle Seite)"
     },
     "tooltipOpacity": {
-        "message": "Tooltip-Deckkraft",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Tooltip-Deckkraft"
     },
     "tooltipPosition": {
-        "message": "Horizontale Ausrichtung des Tooltips",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Horizontale Ausrichtung des Tooltips"
     },
     "tooltipRevealEffect": {
-        "message": "Tooltip enthüllt Effekt",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Tooltip enthüllt Effekt"
     },
     "translateLabel": {
-        "message": "Übersetzen",
-        "description": "Bezeichnung für Übersetzungsaktion"
+        "message": "Übersetzen"
     },
     "translating": {
-        "message": "Übersetzen",
-        "description": ""
+        "message": "Übersetzen"
     },
     "updateNotificationMessage": {
-        "message": "Klicken Sie hier, um zu sehen, was neu ist",
-        "description": ""
+        "message": "Klicken Sie hier, um zu sehen, was neu ist"
     },
     "updateNotificationTitle": {
         "message": "Selecton wurde auf $VERSION$ aktualisiert",
-        "description": "",
         "placeholders": {
             "version": {
                 "content": "$1",
@@ -658,47 +574,50 @@
         }
     },
     "updatePageToSeeChanges": {
-        "message": "Aktualisiere die Seite, um die Änderungen zu sehen",
-        "description": ""
+        "message": "Aktualisiere die Seite, um die Änderungen zu sehen"
     },
     "updateRatesEveryDays": {
-        "message": "Tarifaktualisierungsintervall (Tage)",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Tarifaktualisierungsintervall (Tage)"
     },
     "useCustomStyle": {
-        "message": "Benutzerdefinierten Stil für QuickInfo verwenden",
-        "description": "Beschriftung für Feld in Einstellungen"
+        "message": "Benutzerdefinierten Stil für QuickInfo verwenden"
     },
     "useIconFromGoogle": {
-        "message": "Symbol von Google verwenden",
-        "description": ""
+        "message": "Symbol von Google verwenden"
     },
     "verticalLayout": {
-        "message": "Vertikal",
-        "description": "Label for field in settings"
+        "message": "Vertikal"
+    },
+    "verticalLayoutTooltip": {
+        "message": "Verwenden Sie vertikales Panel -Layout (experimentell)"
     },
     "verticalSecondaryTooltip": {
-        "message": "Als vertikale Liste anzeigen (für horizontal deaktivieren)",
-        "description": ""
+        "message": "Als vertikale Liste anzeigen (für horizontal deaktivieren)"
     },
     "visitGithub": {
-        "message": "Besuchen Sie die GitHub-Seite",
-        "description": "Schaltfläche für die Beschriftung der Einstellungen, die zur GitHub-Seite führt"
+        "message": "Besuchen Sie die GitHub-Seite"
     },
     "whatsNew": {
-        "message": "Was ist neu",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Was ist neu"
     },
     "wordSnappingBlacklist": {
-        "message": "Auszuschließende Domains",
-        "description": ""
+        "message": "Auszuschließende Domains"
     },
     "wordsCount": {
-        "message": "Wörter",
-        "description": "Label for option in settings"
+        "message": "Wörter"
     },
     "writeAReview": {
-        "message": "Schreibe eine Bewertung",
-        "description": "Beschriftung für Schaltflächenstiloption in den Einstellungen"
+        "message": "Schreibe eine Bewertung"
+    },
+    "yearAgo": {
+        "message": "Vor dem Jahr"
+    },
+    "yearsAgo": {
+        "message": "Vor $YEARS$ Jahren",
+        "placeholders": {
+            "years": {
+                "content": "$1"
+            }
+        }
     }
 }
