@@ -123,11 +123,11 @@ function checkToAddCalendarButton(text) {
     const returnedDate = new Date(Date.parse(dateString));
     if (isNaN(returnedDate)) return;
 
-    addCalendarButtonFromDate(returnedDate, todayDate, showDateInsteadOfWeekday);
+    addCalendarButtonFromDate(returnedDate, todayDate, showDateInsteadOfWeekday, time);
 }
 
 
-function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
+function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, time) {
     /// get difference in days
     const diffTime = todayDate - date;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) * -1;
@@ -160,7 +160,16 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday) {
         }
 
     const dateButton = addBasicTooltipButton(buttonLabel, calendarIcon, function (e) {
-        onTooltipButtonClick(e, `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`);
+        /// If specific time is provided, create event – otherwise open day in calendar
+        let link;
+        if (time) {
+            let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
+            link = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${dateString}&sf=true`;
+        } else {
+            link = `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+        }
+
+        if (link) onTooltipButtonClick(e, link);
     });
     dateButton.title = date.toLocaleDateString();
     dateButton.classList.add('color-highlight');
