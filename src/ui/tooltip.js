@@ -17,10 +17,9 @@ function createTooltip(e, recreated = false) {
                 if (configs.debugMode)
                     console.log('Word snapping rejected due to pressed CTRL key');
             } else {
-
                 selectedText = selection.toString();
 
-                let selectedTextIsCode = false;
+                selectedTextIsCode = false;
                 if (configs.disableWordSnapForCode)
                     for (let i = 0, l = codeMarkers.length; i < l; i++) {
                         if (selectedText.includes(codeMarkers[i])) {
@@ -28,7 +27,8 @@ function createTooltip(e, recreated = false) {
                         }
                     }
 
-                if (isDraggingDragHandle == false && selectedTextIsCode == false) /// dont snap if selection is modified by drag handle
+                /// dont snap if selection is modified by drag handle, or if it looks like code
+                if (isDraggingDragHandle == false && selectedTextIsCode == false)
                     if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
                         snapSelectionByWords(selection);
             }
@@ -81,9 +81,9 @@ function createTooltip(e, recreated = false) {
         addBasicTooltipButtons(null);
 
         if (dontShowTooltip == false && selectedText !== null && selectedText !== '') {
-            addContextualButtons();
-
-            setTimeout(function () {
+            addContextualButtons(function () {
+                /// Set border radius for first and last buttons
+                setBorderRadiusForSideButtons(tooltip);
 
                 /// Append tooltip to the DOM
                 document.body.appendChild(tooltip);
@@ -91,12 +91,11 @@ function createTooltip(e, recreated = false) {
                 /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
                 setTimeout(function () {
                     calculateTooltipPosition(e);
-                }, 4);
+                }, 0);
 
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
                     setTimeout(function () {
-                        // correctTooltipPosition();
                         if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
                             setHoverForSearchButton(searchButton);
                     }, 5);
@@ -106,10 +105,34 @@ function createTooltip(e, recreated = false) {
                     if (tooltipIsShown == false) return;
                     document.addEventListener("selectionchange", selectionChangeListener);
                 }, configs.animationDuration);
+            });
 
-                /// Set border radius for first and last buttons
-                setBorderRadiusForSideButtons(tooltip);
-            }, 0);
+            // setTimeout(function () {
+
+            //     /// Append tooltip to the DOM
+            //     document.body.appendChild(tooltip);
+
+            //     /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
+            //     setTimeout(function () {
+            //         calculateTooltipPosition(e);
+            //     }, 5);
+
+            //     /// Create search tooltip for custom search options)
+            //     if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
+            //         setTimeout(function () {
+            //             if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+            //                 setHoverForSearchButton(searchButton);
+            //         }, 5);
+
+            //     /// Selection change listener
+            //     setTimeout(function () {
+            //         if (tooltipIsShown == false) return;
+            //         document.addEventListener("selectionchange", selectionChangeListener);
+            //     }, configs.animationDuration);
+
+            //     /// Set border radius for first and last buttons
+            //     setBorderRadiusForSideButtons(tooltip);
+            // }, 0);
 
         } else hideTooltip();
 
@@ -217,7 +240,8 @@ function calculateTooltipPosition(e) {
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
-            let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + 5;
+            // let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + 5;
+            let possibleDyToShowTooltip = selEndDimensions.dy + (tooltipHeight / 2) + (arrow.clientHeight / 2);
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;

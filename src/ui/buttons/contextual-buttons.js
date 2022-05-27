@@ -1,4 +1,4 @@
-function addContextualButtons() {
+function addContextualButtons(callbackOnFinish) {
     if (configs.debugMode)
         console.log('Checking to add contextual buttons...');
 
@@ -43,7 +43,8 @@ function addContextualButtons() {
                     if (selectedText.includes(',')) {
                         let parts = selectedText.split(',');
                         if (parts.length == 2) {
-                            if (parts[1].match(/[+-]?\d+(\.\d)?/g).join('').length < 3) {
+                            let queriedSecondPart = parts[1].match(/[+-]?\d+(\.\d)?/g);
+                            if (queriedSecondPart && queriedSecondPart.join('').length < 3) {
                                 selectedText = selectedText.replaceAll(',', '.');
                             }
                         }
@@ -64,8 +65,6 @@ function addContextualButtons() {
                         console.log('User currency is: ' + configs.convertToCurrency);
                     }
 
-                    // for (const [key, value] of Object.entries(currenciesList)) {
-                    // if (key == configs.convertToCurrency && value['rate'] !== null && value['rate'] !== undefined) {
                     const value = currenciesList[configs.convertToCurrency];
                     if (value && value['rate'] !== null && value['rate'] !== undefined) {
 
@@ -80,7 +79,7 @@ function addContextualButtons() {
                         if (configs.debugMode) console.log('conversion rate: ' + resultingRate);
                         let convertedAmount = amount * resultingRate;
 
-                        if (convertedAmount !== null && convertedAmount !== undefined && convertedAmount.toString() !== 'NaN' && convertedAmount.toString() !== '') {
+                        if (convertedAmount !== null && convertedAmount !== undefined && !isNaN(convertedAmount) && convertedAmount.toString() !== '') {
                             /// Round result
                             try {
                                 convertedAmount = parseFloat(convertedAmount);
@@ -691,12 +690,11 @@ function addContextualButtons() {
 
         /// Collapse exceeding buttons under 'more' hover button
         if (configs.collapseButtons)
-            try {
-                collapseButtons();
-            } catch (e) { if (configs.debugMode) console.log(e); }
+            collapseButtons();
 
         /// Set info panel & title for the Copy button
         setCopyButtonTitle(copyButton, selectionLength, wordsCount);
+
+        callbackOnFinish();
     }
 }
-

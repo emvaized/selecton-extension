@@ -164,6 +164,10 @@ function setCopyButtonTitle(copyButton, symbols, words) {
 
         configs.verticalLayoutTooltip ? tooltip.appendChild(infoPanel) : tooltip.insertBefore(infoPanel, tooltip.children[1]);
         makeTooltipElementDraggable(infoPanel, false);
+
+        if (selectedTextIsCode == true) {
+            infoPanel.innerText += ' · code';
+        }
     }
 }
 
@@ -227,11 +231,14 @@ function setTooltipOnBottom() {
     arrow.classList.add('arrow-on-bottom');
     tooltipOnBottom = true;
 
-    if (configs.showInfoPanel && infoPanel) {
-        infoPanel.classList.add('info-panel-on-bottom');
-        let newInfoPanel = infoPanel.cloneNode(true);
+    if (configs.showInfoPanel && infoPanel && infoPanel.isConnected) {
+        const newInfoPanel = infoPanel.cloneNode(true);
+        newInfoPanel.classList.add('info-panel-on-bottom');
         tooltip.appendChild(newInfoPanel);
-        tooltip.removeChild(infoPanel);
+        try {
+            infoPanel.remove();
+            tooltip.removeChild(infoPanel);
+        } catch (e) { }
         infoPanel = newInfoPanel;
     }
 }

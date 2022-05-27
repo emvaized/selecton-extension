@@ -55,6 +55,7 @@ var currencyRatesWereLoaded = false;
 var isTextFieldFocused = false;
 var isTextFieldEmpty = true;
 var domainIsBlacklistedForSnapping;
+var selectedTextIsCode;
 
 var timerToRecreateOverlays;
 var delayToRecreateOverlays = 150;

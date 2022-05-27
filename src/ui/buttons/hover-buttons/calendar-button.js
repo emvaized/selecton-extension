@@ -135,7 +135,7 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, ti
 
     if (showDateInsteadOfWeekday) {
         buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
-    } else
+    } else {
         if (diffDays <= -360) {
             const years = -1 * Math.ceil(diffDays / 360);
             buttonLabel = years == 1 ? chrome.i18n.getMessage('yearAgo') : chrome.i18n.getMessage('yearsAgo', `${years}`);
@@ -158,6 +158,7 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, ti
         } else {
             buttonLabel = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
         }
+    }
 
     const dateButton = addBasicTooltipButton(buttonLabel, calendarIcon, function (e) {
         /// If specific time is provided, create event – otherwise open day in calendar
