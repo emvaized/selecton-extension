@@ -282,7 +282,7 @@ function initMouseListeners() {
         document.documentElement.style.setProperty('--selection-button-foreground', isDarkTooltip ? 'rgb(255,255,255)' : 'rgb(0,0,0)');
         document.documentElement.style.setProperty('--selection-button-background-hover', isDarkTooltip ? 'rgba(255,255,255, 0.3)' : 'rgba(0,0,0, 0.5)');
         document.documentElement.style.setProperty('--selecton-outline-color', isDarkTooltip ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.2)');
-        document.documentElement.style.setProperty('--selecton-info-panel-color', isDarkTooltip ? 'rgba(255,255,255, 0.7)' : 'rgba(0,0,0, 0.65)');
+        document.documentElement.style.setProperty('--selecton-info-panel-color', isDarkTooltip ? 'rgba(255,255,255, 0.7)' : 'rgba(0,0,0, 0.7)');
         secondaryColor = isDarkTooltip ? 'lightBlue' : 'royalBlue';
       } else {
         /// Default style
@@ -290,7 +290,7 @@ function initMouseListeners() {
         document.documentElement.style.setProperty('--selection-button-foreground', isDarkPage ? '#000000' : '#ffffff');
         document.documentElement.style.setProperty('--selection-button-background-hover', isDarkPage ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.3)');
         document.documentElement.style.setProperty('--selecton-outline-color', isDarkPage ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)');
-        document.documentElement.style.setProperty('--selecton-info-panel-color', isDarkPage ? 'rgba(0,0,0, 0.65)' : 'rgba(255,255,255, 0.7)');
+        document.documentElement.style.setProperty('--selecton-info-panel-color', isDarkPage ? 'rgba(0,0,0, 0.7)' : 'rgba(255,255,255, 0.7)');
         secondaryColor = isDarkPage ? 'royalBlue' : 'lightBlue';
         isDarkTooltip = !isDarkPage;
       }

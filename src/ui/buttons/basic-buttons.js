@@ -112,9 +112,7 @@ function addBasicTooltipButtons(layout) {
                 });
         }
 
-        setTimeout(function () {
-            setBorderRadiusForSideButtons(tooltip);
-        }, 0);
+        setBorderRadiusForSideButtons(tooltip);
 
     } else {
         /// Add search button

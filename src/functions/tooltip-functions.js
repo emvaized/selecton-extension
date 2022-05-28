@@ -133,21 +133,21 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
 
 function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     /// Set border radius for first and last buttons of horizontal tooltip
-    setTimeout(function () {
-        let children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
-
-        if (children.length == 1) {
-            children[0].style.borderRadius = onlyButtonBorderRadius;
-        } else {
-            const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
-            children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
-            children[children.length - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
-        }
-    }, 50);
+    // setTimeout(function () {
+    const children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
+    const childrenLength = children.length;
+    if (childrenLength == 1) {
+        children[0].style.borderRadius = onlyButtonBorderRadius;
+    } else {
+        const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
+        children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
+        children[childrenLength - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
+    }
+    // }, 50);
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
-    let infoString = `${symbols ?? selection.toString().length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}`;
+    let infoString = `${symbols ?? selectedText.length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}`;
     if (words && words > 1) infoString += ` · ${words} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
 
     if (configs.showStatsOnCopyButtonHover)
@@ -166,7 +166,14 @@ function setCopyButtonTitle(copyButton, symbols, words) {
         makeTooltipElementDraggable(infoPanel, false);
 
         if (selectedTextIsCode == true) {
-            infoPanel.innerText += ' · code';
+            setTimeout(function () {
+                if (!tooltipIsShown) return;
+                let detectedLang = detectCodeLanguage(selectedText);
+                if (detectedLang && detectedLang !== 'Unknown')
+                    infoPanel.innerText += ' · ' + detectedLang;
+                else
+                    infoPanel.innerText += ' · code';
+            }, 5)
         }
     }
 }

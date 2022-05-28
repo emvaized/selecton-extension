@@ -88,10 +88,8 @@ function createTooltip(e, recreated = false) {
                 /// Append tooltip to the DOM
                 document.body.appendChild(tooltip);
 
-                /// Calculate tooltip position - add a delay so that we can access tooltip clientHeight
-                setTimeout(function () {
-                    calculateTooltipPosition(e);
-                }, 0);
+                /// Calculate tooltip position and show tooltip
+                calculateTooltipPosition(e);
 
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')

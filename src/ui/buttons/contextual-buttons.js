@@ -4,7 +4,7 @@ function addContextualButtons(callbackOnFinish) {
 
     if (selection == null) return;
 
-    let selectedText = selection.toString().trim();
+    // let selectedText = selection.toString().trim();
     const loweredSelectedText = selectedText.toLowerCase();
     const wordsCount = selectedText.split(' ').length;
     const selectionContainsSpaces = selectedText.includes(' ');
@@ -648,7 +648,7 @@ function addContextualButtons(callbackOnFinish) {
                     onTooltipButtonClick(e, 'https://www.reddit.com/' + selectedText);
                 }, false, 1.0);
 
-                let highlightedText = document.createElement('div');
+                let highlightedText = document.createElement('span');
                 highlightedText.style.display = 'inline';
                 highlightedText.textContent = ' reddit';
                 highlightedText.classList.add('color-highlight');
