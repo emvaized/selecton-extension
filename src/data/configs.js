@@ -12,7 +12,7 @@ const configs = {
     'languageToTranslate': navigator.language || navigator.userLanguage || 'en',
     'ratesLastFetchedDate': '',
     'useCustomStyle': false,
-    'tooltipBackground': '#3B3B3B',
+    'tooltipBackground': '#333232',
     'tooltipInvertedBackground': '#bfbfbf',
     'tooltipOpacity': 1.0,
     'addTooltipShadow': false,
