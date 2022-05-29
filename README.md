@@ -14,7 +14,7 @@ Get customizable pop-up with action buttons on text selection
 * Dictionary button, which fetches definition from Wikipedia on hover
 * Highlighter button, which allows to highlight specific text on page and quickly find it later
 
-<img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/1.png">
+<img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/screenshot.png">
 
 
 Download for Chrome:
