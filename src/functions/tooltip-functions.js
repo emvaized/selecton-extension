@@ -166,14 +166,16 @@ function setCopyButtonTitle(copyButton, symbols, words) {
         makeTooltipElementDraggable(infoPanel, false);
 
         if (selectedTextIsCode == true) {
-            setTimeout(function () {
-                if (!tooltipIsShown) return;
-                let detectedLang = detectCodeLanguage(selectedText);
-                if (detectedLang && detectedLang !== 'Unknown')
-                    infoPanel.innerText += ' · ' + detectedLang;
-                else
-                    infoPanel.innerText += ' · code';
-            }, 5)
+            // setTimeout(function () {
+            //     if (!tooltipIsShown) return;
+
+            /// Detect language of code (currently disabled)
+            // let detectedLang = detectCodeLanguage(selectedText);
+            // if (detectedLang && detectedLang !== 'Unknown')
+            //     infoPanel.innerText += ' · ' + detectedLang;
+            // else
+            infoPanel.innerText += ' · code';
+            // }, 5)
         }
     }
 }
