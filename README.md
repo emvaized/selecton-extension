@@ -95,12 +95,16 @@ To permanently disable word snapping, add website to word-snapping blacklist or 
 
 **How to enable tooltip for text fields?**
 
-* "Selecton settings > Buttons > Use special panel for text fields"
+* "Selecton settings > Text fields > Use special panel for text fields"
 This is disabled by default because with this option on extension will use a little bit more resources by analyzing every mouse click
 
 **Disable selection handles on the right and left?**
 
 * Settings > Text selection > Add selection drag handles
+
+**Enable selecting text in links, like in Opera or Vivaldi?**
+
+* You can use other extensions to get link selection, such as [Select like a Boss](https://chrome.google.com/webstore/detail/select-like-a-boss/mbnnmpmcijodolgeejegcijdamonganh) for Chrome or [Drag-Select Link Text](https://addons.mozilla.org/firefox/addon/drag-select-link-text/) for Firefox
 
 **On Firefox, can't change colors or import settings from extension popup**
 
@@ -146,3 +150,9 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - Advanced buttons editor, which allows to quickly turn on/off buttons and change their order with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
+
+---
+
+### Links to my other browser extensions
+[Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
+[Google Tweaks](https://github.com/emvaized/google-tiles-extension) – set of tweaks for Google search page to make it easier to use

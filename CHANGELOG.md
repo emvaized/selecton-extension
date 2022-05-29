@@ -4,6 +4,7 @@
 - Add option "Hide tooltip when cursor moves away" (available when tooltip set to appear 'Over cursor')
 - Add button to copy link to selected text (opens only in Chrome 90+)
 - Add option for experimental vertical tooltip layout
+
 - 'Open link' button now tries to fetch url's favicon when button icons are enabled
 - Improved auto-adjusting when tooltip collapses with the screen edge
 - Improved keywords recognition and overall performance
