@@ -1,3 +1,15 @@
+3.6.3
+- Add Calendar button for recognized dates, which opens Google Calendar on click
+- Add info panel with words/symbols count, and detected language (when available)
+- Add option "Hide tooltip when cursor moves away" (available when tooltip set to appear 'Over cursor')
+- Add button to copy link to selected text (opens only in Chrome 90+)
+- Add option for experimental vertical tooltip layout
+- 'Open link' button now tries to fetch url's favicon when button icons are enabled
+- Improved auto-adjusting when tooltip collapses with the screen edge
+- Improved keywords recognition and overall performance
+- Moved "Text fields" settings to a separate section for easier access
+- Extension popup, options page and 'Test settings' page now all support browser dark mode
+
 3.6.0
 - Add option to disable tooltip arrow
 - Add support for HUF and MYR currency
