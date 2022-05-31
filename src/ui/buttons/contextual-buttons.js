@@ -556,92 +556,102 @@ function addContextualButtons(callbackOnFinish) {
         if (configs.addOpenLinks)
             if (!selectionContainsSpaces && selectedText.includes('.') && !tooltip.children[3]) {
                 let link = selectedText;
-                const splittedByDots = link.split('.'), splittedByDotsLength = splittedByDots.length;
-                if (splittedByDots[0].length == 0) return;
-                const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
-                const includesUrlMarker = selectedText.includes('://');
+                const splittedByDots = link.split('.');
+                if (splittedByDots[0].length > 1) {
+                    const splittedByDotsLength = splittedByDots.length;
+                    const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
+                    const includesUrlMarker = selectedText.includes('://');
 
-                if (includesUrlMarker || ((splittedByDots.length == 2 || splittedByDots.length == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
+                    if (includesUrlMarker || ((splittedByDotsLength == 2 || splittedByDotsLength == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
 
-                    /// Don't recognize if selected text looks like filename
-                    for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
-                        if (domain.includes(filetypesToIgnoreAsDomains[i])) {
-                            isFileName = true;
-                            break;
+                        /// Don't recognize if selected text looks like filename
+                        for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
+                            if (domain.includes(filetypesToIgnoreAsDomains[i])) {
+                                isFileName = true;
+                                break;
+                            }
                         }
-                    }
 
-                    if (isFileName == false || includesUrlMarker) {
-                        link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
-                        let linkLength = link.length;
-                        let lastSymbol = link[linkLength - 1];
+                        if (isFileName == false || includesUrlMarker) {
+                            link = link.replaceAll(',', '').replaceAll(')', '').replaceAll('(', '').replaceAll(`\n`, ' ');
+                            let linkLength = link.length;
+                            let lastSymbol = link[linkLength - 1];
 
-                        if (lastSymbol == '.' || lastSymbol == ',')
-                            link = link.substring(0, linkLength - 1);
+                            if (lastSymbol == '.' || lastSymbol == ',')
+                                link = link.substring(0, linkLength - 1);
 
-                        /// Remove '/' on the end of link, just for better looks in pop-up
-                        lastSymbol = link[link.length - 1];
-                        if (lastSymbol == '/')
-                            link = link.substring(0, link.length - 1);
+                            /// Remove '/' on the end of link, just for better looks in pop-up
+                            lastSymbol = link[link.length - 1];
+                            if (lastSymbol == '/')
+                                link = link.substring(0, link.length - 1);
 
-                        /// Remove quotes in start and end of the link
-                        const firstSymbol = link[0];
-                        linkLength = link.length;
-                        lastSymbol = link[linkLength - 1];
-                        if (firstSymbol == "'" || firstSymbol == '"' || firstSymbol == '«' || firstSymbol == '“')
-                            link = link.substring(1, linkLength);
-                        if (lastSymbol == "'" || lastSymbol == '"' || lastSymbol == "»" || lastSymbol == '”')
-                            link = link.substring(0, linkLength - 1);
+                            /// Remove quotes in start and end of the link
+                            const firstSymbol = link[0];
+                            linkLength = link.length;
+                            lastSymbol = link[linkLength - 1];
+                            if (firstSymbol == "'" || firstSymbol == '"' || firstSymbol == '«' || firstSymbol == '“')
+                                link = link.substring(1, linkLength);
+                            if (lastSymbol == "'" || lastSymbol == '"' || lastSymbol == "»" || lastSymbol == '”')
+                                link = link.substring(0, linkLength - 1);
 
-                        /// Add open link button
-                        let linkButton = addContextualTooltipButton(function (e) {
-                            if (!link.includes('://') && !link.includes('about:'))
-                                link = 'https://' + link;
+                            /// Add open link button
+                            let linkButton = addContextualTooltipButton(function (e) {
+                                if (!link.includes('://') && !link.includes('about:'))
+                                    link = 'https://' + link;
 
-                            onTooltipButtonClick(e, link);
-                        })
+                                onTooltipButtonClick(e, link);
+                            })
 
-                        let linkText = document.createElement('div');
-                        linkText.style.display = 'inline';
-                        let linkToShow = link.replaceAll('http://', '').replaceAll('https://', '');
-                        linkText.textContent = linkToShow.length > linkSymbolsToShow ? linkToShow.substring(0, linkSymbolsToShow) + '...' : linkToShow;
-                        linkText.classList.add('color-highlight');
+                            let linkText = document.createElement('div');
+                            linkText.style.display = 'inline';
+                            let linkToShow = link.replaceAll('http://', '').replaceAll('https://', '');
+                            linkText.textContent = linkToShow.length > linkSymbolsToShow ? linkToShow.substring(0, linkSymbolsToShow) + '...' : linkToShow;
+                            linkText.classList.add('color-highlight');
 
-                        /// Add tooltip with full website on hover
-                        if (link.length > linkSymbolsToShow)
-                            linkButton.setAttribute('title', link);
+                            /// Add tooltip with full website on hover
+                            if (link.length > linkSymbolsToShow)
+                                linkButton.setAttribute('title', link);
 
-                        if (addButtonIcons)
-                            linkButton.appendChild(createImageIconForButton(openLinkButtonIcon, undefined, true));
-                        else linkButton.textContent = openLinkLabel + ' ';
+                            if (addButtonIcons)
+                                linkButton.appendChild(createImageIconForButton(openLinkButtonIcon, undefined, true));
+                            else linkButton.textContent = openLinkLabel + ' ';
 
-                        linkButton.appendChild(linkText);
+                            linkButton.appendChild(linkText);
 
-                        /// try fetching link favicon
-                        const openLinkIcon = linkButton.querySelector('.selecton-button-img-icon');
-                        if (openLinkIcon) {
-                            openLinkIcon.style.backgroundImage = 'url(' + openLinkButtonIcon + ')';
-                            openLinkIcon.src = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=24&url=https://' + linkToShow.split('/')[0];
+                            /// try fetching link favicon
+                            let openLinkIcon = linkButton.querySelector('.selecton-button-img-icon');
+                            if (openLinkIcon) {
+                                openLinkIcon.style.backgroundImage = 'url(' + openLinkButtonIcon + ')';
+                                const onFaviconLoadListener = (e) => {
+                                    if (openLinkIcon.src == openLinkButtonIcon) return;
+                                    openLinkIcon.style.backgroundImage = 'none';
 
-                            openLinkIcon.onload = function (e) {
-                                openLinkIcon.style.backgroundImage = 'none';
-
-                                if (openLinkIcon.naturalHeight == 16) {
-                                    openLinkIcon.src = openLinkButtonIcon;
-                                } else {
-                                    openLinkIcon.classList.add('no-filter-icon');
-                                    openLinkIcon.style.opacity = 1.0;
+                                    if (openLinkIcon.naturalHeight == 16) {
+                                        /// Google returns standard 'globe' icon
+                                        openLinkIcon.removeEventListener('load', onFaviconLoadListener);
+                                        openLinkIcon.src = openLinkButtonIcon;
+                                    } else {
+                                        openLinkIcon.classList.add('no-filter-icon');
+                                    }
                                 }
-                            }
 
-                            openLinkIcon.onerror = function (e) {
-                                openLinkIcon.style.backgroundImage = 'none';
-                                openLinkIcon.src = originalSrc;
+                                openLinkIcon.addEventListener('load', onFaviconLoadListener);
+                                // openLinkIcon.onload = onFaviconLoadListener
+
+                                openLinkIcon.onerror = function (e) {
+                                    openLinkIcon.removeEventListener('load', onFaviconLoadListener);
+                                    openLinkIcon.src = openLinkButtonIcon;
+                                    openLinkIcon.classList.remove('no-filter-icon');
+                                    openLinkIcon.style.backgroundImage = 'none';
+                                }
+
+                                openLinkIcon.src = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=24&url=https://' + linkToShow.split('/')[0];
                             }
                         }
-                    }
 
+                    }
                 }
+
             } else if (!selectionContainsSpaces && selectedText[0] == 'r' && selectedText[1] == '/') {
                 /// Add Reddit button
                 let redditButton = addBasicTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png', function (e) {

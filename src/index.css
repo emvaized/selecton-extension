@@ -249,7 +249,7 @@
   background-color: transparent;
   width: var(--selecton-button-icon-height) !important;
   background-repeat: no-repeat !important;
-  background-size: fill !important;
+  background-size: contain !important;
 }
 
 .no-filter-icon {
