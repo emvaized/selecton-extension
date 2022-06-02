@@ -52,12 +52,13 @@ function checkTooltipForCollidingWithSideEdges() {
 
     if (tooltip == null) return;
 
-    let panelRect = tooltip.getBoundingClientRect();
-    let dx = panelRect.left;
-    // let tooltipWidth = panelRect.width + 20;
+    let dx = tooltip.getBoundingClientRect().left;
 
     let tooltipWidth = 0.0;
+
+    /// we can't rely on clientWidth, because tooltip gets collapsed when colliding with screen edge
     // tooltipWidth = tooltip.clientWidth;
+
     if (configs.verticalLayoutTooltip) {
         tooltipWidth = 140;
     } else {
@@ -69,7 +70,6 @@ function checkTooltipForCollidingWithSideEdges() {
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {
-
         if (configs.debugMode)
             console.log('Tooltip is colliding with left edge. Fixing...');
 

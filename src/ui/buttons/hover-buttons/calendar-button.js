@@ -84,11 +84,13 @@ function checkToAddCalendarButton(text) {
             addCalendarButtonFromDate(parsedDate, todayDate, showDateInsteadOfWeekday);
             return;
         } else if (text.includes('.')) {
+            console.log('hi')
             const parts = text.split('.');
             const partsLength = parts.length;
 
             if (partsLength >= 2 && partsLength <= 3) {
                 let d = parts[0], m = parts[1], y = partsLength < 3 ? todayDate.getFullYear() : parts[2];
+                if (d == '' || m == '') return;
 
                 const parsedDate = new Date(`${y}/${m}/${d}`);
                 if (isNaN(parsedDate)) return;
