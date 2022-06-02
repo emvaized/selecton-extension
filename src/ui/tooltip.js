@@ -238,7 +238,8 @@ function calculateTooltipPosition(e) {
 
         if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
-            let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 20 : tooltipHeight / 2) + (arrow.clientHeight / 2);
+            // let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 20 : tooltipHeight / 2) + (arrow.clientHeight / 2);
+            let possibleDyToShowTooltip = selEndDimensions.dy + (selEndDimensions.lineHeight ?? 0) + arrow.clientHeight;
 
             if (possibleDyToShowTooltip < window.innerHeight) {
                 dyToShowTooltip = possibleDyToShowTooltip;
@@ -263,7 +264,7 @@ function calculateTooltipPosition(e) {
         let vertOutOfView = dyToShowTooltip <= 0;
         if (vertOutOfView) {
             /// check to display on bottom
-            let resultingDyOnBottom = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 15 : tooltipHeight) + arrow.clientHeight;
+            let resultingDyOnBottom = selEndDimensions.dy + (selEndDimensions.lineHeight ?? 0) + arrow.clientHeight;
             if (resultingDyOnBottom < window.innerHeight) {
                 dyToShowTooltip = resultingDyOnBottom;
                 setTooltipOnBottom();

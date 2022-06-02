@@ -29,7 +29,7 @@ function getSelectionCoordinates(atStart) {
         range.detach();
     } catch (e) { console.log(e); }
 
-    let coordsToReturn = { dx: rect.x, dy: rect.y, backwards: isBackwards };
+    let coordsToReturn = { dx: rect.x, dy: rect.y, backwards: isBackwards, lineHeight: rect.height };
 
     if (rect.x == 0 && rect.y == 0) {
         let rectCoords = getSelectionRectDimensions();
