@@ -66,7 +66,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         let circleDiv = document.createElement('div');
         circleDiv.className = 'selection-tooltip-draghandle-circle';
         circleDiv.style.cursor = 'grab';
-        circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
+        circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out, top 200ms ease, bottom 200ms ease`;
         circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
 
         if (dragHandleIsReverted)
@@ -280,7 +280,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
             };
         }
 
-        //dragHandles.push(dragHandle);
         document.body.appendChild(dragHandle);
 
         if (configs.debugMode) {

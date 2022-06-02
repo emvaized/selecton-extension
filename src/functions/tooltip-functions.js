@@ -56,16 +56,16 @@ function checkTooltipForCollidingWithSideEdges() {
     let dx = panelRect.left;
     // let tooltipWidth = panelRect.width + 20;
 
-    let tooltipWidth = 24.0;
-    tooltipWidth = tooltip.clientWidth;
-    // if (configs.verticalLayoutTooltip) {
-    //     tooltipWidth = 120;
-    // } else {
-    //     for (let i = 0, l = tooltip.children.length; i < l; i++) {
-    //         if (i == 0) continue; /// ignore arrow element
-    //         tooltipWidth += tooltip.children[i].offsetWidth;
-    //     }
-    // }
+    let tooltipWidth = 0.0;
+    // tooltipWidth = tooltip.clientWidth;
+    if (configs.verticalLayoutTooltip) {
+        tooltipWidth = 140;
+    } else {
+        const tooltipButtons = tooltip.querySelectorAll('.selection-popup-button');
+        for (let i = 0, l = tooltipButtons.length; i < l; i++) {
+            tooltipWidth += tooltipButtons[i].offsetWidth;
+        }
+    }
 
     /// Tooltip is off-screen on the left
     if (dx < 0) {
@@ -84,19 +84,19 @@ function checkTooltipForCollidingWithSideEdges() {
 
     } else {
         /// Check tooltip to be off-screen on the right
-        let screenWidth = window.innerWidth
+        const screenWidth = window.innerWidth
             || document.documentElement.clientWidth
             || document.body.clientWidth;
 
-        let offscreenAmount = (dx + tooltipWidth) - screenWidth;
+        const offscreenAmount = (dx + tooltipWidth) - screenWidth;
 
         /// Tooltip is off-screen on the right
         if (offscreenAmount > 0) {
             if (configs.debugMode)
-                console.log('Tooltip is colliding with right edge. Fixing...');
+                console.log(`Tooltip is colliding with right edge by ${offscreenAmount}px`);
 
             tooltip.style.transform = returnTooltipRevealTransform(true, false);
-            tooltip.style.left = `${dx - offscreenAmount - 10}px`;
+            tooltip.style.left = `${dx - offscreenAmount}px`;
 
             /// Shift the arrow to match new position
             if (configs.showTooltipArrow) {
