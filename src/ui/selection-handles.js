@@ -26,7 +26,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     /// Try to adapt handle height to selected text's line-height
     try {
-        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
+        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 6;
 
         if (!selectionHandleLineHeight) {
             const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
@@ -234,7 +234,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         let selEndDimensions = getSelectionCoordinates(false);
 
                         /// Update selection handle height
-                        const newSelectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
+                        const newSelectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 6;
                         if (newSelectionHandleLineHeight) {
                             selectionHandleLineHeight = newSelectionHandleLineHeight;
                             line.style.height = `${selectionHandleLineHeight}px`;

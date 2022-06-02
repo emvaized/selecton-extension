@@ -52,8 +52,7 @@ function checkTooltipForCollidingWithSideEdges() {
 
     if (tooltip == null) return;
 
-    let dx = tooltip.getBoundingClientRect().left;
-
+    const dx = tooltip.getBoundingClientRect().left;
     let tooltipWidth = 0.0;
 
     /// we can't rely on clientWidth, because tooltip gets collapsed when colliding with screen edge
@@ -62,7 +61,7 @@ function checkTooltipForCollidingWithSideEdges() {
     if (configs.verticalLayoutTooltip) {
         tooltipWidth = 140;
     } else {
-        const tooltipButtons = tooltip.querySelectorAll('.selection-popup-button');
+        const tooltipButtons = tooltip.querySelectorAll('.selection-tooltip > .selection-popup-button');
         for (let i = 0, l = tooltipButtons.length; i < l; i++) {
             tooltipWidth += tooltipButtons[i].offsetWidth;
         }
@@ -73,8 +72,9 @@ function checkTooltipForCollidingWithSideEdges() {
         if (configs.debugMode)
             console.log('Tooltip is colliding with left edge. Fixing...');
 
-        tooltip.style.left = '5px';
-        tooltip.style.transform = returnTooltipRevealTransform(true, false);
+        // tooltip.style.left = '5px';
+        // tooltip.style.transform = returnTooltipRevealTransform(true, false);
+        tooltip.style.left = `${5 + (tooltipWidth / 2)}px`;
 
         /// Shift the arrow to match new position
         if (configs.showTooltipArrow && arrow !== null && arrow !== undefined) {
@@ -95,8 +95,10 @@ function checkTooltipForCollidingWithSideEdges() {
             if (configs.debugMode)
                 console.log(`Tooltip is colliding with right edge by ${offscreenAmount}px`);
 
-            tooltip.style.transform = returnTooltipRevealTransform(true, false);
-            tooltip.style.left = `${dx - offscreenAmount}px`;
+            // tooltip.style.transform = returnTooltipRevealTransform(true, false);
+            // tooltip.style.left = `${dx - offscreenAmount}px`;
+            tooltip.style.left = 'unset';
+            tooltip.style.right = `${5 - (tooltipWidth / 2)}px`;
 
             /// Shift the arrow to match new position
             if (configs.showTooltipArrow) {

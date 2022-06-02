@@ -275,6 +275,9 @@ function calculateTooltipPosition(e) {
             }
         }
 
+        /// Add small padding
+        if (configs.showTooltipArrow) dyToShowTooltip = dyToShowTooltip + 2;
+
         /// Calculating DX
         try {
             /// New approach - place tooltip in horizontal center between two selection handles
