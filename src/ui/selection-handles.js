@@ -26,9 +26,13 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     /// Try to adapt handle height to selected text's line-height
     try {
-        const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
-        if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px'))
-            selectionHandleLineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
+        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
+
+        if (!selectionHandleLineHeight) {
+            const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
+            if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px'))
+                selectionHandleLineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
+        }
 
     } catch (e) {
         if (configs.debugMode)
@@ -37,8 +41,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     try {
         var currentWindowSelection;
-        // var selStartDimensions = getSelectionCoordinates(true);
-        // var selEndDimensions = getSelectionCoordinates(false);
 
         /// When returned dimensions are 0;0, place the handle where it was left by user
         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
@@ -129,10 +131,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                     // dragHandle.style.height = `${lastWordLineHeight}px`;
                     // circleDiv.style.bottom = `${-lastWordLineHeight - 1}px;`;
 
-                    /// Change cursor shape
-                    // document.body.style.cursor = 'grabbing';
-                    // circleDiv.style.cursor = 'grabbing';
-
                     /// Calculate deltas
                     const deltaXFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dx - e.clientX) : (selEndDimensions.dx - e.clientX);
                     const deltaYFromInitial = dragHandleIndex == 0 ? (selStartDimensions.dy - e.clientY) : (e.clientY - selEndDimensions.dy);
@@ -147,9 +145,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                     /// Create selection from rect
                     if (currentWindowSelection !== null && currentWindowSelection !== undefined && currentWindowSelection !== '') {
                         try {
-                            // if (configs.debugMode)
-                            //     console.log(`Creating selection range at: anchorX ${selStartDimensions.dx - deltaXFromInitial - 0.05}, anchorY ${selEndDimensions.dy + deltaYFromInitial}, focusX ${selStartDimensions.dx - 4}, focusY ${selStartDimensions.dy}`);
-
                             if (dragHandleIndex == 0) {
                                 /// Left handle
                                 createSelectionFromPoint(
@@ -171,7 +166,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                                 );
                             }
 
-
                         } catch (e) {
                             if (configs.debugMode) {
                                 console.log('Error while creating selection range:');
@@ -185,7 +179,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         console.log(e);
                     }
                 }
-
 
                 /// Scroll page on top and bottom
                 let clientY = e.clientY;
@@ -240,6 +233,13 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         let selStartDimensions = getSelectionCoordinates(true);
                         let selEndDimensions = getSelectionCoordinates(false);
 
+                        /// Update selection handle height
+                        const newSelectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
+                        if (newSelectionHandleLineHeight) {
+                            selectionHandleLineHeight = newSelectionHandleLineHeight;
+                            line.style.height = `${selectionHandleLineHeight}px`;
+                        }
+
                         if (selStartDimensions == null || selEndDimensions == null) { hideDragHandles(); return; }
                         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
                         if (selStartDimensions.dx == 0 && selStartDimensions.dy == 0) selStartDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
@@ -259,8 +259,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                         }
 
                         /// Vertically revert the drag handle if tooltip is located on bottom
-                        // if (configs.tooltipPosition == 'overCursor') {
-                        // if (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true) {
                         if (dragHandleIndex == 1 && tooltipOnBottom) {
                             circleDiv.style.bottom = "unset";
                             circleDiv.style.top = `-${circleHeight - 1}px`;
@@ -268,7 +266,6 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                             circleDiv.style.bottom = `-${selectionHandleLineHeight - 1}px`;
                             circleDiv.style.top = "unset";
                         }
-                        // }
 
                         setTimeout(function () {
                             dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-in-out`;

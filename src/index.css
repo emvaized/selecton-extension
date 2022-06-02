@@ -224,6 +224,7 @@
   opacity: 0.7;
   position: absolute;
   border-radius: 4px;
+  transition: height 200ms ease;
 }
 
 .selection-tooltip-draghandle-circle {
