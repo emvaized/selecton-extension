@@ -154,6 +154,8 @@ const convertionUnits = {
         "ratio": 4.54609,
         "variations": [
             ' gallon',
+            ' галлон',
+            ' галон',
         ],
     },
     "°F": {
