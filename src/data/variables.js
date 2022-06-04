@@ -1,13 +1,11 @@
 /// Currently non user-configurable settings 
+var convertWhenOnlyFewWordsSelected = true;
 var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
-var ignoreWhenTextFieldFocused = true;
-var convertWhenOnlyFewWordsSelected = true;
-var addSelectionTextShadow = false;
-var selectionTextShadowOpacity = 0.75;
-var allowWebsitesOverrideSelectionColor = true;
+var linkSymbolsToShow = 20;
+var selectionHandleLineHeight = 25;
 
-/// Service variables
+/// Button labels – translations assigned in code
 var copyLabel = 'Copy';
 var searchLabel = 'Search';
 var openLinkLabel = 'Open';
@@ -22,42 +20,14 @@ var boldLabel = 'Bold';
 var strikeLabel = 'Strike';
 var clearLabel = 'Clear';
 
-var ratesLastFetchedDate;
-var tooltip;
-var secondaryTooltip;
-var arrow;
-var infoPanel;
-var selection;
-var selectedText;
-var dontShowTooltip = false;
-var isDraggingTooltip = false;
-var isDraggingDragHandle = false;
-var draggingHandleIndex;
-var tooltipIsShown = false;
-var firstButtonBorderRadius = '3px 0px 0px 3px';
-var lastButtonBorderRadius = '0px 3px 3px 0px';
-var onlyButtonBorderRadius = '3px';
-var isDarkTooltip = true;
-var linkSymbolsToShow = 20;
-var selectionHandleLineHeight = 25;
-var searchButton;
-var copyButton;
-var browserLanguage;
-var browserCurrency;
-var browserMetricSystem;
-var addButtonIcons;
-var verticalSecondaryTooltip;
-var lastMouseUpEvent;
-var previousSelection;
-var tooltipOnBottom = false;
-var configsWereLoaded = false;
-var currencyRatesWereLoaded = false;
-var isTextFieldFocused = false;
-var isTextFieldEmpty = true;
-var domainIsBlacklistedForSnapping;
-var selectedTextIsCode;
-
-var timerToRecreateOverlays;
-var delayToRecreateOverlays = 150;
-var floatingTooltipTop = false;
-var floatingTooltipBottom = false;
+/// Dynammically assigned variables
+var selection, selectedText;
+var tooltip, secondaryTooltip, arrow, infoPanel, searchButton, copyButton, verticalSecondaryTooltip;
+var tooltipIsShown = false, dontShowTooltip = false, isDraggingTooltip = false, isDraggingDragHandle = false, isDarkTooltip = true;
+var draggingHandleIndex, lastMouseUpEvent, ratesLastFetchedDate;
+var firstButtonBorderRadius = '3px 0px 0px 3px', lastButtonBorderRadius = '0px 3px 3px 0px', onlyButtonBorderRadius = '3px';
+var browserLanguage, browserCurrency, browserMetricSystem;
+var tooltipOnBottom = false, configsWereLoaded = false, currencyRatesWereLoaded = false, isTextFieldFocused = false;
+var isTextFieldEmpty = true, domainIsBlacklistedForSnapping, selectedTextIsCode, addButtonIcons;
+var timerToRecreateOverlays, delayToRecreateOverlays = 150;
+var floatingTooltipTop = false, floatingTooltipBottom = false;
