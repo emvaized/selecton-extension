@@ -1,3 +1,11 @@
+3.6.4
+- Small fixes for 'Open link' and Calendar buttons
+- Improved drag handle's height calculation
+- Improved detection of tooltip’s side edge collision
+- Improved vertical positioning of tooltip on bottom of text selection
+- Added new keywords for dates and addresses
+- Options page design improvements
+
 3.6.3
 - Add Calendar button for recognized dates, which opens Google Calendar on click
 - Add info panel with words/symbols count, and detected language (when available)
