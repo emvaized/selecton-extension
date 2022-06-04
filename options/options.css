@@ -313,4 +313,6 @@ content: "\2212";
     .option:hover {
       background-color: rgb(256, 256, 256, 0.1);
     }
+
+    #selecton-version a { color: rgb(152, 191, 203); }
  }

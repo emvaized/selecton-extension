@@ -35,6 +35,7 @@ iframe {
 
 @-moz-document url-prefix() {
   body { font-family: sans-serif !important; }
+  iframe { min-width: 365px; }
   #headerLogo {vertical-align: bottom;}
 }
 
