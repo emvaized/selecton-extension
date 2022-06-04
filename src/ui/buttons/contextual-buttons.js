@@ -669,7 +669,7 @@ function addContextualButtons(callbackOnFinish) {
             }
     }
 
-    const containsSpecialSymbols = (/[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText)) || isFileName == true;
+    const containsSpecialSymbols = /[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
     const contextButtonWasAdded = tooltip.children[3];
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
