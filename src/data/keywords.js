@@ -19,6 +19,7 @@ const addressKeywords = [
 
     /// Ukrainian
     'вулиця ',
+    'вул.',
     'м. ',
     'місто ',
     'трк ',
@@ -241,8 +242,6 @@ const imprerialConvertionUnits = {
     },
 };
 
-
-
 /// Convert timezones
 const timeZoneKeywords = {
     'GMT': 'GMT',
@@ -332,7 +331,7 @@ const codeMarkers = [
 ];
 
 /// Search for these keywords to detect dates in the selected text
-/// For each language, number of keywords should match whole amount (12 for 'month' and 7 for 'weekday')
+/// For each language, number of keywords should match the whole amount (12 for 'month', 7 for 'weekday' etc.)
 const dateKeywords = {
     'month': [
         'jan',
@@ -350,7 +349,7 @@ const dateKeywords = {
         ///russian
         'янв',
         'фев',
-        'мар.',
+        'март',
         'апр',
         'мая',
         'июн',

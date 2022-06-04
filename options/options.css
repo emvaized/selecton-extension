@@ -248,7 +248,7 @@ content: "\2212";
 }
 
 @-moz-document url-prefix() {
-  body { font-size: 14px; font-family: sans-serif !important; }
+  body { font-size: 14px; font-family: sans-serif !important; line-height: 1.0 !important; }
   h3 {font-size: 18px; font-weight: 600;}
 }
 
