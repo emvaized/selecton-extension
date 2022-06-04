@@ -23,10 +23,19 @@
     height: 25px;
 }
 
+#headerLogo {
+    display: inline; vertical-align: middle;
+}
+
 iframe {
     display: block; margin: 0px !important; width: 100%; 
     height: 525px; 
     min-width: 400px; 
+}
+
+@-moz-document url-prefix() {
+  body { font-family: sans-serif !important; }
+  #headerLogo {vertical-align: bottom;}
 }
 
 
@@ -34,10 +43,6 @@ iframe {
     #selecton-settings-label {
         color: black; opacity: 0.65;
     }
-
-    /* iframe {
-        min-height: 500px;
-    } */
 }}
 
  @media (prefers-color-scheme: dark) {

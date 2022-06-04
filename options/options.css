@@ -248,7 +248,7 @@ content: "\2212";
 }
 
 @-moz-document url-prefix() {
-  body { font-size: 14px; }
+  body { font-size: 14px; font-family: sans-serif !important; }
   h3 {font-size: 18px; font-weight: 600;}
 }
 
@@ -308,5 +308,9 @@ content: "\2212";
 
     .collapsible-header:hover {
       background-color: rgba(204, 204, 204, 0.503);
+    }
+
+    .option:hover {
+      background-color: rgb(256, 256, 256, 0.1);
     }
  }
