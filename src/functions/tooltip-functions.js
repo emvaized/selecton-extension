@@ -188,7 +188,8 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     else
         button.textContent = label;
 
-    button.addEventListener("mousedown", onClick);
+    // button.addEventListener("mousedown", onClick);
+    button.onmousedown = onClick;
 
     if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
