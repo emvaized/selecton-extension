@@ -142,7 +142,7 @@
   max-width: 400%;
   pointer-events: none;
   color: var(--selection-button-foreground);
-  /* text-align: start; */
+  white-space: normal !important;
 }
 
 .no-padding-tooltip {
