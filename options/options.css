@@ -239,6 +239,8 @@ content: "\2212";
   background: red;
 }
 
+/* 'What's new' button color */
+#selecton-version a { color: #55b5ff !important; }
 
 
 @media (min-width: 600px) {
@@ -313,6 +315,4 @@ content: "\2212";
     .option:hover {
       background-color: rgb(256, 256, 256, 0.1);
     }
-
-    #selecton-version a { color: rgb(152, 191, 203); }
  }
