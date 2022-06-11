@@ -1,3 +1,9 @@
+3.6.5
+- Fix for translate button text going off-screen
+- Fix for Calendar button false detection (eg. '3.6.4')
+- Fix for Dictionary button opening 2 tabs on click
+- Fixed "what's new" button color in options to always blue
+
 3.6.4
 - Small fixes for 'Open link' and Calendar buttons
 - Improved drag handle's height calculation
