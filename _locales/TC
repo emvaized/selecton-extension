@@ -1,1 +1,629 @@
-
+{
+  "actionButtonsHeader": {
+    "message": "動作按鈕"
+  },
+  "addActionButtonsForTextFields": {
+    "message": "為文字欄位使用特殊面板"
+  },
+  "addButtonIcons": {
+    "message": "顯示按鈕圖示"
+  },
+  "addButtonToCopyLinkToText": {
+    "message": "新增按鈕以將連結複製到所選文字"
+  },
+  "addCalendarButton": {
+    "message": "為日期添加日曆按鈕"
+  },
+  "addClearButton": {
+    "message": "點擊非空欄位時顯示「清除」按鈕"
+  },
+  "addColorPreviewButton": {
+    "message": "新增顏色預覽按鈕 (用於#ffffff等CSS顏色)"
+  },
+  "addDragHandles": {
+    "message": "新增選擇拖動手把"
+  },
+  "addFontFormatButtons": {
+    "message": "新增字體格式按鈕 (斜體、粗體)"
+  },
+  "addMarkerButton": {
+    "message": "新增「突出顯示」按鈕"
+  },
+  "addNewSearchOption": {
+    "message": "新增新的搜尋選項"
+  },
+  "addOpenLinks": {
+    "message": "新增按鈕以打開連結"
+  },
+  "addPasteButton": {
+    "message": "點擊文字欄位時顯示「貼上」按鈕"
+  },
+  "addPasteOnlyEmptyField": {
+    "message": "…僅當欄位為空時"
+  },
+  "addPhoneButton": {
+    "message": "新增電話號碼按鈕"
+  },
+  "addScaleUpEffect": {
+    "message": "在顯示上使用放大效果"
+  },
+  "addTooltipShadow": {
+    "message": "新增工具提示陰影"
+  },
+  "allChangesSavedAutomatically": {
+    "message": "所有設定都會自動儲存"
+  },
+  "animationDuration": {
+    "message": "動畫時長 (毫秒)"
+  },
+  "appearanceHeader": {
+    "message": "外觀"
+  },
+  "applyConfigsImmediately": {
+    "message": "立即套用配置"
+  },
+  "behaviorHeader": {
+    "message": "表現"
+  },
+  "boldLabel": {
+    "message": "大膽的"
+  },
+  "borderRadius": {
+    "message": "邊界半徑"
+  },
+  "buttonsStyle": {
+    "message": "按鈕樣式"
+  },
+  "buyMeCoffee": {
+    "message": "支援專案"
+  },
+  "callLabel": {
+    "message": "稱呼"
+  },
+  "changeTextSelectionColor": {
+    "message": "自訂文字選擇"
+  },
+  "chooseFileFirst": {
+    "message": "首先選擇檔案"
+  },
+  "clearLabel": {
+    "message": "清除"
+  },
+  "collapseButtons": {
+    "message": "隱藏「更多」按鈕下的超額按鈕"
+  },
+  "contextualButtonsHeader": {
+    "message": "按鈕"
+  },
+  "convertCurrencies": {
+    "message": "轉換貨幣"
+  },
+  "convertMetrics": {
+    "message": "轉換度量"
+  },
+  "convertResultClickAction": {
+    "message": "點擊結果時的動作"
+  },
+  "convertTime": {
+    "message": "轉換時間"
+  },
+  "convertToCurrency": {
+    "message": "要轉換為的貨幣 (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info</a>)"
+  },
+  "convertToCurrencyHint": {
+    "message": "檢視「程式碼」 <a target='_blank' href='https://www.iban.com/currency-codes'>這裡</a> 以供參考"
+  },
+  "convertionHeader": {
+    "message": "轉換"
+  },
+  "copyLabel": {
+    "message": "複製"
+  },
+  "customIcon": {
+    "message": "自訂圖示"
+  },
+  "customIconUrl": {
+    "message": "自訂圖示網址"
+  },
+  "customSearchButtonsHeader": {
+    "message": "搜尋按鈕"
+  },
+  "customSearchOptionsDisplay": {
+    "message": "顯示自訂搜尋選項的樣式"
+  },
+  "customSearchTooltip": {
+    "message": "自訂搜尋選項"
+  },
+  "customSearchTooltipHint": {
+    "message": "將滑鼠懸停在“搜尋”按鈕上時顯示。 使用 %s 作為搜尋查詢的佔位符，%w 是當前域的佔位符（用於網站搜尋）"
+  },
+  "customSearchUrl": {
+    "message": "自訂搜尋網址 <br />(使用 %s 作為查詢的佔位符)"
+  },
+  "cutLabel": {
+    "message": "剪下"
+  },
+  "dayAgo": {
+    "message": "天前"
+  },
+  "daysAgo": {
+    "message": "$DAYS$ 天前",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "debugMode": {
+    "message": "除錯模式"
+  },
+  "delayToRevealHoverPanels": {
+    "message": "懸停時顯示面板的延遲 (毫秒)"
+  },
+  "delayToRevealSearchTooltip": {
+    "message": "顯示面板前的延遲 (毫秒)"
+  },
+  "delayToRevealTranslateTooltip": {
+    "message": "自動翻譯前的延遲 (毫秒)"
+  },
+  "deleteLabel": {
+    "message": "刪除"
+  },
+  "dictionaryButtonRemark": {
+    "message": "在懸停時查找維基百科定義"
+  },
+  "dictionaryButtonResponseCharsAmount": {
+    "message": "結果顯示的最大字元數"
+  },
+  "dictionaryButtonWordsAmount": {
+    "message": "顯示字典按鈕的單字"
+  },
+  "dictionaryLabel": {
+    "message": "字典"
+  },
+  "disableForBetterPerformance": {
+    "message": "停用以獲得更好的性能"
+  },
+  "disableWordSnapForCode": {
+    "message": "停用程式碼的單字捕捉"
+  },
+  "disableWordSnappingOnCtrlKey": {
+    "message": "如果按下 CTRL 鍵，則不要按單字選擇"
+  },
+  "dontSnapTextfieldSelection": {
+    "message": "不要在文字欄位中捕捉選擇"
+  },
+  "draggableTooltip": {
+    "message": "面板可以通過箭頭拖動"
+  },
+  "email": {
+    "message": "電子郵件"
+  },
+  "enabled": {
+    "message": "啟用"
+  },
+  "excludedDomains": {
+    "message": "排除的網域"
+  },
+  "export": {
+    "message": "匯出"
+  },
+  "exportImportSettings": {
+    "message": "匯出/匯入設定"
+  },
+  "exportSettingsLabel": {
+    "message": "匯出設定"
+  },
+  "extensionDescription": {
+    "message": "帶有文字選擇操作的可自訂彈出視窗"
+  },
+  "fallbackExportLabel": {
+    "message": "匯出，另存為 .json 檔案"
+  },
+  "floatingOffscreenTooltip": {
+    "message": "滾動到螢幕外時的浮動面板"
+  },
+  "fontSize": {
+    "message": "字型大小"
+  },
+  "fullOpacityOnHover": {
+    "message": "懸停時完全不透明"
+  },
+  "gmail": {
+    "message": "Gmail 新電子郵件"
+  },
+  "hideOnKeypress": {
+    "message": "按鍵隱藏"
+  },
+  "hideOnScroll": {
+    "message": "在滾動條上隱藏工具提示"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "游標移開時隱藏工具提示"
+  },
+  "hideTranslateButtonForUserLanguage": {
+    "message": "隱藏使用者語言的翻譯按鈕"
+  },
+  "horizontalLayout": {
+    "message": "水平的"
+  },
+  "hoverCustomSearchStyle": {
+    "message": "在搜尋按鈕懸停時顯示"
+  },
+  "iconlabel": {
+    "message": "圖示 + 文字"
+  },
+  "imperial": {
+    "message": "英制"
+  },
+  "import": {
+    "message": "匯入"
+  },
+  "importAlert": {
+    "message": "此動作將覆蓋當前的 Selecton 設定。 你確定嗎？"
+  },
+  "importSettingsLabel": {
+    "message": "匯入設定"
+  },
+  "inDay": {
+    "message": "天內"
+  },
+  "inDays": {
+    "message": "在 $DAYS$ 天內",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "inMonth": {
+    "message": "月內"
+  },
+  "inMonths": {
+    "message": "在 $MONTHS$ 月內",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
+  },
+  "inYear": {
+    "message": "年內"
+  },
+  "inYears": {
+    "message": "在 $YEARS$ 年內",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
+  },
+  "invertColorOnDarkWebsite": {
+    "message": "在深色網站上反轉顏色"
+  },
+  "italicLabel": {
+    "message": "斜體"
+  },
+  "languageToTranslate": {
+    "message": "使用者的語言 (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)"
+  },
+  "leftClickBackgroundTab": {
+    "message": "左鍵點擊打開連結作為背景選項卡"
+  },
+  "linkToTextDescription": {
+    "message": "複製指向所選文字的頁面連結 (僅在 Chrome 90+ 中打開)"
+  },
+  "linkToTextLabel": {
+    "message": "複製連結"
+  },
+  "liveTranslation": {
+    "message": "按鈕懸停時的即時翻譯 (Google 翻譯)"
+  },
+  "mailto": {
+    "message": "電子郵件用戶端"
+  },
+  "markedLabel": {
+    "message": "突出顯示"
+  },
+  "markerLabel": {
+    "message": "突出顯示"
+  },
+  "markersLabel": {
+    "message": "突出顯示"
+  },
+  "maxIconsInRow": {
+    "message": "列中的圖示數量"
+  },
+  "maxMarkerPagesToStore": {
+    "message": "儲存突顯的最大頁數"
+  },
+  "maxTooltipButtonsToShow": {
+    "message": "要在工具提示中顯示的按鈕數"
+  },
+  "metric": {
+    "message": "公制"
+  },
+  "middleClickHidesTooltip": {
+    "message": "中鍵點擊 (在後台打開) 隱藏面板"
+  },
+  "monthAgo": {
+    "message": "個月前"
+  },
+  "monthsAgo": {
+    "message": "$MONTHS$ 幾個月前",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveDownLabel": {
+    "message": "下移"
+  },
+  "moveDownTooltipEffect": {
+    "message": "下移"
+  },
+  "moveUpLabel": {
+    "message": "上移"
+  },
+  "moveUpTooltipEffect": {
+    "message": "上移"
+  },
+  "noDefinitionFound": {
+    "message": "未找到定義"
+  },
+  "noTooltipEffect": {
+    "message": "沒有效果"
+  },
+  "noTranslationFound": {
+    "message": "沒有找到翻譯"
+  },
+  "onlyicon": {
+    "message": "僅圖示"
+  },
+  "onlylabel": {
+    "message": "僅文字"
+  },
+  "openInNewTab": {
+    "message": "在新分頁中打開"
+  },
+  "openLinkLabel": {
+    "message": "打開"
+  },
+  "overCursor": {
+    "message": "游標上方"
+  },
+  "panelCustomSearchStyle": {
+    "message": "在主面板中顯示"
+  },
+  "pasteLabel": {
+    "message": "貼上"
+  },
+  "performSimpleMathOperations": {
+    "message": "執行簡單的數學計算"
+  },
+  "preferCurrencySymbol": {
+    "message": "首選貨幣符號而不是程式碼"
+  },
+  "preferredMetricsSystem": {
+    "message": "首選度量系統"
+  },
+  "preferredNewEmailMethod": {
+    "message": "建立新電子郵件的首選方法"
+  },
+  "preferredSearchEngine": {
+    "message": "搜尋引擎"
+  },
+  "preferredTranslateService": {
+    "message": "翻譯服務"
+  },
+  "recentMarkersLabel": {
+    "message": "最近突顯"
+  },
+  "recreateTooltipAfterScroll": {
+    "message": "滾動或調整視窗大小後重新建立工具提示"
+  },
+  "removeCustomIcon": {
+    "message": "移除自訂圖示"
+  },
+  "removeSelectionOnActionButtonClick": {
+    "message": "選擇動作後刪除文字選擇"
+  },
+  "resetDefaults": {
+    "message": "恢復預設值"
+  },
+  "reverseTooltipButtonsOrder": {
+    "message": "反轉按鈕的次序"
+  },
+  "scaleUpFromBottomTooltipEffect": {
+    "message": "縱向擴展 (從底部)"
+  },
+  "scaleUpTooltipEffect": {
+    "message": "縱向擴展"
+  },
+  "searchLabel": {
+    "message": "搜尋"
+  },
+  "searchingDefinitions": {
+    "message": "搜尋定義"
+  },
+  "secondaryTooltipEnabled": {
+    "message": "已啟用工具提示"
+  },
+  "secondaryTooltipIconSize": {
+    "message": "圖示大小 (px)"
+  },
+  "secondaryTooltipLayout": {
+    "message": "按鈕佈局"
+  },
+  "selectionCenter": {
+    "message": "選擇中心"
+  },
+  "selectionHeader": {
+    "message": "文字選擇"
+  },
+  "selectonSettings": {
+    "message": "Selecton 設定"
+  },
+  "shadowOpacity": {
+    "message": "陰影不透明度"
+  },
+  "shiftTooltipWhenWebsiteHasOwn": {
+    "message": "當網站顯示自己的文字選擇時，嘗試向上移動工具提示"
+  },
+  "shouldOverrideWebsiteSelectionColor": {
+    "message": "覆蓋頁面的突出顯示顏色"
+  },
+  "showButtonBorders": {
+    "message": "顯示按鈕分隔符"
+  },
+  "showButtonLabelOnHover": {
+    "message": "懸停時顯示按鈕標籤"
+  },
+  "showDictionaryButton": {
+    "message": "顯示字典按鈕"
+  },
+  "showDotForHoverButtons": {
+    "message": "在具有懸停事件的按鈕上顯示點"
+  },
+  "showEmailButton": {
+    "message": "新增電子郵件按鈕"
+  },
+  "showInfoPanel": {
+    "message": "顯示資訊面板 (單字和符號計數)"
+  },
+  "showOnMap": {
+    "message": "在地圖上顯示"
+  },
+  "showOnMapButtonEnabled": {
+    "message": "新增按鈕以顯示在地圖上"
+  },
+  "showSecondaryTooltipTitleOnHover": {
+    "message": "懸停時顯示標題"
+  },
+  "showStatsOnCopyButtonHover": {
+    "message": "在複製按鈕懸停時顯示統計資訊"
+  },
+  "showTooltipArrow": {
+    "message": "顯示工具提示箭頭"
+  },
+  "showTranslateButton": {
+    "message": "顯示翻譯按鈕"
+  },
+  "showTranslateIfLanguageUnknown": {
+    "message": "如果未檢測到語言，則顯示翻譯按鈕"
+  },
+  "showUnconvertedValue": {
+    "message": "顯示轉換前的原始值"
+  },
+  "showUpdateNotification": {
+    "message": "顯示更新通知"
+  },
+  "snapSelectionToWord": {
+    "message": "按單字對齊文字選擇"
+  },
+  "strikeLabel": {
+    "message": "擊打"
+  },
+  "symbolsCount": {
+    "message": "符號"
+  },
+  "testPageButton": {
+    "message": "測試設定"
+  },
+  "textFieldsHeader": {
+    "message": "文字欄位"
+  },
+  "textSelectionBackground": {
+    "message": "選擇顏色"
+  },
+  "textSelectionBackgroundOpacity": {
+    "message": "背景不透明度"
+  },
+  "textSelectionColor": {
+    "message": "文字顏色"
+  },
+  "today": {
+    "message": "今天"
+  },
+  "tooltipBackground": {
+    "message": "背景顏色"
+  },
+  "tooltipInvertedBackground": {
+    "message": "背景顏色 (深色頁面)"
+  },
+  "tooltipOpacity": {
+    "message": "工具提示不透明度"
+  },
+  "tooltipPosition": {
+    "message": "工具提示的水平對齊"
+  },
+  "tooltipRevealEffect": {
+    "message": "工具提示顯示效果"
+  },
+  "translateLabel": {
+    "message": "翻譯"
+  },
+  "translating": {
+    "message": "正在翻譯"
+  },
+  "updateNotificationMessage": {
+    "message": "點擊此處查看新功能"
+  },
+  "updateNotificationTitle": {
+    "message": "Selecton 已更新為 $VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "updatePageToSeeChanges": {
+    "message": "重新整理頁面以查看更改"
+  },
+  "updateRatesEveryDays": {
+    "message": "費率更新間隔 (天)"
+  },
+  "useCustomStyle": {
+    "message": "為工具提示使用自訂樣式"
+  },
+  "useIconFromGoogle": {
+    "message": "使用來自 Google 的圖示"
+  },
+  "verticalLayout": {
+    "message": "垂直的"
+  },
+  "verticalLayoutTooltip": {
+    "message": "使用垂直工具提示佈局 (試驗性)"
+  },
+  "verticalSecondaryTooltip": {
+    "message": "顯示為垂直清單 (停用水平)"
+  },
+  "visitGithub": {
+    "message": "訪問 GitHub 頁面"
+  },
+  "whatsNew": {
+    "message": "有什麼新功能"
+  },
+  "wordSnappingBlacklist": {
+    "message": "要排除的網域"
+  },
+  "wordsCount": {
+    "message": "文字"
+  },
+  "writeAReview": {
+    "message": "寫評論"
+  },
+  "yearAgo": {
+    "message": "年前"
+  },
+  "yearsAgo": {
+    "message": "$YEARS$ 年前",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
+  }
+}
