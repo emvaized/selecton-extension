@@ -1,0 +1,629 @@
+{
+  "actionButtonsHeader": {
+    "message": "Actieknoppen"
+  },
+  "addActionButtonsForTextFields": {
+    "message": "Teksthulppaneel tonen in tekstvelden"
+  },
+  "addButtonIcons": {
+    "message": "Pictogrammen naast knoppen tonen"
+  },
+  "addButtonToCopyLinkToText": {
+    "message": "Knop tonen om link naar selectie te kopiëren"
+  },
+  "addCalendarButton": {
+    "message": "Agendaknop tonen bij datums"
+  },
+  "addClearButton": {
+    "message": "Knop ‘Wissen’ tonen in tekstvelden met ingevoerde tekst"
+  },
+  "addColorPreviewButton": {
+    "message": "Knop tonen om kleuren voor te vertonen (css-kleuren, zoals #ffffff)"
+  },
+  "addDragHandles": {
+    "message": "Selectieversleepknoppen tonen"
+  },
+  "addFontFormatButtons": {
+    "message": "Tekstopmaakknoppen tonen (cursief, vetgedrukt)"
+  },
+  "addMarkerButton": {
+    "message": "Markeerknop tonen"
+  },
+  "addNewSearchOption": {
+    "message": "Zoekmachine toevoegen"
+  },
+  "addOpenLinks": {
+    "message": "Knop tonen om link te openen"
+  },
+  "addPasteButton": {
+    "message": "Knop ‘Plakken’ tonen na aanklikken van tekstveld"
+  },
+  "addPasteOnlyEmptyField": {
+    "message": "…alleen indien blanco"
+  },
+  "addPhoneButton": {
+    "message": "Telefoonnummerknop tonen"
+  },
+  "addScaleUpEffect": {
+    "message": "Omhoogschuifeffect gebruiken"
+  },
+  "addTooltipShadow": {
+    "message": "Paneelschaduw tonen"
+  },
+  "allChangesSavedAutomatically": {
+    "message": "Alle instellingen worden automatisch opgeslagen"
+  },
+  "animationDuration": {
+    "message": "Animatieduur (in ms)"
+  },
+  "appearanceHeader": {
+    "message": "Vormgeving"
+  },
+  "applyConfigsImmediately": {
+    "message": "Instellingen direct toepassen"
+  },
+  "behaviorHeader": {
+    "message": "Gedrag"
+  },
+  "boldLabel": {
+    "message": "Vetgedrukt"
+  },
+  "borderRadius": {
+    "message": "Straal van kader"
+  },
+  "buttonsStyle": {
+    "message": "Knopstijl"
+  },
+  "buyMeCoffee": {
+    "message": "Ondersteun dit project"
+  },
+  "callLabel": {
+    "message": "Bellen"
+  },
+  "changeTextSelectionColor": {
+    "message": "Tekstselectie aanpassen"
+  },
+  "chooseFileFirst": {
+    "message": "Kies eerst een bestand"
+  },
+  "clearLabel": {
+    "message": "Wissen"
+  },
+  "collapseButtons": {
+    "message": "Overige knoppen toevoegen aan menu ‘Meer’"
+  },
+  "contextualButtonsHeader": {
+    "message": "Knoppen"
+  },
+  "convertCurrencies": {
+    "message": "Valuta omzetten"
+  },
+  "convertMetrics": {
+    "message": "Eenheden omzetten"
+  },
+  "convertResultClickAction": {
+    "message": "Actie na aanklikken van resultaat"
+  },
+  "convertTime": {
+    "message": "Tijd omzetten"
+  },
+  "convertToCurrency": {
+    "message": "Omzetten naar (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>meer informatie</a>)"
+  },
+  "convertToCurrencyHint": {
+    "message": "Gebruik de code <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> als verwijzing"
+  },
+  "convertionHeader": {
+    "message": "Conversie"
+  },
+  "copyLabel": {
+    "message": "Kopiëren"
+  },
+  "customIcon": {
+    "message": "Eigen pictogram"
+  },
+  "customIconUrl": {
+    "message": "Url naar eigen pictogram"
+  },
+  "customSearchButtonsHeader": {
+    "message": "Zoekknoppen"
+  },
+  "customSearchOptionsDisplay": {
+    "message": "Stijl van aangepaste zoekmogelijkheden"
+  },
+  "customSearchTooltip": {
+    "message": "Aangepaste zoekmogelijkheden"
+  },
+  "customSearchTooltipHint": {
+    "message": "Deze worden toegevoegd aan het zoekmenu. Gebruik %s om de zoekopdracht aan te duiden en %w om de huidige domeinnaam aan te duiden (om websites te doorzoeken)"
+  },
+  "customSearchUrl": {
+    "message": "Aangepaste zoekurl <br />(gebruik %s om de zoekopdracht aan te duiden)"
+  },
+  "cutLabel": {
+    "message": "Knippen"
+  },
+  "dayAgo": {
+    "message": "dag geleden"
+  },
+  "daysAgo": {
+    "message": "$DAYS$ dagen geleden",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "debugMode": {
+    "message": "Foutopsporingsmodus"
+  },
+  "delayToRevealHoverPanels": {
+    "message": "Wachttijd alvorens menu's uit te klappen (in ms)"
+  },
+  "delayToRevealSearchTooltip": {
+    "message": "Wachttijd alvorens paneel te tonen (in ms)"
+  },
+  "delayToRevealTranslateTooltip": {
+    "message": "Wachttijd alvorens automatisch te vertalen (in ms)"
+  },
+  "deleteLabel": {
+    "message": "Verwijderen"
+  },
+  "dictionaryButtonRemark": {
+    "message": "Zoek naar uitleg op Wikipedia na aanwijzen"
+  },
+  "dictionaryButtonResponseCharsAmount": {
+    "message": "Max. aantal tekens in resultaatvenster"
+  },
+  "dictionaryButtonWordsAmount": {
+    "message": "woord markeren om woordenboekknop te tonen"
+  },
+  "dictionaryLabel": {
+    "message": "Woordenboek"
+  },
+  "disableForBetterPerformance": {
+    "message": "Schakel uit om de prestaties te verbeteren"
+  },
+  "disableWordSnapForCode": {
+    "message": "Gehele woorden selecteren uitschakelen in codevakken"
+  },
+  "disableWordSnappingOnCtrlKey": {
+    "message": "Geen gehele woorden selecteren als Ctrl-toets wordt ingedrukt"
+  },
+  "dontSnapTextfieldSelection": {
+    "message": "Geen gehele woorden selecteren in tekstvelden"
+  },
+  "draggableTooltip": {
+    "message": "Paneel verslepen vanaf pijl"
+  },
+  "email": {
+    "message": "E-mail"
+  },
+  "enabled": {
+    "message": "Ingeschakeld"
+  },
+  "excludedDomains": {
+    "message": "Uitgesloten domeinnamen"
+  },
+  "export": {
+    "message": "Exporteren"
+  },
+  "exportImportSettings": {
+    "message": "Instellingen exporteren/importeren"
+  },
+  "exportSettingsLabel": {
+    "message": "Instellingen exporteren"
+  },
+  "extensionDescription": {
+    "message": "Toon een aanpasbaar actiepaneel in tekstvelden"
+  },
+  "fallbackExportLabel": {
+    "message": "Bewaar de instellingen als een .json-bestand"
+  },
+  "floatingOffscreenTooltip": {
+    "message": "Paneel meeschuiven met pagina indien buiten beeld"
+  },
+  "fontSize": {
+    "message": "Tekstgrootte"
+  },
+  "fullOpacityOnHover": {
+    "message": "Volledig doorzichtig maken na aanwijzen"
+  },
+  "gmail": {
+    "message": "Gmail - nieuwe e-mail"
+  },
+  "hideOnKeypress": {
+    "message": "Paneel verbergen na toetsaanslag"
+  },
+  "hideOnScroll": {
+    "message": "Paneel verbergen na scrollen"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "Paneel verbergen indien cursor erbuiten is"
+  },
+  "hideTranslateButtonForUserLanguage": {
+    "message": "Vertaalknop verbergen indien tekst in eigen taal is"
+  },
+  "horizontalLayout": {
+    "message": "Horizontaal"
+  },
+  "hoverCustomSearchStyle": {
+    "message": "Zoekmenustijl"
+  },
+  "iconlabel": {
+    "message": "Pictogrammen en tekst"
+  },
+  "imperial": {
+    "message": "Imperiaal"
+  },
+  "import": {
+    "message": "Importeren"
+  },
+  "importAlert": {
+    "message": "Door deze actie worden de huidige instellingen overschreven. Weet u zeker dat u wilt doorgaan?"
+  },
+  "importSettingsLabel": {
+    "message": "Instellingen importeren"
+  },
+  "inDay": {
+    "message": "Over 1 dag"
+  },
+  "inDays": {
+    "message": "Over $DAYS$ dagen",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "inMonth": {
+    "message": "Over 1 maand"
+  },
+  "inMonths": {
+    "message": "Over $MONTHS$ maanden",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
+  },
+  "inYear": {
+    "message": "Over 1 jaar"
+  },
+  "inYears": {
+    "message": "Over $YEARS$ jaar",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
+  },
+  "invertColorOnDarkWebsite": {
+    "message": "Kleuren omdraaien op donkere websites"
+  },
+  "italicLabel": {
+    "message": "Cursief"
+  },
+  "languageToTranslate": {
+    "message": "Eigen taal (<a target='_blank' href='https://nl.wikipedia.org/wiki/Lijst_van_ISO_639-codes'>ISO 639-code</a>)"
+  },
+  "leftClickBackgroundTab": {
+    "message": "Linksklikken om tabblad om achtergrond te openen"
+  },
+  "linkToTextDescription": {
+    "message": "Kopieer een paginalink die verwijst naar de geselecteerde tekst (alleen in Chrome 90+)"
+  },
+  "linkToTextLabel": {
+    "message": "Link kopiëren"
+  },
+  "liveTranslation": {
+    "message": "Live-vertaling tonen na aanwijzen van vertaalknop (alleen Google Translate)"
+  },
+  "mailto": {
+    "message": "E-maildienst"
+  },
+  "markedLabel": {
+    "message": "Gemarkeerd"
+  },
+  "markerLabel": {
+    "message": "Markeren"
+  },
+  "markersLabel": {
+    "message": "Markeringen"
+  },
+  "maxIconsInRow": {
+    "message": "Aantal pictogrammen in rij"
+  },
+  "maxMarkerPagesToStore": {
+    "message": "Max. aantal te bewaren gemarkeerde pagina's"
+  },
+  "maxTooltipButtonsToShow": {
+    "message": "Max. aantal getoonde knoppen op paneel"
+  },
+  "metric": {
+    "message": "Metrisch"
+  },
+  "middleClickHidesTooltip": {
+    "message": "Middelklikken (‘op achtergrond openen’) om paneel te verbergen"
+  },
+  "monthAgo": {
+    "message": "maand geleden"
+  },
+  "monthsAgo": {
+    "message": "$MONTHS$ maanden geleden",
+    "placeholders": {
+      "months": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveDownLabel": {
+    "message": "Omlaag verplaatsen"
+  },
+  "moveDownTooltipEffect": {
+    "message": "Omlaag verschuiven"
+  },
+  "moveUpLabel": {
+    "message": "Omhoog verplaatsen"
+  },
+  "moveUpTooltipEffect": {
+    "message": "Omhoog verschuiven"
+  },
+  "noDefinitionFound": {
+    "message": "Er is geen uitleg beschikbaar"
+  },
+  "noTooltipEffect": {
+    "message": "Geen effect gebruiken"
+  },
+  "noTranslationFound": {
+    "message": "Er is geen vertaling beschikbaar"
+  },
+  "onlyicon": {
+    "message": "Alleen pictogrammen"
+  },
+  "onlylabel": {
+    "message": "Alleen tekst"
+  },
+  "openInNewTab": {
+    "message": "Openen op nieuw tabblad"
+  },
+  "openLinkLabel": {
+    "message": "Openen"
+  },
+  "overCursor": {
+    "message": "Boven cursor"
+  },
+  "panelCustomSearchStyle": {
+    "message": "Tonen op hoofdpaneel"
+  },
+  "pasteLabel": {
+    "message": "Plakken"
+  },
+  "performSimpleMathOperations": {
+    "message": "Eenvoudige berekeningen doen"
+  },
+  "preferCurrencySymbol": {
+    "message": "Valutasymbolen in plaats van -codes tonen"
+  },
+  "preferredMetricsSystem": {
+    "message": "Eenhedensysteem"
+  },
+  "preferredNewEmailMethod": {
+    "message": "Voorkeursmethode voor opstellen van e-mails"
+  },
+  "preferredSearchEngine": {
+    "message": "Zoekmachine"
+  },
+  "preferredTranslateService": {
+    "message": "Vertaaldienst"
+  },
+  "recentMarkersLabel": {
+    "message": "Onlangs gemarkeerd"
+  },
+  "recreateTooltipAfterScroll": {
+    "message": "Paneel opnieuw tonen na scrollen of vensterwijzigingen"
+  },
+  "removeCustomIcon": {
+    "message": "Eigen pictogram wissen"
+  },
+  "removeSelectionOnActionButtonClick": {
+    "message": "Tekstselectie ongedaan maken na uitvoeren van actie"
+  },
+  "resetDefaults": {
+    "message": "Standaardwaarden herstellen"
+  },
+  "reverseTooltipButtonsOrder": {
+    "message": "Knopvolgorde omdraaien"
+  },
+  "scaleUpFromBottomTooltipEffect": {
+    "message": "Uitvouwen (van onderen)"
+  },
+  "scaleUpTooltipEffect": {
+    "message": "Uitvouwen"
+  },
+  "searchLabel": {
+    "message": "Zoeken"
+  },
+  "searchingDefinitions": {
+    "message": "Bezig met zoeken naar uitleg…"
+  },
+  "secondaryTooltipEnabled": {
+    "message": "Paneel ingeschakeld"
+  },
+  "secondaryTooltipIconSize": {
+    "message": "Pictogramgrootte (in px)"
+  },
+  "secondaryTooltipLayout": {
+    "message": "Knopindeling"
+  },
+  "selectionCenter": {
+    "message": "Midden van selectie"
+  },
+  "selectionHeader": {
+    "message": "Tekstselectie"
+  },
+  "selectonSettings": {
+    "message": "Selectie-instellingen"
+  },
+  "shadowOpacity": {
+    "message": "Schaduwdoorzichtigheid"
+  },
+  "shiftTooltipWhenWebsiteHasOwn": {
+    "message": "Paneel omhoog verschuiven op websites met eigen tekstselectie-acties"
+  },
+  "shouldOverrideWebsiteSelectionColor": {
+    "message": "Selectiekleur afdwingen op alle pagina's"
+  },
+  "showButtonBorders": {
+    "message": "Scheidingslijnen tussen knoppen tonen"
+  },
+  "showButtonLabelOnHover": {
+    "message": "Knoplabels tonen na aanwijzen"
+  },
+  "showDictionaryButton": {
+    "message": "Woordenboekknop tonen"
+  },
+  "showDotForHoverButtons": {
+    "message": "Puntjes tonen op knoppen met uitklapmenu's"
+  },
+  "showEmailButton": {
+    "message": "E-mailknop tonen"
+  },
+  "showInfoPanel": {
+    "message": "Informatiepaneel tonen (aantal woorden en tekens)"
+  },
+  "showOnMap": {
+    "message": "Tonen op kaart"
+  },
+  "showOnMapButtonEnabled": {
+    "message": "Kaartknop tonen"
+  },
+  "showSecondaryTooltipTitleOnHover": {
+    "message": "Titel tonen na aanwijzen"
+  },
+  "showStatsOnCopyButtonHover": {
+    "message": "Statistieken tonen na aanwijzen van kopieerknop"
+  },
+  "showTooltipArrow": {
+    "message": "Uitvouwpictogrammen tonen"
+  },
+  "showTranslateButton": {
+    "message": "Vertaalknop tonen"
+  },
+  "showTranslateIfLanguageUnknown": {
+    "message": "Vertaalknop tonen als taal niet kan worden vastgesteld"
+  },
+  "showUnconvertedValue": {
+    "message": "Oorspronkelijke waarden tonen alvorens om te zetten"
+  },
+  "showUpdateNotification": {
+    "message": "Melding tonen na bijwerken"
+  },
+  "snapSelectionToWord": {
+    "message": "Gehele woorden selecteren"
+  },
+  "strikeLabel": {
+    "message": "Doorhalen"
+  },
+  "symbolsCount": {
+    "message": "Symbolen"
+  },
+  "testPageButton": {
+    "message": "Instellingen uitproberen"
+  },
+  "textFieldsHeader": {
+    "message": "Tekstvelden"
+  },
+  "textSelectionBackground": {
+    "message": "Selectiekleur"
+  },
+  "textSelectionBackgroundOpacity": {
+    "message": "Achtergronddoorzichtigheid"
+  },
+  "textSelectionColor": {
+    "message": "Tekstkleur"
+  },
+  "today": {
+    "message": "Vandaag"
+  },
+  "tooltipBackground": {
+    "message": "Achtergrondkleur"
+  },
+  "tooltipInvertedBackground": {
+    "message": "Achtergrondkleur op donkere pagina's"
+  },
+  "tooltipOpacity": {
+    "message": "Paneeldoorzichtigheid"
+  },
+  "tooltipPosition": {
+    "message": "Horizontale paneeluitlijning"
+  },
+  "tooltipRevealEffect": {
+    "message": "Uitklapeffect"
+  },
+  "translateLabel": {
+    "message": "Vertalen"
+  },
+  "translating": {
+    "message": "Bezig met vertalen…"
+  },
+  "updateNotificationMessage": {
+    "message": "Klik hier om het wijzigingslog te bekijken"
+  },
+  "updateNotificationTitle": {
+    "message": "Selecton is bijgewerkt naar versie $VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "updatePageToSeeChanges": {
+    "message": "Herlaad de pagina om de wijzigingen te bekijken"
+  },
+  "updateRatesEveryDays": {
+    "message": "Bijwerktussenpoos (in dagen)"
+  },
+  "useCustomStyle": {
+    "message": "Aangepaste paneelstijl gebruiken"
+  },
+  "useIconFromGoogle": {
+    "message": "Pictogram ophalen van Google"
+  },
+  "verticalLayout": {
+    "message": "Verticaal"
+  },
+  "verticalLayoutTooltip": {
+    "message": "Verticale paneelindeling gebruiken (experimenteel)"
+  },
+  "verticalSecondaryTooltip": {
+    "message": "Verticale lijst tonen (uitschakelen = horizontaal)"
+  },
+  "visitGithub": {
+    "message": "GitHub-pagina openen"
+  },
+  "whatsNew": {
+    "message": "Wijzigingslog"
+  },
+  "wordSnappingBlacklist": {
+    "message": "Uit te sluiten domeinen"
+  },
+  "wordsCount": {
+    "message": "Aantal woorden"
+  },
+  "writeAReview": {
+    "message": "Recensie schrijven"
+  },
+  "yearAgo": {
+    "message": "jaar geleden"
+  },
+  "yearsAgo": {
+    "message": "$YEARS$ jaar geleden",
+    "placeholders": {
+      "years": {
+        "content": "$1"
+      }
+    }
+  }
+}
