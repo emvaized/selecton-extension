@@ -1,3 +1,8 @@
+3.6.6
+- Added Dutch and Traditional Chinese translations
+- Updated the "support project" link to PayPal Sponsor
+- Small fixes and improvements
+
 3.6.5
 - Fix for translate button text going off-screen
 - Fix for Calendar button false detection (eg. '3.6.4')

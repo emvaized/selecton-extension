@@ -65,8 +65,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
  * opens an URL on click if specified
  **/
 function displayNotification(title, message, link, image) {
-    // create notification
-    // const createNotification =
     chrome.notifications.create({
         "type": "basic",
         "iconUrl": image ?? "../../icons/logo-96.png",
