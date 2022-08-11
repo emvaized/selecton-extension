@@ -1,5 +1,3 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://vshymanskyy.github.io/StandWithUkraine)
-
 # <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon — text selection actions
 
 Get customizable pop-up with action buttons on text selection
@@ -150,6 +148,12 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - Advanced buttons editor, which allows to quickly turn on/off buttons and change their order with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
+
+---
+
+### Support
+If you really enjoy my products, you may also consider making a small donation for a coffee :)
+<a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="25"/></a>
 
 ---
 
