@@ -151,8 +151,9 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 
 ---
 
-### Support
+### Donate
 If you really enjoy my products, you may also consider making a small donation for a coffee :)
+
 <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="25"/></a>
 
 ---
