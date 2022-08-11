@@ -8,9 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
             chrome.runtime.openOptionsPage();
             window.close();
         } else if (e.button == 1) {
-            // let newWindow = window.open();
-            // newWindow.location.href = chrome.runtime.getURL('options/options.html');
-            // window.close();
             window.open(chrome.runtime.getURL('options/options.html'));
         }
     });

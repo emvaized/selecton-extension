@@ -922,7 +922,7 @@ function setMarkerSection(value) {
 document.addEventListener("DOMContentLoaded", loadSettings);
 
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-    window.open('https://ko-fi.com/emvaized', '_blank');
+    window.open('https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD', '_blank');
 });
 
 document.querySelector("#githubButton").addEventListener("click", function (val) {
