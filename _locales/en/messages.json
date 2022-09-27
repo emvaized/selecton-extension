@@ -405,6 +405,9 @@
   "preferCurrencySymbol": {
     "message": "Prefer currency symbols instead of codes"
   },
+  "preferredMapsService": {
+    "message": "Preferred map service"
+  },
   "preferredMetricsSystem": {
     "message": "Preferred metrics system"
   },
@@ -625,5 +628,14 @@
         "content": "$1"
       }
     }
+  },
+  "dragHandleStyle": {
+    "message": "Drag handles style"
+  },
+  "circle": {
+    "message": "Circle"
+  },
+  "triangle": {
+    "message": "Triangle"
   }
 }

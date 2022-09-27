@@ -628,5 +628,14 @@
                 "content": "$1"
             }
         }
+    },
+    "dragHandleStyle": {
+        "message": "Стиль ручек редактирования"
+    },
+    "circle": {
+        "message": "Круг"
+    },
+    "triangle": {
+        "message": "Треугольник"
     }
 }

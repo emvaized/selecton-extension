@@ -619,5 +619,14 @@
                 "content": "$1"
             }
         }
+    },
+    "dragHandleStyle": {
+        "message": "Estilo de manijas de arrastre"
+    },
+    "circle": {
+        "message": "Circulo"
+    },
+    "triangle": {
+        "message": "Triángulo"
     }
 }

@@ -620,5 +620,14 @@
                 "content": "$1"
             }
         }
+    },
+    "dragHandleStyle": {
+        "message": "Style de poignées de traînée"
+    },
+    "circle": {
+        "message": "Cercle"
+    },
+    "triangle": {
+        "message": "Triangle"
     }
 }
