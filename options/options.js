@@ -81,7 +81,7 @@ function setInputs(result) {
             /// Set translated label for input
             if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key))) {
                 if (input.tagName == 'SELECT' || input.id == 'excludedDomains' || input.id == 'wordSnappingBlacklist')
-                    input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ': <br />' + input.parentNode.innerHTML;
+                    input.parentNode.innerHTML = chrome.i18n.getMessage(key) + ':   ' + input.parentNode.innerHTML;
                 else
                     input.parentNode.innerHTML += chrome.i18n.getMessage(key);
             }
