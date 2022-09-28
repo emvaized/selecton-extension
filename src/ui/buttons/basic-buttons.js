@@ -134,8 +134,8 @@ function addBasicTooltipButtons(layout) {
 
                     if (optionEnabled)
                         addBasicTooltipButton(title ?? url, icon, function (e) {
-                            // let selectedText = selection.toString();
-                            onTooltipButtonClick(e, url);
+                            // onTooltipButtonClick(e, url);
+                            onSearchButtonClick(e, url);
                         });
                 }
         }
