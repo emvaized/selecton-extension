@@ -306,8 +306,7 @@ function initMouseListeners() {
   function checkTextField(e, activeEl) {
     /// check if textfield is focused
 
-    // const activeEl = document.activeElement;
-    isTextFieldFocused = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text') || activeEl.getAttribute('name') == 'text') ||
+    isTextFieldFocused = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text' || activeEl.getAttribute('type') == 'email' || activeEl.getAttribute('name') == 'text')) ||
       activeEl.tagName === "TEXTAREA" ||
       activeEl.getAttribute('contenteditable') !== null;
 
