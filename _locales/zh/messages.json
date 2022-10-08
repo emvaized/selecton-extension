@@ -626,8 +626,8 @@
       "placeholders": {
         "years": {
           "content": "$1"
+        }
       }
-    }
     },
     "dragHandleStyle": {
       "message": "拖動手把樣式"
