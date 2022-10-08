@@ -405,8 +405,11 @@
     "preferCurrencySymbol": {
       "message": "首選貨幣符號而不是程式碼"
     },
+      "preferredMapsService": {
+    "message": "首選地圖服務"
+    },
     "preferredMetricsSystem": {
-      "message": "首選度量系統"
+      "message": "首選計量單位"
     },
     "preferredNewEmailMethod": {
       "message": "建立新電子郵件的首選方法"
@@ -623,8 +626,16 @@
       "placeholders": {
         "years": {
           "content": "$1"
-        }
       }
     }
+    },
+    "dragHandleStyle": {
+      "message": "拖動手柄樣式"
+    },
+    "circle": {
+      "message": "圓形"
+    },
+    "triangle": {
+      "message": "三角形"
+    }
   }
-  
