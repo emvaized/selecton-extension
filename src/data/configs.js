@@ -95,6 +95,7 @@ const configs = {
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
     'dictionaryButtonResponseCharsAmount': 300,
+    'correctTooltipPositionByMoreButtonWidth': true,
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'customSearchButtons': [

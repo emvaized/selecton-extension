@@ -629,5 +629,8 @@
     },
     "triangle": {
         "message": "Triangle"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Décaler le panneau de la largeur du bouton 'Plus'"
     }
 }

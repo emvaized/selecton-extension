@@ -90,7 +90,7 @@
         "message": "Очистить"
     },
     "collapseButtons": {
-        "message": "Спрятать лишние кнопки под кнопкой 'Больше'"
+        "message": "Спрятать лишние кнопки под кнопкой 'Еще'"
     },
     "contextualButtonsHeader": {
         "message": "Кнопки"
@@ -637,5 +637,8 @@
     },
     "triangle": {
         "message": "Треугольник"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Сдвинуть панели на ширину кнопки 'Еще'"
     }
 }

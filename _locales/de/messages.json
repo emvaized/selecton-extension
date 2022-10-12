@@ -116,6 +116,9 @@
     "copyLabel": {
         "message": "Kopieren"
     },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Verschieben Sie das Panel um die Breite der Schaltfläche 'Mehr'"
+    },
     "customIcon": {
         "message": "Benutzerdefiniertes Symbol"
     },

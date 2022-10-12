@@ -637,5 +637,8 @@
   },
   "triangle": {
     "message": "Triangle"
+  },
+  "correctTooltipPositionByMoreButtonWidth": {
+    "message": "Shift the panel by width of 'More' button"
   }
 }
