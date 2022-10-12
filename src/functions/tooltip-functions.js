@@ -102,6 +102,11 @@ function checkTooltipForCollidingWithSideEdges() {
         } else {
             if (configs.debugMode)
                 console.log('Tooltip is not colliding with side edges');
+
+            /// correct tooltip's position if 'more' button is used
+            const attachedMoreButton = tooltip.querySelector('.more-button');
+            if (!attachedMoreButton) return;
+            tooltip.style.left = parseInt(tooltip.style.left.replaceAll('px', '')) + (attachedMoreButton.clientWidth / 2) + 'px';
         }
     }
 }

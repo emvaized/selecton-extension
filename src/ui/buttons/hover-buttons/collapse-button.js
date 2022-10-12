@@ -6,6 +6,7 @@ function collapseButtons() {
         /// Create button
         const moreButton = document.createElement('button');
         moreButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
+        moreButton.classList.add('more-button');
         moreButton.innerText = configs.verticalLayoutTooltip ? '⋯' : '⋮';
 
         if (configs.reverseTooltipButtonsOrder)
