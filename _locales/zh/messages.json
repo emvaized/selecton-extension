@@ -639,6 +639,6 @@
       "message": "三角形"
     }
     "correctTooltipPositionByMoreButtonWidth": {
-      "message": "按照「更多」按鈕的寬度調整面板"
+      "message": "按「更多」按鈕的寬度調整面板"
     }
   }
