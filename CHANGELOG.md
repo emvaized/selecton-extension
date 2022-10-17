@@ -1,3 +1,11 @@
+3.6.7
+- Add new option for drag handles style (triangle)
+- Add option to shift tooltip by 'more' button's width
+- More compact view for dropdowns on options page
+- Fixed non working search buttons when shown in main panel
+- Improve input field recognition
+- Added support for RON currency
+
 3.6.6
 - Added Dutch and Traditional Chinese translations
 - Updated the "support project" link to PayPal Sponsor
