@@ -626,8 +626,10 @@
     "placeholders": {
       "years": {
         "content": "$1"
-      }
     }
+  },
+  "correctTooltipPositionByMoreButtonWidth": {
+    "message": "按「更多」按鈕的寬度調整面板"
   },
   "dragHandleStyle": {
     "message": "拖動手把樣式"
