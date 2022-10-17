@@ -34,6 +34,7 @@ const currenciesList = {
     "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", rate: 410.317377 },
     "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", rate: 8.51191 },
     "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", rate: 3.845051 },
+    "RON": { currencyName: "Romanian leu", currencySymbol: "leu", rate: 5.058587 },
     "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", rate: 72.880818, currencyKeywords: ['rubles', 'рублей', 'руб', ' р.'] },
     "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", rate: 3.750694 },
     "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", rate: 8.514027 },
