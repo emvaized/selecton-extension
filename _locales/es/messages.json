@@ -628,5 +628,8 @@
     },
     "triangle": {
         "message": "Triángulo"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Mover el panel por el ancho del botón 'Más'"
     }
 }

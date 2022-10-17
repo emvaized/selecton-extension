@@ -317,6 +317,7 @@ function updateDisabledOptions() {
     document.getElementById("dictionaryButtonWordsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("dictionaryButtonResponseCharsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("maxTooltipButtonsToShow").parentNode.className = document.getElementById("collapseButtons").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("correctTooltipPositionByMoreButtonWidth").parentNode.className = document.getElementById("collapseButtons").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("addClearButton").parentNode.className = document.getElementById("addPasteOnlyEmptyField").checked || !document.getElementById("addPasteButton").checked || !document.getElementById("addActionButtonsForTextFields").checked ? 'disabled-option' : 'enabled-option';
     document.getElementById("hideTooltipWhenCursorMovesAway").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'enabled-option' : 'disabled-option';
     document.getElementById("dragHandleStyle").parentNode.className = document.getElementById("addDragHandles").checked ? 'enabled-option' : 'disabled-option';

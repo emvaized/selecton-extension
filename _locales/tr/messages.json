@@ -119,6 +119,9 @@
     "copyLabel": {
         "message": "Kopya"
     },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Paneli 'Daha Fazla' düğmesinin genişliğine göre ofset"
+    },
     "customIcon": {
         "message": "Özel simge"
     },
