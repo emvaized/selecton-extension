@@ -626,6 +626,7 @@
     "placeholders": {
       "years": {
         "content": "$1"
+      }
     }
   },
   "correctTooltipPositionByMoreButtonWidth": {
