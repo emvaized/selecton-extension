@@ -1,3 +1,6 @@
+3.6.8
+- This update fixes issue with non-working tooltip, which affected many users in last update
+
 3.6.7
 - Add new option for drag handles style (triangle)
 - Add option to shift tooltip by 'more' button's width
