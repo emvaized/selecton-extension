@@ -109,11 +109,11 @@ function checkTooltipForCollidingWithSideEdges() {
                 if (!attachedMoreButton) return;
                 const moreButtonWidth = attachedMoreButton.clientWidth;
                 tooltip.style.left = parseInt(tooltip.style.left.replaceAll('px', '')) + (moreButtonWidth / 2) + 'px';
-            }
 
-            if (configs.showTooltipArrow && arrow) {
-                const newLeftPercentForArrow = (moreButtonWidth / 2) / tooltipWidth * 100;
-                arrow.style.left = `${50 - newLeftPercentForArrow}%`;
+                if (configs.showTooltipArrow && arrow) {
+                    const newLeftPercentForArrow = (moreButtonWidth / 2) / tooltipWidth * 100;
+                    arrow.style.left = `${50 - newLeftPercentForArrow}%`;
+                }
             }
         }
     }
