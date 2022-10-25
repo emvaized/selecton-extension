@@ -211,10 +211,8 @@ function setUpTooltip(recreated = false) {
         onlyButtonBorderRadius = '3px';
     }
 
-
     if (configs.debugMode)
         console.log('Selecton tooltip was created');
-
 }
 
 function calculateTooltipPosition(e) {
@@ -232,13 +230,11 @@ function calculateTooltipPosition(e) {
     if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
 
         /// Show it on top of selection, dx aligned to cursor
-        // showTooltip(e.clientX - tooltip.clientWidth / 2, selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2);
         dyToShowTooltip = selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2;
         let vertOutOfView = dyToShowTooltip <= 0;
 
-        if (vertOutOfView || (selStartDimensions.dy < selEndDimensions.dy && selEndDimensions.backwards !== true)) {
+        if (vertOutOfView || (selEndDimensions.dy - selStartDimensions.dy > 2.0 && selEndDimensions.backwards !== true)) {
             /// show tooltip under selection
-            // let possibleDyToShowTooltip = selEndDimensions.dy + (configs.verticalLayoutTooltip ? 20 : tooltipHeight / 2) + (arrow.clientHeight / 2);
             let possibleDyToShowTooltip = selEndDimensions.dy + (selEndDimensions.lineHeight ?? 0) + arrow.clientHeight;
 
             if (possibleDyToShowTooltip < window.innerHeight) {
@@ -253,7 +249,6 @@ function calculateTooltipPosition(e) {
         if (dyToShowTooltip < 0 && tooltipOnBottom == false) dyToShowTooltip = dyWhenOffscreen;
 
         /// Calculating DX
-        // dxToShowTooltip = e.clientX - tooltip.clientWidth / 2;
         dxToShowTooltip = e.clientX;
 
     } else {
