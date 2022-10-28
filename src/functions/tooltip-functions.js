@@ -52,7 +52,7 @@ function checkTooltipForCollidingWithSideEdges() {
 
     if (tooltip == null) return;
 
-    const dx = tooltip.getBoundingClientRect().left;
+    let dx = tooltip.getBoundingClientRect().left;
     let tooltipWidth = 4.0;
 
     /// we can't rely on clientWidth, because tooltip gets collapsed when colliding with screen edge
@@ -64,6 +64,11 @@ function checkTooltipForCollidingWithSideEdges() {
         for (let i = 0, l = tooltipButtons.length; i < l; i++) {
             tooltipWidth += tooltipButtons[i].offsetWidth;
         }
+    }
+
+    /// fix for collision detection not working with 'scale up' effects
+    if (configs.tooltipRevealEffect == 'scaleUpTooltipEffect' || configs.tooltipRevealEffect == 'scaleUpFromBottomTooltipEffect') {
+        dx -= tooltipWidth / 2;
     }
 
     /// Tooltip is off-screen on the left
