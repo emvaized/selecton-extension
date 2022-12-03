@@ -38,6 +38,7 @@ const currenciesList = {
     "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", rate: 72.880818, currencyKeywords: ['rubles', 'рублей', 'руб', ' р.'] },
     "SAR": { currencyName: "Saudi Riyal", currencySymbol: "﷼", rate: 3.750694 },
     "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", rate: 8.514027 },
+    "THB": { currencyName: "Thai Baht", currencySymbol: "฿", rate: 0 , currencyKeywords: ['THB'] } ,
     "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", rate: 0.14 },
     "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", rate: 27.852288, currencyKeywords: ['hryvnia', 'гривен', 'грн', 'р.'] },
     "USD": { currencyName: "United States Dollar", currencySymbol: "$", rate: 1, currencyKeywords: ['dollar', 'dolar', 'доллар'] },
