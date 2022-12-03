@@ -1,3 +1,8 @@
+3.6.9
+- Improve tooltip positioning over cursor
+- Fix for tooltip collision detection with 'scale up' effect enabled
+- Added Thai Baht currency support
+
 3.6.8
 - This update fixes issue with non-working tooltip, which affected many users in last update
 
