@@ -134,6 +134,10 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * To make this tool work reliably, please highlight only single words or sentences. Highlighter trims text selection within one HTML node – otherwise page layout may be broken when highlight gets restored after page reload.
 
+**Selecton popup doesn't look right on some websites**
+
+* You can try to tick "Apply configs immediately" setting in the extension options to improve compatibility. It will ensure that Selecton loads all settings and styles every time the selection popup is shown (instead of loading them only once on initial load), but it might also increase the effect on performance.   
+
 ----
 
 ### Contributing
