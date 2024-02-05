@@ -26,17 +26,11 @@ https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcdda
 Download for Firefox:
 https://addons.mozilla.org/firefox/addon/selection-actions/
 
-Download for Safari:
-https://apps.apple.com/app/selecton-selection-actions/id1594013341
-
 ____
 
 ### Currency converter
 *Note*:
-In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. 
-But you could always decrease update interval in extension's settings if needed.
-
-Currency rates are fetched from [exchangerate.host](https://exchangerate.host/#/)
+In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers.
 
 ```
 AUD — Australian Dollar
@@ -86,6 +80,9 @@ DOGE — Dogecoin
 IOTA (MIOTA)
 EOS
 ```
+
+Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/currency-api?tab=readme-ov-file)
+
 ____
 
 ### FAQ

@@ -156,7 +156,7 @@ function setImportExportButtons() {
     }
 
     document.getElementById('exportSettings').onclick = function () {
-        if (markersData && markersData !== {}) userConfigs['websiteMarkers'] = markersData;
+        if (markersData) userConfigs['websiteMarkers'] = markersData;
         chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: !userConfigs ? {} : userConfigs, name: exportFileName });
     }
 
@@ -173,7 +173,7 @@ function setImportExportButtons() {
             const result = event.target.result;
             importedConfigs = JSON.parse(result);
 
-            if (importedConfigs != null && importedConfigs !== undefined && importedConfigs !== {}) {
+            if (importedConfigs != null && importedConfigs !== undefined) {
                 enableImportButton();
             }
         });

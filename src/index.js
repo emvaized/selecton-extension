@@ -10,6 +10,7 @@ function initConfigs(shouldCreateTooltip = false, e) {
       configs.textSelectionBackgroundOpacity = loadedConfigs.textSelectionBackgroundOpacity || 1.0;
       configs.shouldOverrideWebsiteSelectionColor = loadedConfigs.shouldOverrideWebsiteSelectionColor ?? false;
       configs.enabled = loadedConfigs.enabled ?? true;
+      configs.ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
 
       /// Check for domain to be in black list
       configs.excludedDomains = loadedConfigs.excludedDomains || '';
@@ -52,23 +53,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         /// Run only on first load
         if (configsWereLoaded == false) {
-
-          /// Get translated button labels
-          copyLabel = chrome.i18n.getMessage("copyLabel");
-          searchLabel = chrome.i18n.getMessage("searchLabel");
-          translateLabel = chrome.i18n.getMessage("translateLabel");
-          openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
-          showOnMapLabel = chrome.i18n.getMessage("showOnMap");
-          cutLabel = chrome.i18n.getMessage("cutLabel");
-          pasteLabel = chrome.i18n.getMessage("pasteLabel");
-          dictionaryLabel = chrome.i18n.getMessage("dictionaryLabel");
-          markerLabel = chrome.i18n.getMessage("markerLabel");
-
-          italicLabel = chrome.i18n.getMessage("italicLabel");
-          boldLabel = chrome.i18n.getMessage("boldLabel");
-          strikeLabel = chrome.i18n.getMessage("strikeLabel");
-          clearLabel = chrome.i18n.getMessage("clearLabel");
-
           setTimeout(function () {
             if (configs.addActionButtonsForTextFields)
               initMouseListeners();
@@ -90,46 +74,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
           }
         }
 
-        /// Set font-size
-        document.documentElement.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
-
-        /// styles of tooltip button icon
-        document.documentElement.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
-
-        /// Set border radius
-        document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
-
-        /// pop-up buttons border
-        document.documentElement.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
-        document.documentElement.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
-
-        /// pop-up inner and button inner paddings
-        document.documentElement.style.setProperty('--selecton-tooltip-inner-padding', '2px');
-
-        switch (configs.buttonsStyle) {
-          case 'onlylabel': {
-            document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
-          } break;
-          case 'onlyicon': {
-            document.documentElement.style.setProperty('--selecton-button-padding', '3px 10px');
-          } break;
-          case 'iconlabel': {
-            document.documentElement.style.setProperty('--selecton-button-padding', '3px 8px');
-          } break;
-          default: {
-            document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
-          } break;
-        }
-
-        /// selection handle circle radius
-        document.documentElement.style.setProperty('--selecton-handle-circle-radius', '12.5px');
-
-        /// search tooltip icon size
-        document.documentElement.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
-
-        /// Anim duration
-        document.documentElement.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
-
         /// Check browser locales on first launch (language and metric system)
         if (loadedConfigs.preferredMetricsSystem == null || loadedConfigs.preferredMetricsSystem == undefined)
           try { setDefaultLocales(); } catch (e) { }
@@ -141,38 +85,12 @@ function initConfigs(shouldCreateTooltip = false, e) {
             if (window.location.href.includes(domain.trim().toLowerCase())) domainIsBlacklistedForSnapping = true;
           });
 
-        /// Fetch or load currency rates from storage
-        // fetchCurrencyRates(); /// enforce rates fetch for testing
 
-        if (configs.convertCurrencies) {
-          ratesLastFetchedDate = loadedConfigs.ratesLastFetchedDate;
+        // /// Set CSS rules for tooltip style
+        // setDocumentStyles();
 
-          if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
-            fetchCurrencyRates();
-          else {
-            let today = new Date();
-            let dayOfNextFetch = new Date(ratesLastFetchedDate);
-            const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
-
-            if (configs.debugMode) {
-              console.log('--- Check dates to update currency rates ---');
-              console.log('Today: ' + today);
-              console.log('Date of last fetch: ' + dayOfNextFetch);
-            }
-
-            today = today.getTime();
-            dayOfNextFetch = new Date(dayOfNextFetch.getTime() + (configs.updateRatesEveryDays * oneDayInMilliseconds));
-
-            if (configs.debugMode) {
-              console.log('Rates update interval: ' + configs.updateRatesEveryDays);
-              console.log('Date of next fetch: ' + dayOfNextFetch);
-              console.log('--- Finished checking dates ---');
-            }
-
-            if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
-            else loadCurrencyRatesFromMemory();
-          }
-        }
+        // /// Fetch or load currency rates from storage
+        // loadCurrencyRates()
 
         if (shouldCreateTooltip)
           createTooltip(e);
@@ -198,6 +116,98 @@ function setTextSelectionColor() {
     console.log('Selecton applied custom selection color')
 }
 
+function setDocumentStyles(){
+  /// Set font-size
+  document.documentElement.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
+
+  /// styles of tooltip button icon
+  document.documentElement.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
+
+  /// Set border radius
+  document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
+
+  /// pop-up buttons border
+  document.documentElement.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
+  document.documentElement.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+
+  /// pop-up inner and button inner paddings
+  document.documentElement.style.setProperty('--selecton-tooltip-inner-padding', '2px');
+
+  switch (configs.buttonsStyle) {
+    case 'onlylabel': {
+      document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+    } break;
+    case 'onlyicon': {
+      document.documentElement.style.setProperty('--selecton-button-padding', '3px 10px');
+    } break;
+    case 'iconlabel': {
+      document.documentElement.style.setProperty('--selecton-button-padding', '3px 8px');
+    } break;
+    default: {
+      document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+    } break;
+  }
+
+  /// selection handle circle radius
+  document.documentElement.style.setProperty('--selecton-handle-circle-radius', '12.5px');
+
+  /// search tooltip icon size
+  document.documentElement.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);
+
+  /// Anim duration
+  document.documentElement.style.setProperty('--selecton-anim-duration', `${configs.animationDuration}ms`);
+}
+
+function loadCurrencyRates(){
+  if (configs.convertCurrencies) {
+    let updateRatesEveryDays = configs.updateRatesEveryDays;
+    if (updateRatesEveryDays < 7) updateRatesEveryDays = 7;
+
+    ratesLastFetchedDate = configs.ratesLastFetchedDate;
+
+    if (ratesLastFetchedDate == null || ratesLastFetchedDate == undefined || ratesLastFetchedDate == '')
+      fetchCurrencyRates();
+    else {
+      let today = new Date();
+      let dayOfNextFetch = new Date(ratesLastFetchedDate);
+      const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+
+      if (configs.debugMode) {
+        console.log('--- Check dates to update currency rates ---');
+        console.log('Today: ' + today);
+        console.log('Date of last fetch: ' + dayOfNextFetch);
+      }
+
+      today = today.getTime();
+      dayOfNextFetch = new Date(dayOfNextFetch.getTime() + (updateRatesEveryDays * oneDayInMilliseconds));
+
+      if (configs.debugMode) {
+        console.log('Rates update interval: ' + updateRatesEveryDays);
+        console.log('Date of next fetch: ' + dayOfNextFetch);
+        console.log('--- Finished checking dates ---');
+      }
+
+      loadCurrencyRatesFromMemory();
+      if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
+    }
+  }
+}
+
+function loadTranslatedLabels(){
+  copyLabel = chrome.i18n.getMessage("copyLabel");
+  searchLabel = chrome.i18n.getMessage("searchLabel");
+  translateLabel = chrome.i18n.getMessage("translateLabel");
+  openLinkLabel = chrome.i18n.getMessage("openLinkLabel");
+  showOnMapLabel = chrome.i18n.getMessage("showOnMap");
+  cutLabel = chrome.i18n.getMessage("cutLabel");
+  pasteLabel = chrome.i18n.getMessage("pasteLabel");
+  dictionaryLabel = chrome.i18n.getMessage("dictionaryLabel");
+  markerLabel = chrome.i18n.getMessage("markerLabel");
+  italicLabel = chrome.i18n.getMessage("italicLabel");
+  boldLabel = chrome.i18n.getMessage("boldLabel");
+  strikeLabel = chrome.i18n.getMessage("strikeLabel");
+  clearLabel = chrome.i18n.getMessage("clearLabel");
+}
 
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
@@ -340,10 +350,11 @@ function initMouseListeners() {
   }
 
   function initTooltip(e) {
-    if (configs.applyConfigsImmediately)
+    if (configs.applyConfigsImmediately) {
       initConfigs(true, e); /// createTooltip will be called after checking for updated configs
-    else
+    } else {
       createTooltip(e);
+    }
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
@@ -410,6 +421,18 @@ function initMouseListeners() {
 
   if (configs.debugMode)
     console.log('Selection initiated mouse listeners');
+
+
+  /// Lazy loading
+
+  /// Fetch or load currency rates from storage
+  loadCurrencyRates()
+
+  /// Set CSS rules for tooltip style
+  setDocumentStyles();
+
+  /// Get translated button labels
+  loadTranslatedLabels()
 }
 
 function recreateTooltip() {

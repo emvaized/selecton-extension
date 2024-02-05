@@ -1,3 +1,8 @@
+3.7.0
+- Changed API source of currency rates
+- Changed minimial rate fetch days to 7, to not cause too much load on API servers
+- Implemented lazy loading for currency rates, translated labels and some css rules to speed up page load
+
 3.6.9
 - Improve tooltip positioning over cursor
 - Fix for tooltip collision detection with 'scale up' effect enabled
