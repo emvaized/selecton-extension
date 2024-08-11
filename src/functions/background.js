@@ -90,8 +90,7 @@ function displayNotification(title, message, link, image) {
 
 
 /// Load currencies rates in background
-// const urlToLoadCurrencyRates = 'https://api.exchangerate.host/latest?base=USD';
-const urlToLoadCurrencyRates = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json';
+const urlToLoadCurrencyRates = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
 const urlToLoadCryptoCurrencies = 'https://min-api.cryptocompare.com/data/price?fsym=USD';
 let isUpdating = false;
 
