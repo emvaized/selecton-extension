@@ -1,3 +1,4 @@
+
 function addBasicTooltipButtons(layout) {
     if (layout == 'textfield') {
         const textField = document.activeElement;

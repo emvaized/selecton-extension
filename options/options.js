@@ -738,6 +738,7 @@ function setMarkerSection(value) {
     let container = document.getElementById('website-markers-list');
 
     markersData = value['websiteMarkers'];
+    if (!markersData) return;
     let markerKeys = Object.keys(markersData);
 
     if (!markersData || markerKeys.length == 0) {

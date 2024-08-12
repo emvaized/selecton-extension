@@ -20,15 +20,17 @@ Get customizable pop-up with action buttons on text selection!
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/screenshot.png">
 
 
-Download for Chrome:
-https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+[Download for Chrome](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
 
-Download for Firefox:
-https://addons.mozilla.org/firefox/addon/selection-actions/
+[Download for Firefox](https://addons.mozilla.org/firefox/addon/selection-actions/)
 
-____
 
-### Currency converter
+
+## Building
+Install dependencies with `npm install`, and then use `npm run build` to generate `dist` folder with minimized code.
+
+
+## Currency converter
 *Note*:
 In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers.
 
@@ -81,11 +83,10 @@ IOTA (MIOTA)
 EOS
 ```
 
-Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/currency-api?tab=readme-ov-file)
+Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md)
 
-____
 
-### FAQ
+## FAQ
 
 **How to disable word snapping?**
 
@@ -138,9 +139,8 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * You can try to tick "Apply configs immediately" setting in the extension options to improve compatibility. It will ensure that Selecton loads all settings and styles every time the selection popup is shown (instead of loading them only once on initial load), but it might also increase the effect on performance.   
 
-----
 
-### Contributing
+## Contributing
 You can make Selecton better without even knowing how to code:
 - Provide translation for your language: [Base English file](https://github.com/emvaized/selecton-extension/blob/master/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
@@ -155,15 +155,13 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
 
----
 
-### Donate
+## Donate
 If you really enjoy this product, you may also consider making a small donation for a coffee :)
 
 <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="25"/></a>
 
----
 
-### Links to my other browser extensions
+## Links to my other browser extensions
 * [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
 * [Google Tweaks](https://github.com/emvaized/google-tiles-extension) – set of tweaks for Google search page to make it easier to use

@@ -12,24 +12,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "icons/button-icons/bold.svg",
-        "icons/button-icons/calendar.svg",
-        "icons/button-icons/call.svg",
-        "icons/button-icons/clear.svg",
-        "icons/button-icons/copy.svg",
-        "icons/button-icons/cut.svg",
-        "icons/button-icons/dictionary.svg",
-        "icons/button-icons/email.svg",
-        "icons/button-icons/italic.svg",
-        "icons/button-icons/link.svg",
-        "icons/button-icons/marker.svg",
-        "icons/button-icons/map.svg",
-        "icons/button-icons/open.svg",
-        "icons/button-icons/paste.svg",
-        "icons/button-icons/search.svg",
-        "icons/button-icons/strike.svg",
-        "icons/button-icons/time.svg",
-        "icons/button-icons/translate.svg"
+        "icons/button-icons/*.svg"
       ],
       "matches": ["<all_urls>"]
     }
