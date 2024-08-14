@@ -34,6 +34,9 @@ Install dependencies with `npm install`, and then use `npm run build` to generat
 *Note*:
 In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers.
 
+<details>
+  <summary>List of supported currencies</summary>
+  
 ```
 AUD — Australian Dollar
 BGN — Bulgarian Lev
@@ -82,6 +85,8 @@ DOGE — Dogecoin
 IOTA (MIOTA)
 EOS
 ```
+</details>
+
 
 Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md)
 
