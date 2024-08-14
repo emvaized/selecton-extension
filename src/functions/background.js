@@ -69,7 +69,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 function displayNotification(title, message, link, image) {
     chrome.notifications.create({
         "type": "basic",
-        "iconUrl": image ?? "../../icons/logo-96.png",
+        "iconUrl": image ?? "./icons/logo-new.png",
         "title": title,
         "message": message,
     }, function (notificationId) {
