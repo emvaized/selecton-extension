@@ -1,4 +1,4 @@
-# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon — text selection actions
+# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-new.png" height="48" width="48" alt="S"></sub>electon — text selection actions
 
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pemdbnndbdpbelmfcddaihdihdfmnadi?label=version)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/pemdbnndbdpbelmfcddaihdihdfmnadi?label=users&logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)

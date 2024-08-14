@@ -6,8 +6,8 @@
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "icons": {
-    "48": "icons/logo-48.png",
-    "96": "icons/logo-96.png"
+    "48": "icons/logo-new.png",
+    "96": "icons/logo-new.png"
   },
   "web_accessible_resources": [
     {
@@ -73,7 +73,7 @@
     "open_in_tab": false
   },
   "action": {
-    "default_icon": "icons/logo-96.png",
+    "default_icon": "icons/logo-new.png",
     "default_title": "Selecton",
     "default_popup": "popup/popup.html"
   },
