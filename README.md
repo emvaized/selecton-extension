@@ -27,7 +27,8 @@ Get customizable pop-up with action buttons on text selection!
 
 
 ## Building
-Install dependencies with `npm install`, and then use `npm run build` to generate `dist` folder with minimized code.
+- `npm install` to install all dependencies
+- `npm run build` to generate `dist` folder with minimized code of the extension
 
 
 ## Currency converter
@@ -156,13 +157,14 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 
 **Ideas for future releases**
 
-- Advanced buttons editor, which allows to quickly turn on/off buttons and change their order with drag'n'drop
+- Advanced buttons editor, which allows to quickly turn on/off buttons and change reorder them with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
+- Make separate tab for markers in extension popup, separate markers from currently open page
 
 
 ## Donate
-If you really enjoy this product, consider supporting it's further development with a small donation! 
+If you really enjoy this product, please consider supporting its further development by making a small donation! 
 
 <a href="https://ko-fi.com/emvaized"><img src="https://user-images.githubusercontent.com/7586345/125668092-55af2a45-aa7d-4795-93ed-de0a9a2828c5.png" alt="Support on Ko-fi" height="35"></a>    <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="35" width="70"/></a> 
 
