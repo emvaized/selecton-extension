@@ -1,4 +1,4 @@
-# <sub><img src="https://github.com/emvaized/selecton-extension/blob/master/icons/logo-48.png" height="48" width="48" alt="S"></sub>electon — text selection actions
+# <sub><img src="./icons/logo-new.png" height="48" width="48" alt="S"></sub>electon — text selection actions
 
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pemdbnndbdpbelmfcddaihdihdfmnadi?label=version)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/pemdbnndbdpbelmfcddaihdihdfmnadi?label=users&logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
@@ -20,18 +20,24 @@ Get customizable pop-up with action buttons on text selection!
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/screenshot.png">
 
 
-Download for Chrome:
-https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi
+[Download for Chrome](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
 
-Download for Firefox:
-https://addons.mozilla.org/firefox/addon/selection-actions/
+[Download for Firefox](https://addons.mozilla.org/firefox/addon/selection-actions/)
 
-____
 
-### Currency converter
+
+## Building
+- `npm install` to install all dependencies
+- `npm run build` to generate `dist` folder with minimized code of the extension
+
+
+## Currency converter
 *Note*:
 In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers.
 
+<details>
+  <summary>List of supported currencies</summary>
+  
 ```
 AUD — Australian Dollar
 BGN — Bulgarian Lev
@@ -80,12 +86,13 @@ DOGE — Dogecoin
 IOTA (MIOTA)
 EOS
 ```
+</details>
 
-Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/currency-api?tab=readme-ov-file)
 
-____
+Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md)
 
-### FAQ
+
+## FAQ
 
 **How to disable word snapping?**
 
@@ -138,9 +145,8 @@ This is set to "18" by default, because rates tend to not change drastically so 
 
 * You can try to tick "Apply configs immediately" setting in the extension options to improve compatibility. It will ensure that Selecton loads all settings and styles every time the selection popup is shown (instead of loading them only once on initial load), but it might also increase the effect on performance.   
 
-----
 
-### Contributing
+## Contributing
 You can make Selecton better without even knowing how to code:
 - Provide translation for your language: [Base English file](https://github.com/emvaized/selecton-extension/blob/master/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](https://github.com/emvaized/selecton-extension/blob/master/src/data/currencies.js)
@@ -151,19 +157,18 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 
 **Ideas for future releases**
 
-- Advanced buttons editor, which allows to quickly turn on/off buttons and change their order with drag'n'drop
+- Advanced buttons editor, which allows to quickly turn on/off buttons and change reorder them with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
+- Make separate tab for markers in extension popup, separate markers from currently open page
 
----
 
-### Donate
-If you really enjoy this product, you may also consider making a small donation for a coffee :)
+## Donate
+If you really enjoy this product, please consider supporting its further development by making a small donation! 
 
-<a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="25"/></a>
+<a href="https://ko-fi.com/emvaized"><img src="https://user-images.githubusercontent.com/7586345/125668092-55af2a45-aa7d-4795-93ed-de0a9a2828c5.png" alt="Support on Ko-fi" height="35"></a>    <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="35" width="70"/></a> 
 
----
 
-### Links to my other browser extensions
+## Links to my other browser extensions
 * [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
 * [Google Tweaks](https://github.com/emvaized/google-tiles-extension) – set of tweaks for Google search page to make it easier to use

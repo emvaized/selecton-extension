@@ -188,7 +188,10 @@ function loadCurrencyRates(){
       }
 
       loadCurrencyRatesFromMemory();
-      if (today >= dayOfNextFetch) fetchCurrencyRates(); /// update rates from server
+      if (today >= dayOfNextFetch) {
+        if (configs.debugMode) console.log('Trying to fetch updated currency rates...');
+        fetchCurrencyRates(); /// update rates from server
+      } 
     }
   }
 }

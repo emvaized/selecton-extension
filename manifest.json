@@ -1,33 +1,21 @@
 {
-  "manifest_version": 2,
-  "name": "Selecton — selection popup. Copy and search",
-  "version": "3.7.0",
+  "manifest_version": 3,
+  "name": "Selecton — Selection popup. Copy & search",
+  "version": "3.7.1",
   "author": "emvaized",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "icons": {
-    "48": "icons/logo-48.png",
-    "96": "icons/logo-96.png"
+    "48": "icons/logo-new.png",
+    "96": "icons/logo-new.png"
   },
   "web_accessible_resources": [
-    "icons/button-icons/bold.svg",
-    "icons/button-icons/calendar.svg",
-    "icons/button-icons/call.svg",
-    "icons/button-icons/clear.svg",
-    "icons/button-icons/copy.svg",
-    "icons/button-icons/cut.svg",
-    "icons/button-icons/dictionary.svg",
-    "icons/button-icons/email.svg",
-    "icons/button-icons/italic.svg",
-    "icons/button-icons/link.svg",
-    "icons/button-icons/marker.svg",
-    "icons/button-icons/map.svg",
-    "icons/button-icons/open.svg",
-    "icons/button-icons/paste.svg",
-    "icons/button-icons/search.svg",
-    "icons/button-icons/strike.svg",
-    "icons/button-icons/time.svg",
-    "icons/button-icons/translate.svg"
+    {
+      "resources": [
+        "icons/button-icons/*.svg"
+      ],
+      "matches": ["<all_urls>"]
+    }
   ],
   "browser_specific_settings": {
     "gecko": {
@@ -35,10 +23,8 @@
     }
   },
   "background": {
-    "scripts": [
-      "src/functions/background.js"
-    ],
-    "persistent": false
+    "scripts": ["src/functions/background.js"],
+    "service_worker": "src/functions/background.js"
   },
   "content_scripts": [
     {
@@ -84,22 +70,22 @@
   ],
   "options_ui": {
     "page": "options/options.html",
-    "browser_style": true,
-    "chrome_style": true,
     "open_in_tab": false
   },
-  "browser_action": {
-    "default_icon": "icons/logo-96.png",
+  "action": {
+    "default_icon": "icons/logo-new.png",
     "default_title": "Selecton",
     "default_popup": "popup/popup.html"
   },
   "permissions": [
-    "https://translate.googleapis.com/*",
-    "https://api.exchangerate.host/*",
-    "https://min-api.cryptocompare.com/data/*",
-    "https://*.wikipedia.org/w/*",
     "storage",
     "notifications",
     "clipboardRead"
+  ],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://api.exchangerate.host/*",
+    "https://min-api.cryptocompare.com/data/*",
+    "https://*.wikipedia.org/w/*"
   ]
 }

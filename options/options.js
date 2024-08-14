@@ -738,6 +738,7 @@ function setMarkerSection(value) {
     let container = document.getElementById('website-markers-list');
 
     markersData = value['websiteMarkers'];
+    if (!markersData) return;
     let markerKeys = Object.keys(markersData);
 
     if (!markersData || markerKeys.length == 0) {
@@ -924,7 +925,7 @@ function setMarkerSection(value) {
 document.addEventListener("DOMContentLoaded", loadSettings);
 
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-    window.open('https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD', '_blank');
+    window.open('https://github.com/emvaized/selecton-extension?tab=readme-ov-file#donate', '_blank');
 });
 
 document.querySelector("#githubButton").addEventListener("click", function (val) {
