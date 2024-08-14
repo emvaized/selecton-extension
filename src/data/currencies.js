@@ -21,7 +21,7 @@ const currenciesList = {
     "GBP": { currencyName: "British Pound", currencySymbol: "£", rate: 0.721124, currencyKeywords: ['фунтов стерлингов', 'british pound'], },
     "HKD": { currencyName: "Hong Kong dollar", currencySymbol: "HK$", rate: 7.765632 },
     "HUF": { currencyName: "Hungarian forint", rate: 316.005504 },
-    "IDR": { currencyName: "Indonesian Rupiah", currencySymbol: "Rp", rate: 15711.86182839, currencyKeywords: ['IDR', 'Rp', 'Rupiah'] },
+    "IDR": { currencyName: "Indonesian Rupiah", currencySymbol: "Rp", rate: 15711.86182839, currencyKeywords: ['Rp', 'Rupiah'] },
     "ILS": { currencyName: "Israeli New Sheqel", currencySymbol: "₪", rate: 3.310401 },
     "INR": { currencyName: "Indian Rupee", currencySymbol: "₹", rate: 72.452006, currencyKeywords: ['rupees', 'рупий'], },
     "IRR": { currencyName: "Iranian Rial", currencySymbol: "﷼", rate: 42105.017329 },

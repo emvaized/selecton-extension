@@ -1,3 +1,11 @@
+3.7.5
+- Migrated to Manifest V3 to comply with new Chrome Web Store requirements
+- Release codebase is now minified, which should provide much greater performance and smaller package size
+- Fixed currency fetching not working because of API migration
+- New extension icon with slightly more modern design
+- Added IDR currency
+- Small fixes for options page
+
 3.7.0
 - Changed API source of currency rates
 - Changed minimial rate fetch days to 7, to not cause too much load on API servers
