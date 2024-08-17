@@ -208,6 +208,9 @@
     "exportSettingsLabel": {
         "message": "Exportar la configuración"
     },
+    "exportSettingsNote": {
+        "message": "Si el botón de exportación no funciona, intenta abrir esta página en una nueva pestaña usando el botón en la esquina superior derecha"
+    },
     "extensionDescription": {
         "message": "Ventana emergente personalizable con acciones en la selección de texto"
     },

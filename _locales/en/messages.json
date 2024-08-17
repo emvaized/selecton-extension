@@ -213,6 +213,9 @@
   },
   "exportSettingsLabel": {
     "message": "Export settings"
+  },  
+  "exportSettingsNote": {
+    "message": "If export button is not working, try to open this page in a new tab using button in the top right corner"
   },
   "extensionDescription": {
     "message": "Customizable popup with actions on text selection"

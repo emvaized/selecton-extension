@@ -214,6 +214,9 @@
   "exportSettingsLabel": {
     "message": "Instellingen exporteren"
   },
+  "exportSettingsNote": {
+    "message": "Als de exportknop niet werkt, probeer dan deze pagina te openen in een nieuw tabblad met behulp van de knop in de rechterbovenhoek"
+  },
   "extensionDescription": {
     "message": "Toon een aanpasbaar actiepaneel in tekstvelden"
   },

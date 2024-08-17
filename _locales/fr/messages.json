@@ -208,6 +208,9 @@
     "exportSettingsLabel": {
         "message": "Exporter les paramètres"
     },
+    "exportSettingsNote": {
+        "message": "Si le bouton d'exportation ne fonctionne pas, essayez d'ouvrir cette page dans un nouvel onglet à l'aide du bouton dans le coin supérieur droit"
+    },
     "extensionDescription": {
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte"
     },

@@ -214,6 +214,9 @@
     "exportSettingsLabel": {
         "message": "Ayarları dışa aktar"
     },
+    "exportSettingsNote": {
+        "message": "Dışa aktarma düğmesi çalışmıyorsa, sağ üst köşedeki düğmeyi kullanarak bu sayfayı yeni bir sekmede açmayı deneyin"
+    },
     "extensionDescription": {
         "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere"
     },

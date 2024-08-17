@@ -214,6 +214,9 @@
   "exportSettingsLabel": {
     "message": "匯出設定"
   },
+  "exportSettingsNote": {
+    "message": "如果导出按钮不起作用，请尝试使用右上角的按钮在新选项卡中打开此页面"
+  },
   "extensionDescription": {
     "message": "帶有文字選擇操作的可自訂彈出視窗"
   },
