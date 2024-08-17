@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(
         } else if (request.type == 'selecton-no-clipboard-permission-message') {
             displayNotification('Clipboard access was not granted', 'Could not paste to this field without clipboard access');
             return true;
-        } if (request.type == 'selecton-export-configs') {
+        } else if (request.type == 'selecton-export-configs') {
             const filename = request.name ?? 'selecton-settings.json';
             const jsonStr = JSON.stringify(request.configs);
 
