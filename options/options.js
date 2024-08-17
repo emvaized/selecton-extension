@@ -157,7 +157,23 @@ function setImportExportButtons() {
 
     document.getElementById('exportSettings').onclick = function () {
         if (markersData) userConfigs['websiteMarkers'] = markersData;
-        chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: !userConfigs ? {} : userConfigs, name: exportFileName });
+        // chrome.runtime.sendMessage({ type: 'selecton-export-configs', configs: !userConfigs ? {} : userConfigs, name: exportFileName });
+        const filename = exportFileName ?? 'selecton-settings.json';
+        const jsonStr = JSON.stringify(!userConfigs ? {} : userConfigs);
+
+        if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+            /// Safari-specific method, until 'download' attribute is properly supported
+            window.open('data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+        } else {
+            let element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            element.style.position = 'absolute';
+            document.body.appendChild(element);
+            element.click();
+            element.remove();
+        }
     }
 
     /// Import settings

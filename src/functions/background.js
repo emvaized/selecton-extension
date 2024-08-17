@@ -11,24 +11,6 @@ chrome.runtime.onMessage.addListener(
         } else if (request.type == 'selecton-no-clipboard-permission-message') {
             displayNotification('Clipboard access was not granted', 'Could not paste to this field without clipboard access');
             return true;
-        } else if (request.type == 'selecton-export-configs') {
-            const filename = request.name ?? 'selecton-settings.json';
-            const jsonStr = JSON.stringify(request.configs);
-
-            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-                /// Safari-specific method, until 'download' attribute is properly supported
-                window.open('data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-            } else {
-                let element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-                element.setAttribute('download', filename);
-                element.style.display = 'none';
-                element.style.position = 'absolute';
-                document.body.appendChild(element);
-                element.click();
-                element.remove();
-            }
-            return true;
         } else if (request.type == 'check_currencies') {
             fetchCurrencyRates(request.debugMode, request.currenciesList);
         }
