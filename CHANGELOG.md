@@ -1,3 +1,7 @@
+3.7.6
+- Fixed problem with export settings button
+- Small fix for background script
+
 3.7.5
 - Migrated to Manifest V3 to comply with new Chrome Web Store requirements
 - Release codebase is now minified, which should provide much greater performance and smaller package size
