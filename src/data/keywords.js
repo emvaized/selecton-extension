@@ -40,6 +40,7 @@ const addressKeywords = [
     /// German
     'straße',
     'strasse',
+    'str.',
     ' stadt',
 ];
 
