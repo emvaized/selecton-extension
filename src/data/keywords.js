@@ -4,7 +4,7 @@ const addressKeywords = [
     ' street',
     'broadway',
     ' st.',
-    ' str.',
+    'str.',
     ' city',
 
     /// Russian
@@ -40,7 +40,6 @@ const addressKeywords = [
     /// German
     'straße',
     'strasse',
-    'str.',
     ' stadt',
 ];
 
