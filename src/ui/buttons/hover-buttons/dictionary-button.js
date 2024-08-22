@@ -2,7 +2,10 @@ function addDictionaryButton(selectionLength) {
     try {
 
         const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, function (e) {
-            let url = `https://wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
+            const locale = configs.languageToTranslate;
+            const url = 'https://' + 
+                (locale ? locale + '.' : '') +
+                `wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
             onTooltipButtonClick(e, url);
         });
         // wikiButton.setAttribute('id', 'selecton-translate-button');
