@@ -17,13 +17,11 @@ Get customizable pop-up with action buttons on text selection!
 * Dictionary button, which fetches definition from Wikipedia on hover
 * Highlighter button, which allows to highlight specific text on page and quickly find it later
 
+<a href="https://addons.mozilla.org/firefox/addon/selection-actions/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get for Firefox"></a> &nbsp;&nbsp; <a href="https://chrome.google.com/webstore/detail/cselection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get for Chrome"></a>
+
+
+## Screenshot
 <img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/screenshot.png">
-
-
-[Download for Chrome](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
-
-[Download for Firefox](https://addons.mozilla.org/firefox/addon/selection-actions/)
-
 
 
 ## Building
@@ -163,10 +161,10 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - Make separate tab for markers in extension popup, separate markers from currently open page
 
 
-## Donate
-If you really enjoy this product, please consider supporting its further development by making a small donation! 
+## Support
+If you really enjoy this project, please consider supporting its further development by making a small donation using one of these services! 
 
-<a href="https://ko-fi.com/emvaized"><img src="https://user-images.githubusercontent.com/7586345/125668092-55af2a45-aa7d-4795-93ed-de0a9a2828c5.png" alt="Support on Ko-fi" height="35"></a>    <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="35" width="70"/></a> 
+<a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" alt="PayPal" height="40" width="75"/></a> &nbsp;&nbsp; <a href="https://ko-fi.com/emvaized"><img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/64f1a9ddd0246590df69ea01_kofi_long_button_blue%25402x-p-800.png" alt="Support on Ko-fi" height="40"></a>  &nbsp;&nbsp; <a href="https://www.buymeacoffee.com/emvaized" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 155px !important;" ></a>
 
 
 ## Links to my other browser extensions
