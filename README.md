@@ -109,7 +109,7 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - Advanced buttons editor, which allows to quickly turn on/off buttons and change reorder them with drag'n'drop
 - Cloud sync of settings using browser account sync
 - Ability to turn on/off background blur for tooltip and hover panels
-- Make separate tab for markers in extension popup, separate markers from currently open page
+- Make separate tab for markers in the extension popup, with separate category for markers for currently open page
 
 
 ## Support
