@@ -92,56 +92,7 @@ Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/
 
 ## FAQ
 
-**How to disable word snapping?**
-
-* Hold CTRL key while selecting text or modify selection with drag handle - in both cases text selection will not be snapped by word.
-To permanently disable word snapping, add website to word-snapping blacklist or uncheck:
-"Settings > Text selection > Snap text selection by word"
-
-**How to enable tooltip for text fields?**
-
-* "Selecton settings > Text fields > Use special panel for text fields"
-This is disabled by default because with this option on extension will use a little bit more resources by analyzing every mouse click
-
-**Disable selection handles on the right and left?**
-
-* Settings > Text selection > Add selection drag handles
-
-**Enable selecting text in links, like in Opera or Vivaldi?**
-
-* You can use other extensions to get link selection, such as [Select like a Boss](https://chrome.google.com/webstore/detail/select-like-a-boss/mbnnmpmcijodolgeejegcijdamonganh) for Chrome or [Drag-Select Link Text](https://addons.mozilla.org/firefox/addon/drag-select-link-text/) for Firefox
-
-**On Firefox, can't change colors or import settings from extension popup**
-
-* This is common Firefox bug, progress on this can be monitored [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1378527).
-To change colors on Firefox, open settings in new tab by clicking button in top-right corner of the popup
-
-**Change fetch interval for currency rates?**
-
-* "Settings > Conversion > Rates update interval"
-This is set to "18" by default, because rates tend to not change drastically so often, and it is better to reduce load on free service we're using for fetching new rates.
-
-**Why extension doesn't work on new tab page?**
-* This is basic security limitation in most modern browsers. Browser extension could not execute it's scripts on new tab page (speed dial), as well as on service pages (`chrome://`, `about:`, etc.) and in extensions store.
-
-**Additional search buttons do not show on hovering Search button?**
-
-* Icons for these buttons are fetched from Google. [It is possible](https://github.com/emvaized/selecton-extension/issues/5#issuecomment-830542219) that you have Ad-blocker installed, which blocks all requests to Google services. In this case you would like to use **vertical layout** for custom search panel to get at least labels shown, or visit *Settings > Custom search tooltip* and set your own icon for each option. It may also be that current website blocks all external requests at all, which prevents Selecton from loading favicons.
-
-**How to add new search option**
-* Let's use [YouTube](https://youtube.com) as an example. Go on a website and search for something, like "gold" – your URL will look something like this: [https://www.youtube.com/results?search_query=gold](https://www.youtube.com/results?search_query=gold). You have to grab this url, replace `gold` with `%s` (placeholder for the searched text), and use it as url for the new search option (Extension options > Custom search options > Add new search option).
-
-**How to add Selecton settings as Vivaldi side panel?**
-
-* Use this URL: *chrome-extension://*{ID OF EXTENSION}*/options/options.html*, where {ID OF EXTENSION} is a unique extension ID on your computer. You can get this from extension details page on chrome://extensions
-
-**Highlight button cuts the text selection**
-
-* To make this tool work reliably, please highlight only single words or sentences. Highlighter trims text selection within one HTML node – otherwise page layout may be broken when highlight gets restored after page reload.
-
-**Selecton popup doesn't look right on some websites**
-
-* You can try to tick "Apply configs immediately" setting in the extension options to improve compatibility. It will ensure that Selecton loads all settings and styles every time the selection popup is shown (instead of loading them only once on initial load), but it might also increase the effect on performance.   
+Moved to Wiki page – [read here](https://github.com/emvaized/selecton-extension/wiki/FAQ-(Frequently-Asked-Questions))
 
 
 ## Contributing
