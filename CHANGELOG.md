@@ -1,3 +1,7 @@
+3.7.7
+- Use user's locale in Dictionary button url
+- Improved address detection for German language
+
 3.7.6
 - Fixed problem with export settings button
 - Small fix for background script

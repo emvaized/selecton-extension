@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Selecton — Selection popup. Copy & search",
-  "version": "3.7.6",
+  "name": "Selecton — selection popup. Copy & search",
+  "version": "3.7.7",
   "author": "emvaized",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
