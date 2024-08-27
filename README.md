@@ -1,6 +1,6 @@
 # <sub><img src="./icons/logo-new.png" height="48" width="48"></sub> Selecton — text selection actions
 
-![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pemdbnndbdpbelmfcddaihdihdfmnadi?label=version&color=red)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pemdbnndbdpbelmfcddaihdihdfmnadi?label=version&color=yellow)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/pemdbnndbdpbelmfcddaihdihdfmnadi?label=users&logo=googlechrome&logoColor=white&color=blue)](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
 [![Mozilla Add-on](https://img.shields.io/amo/users/selection-actions?color=%23FF6611&label=users&logo=Firefox)](https://addons.mozilla.org/firefox/addon/selection-actions/)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pemdbnndbdpbelmfcddaihdihdfmnadi)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
