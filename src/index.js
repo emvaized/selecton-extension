@@ -1,4 +1,4 @@
-function initConfigs(shouldCreateTooltip = false, e) {
+function initConfigs() {
   const userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -91,9 +91,6 @@ function initConfigs(shouldCreateTooltip = false, e) {
 
         // /// Fetch or load currency rates from storage
         // loadCurrencyRates()
-
-        if (shouldCreateTooltip)
-          createTooltip(e);
       }
     });
 }
@@ -353,11 +350,8 @@ function initMouseListeners() {
   }
 
   function initTooltip(e) {
-    if (configs.applyConfigsImmediately) {
-      initConfigs(true, e); /// createTooltip will be called after checking for updated configs
-    } else {
-      createTooltip(e);
-    }
+    createTooltip(e);
+
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
@@ -472,11 +466,6 @@ function selectionChangeInitListener() {
   }
 }
 
-// function domLoadedListener() {
-//   document.removeEventListener('DOMContentLoaded', domLoadedListener);
-//   initConfigs(false);
-// }
+initConfigs();
 
-// document.addEventListener('DOMContentLoaded', domLoadedListener);
-
-initConfigs(false);
+chrome.storage.onChanged.addListener((c) => initConfigs());

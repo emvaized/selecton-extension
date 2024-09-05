@@ -217,7 +217,6 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     return button;
 }
 
-
 function addContextualTooltipButton(onClick, isFirstButton = false) {
     /// Used for more custom button, which contents will be created in code
     const button = document.createElement('button');
@@ -240,7 +239,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     if (label && icon){
         if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
             button.setAttribute('title', label);
-            
+
         if (addButtonIcons)
             button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
         else
