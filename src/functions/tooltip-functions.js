@@ -237,12 +237,15 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     const button = document.createElement('a');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
 
-    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-        button.setAttribute('title', label);
-    if (addButtonIcons)
-        button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
-    else
-        button.textContent = label;
+    if (label && icon){
+        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+            button.setAttribute('title', label);
+            
+        if (addButtonIcons)
+            button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
+        else
+            button.textContent = label;
+    }
 
     button.onmousedown = function(e){
         e.stopPropagation();

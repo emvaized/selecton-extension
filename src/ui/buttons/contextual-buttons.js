@@ -592,12 +592,8 @@ function addContextualButtons(callbackOnFinish) {
                                 link = link.substring(0, linkLength - 1);
 
                             /// Add open link button
-                            let linkButton = addContextualTooltipButton(function (e) {
-                                if (!link.includes('://') && !link.includes('about:'))
-                                    link = 'https://' + link;
-
-                                onTooltipButtonClick(e, link);
-                            })
+                            const linkToOpen = !link.includes('://') && !link.includes('about:') ? 'https://' + link : link;
+                            const linkButton = addLinkTooltipButton(undefined, undefined, linkToOpen)
 
                             let linkText = document.createElement('div');
                             linkText.style.display = 'inline';
