@@ -329,7 +329,7 @@ function updateDisabledOptions() {
     document.getElementById("addPasteButton").parentNode.className = document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("updateRatesEveryDays").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferredTranslateService").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
+    // document.getElementById("shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
     document.getElementById("customSearchButtonsContainer").className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("dictionaryButtonWordsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("dictionaryButtonResponseCharsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
