@@ -249,6 +249,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     button.onmousedown = (e)=>e.stopPropagation();
     button.classList.add('link-button')
     button.href = url;
+    button.target = '_blank';
 
     if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
