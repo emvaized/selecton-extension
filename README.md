@@ -1,4 +1,4 @@
-# <sub><img src="./icons/logo-new.png" height="48" width="48"></sub> Selecton — text selection actions
+# <sub><img src="./src/assets/icons/logo-new.png" height="48" width="48"></sub> Selecton — text selection actions
 
 [![Changelog](https://img.shields.io/chrome-web-store/v/pemdbnndbdpbelmfcddaihdihdfmnadi?label=version&color=red)](./CHANGELOG.md)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/pemdbnndbdpbelmfcddaihdihdfmnadi?label=users&logo=googlechrome&logoColor=white&color=blue)](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)

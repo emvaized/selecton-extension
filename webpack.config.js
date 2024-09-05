@@ -33,25 +33,12 @@ module.exports = {
     /// static files
     new CopyPlugin({
       patterns: [
-        "src/index.css",
-        { 
-          from: "manifest.json", 
-          to: "manifest.json",
-          transform(content, absoluteFrom) {
-            const manifest = JSON.parse(content.toString());
-
-            manifest['background']['scripts'] = ["./background.js"];
-            manifest['background']['service_worker'] = "./background.js";
-            manifest['content_scripts'][0]['js'] = [ "./content.js" ];
-            manifest['content_scripts'][0]['css'] = [ "./index.css" ];
-
-            return JSON.stringify(manifest);
-          },
-        },
         { from: "_locales", to: "_locales" },
-        { from: "icons", to: "icons" },
-        { from: "popup", to: "popup" },
-        { from: "options", to: "options" },
+        "src/manifest.json",
+        "src/index.css",
+        { from: "src/assets", to: "assets" },
+        { from: "src/popup", to: "popup" },
+        { from: "src/options", to: "options" },
         /// additional dependencies for toolbar popup and options page
         { from: "src/data/configs.js", to: "src/data/" },
         { from: "src/data/currencies.js", to: "src/data/" },
@@ -64,7 +51,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin(), 
       new CssMinimizerPlugin(),
-      new JsonMinimizerPlugin({exclude: "manifest.json"}),
+      new JsonMinimizerPlugin(),
     ],
   },
 };
