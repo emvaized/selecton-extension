@@ -34,6 +34,9 @@ function addContextualButtons(callbackOnFinish) {
                         }
                 }
 
+                /// Check if found currency is searchable
+                if (value['searchInText'] == false) match = false;
+
                 if (match) {
                     currency = key;
                     currencyRate = value["rate"];
