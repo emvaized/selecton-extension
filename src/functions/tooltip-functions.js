@@ -244,9 +244,13 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     else
         button.textContent = label;
 
-    // button.addEventListener("mousedown", onClick);
-    // button.onmousedown = onClick;
-    button.onmousedown = (e)=>e.stopPropagation();
+    button.onmousedown = function(e){
+        e.stopPropagation();
+    }
+    button.onmouseup = function(e){
+        hideTooltip();
+        removeSelectionOnPage();
+    }
     button.classList.add('link-button')
     button.href = url;
     button.target = '_blank';
