@@ -33,7 +33,7 @@ module.exports = {
     /// static files
     new CopyPlugin({
       patterns: [
-        { from: "_locales", to: "_locales" },
+        { from: "src/assets/_locales", to: "_locales" },
         "src/manifest.json",
         "src/index.css",
         { from: "src/assets", to: "assets" },
