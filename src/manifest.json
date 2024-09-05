@@ -12,7 +12,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "icons/button-icons/*.svg"
+        "assets/icons/button-icons/*.svg"
       ],
       "matches": ["<all_urls>"]
     }
