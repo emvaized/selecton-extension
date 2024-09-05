@@ -334,19 +334,13 @@ function addContextualButtons(callbackOnFinish) {
             }
 
             if (containsAddress) {
-                let mapButton = addContextualTooltipButton(function (e) {
-                    /// Open maps service set by user (defaults to Google Maps)
-                    let url = returnShowOnMapUrl(selectedText);
-                    onTooltipButtonClick(e, url);
-                });
+                const mapUrl = returnShowOnMapUrl(selectedText);
+                addLinkTooltipButton(
+                    showOnMapLabel,
+                    createImageIconForButton(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel),
+                    mapUrl
+                );
 
-                if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
-                    mapButton.setAttribute('title', showOnMapLabel);
-
-                if (addButtonIcons)
-                    mapButton.appendChild(createImageIconForButton(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel));
-                else
-                    mapButton.textContent = showOnMapLabel;
             }
         }
 
@@ -654,9 +648,7 @@ function addContextualButtons(callbackOnFinish) {
 
             } else if (!selectionContainsSpaces && selectedText[0] == 'r' && selectedText[1] == '/') {
                 /// Add Reddit button
-                let redditButton = addBasicTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png', function (e) {
-                    onTooltipButtonClick(e, 'https://www.reddit.com/' + selectedText);
-                }, false, 1.0);
+                let redditButton = addLinkTooltipButton(chrome.i18n.getMessage('openLinkLabel'), 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png', 'https://www.reddit.com/' + selectedText, false, 1.0);
 
                 let highlightedText = document.createElement('span');
                 highlightedText.style.display = 'inline';

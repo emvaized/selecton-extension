@@ -1,13 +1,11 @@
 function addDictionaryButton(selectionLength) {
     try {
 
-        const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, function (e) {
-            const locale = configs.languageToTranslate;
-            const url = 'https://' + 
+        const locale = configs.languageToTranslate;
+        const wikiUrl = 'https://' + 
                 (locale ? locale + '.' : '') +
                 `wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
-            onTooltipButtonClick(e, url);
-        });
+        const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, wikiUrl);
         // wikiButton.setAttribute('id', 'selecton-translate-button');
 
         /// set fetch on hover listener

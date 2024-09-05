@@ -232,6 +232,32 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
     return button;
 }
 
+function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpacity) {
+    /// Used for links, button with action label + icon, when enabled
+    const button = document.createElement('a');
+    button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
+
+    if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+        button.setAttribute('title', label);
+    if (addButtonIcons)
+        button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
+    else
+        button.textContent = label;
+
+    // button.addEventListener("mousedown", onClick);
+    // button.onmousedown = onClick;
+    button.onmousedown = (e)=>e.stopPropagation();
+    button.classList.add('link-button')
+    button.href = url;
+
+    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
+        tooltip.insertBefore(button, tooltip.children[1]);
+    else
+        tooltip.appendChild(button);
+
+    return button;
+}
+
 /// Hide tooltip when mouse moved far from text selection
 function mouseMoveToHideListener(mouseMoveEvent) {
     if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false) {

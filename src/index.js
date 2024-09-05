@@ -423,7 +423,7 @@ function initMouseListeners() {
     });
 
   if (configs.debugMode)
-    console.log('Selection initiated mouse listeners');
+    console.log('Selecton initiated mouse listeners');
 
 
   /// Lazy loading

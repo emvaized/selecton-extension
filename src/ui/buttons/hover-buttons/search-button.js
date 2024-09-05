@@ -11,7 +11,7 @@ function setHoverForSearchButton(searchButton) {
     const searchButtonsLength = searchButtons.length;
     if (searchButtonsLength == 0) return;
 
-    const containerPrototype = document.createElement('div');
+    const containerPrototype = document.createElement('a');
     containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
     containerPrototype.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
     containerPrototype.className = 'custom-search-image-button';
@@ -64,8 +64,9 @@ function setHoverForSearchButton(searchButton) {
             /// Set click listeners
             container.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
-                onSearchButtonClick(e, url);
+                // onSearchButtonClick(e, url);
             });
+            container.href = returnSearchButtonUrl(url);
         }
     }
 
@@ -94,7 +95,7 @@ function setHoverForSearchButton(searchButton) {
     searchButton.appendChild(searchPanel);
 }
 
-function onSearchButtonClick(e, url) {
+function returnSearchButtonUrl(url){
     let selectedText = selection.toString();
     selectedText = encodeURI(selectedText);
     selectedText = selectedText.replaceAll('&', '%26').replaceAll('+', '%2B');
@@ -107,6 +108,12 @@ function onSearchButtonClick(e, url) {
         } catch (e) {
             if (configs.debugMode) console.log(e);
         }
+
+    return urlToOpen;   
+}
+
+function onSearchButtonClick(e, url) {
+    let urlToOpen = returnSearchButtonUrl(url)
 
     try {
         let evt = e || window.event;

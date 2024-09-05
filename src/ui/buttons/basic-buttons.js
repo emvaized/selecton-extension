@@ -117,10 +117,8 @@ function addBasicTooltipButtons(layout) {
 
     } else {
         /// Add search button
-        searchButton = addBasicTooltipButton(searchLabel, searchButtonIcon, function (e) {
-            let selectedText = selection.toString();
-            onTooltipButtonClick(e, returnSearchUrl(selectedText.trim()));
-        }, true);
+        // let selectedText = selection.toString();
+        searchButton = addLinkTooltipButton(searchLabel, searchButtonIcon, returnSearchUrl(selectedText.trim()), true);
 
         /// Populate panel with custom search buttons, when enabled
         if (configs.customSearchOptionsDisplay == 'panelCustomSearchStyle') {
