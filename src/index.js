@@ -352,6 +352,10 @@ function initMouseListeners() {
   function initTooltip(e) {
     createTooltip(e);
 
+    /// check if CSS variables were set correctly
+    if (!document.documentElement.style.getPropertyValue('--selecton-font-size')) {
+      setDocumentStyles();
+    }
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
