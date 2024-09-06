@@ -1,3 +1,10 @@
+3.7.8
+- Most buttons with links are (<a>) elements now, and are recognized as links by browser and other extensions
+- Most settings will apply immediately now, no need to reload the page
+- Project cleanup and optimization for better performance
+- Added TWD and PHP currencies
+- Small bug fixes and improvements
+
 3.7.7
 - Use user's locale in Dictionary button url
 - Improved address detection for German language
