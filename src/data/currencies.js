@@ -47,6 +47,7 @@ const currenciesList = {
     "SEK": { currencyName: "Swedish Krona", currencySymbol: " kr", rate: 8.514027 },
     "THB": { currencyName: "Thai Baht", currencySymbol: "฿", rate: 34.700854, currencyKeywords: ['THB', 'Baht', 'baht'] },
     "TRY": { currencyName: "Turkish Lira", currencySymbol: "₺", rate: 0.14 },
+    "TWD": { currencyName: "New Taiwan dollar", currencySymbol: "NT$", rate: 31.99368752 },
     "UAH": { currencyName: "Ukrainian Hryvnia", currencySymbol: "₴", rate: 27.852288, currencyKeywords: ['hryvnia', 'гривен', 'грн'] },
     "USD": { currencyName: "United States Dollar", currencySymbol: "$", rate: 1, currencyKeywords: ['dollar', 'dolar', 'доллар'] },
     "VND": { currencyName: "Vietnamese Dong", currencySymbol: "₫", rate: 23054.385489 },
