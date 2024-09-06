@@ -335,69 +335,69 @@ function showTooltip(dx, dy) {
     }, configs.animationDuration);
 
     /// Check for website existing tooltip
-    if (configs.shiftTooltipWhenWebsiteHasOwn && configs.tooltipPosition !== 'overCursor')
-        setTimeout(function () {
+    // if (configs.shiftTooltipWhenWebsiteHasOwn && configs.tooltipPosition !== 'overCursor')
+    //     setTimeout(function () {
 
-            /// Experimental code to determine website's own selection tooltip
-            const websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
+    //         /// Experimental code to determine website's own selection tooltip
+    //         const websiteTooltips = document.querySelectorAll(`[style*='position: absolute'][style*='transform'],[class^='popup popup_warning']`);
 
-            let websiteTooltip;
-            if (websiteTooltips !== null && websiteTooltips !== undefined)
-                for (let i = 0, l = websiteTooltips.length; i < l; i++) {
-                    const el = websiteTooltips[i];
-                    let elementClass;
-                    try {
-                        elementClass = el.getAttribute('class');
-                    } catch (e) { }
+    //         let websiteTooltip;
+    //         if (websiteTooltips !== null && websiteTooltips !== undefined)
+    //             for (let i = 0, l = websiteTooltips.length; i < l; i++) {
+    //                 const el = websiteTooltips[i];
+    //                 let elementClass;
+    //                 try {
+    //                     elementClass = el.getAttribute('class');
+    //                 } catch (e) { }
 
-                    if (elementClass !== null && elementClass !== undefined && elementClass.toString().includes('selection-tooltip')) {
+    //                 if (elementClass !== null && elementClass !== undefined && elementClass.toString().includes('selection-tooltip')) {
 
-                    } else if (el.style !== undefined) {
-                        let transformStyle;
-                        let elementStyle;
+    //                 } else if (el.style !== undefined) {
+    //                     let transformStyle;
+    //                     let elementStyle;
 
-                        try {
-                            transformStyle = el.style.transform.toString();
-                            elementStyle = el.getAttribute('style').toString();
-                        } catch (e) { }
+    //                     try {
+    //                         transformStyle = el.style.transform.toString();
+    //                         elementStyle = el.getAttribute('style').toString();
+    //                     } catch (e) { }
 
-                        // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
-                        // if (!el.getAttribute('class').toString().includes('selection-tooltip'))
-                        if (elementStyle == undefined) continue;
-                        if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate') && transformStyle !== 'translateY(0px)' && transformStyle !== 'translate(0px, 0px)')
-                            || (elementStyle.includes('left:') && elementStyle.includes('top:'))
-                        ) {
-                            if (el.clientHeight < 100 && el.clientHeight > 5 && el.clientWidth > 20 && el.getAttribute('id') !== 'cmg-fullscreen-image') {
-                                if (configs.debugMode) {
-                                    console.log('Detected selection tooltip on the website with following style:');
-                                    console.log(elementStyle);
-                                }
+    //                     // if (elStyle !== null && elStyle !== undefined && elStyle.includes('translate3d')) {
+    //                     // if (!el.getAttribute('class').toString().includes('selection-tooltip'))
+    //                     if (elementStyle == undefined) continue;
+    //                     if ((elementStyle.includes('position: absolute') && transformStyle !== null && transformStyle !== undefined && transformStyle.includes('translate') && transformStyle !== 'translateY(0px)' && transformStyle !== 'translate(0px, 0px)')
+    //                         || (elementStyle.includes('left:') && elementStyle.includes('top:'))
+    //                     ) {
+    //                         if (el.clientHeight < 100 && el.clientHeight > 5 && el.clientWidth > 20 && el.getAttribute('id') !== 'cmg-fullscreen-image') {
+    //                             if (configs.debugMode) {
+    //                                 console.log('Detected selection tooltip on the website with following style:');
+    //                                 console.log(elementStyle);
+    //                             }
 
-                                websiteTooltip = el;
-                                break;
-                            }
-                        }
-                    }
-                };
+    //                             websiteTooltip = el;
+    //                             break;
+    //                         }
+    //                     }
+    //                 }
+    //             };
 
-            if (websiteTooltip !== null && websiteTooltip !== undefined) {
-                tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
-                tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
+    //         if (websiteTooltip !== null && websiteTooltip !== undefined) {
+    //             tooltip.style.transition = `top 200ms ease-out, opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
+    //             tooltip.style.top = `${dy - websiteTooltip.clientHeight}px`;
 
-                arrow.style.opacity = 1.0;
-                arrow.style.transition = 'opacity 200ms ease-out';
-                arrow.style.opacity = 0.0;
+    //             arrow.style.opacity = 1.0;
+    //             arrow.style.transition = 'opacity 200ms ease-out';
+    //             arrow.style.opacity = 0.0;
 
-                setTimeout(function () {
-                    tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
-                    arrow.remove();
-                }, 200);
-            } else {
-                // arrow.style.opacity = 1.0;
-                if (configs.debugMode) console.log('Selecton didnt found any website tooltips');
-            }
+    //             setTimeout(function () {
+    //                 tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform 200ms ease-out`;
+    //                 arrow.remove();
+    //             }, 200);
+    //         } else {
+    //             // arrow.style.opacity = 1.0;
+    //             if (configs.debugMode) console.log('Selecton didnt found any website tooltips');
+    //         }
 
-        }, configs.animationDuration);
+    //     }, configs.animationDuration);
 }
 
 function hideTooltip(animated = true) {

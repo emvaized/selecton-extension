@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Selecton — selection popup. Copy & search",
+  "version": "3.7.7",
+  "author": "emvaized",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "icons": {
+    "48": "assets/icons/logo-new.png",
+    "96": "assets/icons/logo-new.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/icons/button-icons/*.svg"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "selection_action@emvaized.com"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "index.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "action": {
+    "default_icon": "assets/icons/logo-new.png",
+    "default_title": "Selecton",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [
+    "storage",
+    "notifications",
+    "clipboardRead"
+  ],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://api.exchangerate.host/*",
+    "https://min-api.cryptocompare.com/data/*",
+    "https://*.wikipedia.org/w/*"
+  ]
+}

@@ -86,6 +86,9 @@
   "chooseFileFirst": {
     "message": "Choose the file first"
   },
+  "circle": {
+    "message": "Circle"
+  },
   "clearLabel": {
     "message": "Clear"
   },
@@ -118,6 +121,9 @@
   },
   "copyLabel": {
     "message": "Copy"
+  },
+  "correctTooltipPositionByMoreButtonWidth": {
+    "message": "Shift the panel by width of 'More' button"
   },
   "customIcon": {
     "message": "Custom icon"
@@ -193,6 +199,9 @@
   "dontSnapTextfieldSelection": {
     "message": "Do not snap selection in text fields"
   },
+  "dragHandleStyle": {
+    "message": "Drag handles style"
+  },
   "draggableTooltip": {
     "message": "Panel can be dragged by the arrow"
   },
@@ -213,7 +222,7 @@
   },
   "exportSettingsLabel": {
     "message": "Export settings"
-  },  
+  },
   "exportSettingsNote": {
     "message": "If export button is not working, try to open this page in a new tab using button in the top right corner"
   },
@@ -573,6 +582,9 @@
   "translating": {
     "message": "Translating"
   },
+  "triangle": {
+    "message": "Triangle"
+  },
   "updateNotificationMessage": {
     "message": "Click here to see what's new"
   },
@@ -631,17 +643,5 @@
         "content": "$1"
       }
     }
-  },
-  "dragHandleStyle": {
-    "message": "Drag handles style"
-  },
-  "circle": {
-    "message": "Circle"
-  },
-  "triangle": {
-    "message": "Triangle"
-  },
-  "correctTooltipPositionByMoreButtonWidth": {
-    "message": "Shift the panel by width of 'More' button"
   }
 }

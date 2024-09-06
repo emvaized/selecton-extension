@@ -83,7 +83,7 @@
   border: none !important;
   box-shadow: none !important;
   padding: var(--selecton-button-padding) !important;
-  vertical-align: top !important;
+  /* vertical-align: top !important; */
   font-family: Arial, Helvetica, sans-serif !important;
   height: 100% !important;
   min-height: 100% !important;
@@ -98,7 +98,7 @@
 }
 
 .tooltip-with-icons .selection-popup-button span {
-  vertical-align: middle !important;
+  /* vertical-align: middle !important; */
 }
 
 .color-highlight {
@@ -114,6 +114,16 @@
   color: white !important;
   transition: background-color 25ms ease-in-out !important;
   position: relative;
+}
+
+.link-button {
+  text-decoration: none !important;
+  height: 100% !important;
+  display: inline-block !important;
+}
+
+.link-button .selecton-button-img-icon {
+  vertical-align: middle !important;
 }
 
 
@@ -167,6 +177,7 @@
   font-size: var(--selecton-font-size) !important;
   font-family: Arial, Helvetica, sans-serif !important;
   color: var(--selection-button-foreground);
+  text-decoration: none !important;
 }
 
 .custom-search-image-button:hover {

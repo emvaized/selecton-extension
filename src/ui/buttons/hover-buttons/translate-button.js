@@ -70,12 +70,10 @@ function addTranslateButton(onFinish, selectionLength) {
 
 function setRegularTranslateButton(languageOfSelectedText, selectionLength) {
 
-    const translateButton = addBasicTooltipButton(translateLabel, translateButtonIcon, function (e) {
-        let url = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
+    const translateUrl = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
             returnTranslateUrl(selectedText, 'en') :
             returnTranslateUrl(selectedText);
-        onTooltipButtonClick(e, url);
-    });
+    const translateButton = addLinkTooltipButton(translateLabel, translateButtonIcon, translateUrl);
 
     translateButton.setAttribute('id', 'selecton-translate-button');
 

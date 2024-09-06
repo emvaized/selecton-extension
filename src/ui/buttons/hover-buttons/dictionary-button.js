@@ -1,13 +1,12 @@
 function addDictionaryButton(selectionLength) {
     try {
 
-        const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, function (e) {
-            const locale = configs.languageToTranslate;
-            const url = 'https://' + 
+        const locale = configs.languageToTranslate;
+        const wikiUrl = 'https://' + 
                 (locale ? locale + '.' : '') +
                 `wikipedia.org/w/index.php?search=${encodeURIComponent(selectedText)}`;
-            onTooltipButtonClick(e, url);
-        });
+        // const wikiButton = addBasicTooltipButton(dictionaryLabel, dictionaryButtonIcon, wikiUrl);
+        const wikiButton = addLinkTooltipButton(dictionaryLabel, dictionaryButtonIcon, wikiUrl);
         // wikiButton.setAttribute('id', 'selecton-translate-button');
 
         /// set fetch on hover listener
@@ -102,10 +101,11 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
             }
 
             if (jsoned.query.pages[0].pageid)
-                wikiButton.onmousedown = function (e) {
-                    let url = languageOfSelectedText = `https://${locale}.wikipedia.org/?curid=${jsoned.query.pages[0].pageid}`;
-                    onTooltipButtonClick(e, url);
-                }
+                // wikiButton.onmousedown = function (e) {
+                //     let url = `https://${locale}.wikipedia.org/?curid=${jsoned.query.pages[0].pageid}`;
+                //     onTooltipButtonClick(e, url);
+                // }
+                wikiButton.href = `https://${locale}.wikipedia.org/?curid=${jsoned.query.pages[0].pageid}`;
         } catch (e) { console.log(e); }
     }
 }

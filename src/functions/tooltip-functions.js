@@ -28,7 +28,10 @@ function onTooltipButtonClick(e, url, text) {
                 if (configs.convertResultClickAction == 'copy' && text)
                     copyManuallyToClipboard(text);
                 else
-                    chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: configs.leftClickBackgroundTab ? false : true });
+                    chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, 
+                    // focused: configs.leftClickBackgroundTab ? false : true 
+                    focused: true 
+                });
 
             } else if (evt.button == 1) {
                 /// Middle button click
@@ -217,7 +220,6 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     return button;
 }
 
-
 function addContextualTooltipButton(onClick, isFirstButton = false) {
     /// Used for more custom button, which contents will be created in code
     const button = document.createElement('button');
@@ -225,6 +227,40 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
     button.addEventListener("mousedown", onClick);
 
     if (configs.reverseTooltipButtonsOrder)
+        tooltip.insertBefore(button, tooltip.children[1]);
+    else
+        tooltip.appendChild(button);
+
+    return button;
+}
+
+function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpacity) {
+    /// Used for links, button with action label + icon, when enabled
+    const button = document.createElement('a');
+    button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
+
+    if (label && icon){
+        if (configs.buttonsStyle == 'onlyicon' && configs.showButtonLabelOnHover)
+            button.setAttribute('title', label);
+
+        if (addButtonIcons)
+            button.appendChild(createImageIconForButton(icon, configs.buttonsStyle == 'onlyicon' ? '' : label, false, iconOpacity));
+        else
+            button.textContent = label;
+    }
+
+    button.onmousedown = function(e){
+        e.stopPropagation();
+    }
+    button.onmouseup = function(e){
+        hideTooltip();
+        removeSelectionOnPage();
+    }
+    button.classList.add('link-button')
+    button.href = url;
+    button.target = '_blank';
+
+    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
     else
         tooltip.appendChild(button);

@@ -162,18 +162,15 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, ti
         }
     }
 
-    const dateButton = addBasicTooltipButton(buttonLabel, calendarIcon, function (e) {
-        /// If specific time is provided, create event – otherwise open day in calendar
-        let link;
-        if (time) {
-            let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
-            link = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${dateString}&sf=true`;
-        } else {
-            link = `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-        }
-
-        if (link) onTooltipButtonClick(e, link);
-    });
+     /// If specific time is provided, create event – otherwise open day in calendar
+     let calendarLink;
+     if (time) {
+         let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
+         calendarLink = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${dateString}&sf=true`;
+     } else {
+        calendarLink = `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+     }
+    const dateButton = addLinkTooltipButton(buttonLabel, calendarIcon, calendarLink);
     dateButton.title = date.toLocaleDateString();
     dateButton.classList.add('color-highlight');
 

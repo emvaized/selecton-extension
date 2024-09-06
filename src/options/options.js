@@ -265,14 +265,14 @@ function setTranslatedLabels() {
         k.parentNode.innerHTML = k.parentNode.innerHTML.replaceAll('CTRL', '⌘cmd');
     }
 
-    try {
-        const span = document.createElement('span');
-        span.style.opacity = 0.5;
-        span.id = 'applyConfigsImmediatelyPerformanceTip';
-        const disableForBetterPerformanceLabel = chrome.i18n.getMessage("disableForBetterPerformance");
-        span.innerHTML = '<br/>' + disableForBetterPerformanceLabel[0].toLowerCase() + disableForBetterPerformanceLabel.substring(1, disableForBetterPerformanceLabel.length);
-        document.querySelector("#applyConfigsImmediately").parentNode.appendChild(span);
-    } catch (e) { }
+    // try {
+    //     const span = document.createElement('span');
+    //     span.style.opacity = 0.5;
+    //     span.id = 'applyConfigsImmediatelyPerformanceTip';
+    //     const disableForBetterPerformanceLabel = chrome.i18n.getMessage("disableForBetterPerformance");
+    //     span.innerHTML = '<br/>' + disableForBetterPerformanceLabel[0].toLowerCase() + disableForBetterPerformanceLabel.substring(1, disableForBetterPerformanceLabel.length);
+    //     document.querySelector("#applyConfigsImmediately").parentNode.appendChild(span);
+    // } catch (e) { }
 
     /// "All changes saved automatically" block
     let hintEl = document.querySelector("#allChangesSavedAutomaticallyHeader");
@@ -329,7 +329,7 @@ function updateDisabledOptions() {
     document.getElementById("addPasteButton").parentNode.className = document.getElementById("addActionButtonsForTextFields").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("updateRatesEveryDays").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferredTranslateService").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
+    // document.getElementById("shiftTooltipWhenWebsiteHasOwn").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'disabled-option' : 'enabled-option';
     document.getElementById("customSearchButtonsContainer").className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("dictionaryButtonWordsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("dictionaryButtonResponseCharsAmount").parentNode.className = document.getElementById("showDictionaryButton").checked ? 'enabled-option' : 'disabled-option';
@@ -343,7 +343,7 @@ function updateDisabledOptions() {
     document.getElementById("customSearchUrl").parentNode.parentNode.className = document.getElementById("preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
     document.getElementById("showButtonLabelOnHover").parentNode.parentNode.className = document.getElementById("buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
     document.getElementById("tooltipInvertedBackground").parentNode.parentNode.className = document.getElementById("invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
-    document.getElementById("applyConfigsImmediatelyPerformanceTip").className = document.getElementById("applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
+    // document.getElementById("applyConfigsImmediatelyPerformanceTip").className = document.getElementById("applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
     document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("maxIconsInRow").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("hoverSearchPanelOptions").className = document.getElementById("customSearchOptionsDisplay").value == 'panelCustomSearchStyle' ? 'hidden-option' : 'visible-option';
