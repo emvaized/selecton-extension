@@ -3,7 +3,12 @@
 /// 
 /// New rates will be downloaded automatically with from network by looking for each currency key in server response
 /// Period of update specified in configs.updateRatesEveryDays
-/// Currently used urls can be found in: src/functions/currencies-functions.js
+
+/** URLs for loading currency rates
+ * Currencies are fetched in {@link fetchCurrencyRates} in src/function/background.js
+ * {@link urlToLoadCurrencyRates}.
+ * {@link urlToLoadCryptoCurrencies}.
+ */
 
 const currenciesList = {
     "AUD": { currencyName: "Australian Dollar", currencySymbol: "A$", rate: 1.29009, currencyKeywords: ['australian dollar', 'австралийских доллар'] },
