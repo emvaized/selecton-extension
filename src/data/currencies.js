@@ -34,7 +34,7 @@ const currenciesList = {
     "MYR": { currencyName: "Malaysian Ringgit", currencySymbol: "RM", rate: 4.208613, currencyKeywords: ['myr'] },
     "NGN": { currencyName: "Nigerian Naira", currencySymbol: "₦", rate: 410.317377 },
     "NOK": { currencyName: "Norwegian Krone", currencySymbol: " kr", rate: 8.51191 },
-    "PHP": { currencyName: "Philippine Peso", currencySymbol: "₱", rate: 56.012, currencyKeywords: ['pesos', 'php'], },
+    "PHP": { currencyName: "Philippine Peso", currencySymbol: "₱", rate: 56.012, currencyKeywords: ['pesos', 'php'], searchInText: false},
     "PLN": { currencyName: "Polish złoty", currencySymbol: "zł", rate: 3.845051 },
     "RON": { currencyName: "Romanian leu", currencySymbol: "leu", rate: 5.058587 },
     "RUB": { currencyName: "Russian Ruble", currencySymbol: "₽", rate: 72.880818, currencyKeywords: ['rubles', 'рублей', 'руб', ' р.'] },
