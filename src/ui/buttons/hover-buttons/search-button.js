@@ -67,6 +67,7 @@ function setHoverForSearchButton(searchButton) {
                 // onSearchButtonClick(e, url);
             });
             container.href = returnSearchButtonUrl(url);
+            container.target = '_blank';
         }
     }
 
