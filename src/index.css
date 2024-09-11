@@ -375,7 +375,7 @@
 /* Vertical layout for tooltip */
 .selection-tooltip.vertical-layout-tooltip {
   max-height: unset !important;
-  min-width: 140px !important;
+  /* min-width: 140px !important; */
 }
 
 .selection-tooltip.reversed-order {
@@ -391,7 +391,9 @@
   display: block !important;
   clip-path: none !important;
   width: 100% !important;
-  /* width: auto !important; */
+  width: -moz-available !important;
+  width: -webkit-fill-available !important;
+  width: fill-available !important;
 }
 
 .vertical-layout-tooltip .hover-vertical-tooltip .selection-popup-button {
