@@ -250,6 +250,9 @@
   "hideOnScroll": {
     "message": "Hide tooltip on scroll"
   },
+  "hideTooltipOnActionButtonClick": {
+    "message": "Hide tooltip on action button click"
+  },  
   "hideTooltipWhenCursorMovesAway": {
     "message": "Hide tooltip when cursor moves away"
   },

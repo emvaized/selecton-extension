@@ -235,6 +235,9 @@
     "hideOnScroll": {
         "message": "Ocultar información sobre herramientas en el desplazamiento"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Ocultar el panel al hacer clic en un botón"
+    }, 
     "hideTooltipWhenCursorMovesAway": {
         "message": "Ocultar panel cuando el cursor se aleja"
     },

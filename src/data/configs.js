@@ -24,6 +24,7 @@ const configs = {
     'shiftTooltipWhenWebsiteHasOwn': false,
     'addActionButtonsForTextFields': false,
     'removeSelectionOnActionButtonClick': true,
+    'hideTooltipOnActionButtonClick': true,
     'draggableTooltip': true,
     'enabled': true,
     'preferredSearchEngine': 'google',

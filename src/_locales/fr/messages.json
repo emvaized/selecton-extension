@@ -235,6 +235,9 @@
     "hideOnScroll": {
         "message": "Masquer l'info-bulle lors du défilement"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Masquer le panneau lorsque vous cliquez sur un bouton"
+    }, 
     "hideTooltipWhenCursorMovesAway": {
         "message": "Masquer le panneau lorsque le curseur s'éloigne"
     },

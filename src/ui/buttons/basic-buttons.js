@@ -143,6 +143,10 @@ function addBasicTooltipButtons(layout) {
         copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
             document.execCommand('copy');
             removeSelectionOnPage();
+            if (configs.hideTooltipOnActionButtonClick){
+                hideDragHandles();
+                hideTooltip();
+            }
         });
     }
 }

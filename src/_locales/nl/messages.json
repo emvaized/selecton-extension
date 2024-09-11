@@ -244,6 +244,9 @@
   "hideTooltipWhenCursorMovesAway": {
     "message": "Paneel verbergen indien cursor erbuiten is"
   },
+  "hideTooltipOnActionButtonClick": {
+    "message": "Verberg tooltip bij klikken op actieknop"
+  },
   "hideTranslateButtonForUserLanguage": {
     "message": "Vertaalknop verbergen indien tekst in eigen taal is"
   },

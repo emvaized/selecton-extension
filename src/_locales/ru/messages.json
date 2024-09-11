@@ -241,6 +241,9 @@
     "hideOnScroll": {
         "message": "Прятать при прокрутке"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Прятать панель при клике на кнопку"
+    }, 
     "hideTooltipWhenCursorMovesAway": {
         "message": "Спрятать панель, когда курсор далеко"
     },

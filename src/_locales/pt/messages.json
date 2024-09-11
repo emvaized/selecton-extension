@@ -227,6 +227,9 @@
     "hideTooltipWhenCursorMovesAway": {
         "message": "Ocultar painel quando o cursor se afasta"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Ocultar a dica de ferramenta ao clicar no botão de ação"
+    },
     "hideTranslateButtonForUserLanguage": {
         "message": "Ocultar botão de tradução para o idioma do usuário"
     },

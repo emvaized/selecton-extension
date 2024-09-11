@@ -244,6 +244,9 @@
   "hideTooltipWhenCursorMovesAway": {
     "message": "游標移開時隱藏工具提示"
   },
+  "hideTooltipOnActionButtonClick": {
+    "message": "单击操作按钮时隐藏面板"
+  },
   "hideTranslateButtonForUserLanguage": {
     "message": "隱藏使用者語言的翻譯按鈕"
   },

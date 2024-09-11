@@ -238,6 +238,9 @@
     "hideOnScroll": {
         "message": "Tooltip beim Scrollen ausblenden"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Blenden Sie das Bedienfeld aus, wenn Sie auf eine Schaltfläche klicken"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Panel verbergen, wenn sich Cursor bewegt"
     },

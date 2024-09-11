@@ -241,6 +241,9 @@
     "hideTooltipWhenCursorMovesAway": {
         "message": "Приховати панель, коли курсор далеко"
     },
+    "hideTooltipOnActionButtonClick": {
+        "message": "Приховати панель після кліку на кнопку"
+    },
     "hideTranslateButtonForUserLanguage": {
         "message": "Сховати кнопку перекладу для мови користувача"
     },
