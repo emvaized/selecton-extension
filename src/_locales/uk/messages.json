@@ -210,7 +210,7 @@
     },
     "exportSettingsLabel": {
         "message": "Експортувати налаштування"
-    },   
+    },
     "exportSettingsNote": {
         "message": "Якщо кнопка експорту не працює, спробуйте відкрити цю сторінку в новій вкладці за допомогою кнопки у верхньому правому кутку"
     },
@@ -238,11 +238,11 @@
     "hideOnScroll": {
         "message": "Ховати при прокручуванні"
     },
-    "hideTooltipWhenCursorMovesAway": {
-        "message": "Приховати панель, коли курсор далеко"
-    },
     "hideTooltipOnActionButtonClick": {
         "message": "Приховати панель після кліку на кнопку"
+    },
+    "hideTooltipWhenCursorMovesAway": {
+        "message": "Приховати панель, коли курсор далеко"
     },
     "hideTranslateButtonForUserLanguage": {
         "message": "Сховати кнопку перекладу для мови користувача"

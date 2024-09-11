@@ -83,6 +83,9 @@
     "chooseFileFirst": {
         "message": "Choisissez d'abord le fichier"
     },
+    "circle": {
+        "message": "Cercle"
+    },
     "clearLabel": {
         "message": "Effacer"
     },
@@ -115,6 +118,9 @@
     },
     "copyLabel": {
         "message": "Copier"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Décaler le panneau de la largeur du bouton 'Plus'"
     },
     "customIcon": {
         "message": "Icône personnalisée"
@@ -190,6 +196,9 @@
     "dontSnapTextfieldSelection": {
         "message": "Ne pas aligner la sélection dans les champs de texte"
     },
+    "dragHandleStyle": {
+        "message": "Style de poignées de traînée"
+    },
     "draggableTooltip": {
         "message": "Le panneau peut être déplacé par la flèche"
     },
@@ -237,7 +246,7 @@
     },
     "hideTooltipOnActionButtonClick": {
         "message": "Masquer le panneau lorsque vous cliquez sur un bouton"
-    }, 
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Masquer le panneau lorsque le curseur s'éloigne"
     },
@@ -427,8 +436,8 @@
         "message": "Supprimer l'icône personnalisée"
     },
     "removeSelectionOnActionButtonClick": {
-        "message": "Supprimer la sélection après une action effectuée",
-        "la description": ""
+        "la description": "",
+        "message": "Supprimer la sélection après une action effectuée"
     },
     "resetDefaults": {
         "message": "Restaurer les paramètres par défaut"
@@ -568,6 +577,9 @@
     "translating": {
         "message": "Traduire"
     },
+    "triangle": {
+        "message": "Triangle"
+    },
     "updateNotificationMessage": {
         "message": "Cliquez ici pour voir les nouveautés"
     },
@@ -626,17 +638,5 @@
                 "content": "$1"
             }
         }
-    },
-    "dragHandleStyle": {
-        "message": "Style de poignées de traînée"
-    },
-    "circle": {
-        "message": "Cercle"
-    },
-    "triangle": {
-        "message": "Triangle"
-    },
-    "correctTooltipPositionByMoreButtonWidth": {
-        "message": "Décaler le panneau de la largeur du bouton 'Plus'"
     }
 }

@@ -83,6 +83,9 @@
     "chooseFileFirst": {
         "message": "Elija el archivo primero"
     },
+    "circle": {
+        "message": "Circulo"
+    },
     "clearLabel": {
         "message": "Borrar"
     },
@@ -115,6 +118,9 @@
     },
     "copyLabel": {
         "message": "Copiar"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Mover el panel por el ancho del botón 'Más'"
     },
     "customIcon": {
         "message": "Icono personalizado"
@@ -190,6 +196,9 @@
     "dontSnapTextfieldSelection": {
         "message": "No ajustar la selección en los campos de texto"
     },
+    "dragHandleStyle": {
+        "message": "Estilo de manijas de arrastre"
+    },
     "draggableTooltip": {
         "message": "El panel se puede arrastrar con la flecha"
     },
@@ -237,7 +246,7 @@
     },
     "hideTooltipOnActionButtonClick": {
         "message": "Ocultar el panel al hacer clic en un botón"
-    }, 
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Ocultar panel cuando el cursor se aleja"
     },
@@ -567,6 +576,9 @@
     "translating": {
         "message": "Traductorio"
     },
+    "triangle": {
+        "message": "Triángulo"
+    },
     "updateNotificationMessage": {
         "message": "Haga clic aquí para ver las novedades"
     },
@@ -625,17 +637,5 @@
                 "content": "$1"
             }
         }
-    },
-    "dragHandleStyle": {
-        "message": "Estilo de manijas de arrastre"
-    },
-    "circle": {
-        "message": "Circulo"
-    },
-    "triangle": {
-        "message": "Triángulo"
-    },
-    "correctTooltipPositionByMoreButtonWidth": {
-        "message": "Mover el panel por el ancho del botón 'Más'"
     }
 }

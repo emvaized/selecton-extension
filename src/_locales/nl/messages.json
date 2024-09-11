@@ -241,11 +241,11 @@
   "hideOnScroll": {
     "message": "Paneel verbergen na scrollen"
   },
-  "hideTooltipWhenCursorMovesAway": {
-    "message": "Paneel verbergen indien cursor erbuiten is"
-  },
   "hideTooltipOnActionButtonClick": {
     "message": "Verberg tooltip bij klikken op actieknop"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "Paneel verbergen indien cursor erbuiten is"
   },
   "hideTranslateButtonForUserLanguage": {
     "message": "Vertaalknop verbergen indien tekst in eigen taal is"

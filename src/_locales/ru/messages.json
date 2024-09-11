@@ -86,6 +86,9 @@
     "chooseFileFirst": {
         "message": "Сперва выберите файл"
     },
+    "circle": {
+        "message": "Круг"
+    },
     "clearLabel": {
         "message": "Очистить"
     },
@@ -118,6 +121,9 @@
     },
     "copyLabel": {
         "message": "Копировать"
+    },
+    "correctTooltipPositionByMoreButtonWidth": {
+        "message": "Сдвинуть панель на ширину кнопки 'Еще'"
     },
     "customIcon": {
         "message": "Своя иконка"
@@ -193,6 +199,9 @@
     "dontSnapTextfieldSelection": {
         "message": "Не выделять по словам в текстовых полях"
     },
+    "dragHandleStyle": {
+        "message": "Стиль ручек редактирования"
+    },
     "draggableTooltip": {
         "message": "Панель можно перетащить за стрелку"
     },
@@ -243,7 +252,7 @@
     },
     "hideTooltipOnActionButtonClick": {
         "message": "Прятать панель при клике на кнопку"
-    }, 
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Спрятать панель, когда курсор далеко"
     },
@@ -576,6 +585,9 @@
     "translating": {
         "message": "Перевод"
     },
+    "triangle": {
+        "message": "Треугольник"
+    },
     "updateNotificationMessage": {
         "message": "Кликните здесь, чтобы узнать что нового"
     },
@@ -634,17 +646,5 @@
                 "content": "$1"
             }
         }
-    },
-    "dragHandleStyle": {
-        "message": "Стиль ручек редактирования"
-    },
-    "circle": {
-        "message": "Круг"
-    },
-    "triangle": {
-        "message": "Треугольник"
-    },
-    "correctTooltipPositionByMoreButtonWidth": {
-        "message": "Сдвинуть панели на ширину кнопки 'Еще'"
     }
 }

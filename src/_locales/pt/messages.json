@@ -224,11 +224,11 @@
     "hideOnScroll": {
         "message": "Ocultar dica de ferramenta na rolagem"
     },
-    "hideTooltipWhenCursorMovesAway": {
-        "message": "Ocultar painel quando o cursor se afasta"
-    },
     "hideTooltipOnActionButtonClick": {
         "message": "Ocultar a dica de ferramenta ao clicar no botão de ação"
+    },
+    "hideTooltipWhenCursorMovesAway": {
+        "message": "Ocultar painel quando o cursor se afasta"
     },
     "hideTranslateButtonForUserLanguage": {
         "message": "Ocultar botão de tradução para o idioma do usuário"

@@ -86,6 +86,9 @@
   "chooseFileFirst": {
     "message": "首先選擇檔案"
   },
+  "circle": {
+    "message": "圓形"
+  },
   "clearLabel": {
     "message": "清除"
   },
@@ -118,6 +121,9 @@
   },
   "copyLabel": {
     "message": "複製"
+  },
+  "correctTooltipPositionByMoreButtonWidth": {
+    "message": "按「更多」按鈕的寬度調整面板"
   },
   "customIcon": {
     "message": "自訂圖示"
@@ -193,6 +199,9 @@
   "dontSnapTextfieldSelection": {
     "message": "不要在文字欄位中捕捉選擇"
   },
+  "dragHandleStyle": {
+    "message": "拖動手把樣式"
+  },
   "draggableTooltip": {
     "message": "面板可以通過箭頭拖動"
   },
@@ -241,11 +250,11 @@
   "hideOnScroll": {
     "message": "在滾動條上隱藏工具提示"
   },
-  "hideTooltipWhenCursorMovesAway": {
-    "message": "游標移開時隱藏工具提示"
-  },
   "hideTooltipOnActionButtonClick": {
     "message": "单击操作按钮时隐藏面板"
+  },
+  "hideTooltipWhenCursorMovesAway": {
+    "message": "游標移開時隱藏工具提示"
   },
   "hideTranslateButtonForUserLanguage": {
     "message": "隱藏使用者語言的翻譯按鈕"
@@ -576,6 +585,9 @@
   "translating": {
     "message": "正在翻譯"
   },
+  "triangle": {
+    "message": "三角形"
+  },
   "updateNotificationMessage": {
     "message": "點擊此處查看新功能"
   },
@@ -634,17 +646,5 @@
         "content": "$1"
       }
     }
-  },
-  "correctTooltipPositionByMoreButtonWidth": {
-    "message": "按「更多」按鈕的寬度調整面板"
-  },
-  "dragHandleStyle": {
-    "message": "拖動手把樣式"
-  },
-  "circle": {
-    "message": "圓形"
-  },
-  "triangle": {
-    "message": "三角形"
   }
 }

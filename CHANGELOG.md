@@ -1,3 +1,9 @@
+3.8.0
+- Added option to not hide tooltip on button click
+- Fixed wrong icon path for extension popup
+- Fixed vertical layout tooltip broken layout
+- Fixed drag handles not hidden on tooltip button click
+
 3.7.9
 - Fixed the problem of custom search buttons opening in current tab on click
 - Fixed layout issues with vertical tooltip layout
