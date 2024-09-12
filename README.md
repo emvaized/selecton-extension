@@ -5,7 +5,7 @@
 [![Mozilla Add-on](https://img.shields.io/amo/users/selection-actions?color=%23FF6611&label=users&logo=Firefox)](https://addons.mozilla.org/firefox/addon/selection-actions/)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pemdbnndbdpbelmfcddaihdihdfmnadi)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
 
-Get customizable pop-up with action buttons on text selection!
+> Get customizable pop-up with action buttons on text selection!
 * Copy or search any text in one click - especially useful for laptops
 * Customizable appearance for tooltip and custom text selection color
 * Currency converter (supports 30+ currencies & 10+ crypto currencies)
@@ -21,17 +21,21 @@ Get customizable pop-up with action buttons on text selection!
 
 
 ## Screenshot
-<img src="https://github.com/emvaized/selecton-extension/blob/master/screenshots/screenshot.png">
+| ![Screenshot 1](./screenshots/screenshot.png) |
+|-|
 
 
-## Building
-- `npm install` to install all dependencies
-- `npm run build` to generate `dist` folder with minimized code of the extension
+## FAQ
 
+Moved to the Wiki page – [read here](https://github.com/emvaized/selecton-extension/wiki/FAQ-(Frequently-Asked-Questions))
 
-## Currency converter
-*Note*:
-In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers.
+## Donate
+If you really enjoy this project, please consider supporting its further development by making a small donation using one of the services below! 
+
+<a href="https://ko-fi.com/emvaized"><img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/64f1a9ddd0246590df69ea0b_kofi_long_button_red%25402x-p-800.png" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a>
+
+## Currency conversion
+In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers. Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md)
 
 <details>
   <summary>List of supported currencies</summary>
@@ -86,16 +90,7 @@ EOS
 ```
 </details>
 
-
-Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md)
-
-
-## FAQ
-
-Moved to Wiki page – [read here](https://github.com/emvaized/selecton-extension/wiki/FAQ-(Frequently-Asked-Questions))
-
-
-## Contributing
+## Contribution
 You can make Selecton better without even knowing how to code:
 - Provide translation for your language: [Base English file](./src/assets/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](./src/data/currencies.js)
@@ -104,19 +99,16 @@ You can make Selecton better without even knowing how to code:
 Make your changes, and then create pull request here on GitHub so I can merge it.
 Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share your ideas and suggestions.
 
-**Ideas for future releases**
+**Some ideas for future releases**
 
-- Advanced buttons editor, which allows to quickly turn on/off buttons and change reorder them with drag'n'drop
-- Cloud sync of settings using browser account sync
-- Ability to turn on/off background blur for tooltip and hover panels
-- Make separate tab for markers in the extension popup, with separate category for markers for currently open page
+- [ ] Advanced buttons editor, which allows to quickly turn on/off buttons and change reorder them with drag'n'drop
+- [ ] Cloud sync of settings using browser account sync
+- [ ] Ability to turn on/off background blur for tooltip and hover panels
+- [ ] Make separate tab for markers in the extension popup, with separate category for markers for currently open page
 
-
-## Donate
-If you really enjoy this project, please consider supporting its further development by making a small donation using one of the services below! 
-
-<a href="https://ko-fi.com/emvaized"><img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/64f1a9ddd0246590df69ea0b_kofi_long_button_red%25402x-p-800.png" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a>
-
+## Building
+- `npm install` to install all dependencies
+- `npm run build` to generate `dist` folder with minimized code of the extension
 
 ## Links to my other browser extensions
 * [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
