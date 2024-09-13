@@ -316,9 +316,10 @@ function initMouseListeners() {
   function checkTextField(e, activeEl) {
     /// check if textfield is focused
 
-    isTextFieldFocused = (activeEl.tagName === "INPUT" && (activeEl.getAttribute('type') == 'text' || activeEl.getAttribute('type') == 'email' || activeEl.getAttribute('name') == 'text')) ||
-      activeEl.tagName === "TEXTAREA" ||
-      activeEl.getAttribute('contenteditable') !== null;
+    const target = e.target;
+    isTextFieldFocused = (target.tagName === "INPUT" && (target.getAttribute('type') == 'text' || target.getAttribute('type') == 'email' || target.getAttribute('name') == 'text')) ||
+    target.tagName === "TEXTAREA" ||
+    target.getAttribute('contenteditable') !== null;
 
     if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
 
