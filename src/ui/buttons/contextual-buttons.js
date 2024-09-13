@@ -675,6 +675,35 @@ function addContextualButtons(callbackOnFinish) {
             addDictionaryButton(selectionLength);
         }
 
+        /// Add quote reply button
+        if (configs.addQuoteReplyButton){
+            const textareas = document.body.querySelectorAll('textarea');
+            let textArea;
+            for (i in textareas){
+                const t = textareas[i];
+                if (!t || !t.getBoundingClientRect) continue;
+                const rect = t.getBoundingClientRect();
+                if (rect.height == 0 || rect.width == 0) continue;
+                textArea = t;
+                break;
+            }
+            if (textArea){
+                const quoteButton = addContextualTooltipButton(function (e) {
+                    if (configs.hideTooltipOnActionButtonClick)
+                        hideTooltip();
+                    removeSelectionOnPage();
+    
+                    textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
+                    textArea.focus();
+                    document.execCommand('insertText',false, 
+                        (textArea.value.length == 0 ? '' : '\n\n') + '> ' + selectedText + '\n\n');
+    
+                    setTimeout(()=> textArea.focus(), 50)
+                });
+                quoteButton.textContent = "Quote reply";
+            }
+        }
+
         /// Add marker button
         if (configs.addMarkerButton)
             addMarkerButton();

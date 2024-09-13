@@ -646,5 +646,8 @@
         "content": "$1"
       }
     }
+  },
+  "addQuoteReplyButton": {
+    "message": "Add button for quote reply"
   }
 }
