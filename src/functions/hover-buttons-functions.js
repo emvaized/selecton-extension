@@ -31,9 +31,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.className = 'hover-vertical-tooltip selecton-entity';
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
-    // panel.style.visibility = 'collapse';
+    panel.style.visibility = 'hidden';
     panel.style.width = '0px';
-    // panel.style.height = '0px';
     panel.style.pointerEvents = 'none';
 
     if (initialHtml)
@@ -182,7 +181,7 @@ function checkHoverPanelToOverflowOnRight(panel) {
 function revealHoverPanel(panel, dxTransformValue) {
     if (panel.style.opacity > 0) return;
     panel.style.width = 'max-content';
-    // panel.style.height = 'max-content';
+    panel.style.visibility = 'visible';
 
     setTimeout(function () {
         panel.style.opacity = 1;
@@ -205,6 +204,7 @@ function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
     setTimeout(function () {
         if (!panel || !tooltipIsShown) return;
         panel.style.width = '0';
-        // panel.style.height = '0';
+        panel.style.visibility = 'hidden';
+
     }, configs.animationDuration);
 }
