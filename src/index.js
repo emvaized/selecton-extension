@@ -412,6 +412,18 @@ function initMouseListeners() {
     recreateTooltip();
   });
 
+  /// Hide tooltip on drag start
+  document.addEventListener('dragstart', function (e) {
+    if (tooltipIsShown == false) return;
+    if (e.target.classList && e.target.classList.contains('selection-popup-button')) return;
+
+    if (configs.debugMode)
+      console.log('hiding all Selecton overlays on drag start...');
+
+    hideTooltip();
+    hideDragHandles();
+  });
+
   /// Hide tooltip when any key is pressed
   if (configs.hideOnKeypress)
     document.addEventListener("keydown", function (e) {
