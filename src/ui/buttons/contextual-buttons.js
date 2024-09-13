@@ -683,8 +683,10 @@ function addContextualButtons(callbackOnFinish) {
             }
             if (textArea){
                 const quoteReplyButton = addBasicTooltipButton(chrome.i18n.getMessage('quoteReply'), replyIcon, function () {
-                    if (configs.hideTooltipOnActionButtonClick)
+                    if (configs.hideTooltipOnActionButtonClick) {
                         hideTooltip();
+                        hideDragHandles();
+                    }
                     removeSelectionOnPage();
     
                     textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});

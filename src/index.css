@@ -284,7 +284,7 @@
 }
 
 .selecton-hover-button-indicator {
-  opacity: 0.3;
+  opacity: 0.3 !important;
   position: absolute;
   right: 4px !important;
   top: 2px !important;
@@ -299,6 +299,7 @@
 }
 .selecton-more-button-child-count{
   background: transparent !important;
+  color: var(--selection-button-foreground) !important;
   font-size: xx-small !important;
   top: -1px !important;
 }
