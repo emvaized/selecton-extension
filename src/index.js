@@ -1,4 +1,4 @@
-function initConfigs() {
+function initConfigs(callback) {
   const userSettingsKeys = Object.keys(configs);
 
   /// Load user settings
@@ -91,6 +91,8 @@ function initConfigs() {
 
         // /// Fetch or load currency rates from storage
         // loadCurrencyRates()
+
+        if (callback) callback();
       }
     });
 }
@@ -436,6 +438,17 @@ function initMouseListeners() {
 
   /// Get translated button labels
   loadTranslatedLabels()
+
+  /// Recreate shown tooltip on settings change
+  chrome.storage.onChanged.addListener((c) => { 
+    if (tooltipIsShown && !c.expandedSettingsSections) {
+      initConfigs(() => {
+        setDocumentStyles();
+        setCssStyles();
+        initTooltip(lastMouseUpEvent)
+      });
+    }
+  });
 }
 
 function recreateTooltip() {
@@ -447,13 +460,10 @@ function recreateTooltip() {
   }
 
   timerToRecreateOverlays = setTimeout(function () {
-    if (window.getSelection) {
-      selection = window.getSelection();
-    } else if (document.selection) {
-      selection = document.selection.createRange();
-    }
+    selection = window.getSelection();
+    selectedText = selection.toString().trim();
 
-    if ((selection !== null && selection !== undefined && selection.toString().trim().length > 0)) {
+    if (selection && selectedText.length > 0) {
       createTooltip(lastMouseUpEvent, true);
     }
   }, 650);
@@ -473,5 +483,3 @@ function selectionChangeInitListener() {
 }
 
 initConfigs();
-
-chrome.storage.onChanged.addListener((c) => initConfigs());
