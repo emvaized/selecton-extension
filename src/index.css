@@ -297,6 +297,11 @@
   transition: opacity 100ms ease !important;
   pointer-events: none;
 }
+.selecton-more-button-child-count{
+  background: transparent !important;
+  font-size: xx-small !important;
+  top: -1px !important;
+}
 
 /* Marker */
 .marker-scrollbar-hint {

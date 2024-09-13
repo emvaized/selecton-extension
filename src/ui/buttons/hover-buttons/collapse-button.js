@@ -15,11 +15,19 @@ function collapseButtons() {
             tooltip.appendChild(moreButton);
 
         /// Create panel
-        const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, false, true, false);
+        const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, true, true, false);
         collapsedButtonsPanel.style.maxWidth = 'unset';
         collapsedButtonsPanel.style.zIndex = '2';
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
 
+
+        /// Show buttons count
+        const buttonsCountSpan = moreButton.querySelector('.selecton-hover-button-indicator');
+        if (buttonsCountSpan){
+            buttonsCountSpan.innerText = buttonsCount - maxButtons;
+            buttonsCountSpan.classList.add('selecton-more-button-child-count')
+        }
+        
         /// Append buttons to panel
         if (configs.reverseTooltipButtonsOrder) {
             for (let i = 1; i <= buttonsCount - maxButtons; i++) {
