@@ -90,6 +90,7 @@ function checkToAddCalendarButton(text) {
             if (partsLength >= 2 && partsLength <= 3) {
                 let d = parts[0], m = parts[1], y = partsLength < 3 ? todayDate.getFullYear() : parts[2];
                 if (d == '' || m == '') return;
+                if (parseInt(d) == 0) return;
                 if (y.length < 2) return;
 
                 const parsedDate = new Date(`${y}/${m}/${d}`);
