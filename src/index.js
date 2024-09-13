@@ -278,10 +278,11 @@ function initMouseListeners() {
 
       if (configs.invertColorOnDarkWebsite)
         try {
-          const anchornode = selection.anchorNode;
-          if (anchornode)
-            isDarkPage = checkSelectionToHaveDarkBackground(anchornode);
-        } catch (e) { }
+          // const anchornode = selection.anchorNode;
+          // if (anchornode)
+            // isDarkPage = checkSelectionToHaveDarkBackground(anchornode);
+            isDarkPage = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          } catch (e) { }
 
       /// Set css styles
       if (configs.useCustomStyle) {
