@@ -302,6 +302,7 @@
   color: var(--selection-button-foreground) !important;
   font-size: xx-small !important;
   top: -1px !important;
+  opacity: 0.4 !important;
 }
 
 /* Marker */
