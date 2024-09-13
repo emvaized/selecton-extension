@@ -649,5 +649,8 @@
   },
   "addQuoteReplyButton": {
     "message": "Add button for quote reply"
+  },
+  "quoteReply": {
+    "message": "Quote reply"
   }
 }

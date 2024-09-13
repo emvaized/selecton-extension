@@ -16,3 +16,4 @@ const markerIcon = chrome.runtime.getURL('assets/icons/button-icons/marker.svg')
 const clearIcon = chrome.runtime.getURL('assets/icons/button-icons/clear.svg');
 const linkIcon = chrome.runtime.getURL('assets/icons/button-icons/link.svg');
 const calendarIcon = chrome.runtime.getURL('assets/icons/button-icons/calendar.svg');
+const replyIcon = chrome.runtime.getURL('assets/icons/button-icons/reply.svg');

@@ -669,16 +669,6 @@ function addContextualButtons(callbackOnFinish) {
     } else addFinalButtons();
 
     function addFinalButtons() {
-
-        /// Add dictionary button
-        if (configs.showDictionaryButton && !containsSpecialSymbols && !contextButtonWasAdded && wordsCount <= configs.dictionaryButtonWordsAmount) {
-            addDictionaryButton(selectionLength);
-        }
-
-        /// Add marker button
-        if (configs.addMarkerButton)
-            addMarkerButton();
-
         /// Add quote reply button
         if (configs.addQuoteReplyButton){
             const textareas = document.body.querySelectorAll('textarea');
@@ -692,7 +682,7 @@ function addContextualButtons(callbackOnFinish) {
                 break;
             }
             if (textArea){
-                const quoteButton = addContextualTooltipButton(function (e) {
+                const quoteReplyButton = addBasicTooltipButton(chrome.i18n.getMessage('quoteReply'), replyIcon, function () {
                     if (configs.hideTooltipOnActionButtonClick)
                         hideTooltip();
                     removeSelectionOnPage();
@@ -704,9 +694,17 @@ function addContextualButtons(callbackOnFinish) {
     
                     setTimeout(()=> textArea.focus(), 50)
                 });
-                quoteButton.textContent = "Quote reply";
             }
         }
+
+        /// Add dictionary button
+        if (configs.showDictionaryButton && !containsSpecialSymbols && !contextButtonWasAdded && wordsCount <= configs.dictionaryButtonWordsAmount) {
+            addDictionaryButton(selectionLength);
+        }
+
+        /// Add marker button
+        if (configs.addMarkerButton)
+            addMarkerButton();
 
         /// Add button to copy link to selected text
         if (configs.addButtonToCopyLinkToText) {
