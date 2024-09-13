@@ -315,7 +315,7 @@ function updateDisabledOptions() {
     document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferCurrencySymbol").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("disableWordSnappingOnCtrlKey").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("dontSnapTextfieldSelection").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
+    // document.getElementById("dontSnapTextfieldSelection").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("secondaryTooltipLayout").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("wordSnappingBlacklist").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("disableWordSnapForCode").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';

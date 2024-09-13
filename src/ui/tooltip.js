@@ -10,7 +10,8 @@ function createTooltip(e, recreated = false) {
         // hideTooltip();
 
         if (configs.snapSelectionToWord) {
-            if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
+            // if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
+            if (isTextFieldFocused == true) {
                 if (configs.debugMode)
                     console.log('Word snapping rejected while textfield is focused');
             } else if (configs.disableWordSnappingOnCtrlKey && e !== undefined && (e.ctrlKey == true || e.metaKey == true)) {
