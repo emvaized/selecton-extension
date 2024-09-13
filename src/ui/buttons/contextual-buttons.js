@@ -675,6 +675,10 @@ function addContextualButtons(callbackOnFinish) {
             addDictionaryButton(selectionLength);
         }
 
+        /// Add marker button
+        if (configs.addMarkerButton)
+            addMarkerButton();
+
         /// Add quote reply button
         if (configs.addQuoteReplyButton){
             const textareas = document.body.querySelectorAll('textarea');
@@ -703,10 +707,6 @@ function addContextualButtons(callbackOnFinish) {
                 quoteButton.textContent = "Quote reply";
             }
         }
-
-        /// Add marker button
-        if (configs.addMarkerButton)
-            addMarkerButton();
 
         /// Add button to copy link to selected text
         if (configs.addButtonToCopyLinkToText) {

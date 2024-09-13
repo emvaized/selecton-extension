@@ -20,7 +20,6 @@ function collapseButtons() {
         collapsedButtonsPanel.style.zIndex = '2';
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
 
-
         /// Show buttons count
         const buttonsCountSpan = moreButton.querySelector('.selecton-hover-button-indicator');
         if (buttonsCountSpan){
