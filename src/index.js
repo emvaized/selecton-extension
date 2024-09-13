@@ -441,11 +441,11 @@ function initMouseListeners() {
 
   /// Recreate shown tooltip on settings change
   chrome.storage.onChanged.addListener((c) => { 
-    if (tooltipIsShown && !c.expandedSettingsSections) {
+    if (!c.expandedSettingsSections) {
       initConfigs(() => {
         setDocumentStyles();
         setCssStyles();
-        initTooltip(lastMouseUpEvent)
+        if (tooltipIsShown) initTooltip(lastMouseUpEvent)
       });
     }
   });
