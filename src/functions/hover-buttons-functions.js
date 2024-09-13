@@ -33,7 +33,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.style.opacity = 0;
     // panel.style.visibility = 'collapse';
     panel.style.width = '0px';
-    panel.style.height = '0px';
+    // panel.style.height = '0px';
     panel.style.pointerEvents = 'none';
 
     if (initialHtml)
@@ -182,7 +182,7 @@ function checkHoverPanelToOverflowOnRight(panel) {
 function revealHoverPanel(panel, dxTransformValue) {
     if (panel.style.opacity > 0) return;
     panel.style.width = 'max-content';
-    panel.style.height = 'max-content';
+    // panel.style.height = 'max-content';
 
     setTimeout(function () {
         panel.style.opacity = 1;
@@ -205,6 +205,6 @@ function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
     setTimeout(function () {
         if (!panel || !tooltipIsShown) return;
         panel.style.width = '0';
-        panel.style.height = '0';
+        // panel.style.height = '0';
     }, configs.animationDuration);
 }
