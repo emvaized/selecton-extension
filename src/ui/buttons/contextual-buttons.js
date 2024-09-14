@@ -670,34 +670,36 @@ function addContextualButtons(callbackOnFinish) {
 
     function addFinalButtons() {
         /// Add quote reply button
-        if (configs.addQuoteReplyButton){
-            const textareas = document.body.querySelectorAll('textarea');
-            let textArea;
-            for (i in textareas){
-                const t = textareas[i];
-                if (!t || !t.getBoundingClientRect) continue;
-                const rect = t.getBoundingClientRect();
-                if (rect.height == 0 || rect.width == 0) continue;
-                textArea = t;
-                break;
-            }
-            if (textArea){
-                const quoteReplyButton = addBasicTooltipButton(chrome.i18n.getMessage('quoteReply'), replyIcon, function () {
-                    if (configs.hideTooltipOnActionButtonClick) {
-                        hideTooltip();
-                        hideDragHandles();
-                    }
-                    removeSelectionOnPage();
+        /// TODO: False detections, needs further improvement and translations
+        // if (configs.addQuoteReplyButton){
+        //     const textareas = document.body.querySelectorAll('textarea');
+        //     let textArea;
+        //     for (i in textareas){
+        //         const t = textareas[i];
+        //         if (!t || !t.getBoundingClientRect) continue;
+        //         const rect = t.getBoundingClientRect();
+        //         if (rect.height == 0 || rect.width == 0) continue;
+        //         if (t.rows == 1) continue;
+        //         textArea = t;
+        //         break;
+        //     }
+        //     if (textArea){
+        //         const quoteReplyButton = addBasicTooltipButton(chrome.i18n.getMessage('quoteReply'), replyIcon, function () {
+        //             if (configs.hideTooltipOnActionButtonClick) {
+        //                 hideTooltip();
+        //                 hideDragHandles();
+        //             }
+        //             removeSelectionOnPage();
     
-                    textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
-                    textArea.focus();
-                    document.execCommand('insertText',false, 
-                        (textArea.value.length == 0 ? '' : '\n\n') + '> ' + selectedText + '\n\n');
+        //             textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
+        //             textArea.focus();
+        //             document.execCommand('insertText',false, 
+        //                 (textArea.value.length == 0 ? '' : '\n\n') + '> ' + selectedText + '\n\n');
     
-                    setTimeout(()=> textArea.focus(), 50)
-                });
-            }
-        }
+        //             setTimeout(()=> textArea.focus(), 50)
+        //         });
+        //     }
+        // }
 
         /// Add dictionary button
         if (configs.showDictionaryButton && !containsSpecialSymbols && !contextButtonWasAdded && wordsCount <= configs.dictionaryButtonWordsAmount) {
