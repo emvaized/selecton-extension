@@ -1,3 +1,8 @@
+3.8.1
+- Already shown tooltip will now be recreated on settings change
+- "More" button will now show number of collapsed buttons
+- Improved overall stability and performance
+
 3.8.0
 - Added option to not hide tooltip on button click
 - Fixed wrong icon path for extension popup
