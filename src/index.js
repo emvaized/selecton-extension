@@ -221,9 +221,10 @@ function initMouseListeners() {
         hideTooltip();
 
       /// Remove text selection when clicked on link, to prevent creating new tooltip over link
-      try {
-        if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
-      } catch (e) { }
+      /// I don't remember the reason for this, I guess it's not needed anymore
+      // try {
+      //   if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
+      // } catch (e) { }
     }
   });
 
