@@ -213,15 +213,14 @@ function loadTranslatedLabels(){
 
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
+    if (tooltipIsShown == false || isTextFieldFocused == false) return;
     if (isDraggingTooltip || isDraggingDragHandle) return;
-    if (tooltipIsShown == false) return;
 
     if (e.button == 0) {
-      if (isTextFieldFocused)
         hideTooltip();
 
       /// Remove text selection when clicked on link, to prevent creating new tooltip over link
-      /// I don't remember the reason for this, I guess it's not needed anymore
+      /// Probably no longer needed
       // try {
       //   if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
       // } catch (e) { }
