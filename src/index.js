@@ -379,14 +379,13 @@ function initMouseListeners() {
   }
 
   /// Hide tooltip on scroll
-  document.addEventListener('wheel', hideOnScrollListener);
+  // document.addEventListener('wheel', hideOnScrollListener);
   document.addEventListener('scroll', hideOnScrollListener);
 
   function hideOnScrollListener(e) {
+    if (tooltipIsShown == false) return;
     if (isDraggingDragHandle)
       hideDragHandles(true, true);
-
-    if (tooltipIsShown == false) return;
 
     if (configs.floatingOffscreenTooltip) /// dont hide tooltip if it's floating
       if (floatingTooltipTop != false) {
