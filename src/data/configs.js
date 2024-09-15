@@ -97,7 +97,7 @@ const configs = {
     'dictionaryButtonWordsAmount': 1,
     'dictionaryButtonResponseCharsAmount': 300,
     'correctTooltipPositionByMoreButtonWidth': true,
-    // 'addQuoteReplyButton': true,
+    'addQuoteButton': true,
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'customSearchButtons': [

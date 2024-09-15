@@ -647,10 +647,10 @@
       }
     }
   },
-  "addQuoteReplyButton": {
-    "message": "Add button for quote reply"
+  "addQuoteButton": {
+    "message": "Add button to quote the selection (when supported text field is found on page)"
   },
-  "quoteReply": {
-    "message": "Quote reply"
+  "quote": {
+    "message": "Quote"
   }
 }
