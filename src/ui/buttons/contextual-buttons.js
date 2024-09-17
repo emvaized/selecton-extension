@@ -661,14 +661,15 @@ function addContextualButtons(callbackOnFinish) {
     }
 
     const containsSpecialSymbols = /[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
-    const contextButtonWasAdded = tooltip.children[3];
+    const contextButtonWasAdded = tooltip.children[3] && 
+        configs.customSearchOptionsDisplay !== 'panelCustomSearchStyle';
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
     if (configs.showTranslateButton && !containsSpecialSymbols && !contextButtonWasAdded) {
-        addTranslateButton(addFinalButtons, selectionLength);
-    } else addFinalButtons();
+        addTranslateButton(addStaticButtons, selectionLength);
+    } else addStaticButtons();
 
-    function addFinalButtons() {
+    function addStaticButtons() {
         /// Add quote reply button
         /// TODO: False detections, needs further improvement and translations
         if (configs.addQuoteButton){
