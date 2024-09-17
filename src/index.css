@@ -45,13 +45,13 @@
   box-shadow: none !important;
   left: 50%;
   top: 100%;
-  transform: translate(-12.5px, -1px);
+  transform: translate(-12.5px, 0px);
 }
 
 .arrow-on-bottom {
   top: unset;
   bottom: 100%;
-  transform: rotate(180deg) translate(12.5px, -1px);
+  transform: rotate(180deg) translate(12.5px, 0px);
 }
 
 /* .selection-tooltip-arrow-child { */
