@@ -88,7 +88,7 @@
   height: 100% !important;
   min-height: 100% !important;
   margin: 0px !important;
-  transition: background-color 25ms ease !important;
+  transition: background-color 25ms ease-out !important;
   text-transform: none !important;
   outline: none !important;
   text-align: center !important;
@@ -112,7 +112,7 @@
   background-clip: padding-box !important;
   cursor: pointer;
   color: white !important;
-  transition: background-color 25ms ease !important;
+  transition: background-color 25ms ease-out !important;
   position: relative;
 }
 
