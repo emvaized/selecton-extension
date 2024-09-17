@@ -213,17 +213,17 @@ function loadTranslatedLabels(){
 
 function initMouseListeners() {
   document.addEventListener("mousedown", function (e) {
+    if (tooltipIsShown == false || isTextFieldFocused == false) return;
     if (isDraggingTooltip || isDraggingDragHandle) return;
-    if (tooltipIsShown == false) return;
 
     if (e.button == 0) {
-      if (isTextFieldFocused)
         hideTooltip();
 
       /// Remove text selection when clicked on link, to prevent creating new tooltip over link
-      try {
-        if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
-      } catch (e) { }
+      /// Probably no longer needed
+      // try {
+      //   if (document.elementFromPoint(e.clientX, e.clientY).tagName == 'A') removeSelectionOnPage();
+      // } catch (e) { }
     }
   });
 
@@ -379,14 +379,13 @@ function initMouseListeners() {
   }
 
   /// Hide tooltip on scroll
-  document.addEventListener('wheel', hideOnScrollListener);
+  // document.addEventListener('wheel', hideOnScrollListener);
   document.addEventListener('scroll', hideOnScrollListener);
 
   function hideOnScrollListener(e) {
+    if (tooltipIsShown == false) return;
     if (isDraggingDragHandle)
       hideDragHandles(true, true);
-
-    if (tooltipIsShown == false) return;
 
     if (configs.floatingOffscreenTooltip) /// dont hide tooltip if it's floating
       if (floatingTooltipTop != false) {

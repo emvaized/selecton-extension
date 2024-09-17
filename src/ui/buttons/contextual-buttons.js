@@ -661,45 +661,62 @@ function addContextualButtons(callbackOnFinish) {
     }
 
     const containsSpecialSymbols = /[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
-    const contextButtonWasAdded = tooltip.children[3];
+    const contextButtonWasAdded = tooltip.children[3] && 
+        configs.customSearchOptionsDisplay !== 'panelCustomSearchStyle';
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
     if (configs.showTranslateButton && !containsSpecialSymbols && !contextButtonWasAdded) {
-        addTranslateButton(addFinalButtons, selectionLength);
-    } else addFinalButtons();
+        addTranslateButton(addStaticButtons, selectionLength);
+    } else addStaticButtons();
 
-    function addFinalButtons() {
+    function addStaticButtons() {
         /// Add quote reply button
         /// TODO: False detections, needs further improvement and translations
-        // if (configs.addQuoteReplyButton){
-        //     const textareas = document.body.querySelectorAll('textarea');
-        //     let textArea;
-        //     for (i in textareas){
-        //         const t = textareas[i];
-        //         if (!t || !t.getBoundingClientRect) continue;
-        //         const rect = t.getBoundingClientRect();
-        //         if (rect.height == 0 || rect.width == 0) continue;
-        //         if (t.rows == 1) continue;
-        //         textArea = t;
-        //         break;
-        //     }
-        //     if (textArea){
-        //         const quoteReplyButton = addBasicTooltipButton(chrome.i18n.getMessage('quoteReply'), replyIcon, function () {
-        //             if (configs.hideTooltipOnActionButtonClick) {
-        //                 hideTooltip();
-        //                 hideDragHandles();
-        //             }
-        //             removeSelectionOnPage();
+        if (configs.addQuoteButton){
+            // const textareas = document.body.querySelectorAll('textarea:not([readonly]):not([aria-readonly]),div[contenteditable]');
+            const textareas = document.body.querySelectorAll('textarea:not([readonly]):not([aria-readonly])');
+            let textArea, areaRect;
+            for (i in textareas){
+                const t = textareas[i];
+                if (!t || !t.getBoundingClientRect) continue;
+                areaRect = t.getBoundingClientRect();
+                if (areaRect.height == 0 || areaRect.width == 0) continue;
+                // if (rect.height < 50 || rect.width == 0) continue;
+                // if (t.rows == 1) continue;
+                textArea = t;
+                break;
+            }
+            if (textArea){
+                const quoteButton = addBasicTooltipButton(chrome.i18n.getMessage('quote'), quoteIcon, function () {
+                    if (configs.hideTooltipOnActionButtonClick) {
+                        hideTooltip();
+                        hideDragHandles();
+                    }
+                    removeSelectionOnPage();
     
-        //             textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
-        //             textArea.focus();
-        //             document.execCommand('insertText',false, 
-        //                 (textArea.value.length == 0 ? '' : '\n\n') + '> ' + selectedText + '\n\n');
+                    textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
+                    textArea.focus();
+
+                    let val;
+                    // if (textArea.value){
+                        /// textarea
+                        val = textArea.value;
+                        textArea.value = '';
+                        textArea.value = val;
+                        document.execCommand(
+                            'insertText', false, 
+                            areaRect.height < 50 || textArea.rows == 1 ? ' ' + selectedText :
+                                (val.length == 0 ? '' : '\n\n') + '> ' + selectedText + '\n\n'
+                        );
+                    // } else {
+                    //     /// contenteditable
+                    //     textArea.innerHTML += `<blockquote>` + selectedText + '</blockquote>';
+                    // }
     
-        //             setTimeout(()=> textArea.focus(), 50)
-        //         });
-        //     }
-        // }
+                    setTimeout(()=> textArea.focus(), 50)
+                });
+            }
+        }
 
         /// Add dictionary button
         if (configs.showDictionaryButton && !containsSpecialSymbols && !contextButtonWasAdded && wordsCount <= configs.dictionaryButtonWordsAmount) {

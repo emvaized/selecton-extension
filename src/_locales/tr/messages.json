@@ -423,6 +423,9 @@
     "preferredTranslateService": {
         "message": "Çeviri hizmeti"
     },
+    "quote": {
+        "message": "Alıntılamak için"
+    },
     "recentMarkersLabel": {
         "message": "Son öne çıkanlar"
     },

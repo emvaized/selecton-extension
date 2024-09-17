@@ -420,6 +420,9 @@
     "preferredTranslateService": {
         "message": "Сервіс перекладу"
     },
+    "quote": {
+        "message": "Цитувати"
+    },
     "recentMarkersLabel": {
         "message": "Останні маркери"
     },

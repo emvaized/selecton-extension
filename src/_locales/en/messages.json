@@ -44,6 +44,9 @@
   "addPhoneButton": {
     "message": "Add phone number button"
   },
+  "addQuoteButton": {
+    "message": "Add button to quote the selection (when supported text field is found on page)"
+  },
   "addScaleUpEffect": {
     "message": "Use scale-up effect on reveal"
   },
@@ -435,6 +438,9 @@
   "preferredTranslateService": {
     "message": "Translation service"
   },
+  "quote": {
+    "message": "Quote"
+  },
   "recentMarkersLabel": {
     "message": "Recent highlights"
   },
@@ -646,11 +652,5 @@
         "content": "$1"
       }
     }
-  },
-  "addQuoteReplyButton": {
-    "message": "Add button for quote reply"
-  },
-  "quoteReply": {
-    "message": "Quote reply"
   }
 }
