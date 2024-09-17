@@ -209,8 +209,22 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     else
         button.textContent = label;
 
-    // button.addEventListener("mousedown", onClick);
-    button.onmousedown = onClick;
+    // button.onmousedown = onClick;
+    button.onmousedown = function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    }
+    button.onmouseup = function(e){
+        if (e.button == 0){
+            onClick();
+
+            if (configs.hideTooltipOnActionButtonClick){
+                hideDragHandles();
+                hideTooltip();
+            }
+            removeSelectionOnPage();
+        }
+    }
 
     if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
         tooltip.insertBefore(button, tooltip.children[1]);
@@ -224,7 +238,22 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
     /// Used for more custom button, which contents will be created in code
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
-    button.addEventListener("mousedown", onClick);
+    // button.addEventListener("mousedown", onClick);
+    button.onmousedown = function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    }
+    button.onmouseup = function(e){
+        if (e.button == 0){
+            onClick();
+
+            if (configs.hideTooltipOnActionButtonClick){
+                hideDragHandles();
+                hideTooltip();
+            }
+            removeSelectionOnPage();
+        }
+    }
 
     if (configs.reverseTooltipButtonsOrder)
         tooltip.insertBefore(button, tooltip.children[1]);
@@ -254,13 +283,13 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
         e.preventDefault();
     }
     button.onmouseup = function(e){
-        // setTimeout(function(){
+        if (e.button == 0){
             if (configs.hideTooltipOnActionButtonClick){
                 hideDragHandles();
                 hideTooltip();
             }
             removeSelectionOnPage();
-        // }, 1)
+        }
     }
     button.classList.add('link-button')
     button.href = url;

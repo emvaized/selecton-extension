@@ -4,7 +4,6 @@ function addContextualButtons(callbackOnFinish) {
 
     if (selection == null) return;
 
-    // let selectedText = selection.toString().trim();
     const loweredSelectedText = selectedText.toLowerCase();
     const wordsCount = selectedText.split(' ').length;
     const selectionContainsSpaces = selectedText.includes(' ');
@@ -406,9 +405,7 @@ function addContextualButtons(callbackOnFinish) {
                     colorText = colorText.toLowerCase();
 
                     const colorButton = addContextualTooltipButton(function (e) {
-                        console.log(colorText.replaceAll('#', '%23'));
-
-                        let url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
+                        const url = returnSearchUrl(colorText.replaceAll('#', '%23'), false);
                         onTooltipButtonClick(e, url, colorText);
                     })
 
@@ -528,8 +525,8 @@ function addContextualButtons(callbackOnFinish) {
                     const timeStringToShow = textToProccess.match(/[+-]?\d+(\.\d)?/g).slice(0, 2).join(':');
 
                     const timeButton = addContextualTooltipButton(function (e) {
-                        hideTooltip();
-                        removeSelectionOnPage();
+                        // hideTooltip();
+                        // removeSelectionOnPage();
 
                         onTooltipButtonClick(e, returnSearchUrl(timeWord ? `${timeWord} ${marker}` : textToProccess), convertedTime ?? timeStringToShow)
                     });
@@ -688,12 +685,6 @@ function addContextualButtons(callbackOnFinish) {
             }
             if (textArea){
                 const quoteButton = addBasicTooltipButton(chrome.i18n.getMessage('quote'), quoteIcon, function () {
-                    if (configs.hideTooltipOnActionButtonClick) {
-                        hideTooltip();
-                        hideDragHandles();
-                    }
-                    removeSelectionOnPage();
-    
                     textArea.scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
                     textArea.focus();
 
