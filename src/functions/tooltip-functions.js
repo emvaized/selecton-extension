@@ -251,15 +251,16 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
     button.onmousedown = function(e){
         e.stopPropagation();
+        e.preventDefault();
     }
     button.onmouseup = function(e){
-        setTimeout(function(){
+        // setTimeout(function(){
             if (configs.hideTooltipOnActionButtonClick){
                 hideDragHandles();
                 hideTooltip();
             }
             removeSelectionOnPage();
-        }, 1)
+        // }, 1)
     }
     button.classList.add('link-button')
     button.href = url;
