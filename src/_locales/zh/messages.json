@@ -435,6 +435,9 @@
   "preferredTranslateService": {
     "message": "翻譯服務"
   },
+  "quote": {
+    "message": "報價"
+  },
   "recentMarkersLabel": {
     "message": "最近突顯"
   },

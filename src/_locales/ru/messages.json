@@ -435,6 +435,9 @@
     "preferredTranslateService": {
         "message": "Сервис перевода"
     },
+    "quote": {
+        "message": "Цитировать"
+    },
     "recentMarkersLabel": {
         "message": "Последние маркеры"
     },

@@ -420,6 +420,9 @@
     "prepareCurrencySymbol": {
         "message": "Währungssymbole anstelle von Codes bevorzugen"
     },
+    "quote": {
+        "message": "Zitat"
+    },
     "recentMarkersLabel": {
         "message": "Neueste Markierungen"
     },

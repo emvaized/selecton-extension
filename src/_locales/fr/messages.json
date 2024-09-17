@@ -426,6 +426,9 @@
     "preferredTranslateService": {
         "message": "Service de traduction"
     },
+    "quote": {
+        "message": "Citer"
+    },
     "recentMarkersLabel": {
         "message": "Derniers surligneurs"
     },

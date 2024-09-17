@@ -426,6 +426,9 @@
     "preferredTranslateService": {
         "message": "Servicio de traduccion"
     },
+    "quote": {
+        "message": "Citando"
+    },
     "recentMarkersLabel": {
         "message": "Últimas marcas"
     },

@@ -359,6 +359,9 @@
     "preferredTranslateService": {
         "message": "Serviço de tradução"
     },
+    "quote": {
+        "message": "Cytat"
+    },
     "recentMarkersLabel": {
         "message": "Destaques recentes"
     },
