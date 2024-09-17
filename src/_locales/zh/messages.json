@@ -141,7 +141,7 @@
     "message": "自訂搜尋選項"
   },
   "customSearchTooltipHint": {
-    "message": "將滑鼠懸停在“搜尋”按鈕上時顯示。 使用 %s 作為搜尋查詢的佔位符，%w 是當前域的佔位符（用於網站搜尋）"
+    "message": "將滑鼠懸停在“搜尋”按鈕上時顯示。 使用 %s 作為搜尋查詢的佔位符，%w 是目前域的佔位符（用於網站搜尋）"
   },
   "customSearchUrl": {
     "message": "自訂搜尋網址 <br />(使用 %s 作為查詢的佔位符)"
@@ -176,7 +176,7 @@
     "message": "刪除"
   },
   "dictionaryButtonRemark": {
-    "message": "在懸停時查找維基百科定義"
+    "message": "在懸停時尋找維基百科定義"
   },
   "dictionaryButtonResponseCharsAmount": {
     "message": "結果顯示的最大字元數"
@@ -188,7 +188,7 @@
     "message": "字典"
   },
   "disableForBetterPerformance": {
-    "message": "停用以獲得更好的性能"
+    "message": "停用以獲得更好的效能"
   },
   "disableWordSnapForCode": {
     "message": "停用程式碼的單字捕捉"
@@ -203,7 +203,7 @@
     "message": "拖動手把樣式"
   },
   "draggableTooltip": {
-    "message": "面板可以通過箭頭拖動"
+    "message": "面板可以透過箭頭拖動"
   },
   "email": {
     "message": "電子郵件"
@@ -224,7 +224,7 @@
     "message": "匯出設定"
   },
   "exportSettingsNote": {
-    "message": "如果导出按钮不起作用，请尝试使用右上角的按钮在新选项卡中打开此页面"
+    "message": "如果匯出按鈕不起作用，請嘗試使用右上角的按鈕在新頁籤中打開此頁面"
   },
   "extensionDescription": {
     "message": "帶有文字選擇操作的可自訂彈出視窗"
@@ -251,7 +251,7 @@
     "message": "在滾動條上隱藏工具提示"
   },
   "hideTooltipOnActionButtonClick": {
-    "message": "单击操作按钮时隐藏面板"
+    "message": "單擊操作按鈕時隱藏面板"
   },
   "hideTooltipWhenCursorMovesAway": {
     "message": "游標移開時隱藏工具提示"
@@ -269,13 +269,13 @@
     "message": "圖示 + 文字"
   },
   "imperial": {
-    "message": "英制"
+    "message": "英製"
   },
   "import": {
     "message": "匯入"
   },
   "importAlert": {
-    "message": "此動作將覆蓋當前的 Selecton 設定。 你確定嗎？"
+    "message": "此動作將覆蓋目前的 Selecton 設定。 你確定嗎？"
   },
   "importSettingsLabel": {
     "message": "匯入設定"
@@ -323,7 +323,7 @@
     "message": "使用者的語言 (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)"
   },
   "leftClickBackgroundTab": {
-    "message": "左鍵點擊打開連結作為背景選項卡"
+    "message": "左鍵點擊打開連結作為背景頁籤"
   },
   "linkToTextDescription": {
     "message": "複製指向所選文字的頁面連結 (僅在 Chrome 90+ 中打開)"
@@ -451,7 +451,7 @@
     "message": "選擇動作後刪除文字選擇"
   },
   "resetDefaults": {
-    "message": "恢復預設值"
+    "message": "復原預設值"
   },
   "reverseTooltipButtonsOrder": {
     "message": "反轉按鈕的次序"
@@ -496,7 +496,7 @@
     "message": "覆蓋頁面的突出顯示顏色"
   },
   "showButtonBorders": {
-    "message": "顯示按鈕分隔符"
+    "message": "顯示按鈕分隔符號"
   },
   "showButtonLabelOnHover": {
     "message": "懸停時顯示按鈕標籤"
