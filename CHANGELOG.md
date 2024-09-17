@@ -1,3 +1,11 @@
+3.9.0
+- Added the "Quote" button, shown when compatibile text area is found on page
+- Most buttons now trigger on mouse-up instead of mouse-down for better compatibility
+- Fixed arrow vertically misaligned with the panel
+- Fixed Translate button not shown when search buttons on panel
+- Fixed search button not working on click
+- Performance and stability improvements
+
 3.8.1
 - Already shown tooltip will now be recreated on settings change
 - "More" button will now show number of collapsed buttons
