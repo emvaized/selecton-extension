@@ -44,6 +44,9 @@
   "addPhoneButton": {
     "message": "新增電話號碼按鈕"
   },
+  "addQuoteButton": {
+    "message": "新增按鈕以引用選取的內容 (當頁面上找到支援的文字欄位時)"
+  },
   "addScaleUpEffect": {
     "message": "在顯示上使用放大效果"
   },
@@ -436,7 +439,7 @@
     "message": "翻譯服務"
   },
   "quote": {
-    "message": "報價"
+    "message": "引用"
   },
   "recentMarkersLabel": {
     "message": "最近突顯"
