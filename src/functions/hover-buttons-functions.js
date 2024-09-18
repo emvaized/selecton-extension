@@ -39,9 +39,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         panel.innerHTML = initialHtml;
 
     if (tooltipOnBottom)
-        panel.style.top = staticPanelMode ? '115%' : '125%';
+        panel.style.top = staticPanelMode ? '112%' : '125%';
     else
-        panel.style.bottom = staticPanelMode ? '115%' : '125%';
+        panel.style.bottom = staticPanelMode ? '112%' : '125%';
 
     if (reverseOrder) {
         /// specially for the Search button
@@ -163,7 +163,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     
     function movePanelToBottom(panel, button) {
         panel.style.bottom = 'unset';
-        panel.style.top = staticPanelMode ? '115%' : '125%';
+        panel.style.top = staticPanelMode ? '112%' : '125%';
     
         if (button)
             button.classList.add('higher-z-index');
