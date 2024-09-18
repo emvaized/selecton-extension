@@ -59,15 +59,15 @@ function checkTooltipForCollidingWithSideEdges() {
     let tooltipWidth = 4.0;
 
     /// we can't rely on clientWidth, because tooltip gets collapsed when colliding with screen edge
-    // tooltipWidth = tooltip.clientWidth;
-    if (configs.verticalLayoutTooltip) {
-        tooltipWidth = 140;
-    } else {
-        const tooltipButtons = tooltip.querySelectorAll('.selection-tooltip > .selection-popup-button');
-        for (let i = 0, l = tooltipButtons.length; i < l; i++) {
-            tooltipWidth += tooltipButtons[i].offsetWidth;
-        }
-    }
+    tooltipWidth = tooltip.clientWidth;
+    // if (configs.verticalLayoutTooltip) {
+    //     tooltipWidth = 140;
+    // } else {
+    //     const tooltipButtons = tooltip.querySelectorAll('.selection-tooltip > .selection-popup-button');
+    //     for (let i = 0, l = tooltipButtons.length; i < l; i++) {
+    //         tooltipWidth += tooltipButtons[i].offsetWidth;
+    //     }
+    // }
 
     /// fix for collision detection not working with 'scale up' effects
     if (configs.tooltipRevealEffect == 'scaleUpTooltipEffect' || configs.tooltipRevealEffect == 'scaleUpFromBottomTooltipEffect') {
@@ -112,7 +112,8 @@ function checkTooltipForCollidingWithSideEdges() {
                 console.log('Tooltip is not colliding with side edges');
 
             /// correct tooltip's position if 'more' button is used
-            if (configs.correctTooltipPositionByMoreButtonWidth && !configs.verticalLayoutTooltip) {
+            if (configs.correctTooltipPositionByMoreButtonWidth && !configs.verticalLayoutTooltip 
+                && !configs.collapseAsSecondPanel) {
                 const attachedMoreButton = tooltip.querySelector('.more-button');
                 if (!attachedMoreButton) return;
                 const moreButtonWidth = attachedMoreButton.clientWidth;
@@ -128,9 +129,9 @@ function checkTooltipForCollidingWithSideEdges() {
 }
 
 function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, opacity) {
-    let container = document.createDocumentFragment();
+    const container = document.createDocumentFragment();
 
-    let img = document.createElement('img');
+    const img = document.createElement('img');
     img.setAttribute('src', url);
     img.setAttribute('class', 'selecton-button-img-icon');
 
@@ -140,7 +141,7 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
     container.appendChild(img);
 
     if (title != undefined && title != '') {
-        let label = document.createElement('span');
+        const label = document.createElement('span');
         label.textContent = title;
         container.appendChild(label);
     }
@@ -153,12 +154,12 @@ function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     // setTimeout(function () {
     const children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
     const childrenLength = children.length;
-    if (childrenLength == 1) {
-        children[0].style.borderRadius = onlyButtonBorderRadius;
-    } else {
+    if (children[1]) {
         const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
         children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
         children[childrenLength - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
+    } else {
+        children[0].style.borderRadius = onlyButtonBorderRadius;
     }
     // }, 50);
 }
@@ -327,14 +328,8 @@ function setTooltipOnBottom() {
     tooltipOnBottom = true;
 
     if (configs.showInfoPanel && infoPanel && infoPanel.isConnected) {
-        const newInfoPanel = infoPanel.cloneNode(true);
-        newInfoPanel.classList.add('info-panel-on-bottom');
-        tooltip.appendChild(newInfoPanel);
-        try {
-            infoPanel.remove();
-            tooltip.removeChild(infoPanel);
-        } catch (e) { }
-        infoPanel = newInfoPanel;
+        infoPanel.classList.add('info-panel-on-bottom');
+        tooltip.appendChild(infoPanel);
     }
 }
 

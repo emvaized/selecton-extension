@@ -22,9 +22,10 @@ function hideHoverIndicator(indicator) {
 }
 
 
-function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true) {
+function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true, staticPanelMode = false) {
     let timerToRemovePanel, timeoutToRevealPanel;
     let hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
+    const staticPanelVerticalShift = configs.showInfoPanel ? '110%' : '112%';
 
     /// Set panel
     let panel = document.createElement('div');
@@ -39,9 +40,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         panel.innerHTML = initialHtml;
 
     if (tooltipOnBottom)
-        panel.style.top = '125%';
+        panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
     else
-        panel.style.bottom = '125%';
+        panel.style.bottom = staticPanelMode ? staticPanelVerticalShift : '125%';
 
     if (reverseOrder) {
         /// specially for the Search button
@@ -80,7 +81,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             }
 
             /// Clip content on edge for better looking animation
-            if (unknownHeight)
+            if (unknownHeight && button)
                 button.classList.add(panelOnBottom ? 'button-with-bottom-hover-panel' : 'button-with-top-hover-panel');
 
             /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
@@ -97,6 +98,14 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
     }, configs.animationDuration);
 
+    /// Show panel initially
+    if (staticPanelMode)
+        setTimeout(()=>{
+            if (button) button.classList.toggle('highlighted-popup-button');
+            revealHoverPanel(panel, dxTransformValue);
+            if (revealAfterDelay) hideHoverIndicator(hoverIndicator);
+            if (onHoverCallback) onHoverCallback();
+        }, configs.animationDuration)
 
     /// Set mouse listeners
     if (button) {
@@ -143,68 +152,68 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         })
     }
 
+    function checkHoverPanelToOverflowOnTop(panel, button) {
+        /// check to hover panel overflow on screen top
+        try {
+            if (panel.getBoundingClientRect().top < 0) {
+                movePanelToBottom(panel, button);
+                return true;
+            } else return false;
+        } catch (e) { return false; }
+    }
+    
+    function movePanelToBottom(panel, button) {
+        panel.style.bottom = 'unset';
+        panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
+    
+        if (button)
+            button.classList.add('higher-z-index');
+        else if (panel.parentNode)
+            panel.parentNode.classList.add('higher-z-index');
+    }
+    
+    function checkHoverPanelToOverflowOnRight(panel) {
+        /// check to hover panel overflow on right screen edge
+        try {
+            const panRect = panel.getBoundingClientRect();
+            if (window.innerWidth - panRect.left - (panRect.width * 2) < 0) {
+                panel.style.transform = 'translate(-215%, 0)';
+                return true;
+            } else return false;
+        } catch (e) { return false; }
+    }
+    
+    
+    function revealHoverPanel(panel, dxTransformValue) {
+        if (panel.style.opacity > 0) return;
+        panel.style.width = 'max-content';
+        panel.style.visibility = 'visible';
+    
+        setTimeout(function () {
+            panel.style.opacity = 1;
+            panel.style.transform = `translate(${dxTransformValue},0)`;
+    
+            if (configs.verticalLayoutTooltip) checkHoverPanelToOverflowOnRight(panel);
+        }, 3);
+    
+        setTimeout(function () {
+            if (!panel || !tooltipIsShown) return;
+            panel.style.pointerEvents = 'all';
+        }, configs.animationDuration);
+    }
+    
+    function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
+        panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+        panel.style.opacity = 0.0;
+        panel.style.pointerEvents = 'none';
+       
+        setTimeout(function () {
+            if (!panel || !tooltipIsShown) return;
+            panel.style.width = '0';
+            panel.style.visibility = 'hidden';
+    
+        }, configs.animationDuration);
+    }
+
     return panel;
-}
-
-function checkHoverPanelToOverflowOnTop(panel, button) {
-    /// check to hover panel overflow on screen top
-    try {
-        if (panel.getBoundingClientRect().top < 0) {
-            movePanelToBottom(panel, button);
-            return true;
-        } else return false;
-    } catch (e) { return false; }
-}
-
-function movePanelToBottom(panel, button) {
-    panel.style.bottom = 'unset';
-    panel.style.top = '125%';
-
-    if (button)
-        button.classList.add('higher-z-index');
-    else if (panel.parentNode)
-        panel.parentNode.classList.add('higher-z-index');
-}
-
-function checkHoverPanelToOverflowOnRight(panel) {
-    /// check to hover panel overflow on right screen edge
-    try {
-        const panRect = panel.getBoundingClientRect();
-        if (window.innerWidth - panRect.left - (panRect.width * 2) < 0) {
-            panel.style.transform = 'translate(-215%, 0)';
-            return true;
-        } else return false;
-    } catch (e) { return false; }
-}
-
-
-function revealHoverPanel(panel, dxTransformValue) {
-    if (panel.style.opacity > 0) return;
-    panel.style.width = 'max-content';
-    panel.style.visibility = 'visible';
-
-    setTimeout(function () {
-        panel.style.opacity = 1;
-        panel.style.transform = `translate(${dxTransformValue},0)`;
-
-        if (configs.verticalLayoutTooltip) checkHoverPanelToOverflowOnRight(panel);
-    }, 3);
-
-    setTimeout(function () {
-        if (!panel || !tooltipIsShown) return;
-        panel.style.pointerEvents = 'all';
-    }, configs.animationDuration);
-}
-
-function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
-    panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-    panel.style.opacity = 0.0;
-    panel.style.pointerEvents = 'none';
-   
-    setTimeout(function () {
-        if (!panel || !tooltipIsShown) return;
-        panel.style.width = '0';
-        panel.style.visibility = 'hidden';
-
-    }, configs.animationDuration);
 }

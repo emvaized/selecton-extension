@@ -52,7 +52,7 @@ const configs = {
     'showButtonLabelOnHover': true,
     'animationDuration': 200,
     'wordSnappingBlacklist': '',
-    'disableWordSnapForCode': true,
+    'disableWordSnapForCode': false,
     'dontSnapTextfieldSelection': true,
     'tooltipRevealEffect': 'moveUpTooltipEffect', /// Possible values: 'moveUpTooltipEffect', 'moveDownTooltipEffect', 'scaleUpTooltipEffect', 'scaleUpFromBottomTooltipEffect', 'noTooltipEffect'
     'textSelectionBackgroundOpacity': 1.0,
@@ -100,6 +100,7 @@ const configs = {
     'addQuoteButton': true,
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
+    'collapseAsSecondPanel': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

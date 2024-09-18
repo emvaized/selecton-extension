@@ -3,29 +3,44 @@ function collapseButtons() {
     const buttonsCount = tooltip.children.length - 1; /// subtract the arrow
 
     if (buttonsCount > maxButtons) {
-        /// Create button
-        const moreButton = document.createElement('button');
-        moreButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
-        moreButton.classList.add('more-button');
-        moreButton.innerText = configs.verticalLayoutTooltip ? '⋯' : '⋮';
+       
+        let collapsedButtonsPanel, moreButton;
+        if (configs.collapseAsSecondPanel){
+            /// Show as secondary panel
+            collapsedButtonsPanel = createHoverPanelForButton(undefined, undefined, undefined, false, false, true, false, true);
+            collapsedButtonsPanel.style.right = '2px';
+            
+            setTimeout(()=> {
+                collapsedButtonsPanel.style.transform = returnTooltipRevealTransform(false, false);
+                collapsedButtonsPanel.style.zIndex = '-1';
+                if(tooltip) tooltip.appendChild(collapsedButtonsPanel);
+            }, 2)
 
-        if (configs.reverseTooltipButtonsOrder)
-            tooltip.insertBefore(moreButton, tooltip.children[2]);
-        else
-            tooltip.appendChild(moreButton);
+        } else {
+            /// Create 'more' button
+            moreButton = document.createElement('button');
+            moreButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
+            moreButton.classList.add('more-button');
+            moreButton.innerText = configs.verticalLayoutTooltip ? '⋯' : '⋮';
 
-        /// Create panel
-        const collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, true, true, false);
+            /// Show as hover button
+            if (configs.reverseTooltipButtonsOrder)
+                tooltip.insertBefore(moreButton, tooltip.children[2]);
+            else
+                tooltip.appendChild(moreButton);
+            collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, true, true, false);
+
+            /// Show buttons count
+            const buttonsCountSpan = moreButton.querySelector('.selecton-hover-button-indicator');
+            if (buttonsCountSpan){
+                buttonsCountSpan.innerText = buttonsCount - maxButtons;
+                buttonsCountSpan.classList.add('selecton-more-button-child-count')
+            }
+        }
+        
         collapsedButtonsPanel.style.maxWidth = 'unset';
         collapsedButtonsPanel.style.zIndex = '2';
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
-
-        /// Show buttons count
-        const buttonsCountSpan = moreButton.querySelector('.selecton-hover-button-indicator');
-        if (buttonsCountSpan){
-            buttonsCountSpan.innerText = buttonsCount - maxButtons;
-            buttonsCountSpan.classList.add('selecton-more-button-child-count')
-        }
         
         /// Append buttons to panel
         if (configs.reverseTooltipButtonsOrder) {
@@ -47,7 +62,8 @@ function collapseButtons() {
             }
         }
 
-        moreButton.appendChild(collapsedButtonsPanel);
+        if (!configs.collapseAsSecondPanel)
+            moreButton.appendChild(collapsedButtonsPanel);
         setBorderRadiusForSideButtons(collapsedButtonsPanel, false);
     }
 }

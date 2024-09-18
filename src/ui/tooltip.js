@@ -8,6 +8,7 @@ function createTooltip(e, recreated = false) {
         lastMouseUpEvent = e;
         if (selection == null || selection == undefined) return;
         // hideTooltip();
+        tooltipOnBottom = false; /// reset the 'reverted' state of previous tooltip
 
         if (configs.snapSelectionToWord) {
             // if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
@@ -18,7 +19,7 @@ function createTooltip(e, recreated = false) {
                 if (configs.debugMode)
                     console.log('Word snapping rejected due to pressed CTRL key');
             } else {
-                selectedText = selection.toString();
+                // selectedText = selection.toString();
 
                 selectedTextIsCode = false;
                 if (configs.disableWordSnapForCode)
@@ -64,7 +65,7 @@ function createTooltip(e, recreated = false) {
         }
 
         /// Hide previous tooltip if exists
-        if (tooltip !== null && tooltip !== undefined) hideTooltip();
+        if (tooltip) hideTooltip();
 
         /// Check text selection again
         /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
@@ -220,7 +221,6 @@ function calculateTooltipPosition(e) {
     const selStartDimensions = getSelectionCoordinates(true);
     const selEndDimensions = getSelectionCoordinates(false);
 
-    tooltipOnBottom = false;
     let canAddDragHandles = true;
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
     let dyForFloatingTooltip = 15;
@@ -401,8 +401,9 @@ function showTooltip(dx, dy) {
     //     }, configs.animationDuration);
 }
 
+let oldTooltips;
 function hideTooltip(animated = true) {
-    if (tooltip == null || tooltip == undefined) return;
+    if (!tooltip) return;
 
     if (configs.debugMode) {
         console.log('--- Hiding Selecton tooltips ---');
@@ -410,9 +411,9 @@ function hideTooltip(animated = true) {
     }
 
     /// Hide all tooltips
-    const oldTooltips = document.querySelectorAll('.selecton-entity');
+    if (!oldTooltips) oldTooltips = document.getElementsByClassName('selecton-entity');
 
-    if (oldTooltips !== null && oldTooltips.length !== 0) {
+    if (oldTooltips && oldTooltips.length) {
         tooltipIsShown = false;
 
         if (configs.debugMode)

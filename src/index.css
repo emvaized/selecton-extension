@@ -88,7 +88,7 @@
   height: 100% !important;
   min-height: 100% !important;
   margin: 0px !important;
-  transition: background-color 25ms ease-in-out !important;
+  transition: background-color 25ms ease-out !important;
   text-transform: none !important;
   outline: none !important;
   text-align: center !important;
@@ -112,7 +112,7 @@
   background-clip: padding-box !important;
   cursor: pointer;
   color: white !important;
-  transition: background-color 25ms ease-in-out !important;
+  transition: background-color 25ms ease-out !important;
   position: relative;
 }
 
@@ -284,7 +284,7 @@
 }
 
 .selecton-hover-button-indicator {
-  opacity: 0.3 !important;
+  opacity: 0.3;
   position: absolute;
   right: 4px !important;
   top: 2px !important;
@@ -312,7 +312,7 @@
   outline: 1px solid lightgrey;
   width: 15px !important;
   cursor: pointer;
-  transition: width 200ms ease-in-out;
+  transition: width 200ms ease;
   z-index: 2147483646 !important;
   opacity: 0.55;
 }

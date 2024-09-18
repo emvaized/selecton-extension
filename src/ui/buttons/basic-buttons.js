@@ -126,16 +126,16 @@ function addBasicTooltipButtons(layout) {
                 for (var i = 0, l = configs.customSearchButtons.length; i < l; i++) {
                     const item = configs.customSearchButtons[i];
 
-                    const url = item['url'];
+                    const url = item['url'].replace('%s', selectedText);
                     const optionEnabled = item['enabled'];
-                    const title = item['title'];
-                    const icon = item['icon'];
+                    const domain = url.split('/')[2];
+                    const title = item['title'] ?? domain;
+                    const icon = item['icon'] ?? 'https://www.google.com/s2/favicons?domain=' + domain;
 
-                    if (optionEnabled)
-                        addBasicTooltipButton(title ?? url, icon, function (e) {
-                            // onTooltipButtonClick(e, url);
-                            onSearchButtonClick(e, url);
-                        });
+                    if (optionEnabled) {
+                        let b = addLinkTooltipButton(title ?? url, icon, url);
+                        b.classList.add('custom-search-image-button')
+                    }
                 }
         }
 

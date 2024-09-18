@@ -65,7 +65,7 @@ h3 {
 
 h4 {
   color: grey;
-  opacity: 0.65;
+  opacity: 0.8;
   font-weight: 500;
 }
 
@@ -274,7 +274,7 @@ content: "\2212";
    
   h4 { 
     color: black; 
-    opacity: 0.3; 
+    opacity: 0.6; 
   } 
  
   button { 
@@ -298,10 +298,6 @@ content: "\2212";
     body {
         background: rgb(40,41,44);
         color: white;
-    }
-
-    h4 {
-      opacity: 0.7;
     }
 
     .collapsible-header {

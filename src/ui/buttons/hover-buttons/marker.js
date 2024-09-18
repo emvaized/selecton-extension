@@ -24,6 +24,7 @@ function addMarkerButton() {
         saveAllMarkers();
         removeSelectionOnPage();
     });
+    markerButton.classList.add('higher-z-index');
 
     /// Create color chooser panel
     setTimeout(function () {

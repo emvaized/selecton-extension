@@ -344,7 +344,7 @@
         "message": "Max páginas para almacenar destacados"
     },
     "maxTooltipButtonsToShow": {
-        "message": "Max botones para mostrar en el panel"
+        "message": "Max botones para mostrar en el panel principal"
     },
     "metric": {
         "message": "Métrica"
