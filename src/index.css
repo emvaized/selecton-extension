@@ -284,7 +284,7 @@
 }
 
 .selecton-hover-button-indicator {
-  opacity: 0.3 !important;
+  opacity: 0.3;
   position: absolute;
   right: 4px !important;
   top: 2px !important;
