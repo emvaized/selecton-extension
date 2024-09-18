@@ -218,6 +218,7 @@ function initMouseListeners() {
 
     if (e.button == 0) {
         hideTooltip();
+        if (configs.addDragHandles) hideDragHandles()
 
       /// Remove text selection when clicked on link, to prevent creating new tooltip over link
       /// Probably no longer needed
