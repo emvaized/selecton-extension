@@ -401,6 +401,7 @@ function showTooltip(dx, dy) {
     //     }, configs.animationDuration);
 }
 
+let oldTooltips;
 function hideTooltip(animated = true) {
     if (!tooltip) return;
 
@@ -410,7 +411,7 @@ function hideTooltip(animated = true) {
     }
 
     /// Hide all tooltips
-    const oldTooltips = document.getElementsByClassName('selecton-entity');
+    if (!oldTooltips) oldTooltips = document.getElementsByClassName('selecton-entity');
 
     if (oldTooltips && oldTooltips.length) {
         tooltipIsShown = false;
