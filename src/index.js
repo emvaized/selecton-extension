@@ -232,7 +232,8 @@ function initMouseListeners() {
     if (isDraggingTooltip) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked a button
-    const activeEl = document.activeElement;
+    // const activeEl = document.activeElement;
+    const activeEl = e.target;
     if (activeEl.tagName == 'BUTTON') return;
 
     setTimeout(function () {
@@ -251,7 +252,7 @@ function initMouseListeners() {
       } catch (e) { }
 
       /// Check if clicked on text field
-      checkTextField(e, activeEl);
+      checkTextField(activeEl);
 
       if (selectedText.length > 0) {
         /// create tooltip for selection
@@ -313,10 +314,10 @@ function initMouseListeners() {
     }, 0);
   }
 
-  function checkTextField(e, activeEl) {
+  function checkTextField(target) {
     /// check if textfield is focused
 
-    const target = e.target;
+    // const target = e.target;
     isTextFieldFocused = (target.tagName === "INPUT" && (target.getAttribute('type') == 'text' || target.getAttribute('type') == 'email' || target.getAttribute('name') == 'text')) ||
     target.tagName === "TEXTAREA" ||
     target.getAttribute('contenteditable') !== null;
@@ -339,10 +340,10 @@ function initMouseListeners() {
       /// Ignore single click on text field with inputted value
       try {
         isTextFieldEmpty = true;
-        if (activeEl.getAttribute('contenteditable') != null && activeEl.innerHTML != '' && selectedText == '' && activeEl.innerHTML != '<br>') {
+        if (target.getAttribute('contenteditable') != null && target.innerHTML != '' && selectedText == '' && target.innerHTML != '<br>') {
           isTextFieldEmpty = false;
           if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
-        } else if (activeEl.value && activeEl.value.trim() !== '' && selectedText == '') {
+        } else if (target.value && target.value.trim() !== '' && selectedText == '') {
           isTextFieldEmpty = false;
           if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
         }
