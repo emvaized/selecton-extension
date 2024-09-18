@@ -654,6 +654,6 @@
     "message": "Add button to quote the selection (when supported text field is found on page)"
   },
   "collapseAsSecondPanel": {
-    "message": "Always show collapsed buttons as a static panel "
+    "message": "Always show collapsed buttons as a static panel"
   }
 }
