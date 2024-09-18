@@ -44,6 +44,9 @@
   "addPhoneButton": {
     "message": "Telefoonnummerknop tonen"
   },
+  "addQuoteButton": {
+    "message": "Knop toevoegen om de selectie te citeren (wanneer ondersteund tekstveld op de pagina wordt gevonden)"
+  },
   "addScaleUpEffect": {
     "message": "Omhoogschuifeffect gebruiken"
   },
@@ -88,6 +91,9 @@
   },
   "clearLabel": {
     "message": "Wissen"
+  },
+  "collapseAsSecondPanel": {
+    "message": "Altijd ingeklapte knoppen weergeven als een statisch paneel"
   },
   "collapseButtons": {
     "message": "Overige knoppen toevoegen aan menu ‘Meer’"

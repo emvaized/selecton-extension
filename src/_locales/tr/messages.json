@@ -44,6 +44,9 @@
     "addPhoneButton": {
         "message": "Telefon numarası ekle düğmesi"
     },
+    "addQuoteButton": {
+        "message": "Seçimi alıntılamak için düğme ekle (sayfada desteklenen bir metin alanı bulunduğunda)"
+    },
     "addScaleUpEffect": {
         "message": "Ortaya çıkanda ölçek büyütme efektlerini kullanma"
     },
@@ -88,6 +91,9 @@
     },
     "clearLabel": {
         "message": "Temiz"
+    },
+    "collapseAsSecondPanel": {
+        "message": "Her zaman küçültülmüş düğmeleri statik bir panel olarak göster"
     },
     "collapseButtons": {
         "message": "'Daha Fazla' düğmesinin altındaki aşan düğmeleri gizle"

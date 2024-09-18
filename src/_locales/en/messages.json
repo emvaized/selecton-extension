@@ -44,6 +44,9 @@
   "addPhoneButton": {
     "message": "Add phone number button"
   },
+  "addQuoteButton": {
+    "message": "Add button to quote the selection (when supported text field is found on page)"
+  },
   "addScaleUpEffect": {
     "message": "Use scale-up effect on reveal"
   },
@@ -91,6 +94,9 @@
   },
   "clearLabel": {
     "message": "Clear"
+  },
+  "collapseAsSecondPanel": {
+    "message": "Always show collapsed buttons as a static panel"
   },
   "collapseButtons": {
     "message": "Hide exceeding buttons under 'More' button"
@@ -649,11 +655,5 @@
         "content": "$1"
       }
     }
-  },
-  "addQuoteButton": {
-    "message": "Add button to quote the selection (when supported text field is found on page)"
-  },
-  "collapseAsSecondPanel": {
-    "message": "Always show collapsed buttons as a static panel"
   }
 }

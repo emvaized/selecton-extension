@@ -95,6 +95,9 @@
   "clearLabel": {
     "message": "清除"
   },
+  "collapseAsSecondPanel": {
+    "message": "始终将折叠的按钮显示为静态面板"
+  },
   "collapseButtons": {
     "message": "隱藏「更多」按鈕下的超額按鈕"
   },

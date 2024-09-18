@@ -44,6 +44,9 @@
     "addPhoneButton": {
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer"
     },
+    "addQuoteButton": {
+        "message": "Schaltfläche hinzufügen, um die Auswahl zu zitieren (wenn ein unterstütztes Textfeld auf der Seite gefunden wird)"
+    },
     "addScaleUpEffect": {
         "message": "Scale-up-Effekt bei Enthüllung hinzufügen"
     },
@@ -85,6 +88,9 @@
     },
     "clearLabel": {
         "message": "Löschen"
+    },
+    "collapseAsSecondPanel": {
+        "message": "Immer ausgeblendete Schaltflächen als statisches Panel anzeigen"
     },
     "collapseButtons": {
         "message": "Überzählige Schaltflächen unter der Schaltfläche „Mehr“ ausblenden"

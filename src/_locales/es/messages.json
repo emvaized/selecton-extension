@@ -44,6 +44,9 @@
     "addPhoneButton": {
         "message": "Botón para agregar número de teléfono"
     },
+    "addQuoteButton": {
+        "message": "Agregar botón para citar la selección (cuando se encuentre un campo de texto compatible en la página)"
+    },
     "addScaleUpEffect": {
         "message": "Agregar efecto de escalamiento al revelar"
     },
@@ -88,6 +91,9 @@
     },
     "clearLabel": {
         "message": "Borrar"
+    },
+    "collapseAsSecondPanel": {
+        "message": "Mostrar siempre los botones colapsados como un panel estático"
     },
     "collapseButtons": {
         "message": "Ocultar botones en exceso debajo del botón 'Más'"
