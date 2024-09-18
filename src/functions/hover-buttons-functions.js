@@ -142,7 +142,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
                 hideHoverPanel(panel, dxTransformValue, panelOnBottom);
                 if (revealAfterDelay) showHoverIndicator(hoverIndicator);
-            }, 100);
+            }, 150);
         });
 
         button.addEventListener('mousedown', function (e) {
