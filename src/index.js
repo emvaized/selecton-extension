@@ -394,8 +394,8 @@ function initMouseListeners() {
         if (window.scrollY <= floatingTooltipBottom) return;
       }
 
-    hideTooltip(false);
-    hideDragHandles(false);
+    hideTooltip(!configs.recreateTooltipAfterScroll);
+    hideDragHandles(!configs.recreateTooltipAfterScroll);
     recreateTooltip();
   }
 
