@@ -318,12 +318,15 @@ function initMouseListeners() {
     /// check if textfield is focused
 
     // const target = e.target;
-    isTextFieldFocused = (target.tagName === "INPUT" && (target.getAttribute('type') == 'text' || target.getAttribute('type') == 'email' || target.getAttribute('name') == 'text')) ||
-    target.tagName === "TEXTAREA" ||
-    target.getAttribute('contenteditable') !== null;
+    isTextFieldFocused = (
+      target.tagName === "INPUT" && (
+          target.type == 'text' || 
+          target.type == 'email' || 
+          target.type == 'search' || 
+          target.type == 'text'
+      )) ||  target.tagName === "TEXTAREA" || target.contenteditable;
 
     if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
-
       /// Special handling for Firefox 
       /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
       if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
