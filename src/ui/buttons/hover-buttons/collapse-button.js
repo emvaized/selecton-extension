@@ -12,6 +12,7 @@ function collapseButtons() {
             
             setTimeout(()=> {
                 collapsedButtonsPanel.style.transform = returnTooltipRevealTransform(false, false);
+                collapsedButtonsPanel.style.zIndex = '-1';
                 tooltip.appendChild(collapsedButtonsPanel);
             }, 2)
 
