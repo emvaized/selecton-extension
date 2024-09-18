@@ -233,8 +233,7 @@ function initMouseListeners() {
     if (isDraggingTooltip) return;
 
     /// Don't recreate tooltip when some text selected on page — and user clicked a button
-    // const activeEl = document.activeElement;
-    const activeEl = e.target;
+    const activeEl = document.activeElement;
     if (activeEl.tagName == 'BUTTON') return;
 
     setTimeout(function () {
