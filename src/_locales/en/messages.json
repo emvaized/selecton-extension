@@ -353,7 +353,7 @@
     "message": "Max pages to store highlights"
   },
   "maxTooltipButtonsToShow": {
-    "message": "Max buttons to show in the tooltip"
+    "message": "Max buttons to show on the main panel"
   },
   "metric": {
     "message": "Metric"
@@ -654,6 +654,6 @@
     "message": "Add button to quote the selection (when supported text field is found on page)"
   },
   "collapseAsSecondPanel": {
-    "message": "Always show panel with collapsed buttons"
+    "message": "Always show static panel with collapsed buttons"
   }
 }

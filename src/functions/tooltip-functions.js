@@ -112,7 +112,8 @@ function checkTooltipForCollidingWithSideEdges() {
                 console.log('Tooltip is not colliding with side edges');
 
             /// correct tooltip's position if 'more' button is used
-            if (configs.correctTooltipPositionByMoreButtonWidth && !configs.verticalLayoutTooltip) {
+            if (configs.correctTooltipPositionByMoreButtonWidth && !configs.verticalLayoutTooltip 
+                && !configs.collapseAsSecondPanel) {
                 const attachedMoreButton = tooltip.querySelector('.more-button');
                 if (!attachedMoreButton) return;
                 const moreButtonWidth = attachedMoreButton.clientWidth;
