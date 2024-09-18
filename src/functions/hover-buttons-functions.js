@@ -80,7 +80,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             }
 
             /// Clip content on edge for better looking animation
-            if (unknownHeight)
+            if (unknownHeight && button)
                 button.classList.add(panelOnBottom ? 'button-with-bottom-hover-panel' : 'button-with-top-hover-panel');
 
             /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
