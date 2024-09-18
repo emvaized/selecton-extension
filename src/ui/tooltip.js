@@ -58,6 +58,7 @@ function createTooltip(e, recreated = false) {
             if (vertOutOfView) {
                 resultDy = e.clientY + arrow.clientHeight;
                 arrow.classList.add('arrow-on-bottom');
+                tooltipOnBottom = true;
             }
 
             showTooltip(e.clientX, resultDy);
