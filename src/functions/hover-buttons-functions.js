@@ -25,6 +25,7 @@ function hideHoverIndicator(indicator) {
 function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true, staticPanelMode = false) {
     let timerToRemovePanel, timeoutToRevealPanel;
     let hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
+    const staticPanelVerticalShift = configs.showInfoPanel ? '110%' : '112%';
 
     /// Set panel
     let panel = document.createElement('div');
@@ -39,9 +40,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         panel.innerHTML = initialHtml;
 
     if (tooltipOnBottom)
-        panel.style.top = staticPanelMode ? '112%' : '125%';
+        panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
     else
-        panel.style.bottom = staticPanelMode ? '112%' : '125%';
+        panel.style.bottom = staticPanelMode ? staticPanelVerticalShift : '125%';
 
     if (reverseOrder) {
         /// specially for the Search button
@@ -163,7 +164,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     
     function movePanelToBottom(panel, button) {
         panel.style.bottom = 'unset';
-        panel.style.top = staticPanelMode ? '112%' : '125%';
+        panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
     
         if (button)
             button.classList.add('higher-z-index');
