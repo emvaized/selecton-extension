@@ -327,14 +327,8 @@ function setTooltipOnBottom() {
     tooltipOnBottom = true;
 
     if (configs.showInfoPanel && infoPanel && infoPanel.isConnected) {
-        const newInfoPanel = infoPanel.cloneNode(true);
-        newInfoPanel.classList.add('info-panel-on-bottom');
-        tooltip.appendChild(newInfoPanel);
-        try {
-            infoPanel.remove();
-            tooltip.removeChild(infoPanel);
-        } catch (e) { }
-        infoPanel = newInfoPanel;
+        infoPanel.classList.add('info-panel-on-bottom');
+        tooltip.appendChild(infoPanel);
     }
 }
 

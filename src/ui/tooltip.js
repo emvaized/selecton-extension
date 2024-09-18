@@ -64,7 +64,8 @@ function createTooltip(e, recreated = false) {
         }
 
         /// Hide previous tooltip if exists
-        if (tooltip !== null && tooltip !== undefined) hideTooltip();
+        if (tooltip) hideTooltip();
+        tooltipOnBottom = false;
 
         /// Check text selection again
         /// Fix for recreating tooltip when clicked inside selected area (noticed only in Firefox)
@@ -220,7 +221,6 @@ function calculateTooltipPosition(e) {
     const selStartDimensions = getSelectionCoordinates(true);
     const selEndDimensions = getSelectionCoordinates(false);
 
-    tooltipOnBottom = false;
     let canAddDragHandles = true;
     if (selStartDimensions.dontAddDragHandles) canAddDragHandles = false;
     let dyForFloatingTooltip = 15;
