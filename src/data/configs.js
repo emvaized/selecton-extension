@@ -52,7 +52,7 @@ const configs = {
     'showButtonLabelOnHover': true,
     'animationDuration': 200,
     'wordSnappingBlacklist': '',
-    'disableWordSnapForCode': true,
+    'disableWordSnapForCode': false,
     'dontSnapTextfieldSelection': true,
     'tooltipRevealEffect': 'moveUpTooltipEffect', /// Possible values: 'moveUpTooltipEffect', 'moveDownTooltipEffect', 'scaleUpTooltipEffect', 'scaleUpFromBottomTooltipEffect', 'noTooltipEffect'
     'textSelectionBackgroundOpacity': 1.0,
