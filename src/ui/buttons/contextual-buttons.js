@@ -723,7 +723,7 @@ function addContextualButtons(callbackOnFinish) {
             const copyTextLinkBtn = addBasicTooltipButton(chrome.i18n.getMessage('linkToTextLabel'), linkIcon, function () {
                 let urlWithText = window.location.href + '#:~:text=' + encodeURIComponent(selectedText);
                 copyManuallyToClipboard(urlWithText);
-                removeSelectionOnPage();
+                // removeSelectionOnPage();
             });
             copyTextLinkBtn.title = chrome.i18n.getMessage('linkToTextDescription');
         }
