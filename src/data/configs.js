@@ -100,6 +100,7 @@ const configs = {
     'addQuoteButton': true,
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
+    'collapseAsSecondPanel': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
