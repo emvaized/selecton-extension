@@ -241,7 +241,7 @@ content: "\2212";
 }
 
 /* 'What's new' button color */
-#selecton-version a { color: #55b5ff !important; }
+#selecton-version a { color: #55b5ff !important; text-decoration: none; }
 
 
 @media (min-width: 600px) {
