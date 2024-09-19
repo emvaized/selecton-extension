@@ -31,7 +31,7 @@ function createTooltip(e, recreated = false) {
 
                 /// dont snap if selection is modified by drag handle, or if it looks like code
                 if (isDraggingDragHandle == false && 
-                    selectedTextIsCode == false || !configs.disableWordSnapForCode){
+                    (selectedTextIsCode == false || !configs.disableWordSnapForCode)){
                         if (domainIsBlacklistedForSnapping == false && 
                             e.detail < 2 && 
                             (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
