@@ -32,9 +32,11 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.className = 'hover-vertical-tooltip selecton-entity';
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
-    panel.style.visibility = 'collapse';
-    panel.style.width = '0px';
+    // panel.style.visibility = 'collapse';
+    // panel.style.width = '0px';
+    panel.style.display = 'none';
     panel.style.pointerEvents = 'none';
+    panel.style.width = 'max-content';
 
     if (initialHtml)
         panel.innerHTML = initialHtml;
@@ -192,8 +194,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     
     function revealHoverPanel(panel, dxTransformValue) {
         if (panel.style.opacity > 0) return;
-        panel.style.width = 'max-content';
-        panel.style.visibility = 'visible';
+        // panel.style.width = 'max-content';
+        // panel.style.visibility = 'visible';
+         panel.style.display = 'block';
     
         setTimeout(function () {
             panel.style.opacity = 1;
@@ -216,8 +219,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
        
         setTimeout(function () {
             if (!panel || !tooltipIsShown) return;
-            panel.style.width = '0';
-            panel.style.visibility = 'collapse';
+            // panel.style.width = '0';
+            // panel.style.visibility = 'collapse';
+            panel.style.display = 'none';
     
         }, configs.animationDuration);
     }
