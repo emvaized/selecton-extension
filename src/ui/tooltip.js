@@ -157,6 +157,7 @@ function setUpTooltip(recreated = false) {
     if (configs.buttonsStyle == 'onlyicon' || configs.buttonsStyle == 'iconlabel') tooltip.classList.add('tooltip-with-icons');
     tooltip.style.opacity = 0.0;
     tooltip.style.position = 'fixed';
+    tooltip.style.pointerEvents = 'none';
     tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out, transform ${configs.animationDuration}ms ease-out`;
     if (recreated) tooltip.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
     tooltip.style.transform = returnTooltipRevealTransform(false);
