@@ -166,8 +166,14 @@ function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
 
 function setCopyButtonTitle(copyButton, symbols, words) {
     let infoString = `${symbols ?? selectedText.length} ${chrome.i18n.getMessage('symbolsCount').toLowerCase()}`;
-    if (words && words > 1) infoString += ` · ${words} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
-
+    
+    if (selectedTextIsCode){
+        const lines = (selectedText.match(/\n/g) || '').length;
+        if (lines > 0) infoString += ` · ${lines + 1} lines`;
+    } else{
+        if (words && words > 1) 
+            infoString += ` · ${words} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
+    }
     if (configs.showStatsOnCopyButtonHover)
         setTimeout(function () {
             if (copyButton.isConnected)
@@ -178,12 +184,13 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     if (configs.showInfoPanel) {
         infoPanel = document.createElement('div');
         infoPanel.className = 'selecton-info-panel';
-        infoPanel.innerText = infoString;
 
         configs.verticalLayoutTooltip ? tooltip.appendChild(infoPanel) : tooltip.insertBefore(infoPanel, tooltip.children[1]);
         makeTooltipElementDraggable(infoPanel, false);
 
         if (selectedTextIsCode == true) {
+            infoPanel.innerText += ' · code';
+
             // setTimeout(function () {
             //     if (!tooltipIsShown) return;
 
@@ -192,9 +199,10 @@ function setCopyButtonTitle(copyButton, symbols, words) {
             // if (detectedLang && detectedLang !== 'Unknown')
             //     infoPanel.innerText += ' · ' + detectedLang;
             // else
-            infoPanel.innerText += ' · code';
+            // infoPanel.innerText += ' · code';
             // }, 5)
         }
+        infoPanel.innerText = infoString;
     }
 }
 

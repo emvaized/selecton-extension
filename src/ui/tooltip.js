@@ -22,7 +22,7 @@ function createTooltip(e, recreated = false) {
                 // selectedText = selection.toString();
 
                 selectedTextIsCode = false;
-                if (configs.disableWordSnapForCode)
+                if (configs.disableWordSnapForCode || configs.showInfoPanel)
                     for (let i = 0, l = codeMarkers.length; i < l; i++) {
                         if (selectedText.includes(codeMarkers[i])) {
                             selectedTextIsCode = true; break;
@@ -30,9 +30,14 @@ function createTooltip(e, recreated = false) {
                     }
 
                 /// dont snap if selection is modified by drag handle, or if it looks like code
-                if (isDraggingDragHandle == false && selectedTextIsCode == false)
-                    if (domainIsBlacklistedForSnapping == false && e.detail < 2 && (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
-                        snapSelectionByWords(selection);
+                if (isDraggingDragHandle == false && 
+                    selectedTextIsCode == false || !configs.disableWordSnapForCode){
+                        if (domainIsBlacklistedForSnapping == false && 
+                            e.detail < 2 && 
+                            (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                            snapSelectionByWords(selection);
+                    }
+                       
             }
         }
 

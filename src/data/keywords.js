@@ -310,7 +310,11 @@ const filetypesToIgnoreAsDomains = [
     "php",
 ];
 
-/// Search for these keywords to detect if selected text looks like code (in order to disable word snapping)
+/*
+Search for these keywords to detect if selected text looks like code (in order to disable word snapping)
+Another possible solution is to use regex: 
+    const codeRegex = /[;{}()\[\]]|\b(?:function|var|let|const|if|else|for|while|return|switch|case|break)\b|=[^=]|\+\+|--|\+[^+]|-[^-]|\*|\/[^/]|%|&&|\|\||\b\d+\b|["'`].*?["'`]|\/\/.*?$|\/\*.*?\*\//;
+*/
 const codeMarkers = [
     'const ',
     'var ',
@@ -328,6 +332,10 @@ const codeMarkers = [
     `('`,
     `("`,
     `": "`,
+    '[',
+    ']',
+    '//',
+    '/*',
 ];
 
 /// Search for these keywords to detect dates in the selected text
