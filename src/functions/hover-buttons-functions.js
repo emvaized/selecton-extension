@@ -35,7 +35,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.style.visibility = 'collapse';
     panel.style.width = '0px';
     panel.style.pointerEvents = 'none';
-    panel.style.width = 'max-content';
 
     if (initialHtml)
         panel.innerHTML = initialHtml;
