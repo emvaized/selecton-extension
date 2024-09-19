@@ -1,3 +1,11 @@
+### 3.9.1
+- Added experimental option "Always show panel with collapsed buttons"
+- Fixed bug of on-hover indicators not hidden on hover
+- Move option "Hide tooltip on button click" to "Behavior"
+- Improved tooltip behavior and detection for text fields
+- Many under-the-hood fixes and improvements
+- Updated Chinese translations by @YheonYeung
+
 ### 3.9.0
 - Added the "Quote" button, shown when compatibile text area is found on page
 - Most buttons now trigger on mouse-up instead of mouse-down for better compatibility
