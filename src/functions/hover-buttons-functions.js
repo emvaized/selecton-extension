@@ -173,13 +173,19 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             panel.parentNode.classList.add('higher-z-index');
     }
     
-    function checkHoverPanelToOverflowOnRight(panel) {
-        /// check to hover panel overflow on right screen edge
+    function checkHoverPanelHorizontalOverflow(panel) {
         try {
             const panRect = panel.getBoundingClientRect();
-            if (window.innerWidth - panRect.left - (panRect.width * 2) < 0) {
-                panel.style.transform = 'translate(-215%, 0)';
+            /// check overflow on right screen edge
+            const rightOverflow = window.innerWidth - panRect.left - (panRect.width * 2);
+            if (rightOverflow < 0) {
+                if (configs.verticalLayoutTooltip){
+                    panel.style.transform = 'translate(-215%, 0)';
+                }
                 return true;
+            } else if(panRect.left < 0){
+                /// check overflow on left screen edge
+                panel.style.right = `${panRect.left}px`;
             } else return false;
         } catch (e) { return false; }
     }
@@ -194,7 +200,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             panel.style.opacity = 1;
             panel.style.transform = `translate(${dxTransformValue},0)`;
     
-            if (configs.verticalLayoutTooltip) checkHoverPanelToOverflowOnRight(panel);
+            if (configs.verticalLayoutTooltip || staticPanelMode) 
+                checkHoverPanelHorizontalOverflow(panel);
         }, 3);
     
         setTimeout(function () {
