@@ -556,7 +556,7 @@ function addContextualButtons(callbackOnFinish) {
                     const domain = splittedByDots[splittedByDotsLength - 1].split('/')[0], domainLength = domain.length;
                     const includesUrlMarker = selectedText.includes('://');
 
-                    if (includesUrlMarker || ((splittedByDotsLength == 2 || splittedByDotsLength == 3) && domainLength > 1 && domainLength <= 4 && !isStringNumeric(domain))) {
+                    if (includesUrlMarker || ((splittedByDotsLength == 2 || splittedByDotsLength == 3) && domainLength > 1 && domainLength < 4 && !isStringNumeric(domain))) {
 
                         /// Don't recognize if selected text looks like filename
                         for (let i = 0, l = filetypesToIgnoreAsDomains.length; i < l; i++) {
