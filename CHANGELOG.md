@@ -1,6 +1,7 @@
 ### 3.9.1
 - Added experimental option "Always show panel with collapsed buttons"
 - Fixed bug of on-hover indicators not hidden on hover
+- Show lines count on info panel when selecting code
 - Move option "Hide tooltip on button click" to "Behavior"
 - Improved tooltip behavior and detection for text fields
 - Many under-the-hood fixes and improvements
