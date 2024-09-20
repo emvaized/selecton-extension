@@ -53,18 +53,19 @@ function snapSelectionByWords(sel) {
     if (configs.debugMode)
         console.log('Snapping selection by word...');
 
-    if (sel !== null && !sel.isCollapsed) {
-        let selString = sel.toString();
+    if (sel && !sel.isCollapsed) {
+        // let selString = sel.toString();
+        let selString = selectedText;
         let firstSymbolOfSelection = selString[0];
         let lastSymbolOfSelection = selString[selString.length - 1];
         let symbolToCheck;
 
         const endNode = sel.focusNode, endOffset = sel.focusOffset;
-        const initialAnchorNode = sel.anchorNode;
-        const initialStringLength = selString.length;
+        // const initialAnchorNode = sel.anchorNode;
+        // const initialStringLength = selString.length;
 
         // Detect if selection is backwards
-        let range = document.createRange();
+        const range = document.createRange();
         range.setStart(sel.anchorNode, sel.anchorOffset);
         range.setEnd(sel.focusNode, sel.focusOffset);
         const backwards = range.collapsed;
@@ -102,25 +103,25 @@ function snapSelectionByWords(sel) {
         }
 
         /// Selection included unwanted html element at the start - trim it
-        let needToUntrimFirstChar = false, iteratorCounter = 0;
-        const maxCharIterations = 15, maxCharsToCheckNodes = 50;
+        // let needToUntrimFirstChar = false, iteratorCounter = 0;
+        // const maxCharIterations = 15, maxCharsToCheckNodes = 50;
 
-        if (initialStringLength < maxCharsToCheckNodes) { /// don't check nodes if selection length is big enough
-            while (initialAnchorNode != sel.anchorNode) {
-                if (iteratorCounter >= maxCharIterations) break;
-                iteratorCounter += 1;
-                sel.collapse(sel.anchorNode, sel.anchorOffset);
-                sel.modify("move", direction[0], "character");
-                sel.extend(endNode, endOffset);
-                needToUntrimFirstChar = true;
-            }
+        // if (initialStringLength < maxCharsToCheckNodes) { /// don't check nodes if selection length is big enough
+        //     while (initialAnchorNode != sel.anchorNode) {
+        //         if (iteratorCounter >= maxCharIterations) break;
+        //         iteratorCounter += 1;
+        //         sel.collapse(sel.anchorNode, sel.anchorOffset);
+        //         sel.modify("move", direction[0], "character");
+        //         sel.extend(endNode, endOffset);
+        //         needToUntrimFirstChar = true;
+        //     }
 
-            if (needToUntrimFirstChar) {
-                sel.collapse(sel.anchorNode, sel.anchorOffset);
-                sel.modify("move", direction[1], "character");
-                sel.extend(endNode, endOffset);
-            }
-        }
+        //     if (needToUntrimFirstChar) {
+        //         sel.collapse(sel.anchorNode, sel.anchorOffset);
+        //         sel.modify("move", direction[1], "character");
+        //         sel.extend(endNode, endOffset);
+        //     }
+        // }
 
         /// Snap selection by word in the end (if it doesn't end with empty space)
         sel.modify("extend", direction[1], "character");
@@ -129,19 +130,19 @@ function snapSelectionByWords(sel) {
             sel.modify("extend", direction[0], "word");
 
         /// Selection included unwanted html element at the end - trim it
-        if (initialStringLength < maxCharsToCheckNodes) {
-            let shouldUntrimLastCh = false;
-            iteratorCounter = 0;
-            while (endNode != sel.focusNode) {
-                if (iteratorCounter >= maxCharIterations) break;
-                iteratorCounter += 1;
-                shouldUntrimLastCh = true;
-                sel.modify("extend", direction[1], "character");
-            }
-            if (shouldUntrimLastCh) {
-                sel.modify("extend", direction[0], "character");
-            }
-        }
+        // if (initialStringLength < maxCharsToCheckNodes) {
+        //     let shouldUntrimLastCh = false;
+        //     iteratorCounter = 0;
+        //     while (endNode != sel.focusNode) {
+        //         if (iteratorCounter >= maxCharIterations) break;
+        //         iteratorCounter += 1;
+        //         shouldUntrimLastCh = true;
+        //         sel.modify("extend", direction[1], "character");
+        //     }
+        //     if (shouldUntrimLastCh) {
+        //         sel.modify("extend", direction[0], "character");
+        //     }
+        // }
 
         /// Check last symbol after modification
         /// If last symbol is undesirable, trim it
