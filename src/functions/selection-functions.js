@@ -5,19 +5,19 @@
 // atStart: if true, returns coord of the beginning of the selection,
 //          if false, returns coord of the end of the selection
 function getSelectionCoordinates(atStart) {
-    const sel = window.getSelection();
+    const sel = selection ?? window.getSelection();
 
     // check if selection exists
     if (!sel.rangeCount) return null;
 
     // get range
-    let range = sel.getRangeAt(0).cloneRange();
+    const range = sel.getRangeAt(0).cloneRange();
     if (!range.getClientRects) return null;
 
     // get client rect
     range.collapse(atStart);
 
-    let rect = range.getBoundingClientRect();
+    const rect = range.getBoundingClientRect();
 
     // Detect if selection is backwards
     let isBackwards;
@@ -105,7 +105,6 @@ function snapSelectionByWords(sel) {
         /// Selection included unwanted html element at the start - trim it
         // let needToUntrimFirstChar = false, iteratorCounter = 0;
         // const maxCharIterations = 15, maxCharsToCheckNodes = 50;
-
         // if (initialStringLength < maxCharsToCheckNodes) { /// don't check nodes if selection length is big enough
         //     while (initialAnchorNode != sel.anchorNode) {
         //         if (iteratorCounter >= maxCharIterations) break;
@@ -121,6 +120,11 @@ function snapSelectionByWords(sel) {
         //         sel.modify("move", direction[1], "character");
         //         sel.extend(endNode, endOffset);
         //     }
+        // }
+
+        /// Draft for a better version
+        // if (sel.anchorNode.parentNode.tagName != sel.focusNode.parentNode.tagName) {
+        //     sel.modify("extend", direction[0], "word");
         // }
 
         /// Snap selection by word in the end (if it doesn't end with empty space)
@@ -176,29 +180,18 @@ function snapSelectionByWords(sel) {
 }
 
 function getSelectionRectDimensions() {
-    let sel = document.selection, range;
+    let sel, range;
     let width = 0, height = 0;
     let dx = 0, dy = 0;
-    if (sel) {
-        if (sel.type != "Control") {
-            range = sel.createRange();
+    sel = selection ?? window.getSelection();
+    if (sel.rangeCount) {
+        range = sel.getRangeAt(0).cloneRange();
+        if (range.getBoundingClientRect) {
             const rect = range.getBoundingClientRect();
-            width = range.boundingWidth;
-            height = range.boundingHeight;
+            width = rect.right - rect.left;
+            height = rect.bottom - rect.top;
             dx = rect.left;
             dy = rect.top;
-        }
-    } else if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            range = sel.getRangeAt(0).cloneRange();
-            if (range.getBoundingClientRect) {
-                const rect = range.getBoundingClientRect();
-                width = rect.right - rect.left;
-                height = rect.bottom - rect.top;
-                dx = rect.left;
-                dy = rect.top;
-            }
         }
     }
     return { width: width, height: height, dx: dx, dy: dy };
