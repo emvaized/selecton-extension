@@ -3,7 +3,7 @@ function setHoverForSearchButton(searchButton) {
     /// Create search options panel
     let searchPanel = createHoverPanelForButton(searchButton, undefined, undefined, true);
     searchPanel.classList.add('no-padding-tooltip');
-    searchPanel.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
+    searchPanel.style.textAlign = 'start';
 
     /// Generate buttons for panel
     let searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
@@ -13,7 +13,7 @@ function setHoverForSearchButton(searchButton) {
 
     const containerPrototype = document.createElement('a');
     containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
-    containerPrototype.style.textAlign = configs.reverseTooltipButtonsOrder ? 'end' : 'start';
+    containerPrototype.style.textAlign = 'start';
     containerPrototype.className = 'custom-search-image-button';
     if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px';
     const maxIconsInRow = configs.maxIconsInRow;
@@ -48,10 +48,7 @@ function setHoverForSearchButton(searchButton) {
 
                 const labelSpan = document.createElement('span');
                 labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
-                if (configs.reverseTooltipButtonsOrder)
-                    container.insertBefore(labelSpan, imgButton);
-                else
-                    container.appendChild(labelSpan);
+                container.appendChild(labelSpan);
             } else {
                 /// No label in horizontal style
                 imgButton.style.margin = '3px 6px';

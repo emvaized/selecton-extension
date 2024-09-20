@@ -48,15 +48,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     if (reverseOrder) {
         /// specially for the Search button
-        if (configs.reverseTooltipButtonsOrder)
-            panel.style.right = '0px';
-        else
-            panel.style.left = '0px';
+        panel.style.left = '0px';
     } else {
-        if (configs.reverseTooltipButtonsOrder)
-            panel.style.left = '0px';
-        else
-            panel.style.right = '0px';
+        panel.style.right = '0px';
     }
 
     /// Add panel shadow
@@ -66,7 +60,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     /// Checks to execute after panel was added to the DOM
     let dxTransformValue = configs.verticalLayoutTooltip ? '2px' :
-        configs.reverseTooltipButtonsOrder ? (reverseOrder ? '2px' : '-2px') : (reverseOrder ? '-2px' : '2px');
+        (reverseOrder ? '-2px' : '2px');
     let panelOnBottom = false;
 
     setTimeout(function () {

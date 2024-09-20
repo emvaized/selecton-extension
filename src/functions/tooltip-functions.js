@@ -235,10 +235,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
         }
     }
 
-    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
+    tooltip.appendChild(button);
 
     return button;
 }
@@ -264,11 +261,7 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
         }
     }
 
-    if (configs.reverseTooltipButtonsOrder)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
-
+    tooltip.appendChild(button);
     return button;
 }
 
@@ -304,11 +297,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     button.href = url;
     button.target = '_blank';
 
-    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
-
+    tooltip.appendChild(button);
     return button;
 }
 
