@@ -324,7 +324,7 @@ function initMouseListeners() {
           target.type == 'email' || 
           target.type == 'search' || 
           target.type == 'text'
-      )) ||  target.tagName === "TEXTAREA" || target.contenteditable;
+      )) ||  target.tagName === "TEXTAREA" || target.hasAttribute('contenteditable');
 
     if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
       /// Special handling for Firefox 
