@@ -157,7 +157,7 @@ function snapSelectionByWords(sel) {
             case ':': {
                 /// special handling for json keys (like "key": )
                 /// untrim if symbol before : is "
-                if (selString[selString.length - 2] == '"') sel.modify("extend", direction[1], "character");
+                if (selString[selStringLength - 2] == '"') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
         }
