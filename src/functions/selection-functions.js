@@ -54,8 +54,7 @@ function snapSelectionByWords(sel) {
         console.log('Snapping selection by word...');
 
     if (sel && !sel.isCollapsed) {
-        // let selString = sel.toString();
-        let selString = selectedText ?? sel.toString();
+        let selString = sel.toString();
         const initialStringLength = selString.length;
         let firstSymbolOfSelection = selString[0];
         let lastSymbolOfSelection = selString[initialStringLength - 1];
