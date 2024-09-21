@@ -1,3 +1,10 @@
+### 3.9.2
+- Fixed secondary tooltip horizontal overflow on left side
+- Fixed contenteditable detection
+- Optimized code for snapping selection by words
+- Removed no longer maintained option for reverse button order
+- Fixed button count on «More» button not hidden on hover
+
 ### 3.9.1
 - Added experimental option "Always show panel with collapsed buttons"
 - Fixed bug of on-hover indicators not hidden on hover
