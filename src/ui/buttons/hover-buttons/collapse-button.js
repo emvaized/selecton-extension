@@ -24,10 +24,7 @@ function collapseButtons() {
             moreButton.innerText = configs.verticalLayoutTooltip ? '⋯' : '⋮';
 
             /// Show as hover button
-            if (configs.reverseTooltipButtonsOrder)
-                tooltip.insertBefore(moreButton, tooltip.children[2]);
-            else
-                tooltip.appendChild(moreButton);
+            tooltip.appendChild(moreButton);
             collapsedButtonsPanel = createHoverPanelForButton(moreButton, undefined, undefined, false, true, true, false);
 
             /// Show buttons count
@@ -43,22 +40,15 @@ function collapseButtons() {
         collapsedButtonsPanel.classList.add('default-padding-tooltip');
         
         /// Append buttons to panel
-        if (configs.reverseTooltipButtonsOrder) {
-            for (let i = 1; i <= buttonsCount - maxButtons; i++) {
-                if (i == 1) tooltip.children[i].classList.remove('button-with-border');
-                collapsedButtonsPanel.prepend(tooltip.children[i]);
-            }
-        } else {
-            for (let i = buttonsCount; i > maxButtons; i--) {
-                const button = tooltip.children[i];
-                if (!configs.verticalLayoutTooltip && i == (maxButtons * 1) + 1) button.classList.remove('button-with-border');
+        for (let i = buttonsCount; i > maxButtons; i--) {
+            const button = tooltip.children[i];
+            // if (!configs.verticalLayoutTooltip && i == (maxButtons * 1) + 1) button.classList.remove('button-with-border');
 
-                // collapsedButtonsPanel.prepend(button);
-                if (configs.verticalLayoutTooltip)
-                    collapsedButtonsPanel.prepend(button);
-                else {
-                    collapsedButtonsPanel.appendChild(button);
-                }
+            // collapsedButtonsPanel.prepend(button);
+            if (configs.verticalLayoutTooltip)
+                collapsedButtonsPanel.prepend(button);
+            else {
+                collapsedButtonsPanel.appendChild(button);
             }
         }
 

@@ -126,8 +126,8 @@ function setDocumentStyles(){
   document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
 
   /// pop-up buttons border
-  document.documentElement.style.setProperty('--selecton-button-border-left', configs.reverseTooltipButtonsOrder ? 'none' : '1px solid var(--selection-button-background-hover)');
-  document.documentElement.style.setProperty('--selecton-button-border-right', configs.reverseTooltipButtonsOrder ? '1px solid var(--selection-button-background-hover)' : 'none');
+  document.documentElement.style.setProperty('--selecton-button-border-left', '1px solid var(--selection-button-background-hover)');
+  // document.documentElement.style.setProperty('--selecton-button-border-right', 'none');
 
   /// pop-up inner and button inner paddings
   document.documentElement.style.setProperty('--selecton-tooltip-inner-padding', '2px');
@@ -324,7 +324,7 @@ function initMouseListeners() {
           target.type == 'email' || 
           target.type == 'search' || 
           target.type == 'text'
-      )) ||  target.tagName === "TEXTAREA" || target.contenteditable;
+      )) ||  target.tagName === "TEXTAREA" || target.hasAttribute('contenteditable');
 
     if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
       /// Special handling for Firefox 

@@ -32,16 +32,13 @@ function addMarkerButton() {
         colorChooserPanel.style.maxWidth = '500%';
         colorChooserPanel.classList.add('default-padding-tooltip');
 
-        /// Reverse color buttons
-        if (configs.reverseTooltipButtonsOrder) possibleMarkerColors = possibleMarkerColors.reverse();
-
         /// Generate buttons to panel
         for (let i = 0, l = possibleMarkerColors.length; i < l; i++) {
             let selectedColor = possibleMarkerColors[i];
 
             const button = document.createElement('button');
             button.className = 'selection-popup-button';
-            if (configs.showButtonBorders && (!configs.reverseTooltipButtonsOrder && i != 0) || (configs.reverseTooltipButtonsOrder && i != l - 1))
+            if (configs.showButtonBorders)
                 button.classList.add('button-with-border');
 
             const colorCircle = document.createElement('div');

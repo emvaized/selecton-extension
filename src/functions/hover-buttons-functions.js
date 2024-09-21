@@ -32,9 +32,11 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     panel.className = 'hover-vertical-tooltip selecton-entity';
     panel.style.borderRadius = `${configs.useCustomStyle ? configs.borderRadius : 3}px`;
     panel.style.opacity = 0;
-    panel.style.visibility = 'hidden';
+    panel.style.visibility = 'collapse';
     panel.style.width = '0px';
+    // panel.style.display = 'none';
     panel.style.pointerEvents = 'none';
+    panel.style.width = 'max-content';
 
     if (initialHtml)
         panel.innerHTML = initialHtml;
@@ -46,15 +48,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     if (reverseOrder) {
         /// specially for the Search button
-        if (configs.reverseTooltipButtonsOrder)
-            panel.style.right = '0px';
-        else
-            panel.style.left = '0px';
+        panel.style.left = '0px';
     } else {
-        if (configs.reverseTooltipButtonsOrder)
-            panel.style.left = '0px';
-        else
-            panel.style.right = '0px';
+        panel.style.right = '0px';
     }
 
     /// Add panel shadow
@@ -64,7 +60,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     /// Checks to execute after panel was added to the DOM
     let dxTransformValue = configs.verticalLayoutTooltip ? '2px' :
-        configs.reverseTooltipButtonsOrder ? (reverseOrder ? '2px' : '-2px') : (reverseOrder ? '-2px' : '2px');
+        (reverseOrder ? '-2px' : '2px');
     let panelOnBottom = false;
 
     setTimeout(function () {
@@ -172,13 +168,19 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             panel.parentNode.classList.add('higher-z-index');
     }
     
-    function checkHoverPanelToOverflowOnRight(panel) {
-        /// check to hover panel overflow on right screen edge
+    function checkHoverPanelHorizontalOverflow(panel) {
         try {
             const panRect = panel.getBoundingClientRect();
-            if (window.innerWidth - panRect.left - (panRect.width * 2) < 0) {
-                panel.style.transform = 'translate(-215%, 0)';
+            /// check overflow on right screen edge
+            const rightOverflow = window.innerWidth - panRect.left - (panRect.width * 2);
+            if (rightOverflow < 0) {
+                if (configs.verticalLayoutTooltip){
+                    panel.style.transform = 'translate(-215%, 0)';
+                }
                 return true;
+            } else if(panRect.left < 0){
+                /// check overflow on left screen edge
+                panel.style.right = `${panRect.left}px`;
             } else return false;
         } catch (e) { return false; }
     }
@@ -193,7 +195,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             panel.style.opacity = 1;
             panel.style.transform = `translate(${dxTransformValue},0)`;
     
-            if (configs.verticalLayoutTooltip) checkHoverPanelToOverflowOnRight(panel);
+            // if (configs.verticalLayoutTooltip || staticPanelMode) 
+                checkHoverPanelHorizontalOverflow(panel);
         }, 3);
     
         setTimeout(function () {
@@ -210,7 +213,8 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         setTimeout(function () {
             if (!panel || !tooltipIsShown) return;
             panel.style.width = '0';
-            panel.style.visibility = 'hidden';
+            panel.style.visibility = 'collapse';
+            // panel.style.display = 'none';
     
         }, configs.animationDuration);
     }

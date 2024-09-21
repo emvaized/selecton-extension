@@ -61,7 +61,7 @@ const configs = {
     'maxIconsInRow': 5,
     'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': true,
-    'reverseTooltipButtonsOrder': false,
+    // 'reverseTooltipButtonsOrder': false,
     'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
     'invertColorOnDarkWebsite': true,

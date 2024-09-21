@@ -154,7 +154,8 @@ function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     // setTimeout(function () {
     const children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
     const childrenLength = children.length;
-    if (children[1]) {
+    // if (children[1]) {
+    if (childrenLength > 1) {
         const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
         children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
         children[childrenLength - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
@@ -235,10 +236,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
         }
     }
 
-    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
+    tooltip.appendChild(button);
 
     return button;
 }
@@ -264,11 +262,7 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
         }
     }
 
-    if (configs.reverseTooltipButtonsOrder)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
-
+    tooltip.appendChild(button);
     return button;
 }
 
@@ -304,11 +298,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     button.href = url;
     button.target = '_blank';
 
-    if (configs.reverseTooltipButtonsOrder && isFirstButton == false)
-        tooltip.insertBefore(button, tooltip.children[1]);
-    else
-        tooltip.appendChild(button);
-
+    tooltip.appendChild(button);
     return button;
 }
 
