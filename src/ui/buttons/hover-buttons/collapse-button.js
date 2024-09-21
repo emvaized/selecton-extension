@@ -42,7 +42,7 @@ function collapseButtons() {
         /// Append buttons to panel
         for (let i = buttonsCount; i > maxButtons; i--) {
             const button = tooltip.children[i];
-            if (!configs.verticalLayoutTooltip && i == (maxButtons * 1) + 1) button.classList.remove('button-with-border');
+            // if (!configs.verticalLayoutTooltip && i == (maxButtons * 1) + 1) button.classList.remove('button-with-border');
 
             // collapsedButtonsPanel.prepend(button);
             if (configs.verticalLayoutTooltip)

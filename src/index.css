@@ -207,14 +207,20 @@
   display: inline;
 }
 
-.button-with-border {
+/* .button-with-border {
   border-left: var(--selecton-button-border-left) !important;
   border-right: var(--selecton-button-border-right) !important;
+} */
+.selection-tooltip .button-with-border:not(:first-child) {
+  border-left: var(--selecton-button-border-left) !important;
 }
 
-.hover-vertical-tooltip .button-with-border {
+/* .hover-vertical-tooltip .button-with-border {
   border-right: var(--selecton-button-border-left) !important;
   border-left: var(--selecton-button-border-right) !important;
+} */
+.hover-vertical-tooltip .button-with-border:not(:first-child) {
+  border-left: var(--selecton-button-border-left) !important;
 }
 
 /* Highter z-index for search tooltip on bottom */
@@ -423,13 +429,13 @@
   max-height: fit-content !important;
 }
 
-.selection-tooltip.vertical-layout-tooltip .button-with-border {
+.selection-tooltip.vertical-layout-tooltip .button-with-border:not(:first-child) {
   border-left: none !important;
   border-right: none !important;
   border-top: 1px solid var(--selection-button-background-hover) !important;
 }
 
-.selection-tooltip.vertical-layout-tooltip.reversed-order .button-with-border {
+.selection-tooltip.vertical-layout-tooltip.reversed-order > .button-with-border {
   border-top: unset !important;
   border-bottom: 1px solid var(--selection-button-background-hover) !important;
 }
