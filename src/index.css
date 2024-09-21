@@ -21,7 +21,7 @@
   /* backdrop-filter: blur(5px) !important; */
 }
 
-/* Blur experiments */
+/* Background blur experiments */
 /* .selection-tooltip::before {
   content: '';
   position: absolute;
@@ -207,18 +207,10 @@
   display: inline;
 }
 
-/* .button-with-border {
-  border-left: var(--selecton-button-border-left) !important;
-  border-right: var(--selecton-button-border-right) !important;
-} */
 .selection-tooltip .button-with-border:not(:first-child) {
   border-left: var(--selecton-button-border-left) !important;
 }
 
-/* .hover-vertical-tooltip .button-with-border {
-  border-right: var(--selecton-button-border-left) !important;
-  border-left: var(--selecton-button-border-right) !important;
-} */
 .hover-vertical-tooltip .button-with-border:not(:first-child) {
   border-left: var(--selecton-button-border-left) !important;
 }
