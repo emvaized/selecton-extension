@@ -1,3 +1,8 @@
+- ### 3.9.3
+- Fix for drag handles not working in recent versions of Chrome
+- Improved keywords for code detection
+- Added missing translations for "lines" label
+
 ### 3.9.2
 - Fixed secondary tooltip horizontal overflow on left side
 - Fixed contenteditable detection
