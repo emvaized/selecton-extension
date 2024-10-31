@@ -284,7 +284,7 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY, handleIndex)
     } else {
         if (typeof doc.caretPositionFromPoint != "undefined") {
             start = doc.caretPositionFromPoint(startX - 2, startY);
-            end = doc.caretPositionFromPoint(endX, endY);
+            end = doc.caretPositionFromPoint(endX - 2, endY);
             range = doc.createRange();
             // range.setStart(start.offsetNode, start.offset);
             // range.setEnd(end.offsetNode, end.offset);
