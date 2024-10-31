@@ -316,6 +316,9 @@
     "leftClickBackgroundTab": {
         "message": "Linksklick öffnet Link als Hintergrund-Tab"
     },
+    "linesCount": {
+        "message": "Zeilen"
+    },
     "linkToTextDescription": {
         "message": "Kopieren Sie den Seitenlink und zeigen auf den Text (öffnet sich in Chrome 90+)"
     },

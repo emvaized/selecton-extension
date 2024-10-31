@@ -331,6 +331,9 @@
   "leftClickBackgroundTab": {
     "message": "左鍵點擊打開連結作為背景頁籤"
   },
+  "linesCount": {
+    "message": "行"
+  },
   "linkToTextDescription": {
     "message": "複製指向所選文字的頁面連結 (僅在 Chrome 90+ 中打開)"
   },

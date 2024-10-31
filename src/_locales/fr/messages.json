@@ -322,6 +322,9 @@
     "leftClickBackgroundTab": {
         "message": "Le clic gauche ouvre le lien comme onglet d'arrière-plan"
     },
+    "linesCount": {
+        "message": "Lignes"
+    },
     "linkToTextDescription": {
         "message": "Copier le lien de la page pointant vers le texte (s'ouvre dans Chrome 90+)"
     },

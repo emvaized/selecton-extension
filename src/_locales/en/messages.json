@@ -331,6 +331,9 @@
   "leftClickBackgroundTab": {
     "message": "Left click opens link as background tab"
   },
+  "linesCount": {
+    "message": "Lines"
+  },
   "linkToTextDescription": {
     "message": "Copy page link pointing to the selected text (opens only in Chrome 90+)"
   },

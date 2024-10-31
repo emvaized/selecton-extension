@@ -322,6 +322,9 @@
     "leftClickBackgroundTab": {
         "message": "Sol tıklama, bağlantıyı arka plan sekmesi olarak açar"
     },
+    "linesCount": {
+        "message": "Satır"
+    },
     "linkToTextDescription": {
         "message": "Seçilen metne işaret eden sayfa linki (yalnızca Chrome 90+'da açılır)"
     },

@@ -269,6 +269,9 @@
     "leftClickBackgroundTab": {
         "message": "Clique esquerdo abre o link como guia de fundo"
     },
+    "linesCount": {
+        "message": "Linhas"
+    },
     "linkToTextDescription": {
         "message": "Link da página de cópia apontando para o texto selecionado (abre apenas no Chrome 90+)"
     },

@@ -322,6 +322,9 @@
     "leftClickBackgroundTab": {
         "message": "El clic izquierdo abre el enlace como pestaña de fondo"
     },
+    "linesCount": {
+        "message": "Líneas"
+    },
     "linkToTextDescription": {
         "message": "Copiar enlace de página apuntando al texto seleccionado (se abre solo en Chrome 90+)"
     },

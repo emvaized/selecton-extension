@@ -331,6 +331,9 @@
     "leftClickBackgroundTab": {
         "message": "Щелчок левой кнопкой открывает в фоновой вкладке"
     },
+    "linesCount": {
+        "message": "Строк"
+    },
     "linkToTextDescription": {
         "message": "Копировать ссылку на выделение (откроется только в Chrome 90+)"
     },

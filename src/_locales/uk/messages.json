@@ -316,6 +316,9 @@
     "leftClickBackgroundTab": {
         "message": "Лівий клік відкриває у фоновій вкладці"
     },
+    "linesCount": {
+        "message": "Ліній"
+    },
     "linkToTextDescription": {
         "message": "Копiювати посилання на текст (відкриється лише в Chrome 90+)"
     },
