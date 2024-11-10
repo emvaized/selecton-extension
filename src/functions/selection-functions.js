@@ -112,7 +112,7 @@ function snapSelectionByWords(sel) {
                 iteratorCounter += 1;
                 sel.modify("move", direction[0], "character");
             }
-            sel.modify("move", direction[0], "character");
+            sel.modify("move", direction[1], "character");
             sel.extend(endNode, endOffset);
         }
 
