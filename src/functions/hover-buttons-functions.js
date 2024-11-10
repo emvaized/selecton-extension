@@ -25,7 +25,7 @@ function hideHoverIndicator(indicator) {
 function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverseOrder = false, revealAfterDelay = true, pinOnClick = false, unknownHeight = true, staticPanelMode = false) {
     let timerToRemovePanel, timeoutToRevealPanel;
     let hoverIndicator = revealAfterDelay ? addAstrixToHoverButton(button) : undefined;
-    const staticPanelVerticalShift = configs.showInfoPanel ? '110%' : '112%';
+    const staticPanelVerticalShift = configs.showInfoPanel ? '107%' : '112%';
 
     /// Set panel
     let panel = document.createElement('div');
