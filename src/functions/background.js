@@ -13,10 +13,14 @@ chrome.runtime.onMessage.addListener(
             return true;
         } else if (request.type == 'check_currencies') {
             fetchCurrencyRates(request.debugMode, request.currenciesList);
+        } else if (request.type == 'background_fetch') {
+            backgroundFetch(request.url, function(result){
+                sendResponse(result);
+            });
+            return true;
         }
     }
 );
-
 
 /// Show notification on extension update
 chrome.runtime.onInstalled.addListener(function (details) {
@@ -178,4 +182,17 @@ async function fetchCurrencyRates(debugMode, currenciesList) {
     }
 
     isUpdating = false;
+}
+
+async function backgroundFetch(url, callback){
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        callback(data);
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
 }

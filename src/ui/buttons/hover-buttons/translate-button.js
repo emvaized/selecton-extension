@@ -105,72 +105,77 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
     let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
 
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(word)}`;
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = "json";
-    xhr.open("GET", url);
-    xhr.send();
+    // const xhr = new XMLHttpRequest();
+    // xhr.responseType = "json";
+    // xhr.open("GET", url);
+    // xhr.send();
 
-    let result = await new Promise((resolve, reject) => {
-        xhr.onload = () => {
-            resolve(xhr);
-        };
-        xhr.onerror = () => {
-            resolve(xhr);
-        };
+    // let result = await new Promise((resolve, reject) => {
+    //     xhr.onload = () => {
+    //         resolve(xhr);
+    //     };
+    //     xhr.onerror = () => {
+    //         resolve(xhr);
+    //     };
+    // });
+
+    chrome.runtime.sendMessage({ type: 'background_fetch', url: url }, (response) => {
+        let result = response;
+
+        if (configs.debugMode) {
+            console.log('Response from Google Translate:');
+            console.log(result);
+        }
+    
+        if (!result) {
+            liveTranslationPanel.innerText = noTranslationLabel;
+            return;
+        }
+    
+        let resultOfLiveTranslation;
+        let originLanguage;
+    
+        try {
+            resultOfLiveTranslation = result.dict[0].terms[0];
+        } catch (e) {
+            // resultOfLiveTranslation = result.response.sentences[0].trans;
+            resultOfLiveTranslation = '';
+            result.sentences.forEach(function (sentenceObj) {
+                resultOfLiveTranslation += sentenceObj.trans;
+            })
+        }
+    
+        try {
+            originLanguage = result.src;
+        } catch (e) { }
+    
+        /// Set translation view
+        if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
+            // if (resultOfLiveTranslation.length > maxLengthForResult)
+            //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
+    
+            liveTranslationPanel.innerText = resultOfLiveTranslation;
+            liveTranslationPanel.classList.add('selecton-live-translation');
+    
+            // setTimeout(function () {
+            //     /// check if panel goes off-screen on top
+            //     checkHoverPanelToOverflowOnTop(liveTranslationPanel);
+            // }, 3);
+    
+            /// Create origin language label
+            let originLabelWidth = configs.fontSize / 1.5;
+            let originLabelPadding = 3.5;
+            let langLabel;
+            if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
+                langLabel = document.createElement('span');
+                langLabel.textContent = originLanguage;
+                langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
+                liveTranslationPanel.appendChild(langLabel);
+            }
+        } else {
+            /// no translation found
+            liveTranslationPanel.innerHTML = noTranslationLabel;
+        }
     });
 
-    if (configs.debugMode) {
-        console.log('Response from Google Translate:');
-        console.log(result);
-    }
-
-    if (result.response == null) {
-        liveTranslationPanel.innerText = noTranslationLabel;
-        return;
-    }
-
-    let resultOfLiveTranslation;
-    let originLanguage;
-
-    try {
-        resultOfLiveTranslation = result.response.dict[0].terms[0];
-    } catch (e) {
-        // resultOfLiveTranslation = result.response.sentences[0].trans;
-        resultOfLiveTranslation = '';
-        result.response.sentences.forEach(function (sentenceObj) {
-            resultOfLiveTranslation += sentenceObj.trans;
-        })
-    }
-
-    try {
-        originLanguage = result.response.src;
-    } catch (e) { }
-
-    /// Set translation view
-    if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
-        // if (resultOfLiveTranslation.length > maxLengthForResult)
-        //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
-
-        liveTranslationPanel.innerText = resultOfLiveTranslation;
-        liveTranslationPanel.classList.add('selecton-live-translation');
-
-        // setTimeout(function () {
-        //     /// check if panel goes off-screen on top
-        //     checkHoverPanelToOverflowOnTop(liveTranslationPanel);
-        // }, 3);
-
-        /// Create origin language label
-        let originLabelWidth = configs.fontSize / 1.5;
-        let originLabelPadding = 3.5;
-        let langLabel;
-        if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
-            langLabel = document.createElement('span');
-            langLabel.textContent = originLanguage;
-            langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
-            liveTranslationPanel.appendChild(langLabel);
-        }
-    } else {
-        /// no translation found
-        liveTranslationPanel.innerHTML = noTranslationLabel;
-    }
 }
