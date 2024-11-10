@@ -76,7 +76,7 @@ const configs = {
     'convertResultClickAction': 'search', /// Possible values: 'copy', 'search'
     'delayToRevealSearchTooltip': 350,
     'delayToRevealTranslateTooltip': 550,
-    'delayToRevealHoverPanels': 500,
+    'delayToRevealHoverPanels': 650,
     'showDictionaryButton': true,
     'showDotForHoverButtons': true,
     'collapseButtons': true,
