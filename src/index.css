@@ -95,6 +95,7 @@
   font-size: var(--selecton-font-size) !important;
   line-height: 1.2 !important;
   position: relative;
+  vertical-align: top !important;
 }
 
 .tooltip-with-icons .selection-popup-button span {
