@@ -1,5 +1,6 @@
 
 function addBasicTooltipButtons(layout) {
+    // TODO: Provide option to use regular butttons instead; add text format buttons as one button 
     if (layout == 'textfield') {
         const textField = document.activeElement;
         const isContentEditable = textField.getAttribute('contenteditable') !== null;
@@ -140,6 +141,7 @@ function addBasicTooltipButtons(layout) {
         }
 
         /// Add copy button
+        /// TODO: Add option to copy plain text 
         copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
             document.execCommand('copy');
             // removeSelectionOnPage();
