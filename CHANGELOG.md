@@ -1,3 +1,9 @@
+### 3.9.4
+- Fix for snapping selection by words losing few leters sometimes
+- Fix for Translate and Dictionary on-hover popups not working in Firefox
+- Increased default delay to reveal on-hover popups for less false detections
+- Other small fixes and improvements
+
 ### 3.9.3
 - Fix for drag handles not working in recent versions of Chrome
 - Improved keywords for code detection
