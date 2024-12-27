@@ -4,6 +4,7 @@ const configs = {
     'convertMetrics': true,
     'addOpenLinks': true,
     'addPasteButton': true,
+    'addExtendSelectionButton': true,
     'convertCurrencies': true,
     'convertTime': true,
     'performSimpleMathOperations': false,

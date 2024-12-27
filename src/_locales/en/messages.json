@@ -20,6 +20,9 @@
   "addColorPreviewButton": {
     "message": "Add color preview button (for CSS colors like #ffffff)"
   },
+  "addExtendSelectionButton": {
+    "message": "Add button to extend current text selection"
+  },
   "addDragHandles": {
     "message": "Add selection drag handles"
   },

@@ -17,3 +17,4 @@ const clearIcon = chrome.runtime.getURL('assets/icons/button-icons/clear.svg');
 const linkIcon = chrome.runtime.getURL('assets/icons/button-icons/link.svg');
 const calendarIcon = chrome.runtime.getURL('assets/icons/button-icons/calendar.svg');
 const quoteIcon = chrome.runtime.getURL('assets/icons/button-icons/quote.svg');
+const extendSelectionIcon = chrome.runtime.getURL('assets/icons/button-icons/extend-selection.svg');

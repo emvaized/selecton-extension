@@ -34,8 +34,11 @@ function createTooltip(e, recreated = false) {
                     (selectedTextIsCode == false || !configs.disableWordSnapForCode)){
                         if (domainIsBlacklistedForSnapping == false && 
                             e.detail < 2 && 
-                            (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined))
+                            (timerToRecreateOverlays == null || timerToRecreateOverlays == undefined) &&
+                            e.target.id !== 'selecton-extend-selection-button' && (!e.target.parentNode || e.target.parentNode.id !== 'selecton-extend-selection-button')
+                        ) {
                             snapSelectionByWords(selection);
+                        }
                     }
                        
             }
