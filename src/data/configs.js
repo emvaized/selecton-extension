@@ -17,7 +17,7 @@ const configs = {
     'tooltipOpacity': 1.0,
     'addTooltipShadow': false,
     'shadowOpacity': 0.5,
-    'borderRadius': 3,
+    'borderRadius': 4,
     'changeTextSelectionColor': false,
     'textSelectionBackground': '#338FFF',
     'textSelectionColor': '#ffffff',
