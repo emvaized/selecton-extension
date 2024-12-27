@@ -105,7 +105,7 @@ function createTooltip(e, recreated = false) {
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
                     setTimeout(function () {
-                        if (configs.secondaryTooltipEnabled && configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+                        if (configs.secondaryTooltipEnabled && configs.customSearchButtons)
                             setHoverForSearchButton(searchButton);
                     }, 5);
 
