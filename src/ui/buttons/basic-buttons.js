@@ -123,7 +123,7 @@ function addBasicTooltipButtons(layout) {
 
         /// Populate panel with custom search buttons, when enabled
         if (configs.customSearchOptionsDisplay == 'panelCustomSearchStyle') {
-            if (configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+            if (configs.customSearchButtons)
                 for (var i = 0, l = configs.customSearchButtons.length; i < l; i++) {
                     const item = configs.customSearchButtons[i];
 
