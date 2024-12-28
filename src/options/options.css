@@ -240,6 +240,12 @@ content: "\2212";
   background: red;
 }
 
+.header-icon {
+  vertical-align: sub;
+  margin-right: 8px;
+  opacity: 0.65;
+}
+
 /* 'What's new' button color */
 #selecton-version a { color: #55b5ff !important; text-decoration: none; }
 
@@ -311,5 +317,9 @@ content: "\2212";
 
     .option:hover {
       background-color: rgb(256, 256, 256, 0.1);
+    }
+
+    .header-icon {
+      filter: invert(100%);
     }
  }
