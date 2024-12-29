@@ -1,3 +1,11 @@
+### 3.9.5
+- Added icons to options page headers for easier navigation
+- Added new button which extends text selection one level up in the elements tree
+- Updated marker (highlighter) icon to look more like an actual highlighter
+- Changed default border radius of the popup to 4px
+- Changed extension name to "SelectON" for better visibility
+- Optimized svg icons for smaller size of the files
+
 ### 3.9.4
 - Fix for snapping selection by words losing few leters sometimes
 - Fix for Translate and Dictionary on-hover popups not working in Firefox
