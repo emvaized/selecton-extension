@@ -728,6 +728,21 @@ function addContextualButtons(callbackOnFinish) {
             copyTextLinkBtn.title = chrome.i18n.getMessage('linkToTextDescription');
         }
 
+        /// Add button to expand text selection
+        if (configs.addExtendSelectionButton){
+            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, function() {
+                const s = window.getSelection(), range = document.createRange();
+                const parentNode = s.anchorNode !== s.focusNode ? s.anchorNode.parentNode.parentNode : s.anchorNode.parentNode;
+                range.selectNodeContents(parentNode);
+                setTimeout(function(){
+                    s.removeAllRanges();
+                    s.addRange(range);
+                }, 0)
+            });
+            extendSelectionBtn.title = 'Expand selection one level up in the elements tree';
+            extendSelectionBtn.id = 'selecton-extend-selection-button';
+        }
+
         /// Collapse exceeding buttons under 'more' hover button
         if (configs.collapseButtons)
             collapseButtons();

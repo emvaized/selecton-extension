@@ -123,7 +123,7 @@ function setDocumentStyles(){
   document.documentElement.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
 
   /// Set border radius
-  document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 3}px`);
+  document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 4}px`);
 
   /// pop-up buttons border
   document.documentElement.style.setProperty('--selecton-button-border-left', '1px solid var(--selection-button-background-hover)');

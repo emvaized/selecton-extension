@@ -229,6 +229,9 @@
     "extensionDescription": {
         "message": "Ventana emergente personalizable con acciones en la selección de texto"
     },
+    "extendSelection": {
+        "message": "Extender"
+    },
     "fallbackExportLabel": {
         "message": "Para exportar, guardar como .json"
     },
@@ -484,7 +487,7 @@
         "message": "Selección de texto"
     },
     "selectonSettings": {
-        "message": "Selecton configuración"
+        "message": "SelectON configuración"
     },
     "shadowOpacity": {
         "message": "Opacidad de la sombra"

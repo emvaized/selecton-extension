@@ -238,21 +238,23 @@ function setImportExportButtons() {
 
 function setTranslatedLabels() {
     /// Set translated headers
-    document.querySelector("#importSettingsLabel").innerText = chrome.i18n.getMessage("importSettingsLabel");
-    document.querySelector("#exportSettingsLabel").innerText = chrome.i18n.getMessage("exportSettingsLabel");
-    document.querySelector("#exportSettingsNote").innerText = chrome.i18n.getMessage("exportSettingsNote");
-    document.querySelector("#dictionaryButtonRemark").innerText = chrome.i18n.getMessage("dictionaryButtonRemark");
-    document.querySelector("#appearanceHeader").innerText = chrome.i18n.getMessage("appearanceHeader");
-    document.querySelector("#behaviorHeader").innerText = chrome.i18n.getMessage("behaviorHeader");
-    document.querySelector("#convertionHeader").innerText = chrome.i18n.getMessage("convertionHeader");
-    document.querySelector("#actionButtonsHeader").innerText = chrome.i18n.getMessage("contextualButtonsHeader");
-    document.querySelector("#customSearchTooltip").innerText = chrome.i18n.getMessage("customSearchTooltip");
+    document.querySelector("#importSettingsLabel").innerHTML += chrome.i18n.getMessage("importSettingsLabel");
+    document.querySelector("#exportSettingsLabel").innerHTML += chrome.i18n.getMessage("exportSettingsLabel");
+    document.querySelector("#exportSettingsNote").innerHTML += chrome.i18n.getMessage("exportSettingsNote");
+    document.querySelector("#dictionaryButtonRemark").innerHTML += chrome.i18n.getMessage("dictionaryButtonRemark");
+    document.querySelector("#appearanceHeader").innerHTML += chrome.i18n.getMessage("appearanceHeader");
+    document.querySelector("#behaviorHeader").innerHTML += chrome.i18n.getMessage("behaviorHeader");
+    document.querySelector("#highlightHeader").innerHTML += chrome.i18n.getMessage("markersLabel");
+    document.querySelector("#textFieldsHeader").innerHTML += chrome.i18n.getMessage("textFieldsHeader");
+    document.querySelector("#convertionHeader").innerHTML += chrome.i18n.getMessage("convertionHeader");
+    document.querySelector("#actionButtonsHeader").innerHTML += chrome.i18n.getMessage("contextualButtonsHeader");
+    document.querySelector("#selectionHeader").innerHTML += chrome.i18n.getMessage("selectionHeader");
+    document.querySelector("#customSearchTooltip").innerHTML += chrome.i18n.getMessage("customSearchTooltip");
+    document.querySelector("#exportImportSettings").innerHTML += chrome.i18n.getMessage("exportImportSettings");
+
     // document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint").replaceAll('<br/>', '<br/> •  ');
     document.querySelector("#customSearchTooltipHint").innerHTML = chrome.i18n.getMessage("customSearchTooltipHint");
-    document.querySelector("#selectionHeader").innerText = chrome.i18n.getMessage("selectionHeader");
     document.querySelector("#customSearchButtonsHeader").innerText = chrome.i18n.getMessage("customSearchButtonsHeader");
-    document.querySelector("#highlightHeader").innerText = chrome.i18n.getMessage("markersLabel");
-    document.querySelector("#textFieldsHeader").innerText = chrome.i18n.getMessage("textFieldsHeader");
     document.querySelector("#addActionButtonsForTextFields").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.querySelector("#liveTranslation").parentNode.parentNode.setAttribute('title', chrome.i18n.getMessage("disableForBetterPerformance"));
     document.getElementById('recentMarkersLabel').innerText = chrome.i18n.getMessage('recentMarkersLabel');
@@ -287,7 +289,6 @@ function setTranslatedLabels() {
 
     document.querySelector("#exportSettings").innerHTML = chrome.i18n.getMessage("export");
     document.querySelector("#importSettingsButton").innerHTML = chrome.i18n.getMessage("import");
-    document.querySelector("#exportImportSettings").innerText = chrome.i18n.getMessage("exportImportSettings");
 }
 
 function setVersionLabel() {

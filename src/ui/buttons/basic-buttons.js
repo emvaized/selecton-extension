@@ -1,5 +1,6 @@
 
 function addBasicTooltipButtons(layout) {
+    // TODO: Provide option to use regular butttons instead; add text format buttons as one button 
     if (layout == 'textfield') {
         const textField = document.activeElement;
         const isContentEditable = textField.getAttribute('contenteditable') !== null;
@@ -122,7 +123,7 @@ function addBasicTooltipButtons(layout) {
 
         /// Populate panel with custom search buttons, when enabled
         if (configs.customSearchOptionsDisplay == 'panelCustomSearchStyle') {
-            if (configs.customSearchButtons !== null && configs.customSearchButtons !== undefined && configs.customSearchButtons !== [])
+            if (configs.customSearchButtons)
                 for (var i = 0, l = configs.customSearchButtons.length; i < l; i++) {
                     const item = configs.customSearchButtons[i];
 
@@ -140,6 +141,7 @@ function addBasicTooltipButtons(layout) {
         }
 
         /// Add copy button
+        /// TODO: Add option to copy plain text 
         copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
             document.execCommand('copy');
             // removeSelectionOnPage();

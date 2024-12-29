@@ -220,6 +220,9 @@
     "exportSettingsNote": {
         "message": "Wenn die Schaltfläche „Exportieren“ nicht funktioniert, versuchen Sie, diese Seite mithilfe der Schaltfläche in der oberen rechten Ecke in einem neuen Tab zu öffnen"
     },
+    "extendSelection": {
+        "message": "Mehr auswählen"
+    },
     "extensionDescription": {
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl"
     },
@@ -478,7 +481,7 @@
         "message": "Textauswahl"
     },
     "selectonSettings": {
-        "message": "Selecton Einstellungen"
+        "message": "SelectON Einstellungen"
     },
     "shadowOpacity": {
         "message": "Schattenopazität"

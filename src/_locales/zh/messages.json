@@ -232,6 +232,9 @@
   "exportSettingsNote": {
     "message": "如果匯出按鈕不起作用，請嘗試使用右上角的按鈕在新頁籤中打開此頁面"
   },
+  "extendSelection": {
+    "message": "扩展选区"
+  },
   "extensionDescription": {
     "message": "帶有文字選擇操作的可自訂彈出視窗"
   },
@@ -493,7 +496,7 @@
     "message": "文字選擇"
   },
   "selectonSettings": {
-    "message": "Selecton 設定"
+    "message": "SelectON 設定"
   },
   "shadowOpacity": {
     "message": "陰影不透明度"

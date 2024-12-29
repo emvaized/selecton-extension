@@ -214,6 +214,9 @@
     "export": {
         "message": "İhracat"
     },
+    "extendSelection": {
+        "message": "Uzatmak"
+    },
     "exportImportSettings": {
         "message": "Dışa/içe aktarma ayarları"
     },
@@ -481,7 +484,7 @@
         "message": "Metin seçimi"
     },
     "selectonSettings": {
-        "message": "Selecton ayarları"
+        "message": "SelectON ayarları"
     },
     "shadowOpacity": {
         "message": "Gölge opaklığı"

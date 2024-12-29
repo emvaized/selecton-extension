@@ -206,6 +206,9 @@
     "exportSettingsNote": {
         "message": "Se o botão de exportação não estiver a funcionar, tente abrir esta página num novo separador utilizando o botão no canto superior direito"
     },
+    "extendSelection": {
+        "message": "Estender"
+    },
     "extensionDescription": {
         "message": "Pop-up personalizável com ações na seleção de texto"
     },
@@ -417,7 +420,7 @@
         "message": "Seleção de texto"
     },
     "selectonSettings": {
-        "message": "Selecton configurações"
+        "message": "SelectON configurações"
     },
     "shadowOpacity": {
         "message": "Opacidade da sombra"

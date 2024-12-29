@@ -232,6 +232,9 @@
     "exportSettingsNote": {
         "message": "Если кнопка экспорта не работает, попробуйте открыть эту страницу в новой вкладке с помощью кнопки в правом верхнем углу"
     },
+    "extendSelection": {
+        "message": "Расширить"
+    },
     "extensionDescription": {
         "message": "Всплывающая панель с действиями при выделении текста"
     },
@@ -493,7 +496,7 @@
         "message": "Выделение текста"
     },
     "selectonSettings": {
-        "message": "Настройки Selecton"
+        "message": "Настройки SelectON"
     },
     "shadowOpacity": {
         "message": "Прозрачность тени"
