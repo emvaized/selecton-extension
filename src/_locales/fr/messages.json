@@ -226,6 +226,9 @@
     "exportSettingsNote": {
         "message": "Si le bouton d'exportation ne fonctionne pas, essayez d'ouvrir cette page dans un nouvel onglet à l'aide du bouton dans le coin supérieur droit"
     },
+    "extendSelection": {
+        "message": "Étendre"
+    },
     "extensionDescription": {
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte"
     },

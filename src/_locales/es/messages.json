@@ -229,6 +229,9 @@
     "extensionDescription": {
         "message": "Ventana emergente personalizable con acciones en la selección de texto"
     },
+    "extendSelection": {
+        "message": "Extender"
+    },
     "fallbackExportLabel": {
         "message": "Para exportar, guardar como .json"
     },

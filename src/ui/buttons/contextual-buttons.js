@@ -730,7 +730,7 @@ function addContextualButtons(callbackOnFinish) {
 
         /// Add button to expand text selection
         if (configs.addExtendSelectionButton){
-            const extendSelectionBtn = addBasicTooltipButton('Select more', extendSelectionIcon, function() {
+            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, function() {
                 const s = window.getSelection(), range = document.createRange();
                 const parentNode = s.anchorNode !== s.focusNode ? s.anchorNode.parentNode.parentNode : s.anchorNode.parentNode;
                 range.selectNodeContents(parentNode);
