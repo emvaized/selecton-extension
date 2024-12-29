@@ -599,7 +599,7 @@
         "message": "Cliquez ici pour voir les nouveautés"
     },
     "updateNotificationTitle": {
-        "message": "Selecton a été mis à jour à $VERSION$",
+        "message": "SelectON a été mis à jour à $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

@@ -607,7 +607,7 @@
     "message": "點擊此處查看新功能"
   },
   "updateNotificationTitle": {
-    "message": "Selecton 已更新為 $VERSION$",
+    "message": "SelectON 已更新為 $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",

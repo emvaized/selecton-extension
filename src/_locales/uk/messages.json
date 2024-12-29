@@ -589,7 +589,7 @@
         "message": "Клікніть тут, щоб побачити що нового"
     },
     "updateNotificationTitle": {
-        "message": "Selecton оновлено до $VERSION$",
+        "message": "SelectON оновлено до $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

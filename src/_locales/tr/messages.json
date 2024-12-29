@@ -592,7 +592,7 @@
         "message": "Yenilikleri görmek için buraya tıklayın"
     },
     "updateNotificationTitle": {
-        "message": "Selecton $VERSION$ olarak güncellendi",
+        "message": "SelectON $VERSION$ olarak güncellendi",
         "placeholders": {
             "version": {
                 "content": "$1",

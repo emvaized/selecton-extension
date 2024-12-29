@@ -607,7 +607,7 @@
         "message": "Кликните здесь, чтобы узнать что нового"
     },
     "updateNotificationTitle": {
-        "message": "Selecton обновился до $VERSION$",
+        "message": "SelectON обновился до $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

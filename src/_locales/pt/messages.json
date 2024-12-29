@@ -525,7 +525,7 @@
         "message": "Clique aqui para ver o que há de novo"
     },
     "updateNotificationTitle": {
-        "message": "Selecton foi atualizado para $VERSION$",
+        "message": "SelectON foi atualizado para $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

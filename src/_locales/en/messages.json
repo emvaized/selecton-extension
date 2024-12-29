@@ -610,7 +610,7 @@
     "message": "Click here to see what's new"
   },
   "updateNotificationTitle": {
-    "message": "Selecton was updated to $VERSION$",
+    "message": "SelectON was updated to $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",

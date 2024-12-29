@@ -586,7 +586,7 @@
     "message": "Klik hier om het wijzigingslog te bekijken"
   },
   "updateNotificationTitle": {
-    "message": "Selecton is bijgewerkt naar versie $VERSION$",
+    "message": "SelectON is bijgewerkt naar versie $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",
