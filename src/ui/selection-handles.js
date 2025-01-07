@@ -22,7 +22,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     if (selection == null || selection == undefined) return;
 
-    const lineWidth = 2.25, circleHeight = 12.5, verticalOffsetCorrection = -1.5;
+    const lineWidth = 2.25, circleHeight = 10, verticalOffsetCorrection = -1.5;
 
     /// Try to adapt handle height to selected text's line-height
     try {

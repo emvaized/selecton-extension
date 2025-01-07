@@ -3,7 +3,7 @@ var convertWhenOnlyFewWordsSelected = true;
 var wordsLimitToProccessText = 5;
 var secondaryColor = 'lightBlue';
 var linkSymbolsToShow = 20;
-var selectionHandleLineHeight = 25;
+var selectionHandleLineHeight = 21;
 
 /// Button labels – translations assigned in code
 var copyLabel = 'Copy';
