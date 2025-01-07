@@ -238,6 +238,9 @@
   "extendSelection": {
     "message": "Select more"
   },
+  "extendSelectionTooltip": {
+    "message": "Extend text selection one level up in the elements tree"
+  },
   "extensionDescription": {
     "message": "Customizable popup with actions on text selection"
   },

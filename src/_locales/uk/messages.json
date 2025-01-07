@@ -223,6 +223,9 @@
     "extendSelection": {
         "message": "Бiльше"
     },
+    "extendSelectionTooltip": {
+        "message": "Розширити виділення тексту на один рівень вище в дереві елементів"
+    },
     "extensiondescription": {
         "message": "Спливаюча панель з кнопками дій при виділенні тексту"
     },

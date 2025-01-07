@@ -223,6 +223,9 @@
     "extendSelection": {
         "message": "Mehr auswählen"
     },
+    "extendSelectionTooltip": {
+        "message": "Erweitern Sie die Textauswahl im Elementbaum um eine Ebene nach oben"
+    },
     "extensionDescription": {
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl"
     },

@@ -217,6 +217,9 @@
     "extendSelection": {
         "message": "Uzatmak"
     },
+    "extendSelectionTooltip": {
+        "message": "Metin seçimini öğeler ağacında bir seviye yukarı genişlet"
+    },
     "exportImportSettings": {
         "message": "Dışa/içe aktarma ayarları"
     },

@@ -223,6 +223,12 @@
   "exportSettingsNote": {
     "message": "Als de exportknop niet werkt, probeer dan deze pagina te openen in een nieuw tabblad met behulp van de knop in de rechterbovenhoek"
   },
+  "extendSelection": {
+    "message": "Uitbreiden"
+  },
+  "extendSelectionTooltip": {
+    "message": "Breid de tekstselectie één niveau omhoog uit in de elementenboom"
+  },
   "extensionDescription": {
     "message": "Toon een aanpasbaar actiepaneel in tekstvelden"
   },

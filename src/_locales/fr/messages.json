@@ -229,6 +229,9 @@
     "extendSelection": {
         "message": "Étendre"
     },
+    "extendSelectionTooltip": {
+        "message": "Étendre la sélection de texte d'un niveau supérieur dans l'arborescence des éléments"
+    },
     "extensionDescription": {
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte"
     },

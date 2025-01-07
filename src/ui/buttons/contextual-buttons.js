@@ -739,7 +739,7 @@ function addContextualButtons(callbackOnFinish) {
                     s.addRange(range);
                 }, 0)
             });
-            extendSelectionBtn.title = 'Expand selection one level up in the elements tree';
+            extendSelectionBtn.title = chrome.i18n.getMessage('extendSelectionTooltip');
             extendSelectionBtn.id = 'selecton-extend-selection-button';
         }
 

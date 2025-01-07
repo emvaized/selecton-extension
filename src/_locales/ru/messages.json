@@ -235,6 +235,9 @@
     "extendSelection": {
         "message": "Расширить"
     },
+    "extendSelectionTooltip": {
+        "message": "Расширить выделение текста на один уровень вверх в дереве элементов"
+    },
     "extensionDescription": {
         "message": "Всплывающая панель с действиями при выделении текста"
     },

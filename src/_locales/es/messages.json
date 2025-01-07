@@ -232,6 +232,9 @@
     "extendSelection": {
         "message": "Extender"
     },
+    "extendSelectionTooltip": {
+        "message": "Ampliar la selección de texto un nivel arriba en el árbol de elementos"
+    },
     "fallbackExportLabel": {
         "message": "Para exportar, guardar como .json"
     },

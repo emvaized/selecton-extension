@@ -235,6 +235,9 @@
   "extendSelection": {
     "message": "扩展选区"
   },
+  "extendSelectionTooltip": {
+    "message": "在元素树中将文本选择扩展一级"
+  },
   "extensionDescription": {
     "message": "帶有文字選擇操作的可自訂彈出視窗"
   },
