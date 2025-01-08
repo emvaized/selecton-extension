@@ -663,7 +663,7 @@ function addContextualButtons(callbackOnFinish) {
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
     if (configs.showTranslateButton && !containsSpecialSymbols && !contextButtonWasAdded) {
-        addTranslateButton(addStaticButtons, selectionLength);
+        addTranslateButton(addStaticButtons, selectionLength, wordsCount);
     } else addStaticButtons();
 
     function addStaticButtons() {

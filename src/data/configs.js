@@ -102,6 +102,7 @@ const configs = {
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'collapseAsSecondPanel': false,
+    'translateSingleWordsImmediately': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
