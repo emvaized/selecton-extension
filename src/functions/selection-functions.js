@@ -146,6 +146,7 @@ function snapSelectionByWords(sel) {
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
             case '(': shouldUntrimLastCh = true; break;
+            case ')': shouldUntrimLastCh = true; break;
             // case '"': shouldUntrimLastCh = true; break;
             // case "'": shouldUntrimLastCh = true; break;
             // case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
