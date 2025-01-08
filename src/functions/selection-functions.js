@@ -469,3 +469,15 @@ function selectionChangeListener(e) {
         document.removeEventListener("selectionchange", selectionChangeListener);
     }
 }
+
+function extendSelectionToParentEl(){
+    /// Extends text selection one level up in the elements hierarchy
+
+    const s = selection ?? window.getSelection(), range = document.createRange();
+    const parentNode = s.anchorNode !== s.focusNode ? s.anchorNode.parentNode.parentNode : s.anchorNode.parentNode;
+    range.selectNodeContents(parentNode);
+    setTimeout(function(){
+        s.removeAllRanges();
+        s.addRange(range);
+    }, 0)
+}
