@@ -159,8 +159,10 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
             //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 
             if (showResultInButton){
-                translateButton.querySelector('span').innerText = resultOfLiveTranslation;
-                translateButton.querySelector('span').classList.add('selecton-live-translation');
+                let span = translateButton.querySelector('span');
+                if (!span) span = translateButton
+                span.innerText = resultOfLiveTranslation;
+                span.classList.add('selecton-live-translation');
                 translateButton.title = 'Provided by Google Translate';
             } else {
                 liveTranslationPanel.innerText = resultOfLiveTranslation;
