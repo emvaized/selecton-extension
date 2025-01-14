@@ -238,10 +238,11 @@ function setImportExportButtons() {
 
 function setTranslatedLabels() {
     /// Set translated headers
-    document.querySelector("#importSettingsLabel").innerHTML += chrome.i18n.getMessage("importSettingsLabel");
-    document.querySelector("#exportSettingsLabel").innerHTML += chrome.i18n.getMessage("exportSettingsLabel");
-    document.querySelector("#exportSettingsNote").innerHTML += chrome.i18n.getMessage("exportSettingsNote");
-    document.querySelector("#dictionaryButtonRemark").innerHTML += chrome.i18n.getMessage("dictionaryButtonRemark");
+    document.querySelector("#importSettingsLabel").innerHTML = chrome.i18n.getMessage("importSettingsLabel");
+    document.querySelector("#exportSettingsLabel").innerHTML = chrome.i18n.getMessage("exportSettingsLabel");
+    document.querySelector("#exportSettingsNote").innerHTML = chrome.i18n.getMessage("exportSettingsNote");
+    document.querySelector("#dictionaryButtonRemark").innerHTML = chrome.i18n.getMessage("dictionaryButtonRemark");
+
     document.querySelector("#appearanceHeader").innerHTML += chrome.i18n.getMessage("appearanceHeader");
     document.querySelector("#behaviorHeader").innerHTML += chrome.i18n.getMessage("behaviorHeader");
     document.querySelector("#highlightHeader").innerHTML += chrome.i18n.getMessage("markersLabel");
