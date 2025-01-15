@@ -1,5 +1,6 @@
 body {
   margin: 9px;
+  font-size: 14px;
 }
 
 .option {
@@ -69,12 +70,6 @@ h4 {
   font-weight: 500;
 }
 
-/*
-#allChangesSavedAutomaticallyHeader {
-  text-align: center;
-}
-*/
-
 #footer-buttons button {
   margin: 3px !important;
   width: 100%;
@@ -97,13 +92,15 @@ select {
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px 6px 18px 12px;
-  /* width: 100%; */
+  padding: 18px 6px 18px 40px;
   border: none;
   text-align: left;
   outline: none;
   font-size: 15px;
-  border-radius: 2px;
+  border-radius: 3px;
+  position: relative;
+
+  margin: 12px 0px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -113,26 +110,12 @@ select {
 
 /* Style the collapsible content. Note: hidden by default */
 .collapsible-content {
-  /* padding: 6px 0px 6px 12px; */
-  /* border: solid 1px lightgrey; */
   padding-left: 8px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   border-left: 1px solid lightgray;
 }
-
-/* .collapsible-header:after {
-  content: '\002B'; 
-  font-size: 30px;
-  float: right;
-  opacity: 0.5;
-  transform: translate(0, -7px);
-}
-
-.active:after {
-content: "\2212";
-} */
 
 #selecton-version {
   text-align: center;
@@ -241,9 +224,13 @@ content: "\2212";
 }
 
 .header-icon {
-  vertical-align: sub;
   margin-right: 8px;
-  opacity: 0.65;
+  opacity: 0.55;
+  position: absolute;
+  left: 8px;
+  margin: auto;
+  bottom: 0;
+  top: -2px;
 }
 
 /* 'What's new' button color */
@@ -257,7 +244,7 @@ content: "\2212";
 }
 
 @-moz-document url-prefix() {
-  body { font-size: 14px; font-family: sans-serif !important; line-height: 1.0 !important; }
+  body { font-family: sans-serif !important; line-height: 1.0 !important; }
   h3 {font-size: 18px; font-weight: 600;}
 }
 
@@ -315,11 +302,24 @@ content: "\2212";
       background-color: rgba(204, 204, 204, 0.503);
     }
 
+    .collapsible-content {
+      border-left: 1px solid gray;
+    }
+
     .option:hover {
       background-color: rgb(256, 256, 256, 0.1);
     }
 
     .header-icon {
       filter: invert(100%);
+    }
+
+    h4 {
+      color: lightgray;
+      opacity: 0.75;
+    }
+
+    hr {
+      color: lightgray;
     }
  }
