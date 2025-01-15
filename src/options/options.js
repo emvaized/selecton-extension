@@ -342,6 +342,7 @@ function updateDisabledOptions() {
     document.getElementById("addClearButton").parentNode.className = document.getElementById("addPasteOnlyEmptyField").checked || !document.getElementById("addPasteButton").checked || !document.getElementById("addActionButtonsForTextFields").checked ? 'disabled-option' : 'enabled-option';
     document.getElementById("hideTooltipWhenCursorMovesAway").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'enabled-option' : 'disabled-option';
     document.getElementById("dragHandleStyle").parentNode.className = document.getElementById("addDragHandles").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("floatingOffscreenTooltip").parentNode.className = document.getElementById("recreateTooltipAfterScroll").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.getElementById("customSearchUrl").parentNode.parentNode.className = document.getElementById("preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';
