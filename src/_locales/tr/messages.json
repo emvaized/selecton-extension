@@ -26,6 +26,9 @@
     "addFontFormatButtons": {
         "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)"
     },
+    "addExtendSelectionButton": {
+        "message": "Geçerli metin seçimini genişletmek için ekle düğmesi"
+    },
     "addMarkerButton": {
         "message": "'Vurgula' düğmesi ekle"
     },

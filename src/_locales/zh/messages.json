@@ -23,6 +23,9 @@
   "addDragHandles": {
     "message": "新增選擇拖動手把"
   },
+  "addExtendSelectionButton": {
+    "message": "将按钮添加到扩展当前文本选择"
+  },
   "addFontFormatButtons": {
     "message": "新增字體格式按鈕 (斜體、粗體)"
   },

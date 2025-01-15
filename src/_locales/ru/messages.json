@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Добавить ручки редактирования выделения"
     },
+    "addExtendSelectionButton": {
+        "message": "Добавить кнопку для расширения выделения текста"
+    },
     "addFontFormatButtons": {
         "message": "Добавить кнопки форма-ния текста (курсив, жирный)"
     },

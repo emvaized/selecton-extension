@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Adicionar alças de arrasto de seleção"
     },
+    "addExtendSelectionButton": {
+        "message": "Botão Adicionar para alargar a seleção de texto atual"
+    },
     "addFontFormatButtons": {
         "message": "Adicionar botões de formato de fonte (itálico, negrito)"
     },

@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Auswahl-Ziehpunkte hinzufügen"
     },
+    "addExtendSelectionButton": {
+        "message": "Schaltfläche Hinzufügen, um die aktuelle Textauswahl zu erweitern"
+    },
     "addFontFormatButtons": {
         "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)"
     },

@@ -26,6 +26,9 @@
     "addFontFormatButtons": {
         "message": "Додати кнопки формату шрифту (курсив, жирний)"
     },
+    "addExtendSelectionButton": {
+        "message": "Додати кнопку розширення виділення тексту"
+    },
     "addMarkerButton": {
         "message": "Використовувати кнопку 'Маркер'"
     },

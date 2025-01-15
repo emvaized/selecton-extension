@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Ajouter des poignées de sélection"
     },
+    "addExtendSelectionButton": {
+        "message": "Bouton d'ajout pour étendre la sélection de texte actuelle"
+    },
     "addFontFormatButtons": {
         "message": "Ajouter des boutons de format de police (italique, gras)"
     },

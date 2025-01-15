@@ -23,6 +23,9 @@
   "addDragHandles": {
     "message": "Selectieversleepknoppen tonen"
   },
+  "addExtendSelectionButton": {
+    "message": "Knop Toevoegen om de huidige tekstselectie uit te breiden"
+  },
   "addFontFormatButtons": {
     "message": "Tekstopmaakknoppen tonen (cursief, vetgedrukt)"
   },
