@@ -474,10 +474,22 @@ function extendSelectionToParentEl(){
     /// Extends text selection one level up in the elements hierarchy
 
     const s = selection ?? window.getSelection(), range = document.createRange();
+    const prevSelection = s.toString().trim();
     const parentNode = s.anchorNode !== s.focusNode ? s.anchorNode.parentNode.parentNode : s.anchorNode.parentNode;
     range.selectNodeContents(parentNode);
     setTimeout(function(){
         s.removeAllRanges();
         s.addRange(range);
+
+        const newSelection = s.toString().trim();
+        if (prevSelection === newSelection && extendParentSelectionCounter < 5) {
+            if (configs.debugMode) console.log('Selection has not changed! Attempting one more time: ' + extendParentSelectionCounter);
+            extendParentSelectionCounter += 1;
+            extendSelectionToParentEl();
+        } else {
+            if (configs.debugMode) console.log('Finished extending text selection');
+            extendParentSelectionCounter = 0;
+        }
     }, 0)
 }
+let extendParentSelectionCounter = 0;
