@@ -234,7 +234,13 @@ select {
 }
 
 /* 'What's new' button color */
-#selecton-version a { color: #55b5ff !important; text-decoration: none; }
+/* #selecton-version a { color: #55b5ff !important; text-decoration: none; } */
+a {
+  color: #55b5ff;
+}
+a:not(:hover) {
+  text-decoration: none;
+}
 
 
 @media (min-width: 600px) {
