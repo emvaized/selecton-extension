@@ -242,6 +242,7 @@ function setTranslatedLabels() {
     document.querySelector("#exportSettingsLabel").innerHTML = chrome.i18n.getMessage("exportSettingsLabel");
     document.querySelector("#exportSettingsNote").innerHTML = chrome.i18n.getMessage("exportSettingsNote");
     document.querySelector("#dictionaryButtonRemark").innerHTML = chrome.i18n.getMessage("dictionaryButtonRemark");
+    document.querySelector("#quoteButtonRemark").innerHTML = chrome.i18n.getMessage("quoteButtonRemark");
 
     document.querySelector("#appearanceHeader").innerHTML += chrome.i18n.getMessage("appearanceHeader");
     document.querySelector("#behaviorHeader").innerHTML += chrome.i18n.getMessage("behaviorHeader");

@@ -48,7 +48,7 @@
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer"
     },
     "addQuoteButton": {
-        "message": "Schaltfläche hinzufügen, um die Auswahl zu zitieren (wenn ein unterstütztes Textfeld auf der Seite gefunden wird)"
+        "message": "Schaltfläche hinzufügen, um die Auswahl zu zitieren"
     },
     "addScaleUpEffect": {
         "message": "Scale-up-Effekt bei Enthüllung hinzufügen"
@@ -440,6 +440,9 @@
     },
     "quote": {
         "message": "Zitat"
+    },
+    "quoteButtonRemark": {
+        "message": "(wenn ein unterstütztes Textfeld auf der Seite gefunden wird)"
     },
     "recentMarkersLabel": {
         "message": "Neueste Markierungen"

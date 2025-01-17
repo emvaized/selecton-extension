@@ -48,7 +48,7 @@
         "message": "Adicionar botão de número de telefone"
     },
     "addQuoteButton": {
-        "message": "Adicionar botão para citar a seleção (quando um campo de texto compatível for encontrado na página)"
+        "message": "Adicionar botão para citar a seleção"
     },
     "addScaleUpEffect": {
         "message": "Adicionar efeito de aumento de escala ao revelar"
@@ -213,7 +213,7 @@
         "message": "Estender"
     },
     "extendSelectionTooltip": {
-      "message": "Estender a seleção de texto um nível acima na árvore de elementos"
+        "message": "Estender a seleção de texto um nível acima na árvore de elementos"
     },
     "extensionDescription": {
         "message": "Pop-up personalizável com ações na seleção de texto"
@@ -379,6 +379,9 @@
     },
     "quote": {
         "message": "Cytat"
+    },
+    "quoteButtonRemark": {
+        "message": "(quando um campo de texto compatível for encontrado na página)"
     },
     "recentMarkersLabel": {
         "message": "Destaques recentes"

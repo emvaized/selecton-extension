@@ -48,7 +48,7 @@
     "message": "Telefoonnummerknop tonen"
   },
   "addQuoteButton": {
-    "message": "Knop toevoegen om de selectie te citeren (wanneer ondersteund tekstveld op de pagina wordt gevonden)"
+    "message": "Knop toevoegen om de selectie te citeren"
   },
   "addScaleUpEffect": {
     "message": "Omhoogschuifeffect gebruiken"
@@ -440,6 +440,9 @@
   },
   "quote": {
     "message": "Citaat"
+  },
+  "quoteButtonRemark": {
+    "message": "(wanneer ondersteund tekstveld op de pagina wordt gevonden)"
   },
   "recentMarkersLabel": {
     "message": "Onlangs gemarkeerd"
