@@ -1,4 +1,4 @@
-function addTranslateButton(onFinish, selectionLength) {
+function addTranslateButton(onFinish, selectionLength, wordsCount) {
     try {
         if (!chrome.i18n.detectLanguage) proccessButton(true);
         else
@@ -61,14 +61,14 @@ function addTranslateButton(onFinish, selectionLength) {
 
     function proccessButton(shouldTranslate, languageOfSelectedText) {
         if (shouldTranslate == true) {
-            setRegularTranslateButton(languageOfSelectedText, selectionLength);
+            setRegularTranslateButton(languageOfSelectedText, selectionLength, wordsCount);
         }
         if (onFinish) onFinish();
     }
 }
 
 
-function setRegularTranslateButton(languageOfSelectedText, selectionLength) {
+function setRegularTranslateButton(languageOfSelectedText, selectionLength, wordsCount) {
 
     const translateUrl = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
             returnTranslateUrl(selectedText, 'en') :
@@ -81,7 +81,11 @@ function setRegularTranslateButton(languageOfSelectedText, selectionLength) {
     // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
     if (configs.liveTranslation && selectionLength < 500) {
         setTimeout(function () {
-            setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
+            if (configs.translateSingleWordsImmediately && wordsCount == 1 && !/[:\/"'']/.test(selectedText)) {
+                fetchTranslation(selectedText, 'auto', configs.languageToTranslate, undefined, translateButton, true)
+            } else {
+                setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
+            }
         }, 5);
     }
 }
@@ -95,12 +99,12 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
         if (fetched == false) {
             /// Fetch definition from Google Translate
             fetched = true;
-            fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel)
+            fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel, translateButton)
         }
     }
 }
 
-async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel) {
+async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel, translateButton, showResultInButton = false) {
     // let maxLengthForResult = 100;
     let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
 
@@ -153,9 +157,17 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
         if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
             // if (resultOfLiveTranslation.length > maxLengthForResult)
             //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
-    
-            liveTranslationPanel.innerText = resultOfLiveTranslation;
-            liveTranslationPanel.classList.add('selecton-live-translation');
+
+            if (showResultInButton){
+                let span = translateButton.querySelector('span');
+                if (!span) span = translateButton
+                span.innerText = resultOfLiveTranslation;
+                span.classList.add('selecton-live-translation');
+                translateButton.title = 'Provided by Google Translate';
+            } else {
+                liveTranslationPanel.innerText = resultOfLiveTranslation;
+                liveTranslationPanel.classList.add('selecton-live-translation');
+            }
     
             // setTimeout(function () {
             //     /// check if panel goes off-screen on top
@@ -170,7 +182,12 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
                 langLabel = document.createElement('span');
                 langLabel.textContent = originLanguage;
                 langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
-                liveTranslationPanel.appendChild(langLabel);
+                
+                if (showResultInButton){
+                    translateButton.appendChild(langLabel);
+                } else {
+                    liveTranslationPanel.appendChild(langLabel);
+                }
             }
         } else {
             /// no translation found

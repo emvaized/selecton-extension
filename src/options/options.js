@@ -238,10 +238,12 @@ function setImportExportButtons() {
 
 function setTranslatedLabels() {
     /// Set translated headers
-    document.querySelector("#importSettingsLabel").innerHTML += chrome.i18n.getMessage("importSettingsLabel");
-    document.querySelector("#exportSettingsLabel").innerHTML += chrome.i18n.getMessage("exportSettingsLabel");
-    document.querySelector("#exportSettingsNote").innerHTML += chrome.i18n.getMessage("exportSettingsNote");
-    document.querySelector("#dictionaryButtonRemark").innerHTML += chrome.i18n.getMessage("dictionaryButtonRemark");
+    document.querySelector("#importSettingsLabel").innerHTML = chrome.i18n.getMessage("importSettingsLabel");
+    document.querySelector("#exportSettingsLabel").innerHTML = chrome.i18n.getMessage("exportSettingsLabel");
+    document.querySelector("#exportSettingsNote").innerHTML = chrome.i18n.getMessage("exportSettingsNote");
+    document.querySelector("#dictionaryButtonRemark").innerHTML = chrome.i18n.getMessage("dictionaryButtonRemark");
+    document.querySelector("#quoteButtonRemark").innerHTML = chrome.i18n.getMessage("quoteButtonRemark");
+
     document.querySelector("#appearanceHeader").innerHTML += chrome.i18n.getMessage("appearanceHeader");
     document.querySelector("#behaviorHeader").innerHTML += chrome.i18n.getMessage("behaviorHeader");
     document.querySelector("#highlightHeader").innerHTML += chrome.i18n.getMessage("markersLabel");
@@ -341,6 +343,7 @@ function updateDisabledOptions() {
     document.getElementById("addClearButton").parentNode.className = document.getElementById("addPasteOnlyEmptyField").checked || !document.getElementById("addPasteButton").checked || !document.getElementById("addActionButtonsForTextFields").checked ? 'disabled-option' : 'enabled-option';
     document.getElementById("hideTooltipWhenCursorMovesAway").parentNode.className = document.getElementById("tooltipPosition").value == 'overCursor' ? 'enabled-option' : 'disabled-option';
     document.getElementById("dragHandleStyle").parentNode.className = document.getElementById("addDragHandles").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("floatingOffscreenTooltip").parentNode.className = document.getElementById("recreateTooltipAfterScroll").checked ? 'enabled-option' : 'disabled-option';
 
     /// Fully hide options unless condition is met
     document.getElementById("customSearchUrl").parentNode.parentNode.className = document.getElementById("preferredSearchEngine").value == 'custom' ? 'option visible-option' : 'option hidden-option';

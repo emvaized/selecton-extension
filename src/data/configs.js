@@ -63,7 +63,7 @@ const configs = {
     'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': true,
     // 'reverseTooltipButtonsOrder': false,
-    'recreateTooltipAfterScroll': true,
+    'recreateTooltipAfterScroll': false,
     'applyConfigsImmediately': false,
     'invertColorOnDarkWebsite': true,
     'addPasteOnlyEmptyField': true,
@@ -91,7 +91,7 @@ const configs = {
     'verticalLayoutTooltip': false,
     'addButtonToCopyLinkToText': true,
     'addCalendarButton': true,
-    'hideTooltipWhenCursorMovesAway': true,
+    'hideTooltipWhenCursorMovesAway': false,
     'showInfoPanel': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
@@ -102,6 +102,7 @@ const configs = {
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'collapseAsSecondPanel': false,
+    'translateSingleWordsImmediately': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

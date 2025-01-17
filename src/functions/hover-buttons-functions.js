@@ -197,12 +197,12 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
     
             // if (configs.verticalLayoutTooltip || staticPanelMode) 
                 checkHoverPanelHorizontalOverflow(panel);
+
+            setTimeout(function () {
+                if (!panel || !tooltipIsShown) return;
+                panel.style.pointerEvents = 'all';
+            }, configs.animationDuration);
         }, 3);
-    
-        setTimeout(function () {
-            if (!panel || !tooltipIsShown) return;
-            panel.style.pointerEvents = 'all';
-        }, configs.animationDuration);
     }
     
     function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {

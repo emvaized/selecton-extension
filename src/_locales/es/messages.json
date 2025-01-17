@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Agregar controles de arrastre de selección"
     },
+    "addExtendSelectionButton": {
+        "message": "Botón Añadir para ampliar la selección de texto actual"
+    },
     "addFontFormatButtons": {
         "message": "Agregar botones de formato de fuente (cursiva, negrita)"
     },
@@ -45,7 +48,7 @@
         "message": "Botón para agregar número de teléfono"
     },
     "addQuoteButton": {
-        "message": "Agregar botón para citar la selección (cuando se encuentre un campo de texto compatible en la página)"
+        "message": "Agregar botón para citar la selección"
     },
     "addScaleUpEffect": {
         "message": "Agregar efecto de escalamiento al revelar"
@@ -226,11 +229,14 @@
     "exportSettingsNote": {
         "message": "Si el botón de exportación no funciona, intenta abrir esta página en una nueva pestaña usando el botón en la esquina superior derecha"
     },
-    "extensionDescription": {
-        "message": "Ventana emergente personalizable con acciones en la selección de texto"
-    },
     "extendSelection": {
         "message": "Extender"
+    },
+    "extendSelectionTooltip": {
+        "message": "Ampliar la selección de texto un nivel arriba en el árbol de elementos"
+    },
+    "extensionDescription": {
+        "message": "Ventana emergente personalizable con acciones en la selección de texto"
     },
     "fallbackExportLabel": {
         "message": "Para exportar, guardar como .json"
@@ -441,6 +447,9 @@
     "quote": {
         "message": "Citando"
     },
+    "quoteButtonRemark": {
+        "message": "(cuando se encuentre un campo de texto compatible en la página)"
+    },
     "recentMarkersLabel": {
         "message": "Últimas marcas"
     },
@@ -598,7 +607,7 @@
         "message": "Haga clic aquí para ver las novedades"
     },
     "updateNotificationTitle": {
-        "message": "Selecton se actualizó a $VERSION$",
+        "message": "SelectON se actualizó a $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

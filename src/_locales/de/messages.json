@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Auswahl-Ziehpunkte hinzufügen"
     },
+    "addExtendSelectionButton": {
+        "message": "Schaltfläche Hinzufügen, um die aktuelle Textauswahl zu erweitern"
+    },
     "addFontFormatButtons": {
         "message": "Schaltflächen für das Schriftformat hinzufügen (kursiv, fett)"
     },
@@ -45,7 +48,7 @@
         "message": "Schaltfläche zum Hinzufügen einer Telefonnummer"
     },
     "addQuoteButton": {
-        "message": "Schaltfläche hinzufügen, um die Auswahl zu zitieren (wenn ein unterstütztes Textfeld auf der Seite gefunden wird)"
+        "message": "Schaltfläche hinzufügen, um die Auswahl zu zitieren"
     },
     "addScaleUpEffect": {
         "message": "Scale-up-Effekt bei Enthüllung hinzufügen"
@@ -222,6 +225,9 @@
     },
     "extendSelection": {
         "message": "Mehr auswählen"
+    },
+    "extendSelectionTooltip": {
+        "message": "Erweitern Sie die Textauswahl im Elementbaum um eine Ebene nach oben"
     },
     "extensionDescription": {
         "message": "Anpassbares Popup mit Aktionen zur Textauswahl"
@@ -435,6 +441,9 @@
     "quote": {
         "message": "Zitat"
     },
+    "quoteButtonRemark": {
+        "message": "(wenn ein unterstütztes Textfeld auf der Seite gefunden wird)"
+    },
     "recentMarkersLabel": {
         "message": "Neueste Markierungen"
     },
@@ -589,7 +598,7 @@
         "message": "Klicken Sie hier, um zu sehen, was neu ist"
     },
     "updateNotificationTitle": {
-        "message": "Selecton wurde auf $VERSION$ aktualisiert",
+        "message": "SelectON wurde auf $VERSION$ aktualisiert",
         "placeholders": {
             "version": {
                 "content": "$1",

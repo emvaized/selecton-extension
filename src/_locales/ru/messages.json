@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Добавить ручки редактирования выделения"
     },
+    "addExtendSelectionButton": {
+        "message": "Добавить кнопку для расширения выделения текста"
+    },
     "addFontFormatButtons": {
         "message": "Добавить кнопки форма-ния текста (курсив, жирный)"
     },
@@ -45,7 +48,7 @@
         "message": "Добавить кнопку номера телефона"
     },
     "addQuoteButton": {
-        "message": "Добавить кнопку для цитирования выделенного текста (когда на странице найдено поддерживаемое текстовое поле)"
+        "message": "Добавить кнопку для цитирования выделенного текста"
     },
     "addScaleUpEffect": {
         "message": "Использовать эффект увеличения при появлении"
@@ -234,6 +237,9 @@
     },
     "extendSelection": {
         "message": "Расширить"
+    },
+    "extendSelectionTooltip": {
+        "message": "Расширить выделение текста на один уровень вверх в дереве элементов"
     },
     "extensionDescription": {
         "message": "Всплывающая панель с действиями при выделении текста"
@@ -450,6 +456,9 @@
     "quote": {
         "message": "Цитировать"
     },
+    "quoteButtonRemark": {
+        "message": "(когда на странице найдено поддерживаемое текстовое поле)"
+    },
     "recentMarkersLabel": {
         "message": "Последние маркеры"
     },
@@ -607,7 +616,7 @@
         "message": "Кликните здесь, чтобы узнать что нового"
     },
     "updateNotificationTitle": {
-        "message": "Selecton обновился до $VERSION$",
+        "message": "SelectON обновился до $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

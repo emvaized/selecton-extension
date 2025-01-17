@@ -657,13 +657,13 @@ function addContextualButtons(callbackOnFinish) {
             }
     }
 
-    const containsSpecialSymbols = /[`#$^*_+\\[\]{};|<>\/~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
+    const containsSpecialSymbols = /[`#$^*_\\[\]{};|<>~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
     const contextButtonWasAdded = tooltip.children[3] && 
         configs.customSearchOptionsDisplay !== 'panelCustomSearchStyle';
 
     /// Add hover buttons when enabled, and no other contextual buttons were added
     if (configs.showTranslateButton && !containsSpecialSymbols && !contextButtonWasAdded) {
-        addTranslateButton(addStaticButtons, selectionLength);
+        addTranslateButton(addStaticButtons, selectionLength, wordsCount);
     } else addStaticButtons();
 
     function addStaticButtons() {
@@ -730,16 +730,8 @@ function addContextualButtons(callbackOnFinish) {
 
         /// Add button to expand text selection
         if (configs.addExtendSelectionButton){
-            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, function() {
-                const s = window.getSelection(), range = document.createRange();
-                const parentNode = s.anchorNode !== s.focusNode ? s.anchorNode.parentNode.parentNode : s.anchorNode.parentNode;
-                range.selectNodeContents(parentNode);
-                setTimeout(function(){
-                    s.removeAllRanges();
-                    s.addRange(range);
-                }, 0)
-            });
-            extendSelectionBtn.title = 'Expand selection one level up in the elements tree';
+            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, extendSelectionToParentEl);
+            extendSelectionBtn.title = chrome.i18n.getMessage('extendSelectionTooltip');
             extendSelectionBtn.id = 'selecton-extend-selection-button';
         }
 

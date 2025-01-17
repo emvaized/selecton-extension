@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Додати ручки редагування виділення"
     },
+    "addExtendSelectionButton": {
+        "message": "Додати кнопку розширення виділення тексту"
+    },
     "addFontFormatButtons": {
         "message": "Додати кнопки формату шрифту (курсив, жирний)"
     },
@@ -45,7 +48,7 @@
         "message": "Додати кнопку номера телефону"
     },
     "addQuoteButton": {
-        "message": "Додати кнопку для цитування виділеного тексту (коли на сторінці знайдено підтримуване текстове поле)"
+        "message": "Додати кнопку для цитування виділеного тексту"
     },
     "addScaleUpEffect": {
         "message": "Додати ефект збільшення при появі"
@@ -221,7 +224,10 @@
         "message": "Якщо кнопка експорту не працює, спробуйте відкрити цю сторінку в новій вкладці за допомогою кнопки у верхньому правому кутку"
     },
     "extendSelection": {
-        "message": "Бiльше"
+        "message": "Розширити"
+    },
+    "extendSelectionTooltip": {
+        "message": "Розширити виділення тексту на один рівень вище в дереві елементів"
     },
     "extensiondescription": {
         "message": "Спливаюча панель з кнопками дій при виділенні тексту"
@@ -435,6 +441,9 @@
     "quote": {
         "message": "Цитувати"
     },
+    "quoteButtonRemark": {
+        "message": "(коли на сторінці знайдено підтримуване текстове поле)"
+    },
     "recentMarkersLabel": {
         "message": "Останні маркери"
     },
@@ -589,7 +598,7 @@
         "message": "Клікніть тут, щоб побачити що нового"
     },
     "updateNotificationTitle": {
-        "message": "Selecton оновлено до $VERSION$",
+        "message": "SelectON оновлено до $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

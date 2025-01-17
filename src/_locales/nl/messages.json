@@ -23,6 +23,9 @@
   "addDragHandles": {
     "message": "Selectieversleepknoppen tonen"
   },
+  "addExtendSelectionButton": {
+    "message": "Knop Toevoegen om de huidige tekstselectie uit te breiden"
+  },
   "addFontFormatButtons": {
     "message": "Tekstopmaakknoppen tonen (cursief, vetgedrukt)"
   },
@@ -45,7 +48,7 @@
     "message": "Telefoonnummerknop tonen"
   },
   "addQuoteButton": {
-    "message": "Knop toevoegen om de selectie te citeren (wanneer ondersteund tekstveld op de pagina wordt gevonden)"
+    "message": "Knop toevoegen om de selectie te citeren"
   },
   "addScaleUpEffect": {
     "message": "Omhoogschuifeffect gebruiken"
@@ -222,6 +225,12 @@
   },
   "exportSettingsNote": {
     "message": "Als de exportknop niet werkt, probeer dan deze pagina te openen in een nieuw tabblad met behulp van de knop in de rechterbovenhoek"
+  },
+  "extendSelection": {
+    "message": "Uitbreiden"
+  },
+  "extendSelectionTooltip": {
+    "message": "Breid de tekstselectie één niveau omhoog uit in de elementenboom"
   },
   "extensionDescription": {
     "message": "Toon een aanpasbaar actiepaneel in tekstvelden"
@@ -432,6 +441,9 @@
   "quote": {
     "message": "Citaat"
   },
+  "quoteButtonRemark": {
+    "message": "(wanneer ondersteund tekstveld op de pagina wordt gevonden)"
+  },
   "recentMarkersLabel": {
     "message": "Onlangs gemarkeerd"
   },
@@ -586,7 +598,7 @@
     "message": "Klik hier om het wijzigingslog te bekijken"
   },
   "updateNotificationTitle": {
-    "message": "Selecton is bijgewerkt naar versie $VERSION$",
+    "message": "SelectON is bijgewerkt naar versie $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",

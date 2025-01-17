@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Ajouter des poignées de sélection"
     },
+    "addExtendSelectionButton": {
+        "message": "Bouton d'ajout pour étendre la sélection de texte actuelle"
+    },
     "addFontFormatButtons": {
         "message": "Ajouter des boutons de format de police (italique, gras)"
     },
@@ -45,7 +48,7 @@
         "message": "Bouton Ajouter un numéro de téléphone"
     },
     "addQuoteButton": {
-        "message": "Ajouter un bouton pour citer la sélection (lorsqu'un champ de texte pris en charge est trouvé sur la page)"
+        "message": "Ajouter un bouton pour citer la sélection"
     },
     "addScaleUpEffect": {
         "message": "Ajouter un effet de mise à l'échelle lors de la révélation"
@@ -228,6 +231,9 @@
     },
     "extendSelection": {
         "message": "Étendre"
+    },
+    "extendSelectionTooltip": {
+        "message": "Étendre la sélection de texte d'un niveau supérieur dans l'arborescence des éléments"
     },
     "extensionDescription": {
         "message": "Pop-up personnalisable avec des actions sur la sélection de texte"
@@ -441,6 +447,9 @@
     "quote": {
         "message": "Citer"
     },
+    "quoteButtonRemark": {
+        "message": "(lorsqu'un champ de texte pris en charge est trouvé sur la page)"
+    },
     "recentMarkersLabel": {
         "message": "Derniers surligneurs"
     },
@@ -599,7 +608,7 @@
         "message": "Cliquez ici pour voir les nouveautés"
     },
     "updateNotificationTitle": {
-        "message": "Selecton a été mis à jour à $VERSION$",
+        "message": "SelectON a été mis à jour à $VERSION$",
         "placeholders": {
             "version": {
                 "content": "$1",

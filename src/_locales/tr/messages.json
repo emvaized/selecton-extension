@@ -23,6 +23,9 @@
     "addDragHandles": {
         "message": "Seçim sürükleme tutamaçları ekleme"
     },
+    "addExtendSelectionButton": {
+        "message": "Geçerli metin seçimini genişletmek için ekle düğmesi"
+    },
     "addFontFormatButtons": {
         "message": "Yazı tipi biçimi düğmeleri ekleme (italik, kalın)"
     },
@@ -45,7 +48,7 @@
         "message": "Telefon numarası ekle düğmesi"
     },
     "addQuoteButton": {
-        "message": "Seçimi alıntılamak için düğme ekle (sayfada desteklenen bir metin alanı bulunduğunda)"
+        "message": "Seçimi alıntılamak için düğme ekle"
     },
     "addScaleUpEffect": {
         "message": "Ortaya çıkanda ölçek büyütme efektlerini kullanma"
@@ -214,9 +217,6 @@
     "export": {
         "message": "İhracat"
     },
-    "extendSelection": {
-        "message": "Uzatmak"
-    },
     "exportImportSettings": {
         "message": "Dışa/içe aktarma ayarları"
     },
@@ -225,6 +225,12 @@
     },
     "exportSettingsNote": {
         "message": "Dışa aktarma düğmesi çalışmıyorsa, sağ üst köşedeki düğmeyi kullanarak bu sayfayı yeni bir sekmede açmayı deneyin"
+    },
+    "extendSelection": {
+        "message": "Uzatmak"
+    },
+    "extendSelectionTooltip": {
+        "message": "Metin seçimini öğeler ağacında bir seviye yukarı genişlet"
     },
     "extensionDescription": {
         "message": "Metin seçimiyle ilgili eylemlerle özelleştirilebilir açılır pencere"
@@ -438,6 +444,9 @@
     "quote": {
         "message": "Alıntılamak için"
     },
+    "quoteButtonRemark": {
+        "message": "(sayfada desteklenen bir metin alanı bulunduğunda)"
+    },
     "recentMarkersLabel": {
         "message": "Son öne çıkanlar"
     },
@@ -592,7 +601,7 @@
         "message": "Yenilikleri görmek için buraya tıklayın"
     },
     "updateNotificationTitle": {
-        "message": "Selecton $VERSION$ olarak güncellendi",
+        "message": "SelectON $VERSION$ olarak güncellendi",
         "placeholders": {
             "version": {
                 "content": "$1",

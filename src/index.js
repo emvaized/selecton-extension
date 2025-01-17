@@ -147,7 +147,7 @@ function setDocumentStyles(){
   }
 
   /// selection handle circle radius
-  document.documentElement.style.setProperty('--selecton-handle-circle-radius', '12.5px');
+  document.documentElement.style.setProperty('--selecton-handle-circle-radius', '10px');
 
   /// search tooltip icon size
   document.documentElement.style.setProperty('--selecton-search-tooltip-icon-size', `${configs.secondaryTooltipIconSize}px`);

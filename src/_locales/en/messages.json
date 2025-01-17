@@ -20,11 +20,11 @@
   "addColorPreviewButton": {
     "message": "Add color preview button (for CSS colors like #ffffff)"
   },
-  "addExtendSelectionButton": {
-    "message": "Add button to extend current text selection"
-  },
   "addDragHandles": {
     "message": "Add selection drag handles"
+  },
+  "addExtendSelectionButton": {
+    "message": "Add button to extend current text selection"
   },
   "addFontFormatButtons": {
     "message": "Add font format buttons (italic, bold)"
@@ -48,7 +48,7 @@
     "message": "Add phone number button"
   },
   "addQuoteButton": {
-    "message": "Add button to quote the selection (when supported text field is found on page)"
+    "message": "Add button to quote the selection"
   },
   "addScaleUpEffect": {
     "message": "Use scale-up effect on reveal"
@@ -237,6 +237,9 @@
   },
   "extendSelection": {
     "message": "Select more"
+  },
+  "extendSelectionTooltip": {
+    "message": "Extend text selection one level up in the elements tree"
   },
   "extensionDescription": {
     "message": "Customizable popup with actions on text selection"
@@ -453,6 +456,9 @@
   "quote": {
     "message": "Quote"
   },
+  "quoteButtonRemark": {
+    "message": "(when supported text field is found on page)"
+  },
   "recentMarkersLabel": {
     "message": "Recent highlights"
   },
@@ -610,7 +616,7 @@
     "message": "Click here to see what's new"
   },
   "updateNotificationTitle": {
-    "message": "Selecton was updated to $VERSION$",
+    "message": "SelectON was updated to $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",

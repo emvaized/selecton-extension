@@ -23,6 +23,9 @@
   "addDragHandles": {
     "message": "新增選擇拖動手把"
   },
+  "addExtendSelectionButton": {
+    "message": "将按钮添加到扩展当前文本选择"
+  },
   "addFontFormatButtons": {
     "message": "新增字體格式按鈕 (斜體、粗體)"
   },
@@ -45,7 +48,7 @@
     "message": "新增電話號碼按鈕"
   },
   "addQuoteButton": {
-    "message": "新增按鈕以引用選取的內容 (當頁面上找到支援的文字欄位時)"
+    "message": "新增按鈕以引用選取的內容"
   },
   "addScaleUpEffect": {
     "message": "在顯示上使用放大效果"
@@ -234,6 +237,9 @@
   },
   "extendSelection": {
     "message": "扩展选区"
+  },
+  "extendSelectionTooltip": {
+    "message": "在元素树中将文本选择扩展一级"
   },
   "extensionDescription": {
     "message": "帶有文字選擇操作的可自訂彈出視窗"
@@ -450,6 +456,9 @@
   "quote": {
     "message": "引用"
   },
+  "quoteButtonRemark": {
+    "message": "(當頁面上找到支援的文字欄位時)"
+  },
   "recentMarkersLabel": {
     "message": "最近突顯"
   },
@@ -607,7 +616,7 @@
     "message": "點擊此處查看新功能"
   },
   "updateNotificationTitle": {
-    "message": "Selecton 已更新為 $VERSION$",
+    "message": "SelectON 已更新為 $VERSION$",
     "placeholders": {
       "version": {
         "content": "$1",
