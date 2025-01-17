@@ -29,11 +29,11 @@
 | ![Screenshot 1](./screenshots/screenshot.png) |
 |-|
 <details>
-<summary>See more</summary>
+<summary>More screenshots</summary>
 
-| ![Screenshot 2](./screenshots/screenshot_2.png) |
-|-|
 | ![Screenshot 3](./screenshots/screenshot_3.png) |
+|-|
+| ![Screenshot 2](./screenshots/screenshot_2.png) |
 |-|
 
 </details>
