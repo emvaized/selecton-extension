@@ -1,3 +1,13 @@
+### 3.9.6
+- Make Translate button appear for more text selections
+- Fixed collapsible panel recognizing hover event during reveal transition
+- Slightly reduce size of drag handle circles
+- Untrim ")" at the end of selection when snap selection by words enabled
+- Added 45deg rotation to "Copy link" button icon
+- Disabled by default "recreating tooltip on scroll" and "hide when cursor moves away"
+- Various small improvements for the options page
+- Optimized svg button icons
+
 ### 3.9.5
 - Added icons to options page headers for easier navigation
 - Added new button which extends text selection one level up in the elements tree
