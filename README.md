@@ -25,9 +25,18 @@
 <a href="https://addons.mozilla.org/firefox/addon/selection-actions/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get for Firefox"></a> &nbsp; <a href="https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/iNEddTyWiMfLSwFD6qGq.png" alt="Get for Chrome" height=65 ></a>
 
 
-## Screenshot
+## Screenshots
 | ![Screenshot 1](./screenshots/screenshot.png) |
 |-|
+<details>
+<summary>See more</summary>
+
+| ![Screenshot 2](./screenshots/screenshot_2.png) |
+|-|
+| ![Screenshot 3](./screenshots/screenshot_3.png) |
+|-|
+
+</details>
 
 
 ## FAQ
