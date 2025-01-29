@@ -476,7 +476,8 @@ function generateCustomSearchButtonsList() {
         imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
         imgButton.setAttribute('width', '18px');
         imgButton.setAttribute('height', '18px');
-        imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
+        imgButton.setAttribute('loading', 'lazy');
+        imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;min-width:18px !important;');
         entry.appendChild(imgButton);
 
         /// Title field
