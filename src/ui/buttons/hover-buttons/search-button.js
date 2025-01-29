@@ -6,8 +6,7 @@ function setHoverForSearchButton(searchButton) {
     searchPanel.style.textAlign = 'start';
 
     /// Generate buttons for panel
-    let searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
-
+    const searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
     const searchButtonsLength = searchButtons.length;
     if (searchButtonsLength == 0) return;
 
