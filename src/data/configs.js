@@ -71,7 +71,7 @@ const configs = {
     'showTranslateIfLanguageUnknown': true,
     'fullOpacityOnHover': true,
     'preferredTranslateService': 'google',
-    'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
+    'tooltipPosition': 'overCursor', /// Possible values: 'selectionCenter', 'overCursor'
     'floatingOffscreenTooltip': false,
     'showUpdateNotification': true,
     'convertResultClickAction': 'search', /// Possible values: 'copy', 'search'
