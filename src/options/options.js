@@ -404,8 +404,8 @@ function setCurrenciesDropdown() {
 
         Object.keys(currenciesList).forEach((function (key) {
             let option = document.createElement('option');
-            let currencySymbol = currenciesList[key]['currencySymbol'];
-            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + currenciesList[key]['currencyName'];
+            const currencySymbol = currenciesList[key]['currencySymbol'] || currenciesList[key]['symbol'];
+            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + (currenciesList[key]['currencyName'] || currenciesList[key]['name']);
             option.setAttribute('value', key);
             select.appendChild(option);
 

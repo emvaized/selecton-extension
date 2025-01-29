@@ -27,10 +27,6 @@ function setDefaultLocales() {
         else browserMetricSystem = 'metric';
 
         /// Set default currency
-        // Object.keys(currenciesList).forEach(function (key) {
-        //     if (key.includes(browserCountry)) browserCurrency = key;
-        // });
-
         let keys = Object.keys(currenciesList);
         for (let i = 0, l = keys.length; i < l; i++) {
             let key = keys[i];
