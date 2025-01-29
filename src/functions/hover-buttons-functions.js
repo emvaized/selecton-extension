@@ -68,6 +68,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         if (!panel.isConnected) return;
 
         /// Check if panel will go off-screen
+        /// TODO: Refactor to work with display: none on panel attached to DOM
         if (!configs.verticalLayoutTooltip) {
             if (tooltipOnBottom) {
                 panelOnBottom = true;
