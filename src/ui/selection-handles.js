@@ -60,15 +60,17 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
         dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
 
+        let line;
         if (!handleLine){
-            handleLine = document.createElement('div');
-            handleLine.className = 'selection-tooltip-draghandle-line';
-            handleLine.style.height = `${selectionHandleLineHeight}px`;
-            handleLine.style.width = `${lineWidth}px`;
-            dragHandle.appendChild(handleLine);
+            line = document.createElement('div');
+            line.className = 'selection-tooltip-draghandle-line';
+            line.style.width = `${lineWidth}px`;
+            handleLine = line.cloneNode(false);
         } else {
-            dragHandle.appendChild(handleLine.cloneNode(false));
+            line = handleLine.cloneNode(false);
         }
+        line.style.height = `${selectionHandleLineHeight}px`;
+        dragHandle.appendChild(line);
 
         let circleDiv;
         if (!handleCircle){
