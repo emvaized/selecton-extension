@@ -24,7 +24,7 @@ const configs = {
     'textSelectionColor': '#ffffff',
     'shiftTooltipWhenWebsiteHasOwn': false,
     'addActionButtonsForTextFields': false,
-    'removeSelectionOnActionButtonClick': true,
+    'removeSelectionOnActionButtonClick': false,
     'hideTooltipOnActionButtonClick': true,
     'draggableTooltip': true,
     'enabled': true,
