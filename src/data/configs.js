@@ -131,7 +131,7 @@ const configs = {
         {
             'url': 'https://www.amazon.com/s?k=%s',
             'title': 'Amazon',
-            'icon': 'https://mapleleafdeals.com/wp-content/uploads/2020/08/amazon.png',
+            'icon': 'https://www.amazon.com/favicon.ico',
             'enabled': true
         },
         {
