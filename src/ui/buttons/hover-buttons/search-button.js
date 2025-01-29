@@ -10,64 +10,38 @@ function setHoverForSearchButton(searchButton) {
     const searchButtonsLength = searchButtons.length;
     if (searchButtonsLength == 0) return;
 
-    const containerPrototype = document.createElement('a');
-    containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
-    containerPrototype.style.textAlign = 'start';
-    containerPrototype.className = 'custom-search-image-button';
-    if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px';
+    const buttonPrototype = document.createElement('a');
+    buttonPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
+    buttonPrototype.style.textAlign = 'start';
+    buttonPrototype.className = 'custom-search-image-button';
+    if (!verticalSecondaryTooltip) buttonPrototype.style.padding = '0px';
     const maxIconsInRow = configs.maxIconsInRow;
 
     for (var i = 0; i < searchButtonsLength; i++) {
         const item = searchButtons[i];
 
-        const url = item['url'];
         const optionEnabled = item['enabled'];
-        const title = item['title'];
-        const icon = item['icon'];
+        const url = item['url'];
 
-        if (optionEnabled && url !== '') {
-            let imgButton = document.createElement('img');
-            imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
-            imgButton.setAttribute('loading', 'lazy');
+        if (optionEnabled && url) {
+            const title = item['title'];
+            const icon = item['icon'];
 
-            if (configs.debugMode)
-                imgButton.addEventListener('error', function () {
-                        console.log('error loading favicon for: ' + url + ' because of security policies of website');
-                });
-
-            imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
-
-            /// Set title
-            let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
-            const container = containerPrototype.cloneNode(true);
-
-            /// Add label in vertical style
-            if (verticalSecondaryTooltip) {
-                container.appendChild(imgButton);
-
-                const labelSpan = document.createElement('span');
-                labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
-                container.appendChild(labelSpan);
-            } else {
-                /// No label in horizontal style
-                imgButton.style.margin = '3px 6px';
-                imgButton.title = titleText;
-                container.appendChild(imgButton);
-            }
-
-            searchPanel.appendChild(container);
+            const button = createSearchOptionButton(icon, title, url, buttonPrototype);
+            searchPanel.appendChild(button);
 
             /// Set click listeners
-            container.addEventListener("mousedown", function (e) {
+            button.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
                 // onSearchButtonClick(e, url);
             });
-            container.href = returnSearchButtonUrl(url);
-            container.target = '_blank';
+            button.href = returnSearchButtonUrl(url);
+            button.target = '_blank';
         }
     }
 
-    containerPrototype.remove();
+    /// Remove prototype
+    buttonPrototype.remove();
 
     /// Create grid style to horizontal panel, to limit amount of icons in row
     if (!verticalSecondaryTooltip && searchButtonsLength > maxIconsInRow) {
@@ -90,6 +64,39 @@ function setHoverForSearchButton(searchButton) {
 
     /// Append panel
     searchButton.appendChild(searchPanel);
+}
+
+function createSearchOptionButton(icon, title, url, buttonPrototype) {
+    const imgButton = document.createElement('img');
+    imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
+    imgButton.setAttribute('loading', 'lazy');
+
+    if (configs.debugMode)
+        imgButton.addEventListener('error', function () {
+                console.log('error loading favicon for: ' + url + ' because of security policies of website');
+        });
+
+    imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
+
+    /// Set title
+    let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
+    const button = buttonPrototype.cloneNode(true);
+
+    /// Add label in vertical style
+    if (verticalSecondaryTooltip) {
+        button.appendChild(imgButton);
+
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
+        button.appendChild(labelSpan);
+    } else {
+        /// No label in horizontal style
+        imgButton.style.margin = '3px 6px';
+        imgButton.title = titleText;
+        button.appendChild(imgButton);
+    }
+
+    return button;
 }
 
 function returnSearchButtonUrl(url){
