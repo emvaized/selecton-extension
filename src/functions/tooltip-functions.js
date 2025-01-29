@@ -1,13 +1,13 @@
-function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
-    const dxOffset = shouldShift ? '-50%' : '0';
+function returnTooltipRevealTransform(endPosition = true) {
+    const dx = '-50%';
     const dyPercentOffset = configs.verticalLayoutTooltip ? 30 : 100;
 
     switch (configs.tooltipRevealEffect) {
-        case 'noTooltipEffect': return `translate(${dxOffset},0)`;
-        case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, ${dyPercentOffset}%)`;
-        case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -${dyPercentOffset}%)`;
-        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
-        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
+        case 'noTooltipEffect': return `translate(${dx},0)`;
+        case 'moveUpTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, ${dyPercentOffset}%)`;
+        case 'moveDownTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, -${dyPercentOffset}%)`;
+        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},0) scale(0.0)`;
+        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},0) scale(0.0)`;
     }
 }
 
