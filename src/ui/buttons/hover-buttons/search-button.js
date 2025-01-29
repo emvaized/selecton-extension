@@ -31,11 +31,10 @@ function setHoverForSearchButton(searchButton) {
             imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
             imgButton.setAttribute('loading', 'lazy');
 
-            imgButton.addEventListener('error', function () {
-                if (configs.debugMode) {
-                    console.log('error loading favicon for: ' + url + ' because of security policies of website');
-                }
-            });
+            if (configs.debugMode)
+                imgButton.addEventListener('error', function () {
+                        console.log('error loading favicon for: ' + url + ' because of security policies of website');
+                });
 
             imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
 
