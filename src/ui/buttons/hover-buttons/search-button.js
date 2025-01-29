@@ -29,6 +29,7 @@ function setHoverForSearchButton(searchButton) {
         if (optionEnabled && url !== '') {
             let imgButton = document.createElement('img');
             imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
+            imgButton.setAttribute('loading', 'lazy');
 
             imgButton.addEventListener('error', function () {
                 if (configs.debugMode) {

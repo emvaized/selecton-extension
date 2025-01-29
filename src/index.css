@@ -280,6 +280,7 @@
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
   vertical-align: top !important;
+  min-width: var(--selecton-search-tooltip-icon-size) !important;
 }
 
 .selecton-hover-button-indicator {

@@ -134,6 +134,7 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
     const img = document.createElement('img');
     img.setAttribute('src', url);
     img.setAttribute('class', 'selecton-button-img-icon');
+    img.setAttribute('loading', 'lazy');
 
     const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
     img.style.opacity = opacity ?? (configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5);
