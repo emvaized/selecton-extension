@@ -25,11 +25,11 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     if (selection == null || selection == undefined) return;
 
-    const lineWidth = 2.25, circleHeight = 10, verticalOffsetCorrection = -1.5;
+    const lineWidth = 2.25, circleHeight = 10, verticalOffsetCorrection = -1;
 
     /// Try to adapt handle height to selected text's line-height
     try {
-        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 6;
+        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
 
         if (!selectionHandleLineHeight) {
             const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
