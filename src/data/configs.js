@@ -63,7 +63,7 @@ const configs = {
     'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': true,
     // 'reverseTooltipButtonsOrder': false,
-    'recreateTooltipAfterScroll': false,
+    'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
     'invertColorOnDarkWebsite': true,
     'addPasteOnlyEmptyField': true,
