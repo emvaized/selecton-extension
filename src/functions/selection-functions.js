@@ -151,9 +151,9 @@ function snapSelectionByWords(sel) {
             } break;
             // case '"': shouldUntrimLastCh = true; break;
             // case "'": shouldUntrimLastCh = true; break;
-            // case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
+            case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
             case ',': {
-                /// Also untrim if symbol before "," is " ")
+                /// untrim if symbol before "," is " ")
                 if (selString[selStringLength - 2] == ')') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
