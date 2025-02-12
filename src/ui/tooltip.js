@@ -10,7 +10,7 @@ function createTooltip(e, recreated = false) {
         // hideTooltip();
         tooltipOnBottom = false; /// reset the 'reverted' state of previous tooltip
 
-        if (configs.snapSelectionToWord) {
+        if (configs.snapSelectionToWord && !recreated) {
             // if (isTextFieldFocused == true && configs.dontSnapTextfieldSelection == true) {
             if (isTextFieldFocused == true) {
                 if (configs.debugMode)
@@ -100,7 +100,7 @@ function createTooltip(e, recreated = false) {
                 document.body.appendChild(tooltip);
 
                 /// Calculate tooltip position and show tooltip
-                calculateTooltipPosition(e);
+                calculateTooltipPosition(e, recreated);
 
                 /// Create search tooltip for custom search options)
                 if (configs.customSearchOptionsDisplay == 'hoverCustomSearchStyle')
@@ -200,7 +200,7 @@ function setUpTooltip(recreated = false) {
         console.log('Selecton tooltip was created');
 }
 
-function calculateTooltipPosition(e) {
+function calculateTooltipPosition(e, recreated = false) {
     const selStartDimensions = getSelectionCoordinates(true);
     const selEndDimensions = getSelectionCoordinates(false);
 
@@ -211,7 +211,7 @@ function calculateTooltipPosition(e) {
     let tooltipHeight = tooltip.clientHeight;
     let dxToShowTooltip, dyToShowTooltip;
 
-    if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30) {
+    if (configs.tooltipPosition == 'overCursor' && e.clientX < window.innerWidth - 30 && recreated == false) {
 
         /// Show it on top of selection, dx aligned to cursor
         dyToShowTooltip = selStartDimensions.dy - tooltipHeight - (arrow.clientHeight / 1.5) - 2;
