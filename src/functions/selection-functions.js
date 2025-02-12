@@ -146,11 +146,7 @@ function snapSelectionByWords(sel) {
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
             case '(': shouldUntrimLastCh = true; break;
-            case ')': {
-                if (!selString.includes('(')) shouldUntrimLastCh = true;
-            } break;
-            // case '"': shouldUntrimLastCh = true; break;
-            // case "'": shouldUntrimLastCh = true; break;
+            case ')': if (!selString.includes('(')) shouldUntrimLastCh = true; break;
             case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
             case ',': {
                 /// untrim if symbol before "," is " ")
@@ -163,6 +159,9 @@ function snapSelectionByWords(sel) {
                 if (selString[selStringLength - 2] == '"') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
+            /// TODO: these 2 doesn't work, because browser also selects the space after the symbol
+            // case '"': if (!selString.includes('"')) shouldUntrimLastCh = true; break;
+            // case "'": if (!selString.includes("'")) shouldUntrimLastCh = true; break;
         }
 
         if (shouldUntrimLastCh) sel.modify("extend", direction[1], "character");
