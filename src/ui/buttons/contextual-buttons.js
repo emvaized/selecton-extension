@@ -660,7 +660,7 @@ function addContextualButtons(callbackOnFinish) {
             }
     }
 
-    const containsSpecialSymbols = /[`#$^*_\\[\]{};|<>~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
+    const containsSpecialSymbols = /[`#$^*_\\[\]{}=|<>~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
     const contextButtonWasAdded = tooltip.children[3] && 
         configs.customSearchOptionsDisplay !== 'panelCustomSearchStyle';
 
