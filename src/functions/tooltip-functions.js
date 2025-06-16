@@ -227,7 +227,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     }
     button.onmouseup = function(e){
         if (e.button == 0){
-            onClick();
+            onClick(e);
 
             if (configs.hideTooltipOnActionButtonClick){
                 hideDragHandles();
@@ -325,7 +325,10 @@ function mouseMoveToHideListener(mouseMoveEvent) {
 function setTooltipOnBottom() {
     arrow.classList.add('arrow-on-bottom');
     tooltipOnBottom = true;
+    moveInfoPanelToBottom();
+}
 
+function moveInfoPanelToBottom(){
     if (configs.showInfoPanel && infoPanel && infoPanel.isConnected) {
         infoPanel.classList.add('info-panel-on-bottom');
         tooltip.appendChild(infoPanel);

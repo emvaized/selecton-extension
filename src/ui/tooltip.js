@@ -289,6 +289,28 @@ function calculateTooltipPosition(e, recreated = false) {
         }
     }
 
+    if (floatingTooltipTop || floatingTooltipBottom) {
+        tooltip.querySelectorAll('.selection-popup-button').forEach(function (el) {
+            el.remove();
+        })
+
+        const scrollToSelectionButton = addBasicTooltipButton('Selected text: ', clearIcon, function (e) {
+            // e.stopPropagation();
+            // e.preventDefault();
+            selection.focusNode.parentNode.scrollIntoView({ behavior: "smooth", block: "center" });
+            setTimeout(function(){
+                createTooltip(e, true);
+            }, 300)
+        });
+        scrollToSelectionButton.innerHTML = '<span style="opacity:0.65">' + chrome.i18n.getMessage('selectionHeader') + ': </span>' + (selectedText.length > 30 ? selectedText.substring(0, 30) + '...' : selectedText);
+        scrollToSelectionButton.title = selectedText;
+        tooltip.prepend(scrollToSelectionButton);
+
+        if (floatingTooltipBottom){
+            moveInfoPanelToBottom();
+        }
+    }
+
     showTooltip(dxToShowTooltip, dyToShowTooltip);
 
     if (configs.addDragHandles && canAddDragHandles)
