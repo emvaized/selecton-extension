@@ -72,7 +72,7 @@ const configs = {
     'fullOpacityOnHover': true,
     'preferredTranslateService': 'google',
     'tooltipPosition': 'overCursor', /// Possible values: 'selectionCenter', 'overCursor'
-    'floatingOffscreenTooltip': false,
+    'floatingOffscreenTooltip': true,
     'showUpdateNotification': true,
     'convertResultClickAction': 'search', /// Possible values: 'copy', 'search'
     'delayToRevealSearchTooltip': 350,
@@ -92,7 +92,7 @@ const configs = {
     'addButtonToCopyLinkToText': true,
     'addCalendarButton': true,
     'hideTooltipWhenCursorMovesAway': false,
-    'showInfoPanel': false,
+    'showInfoPanel': true,
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
