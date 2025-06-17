@@ -5,8 +5,11 @@
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/pemdbnndbdpbelmfcddaihdihdfmnadi?label=users&logo=googlechrome&logoColor=white&color=blue)](https://chrome.google.com/webstore/detail/selection-actions/pemdbnndbdpbelmfcddaihdihdfmnadi)
 [![Mozilla Add-on](https://img.shields.io/amo/users/selection-actions?color=%23FF6611&label=users&logo=Firefox)](https://addons.mozilla.org/firefox/addon/selection-actions/)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pemdbnndbdpbelmfcddaihdihdfmnadi)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/rating-count/pemdbnndbdpbelmfcddaihdihdfmnadi?style=flat&label=reviews)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
 ![Created](https://img.shields.io/github/created-at/emvaized/selecton-extension?color=purple&label=created)
 [![Support project](https://shields.io/badge/Ko--fi-Donate-ff5f5f?logo=Ko-Fi&style=for-the-badgeKo-fi)](https://ko-fi.com/emvaized)
+[![Patreon](https://shields.io/badge/Patreon-Become_a_patron-f76859?logo=Patreon)](https://patreon.com/emvaized)
+
 
 
 <!-- > Customizable pop-up with action buttons on text selection! -->
@@ -46,7 +49,7 @@ Moved to the Wiki page – [read here](https://github.com/emvaized/selecton-exte
 ## Donate
 If you really enjoy this project, please consider supporting its further development by making a small donation using one of the ways below! 
 
-<a href="https://ko-fi.com/emvaized"><img src="https://storage.ko-fi.com/cdn/kofi1.png?v=6" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a>
+<a href="https://ko-fi.com/emvaized"><img src="https://storage.ko-fi.com/cdn/kofi5.png?v=6" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://patreon.com/emvaized"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/assets/patreon-donate-button.png?raw=true" alt="Patreon" height="40" /></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a>
 
 ## Currency conversion
 In order to make extension more autonomous, currency rates are set to be updated every 2 weeks, and at the moment of conversion data may not be 100% accurate. Currency conversion output is intended to be used only for a quick estimation. You can decrease update interval in extension's settings if needed, but minimal value for now is 7 days to not cause too much load on API servers. Currency rates are fetched from fawazahmed0's [currency-api](https://github.com/fawazahmed0/exchange-api/blob/main/README.md).
@@ -124,8 +127,7 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - `npm install` to install all dependencies
 - `npm run build` to generate `dist` folder with minimized code of the extension
 
-## Links to my other browser extensions
+## Some my other browser extensions
 * [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
-* [Google Search Tweaks](https://github.com/emvaized/google-tiles-extension) – set of tweaks for Google search page to make it easier to use
 * [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) – quickly open any links and images in a small popup window with no browser controls
 * [Linkover](https://github.com/emvaized/linkover-extension) – load info about any link on mouse hover or on a long click
