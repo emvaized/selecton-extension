@@ -259,6 +259,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Eylem düğmesine tıklandığında araç ipucunu gizle"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Bağlam menüsü açıldığında araç ipucunu gizle"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "İmleç uzaklaştığında paneli gizle"
     },

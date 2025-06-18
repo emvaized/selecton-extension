@@ -262,6 +262,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Ocultar el panel al hacer clic en un botón"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Ocultar información sobre herramientas al abrir el menú contextual"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Ocultar panel cuando el cursor se aleja"
     },

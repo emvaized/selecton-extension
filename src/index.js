@@ -437,9 +437,16 @@ function initMouseListeners() {
       hideDragHandles();
     });
 
+  /// Hide tooltip on context menu open (right click)
+  if (configs.hideTooltipOnContextMenuOpen)
+    document.addEventListener("contextmenu",(function(e) {
+      if (!tooltipIsShown || tooltip.contains(e.target)) return;
+      hideTooltip(); 
+      hideDragHandles();
+    }));
+
   if (configs.debugMode)
     console.log('Selecton initiated mouse listeners');
-
 
   /// Lazy loading
 

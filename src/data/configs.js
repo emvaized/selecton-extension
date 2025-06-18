@@ -103,6 +103,7 @@ const configs = {
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'collapseAsSecondPanel': false,
     'translateSingleWordsImmediately': false,
+    'hideTooltipOnContextMenuOpen': true,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',

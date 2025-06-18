@@ -256,6 +256,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Blenden Sie das Bedienfeld aus, wenn Sie auf eine Schaltfläche klicken"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Tooltip beim Öffnen des Kontextmenüs ausblenden"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Panel verbergen, wenn sich Cursor bewegt"
     },

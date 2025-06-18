@@ -262,6 +262,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Masquer le panneau lorsque vous cliquez sur un bouton"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Masquer l'info-bulle lors de l'ouverture du menu contextuel"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Masquer le panneau lorsque le curseur s'éloigne"
     },
