@@ -194,10 +194,16 @@
   padding: 2px 5px !important;
 }
 
-.custom-search-image-button img {
+.custom-search-image-button img:not(.selecton-button-img-icon) {
   all: revert;
   filter: none !important;
 }
+
+/* Borders between search options */
+/* .selection-tooltip:has(.button-with-border) .custom-search-image-button:not(:first-child){
+  border-top: 1px solid var(--selecton-outline-color) !important;
+  border-left: 1px solid var(--selecton-outline-color) !important;
+} */
 
 .selection-popup-color-preview-circle {
   max-width: 9px;

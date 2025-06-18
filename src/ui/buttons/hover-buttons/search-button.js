@@ -40,6 +40,58 @@ function setHoverForSearchButton(searchButton) {
         }
     }
 
+    /// Search on website button (draft)
+    /*
+    const searchOnWebsiteButton = createSearchOptionButton(searchButtonIcon, 'Search on website', null, buttonPrototype);
+    searchOnWebsiteButton.addEventListener("mousedown", function (e) {
+        e.stopPropagation();
+    });
+    searchOnWebsiteButton.href = undefined;
+    searchOnWebsiteButton.title = 'Search for the selected text on this website';
+    searchOnWebsiteButton.firstChild.classList.add('selecton-button-img-icon');
+    searchOnWebsiteButton.addEventListener("mousedown", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    searchOnWebsiteButton.addEventListener("click", async function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        /// Try to fetch url for search on website
+        let searchUrl;
+        const linkTag = document.querySelector('head link[rel="search"][type="application/opensearchdescription+xml"]');
+        if (linkTag) {
+            let href = linkTag.getAttribute('href');
+            if (href) {
+                const openSearchUrl = new URL(href, window.location.origin).href;
+                if (configs.debugMode) console.log('Found search URL: ' + openSearchUrl);
+                try {
+                    let response = await fetch(openSearchUrl);
+                    if (response.ok) {
+                        let text = await response.text();
+                        let parser = new DOMParser();
+                        let xml = parser.parseFromString(text, "application/xml");
+                        let urlElement = xml.querySelector('Url[type="text/html"]');
+                        if (urlElement) {
+                            let template = urlElement.getAttribute('template');
+                            if (template) 
+                                searchUrl = template;
+                        }
+                    }
+                } catch(e){}
+            }
+        }
+
+        if (searchUrl) 
+            window.open(searchUrl.replace("{searchTerms}", encodeURI(selectedText)), '_blank');
+        else 
+            window.open('https://google.com/search?q=site:' + window.location.hostname + ' ' + selectedText, '_blank');
+    });
+
+    searchPanel.appendChild(searchOnWebsiteButton);
+    searchOnWebsiteButton.style.borderTop = '1px solid var(--selection-button-background-hover)';
+    */
+
     /// Remove prototype
     buttonPrototype.remove();
 
