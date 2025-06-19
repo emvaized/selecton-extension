@@ -448,15 +448,16 @@
   font-size: 9px !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
-  /* color: rgba(256, 256, 256, 0.7); */
   color: var(--selecton-info-panel-color) !important;
   border-bottom: 1px solid var(--selection-button-background-hover) !important;
-  padding: 0 0 2px 0 !important;
   margin-top: -1px !important;
+  padding: 0 0 1px 0 !important;
+  margin-top: -2px !important;
 }
 
 .info-panel-on-bottom {
   border-bottom: unset !important;
   border-top: 1px solid var(--selection-button-background-hover) !important;
-  padding: 2px 0 0 0 !important;
+  padding: 0px !important;
+  margin-top: 0px !important;
 }
