@@ -94,7 +94,10 @@ function snapSelectionByWords(sel) {
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
         symbolToCheck = backwards ? lastSymbolOfSelection : firstSymbolOfSelection;
-        if (symbolToCheck == ' ') {
+        if (symbolToCheck == ' ' || 
+            (symbolToCheck == '(' && !selString.includes(')')) ||
+            (symbolToCheck == ')' && !selString.includes('(') )
+        ) {
             /// First char turned out to be ' '. Need to redo selection start
             sel.collapse(sel.anchorNode, sel.anchorOffset);
             sel.modify("move", direction[0], "character");
