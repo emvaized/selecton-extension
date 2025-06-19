@@ -284,7 +284,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
     button.onmousedown = function(e){
         e.stopPropagation();
-        e.preventDefault();
+        // e.preventDefault();
     }
     button.onmouseup = function(e){
         if (e.button == 0){
