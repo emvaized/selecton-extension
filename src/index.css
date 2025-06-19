@@ -452,6 +452,7 @@
   color: var(--selecton-info-panel-color) !important;
   border-bottom: 1px solid var(--selection-button-background-hover) !important;
   padding: 0 0 2px 0 !important;
+  margin-top: -1px !important;
 }
 
 .info-panel-on-bottom {
