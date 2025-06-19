@@ -948,15 +948,14 @@ function setMarkerSection(value) {
 
 document.addEventListener("DOMContentLoaded", loadSettings);
 
-document.querySelector("#donateButton").addEventListener("click", function (val) {
-    window.open('https://github.com/emvaized/selecton-extension?tab=readme-ov-file#donate', '_blank');
+document.querySelector("#donateButton").addEventListener("click", function() {
+    window.open('https://github.com/emvaized/emvaized.github.io/wiki/Donate-Page', '_blank');
 });
 
-document.querySelector("#githubButton").addEventListener("click", function (val) {
+document.querySelector("#githubButton").addEventListener("click", function() {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
-document.querySelector("#writeAReviewButton").addEventListener("click", function (val) {
-
+document.querySelector("#writeAReviewButton").addEventListener("click", function() {
     if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
         window.open('mailto:maximtsyba@gmail.com'); return;
     }
