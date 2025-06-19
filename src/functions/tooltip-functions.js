@@ -179,7 +179,8 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     if (configs.showStatsOnCopyButtonHover)
         setTimeout(function () {
             if (copyButton.isConnected)
-                copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+                // copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+                copyButton.title = copyLabel + ': ' + infoString;
         }, 3)
 
     /// add info panel
