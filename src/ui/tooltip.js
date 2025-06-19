@@ -298,10 +298,17 @@ function calculateTooltipPosition(e, recreated = false) {
             // e.stopPropagation();
             // e.preventDefault();
             selection.focusNode.parentNode.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            dontShowTooltip = true;
+            setTimeout(function () {
+                dontShowTooltip = false;
+            }, configs.animationDuration);
+
             setTimeout(function(){
                 createTooltip(e, true);
             }, 300)
-        });
+
+        }, false, undefined, false);
         scrollToSelectionButton.innerHTML = '<span style="opacity:0.65">' + chrome.i18n.getMessage('selectionHeader') + ': </span>' + (selectedText.length > 30 ? selectedText.substring(0, 30) + '...' : selectedText);
         scrollToSelectionButton.title = selectedText;
         tooltip.prepend(scrollToSelectionButton);

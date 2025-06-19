@@ -209,7 +209,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     }
 }
 
-function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity) {
+function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity, checkToRemoveSelection = true) {
     /// Used for basic button with action label + icon, when enabled
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
@@ -234,7 +234,9 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
                 hideDragHandles();
                 hideTooltip();
             }
-            removeSelectionOnPage();
+            if (checkToRemoveSelection) {
+                removeSelectionOnPage();
+            }
         }
     }
 
