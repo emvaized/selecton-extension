@@ -37,21 +37,21 @@
 /* Tooltip arrow */
 .selection-tooltip-arrow {
   z-index: 100000 !important;
-  height: 15px;
-  width: 25px;
+  height: 12px;
+  width: 24px;
   overflow: hidden;
   position: absolute;
   background: none !important;
   box-shadow: none !important;
   left: 50%;
   top: 100%;
-  transform: translate(-12.5px, 0px);
+  transform: translate(-13px, 0px);
 }
 
 .arrow-on-bottom {
   top: unset;
   bottom: 100%;
-  transform: rotate(180deg) translate(12.5px, 0px);
+  transform: rotate(180deg) translate(11px, 0px);
 }
 
 /* .selection-tooltip-arrow-child { */
