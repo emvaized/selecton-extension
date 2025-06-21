@@ -1,3 +1,14 @@
+### 3.9.7
+- Implemented "scroll to selected text" button in the floating off-screen tooltip, and _enabled_ it by default (along with "recreating tooltip after scroll")
+- Added option to hide tooltip on context menu open (_enabled_ by default)
+- Changed default tooltip position setting to "over cursor"
+- Improved snapping text selection by words
+- Improved detection of special symbols in the text selection
+- Changed default favicon for "Search on Amazon" button
+- Made tooltip arrow and info panel more compact
+- Improved compatibility with drag-and-drop feature of [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) extension
+- Fixed issues when DeepL translate sometimes does not grab the selected text from the page
+
 ### 3.9.6
 - Make Translate button appear for more text selections
 - Fixed collapsible panel recognizing hover event during reveal transition
