@@ -63,7 +63,7 @@ const configs = {
     'secondaryTooltipLayout': 'verticalLayout', /// Possible values: 'horizontalLayout', 'verticalLayout'
     'liveTranslation': true,
     // 'reverseTooltipButtonsOrder': false,
-    'recreateTooltipAfterScroll': false,
+    'recreateTooltipAfterScroll': true,
     'applyConfigsImmediately': false,
     'invertColorOnDarkWebsite': true,
     'addPasteOnlyEmptyField': true,
@@ -71,8 +71,8 @@ const configs = {
     'showTranslateIfLanguageUnknown': true,
     'fullOpacityOnHover': true,
     'preferredTranslateService': 'google',
-    'tooltipPosition': 'selectionCenter', /// Possible values: 'selectionCenter', 'overCursor'
-    'floatingOffscreenTooltip': false,
+    'tooltipPosition': 'overCursor', /// Possible values: 'selectionCenter', 'overCursor'
+    'floatingOffscreenTooltip': true,
     'showUpdateNotification': true,
     'convertResultClickAction': 'search', /// Possible values: 'copy', 'search'
     'delayToRevealSearchTooltip': 350,
@@ -103,6 +103,7 @@ const configs = {
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'collapseAsSecondPanel': false,
     'translateSingleWordsImmediately': false,
+    'hideTooltipOnContextMenuOpen': true,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
@@ -131,7 +132,7 @@ const configs = {
         {
             'url': 'https://www.amazon.com/s?k=%s',
             'title': 'Amazon',
-            'icon': 'https://mapleleafdeals.com/wp-content/uploads/2020/08/amazon.png',
+            'icon': 'https://www.amazon.com/favicon.ico',
             'enabled': true
         },
         {

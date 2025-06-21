@@ -19,11 +19,14 @@ function addContextualButtons(callbackOnFinish) {
             let match = false;
 
             for (const [key, value] of Object.entries(currenciesList)) {
-                if (selectedText.includes(' ' + key) || (value["currencySymbol"] !== undefined && selectedText.includes(value["currencySymbol"]))) {
+                if (selectedText.includes(' ' + key) || 
+                    (value["currencySymbol"] && selectedText.includes(value["currencySymbol"])) || 
+                    (value["symbol"] && selectedText.includes(value["symbol"]))
+                ) {
                     if (configs.debugMode) console.log('found currency match for: ' + (selectedText.includes(key) ? key : value['currencySymbol']));
                     match = true;
                 } else {
-                    const currencyKeywords = value["currencyKeywords"];
+                    const currencyKeywords = value["currencyKeywords"] || value["keywords"];
                     if (currencyKeywords !== null && currencyKeywords !== undefined)
                         for (i in currencyKeywords) {
                             if (loweredSelectedText.includes(currencyKeywords[i])) {
@@ -39,7 +42,7 @@ function addContextualButtons(callbackOnFinish) {
                 if (match) {
                     currency = key;
                     currencyRate = value["rate"];
-                    currencySymbol = value["currencySymbol"];
+                    currencySymbol = value["currencySymbol"] || value["symbol"];
 
                     /// Special handling for prices where coma separates fractional digits instead of thousandths
                     if (selectedText.includes(',')) {
@@ -108,7 +111,7 @@ function addContextualButtons(callbackOnFinish) {
 
                             /// Show value after converion
                             const converted = document.createElement('span');
-                            const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'];
+                            const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'] || currenciesList[configs.convertToCurrency]['symbol'];
 
                             if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
                                 converted.textContent = ` ${convertedAmountString}`;
@@ -657,7 +660,7 @@ function addContextualButtons(callbackOnFinish) {
             }
     }
 
-    const containsSpecialSymbols = /[`#$^*_\\[\]{};|<>~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
+    const containsSpecialSymbols = /[`#$^*_\\[\]{}=|<>~]/.test(selectedText) || isFileName || (selectionLength == 1 && /[,.()]/.test(selectedText));
     const contextButtonWasAdded = tooltip.children[3] && 
         configs.customSearchOptionsDisplay !== 'panelCustomSearchStyle';
 

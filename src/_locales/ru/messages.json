@@ -268,6 +268,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Прятать панель при клике на кнопку"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Прятать панель при открытии контекстного меню"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Спрятать панель, когда курсор далеко"
     },

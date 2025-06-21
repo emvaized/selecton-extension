@@ -256,6 +256,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Приховати панель після кліку на кнопку"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Приховати панель при відкритті контекстного меню"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Приховати панель, коли курсор далеко"
     },

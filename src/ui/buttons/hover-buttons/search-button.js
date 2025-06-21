@@ -6,69 +6,94 @@ function setHoverForSearchButton(searchButton) {
     searchPanel.style.textAlign = 'start';
 
     /// Generate buttons for panel
-    let searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
-
+    const searchButtons = configs.customSearchButtons.filter((item, idx) => item['enabled']);
     const searchButtonsLength = searchButtons.length;
     if (searchButtonsLength == 0) return;
 
-    const containerPrototype = document.createElement('a');
-    containerPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
-    containerPrototype.style.textAlign = 'start';
-    containerPrototype.className = 'custom-search-image-button';
-    if (!verticalSecondaryTooltip) containerPrototype.style.padding = '0px';
+    const buttonPrototype = document.createElement('a');
+    buttonPrototype.style.display = verticalSecondaryTooltip ? 'block' : 'inline-block';
+    buttonPrototype.style.textAlign = 'start';
+    buttonPrototype.className = 'custom-search-image-button';
+    if (!verticalSecondaryTooltip) buttonPrototype.style.padding = '0px';
     const maxIconsInRow = configs.maxIconsInRow;
 
     for (var i = 0; i < searchButtonsLength; i++) {
         const item = searchButtons[i];
 
-        const url = item['url'];
         const optionEnabled = item['enabled'];
-        const title = item['title'];
-        const icon = item['icon'];
+        const url = item['url'];
 
-        if (optionEnabled && url !== '') {
-            let imgButton = document.createElement('img');
-            imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
+        if (optionEnabled && url) {
+            const title = item['title'];
+            const icon = item['icon'];
 
-            imgButton.addEventListener('error', function () {
-                if (configs.debugMode) {
-                    console.log('error loading favicon for: ' + url + ' because of security policies of website');
-                }
-            });
-
-            imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
-
-            /// Set title
-            let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
-            const container = containerPrototype.cloneNode(true);
-
-            /// Add label in vertical style
-            if (verticalSecondaryTooltip) {
-                container.appendChild(imgButton);
-
-                const labelSpan = document.createElement('span');
-                labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
-                container.appendChild(labelSpan);
-            } else {
-                /// No label in horizontal style
-                imgButton.style.margin = '3px 6px';
-                imgButton.title = titleText;
-                container.appendChild(imgButton);
-            }
-
-            searchPanel.appendChild(container);
+            const button = createSearchOptionButton(icon, title, url, buttonPrototype);
+            searchPanel.appendChild(button);
 
             /// Set click listeners
-            container.addEventListener("mousedown", function (e) {
+            button.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
                 // onSearchButtonClick(e, url);
             });
-            container.href = returnSearchButtonUrl(url);
-            container.target = '_blank';
+            button.href = returnSearchButtonUrl(url);
+            button.target = '_blank';
         }
     }
 
-    containerPrototype.remove();
+    /// Search on website button (draft)
+    /*
+    const searchOnWebsiteButton = createSearchOptionButton(searchButtonIcon, 'Search on website', null, buttonPrototype);
+    searchOnWebsiteButton.addEventListener("mousedown", function (e) {
+        e.stopPropagation();
+    });
+    searchOnWebsiteButton.href = undefined;
+    searchOnWebsiteButton.title = 'Search for the selected text on this website';
+    searchOnWebsiteButton.firstChild.classList.add('selecton-button-img-icon');
+    searchOnWebsiteButton.addEventListener("mousedown", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    searchOnWebsiteButton.addEventListener("click", async function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        /// Try to fetch url for search on website
+        let searchUrl;
+        const linkTag = document.querySelector('head link[rel="search"][type="application/opensearchdescription+xml"]');
+        if (linkTag) {
+            let href = linkTag.getAttribute('href');
+            if (href) {
+                const openSearchUrl = new URL(href, window.location.origin).href;
+                if (configs.debugMode) console.log('Found search URL: ' + openSearchUrl);
+                try {
+                    let response = await fetch(openSearchUrl);
+                    if (response.ok) {
+                        let text = await response.text();
+                        let parser = new DOMParser();
+                        let xml = parser.parseFromString(text, "application/xml");
+                        let urlElement = xml.querySelector('Url[type="text/html"]');
+                        if (urlElement) {
+                            let template = urlElement.getAttribute('template');
+                            if (template) 
+                                searchUrl = template;
+                        }
+                    }
+                } catch(e){}
+            }
+        }
+
+        if (searchUrl) 
+            window.open(searchUrl.replace("{searchTerms}", encodeURI(selectedText)), '_blank');
+        else 
+            window.open('https://google.com/search?q=site:' + window.location.hostname + ' ' + selectedText, '_blank');
+    });
+
+    searchPanel.appendChild(searchOnWebsiteButton);
+    searchOnWebsiteButton.style.borderTop = '1px solid var(--selection-button-background-hover)';
+    */
+
+    /// Remove prototype
+    buttonPrototype.remove();
 
     /// Create grid style to horizontal panel, to limit amount of icons in row
     if (!verticalSecondaryTooltip && searchButtonsLength > maxIconsInRow) {
@@ -91,6 +116,39 @@ function setHoverForSearchButton(searchButton) {
 
     /// Append panel
     searchButton.appendChild(searchPanel);
+}
+
+function createSearchOptionButton(icon, title, url, buttonPrototype) {
+    const imgButton = document.createElement('img');
+    imgButton.setAttribute('class', 'selecton-search-tooltip-icon');
+    imgButton.setAttribute('loading', 'lazy');
+
+    if (configs.debugMode)
+        imgButton.addEventListener('error', function () {
+                console.log('error loading favicon for: ' + url + ' because of security policies of website');
+        });
+
+    imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + url.split('/')[2])
+
+    /// Set title
+    let titleText = title !== null && title !== undefined && title !== '' ? title : returnDomainFromUrl(url);
+    const button = buttonPrototype.cloneNode(true);
+
+    /// Add label in vertical style
+    if (verticalSecondaryTooltip) {
+        button.appendChild(imgButton);
+
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = titleText.charAt(0).toUpperCase() + titleText.slice(1);
+        button.appendChild(labelSpan);
+    } else {
+        /// No label in horizontal style
+        imgButton.style.margin = '3px 6px';
+        imgButton.title = titleText;
+        button.appendChild(imgButton);
+    }
+
+    return button;
 }
 
 function returnSearchButtonUrl(url){

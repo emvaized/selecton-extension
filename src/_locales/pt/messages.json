@@ -242,6 +242,9 @@
     "hideTooltipOnActionButtonClick": {
         "message": "Ocultar a dica de ferramenta ao clicar no botão de ação"
     },
+    "hideTooltipOnContextMenuOpen": {
+        "message": "Ocultar dica de ferramenta no menu de contexto aberto"
+    },
     "hideTooltipWhenCursorMovesAway": {
         "message": "Ocultar painel quando o cursor se afasta"
     },

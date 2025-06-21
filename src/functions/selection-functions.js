@@ -94,7 +94,10 @@ function snapSelectionByWords(sel) {
         firstSymbolOfSelection = selString[0];
         lastSymbolOfSelection = selString[selString.length - 1];
         symbolToCheck = backwards ? lastSymbolOfSelection : firstSymbolOfSelection;
-        if (symbolToCheck == ' ') {
+        if (symbolToCheck == ' ' || 
+            (symbolToCheck == '(' && !selString.includes(')')) ||
+            (symbolToCheck == ')' && !selString.includes('(') )
+        ) {
             /// First char turned out to be ' '. Need to redo selection start
             sel.collapse(sel.anchorNode, sel.anchorOffset);
             sel.modify("move", direction[0], "character");
@@ -146,12 +149,10 @@ function snapSelectionByWords(sel) {
         switch (symbolToCheck) {
             case ' ': shouldUntrimLastCh = true; break;
             case '(': shouldUntrimLastCh = true; break;
-            case ')': shouldUntrimLastCh = true; break;
-            // case '"': shouldUntrimLastCh = true; break;
-            // case "'": shouldUntrimLastCh = true; break;
-            // case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
+            case ')': if (!selString.includes('(')) shouldUntrimLastCh = true; break;
+            case "»": if (!selString.includes('«')) shouldUntrimLastCh = true; break;
             case ',': {
-                /// Also untrim if symbol before "," is " ")
+                /// untrim if symbol before "," is " ")
                 if (selString[selStringLength - 2] == ')') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
@@ -161,6 +162,9 @@ function snapSelectionByWords(sel) {
                 if (selString[selStringLength - 2] == '"') sel.modify("extend", direction[1], "character");
                 shouldUntrimLastCh = true; break;
             }
+            /// TODO: these 2 doesn't work, because browser also selects the space after the symbol
+            // case '"': if (!selString.includes('"')) shouldUntrimLastCh = true; break;
+            // case "'": if (!selString.includes("'")) shouldUntrimLastCh = true; break;
         }
 
         if (shouldUntrimLastCh) sel.modify("extend", direction[1], "character");

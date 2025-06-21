@@ -71,8 +71,8 @@ function addTranslateButton(onFinish, selectionLength, wordsCount) {
 function setRegularTranslateButton(languageOfSelectedText, selectionLength, wordsCount) {
 
     const translateUrl = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
-            returnTranslateUrl(selectedText, 'en') :
-            returnTranslateUrl(selectedText);
+            returnTranslateUrl(selectedText, 'en', languageOfSelectedText) :
+            returnTranslateUrl(selectedText, configs.languageToTranslate, languageOfSelectedText);
     const translateButton = addLinkTooltipButton(translateLabel, translateButtonIcon, translateUrl);
 
     translateButton.setAttribute('id', 'selecton-translate-button');

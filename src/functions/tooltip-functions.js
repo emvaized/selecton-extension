@@ -1,13 +1,13 @@
-function returnTooltipRevealTransform(endPosition = true, shouldShift = true) {
-    const dxOffset = shouldShift ? '-50%' : '0';
+function returnTooltipRevealTransform(endPosition = true) {
+    const dx = '-50%';
     const dyPercentOffset = configs.verticalLayoutTooltip ? 30 : 100;
 
     switch (configs.tooltipRevealEffect) {
-        case 'noTooltipEffect': return `translate(${dxOffset},0)`;
-        case 'moveUpTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, ${dyPercentOffset}%)`;
-        case 'moveDownTooltipEffect': return endPosition ? `translate(${dxOffset},0)` : `translate(${dxOffset}, -${dyPercentOffset}%)`;
-        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
-        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dxOffset},0) scale(1.0)` : `translate(${dxOffset},0) scale(0.0)`;
+        case 'noTooltipEffect': return `translate(${dx},0)`;
+        case 'moveUpTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, ${dyPercentOffset}%)`;
+        case 'moveDownTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, -${dyPercentOffset}%)`;
+        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},0) scale(0.0)`;
+        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},0) scale(0.0)`;
     }
 }
 
@@ -134,6 +134,7 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
     const img = document.createElement('img');
     img.setAttribute('src', url);
     img.setAttribute('class', 'selecton-button-img-icon');
+    img.setAttribute('loading', 'lazy');
 
     const onlyIconStyle = configs.buttonsStyle == 'onlyicon';
     img.style.opacity = opacity ?? (configs.buttonsStyle == 'onlylabel' ? 0.65 : onlyIconStyle ? 0.75 : 0.5);
@@ -178,7 +179,8 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     if (configs.showStatsOnCopyButtonHover)
         setTimeout(function () {
             if (copyButton.isConnected)
-                copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+                // copyButton.title = (configs.buttonsStyle == 'onlyicon' ? copyLabel + ' ' : '') + infoString;
+                copyButton.title = copyLabel + ': ' + infoString;
         }, 3)
 
     /// add info panel
@@ -207,7 +209,7 @@ function setCopyButtonTitle(copyButton, symbols, words) {
     }
 }
 
-function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity) {
+function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, iconOpacity, checkToRemoveSelection = true) {
     /// Used for basic button with action label + icon, when enabled
     const button = document.createElement('button');
     button.setAttribute('class', isFirstButton || configs.showButtonBorders == false ? 'selection-popup-button' : 'selection-popup-button button-with-border');
@@ -226,13 +228,15 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     }
     button.onmouseup = function(e){
         if (e.button == 0){
-            onClick();
+            onClick(e);
 
             if (configs.hideTooltipOnActionButtonClick){
                 hideDragHandles();
                 hideTooltip();
             }
-            removeSelectionOnPage();
+            if (checkToRemoveSelection) {
+                removeSelectionOnPage();
+            }
         }
     }
 
@@ -283,7 +287,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
     button.onmousedown = function(e){
         e.stopPropagation();
-        e.preventDefault();
+        // e.preventDefault();
     }
     button.onmouseup = function(e){
         if (e.button == 0){
@@ -324,7 +328,10 @@ function mouseMoveToHideListener(mouseMoveEvent) {
 function setTooltipOnBottom() {
     arrow.classList.add('arrow-on-bottom');
     tooltipOnBottom = true;
+    moveInfoPanelToBottom();
+}
 
+function moveInfoPanelToBottom(){
     if (configs.showInfoPanel && infoPanel && infoPanel.isConnected) {
         infoPanel.classList.add('info-panel-on-bottom');
         tooltip.appendChild(infoPanel);

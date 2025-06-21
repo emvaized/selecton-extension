@@ -37,21 +37,21 @@
 /* Tooltip arrow */
 .selection-tooltip-arrow {
   z-index: 100000 !important;
-  height: 15px;
-  width: 25px;
+  height: 12px;
+  width: 24px;
   overflow: hidden;
   position: absolute;
   background: none !important;
   box-shadow: none !important;
   left: 50%;
   top: 100%;
-  transform: translate(-12.5px, 0px);
+  transform: translate(-13px, 0px);
 }
 
 .arrow-on-bottom {
   top: unset;
   bottom: 100%;
-  transform: rotate(180deg) translate(12.5px, 0px);
+  transform: rotate(180deg) translate(11px, 0px);
 }
 
 /* .selection-tooltip-arrow-child { */
@@ -194,10 +194,16 @@
   padding: 2px 5px !important;
 }
 
-.custom-search-image-button img {
+.custom-search-image-button img:not(.selecton-button-img-icon) {
   all: revert;
   filter: none !important;
 }
+
+/* Borders between search options */
+/* .selection-tooltip:has(.button-with-border) .custom-search-image-button:not(:first-child){
+  border-top: 1px solid var(--selecton-outline-color) !important;
+  border-left: 1px solid var(--selecton-outline-color) !important;
+} */
 
 .selection-popup-color-preview-circle {
   max-width: 9px;
@@ -280,6 +286,7 @@
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
   vertical-align: top !important;
+  min-width: var(--selecton-search-tooltip-icon-size) !important;
 }
 
 .selecton-hover-button-indicator {
@@ -441,14 +448,16 @@
   font-size: 9px !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
-  /* color: rgba(256, 256, 256, 0.7); */
   color: var(--selecton-info-panel-color) !important;
   border-bottom: 1px solid var(--selection-button-background-hover) !important;
-  padding: 0 0 2px 0 !important;
+  margin-top: -1px !important;
+  padding: 0 0 1px 0 !important;
+  margin-top: -2px !important;
 }
 
 .info-panel-on-bottom {
   border-bottom: unset !important;
   border-top: 1px solid var(--selection-button-background-hover) !important;
-  padding: 2px 0 0 0 !important;
+  padding: 0px !important;
+  margin-top: 0px !important;
 }

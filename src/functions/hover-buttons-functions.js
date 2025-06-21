@@ -68,6 +68,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         if (!panel.isConnected) return;
 
         /// Check if panel will go off-screen
+        /// TODO: Refactor to work with display: none on panel attached to DOM
         if (!configs.verticalLayoutTooltip) {
             if (tooltipOnBottom) {
                 panelOnBottom = true;
@@ -79,15 +80,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             /// Clip content on edge for better looking animation
             if (unknownHeight && button)
                 button.classList.add(panelOnBottom ? 'button-with-bottom-hover-panel' : 'button-with-top-hover-panel');
-
-            /// If button is not alone in the tooltip, and located in the start, align hover panel to the left
-            // if (!reverseOrder) {
-            //     if (!button.classList.contains('button-with-border') && button.parentNode.children.length > 1) {
-            //         panel.style.left = '0px';
-            //         panel.style.right = 'unset';
-            //         dxTransformValue = '-2px';
-            //     }
-            // }
         }
 
         /// Set initial transform position for panel
@@ -190,6 +182,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         if (panel.style.opacity > 0) return;
         panel.style.width = 'max-content';
         panel.style.visibility = 'visible';
+        // panel.style.display = 'block';
     
         setTimeout(function () {
             panel.style.opacity = 1;
@@ -215,7 +208,6 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             panel.style.width = '0';
             panel.style.visibility = 'collapse';
             // panel.style.display = 'none';
-    
         }, configs.animationDuration);
     }
 

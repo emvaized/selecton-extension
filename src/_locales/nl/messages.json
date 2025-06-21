@@ -259,6 +259,9 @@
   "hideTooltipOnActionButtonClick": {
     "message": "Verberg tooltip bij klikken op actieknop"
   },
+  "hideTooltipOnContextMenuOpen": {
+    "message": "Verberg tooltip bij openen contextmenu"
+  },
   "hideTooltipWhenCursorMovesAway": {
     "message": "Paneel verbergen indien cursor erbuiten is"
   },

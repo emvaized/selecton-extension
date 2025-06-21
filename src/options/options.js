@@ -404,8 +404,8 @@ function setCurrenciesDropdown() {
 
         Object.keys(currenciesList).forEach((function (key) {
             let option = document.createElement('option');
-            let currencySymbol = currenciesList[key]['currencySymbol'];
-            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + currenciesList[key]['currencyName'];
+            const currencySymbol = currenciesList[key]['currencySymbol'] || currenciesList[key]['symbol'];
+            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + (currenciesList[key]['currencyName'] || currenciesList[key]['name']);
             option.setAttribute('value', key);
             select.appendChild(option);
 
@@ -476,7 +476,8 @@ function generateCustomSearchButtonsList() {
         imgButton.setAttribute('src', icon !== null && icon !== undefined && icon !== '' ? icon : 'https://www.google.com/s2/favicons?domain=' + item['url'].split('/')[2])
         imgButton.setAttribute('width', '18px');
         imgButton.setAttribute('height', '18px');
-        imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;');
+        imgButton.setAttribute('loading', 'lazy');
+        imgButton.setAttribute('style', 'margin-left: 3px; padding: 1px; vertical-align: middle !important;min-width:18px !important;');
         entry.appendChild(imgButton);
 
         /// Title field
@@ -947,15 +948,14 @@ function setMarkerSection(value) {
 
 document.addEventListener("DOMContentLoaded", loadSettings);
 
-document.querySelector("#donateButton").addEventListener("click", function (val) {
-    window.open('https://github.com/emvaized/selecton-extension?tab=readme-ov-file#donate', '_blank');
+document.querySelector("#donateButton").addEventListener("click", function() {
+    window.open('https://github.com/emvaized/emvaized.github.io/wiki/Donate-Page', '_blank');
 });
 
-document.querySelector("#githubButton").addEventListener("click", function (val) {
+document.querySelector("#githubButton").addEventListener("click", function() {
     window.open('https://github.com/emvaized/selecton-extension', '_blank');
 });
-document.querySelector("#writeAReviewButton").addEventListener("click", function (val) {
-
+document.querySelector("#writeAReviewButton").addEventListener("click", function() {
     if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
         window.open('mailto:maximtsyba@gmail.com'); return;
     }

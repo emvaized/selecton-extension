@@ -15,6 +15,9 @@ function setDragHandles(selStartDimensions, selEndDimensions) {
         addDragHandle(1, selStartDimensions, selEndDimensions);
 }
 
+/// Cache basic components of drag handles
+let handleLine, handleCircle;
+
 /// 0 for first (left) drag handle, 1 for second (right)
 function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
     if (configs.debugMode)
@@ -22,11 +25,11 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     if (selection == null || selection == undefined) return;
 
-    const lineWidth = 2.25, circleHeight = 10, verticalOffsetCorrection = -1.5;
+    const lineWidth = 2.25, circleHeight = 10, verticalOffsetCorrection = -1;
 
     /// Try to adapt handle height to selected text's line-height
     try {
-        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 6;
+        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
 
         if (!selectionHandleLineHeight) {
             const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
@@ -57,16 +60,29 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
         dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
 
-        let line = document.createElement('div');
-        line.className = 'selection-tooltip-draghandle-line';
+        let line;
+        if (!handleLine){
+            line = document.createElement('div');
+            line.className = 'selection-tooltip-draghandle-line';
+            line.style.width = `${lineWidth}px`;
+            handleLine = line.cloneNode(false);
+        } else {
+            line = handleLine.cloneNode(false);
+        }
         line.style.height = `${selectionHandleLineHeight}px`;
-        line.style.width = `${lineWidth}px`;
         dragHandle.appendChild(line);
 
-        let circleDiv = document.createElement('div');
-        circleDiv.className = 'selection-tooltip-draghandle-circle';
-        circleDiv.style.cursor = 'grab';
-        circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out, top 200ms ease, bottom 200ms ease`;
+        let circleDiv;
+        if (!handleCircle){
+            circleDiv = document.createElement('div');
+            circleDiv.className = 'selection-tooltip-draghandle-circle';
+            circleDiv.style.cursor = 'grab';
+            circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out, top 200ms ease, bottom 200ms ease`;
+            handleCircle = circleDiv.cloneNode(false);
+        } else {
+            circleDiv = handleCircle.cloneNode(false);
+        }
+        
         // circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
 
         if (dragHandleIsReverted)
