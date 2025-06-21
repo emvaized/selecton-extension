@@ -7,9 +7,9 @@
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pemdbnndbdpbelmfcddaihdihdfmnadi)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating-count/pemdbnndbdpbelmfcddaihdihdfmnadi?style=flat&label=reviews)](https://chrome.google.com/webstore/detail/selecton/pemdbnndbdpbelmfcddaihdihdfmnadi/reviews)
 ![Created](https://img.shields.io/github/created-at/emvaized/selecton-extension?color=purple&label=created)
+[![Support this project](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F_Support_this_project-grey)](https://github.com/emvaized/selecton-extension?tab=readme-ov-file#donate)
 <!-- [![Support project](https://shields.io/badge/Ko--fi-Donate-ff5f5f?logo=Ko-Fi&style=for-the-badgeKo-fi)](https://ko-fi.com/emvaized) -->
 <!-- [![Patreon](https://shields.io/badge/Patreon-Become_a_patron-f76859?logo=Patreon)](https://patreon.com/emvaized) -->
-[![Support project](https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F_Support_this_project-grey)](https://github.com/emvaized/selecton-extension?tab=readme-ov-file#donate)
 
 
 
