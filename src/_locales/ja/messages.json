@@ -1,0 +1,674 @@
+{
+   "actionButtonsHeader": {
+      "message": "アクションボタン"
+   },
+   "addActionButtonsForTextFields": {
+      "message": "テキストフィールド用の特別パネルを使用"
+   },
+   "addButtonIcons": {
+      "message": "ボタンのアイコンを表示"
+   },
+   "addButtonToCopyLinkToText": {
+      "message": "選択したテキストへのリンクをコピーするボタンを追加"
+   },
+   "addCalendarButton": {
+      "message": "日付用のカレンダーボタンを追加"
+   },
+   "addClearButton": {
+      "message": "空でないフィールドのクリック時に\"クリア\"ボタンを表示"
+   },
+   "addColorPreviewButton": {
+      "message": "カラー（CSS の #ffffffなど）をプレビューするボタンを追加"
+   },
+   "addDragHandles": {
+      "message": "選択用ドラッグハンドルを追加"
+   },
+   "addExtendSelectionButton": {
+      "message": "現在のテキスト選択を拡張するボタンを追加"
+   },
+   "addFontFormatButtons": {
+      "message": "フォント形式ボタン（斜体、太字）を追加"
+   },
+   "addMarkerButton": {
+      "message": "\"ハイライト\"ボタンを追加"
+   },
+   "addNewSearchOption": {
+      "message": "新規検索オプションを追加"
+   },
+   "addOpenLinks": {
+      "message": "リンクを開くボタンを追加"
+   },
+   "addPasteButton": {
+      "message": "テキストフィールドのクリック時に\"貼り付け\"ボタンを表示"
+   },
+   "addPasteOnlyEmptyField": {
+      "message": "... フィールドが空のときのみ"
+   },
+   "addPhoneButton": {
+      "message": "電話番号ボタンを追加"
+   },
+   "addQuoteButton": {
+      "message": "選択部分を引用するボタンを追加"
+   },
+   "addScaleUpEffect": {
+      "message": "表示時にスケールアップ効果を使用"
+   },
+   "addTooltipShadow": {
+      "message": "ツールチップの影を追加"
+   },
+   "allChangesSavedAutomatically": {
+      "message": "すべての設定は自動的に保存されます"
+   },
+   "animationDuration": {
+      "message": "アニメーションの長さ（ミリ秒）"
+   },
+   "appearanceHeader": {
+      "message": "外観"
+   },
+   "applyConfigsImmediately": {
+      "message": "設定を即座に適用"
+   },
+   "behaviorHeader": {
+      "message": "動作"
+   },
+   "boldLabel": {
+      "message": "太字"
+   },
+   "borderRadius": {
+      "message": "枠線の角丸"
+   },
+   "buttonsStyle": {
+      "message": "ボタンのスタイル"
+   },
+   "buyMeCoffee": {
+      "message": "プロジェクトを支援する"
+   },
+   "callLabel": {
+      "message": "電話"
+   },
+   "changeTextSelectionColor": {
+      "message": "テキスト選択の色をカスタマイズ"
+   },
+   "chooseFileFirst": {
+      "message": "最初にファイルを選択してください"
+   },
+   "circle": {
+      "message": "円"
+   },
+   "clearLabel": {
+      "message": "クリア"
+   },
+   "collapseAsSecondPanel": {
+      "message": "折りたたんだボタンを静的パネルとして常に表示"
+   },
+   "collapseButtons": {
+      "message": "超過したボタンを\"もっと見る\"ボタンの下に隠す"
+   },
+   "contextualButtonsHeader": {
+      "message": "ボタン"
+   },
+   "convertCurrencies": {
+      "message": "通貨を換算"
+   },
+   "convertMetrics": {
+      "message": "単位を変換"
+   },
+   "convertResultClickAction": {
+      "message": "結果をクリックした際のアクション"
+   },
+   "convertTime": {
+      "message": "時間を変換"
+   },
+   "convertToCurrency": {
+      "message": "変換先の通貨 (\u003Ca target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>詳細情報\u003C/a>)"
+   },
+   "convertToCurrencyHint": {
+      "message": "コードは\u003Ca target='_blank' href='https://www.iban.com/currency-codes'>こちら\u003C/a>を参考にしてください"
+   },
+   "convertionHeader": {
+      "message": "変換"
+   },
+   "copyLabel": {
+      "message": "コピー"
+   },
+   "correctTooltipPositionByMoreButtonWidth": {
+      "message": "\"もっと見る\"ボタンの幅の分パネルをずらす"
+   },
+   "customIcon": {
+      "message": "カスタムアイコン"
+   },
+   "customIconUrl": {
+      "message": "カスタムアイコンの URL"
+   },
+   "customSearchButtonsHeader": {
+      "message": "検索ボタン"
+   },
+   "customSearchOptionsDisplay": {
+      "message": "カスタム検索オプションの表示スタイル"
+   },
+   "customSearchTooltip": {
+      "message": "カスタム検索オプション"
+   },
+   "customSearchTooltipHint": {
+      "message": "\"検索\"ボタンにカーソルを重ねると表示されます。検索クエリのプレースホルダーとして%sを使用し、現在のドメイン用には%wを使用してください（ウェブサイト検索用）"
+   },
+   "customSearchUrl": {
+      "message": "カスタム検索URL \u003Cbr />(クエリのプレースホルダーとして%sを使用)"
+   },
+   "cutLabel": {
+      "message": "切り取り"
+   },
+   "dayAgo": {
+      "message": "1日前"
+   },
+   "daysAgo": {
+      "message": "$DAYS$日前",
+      "placeholders": {
+         "days": {
+            "content": "$1"
+         }
+      }
+   },
+   "debugMode": {
+      "message": "デバッグモード"
+   },
+   "delayToRevealHoverPanels": {
+      "message": "ホバーパネル表示までの遅延時間（ミリ秒）"
+   },
+   "delayToRevealSearchTooltip": {
+      "message": "パネル表示までの遅延時間（ミリ秒）"
+   },
+   "delayToRevealTranslateTooltip": {
+      "message": "自動翻訳までの遅延時間（ミリ秒）"
+   },
+   "deleteLabel": {
+      "message": "削除"
+   },
+   "dictionaryButtonRemark": {
+      "message": "ホバー時に Wikipedia で定義を検索する"
+   },
+   "dictionaryButtonResponseCharsAmount": {
+      "message": "結果として表示する最大文字数"
+   },
+   "dictionaryButtonWordsAmount": {
+      "message": "辞書ボタンを表示する単語数"
+   },
+   "dictionaryLabel": {
+      "message": "辞書"
+   },
+   "disableForBetterPerformance": {
+      "message": "パフォーマンス向上のためには無効化してください"
+   },
+   "disableWordSnapForCode": {
+      "message": "コード内で単語単位選択を無効化する"
+   },
+   "disableWordSnappingOnCtrlKey": {
+      "message": "Ctrl キーが押されている場合、単語単位で選択しない"
+   },
+   "dontSnapTextfieldSelection": {
+      "message": "テキストフィールド内で選択範囲をスナップしない"
+   },
+   "dragHandleStyle": {
+      "message": "ドラッグハンドルのスタイル"
+   },
+   "draggableTooltip": {
+      "message": "パネルは矢印でドラッグ可能です"
+   },
+   "email": {
+      "message": "メール"
+   },
+   "enabled": {
+      "message": "有効"
+   },
+   "excludedDomains": {
+      "message": "除外するドメイン"
+   },
+   "export": {
+      "message": "エクスポート"
+   },
+   "exportImportSettings": {
+      "message": "設定のエクスポート/インポート"
+   },
+   "exportSettingsLabel": {
+      "message": "設定をエクスポート"
+   },
+   "exportSettingsNote": {
+      "message": "エクスポートボタンが動作しない場合は、右上隅のボタンを使ってこのページを新しいタブで開いてください"
+   },
+   "extendSelection": {
+      "message": "さらに選択"
+   },
+   "extendSelectionTooltip": {
+      "message": "要素ツリー内で1レベル上にテキスト選択を拡張する"
+   },
+   "extensionDescription": {
+      "message": "テキスト選択時にアクション可能なカスタマイズ可能なポップアップ"
+   },
+   "fallbackExportLabel": {
+      "message": "エクスポートするには .json ファイルとして保存してください"
+   },
+   "floatingOffscreenTooltip": {
+      "message": "画面外にスクロールした際にパネルをフローティング表示する"
+   },
+   "fontSize": {
+      "message": "フォントサイズ"
+   },
+   "fullOpacityOnHover": {
+      "message": "ホバー時に完全不透明にする"
+   },
+   "gmail": {
+      "message": "Gmail で新規メール作成"
+   },
+   "hideOnKeypress": {
+      "message": "キー押下時に非表示にする"
+   },
+   "hideOnScroll": {
+      "message": "スクロール時にツールチップを非表示にする"
+   },
+   "hideTooltipOnActionButtonClick": {
+      "message": "アクションボタンクリック時にツールチップを非表示にする"
+   },
+   "hideTooltipWhenCursorMovesAway": {
+      "message": "カーソルが離れたらツールチップを非表示にする"
+   },
+   "hideTranslateButtonForUserLanguage": {
+      "message": "ユーザーの言語のときは翻訳ボタンを非表示にする"
+   },
+   "horizontalLayout": {
+      "message": "水平レイアウト"
+   },
+   "hoverCustomSearchStyle": {
+      "message": "検索ボタンホバー時に表示する"
+   },
+   "iconlabel": {
+      "message": "アイコン＋テキスト"
+   },
+   "imperial": {
+      "message": "インペリアル"
+   },
+   "import": {
+      "message": "インポート"
+   },
+   "importAlert": {
+      "message": "このアクションは、現在の設定を上書きします。よろしいですか？"
+   },
+   "importSettingsLabel": {
+      "message": "設定のインポート"
+   },
+   "inDay": {
+      "message": "1日後"
+   },
+   "inDays": {
+      "message": "$DAYS$日後",
+      "placeholders": {
+         "days": {
+            "content": "$1"
+         }
+      }
+   },
+   "inMonth": {
+      "message": "1ヶ月後"
+   },
+   "inMonths": {
+      "message": "$MONTHS$ヶ月後",
+      "placeholders": {
+         "months": {
+            "content": "$1"
+         }
+      }
+   },
+   "inYear": {
+      "message": "1年後"
+   },
+   "inYears": {
+      "message": "$YEARS$年後",
+      "placeholders": {
+         "years": {
+            "content": "$1"
+         }
+      }
+   },
+   "invertColorOnDarkWebsite": {
+      "message": "ダークテーマのウェブサイトで色を反転"
+   },
+   "italicLabel": {
+      "message": "斜体"
+   },
+   "languageToTranslate": {
+      "message": "ユーザーの言語 (\u003Ca target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 コード\u003C/a>)"
+   },
+   "leftClickBackgroundTab": {
+      "message": "左クリックでリンクをバックグラウンドタブとして開く"
+   },
+   "linesCount": {
+      "message": "行"
+   },
+   "linkToTextDescription": {
+      "message": "選択したテキストへのページリンクをコピーする（Chrome 90+でのみ）"
+   },
+   "linkToTextLabel": {
+      "message": "リンクをコピー"
+   },
+   "liveTranslation": {
+      "message": "ボタンホバー時にライブ翻訳（Google 翻訳）"
+   },
+   "mailto": {
+      "message": "メールクライアント"
+   },
+   "markedLabel": {
+      "message": "ハイライト済み"
+   },
+   "markerLabel": {
+      "message": "ハイライト"
+   },
+   "markersLabel": {
+      "message": "ハイライト"
+   },
+   "maxIconsInRow": {
+      "message": "1列のアイコン数"
+   },
+   "maxMarkerPagesToStore": {
+      "message": "ハイライトを保存する最大ページ数"
+   },
+   "maxTooltipButtonsToShow": {
+      "message": "メインパネルに表示する最大ボタン数"
+   },
+   "metric": {
+      "message": "メートル"
+   },
+   "middleClickHidesTooltip": {
+      "message": "中クリック（バックグラウンドで開く）でパネルを隠す"
+   },
+   "monthAgo": {
+      "message": "1ヶ月前"
+   },
+   "monthsAgo": {
+      "message": "$MONTHS$ヶ月前",
+      "placeholders": {
+         "months": {
+            "content": "$1"
+         }
+      }
+   },
+   "moveDownLabel": {
+      "message": "下に移動"
+   },
+   "moveDownTooltipEffect": {
+      "message": "下に移動"
+   },
+   "moveUpLabel": {
+      "message": "上に移動"
+   },
+   "moveUpTooltipEffect": {
+      "message": "上に移動"
+   },
+   "noDefinitionFound": {
+      "message": "定義が見つかりません"
+   },
+   "noTooltipEffect": {
+      "message": "効果なし"
+   },
+   "noTranslationFound": {
+      "message": "翻訳が見つかりません"
+   },
+   "onlyicon": {
+      "message": "アイコンのみ"
+   },
+   "onlylabel": {
+      "message": "テキストのみ"
+   },
+   "openInNewTab": {
+      "message": "新しいタブで開く"
+   },
+   "openLinkLabel": {
+      "message": "開く"
+   },
+   "overCursor": {
+      "message": "カーソルの上"
+   },
+   "panelCustomSearchStyle": {
+      "message": "メインパネルに表示"
+   },
+   "pasteLabel": {
+      "message": "貼り付け"
+   },
+   "performSimpleMathOperations": {
+      "message": "簡単な計算を行う"
+   },
+   "preferCurrencySymbol": {
+      "message": "コードの代わりに通貨記号を使用する"
+   },
+   "preferredMapsService": {
+      "message": "優先する地図サービス"
+   },
+   "preferredMetricsSystem": {
+      "message": "優先する単位系"
+   },
+   "preferredNewEmailMethod": {
+      "message": "優先する新規メール作成方法"
+   },
+   "preferredSearchEngine": {
+      "message": "検索エンジン"
+   },
+   "preferredTranslateService": {
+      "message": "翻訳サービス"
+   },
+   "quote": {
+      "message": "引用"
+   },
+   "quoteButtonRemark": {
+      "message": "(対応しているテキストフィールドがページにある場合)"
+   },
+   "recentMarkersLabel": {
+      "message": "最近のハイライト"
+   },
+   "recreateTooltipAfterScroll": {
+      "message": "スクロールやウィンドウサイズ変更後にツールチップを再作成"
+   },
+   "removeCustomIcon": {
+      "message": "カスタムアイコンを削除"
+   },
+   "removeSelectionOnActionButtonClick": {
+      "message": "選択されたアクションの後にテキスト選択を削除する"
+   },
+   "resetDefaults": {
+      "message": "デフォルトに戻す"
+   },
+   "reverseTooltipButtonsOrder": {
+      "message": "ボタンの順序を逆にする"
+   },
+   "scaleUpFromBottomTooltipEffect": {
+      "message": "スケールアップ（下から）"
+   },
+   "scaleUpTooltipEffect": {
+      "message": "スケールアップ"
+   },
+   "searchLabel": {
+      "message": "検索"
+   },
+   "searchingDefinitions": {
+      "message": "定義を検索中"
+   },
+   "secondaryTooltipEnabled": {
+      "message": "ツールチップ有効"
+   },
+   "secondaryTooltipIconSize": {
+      "message": "アイコンサイズ (px)"
+   },
+   "secondaryTooltipLayout": {
+      "message": "ボタンレイアウト"
+   },
+   "selectionCenter": {
+      "message": "選択範囲の中央"
+   },
+   "selectionHeader": {
+      "message": "テキスト選択"
+   },
+   "selectonSettings": {
+      "message": "SelectON 設定"
+   },
+   "shadowOpacity": {
+      "message": "影の不透明度"
+   },
+   "shiftTooltipWhenWebsiteHasOwn": {
+      "message": "テキスト選択時にウェブサイトが独自のツールチップを表示する場合、ツールチップを上にずらすようにする"
+   },
+   "shouldOverrideWebsiteSelectionColor": {
+      "message": "ページのハイライト色を上書きする"
+   },
+   "showButtonBorders": {
+      "message": "ボタンの境界線を表示"
+   },
+   "showButtonLabelOnHover": {
+      "message": "ホバー時にボタンラベルを表示する"
+   },
+   "showDictionaryButton": {
+      "message": "辞書ボタンを表示する"
+   },
+   "showDotForHoverButtons": {
+      "message": "ホバーイベントでボタンにドットを表示する"
+   },
+   "showEmailButton": {
+      "message": "メールボタンを追加"
+   },
+   "showInfoPanel": {
+      "message": "情報パネルを表示する（単語数と記号数）"
+   },
+   "showOnMap": {
+      "message": "地図で表示"
+   },
+   "showOnMapButtonEnabled": {
+      "message": "地図で表示するボタンを追加"
+   },
+   "showSecondaryTooltipTitleOnHover": {
+      "message": "ホバー時にタイトルを表示"
+   },
+   "showStatsOnCopyButtonHover": {
+      "message": "コピーボタンのホバー時に統計情報を表示"
+   },
+   "showTooltipArrow": {
+      "message": "ツールチップの矢印を表示"
+   },
+   "showTranslateButton": {
+      "message": "翻訳ボタンを表示"
+   },
+   "showTranslateIfLanguageUnknown": {
+      "message": "言語が検出されない場合に翻訳ボタンを表示"
+   },
+   "showUnconvertedValue": {
+      "message": "変換前の元の値を表示"
+   },
+   "showUpdateNotification": {
+      "message": "更新通知を表示"
+   },
+   "snapSelectionToWord": {
+      "message": "単語単位でのテキスト選択"
+   },
+   "strikeLabel": {
+      "message": "取り消し線"
+   },
+   "symbolsCount": {
+      "message": "文字"
+   },
+   "testPageButton": {
+      "message": "設定をテスト"
+   },
+   "textFieldsHeader": {
+      "message": "テキストフィールド"
+   },
+   "textSelectionBackground": {
+      "message": "選択色"
+   },
+   "textSelectionBackgroundOpacity": {
+      "message": "背景の不透明度"
+   },
+   "textSelectionColor": {
+      "message": "文字色"
+   },
+   "today": {
+      "message": "今日"
+   },
+   "tooltipBackground": {
+      "message": "背景色"
+   },
+   "tooltipInvertedBackground": {
+      "message": "背景色 (ダークテーマ)"
+   },
+   "tooltipOpacity": {
+      "message": "ツールチップの不透明度"
+   },
+   "tooltipPosition": {
+      "message": "ツールチップの水平配置"
+   },
+   "tooltipRevealEffect": {
+      "message": "ツールチップの表示効果"
+   },
+   "translateLabel": {
+      "message": "翻訳"
+   },
+   "translating": {
+      "message": "翻訳中"
+   },
+   "triangle": {
+      "message": "三角形"
+   },
+   "updateNotificationMessage": {
+      "message": "新着情報はこちら"
+   },
+   "updateNotificationTitle": {
+      "message": "SelectON を $VERSION$ に更新しました",
+      "placeholders": {
+         "version": {
+            "content": "$1",
+            "example": "1.0.0"
+         }
+      }
+   },
+   "updatePageToSeeChanges": {
+      "message": "ページを更新して変更を確認してください"
+   },
+   "updateRatesEveryDays": {
+      "message": "日間隔で通貨レートを更新する"
+   },
+   "useCustomStyle": {
+      "message": "ツールチップにカスタムスタイルを使用"
+   },
+   "useIconFromGoogle": {
+      "message": "Google のアイコンを使用"
+   },
+   "verticalLayout": {
+      "message": "垂直レイアウト"
+   },
+   "verticalLayoutTooltip": {
+      "message": "垂直ツールチップレイアウトを使用（実験的）"
+   },
+   "verticalSecondaryTooltip": {
+      "message": "垂直リストで表示（水平時は無効）"
+   },
+   "visitGithub": {
+      "message": "GitHub ページを表示"
+   },
+   "whatsNew": {
+      "message": "新着情報"
+   },
+   "wordSnappingBlacklist": {
+      "message": "除外するドメイン"
+   },
+   "wordsCount": {
+      "message": "単語"
+   },
+   "writeAReview": {
+      "message": "レビューを書く"
+   },
+   "yearAgo": {
+      "message": "1年前"
+   },
+   "yearsAgo": {
+      "message": "$YEARS$年前",
+      "placeholders": {
+         "years": {
+            "content": "$1"
+         }
+      }
+   }
+}
