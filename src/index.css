@@ -194,7 +194,8 @@
   padding: 2px 5px !important;
 }
 
-.custom-search-image-button img:not(.selecton-button-img-icon) {
+/* .custom-search-image-button img:not(.selecton-button-img-icon) { */
+.custom-search-image-button img {
   all: revert;
   filter: none !important;
 }
