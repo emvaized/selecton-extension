@@ -8,7 +8,7 @@
 - Made tooltip arrow and info panel more compact
 - Improved compatibility with drag-and-drop feature of [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) extension
 - Fixed issues when DeepL translate sometimes does not grab the selected text from the page
-- Added Japanese translations (thanks @AndroPlus-org)
+- Added Japanese translations (by [@AndroPlus-org](https://github.com/AndroPlus-org))
 
 ### 3.9.6
 - Make Translate button appear for more text selections
