@@ -8,12 +8,14 @@ function addBasicTooltipButtons(layout) {
         if (selection.toString() !== '') {
             try {
                 /// Add a cut button 
-                addBasicTooltipButton(cutLabel, cutButtonIcon, function () {
+                addBasicTooltipButton(cutLabel, cutButtonIcon, function (e) {
+                    e.stopPropagation();
                     document.execCommand('cut');
                 }, true);
 
                 /// Add copy button 
-                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
+                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function (e) {
+                    e.stopPropagation();
                     try {
                         textField.focus();
                         document.execCommand('copy');
