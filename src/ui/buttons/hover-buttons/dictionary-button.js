@@ -81,6 +81,10 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
             //     definitionPanel.appendChild(langLabel);
             // }
 
+            if (configs.debugMode) console.log('Dictionary definition fetched:', resultDefinition);
+            /// Remove excessive padding
+            resultDefinition = resultDefinition.replaceAll(`\n\n\n`, `\n\n`);
+
             const title = document.createElement('span');
             title.textContent = 'Wikipedia';
             title.className = 'selecton-hover-panel-header';
@@ -118,6 +122,7 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
 
             const wikiUrl = `https://${langToFetch}.wikipedia.org/w/api.php?action=query&exsectionformat=plain&prop=extracts&origin=*&exchars=${configs.dictionaryButtonResponseCharsAmount ?? 300}&exlimit=1&explaintext=0&formatversion=2&format=json&titles=${textToSearch}`;
 
+            if (configs.debugMode) console.log('Fetching from Wikipedia:', wikiUrl);
             chrome.runtime.sendMessage({ type: 'background_fetch', url: wikiUrl }, (res) => {
                 // let jsoned = res.json();
                 let jsoned = res;
