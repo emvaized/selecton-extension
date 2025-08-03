@@ -24,7 +24,8 @@ function addBasicTooltipButtons(layout) {
                 });
 
                 /// Add paste button 
-                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
+                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
+                    e.stopPropagation();
                     textField.focus();
                     if (isContentEditable) {
                         /// TODO: Rewrite this in order to ask for clipboardRead permission first
@@ -86,6 +87,7 @@ function addBasicTooltipButtons(layout) {
                 try {
                     /// Add paste button 
                     addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
+                        e.stopPropagation();
                         textField.focus();
 
                         if (textField.getAttribute('contenteditable') !== null) {
@@ -105,6 +107,7 @@ function addBasicTooltipButtons(layout) {
             /// Add 'clear' button
             if (configs.addClearButton && isTextFieldEmpty == false)
                 addBasicTooltipButton(clearLabel, clearIcon, function (e) {
+                    e.stopPropagation();
                     removeSelectionOnPage();
                     textField.focus();
 
