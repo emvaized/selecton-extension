@@ -177,7 +177,7 @@
   height: max-content;
   font-size: var(--selecton-font-size) !important;
   font-family: Arial, Helvetica, sans-serif !important;
-  color: var(--selection-button-foreground);
+  color: var(--selection-button-foreground) !important;
   text-decoration: none !important;
 }
 
