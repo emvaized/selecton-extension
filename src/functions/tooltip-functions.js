@@ -285,10 +285,10 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
             button.textContent = label;
     }
 
-    // button.onmousedown = function(e){
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    // }
+    button.onmousedown = function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    }
     button.onmouseup = function(e){
         if (e.button == 0){
             if (configs.hideTooltipOnActionButtonClick){

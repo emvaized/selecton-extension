@@ -31,10 +31,11 @@ function setHoverForSearchButton(searchButton) {
             searchPanel.appendChild(button);
 
             /// Set click listeners
-            // button.addEventListener("mousedown", function (e) {
-            //     e.stopPropagation();
-            //     // onSearchButtonClick(e, url);
-            // });
+            button.addEventListener("mousedown", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                // onSearchButtonClick(e, url);
+            });
             button.href = returnSearchButtonUrl(url);
             button.target = '_blank';
         }
