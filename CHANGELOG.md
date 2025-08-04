@@ -1,7 +1,7 @@
 ### 3.9.8
-- Update style for Translate and Dictionary hover popups
-- Fix for search buttons in the main panel getting color inverted
-- Fix for text field panel reappearing after button click
+- Updated style of Translate and Dictionary hover popups
+- Fixed search buttons in the main panel getting color inverted
+- Fixed text field panel reappearing after button click
 - Improvements for Dictionary button hover popup
 - Improved dates detection for the Calendar button
 - Improved compatibility with other extensions and websites
