@@ -1,3 +1,12 @@
+### 3.9.8
+- Update style for Translate and Dictionary hover popups
+- Fix for search buttons in the main panel getting color inverted
+- Fix for text field panel reappearing after button click
+- Improvements for Dictionary button hover popup
+- Improved dates detection for the Calendar button
+- Improved compatibility with other extensions and websites
+- Renamed CSS selectors from "selection-" to "selecton-" for better compatibility
+
 ### 3.9.7
 - Implemented "scroll to selected text" button in the floating off-screen tooltip, and _enabled_ it by default (along with "recreating tooltip after scroll")
 - Added option to hide tooltip on context menu open (_enabled_ by default)
