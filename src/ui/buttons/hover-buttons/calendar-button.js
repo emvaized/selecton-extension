@@ -7,7 +7,7 @@ function checkToAddCalendarButton(text) {
 
     loop:
     for (let i = 0, n = words.length; i < n; i++) {
-        const word = words[i];
+        const word = words[i].replaceAll(',','');
 
         /// month
         for (j in dateKeywords.month) {

@@ -3,7 +3,7 @@ function setDragHandles(selStartDimensions, selEndDimensions) {
     //hideDragHandles();
 
     /// Dont add drag handles if they are already added
-    // let existingDragHandle = document.querySelector('.selection-tooltip-draghandle');
+    // let existingDragHandle = document.querySelector('.selecton-tooltip-draghandle');
     // if (existingDragHandle !== null && existingDragHandle !== undefined) return;
 
     let existingDragHandle = document.getElementById('selecton-draghandle-0');
@@ -55,7 +55,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         let dragHandleIsReverted = tooltipOnBottom;
 
         let dragHandle = document.createElement('div');
-        dragHandle.className = 'selection-tooltip-draghandle';
+        dragHandle.className = 'selecton-tooltip-draghandle';
         dragHandle.id = `selecton-draghandle-${dragHandleIndex}`;
         dragHandle.style.transform = `translate(${dragHandleIndex == 0 ? selStartDimensions.dx - 2.5 : selEndDimensions.dx}px, ${(dragHandleIndex == 0 ? selStartDimensions.dy : selEndDimensions.dy) + verticalOffsetCorrection}px)`;
         dragHandle.style.transition = `opacity ${configs.animationDuration}ms ease-out`;
@@ -63,7 +63,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         let line;
         if (!handleLine){
             line = document.createElement('div');
-            line.className = 'selection-tooltip-draghandle-line';
+            line.className = 'selecton-tooltip-draghandle-line';
             line.style.width = `${lineWidth}px`;
             handleLine = line.cloneNode(false);
         } else {
@@ -75,7 +75,7 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         let circleDiv;
         if (!handleCircle){
             circleDiv = document.createElement('div');
-            circleDiv.className = 'selection-tooltip-draghandle-circle';
+            circleDiv.className = 'selecton-tooltip-draghandle-circle';
             circleDiv.style.cursor = 'grab';
             circleDiv.style.transition = `opacity ${configs.animationDuration}ms ease-out, top 200ms ease, bottom 200ms ease`;
             handleCircle = circleDiv.cloneNode(false);
@@ -325,7 +325,7 @@ let dragHandles;
 function hideDragHandles(animated = true, shouldIgnoreDragged = false) {
     /// Remove all drag handles
     if (configs.addDragHandles) {
-        if (!dragHandles) dragHandles = document.getElementsByClassName('selection-tooltip-draghandle');
+        if (!dragHandles) dragHandles = document.getElementsByClassName('selecton-tooltip-draghandle');
 
         for (let i = 0, l = dragHandles.length; i < l; i++) {
             const dragHandle = dragHandles[i];

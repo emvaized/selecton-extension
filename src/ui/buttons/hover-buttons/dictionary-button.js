@@ -60,24 +60,52 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
 
         function onFinish(){
             /// Set definition view
-            definitionPanel.innerText = resultDefinition;
+            // definitionPanel.innerText = resultDefinition;
+            definitionPanel.innerText = '';
             definitionPanel.classList.add('selecton-live-translation');
             definitionPanel.style.maxWidth = '450%';
-        
+
             /// If text contains line breaks, align by the left side
-            if (resultDefinition.includes(`
-        `)) definitionPanel.style.textAlign = 'start';
+        //     if (resultDefinition.includes(`
+        // `)) definitionPanel.style.textAlign = 'start';
+            definitionPanel.style.textAlign = 'start';
         
             /// Create origin language label
-            let originLabelWidth = configs.fontSize / 1.5;
-            let originLabelPadding = 6;
-            let langLabel;
-            if (locale !== null && locale !== undefined && locale !== '') {
-                langLabel = document.createElement('span');
-                langLabel.textContent = locale;
-                langLabel.setAttribute('style', `opacity: 0.7; position: absolute; right: ${originLabelPadding}px; bottom: ${originLabelPadding}px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
-                definitionPanel.appendChild(langLabel);
+            // let originLabelWidth = configs.fontSize / 1.5;
+            // let originLabelPadding = 6;
+            // let langLabel;
+            // if (locale !== null && locale !== undefined && locale !== '') {
+            //     langLabel = document.createElement('span');
+            //     langLabel.textContent = locale;
+            //     langLabel.setAttribute('style', `opacity: 0.7; position: absolute; right: ${originLabelPadding}px; bottom: ${originLabelPadding}px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
+            //     definitionPanel.appendChild(langLabel);
+            // }
+
+            if (configs.debugMode) console.log('Dictionary definition fetched:', resultDefinition);
+            /// Remove excessive padding
+            resultDefinition = resultDefinition.replaceAll(`\n\n\n`, `\n\n`);
+
+            const title = document.createElement('span');
+            title.textContent = 'Wikipedia';
+            title.className = 'selecton-hover-panel-header';
+            if(!tooltipOnBottom) definitionPanel.appendChild(title);
+
+            let container = document.createElement('div');
+            container.className = 'selecton-hover-panel-container';
+            container.innerText = resultDefinition;
+
+            definitionPanel.appendChild(container);
+            definitionPanel.style.padding = '0';
+            if(tooltipOnBottom) {
+                title.style.paddingBottom = '2px';
+                container.style.marginTop = '3px';
+                container.style.marginBottom = '0px';
+                definitionPanel.appendChild(title);
             }
+
+            /// Create origin language label
+            if (locale) title.textContent += ` · ${locale}`;
+            
         }
     
     });
@@ -94,6 +122,7 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
 
             const wikiUrl = `https://${langToFetch}.wikipedia.org/w/api.php?action=query&exsectionformat=plain&prop=extracts&origin=*&exchars=${configs.dictionaryButtonResponseCharsAmount ?? 300}&exlimit=1&explaintext=0&formatversion=2&format=json&titles=${textToSearch}`;
 
+            if (configs.debugMode) console.log('Fetching from Wikipedia:', wikiUrl);
             chrome.runtime.sendMessage({ type: 'background_fetch', url: wikiUrl }, (res) => {
                 // let jsoned = res.json();
                 let jsoned = res;

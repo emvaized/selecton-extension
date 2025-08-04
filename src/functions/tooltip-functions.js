@@ -63,7 +63,7 @@ function checkTooltipForCollidingWithSideEdges() {
     // if (configs.verticalLayoutTooltip) {
     //     tooltipWidth = 140;
     // } else {
-    //     const tooltipButtons = tooltip.querySelectorAll('.selection-tooltip > .selection-popup-button');
+    //     const tooltipButtons = tooltip.querySelectorAll('.selecton-tooltip > .selection-popup-button');
     //     for (let i = 0, l = tooltipButtons.length; i < l; i++) {
     //         tooltipWidth += tooltipButtons[i].offsetWidth;
     //     }
@@ -153,7 +153,7 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
 function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     /// Set border radius for first and last buttons of horizontal tooltip
     // setTimeout(function () {
-    const children = applyOnlyToButtons ? parent.querySelectorAll('.selection-tooltip > .selection-popup-button') : parent.children;
+    const children = applyOnlyToButtons ? parent.querySelectorAll('.selecton-tooltip > .selection-popup-button') : parent.children;
     const childrenLength = children.length;
     // if (children[1]) {
     if (childrenLength > 1) {
@@ -287,7 +287,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
     button.onmousedown = function(e){
         e.stopPropagation();
-        // e.preventDefault();
+        e.preventDefault();
     }
     button.onmouseup = function(e){
         if (e.button == 0){

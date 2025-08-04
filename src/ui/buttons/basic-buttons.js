@@ -8,12 +8,12 @@ function addBasicTooltipButtons(layout) {
         if (selection.toString() !== '') {
             try {
                 /// Add a cut button 
-                addBasicTooltipButton(cutLabel, cutButtonIcon, function () {
+                addBasicTooltipButton(cutLabel, cutButtonIcon, function (e) {
                     document.execCommand('cut');
                 }, true);
 
                 /// Add copy button 
-                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
+                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function (e) {
                     try {
                         textField.focus();
                         document.execCommand('copy');
@@ -22,7 +22,7 @@ function addBasicTooltipButtons(layout) {
                 });
 
                 /// Add paste button 
-                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
+                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
                     textField.focus();
                     if (isContentEditable) {
                         /// TODO: Rewrite this in order to ask for clipboardRead permission first

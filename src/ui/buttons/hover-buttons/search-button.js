@@ -33,6 +33,7 @@ function setHoverForSearchButton(searchButton) {
             /// Set click listeners
             button.addEventListener("mousedown", function (e) {
                 e.stopPropagation();
+                e.preventDefault();
                 // onSearchButtonClick(e, url);
             });
             button.href = returnSearchButtonUrl(url);

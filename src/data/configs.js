@@ -96,7 +96,7 @@ const configs = {
     'maxTooltipButtonsToShow': 3,
     'maxMarkerPagesToStore': 10,
     'dictionaryButtonWordsAmount': 1,
-    'dictionaryButtonResponseCharsAmount': 300,
+    'dictionaryButtonResponseCharsAmount': 400,
     'correctTooltipPositionByMoreButtonWidth': true,
     'addQuoteButton': true,
     'dragHandleStyle': 'circle', /// possible values: circle, triangle,

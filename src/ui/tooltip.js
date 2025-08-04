@@ -125,7 +125,7 @@ function setUpTooltip(recreated = false) {
 
     /// Create tooltip and it's arrow
     tooltip = document.createElement('div');
-    tooltip.className = 'selection-tooltip selecton-entity';
+    tooltip.className = 'selecton-tooltip selecton-entity';
     if (configs.verticalLayoutTooltip) {
         tooltip.classList.add('vertical-layout-tooltip');
         tooltip.classList.add('reversed-order');
@@ -165,7 +165,7 @@ function setUpTooltip(recreated = false) {
 
     /// Add tooltip arrow
     arrow = document.createElement('div');
-    if (configs.showTooltipArrow) arrow.setAttribute('class', 'selection-tooltip-arrow');
+    if (configs.showTooltipArrow) arrow.setAttribute('class', 'selecton-tooltip-arrow');
     tooltip.appendChild(arrow);
 
     /// Make the tooltip draggable by arrow

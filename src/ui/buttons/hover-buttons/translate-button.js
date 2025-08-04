@@ -163,10 +163,37 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
                 if (!span) span = translateButton
                 span.innerText = resultOfLiveTranslation;
                 span.classList.add('selecton-live-translation');
-                translateButton.title = 'Provided by Google Translate';
+                translateButton.title = 'Source: Google Translate';
             } else {
-                liveTranslationPanel.innerText = resultOfLiveTranslation;
-                liveTranslationPanel.classList.add('selecton-live-translation');
+                liveTranslationPanel.innerText = '';
+
+                const title = document.createElement('span');
+                title.textContent = 'Google Translate';
+                title.className = 'selecton-hover-panel-header';
+                if(!tooltipOnBottom) {
+                    liveTranslationPanel.appendChild(title);
+                } 
+
+                let container = document.createElement('div');
+                container.className = 'selecton-hover-panel-container';
+                // container.style.padding = '2px';
+                // container.style.position = 'relative';
+
+                container.innerText = resultOfLiveTranslation;
+                container.classList.add('selecton-live-translation');
+                liveTranslationPanel.appendChild(container);
+                liveTranslationPanel.style.padding = '0';
+                if(tooltipOnBottom) {
+                    title.style.paddingBottom = '2px';
+                    container.style.marginTop = '3px';
+                    container.style.marginBottom = '0px';
+                    liveTranslationPanel.appendChild(title);
+                }
+
+                /// Create origin language label
+                if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
+                    title.textContent += ` · ${originLanguage}`;
+                }
             }
     
             // setTimeout(function () {
@@ -175,20 +202,22 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
             // }, 3);
     
             /// Create origin language label
-            let originLabelWidth = configs.fontSize / 1.5;
-            let originLabelPadding = 3.5;
-            let langLabel;
-            if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
-                langLabel = document.createElement('span');
-                langLabel.textContent = originLanguage;
-                langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
+            // let originLabelWidth = configs.fontSize / 1.5;
+            // let originLabelPadding = 3.5;
+            // let langLabel;
+            // if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
+            //     langLabel = document.createElement('span');
+            //     langLabel.textContent = originLanguage;
+            //     // langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
+            //     langLabel.setAttribute('style', `opacity: 0.7; position: absolute; right: 1px; bottom: 1px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
                 
-                if (showResultInButton){
-                    translateButton.appendChild(langLabel);
-                } else {
-                    liveTranslationPanel.appendChild(langLabel);
-                }
-            }
+            //     if (showResultInButton){
+            //         translateButton.appendChild(langLabel);
+            //     } else {
+            //         // liveTranslationPanel.appendChild(langLabel);
+            //         container.appendChild(langLabel);
+            //     }
+            // }
         } else {
             /// no translation found
             liveTranslationPanel.innerHTML = noTranslationLabel;

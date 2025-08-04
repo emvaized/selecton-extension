@@ -55,7 +55,7 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
 
     /// Add panel shadow
     if (configs.addTooltipShadow) {
-        panel.style.boxShadow = `0 1px 5px rgba(0,0,0,${configs.shadowOpacity / 1.5})`;
+        panel.style.boxShadow = `0 2px 7px rgba(0,0,0,${configs.shadowOpacity})`;
     }
 
     /// Checks to execute after panel was added to the DOM
