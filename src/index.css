@@ -215,10 +215,7 @@
   display: inline;
 }
 
-.selecton-tooltip .button-with-border:not(:first-child) {
-  border-left: var(--selecton-button-border-left) !important;
-}
-
+.selecton-tooltip .button-with-border:not(:first-child), 
 .hover-vertical-tooltip .button-with-border:not(:first-child) {
   border-left: var(--selecton-button-border-left) !important;
 }
