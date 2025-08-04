@@ -8,12 +8,12 @@ function addBasicTooltipButtons(layout) {
         if (selection.toString() !== '') {
             try {
                 /// Add a cut button 
-                addBasicTooltipButton(cutLabel, cutButtonIcon, function (e) {
+                addBasicTooltipButton(cutLabel, cutButtonIcon, function () {
                     document.execCommand('cut');
                 }, true);
 
                 /// Add copy button 
-                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function (e) {
+                copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
                     try {
                         textField.focus();
                         document.execCommand('copy');
@@ -22,7 +22,7 @@ function addBasicTooltipButtons(layout) {
                 });
 
                 /// Add paste button 
-                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
+                addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
                     textField.focus();
                     if (isContentEditable) {
                         /// TODO: Rewrite this in order to ask for clipboardRead permission first
@@ -49,21 +49,21 @@ function addBasicTooltipButtons(layout) {
                 if (configs.addFontFormatButtons) {
 
                     /// Italic button
-                    addBasicTooltipButton(italicLabel, italicTextIcon, function () {
+                    addBasicTooltipButton(italicLabel, italicTextIcon, function() {
                         textField.focus();
                         document.execCommand(isContentEditable ? "insertHTML" : "insertText", false, '<i>' + selectedText + '</i>');
                         hideTooltip();
                     });
 
                     /// Bold button
-                    addBasicTooltipButton(boldLabel, boldTextIcon, function () {
+                    addBasicTooltipButton(boldLabel, boldTextIcon, function() {
                         textField.focus();
                         document.execCommand(isContentEditable ? "insertHTML" : "insertText", false, '<b>' + selectedText + '</b>');
                         hideTooltip();
                     });
 
                     /// Strikethrough button
-                    addBasicTooltipButton(strikeLabel, strikeTextIcon, function () {
+                    addBasicTooltipButton(strikeLabel, strikeTextIcon, function() {
                         textField.focus();
                         document.execCommand(isContentEditable ? "insertHTML" : "insertText", false, '<strike>' + selectedText + '</strike>');
                         hideTooltip();
@@ -83,7 +83,7 @@ function addBasicTooltipButtons(layout) {
             if (configs.addPasteButton)
                 try {
                     /// Add paste button 
-                    addBasicTooltipButton(pasteLabel, pasteButtonIcon, function (e) {
+                    addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
                         textField.focus();
 
                         if (textField.getAttribute('contenteditable') !== null) {
@@ -102,7 +102,7 @@ function addBasicTooltipButtons(layout) {
 
             /// Add 'clear' button
             if (configs.addClearButton && isTextFieldEmpty == false)
-                addBasicTooltipButton(clearLabel, clearIcon, function (e) {
+                addBasicTooltipButton(clearLabel, clearIcon, function () {
                     removeSelectionOnPage();
                     textField.focus();
 
@@ -142,7 +142,7 @@ function addBasicTooltipButtons(layout) {
 
         /// Add copy button
         /// TODO: Add option to copy plain text 
-        copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function () {
+        copyButton = addBasicTooltipButton(copyLabel, copyButtonIcon, function() {
             document.execCommand('copy');
             // removeSelectionOnPage();
             // if (configs.hideTooltipOnActionButtonClick){

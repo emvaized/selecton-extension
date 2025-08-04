@@ -115,6 +115,7 @@
   color: white !important;
   transition: background-color 25ms ease-out !important;
   position: relative;
+  filter: none !important;
 }
 
 .link-button {
