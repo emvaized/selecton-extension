@@ -173,6 +173,8 @@ function setCopyButtonTitle(copyButton, symbols, words) {
         const lines = (selectedText.match(/\n/g) || '').length;
         if (lines > 0) infoString += ` · ${lines + 1} ` + chrome.i18n.getMessage('linesCount').toLowerCase();
     } else{
+        if (!words) words = selectedText.split(' ').length;
+        
         if (words && words > 1) 
             infoString += ` · ${words} ${chrome.i18n.getMessage('wordsCount').toLowerCase()}`;
     }
