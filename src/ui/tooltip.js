@@ -234,6 +234,9 @@ function calculateTooltipPosition(e, recreated = false) {
 
         /// Calculating DX
         dxToShowTooltip = e.clientX;
+        /// Stick to text selection dx boundaries
+        if (dxToShowTooltip < selStartDimensions.dx) dxToShowTooltip = selStartDimensions.dx + 5;
+        else if (dxToShowTooltip > selEndDimensions.dx) dxToShowTooltip = selEndDimensions.dx - 5;
 
     } else {
         /// Calculating DY
