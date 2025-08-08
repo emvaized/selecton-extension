@@ -101,6 +101,9 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         } else if (configs.dragHandleStyle == 'square') {
             circleDiv.classList.add('draghandle-square');
             circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
+        } else if (configs.dragHandleStyle == 'rhombus') {
+            circleDiv.classList.add('draghandle-rhombus');
+            circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
         } else {
             circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
         }

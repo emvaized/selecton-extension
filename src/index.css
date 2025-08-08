@@ -262,6 +262,11 @@
   border-radius: 1.5px !important;
 }
 
+.draghandle-rhombus {
+  border-radius: 1.5px !important;
+  transform: rotate(45deg);
+}
+
 .selecton-button-img-icon {
   all: revert;
   fill: white;
