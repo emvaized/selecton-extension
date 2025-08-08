@@ -104,6 +104,7 @@ const configs = {
     'collapseAsSecondPanel': false,
     'translateSingleWordsImmediately': false,
     'hideTooltipOnContextMenuOpen': true,
+    'showPasteContentPreview': false,
     'customSearchButtons': [
         {
             'url': 'https://www.youtube.com/results?search_query=%s',
