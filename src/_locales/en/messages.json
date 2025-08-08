@@ -673,5 +673,11 @@
         "content": "$1"
       }
     }
+  },
+  "square": {
+    "message": "Square"
+  },
+  "rhombus": {
+    "message": "Rhombus"
   }
 }
