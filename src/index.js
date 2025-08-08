@@ -465,7 +465,10 @@ function initMouseListeners() {
       initConfigs(() => {
         setDocumentStyles();
         setCssStyles();
-        if (tooltipIsShown) initTooltip(lastMouseUpEvent)
+        if (tooltipIsShown) {
+          hideDragHandles(false);
+          initTooltip(lastMouseUpEvent);
+        }
       });
     }
   });
