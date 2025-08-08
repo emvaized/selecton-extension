@@ -377,6 +377,7 @@
   transition: opacity 200ms;
   padding: 0px 4px;
   cursor: pointer;
+  font-style: normal !important;
 }
 
 .selecton-marker-highlight:hover .marker-highlight-delete {

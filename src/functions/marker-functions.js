@@ -267,7 +267,6 @@ function restoreMarkers() {
 }
 
 function initMarkersRestore() {
-
     function init() {
         try {
             restoreMarkers();
@@ -278,25 +277,15 @@ function initMarkersRestore() {
         /// scroll to marker command receiver
         try {
             chrome.runtime.onMessage.addListener(request => {
-                // console.log("Message from the background script:");
-                // console.log(request.greeting);
-                // return Promise.resolve({ response: "Hi from content script" });
-
-                if (request.command.includes('selecton-scroll-to-marker-message')) {
+                if (request.command && request.command.includes('selecton-scroll-to-marker-message')) {
                     const selectedHintDy = parseInt(request.command.split(':')[1]);
                     if (!selectedHintDy || isNaN(selectedHintDy)) return;
 
-                    console.log('selectedHintDy');
-                    console.log(selectedHintDy);
-
                     const dyToScroll = selectedHintDy * document.body.scrollHeight / window.innerHeight;
                     window.scrollTo(0, dyToScroll - (window.innerHeight / 2));
-
                     // hintDy = ((selectionRect.dy + window.scrollY) * window.innerHeight) / document.body.scrollHeight
                 }
             });
-
-
         } catch (e) { console.log(e); }
     }
 
