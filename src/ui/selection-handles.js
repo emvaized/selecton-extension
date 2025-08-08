@@ -29,12 +29,12 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
 
     /// Try to adapt handle height to selected text's line-height
     try {
-        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 5;
+        selectionHandleLineHeight = (dragHandleIndex == 0 ? selStartDimensions.lineHeight : selEndDimensions.lineHeight) + 3;
 
         if (!selectionHandleLineHeight) {
             const selectedTextLineHeight = window.getComputedStyle(selection.anchorNode.parentElement, null).getPropertyValue('line-height');
             if (selectedTextLineHeight !== null && selectedTextLineHeight !== undefined && selectedTextLineHeight.includes('px'))
-                selectionHandleLineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 5;
+                selectionHandleLineHeight = parseInt(selectedTextLineHeight.replaceAll('px', '')) + 3;
         }
 
     } catch (e) {
