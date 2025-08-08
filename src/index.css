@@ -246,7 +246,7 @@
 .selecton-tooltip-draghandle-circle {
   border: 0.25px solid var(--selecton-outline-color);
   z-index: 99998;
-  border-radius: 50%;
+  border-radius: 50% !important;
   background: var(--selecton-background-color);
   position: relative;
   height: var(--selecton-handle-circle-radius);
@@ -254,8 +254,12 @@
 }
 
 .draghandle-triangle {
-  border-radius: 4px;
+  border-radius: 4px !important;
   transform: translate(-50%) rotate(45deg);
+}
+
+.draghandle-square {
+  border-radius: 1.5px !important;
 }
 
 .selecton-button-img-icon {

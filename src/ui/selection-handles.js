@@ -98,6 +98,9 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
                 circleDiv.style.right = `${-lineWidth}px`;
             } else
                 circleDiv.style.clipPath = 'polygon(0% 0%, 100% 100%, 100% 0%)';
+        } if (configs.dragHandleStyle == 'square') {
+            circleDiv.classList.add('draghandle-square');
+            circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
         } else {
             circleDiv.style.right = `${(circleHeight / 2) - (lineWidth / 2)}px`;
         }

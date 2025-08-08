@@ -99,7 +99,7 @@ const configs = {
     'dictionaryButtonResponseCharsAmount': 400,
     'correctTooltipPositionByMoreButtonWidth': true,
     'addQuoteButton': true,
-    'dragHandleStyle': 'circle', /// possible values: circle, triangle,
+    'dragHandleStyle': 'circle', /// possible values: circle, triangle, square
     'customSearchOptionsDisplay': 'hoverCustomSearchStyle', /// Possible values: 'hoverCustomSearchStyle', 'panelCustomSearchStyle'
     'collapseAsSecondPanel': false,
     'translateSingleWordsImmediately': false,
