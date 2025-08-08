@@ -12,7 +12,8 @@ function checkToAddCalendarButton(text) {
         /// month
         for (j in dateKeywords.month) {
             const mon = dateKeywords.month[j];
-            if (word.includes(mon)) {
+            // if (word.includes(mon)) {
+            if (word.startsWith(mon) || word.endsWith(mon)) {
                 month = dateKeywords.month[j % 12];
                 // mayBeDate = true;
                 continue loop;
