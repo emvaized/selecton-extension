@@ -46,6 +46,18 @@ function addBasicTooltipButtons(layout) {
                     hideTooltip();
                 });
 
+                /// Add 'clear' button
+                addBasicTooltipButton(clearLabel, clearIcon, function () {
+                    removeSelectionOnPage();
+                    textField.focus();
+
+                    if (textField.getAttribute('contenteditable') !== null)
+                        textField.innerHTML = '';
+                    else {
+                        textField.value = '';
+                    }
+                });
+
                 if (configs.addFontFormatButtons) {
 
                     /// Italic button
