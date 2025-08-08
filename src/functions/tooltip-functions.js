@@ -230,6 +230,7 @@ function addBasicTooltipButton(label, icon, onClick, isFirstButton = false, icon
     }
     button.onmouseup = function(e){
         if (e.button == 0){
+            e.stopPropagation();
             onClick(e);
 
             if (configs.hideTooltipOnActionButtonClick){
