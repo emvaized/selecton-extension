@@ -270,12 +270,8 @@ function initMarkersRestore() {
     function init() {
         try {
             restoreMarkers();
-        } catch (e) {
-            console.log(e);
-        }
 
-        /// scroll to marker command receiver
-        try {
+            /// Set up receiver to scroll to marker when opened from extension popup
             chrome.runtime.onMessage.addListener(request => {
                 if (request.command && request.command.includes('selecton-scroll-to-marker-message')) {
                     const selectedHintDy = parseInt(request.command.split(':')[1]);
@@ -286,7 +282,9 @@ function initMarkersRestore() {
                     // hintDy = ((selectionRect.dy + window.scrollY) * window.innerHeight) / document.body.scrollHeight
                 }
             });
-        } catch (e) { console.log(e); }
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     if (document.readyState === "complete" || document.readyState === 'interactive') {
