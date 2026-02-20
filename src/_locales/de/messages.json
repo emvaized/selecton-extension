@@ -114,7 +114,7 @@
         "message": "Zeit umrechnen"
     },
     "convertToCurrency": {
-        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Siehe Info</a>)"
+        "message": "Währung, in die konvertiert werden soll (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>Siehe Info</a>)"
     },
     "convertToCurrencyHint": {
         "message": "Siehe 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>hier</a> als Referenz"

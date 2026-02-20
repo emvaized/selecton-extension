@@ -120,7 +120,7 @@
         "message": "Конвертировать время (12h - 24h, врем. пояса)"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать больше</a>)"
+        "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>Узнать больше</a>)"
     },
     "convertToCurrencyHint": {
         "message": "См. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>здесь</a>"

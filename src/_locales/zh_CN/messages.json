@@ -120,7 +120,7 @@
       "message": "转换时间"
    },
    "convertToCurrency": {
-      "message": "要转换为的货币 (\u003Ca target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>info\u003C/a>)"
+      "message": "要转换为的货币 (\u003Ca target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>info\u003C/a>)"
    },
    "convertToCurrencyHint": {
       "message": "检视「程序代码」 \u003Ca target='_blank' href='https://www.iban.com/currency-codes'>这里\u003C/a> 以供参考"
