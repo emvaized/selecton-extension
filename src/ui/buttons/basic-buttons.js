@@ -85,24 +85,24 @@ function addBasicTooltipButtons(layout) {
                         hideTooltip();
                     });
 
-                    // /// Create text format button
-                    // const formatButton = document.createElement('button');
-                    // formatButton.setAttribute('class', configs.showButtonBorders ? 'selection-popup-button button-with-border' : 'selection-popup-button');
-                    // formatButton.classList.add('more-button');
-                    // formatButton.innerText = 'Text format';
+                    /// Create text format button
+                    const formatButton = addBasicTooltipButton('Text Format', italicTextIcon, function(){
+                        textField.focus();
+                        document.execCommand(isContentEditable ? "insertHTML" : "insertText", false, '<i>' + selectedText + '</i>');
+                    });
 
-                    // /// Show as hover button
-                    // let collapsedPanel = createHoverPanelForButton(formatButton, undefined, undefined, false, true, true, false);
-                    // collapsedPanel.style.maxWidth = 'unset';
-                    // collapsedPanel.style.zIndex = '2';
-                    // collapsedPanel.classList.add('default-padding-tooltip');
+                    /// Show as hover button
+                    let collapsedPanel = createHoverPanelForButton(formatButton, undefined, undefined, false, true, true, false);
+                    collapsedPanel.style.maxWidth = 'unset';
+                    collapsedPanel.style.zIndex = '2';
+                    collapsedPanel.classList.add('default-padding-tooltip');
 
-                    // collapsedPanel.appendChild(italicBtn);
-                    // collapsedPanel.appendChild(boldBtn);
-                    // collapsedPanel.appendChild(strikeBtn);
+                    collapsedPanel.appendChild(italicBtn);
+                    collapsedPanel.appendChild(boldBtn);
+                    collapsedPanel.appendChild(strikeBtn);
 
-                    // formatButton.appendChild(collapsedPanel);
-                    // tooltip.appendChild(formatButton);
+                    formatButton.appendChild(collapsedPanel);
+                    tooltip.appendChild(formatButton);
                 }
 
                 if (configs.collapseButtons)
