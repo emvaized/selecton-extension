@@ -121,13 +121,22 @@ function addBasicTooltipButtons(layout) {
                     let pasteButton = addBasicTooltipButton(pasteLabel, pasteButtonIcon, function () {
                         textField.focus();
 
-                        if (textField.getAttribute('contenteditable') !== null) {
+                        // WhatsApp/Lexical gibi modern editörlerde closest ile contenteditable alanını seçtiğimizden emin oluyoruz
+                        const editableTarget = textField.hasAttribute('contenteditable') ? textField : textField.closest('[contenteditable="true"]');
+                        
+                        if (editableTarget !== null) {
                             let currentClipboardContent = getCurrentClipboard();
 
-                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '')
-                                document.execCommand("insertHTML", false, currentClipboardContent);
-                        } else
+                            if (currentClipboardContent !== null && currentClipboardContent !== undefined && currentClipboardContent != '') {
+                                // insertHTML yerine insertText kullanmak React tabanlı sitelerin (WhatsApp vb.) bunu klavyeden yazılmış gibi algılamasını sağlar
+                                document.execCommand("insertText", false, currentClipboardContent);
+                                
+                                // Sisteme 'buraya veri girildi' mesajı (Event) göndererek Gönder butonunu tetikliyoruz
+                                editableTarget.dispatchEvent(new Event('input', { bubbles: true }));
+                            }
+                        } else {
                             document.execCommand('paste');
+                        }
 
                         removeSelectionOnPage();
                         // hideTooltip();

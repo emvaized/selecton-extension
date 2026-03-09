@@ -7,7 +7,7 @@ function createTooltip(e, recreated = false) {
     setTimeout(function () {
         lastMouseUpEvent = e;
         if (selection == null || selection == undefined) return;
-        // hideTooltip();
+        hideTooltip();
         tooltipOnBottom = false; /// reset the 'reverted' state of previous tooltip
 
         if (configs.snapSelectionToWord && !recreated) {
