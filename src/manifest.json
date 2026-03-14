@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SelectON Custom",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "blacktooth61",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
