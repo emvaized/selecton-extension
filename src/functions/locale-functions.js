@@ -31,9 +31,10 @@ function setDefaultLocales() {
 
     /// Save measured locales to memory
     chrome.storage.local.set({
-        'convertToCurrency': browserCurrency || 'USD',
-        'convertToCurrencySecondary': '',
+        'convertToCurrency': browserCurrency || 'GBP',
+        'convertToCurrencySecondary': 'TRY',
         'languageToTranslate': browserLanguage || 'en',
+        'languageToTranslateSecondary': 'tr',
         'preferredMetricsSystem': browserMetricSystem || 'metric',
     });
 }
