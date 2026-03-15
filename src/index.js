@@ -118,7 +118,7 @@ function setDocumentStyles(){
 
   /// styles of tooltip button icon
   /// Set icon height to match font size (natural scale)
-  document.documentElement.style.setProperty('--selecton-button-icon-height', '1.2em');
+  document.documentElement.style.setProperty('--selecton-button-icon-height', '1.0em');
 
   /// Set border radius
   document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 4}px`);
