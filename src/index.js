@@ -118,7 +118,7 @@ function setDocumentStyles(){
 
   /// styles of tooltip button icon
   /// Set icon height to match font size (natural scale)
-  document.documentElement.style.setProperty('--selecton-button-icon-height', '1.0em');
+  document.documentElement.style.setProperty('--selecton-button-icon-height', '1.2em');
 
   /// Set border radius
   document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 4}px`);
@@ -242,7 +242,7 @@ function initMouseListeners() {
       } catch (e) { }
 
       /// Check if clicked on text field
-      checkTextField(e.target);
+      checkTextField(activeEl);
 
       if (selectedText.length > 0) {
         /// create tooltip for selection
@@ -304,29 +304,21 @@ function initMouseListeners() {
     }, 0);
   }
 
-function checkTextField(target) {
+  function checkTextField(target) {
     /// check if textfield is focused
-    let activeEl = document.activeElement; // Sistemin anında odaklandığı element
-    
-    // Odaklanan element bir metin kutusu mu?
-    let isInput = activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA");
-    let isContentEditable = activeEl && activeEl.hasAttribute('contenteditable');
 
-    // Sidebar (yanlış tetiklenme) ve Placeholder (algılamama) sorununu çözen mantık:
-    // Tıklanan yer (target) ile odaklanan yer (activeEl) aynı kapsayıcıda mı?
-    let clickedNearActiveEl = false;
-    if (activeEl && activeEl !== document.body) {
-        // Eğer target ile activeEl aynıysa, birbirinin içindeyse veya aynı parent'a sahiplerse:
-        if (activeEl.contains(target) || target.contains(activeEl) || (activeEl.parentNode && activeEl.parentNode.contains(target))) {
-            clickedNearActiveEl = true;
-        }
-    }
-
-    // Hem odaklanma var hem de doğru yere tıklandıysa true yap
-    isTextFieldFocused = (isInput || isContentEditable) && clickedNearActiveEl;
+    // const target = e.target;
+    isTextFieldFocused = (
+      target.tagName === "INPUT" && (
+          target.type == 'text' || 
+          target.type == 'email' || 
+          target.type == 'search' || 
+          target.type == 'text'
+      )) || (target.tagName === "TEXTAREA" && !target.hasAttribute('aria-readonly')) || target.hasAttribute('contenteditable');
 
     if (isTextFieldFocused && configs.addActionButtonsForTextFields) {
       /// Special handling for Firefox 
+      /// (https://stackoverflow.com/questions/20419515/window-getselection-of-textarea-not-working-in-firefox)
       if (selectedText == '' && navigator.userAgent.indexOf("Firefox") > -1) {
         const ta = document.querySelector(':focus');
         if (ta != null && ta.value != undefined) {
@@ -335,16 +327,16 @@ function checkTextField(target) {
         }
       }
 
+      /// Hide previous 'paste' button
+      // if (selectedText == '') hideTooltip(); 
+
       /// Ignore single click on text field with inputted value
       try {
         isTextFieldEmpty = true;
-        let fieldToCheck = activeEl; // Artık her zaman asıl text alanını kontrol ediyoruz
-
-        // <p><br></p> gibi görünmez boşlukları saf dışı bırakmak için textContent.trim()
-        if (isContentEditable && fieldToCheck.textContent.trim() !== '' && selectedText == '') {
+        if (target.getAttribute('contenteditable') != null && target.innerHTML != '' && selectedText == '' && target.innerHTML != '<br>') {
           isTextFieldEmpty = false;
           if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
-        } else if (fieldToCheck.value && fieldToCheck.value.trim() !== '' && selectedText == '') {
+        } else if (target.value && target.value.trim() !== '' && selectedText == '') {
           isTextFieldEmpty = false;
           if (configs.addPasteOnlyEmptyField) isTextFieldFocused = false;
         }
