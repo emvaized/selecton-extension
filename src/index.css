@@ -490,18 +490,3 @@
   display: block;
   color: var(--selecton-info-panel-color) !important;
 }
-
-/* Çeviri sonucunun gösterildiği hover panelini içeriğe göre otomatik boyutlandır */
-.selecton-hover-panel-container, 
-.selecton-live-translation {
-    width: max-content !important;      /* İçerik ne kadar genişse o kadar uza */
-    max-width: 500px !important;        /* Ama 500px'den daha geniş olma (ekrandan taşmamak için) */
-    min-width: 100px;
-    white-space: pre-wrap !important;   /* Metin 500px'e ulaşırsa düzgünce alt satıra in */
-    line-height: 1.4 !important;        /* Uzun metinlerde satır aralığını okunaklı yap */
-}
-
-/* Gerekirse ana tooltip kapsayıcısının maksimum genişliğini de esnetelim */
-.selecton-entity {
-    max-width: 550px !important;
-}

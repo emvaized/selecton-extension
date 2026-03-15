@@ -32,8 +32,8 @@ function addTranslateButton(onFinish, selectionLength, wordsCount) {
                         // if (configs.debugMode)
                         //     console.log(`Detection is reliable: ${detectedLanguages.isReliable}`);
 
-                        /// YENİ EKLENEN MANTIK: Eğer aynı dil seçiliyse ama ikinci dil tanımlıysa butonu GİZLEME
-                        if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage && !configs.languageToTranslateSecondary)
+                        /// Don't show translate button if selected language is the same as desired
+                        if (languageOfSelectedText == configs.languageToTranslate && configs.hideTranslateButtonForUserLanguage)
                             shouldTranslate = false;
                         else shouldTranslate = true;
                     } else {
@@ -60,34 +60,21 @@ function addTranslateButton(onFinish, selectionLength, wordsCount) {
 
 function setRegularTranslateButton(languageOfSelectedText, selectionLength, wordsCount) {
 
-    /// YENİ MANTIK: Hedef dili belirle
-    let targetLang = configs.languageToTranslate;
-    
-    // Eğer tespit edilen dil birinciyle aynıysa VEYA Chrome dili anlayamadıysa ('und' veya 'unknown'), hedefi ikincil dil yap
-    if ((languageOfSelectedText === configs.languageToTranslate || languageOfSelectedText === 'und' || languageOfSelectedText === 'unknown') && configs.languageToTranslateSecondary) {
-        targetLang = configs.languageToTranslateSecondary;
-    }
-
-    let translateUrl;
-    if (languageOfSelectedText === targetLang && !configs.hideTranslateButtonForUserLanguage) {
-        // Orijinal koddaki hata payı engellemesi (Hem hedef hem tespit aynıysa en'e çevir)
-        translateUrl = returnTranslateUrl(selectedText, 'en', languageOfSelectedText);
-    } else {
-        translateUrl = returnTranslateUrl(selectedText, targetLang, languageOfSelectedText);
-    }
-
+    const translateUrl = languageOfSelectedText == configs.languageToTranslate && !configs.hideTranslateButtonForUserLanguage ?
+            returnTranslateUrl(selectedText, 'en', languageOfSelectedText) :
+            returnTranslateUrl(selectedText, configs.languageToTranslate, languageOfSelectedText);
     const translateButton = addLinkTooltipButton(translateLabel, translateButtonIcon, translateUrl);
 
     translateButton.setAttribute('id', 'selecton-translate-button');
 
     /// set live tranlsation listeners
-    if (configs.liveTranslation && selectionLength < 5000) {
+    // if (configs.liveTranslation && configs.preferredTranslateService == 'google' && selectedText.length < 500) {
+    if (configs.liveTranslation && selectionLength < 500) {
         setTimeout(function () {
             if (configs.translateSingleWordsImmediately && wordsCount == 1 && !/[:\/"'']/.test(selectedText)) {
-                // Artık configs.languageToTranslate yerine targetLang kullanıyoruz
-                fetchTranslation(selectedText, 'auto', targetLang, undefined, translateButton, true)
+                fetchTranslation(selectedText, 'auto', configs.languageToTranslate, undefined, translateButton, true)
             } else {
-                setLiveTranslateOnHoverButton(selectedText, 'auto', targetLang, translateButton);
+                setLiveTranslateOnHoverButton(selectedText, 'auto', configs.languageToTranslate, translateButton);
             }
         }, 5);
     }
@@ -155,35 +142,9 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
         try {
             originLanguage = result.src;
         } catch (e) { }
-
-        /// YENİ EKLENEN MANTIK: Sadece ve sadece Google'ın tespit ettiği dile (src) güveniyoruz!
-        if (originLanguage) {
-            let detectedSrc = originLanguage.toLowerCase();
-            
-            // Google'ın tespitine göre ASIL çevrilmesi gereken hedef dili bulalım:
-            let expectedTargetLang = configs.languageToTranslate; // Varsayılan hedef birinci dil
-            
-            // Eğer Google "Kardeşim bu metin zaten senin birinci dilinde" diyorsa, hedefi ikincil dil yap:
-            if (detectedSrc === configs.languageToTranslate && configs.languageToTranslateSecondary) {
-                expectedTargetLang = configs.languageToTranslateSecondary;
-            }
-
-            // Eğer bizim API'ye gönderirken kullandığımız hedef dil (targetLang), Google'ın tespiti 
-            // sonrası olması gereken hedeften (expectedTargetLang) FARKLIYSA, işlemi doğru dille TEKRARLA!
-            if (targetLang !== expectedTargetLang) {
-                if (configs.debugMode) {
-                    console.log(`Yerel API yanıldı! Google asıl dilin '${detectedSrc}' olduğunu anladı.`);
-                    console.log(`Hedef dil '${targetLang}' yerine '${expectedTargetLang}' yapılarak yeniden çevriliyor...`);
-                }
-                
-                // Doğru hedef dille çeviriyi arka planda anında yeniden başlat
-                fetchTranslation(word, sourceLang, expectedTargetLang, liveTranslationPanel, translateButton, showResultInButton);
-                return; // Hatalı olan ilk işlemin ekrana yansımasını engelle
-            }
-        }
     
         /// Set translation view
-        if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '').toLowerCase() !== word.replaceAll(' ', '').toLowerCase()) {
+        if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
             // if (resultOfLiveTranslation.length > maxLengthForResult)
             //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 

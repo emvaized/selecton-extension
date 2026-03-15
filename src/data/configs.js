@@ -25,8 +25,8 @@ const configs = {
     "convertMetrics": true,
     "convertResultClickAction": "search", /// Possible values: "copy", "search"
     "convertTime": true,
-    "convertToCurrency": "GBP",
-    "convertToCurrencySecondary": "TRY",
+    "convertToCurrency": "USD",
+    "convertToCurrencySecondary": "None",
     "correctTooltipPositionByMoreButtonWidth": true,
     "customSearchButtons": [
         {
@@ -103,7 +103,6 @@ const configs = {
     "hideTranslateButtonForUserLanguage": true,
     "invertColorOnDarkWebsite": true,
     "languageToTranslate": navigator.language || navigator.userLanguage || "en",
-    "languageToTranslateSecondary": "tr",
     "leftClickBackgroundTab": false,
     "liveTranslation": true,
     "maxIconsInRow": 5,

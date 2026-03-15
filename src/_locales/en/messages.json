@@ -340,9 +340,6 @@
   "languageToTranslate": {
     "message": "User's language (<a target='_blank' href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639-1 code</a>)"
   },
-  "languageToTranslateSecondary": {
-    "message": "Secondary language"
-  },
   "leftClickBackgroundTab": {
     "message": "Left click opens link as background tab"
   },

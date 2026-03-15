@@ -306,7 +306,6 @@ function updateDisabledOptions() {
     document.getElementById("convertToCurrencySecondaryDropdown").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferredMetricsSystem").parentNode.className = document.getElementById("convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("languageToTranslate").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("languageToTranslateSecondary").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("customStylesSection").className = document.getElementById("useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("fullOpacityOnHover").parentNode.className = document.getElementById("tooltipOpacity").value < 1.0 ? 'enabled-option' : 'disabled-option';
     document.getElementById("shadowOpacity").parentNode.className = document.getElementById("addTooltipShadow").checked ? 'enabled-option' : 'disabled-option';
