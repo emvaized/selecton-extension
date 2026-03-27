@@ -124,7 +124,8 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 - `npm install` to install all dependencies
 - `npm run build` to generate `dist` folder with minimized code of the extension
 
-## Some my other browser extensions
-* [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
-* [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) – quickly open any links and images in a small popup window with no browser controls
-* [Linkover](https://github.com/emvaized/linkover-extension) – load info about any link on mouse hover or on a long click
+## My other browser extensions and projects
+* <img src="https://github.com/emvaized/open-in-popup-window-extension/blob/main/src/assets/icon_new.png?raw=true" width="20"> [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) – quickly open any links and images in a small popup window with no browser controls
+* <img src="https://github.com/emvaized/circle-mouse-gestures/blob/master/src/assets/icons/icon-new.png?raw=true" width="20"> [Circle Mouse Gestures](https://github.com/emvaized/circle-mouse-gestures) – better mouse gestures, with visual representation of all available actions
+* <img src="https://github.com/emvaized/text-reflow-on-zoom-mobile/blob/main/src/icon.png?raw=true" width="20"> [Text reflow on zoom](https://github.com/emvaized/text-reflow-on-zoom-mobile) – userscript and mobile browser extension which reflows all text after a pinch gesture
+* <img src="https://github.com/emvaized/modern_inverted_mouse_cursors/blob/main/screenshots/illustration_of_inversion.gif?raw=true" width="20"> [Modern Inverted Mouse Cursors](https://www.patreon.com/emvaized/shop/modern-inverted-mouse-cursors-for-10-11-924356) – cursor pack for Windows 10/11 which inverts all colors behind cursors 

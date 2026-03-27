@@ -89,29 +89,18 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
         if (fetched == false) {
             /// Fetch definition from Google Translate
             fetched = true;
+            // fetchTranslationOG(word, sourceLang, targetLang, liveTranslationPanel, translateButton)
             fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel, translateButton)
         }
     }
 }
 
-async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel, translateButton, showResultInButton = false) {
+/// Uses alternative Google Translate API with richer results for single word translations
+async function fetchTranslationOG(word, sourceLang, targetLang, liveTranslationPanel, translateButton, showResultInButton = false) {
     // let maxLengthForResult = 100;
     let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
 
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${encodeURIComponent(word)}`;
-    // const xhr = new XMLHttpRequest();
-    // xhr.responseType = "json";
-    // xhr.open("GET", url);
-    // xhr.send();
-
-    // let result = await new Promise((resolve, reject) => {
-    //     xhr.onload = () => {
-    //         resolve(xhr);
-    //     };
-    //     xhr.onerror = () => {
-    //         resolve(xhr);
-    //     };
-    // });
 
     chrome.runtime.sendMessage({ type: 'background_fetch', url: url }, (response) => {
         let result = response;
@@ -166,6 +155,86 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
 
                 let container = document.createElement('div');
                 container.className = 'selecton-hover-panel-container';
+
+                container.innerText = resultOfLiveTranslation;
+                container.classList.add('selecton-live-translation');
+                liveTranslationPanel.appendChild(container);
+                liveTranslationPanel.style.padding = '0';
+                if(tooltipOnBottom) {
+                    title.style.paddingBottom = '2px';
+                    container.style.marginTop = '3px';
+                    container.style.marginBottom = '0px';
+                    liveTranslationPanel.appendChild(title);
+                }
+
+                /// Create origin language label
+                if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
+                    title.textContent += ` · ${originLanguage}`;
+                }
+            }
+        } else {
+            /// no translation found
+            liveTranslationPanel.innerHTML = noTranslationLabel;
+        }
+    });
+
+}
+
+/// alternative Google Translate url
+async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPanel, translateButton, showResultInButton = false) {
+    let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
+
+    const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${sourceLang}&tl=${targetLang}&q=${encodeURIComponent(word)}`;
+
+    chrome.runtime.sendMessage({ type: 'background_fetch', url: url }, (response) => {
+        let result = response;
+
+        if (configs.debugMode) {
+            console.log('Response from Google Translate:');
+            console.log(result);
+        }
+    
+        if (!result) {
+            liveTranslationPanel.innerText = noTranslationLabel;
+            return;
+        }
+
+        if (result[0]) result = result[0];
+    
+        let resultOfLiveTranslation;
+        let originLanguage;
+    
+        try {
+            resultOfLiveTranslation = result[0];
+        } catch (e) {
+            liveTranslationPanel.innerText = noTranslationLabel;
+            return;
+        }
+    
+        try {
+            originLanguage = result[1];
+        } catch (e) { }
+    
+        /// Set translation view
+        if (resultOfLiveTranslation !== null && resultOfLiveTranslation !== undefined && resultOfLiveTranslation !== '' && resultOfLiveTranslation.replaceAll(' ', '') !== word.replaceAll(' ', '')) {
+            if (showResultInButton){
+                let span = translateButton.querySelector('span');
+                if (!span) span = translateButton
+                span.innerText = resultOfLiveTranslation;
+                span.classList.add('selecton-live-translation');
+                translateButton.title = 'Source: Google Translate';
+            } else {
+                liveTranslationPanel.innerText = '';
+
+                const title = document.createElement('span');
+                title.textContent = 'Google Translate';
+                title.className = 'selecton-hover-panel-header';
+                if(!tooltipOnBottom) {
+                    liveTranslationPanel.appendChild(title);
+                } 
+
+                let container = document.createElement('div');
+                container.className = 'selecton-hover-panel-container';
                 // container.style.padding = '2px';
                 // container.style.position = 'relative';
 
@@ -185,33 +254,9 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
                     title.textContent += ` · ${originLanguage}`;
                 }
             }
-    
-            // setTimeout(function () {
-            //     /// check if panel goes off-screen on top
-            //     checkHoverPanelToOverflowOnTop(liveTranslationPanel);
-            // }, 3);
-    
-            /// Create origin language label
-            // let originLabelWidth = configs.fontSize / 1.5;
-            // let originLabelPadding = 3.5;
-            // let langLabel;
-            // if (originLanguage !== null && originLanguage !== undefined && originLanguage !== '') {
-            //     langLabel = document.createElement('span');
-            //     langLabel.textContent = originLanguage;
-            //     // langLabel.setAttribute('style', `opacity: 0.7; position: relative; right: -${originLabelPadding}px; bottom: -2.5px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
-            //     langLabel.setAttribute('style', `opacity: 0.7; position: absolute; right: 1px; bottom: 1px; font-size: ${originLabelWidth}px;color: var(--selection-button-foreground) !important`)
-                
-            //     if (showResultInButton){
-            //         translateButton.appendChild(langLabel);
-            //     } else {
-            //         // liveTranslationPanel.appendChild(langLabel);
-            //         container.appendChild(langLabel);
-            //     }
-            // }
         } else {
             /// no translation found
             liveTranslationPanel.innerHTML = noTranslationLabel;
         }
     });
-
 }

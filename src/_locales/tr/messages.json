@@ -117,7 +117,7 @@
         "message": "Zamanı dönüştürme"
     },
     "convertToCurrency": {
-        "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See bilgileri</a>)"
+        "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>See bilgileri</a>)"
     },
     "convertToCurrencyHint": {
         "message": "Referans için 'Kod' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> bakın"

@@ -114,7 +114,7 @@
         "message": "Конвертувати час"
     },
     "convertToCurrency": {
-        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Дізнатися більше</a>)"
+        "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>Дізнатися більше</a>)"
     },
     "convertToCurrencyHint": {
         "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>"

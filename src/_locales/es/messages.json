@@ -117,7 +117,7 @@
         "message": "Convertir tiempo"
     },
     "convertToCurrency": {
-        "message": "Moneda para convertir a (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Ver info</a>)"
+        "message": "Moneda para convertir a (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>Ver info</a>)"
     },
     "convertToCurrencyHint": {
         "message": "Consulte 'Código' <a target='_blank' href='https://www.iban.com/currency-codes'>aquí</a> como referencia"
