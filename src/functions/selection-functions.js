@@ -490,6 +490,15 @@ function extendSelectionToParentEl(){
         } else {
             extendParentSelectionCounter = 0;
         }
+
+        setTimeout(function(){
+            selection = window.getSelection();
+            selectedText = selection.toString().trim();
+
+            if (selection && selectedText.length > 0) {
+                createTooltip(lastMouseUpEvent, true);
+            }
+        }, 300)
     }, 0)
 }
 let extendParentSelectionCounter = 0;
