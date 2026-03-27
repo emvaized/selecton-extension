@@ -95,6 +95,7 @@ function setLiveTranslateOnHoverButton(word, sourceLang, targetLang, translateBu
     }
 }
 
+/// Uses alternative Google Translate API with richer results for single word translations
 async function fetchTranslationOG(word, sourceLang, targetLang, liveTranslationPanel, translateButton, showResultInButton = false) {
     // let maxLengthForResult = 100;
     let noTranslationLabel = chrome.i18n.getMessage("noTranslationFound");
