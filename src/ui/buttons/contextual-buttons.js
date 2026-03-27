@@ -700,7 +700,19 @@ function addContextualButtons(callbackOnFinish) {
 
         /// Add button to expand text selection
         if (configs.addExtendSelectionButton){
-            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, extendSelectionToParentEl);
+            const extendSelectionBtn = addBasicTooltipButton(chrome.i18n.getMessage('extendSelection'), extendSelectionIcon, function() {
+                extendSelectionToParentEl();
+
+                /// Recreate tooltip for new selection
+                setTimeout(function(){
+                    selection = window.getSelection();
+                    selectedText = selection.toString().trim();
+
+                    if (selection && selectedText.length > 0) {
+                        createTooltip(lastMouseUpEvent, true);
+                    }
+                }, 300)
+            });
             extendSelectionBtn.title = chrome.i18n.getMessage('extendSelectionTooltip');
             extendSelectionBtn.id = 'selecton-extend-selection-button';
         }
