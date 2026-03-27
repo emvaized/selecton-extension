@@ -1,5 +1,5 @@
-function returnTooltipRevealTransform(endPosition = true) {
-    const dx = '-50%';
+function returnTooltipRevealTransform(endPosition = true, customDx) {
+    const dx = customDx ?? '-50%';
     const dyPercentOffset = configs.verticalLayoutTooltip ? 30 : 100;
 
     switch (configs.tooltipRevealEffect) {
