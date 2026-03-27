@@ -46,7 +46,13 @@ function addDragHandle(dragHandleIndex, selStartDimensions, selEndDimensions) {
         if (selEndDimensions.dx == 0 && selEndDimensions.dy == 0) selEndDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
         if (selStartDimensions.dx == 0 && selStartDimensions.dy == 0) selStartDimensions = { dx: lastMouseUpEvent.clientX, dy: lastMouseUpEvent.clientY - (selectionHandleLineHeight / 2) - circleHeight };
 
-        if (selStartDimensions == null || selEndDimensions == null) { return; }
+        if (selStartDimensions == null || selEndDimensions == null) return;
+
+        /// Check drag handle to be out of the screen
+        if (selStartDimensions.dx < 0) selStartDimensions.dx = 0;
+        if (selEndDimensions.dx < 0) selEndDimensions.dx = 0;
+        if (selStartDimensions.dx > window.innerWidth) selStartDimensions.dx = window.innerWidth - 5;
+        if (selEndDimensions.dx > window.innerWidth) selEndDimensions.dx = window.innerWidth - 5;
 
         /// When tooltip is on bottom, revert drag handle by placing circleDiv on top of handle (to avoid overlaps)
         let dragHandleIsReverted = tooltipOnBottom;
