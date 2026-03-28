@@ -303,6 +303,7 @@ function updateDisabledOptions() {
     /// Grey out unavailable optoins
     document.getElementById("all-options-container").className = document.getElementById("enabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("convertToCurrencyDropdown").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
+    document.getElementById("convertToCurrencySecondaryDropdown").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferredMetricsSystem").parentNode.className = document.getElementById("convertMetrics").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("languageToTranslate").parentNode.className = document.getElementById("showTranslateButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("customStylesSection").className = document.getElementById("useCustomStyle").checked ? 'enabled-option' : 'disabled-option';
@@ -398,26 +399,48 @@ function setCollapsibleHeaders() {
 
 /// Configure additional elements
 function setCurrenciesDropdown() {
-    chrome.storage.local.get(['convertToCurrency'], function (result) {
+    // Fetch both primary and secondary values from storage
+    chrome.storage.local.get(['convertToCurrency', 'convertToCurrencySecondary'], function (result) {
         let initialValue = result.convertToCurrency || 'USD';
+        let initialSecondaryValue = result.convertToCurrencySecondary || '';
+
         let select = document.getElementById('convertToCurrencyDropdown');
+        let selectSecondary = document.getElementById('convertToCurrencySecondaryDropdown');
 
         Object.keys(currenciesList).forEach((function (key) {
-            let option = document.createElement('option');
             const currencySymbol = currenciesList[key]['currencySymbol'] || currenciesList[key]['symbol'];
-            option.innerHTML = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + (currenciesList[key]['currencyName'] || currenciesList[key]['name']);
+            let optionText = key + (currencySymbol == undefined ? '' : ` (${currencySymbol})`) + ' — ' + (currenciesList[key]['currencyName'] || currenciesList[key]['name']);
+
+            // Add to primary menu
+            let option = document.createElement('option');
+            option.innerHTML = optionText;
             option.setAttribute('value', key);
             select.appendChild(option);
-
             if (option.value == initialValue) option.setAttribute('selected', true);
+
+            // Add to secondary menu
+            let optionSecondary = document.createElement('option');
+            optionSecondary.innerHTML = optionText;
+            optionSecondary.setAttribute('value', key);
+            selectSecondary.appendChild(optionSecondary);
+            if (optionSecondary.value == initialSecondaryValue) optionSecondary.setAttribute('selected', true);
         }));
 
-        select.parentNode.innerHTML = chrome.i18n.getMessage('convertToCurrency') + '<br />' + select.parentNode.innerHTML;
+        // Adding labels
+        select.parentNode.innerHTML = (chrome.i18n.getMessage('convertToCurrency') || 'Convert to') + ' (Primary)<br />' + select.parentNode.innerHTML;
+        selectSecondary.parentNode.innerHTML = 'Convert to (Secondary)<br />' + selectSecondary.parentNode.innerHTML;
 
         setTimeout(function () {
+            // Save when primary currency changes
             document.getElementById('convertToCurrencyDropdown').addEventListener("input", function (e) {
                 let selectInput = document.getElementById('convertToCurrencyDropdown');
                 chrome.storage.local.set({ 'convertToCurrency': selectInput.value.split(' — ')[0] });
+            });
+
+            // Save when secondary currency changes
+            document.getElementById('convertToCurrencySecondaryDropdown').addEventListener("input", function (e) {
+                let selectSecondaryInput = document.getElementById('convertToCurrencySecondaryDropdown');
+                chrome.storage.local.set({ 'convertToCurrencySecondary': selectSecondaryInput.value.split(' — ')[0] });
             });
         }, 300);
     });

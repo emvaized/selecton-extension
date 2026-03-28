@@ -83,7 +83,7 @@
   border: none !important;
   box-shadow: none !important;
   padding: var(--selecton-button-padding) !important;
-  /* vertical-align: top !important; */
+  vertical-align: middle !important;
   font-family: Arial, Helvetica, sans-serif !important;
   height: 100% !important;
   min-height: 100% !important;
@@ -95,7 +95,6 @@
   font-size: var(--selecton-font-size) !important;
   line-height: 1.2 !important;
   position: relative;
-  vertical-align: top !important;
 }
 
 .tooltip-with-icons .selection-popup-button span {
@@ -190,7 +189,7 @@
 
 .custom-search-image-button span {
   display: inline;
-  vertical-align: top !important;
+  vertical-align: middle !important;
   opacity: 0.75;
   padding: 2px 5px !important;
 }
@@ -270,7 +269,7 @@
 .selecton-button-img-icon {
   all: revert;
   fill: white;
-  vertical-align: top !important;
+  vertical-align: middle !important;
   display: unset !important;
   transform: translate(0, -1px);
   height: var(--selecton-button-icon-height);
@@ -294,7 +293,7 @@
   width: var(--selecton-search-tooltip-icon-size);
   height: var(--selecton-search-tooltip-icon-size) !important;
   max-height: var(--selecton-search-tooltip-icon-size);
-  vertical-align: top !important;
+  vertical-align: middle !important;
   min-width: var(--selecton-search-tooltip-icon-size) !important;
 }
 
@@ -490,4 +489,18 @@
   padding: 0 12px;
   display: block;
   color: var(--selecton-info-panel-color) !important;
+}
+
+/* Automatically resize the translation hover panel according to the context */
+.selecton-hover-panel-container, 
+.selecton-live-translation {
+    width: max-content !important;
+    max-width: 500px !important;
+    min-width: 100px;
+    white-space: pre-wrap !important;
+    line-height: 1.4 !important;
+}
+
+.selecton-entity {
+    max-width: 550px !important;
 }

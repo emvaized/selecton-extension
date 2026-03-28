@@ -45,7 +45,7 @@ const currenciesList = {
     "SAR": { name: "Saudi Riyal", symbol: "﷼", rate: 3.750694 },
     "SEK": { name: "Swedish Krona", symbol: " kr", rate: 8.514027 },
     "THB": { name: "Thai Baht", symbol: "฿", rate: 34.700854, keywords: ['THB', 'Baht', 'baht'] },
-    "TRY": { name: "Turkish Lira", symbol: "₺", rate: 0.14 },
+    "TRY": { name: "Turkish Lira", symbol: "₺", rate: 43.96, keywords: ['TL', 'tl', 'Lira', 'lira']  },
     "TWD": { name: "New Taiwan dollar", symbol: "NT$", rate: 31.99368752 },
     "UAH": { name: "Ukrainian Hryvnia", symbol: "₴", rate: 27.852288, keywords: ['hryvnia', 'гривен', 'грн'] },
     "USD": { name: "United States Dollar", symbol: "$", rate: 1, keywords: ['dollar', 'dolar', 'доллар'] },

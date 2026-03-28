@@ -17,6 +17,9 @@ function addContextualButtons(callbackOnFinish) {
 
             for (const [key, value] of Object.entries(currenciesList)) {
                 if (selectedText.includes(' ' + key) || 
+                    selectedText.includes(key + ' ') ||
+                    selectedText.startsWith(key) ||
+                    selectedText.endsWith(key) ||
                     (value["currencySymbol"] && selectedText.includes(value["currencySymbol"])) || 
                     (value["symbol"] && selectedText.includes(value["symbol"]))
                 ) {
@@ -39,33 +42,73 @@ function addContextualButtons(callbackOnFinish) {
                     currencyRate = value["rate"];
                     currencySymbol = value["currencySymbol"] || value["symbol"];
 
-                    /// Special handling for prices where coma separates fractional digits instead of thousandths
-                    if (selectedText.includes(',')) {
-                        let parts = selectedText.split(',');
-                        if (parts.length == 2) {
-                            let queriedSecondPart = parts[1].match(/[+-]?\d+(\.\d)?/g);
-                            if (queriedSecondPart && queriedSecondPart.join('').length < 3) {
-                                selectedText = selectedText.replaceAll(',', '.');
+                    /// Fix currency formats (thousand/decimal separators)
+                    let textToParse = selectedText;
+                    let lastDot = textToParse.lastIndexOf('.');
+                    let lastComma = textToParse.lastIndexOf(',');
+
+                    // Case 1: Both dot and comma exist (e.g., 25.000,00 or 25,000.00)
+                    if (lastDot > -1 && lastComma > -1) {
+                        if (lastDot > lastComma) {
+                            textToParse = textToParse.replaceAll(',', ''); // Comma is a thousand separator, remove it.
+                        } else {
+                            textToParse = textToParse.replaceAll('.', '').replaceAll(',', '.'); // Dot is a thousand separator, remove it and convert comma to decimal.
+                        }
+                    } 
+                    // Case 2: Only comma exists (e.g., 25,000 or 25,00)
+                    else if (lastComma > -1) {
+                        let parts = textToParse.split(',');
+                        if (parts.length === 2) {
+                            let fractionMatch = parts[1].match(/\d+/);
+                            if (fractionMatch && fractionMatch[0].length < 3) {
+                                textToParse = textToParse.replaceAll(',', '.'); // It' a decimal separator
+                            } else {
+                                textToParse = textToParse.replaceAll(',', ''); // It's a thousand separator
+                            }
+                        } else {
+                            textToParse = textToParse.replaceAll(',', '');
+                        }
+                    } 
+                    // Case 3: Only dot exists (e.g., 25.000 or 25.00)
+                    else if (lastDot > -1) {
+                        let parts = textToParse.split('.');
+                        if (parts.length > 2) {
+                            textToParse = textToParse.replaceAll('.', '');
+                        } else if (parts.length === 2) {
+                            let fractionMatch = parts[1].match(/\d+/);
+                            if (fractionMatch && fractionMatch[0].length === 3) {
+                                textToParse = textToParse.replaceAll('.', ''); // It's a thousand separator, remove it.
                             }
                         }
                     }
 
                     /// Find the amount
-                    amount = extractAmountFromSelectedText(selectedText);
+                    amount = extractAmountFromSelectedText(textToParse);
                     break;
                 }
             }
 
-            if (currency !== undefined && currency !== configs.convertToCurrency && amount !== null && amount !== undefined) {
+            /// NEW LOGIC: Determine the target currency
+            let targetCurrency = configs.convertToCurrency;
+            
+            // If the currency in the selected text is the same as the primary currency, set target to secondary.
+            if (currency === configs.convertToCurrency && configs.convertToCurrencySecondary) {
+                targetCurrency = configs.convertToCurrencySecondary;
+            }
+
+            // Using 'targetCurrency' instead of 'configs.convertToCurrency' in the condition below.
+            // Also checking that the selected currency is not the same as targetCurrency (currency !== targetCurrency)
+            if (currency !== undefined && currency !== targetCurrency && amount !== null && amount !== undefined) {
 
                 /// Rates are already locally stored (should be initially)
                 if (currencyRate !== null && currencyRate !== undefined) {
                     if (configs.debugMode) {
                         console.log(`Found rate for currency ${currency}: ${currencyRate}`);
-                        console.log('User currency is: ' + configs.convertToCurrency);
+                        console.log('Target currency is: ' + targetCurrency);
                     }
 
-                    const value = currenciesList[configs.convertToCurrency];
+                    // Rate is now calculated based on 'targetCurrency' instead of 'configs.convertToCurrency'
+                    const value = currenciesList[targetCurrency];
                     if (value && value['rate'] !== null && value['rate'] !== undefined) {
 
                         let rateOfDesiredCurrency = value['rate'];
@@ -92,8 +135,8 @@ function addContextualButtons(callbackOnFinish) {
 
                             /// Create and add currency button with result of conversion
                             const currencyButton = addContextualTooltipButton(function (e) {
-                                let url = returnSearchUrl(`${amount + ' ' + currency} to ${configs.convertToCurrency}`);
-                                onTooltipButtonClick(e, url, convertedAmountString + ` ${configs.convertToCurrency}`);
+                                let url = returnSearchUrl(`${amount + ' ' + currency} to ${targetCurrency}`);
+                                onTooltipButtonClick(e, url, convertedAmountString + ` ${targetCurrency}`);
                             })
 
                             /// Show value before convertion
@@ -106,7 +149,9 @@ function addContextualButtons(callbackOnFinish) {
 
                             /// Show value after converion
                             const converted = document.createElement('span');
-                            const currencySymbolToUse = currenciesList[configs.convertToCurrency]['currencySymbol'] || currenciesList[configs.convertToCurrency]['symbol'];
+                            
+                            // Using 'targetCurrency' here as well instead of 'configs.convertToCurrency'
+                            const currencySymbolToUse = currenciesList[targetCurrency]['currencySymbol'] || currenciesList[targetCurrency]['symbol'];
 
                             if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
                                 converted.textContent = ` ${convertedAmountString}`;
@@ -118,7 +163,7 @@ function addContextualButtons(callbackOnFinish) {
 
                             /// Add currency symbol with different color
                             const currencyLabel = document.createElement('span');
-                            currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : configs.convertToCurrency}`;
+                            currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : targetCurrency}`;
                             currencyLabel.style.color = 'var(--selection-button-foreground)';
                             currencyButton.appendChild(currencyLabel);
                         }

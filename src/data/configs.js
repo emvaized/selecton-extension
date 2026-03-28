@@ -26,6 +26,7 @@ const configs = {
     "convertResultClickAction": "search", /// Possible values: "copy", "search"
     "convertTime": true,
     "convertToCurrency": "USD",
+    "convertToCurrencySecondary": "None",
     "correctTooltipPositionByMoreButtonWidth": true,
     "customSearchButtons": [
         {
