@@ -119,6 +119,9 @@
     "convertToCurrency": {
         "message": "Dönüştürülecek para birimi (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>See bilgileri</a>)"
     },
+    "convertToCurrencySecondary": {
+        "message": "Ters dönüşüm için para birimi (birincil seçildiğinde)"
+    },
     "convertToCurrencyHint": {
         "message": "Referans için 'Kod' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> bakın"
     },

@@ -119,6 +119,9 @@
   "convertToCurrency": {
     "message": "Omzetten naar (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>meer informatie</a>)"
   },
+  "convertToCurrencySecondary": {
+    "message": "Valuta voor omgekeerde conversie (wanneer primaire is geselecteerd)"
+  },
   "convertToCurrencyHint": {
     "message": "Gebruik de code <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> als verwijzing"
   },

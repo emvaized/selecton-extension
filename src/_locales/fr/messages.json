@@ -119,6 +119,9 @@
     "convertToCurrency": {
         "message": "Devise à convertir (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Voir info</a>)"
     },
+    "convertToCurrencySecondary": {
+        "message": "Devise pour la conversion inverse (quand la principale est sélectionnée)"
+    },
     "convertToCurrencyHint": {
         "message": "Voir 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>ici</a> pour référence"
     },

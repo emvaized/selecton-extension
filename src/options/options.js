@@ -427,8 +427,14 @@ function setCurrenciesDropdown() {
         }));
 
         // Adding labels
-        select.parentNode.innerHTML = (chrome.i18n.getMessage('convertToCurrency') || 'Convert to') + '<br />' + select.parentNode.innerHTML;
-        selectSecondary.parentNode.innerHTML = 'Convert to (Secondary)<br />' + selectSecondary.parentNode.innerHTML;
+        select.parentNode.innerHTML = (chrome.i18n.getMessage('convertToCurrency') || 'Currency to convert to') + '<br />' + select.parentNode.innerHTML;
+
+        let secondaryCurrencyLabel = chrome.i18n.getMessage('convertToCurrencySecondary') || 'Currency for reverse conversion (when primary is selected)';
+        let p = secondaryCurrencyLabel.split('(');
+        if (p.length > 1) 
+            secondaryCurrencyLabel = p[0] + '<span style="opacity:0.5">(' + p[1].replaceAll(' ', '&nbsp;') + '</span><br />';
+
+        selectSecondary.parentNode.innerHTML = secondaryCurrencyLabel + selectSecondary.parentNode.innerHTML;
 
         setTimeout(function () {
             // Save when primary currency changes

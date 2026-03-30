@@ -116,6 +116,9 @@
     "convertToCurrency": {
         "message": "Валюта для конвертації (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Дізнатися більше</a>)"
     },
+    "convertToCurrencySecondary": {
+        "message": "Валюта для зворотної конвертації (коли виділена основна)"
+    },
     "convertToCurrencyHint": {
         "message": "Див. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>тут</a>"
     },
