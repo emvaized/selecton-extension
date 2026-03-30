@@ -17,9 +17,7 @@ function addContextualButtons(callbackOnFinish) {
 
             for (const [key, value] of Object.entries(currenciesList)) {
                 if (selectedText.includes(' ' + key) || 
-                    selectedText.includes(key + ' ') ||
-                    selectedText.startsWith(key) ||
-                    selectedText.endsWith(key) ||
+                    selectedText.startsWith(key + ' ') ||
                     (value["currencySymbol"] && selectedText.includes(value["currencySymbol"])) || 
                     (value["symbol"] && selectedText.includes(value["symbol"]))
                 ) {

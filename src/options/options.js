@@ -427,7 +427,7 @@ function setCurrenciesDropdown() {
         }));
 
         // Adding labels
-        select.parentNode.innerHTML = (chrome.i18n.getMessage('convertToCurrency') || 'Convert to') + ' (Primary)<br />' + select.parentNode.innerHTML;
+        select.parentNode.innerHTML = (chrome.i18n.getMessage('convertToCurrency') || 'Convert to') + '<br />' + select.parentNode.innerHTML;
         selectSecondary.parentNode.innerHTML = 'Convert to (Secondary)<br />' + selectSecondary.parentNode.innerHTML;
 
         setTimeout(function () {

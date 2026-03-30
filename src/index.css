@@ -83,7 +83,7 @@
   border: none !important;
   box-shadow: none !important;
   padding: var(--selecton-button-padding) !important;
-  vertical-align: middle !important;
+  vertical-align: top !important;
   font-family: Arial, Helvetica, sans-serif !important;
   height: 100% !important;
   min-height: 100% !important;
@@ -498,7 +498,7 @@
     max-width: 500px !important;
     min-width: 100px;
     white-space: pre-wrap !important;
-    line-height: 1.4 !important;
+    line-height: 1.2 !important;
 }
 
 .selecton-entity {
