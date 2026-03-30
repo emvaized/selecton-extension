@@ -123,7 +123,7 @@
         "message": "Валюта для конвертации (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-converter'>Узнать больше</a>)"
     },
     "convertToCurrencySecondary": {
-        "message": "Валюта для обратной конвертации (при выделении основной валюты)"
+        "message": "Валюта для обратной конвертации (при выделении с основной валютой)"
     },
     "convertToCurrencyHint": {
         "message": "См. 'Код' <a target='_blank' href='https://www.iban.ru/currency-codes#'>здесь</a>"
