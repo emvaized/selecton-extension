@@ -117,7 +117,8 @@ function setDocumentStyles(){
   document.documentElement.style.setProperty('--selecton-font-size', `${configs.useCustomStyle ? configs.fontSize : 12.5}px`);
 
   /// styles of tooltip button icon
-  document.documentElement.style.setProperty('--selecton-button-icon-height', `${configs.fontSize * 1.35}px`);
+  /// Set icon height to match font size (natural scale)
+  document.documentElement.style.setProperty('--selecton-button-icon-height', '1.25em');
 
   /// Set border radius
   document.documentElement.style.setProperty('--selecton-border-radius', `${configs.useCustomStyle ? configs.borderRadius : 4}px`);

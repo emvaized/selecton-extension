@@ -122,6 +122,9 @@
   "convertToCurrency": {
     "message": "Currency to convert to (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>info</a>)"
   },
+  "convertToCurrencySecondary": {
+    "message": "Currency for reverse conversion (when primary is selected)"
+  },
   "convertToCurrencyHint": {
     "message": "See 'Code' <a target='_blank' href='https://www.iban.com/currency-codes'>here</a> for reference"
   },
