@@ -145,25 +145,54 @@ function addContextualButtons(callbackOnFinish) {
                                     currencyButton.textContent = ` ${amount} ${currency} →`;
                             }
 
-                            /// Show value after converion
-                            const converted = document.createElement('span');
-                            
-                            // Using 'targetCurrency' here as well instead of 'configs.convertToCurrency'
-                            const currencySymbolToUse = currenciesList[targetCurrency]['currencySymbol'] || currenciesList[targetCurrency]['symbol'];
+                            if (configs.preferCurrencySymbol && window.Intl && Intl.NumberFormat) {
+                                /// Try to apply locale formatting to the converted amount and show currency symbol
+                                let formattedPrice = new Intl.NumberFormat(
+                                    navigator.language || navigator.userLanguage || 'en-US', 
+                                        { 
+                                            style: 'currency', 
+                                            currency: targetCurrency, 
+                                            currencyDisplay: 'symbol'
+                                            // currencyDisplay: 'narrowSymbol'
+                                        });
 
-                            if (configs.preferCurrencySymbol && currencySymbolToUse !== undefined)
+                                /// Highlight the number with color
+                                const parts = formattedPrice.formatToParts(convertedAmount);
+
+                                formattedPrice = parts.map(part => {
+                                    const isNumber = ['integer', 'group', 'decimal', 'fraction'].includes(part.type);
+                                    if (isNumber) {
+                                        return `<span class="color-highlight">${part.value}</span>`;
+                                    } else if (part.type === 'currency') {
+                                        /// If Intl.NumberFormat doesn't know the currency symbol, check if we have it in our list
+                                        if (part.value === targetCurrency) {
+                                            const currencySymbolToUse = currenciesList[targetCurrency]['currencySymbol'] || currenciesList[targetCurrency]['symbol'];
+                                            if (currencySymbolToUse) return currencySymbolToUse;
+                                        }
+                                        return part.value;
+                                    } else {
+                                        return part.value;
+                                    }
+                                }).join('');
+
+                                currencyButton.innerHTML += formattedPrice;
+                            } else {
+                                /// Show value after converion with currency code
+                                const converted = document.createElement('span');
+                                
+                                // Using 'targetCurrency' here as well instead of 'configs.convertToCurrency'
+                                const currencySymbolToUse = currenciesList[targetCurrency]['currencySymbol'] || currenciesList[targetCurrency]['symbol'];
+
                                 converted.textContent = ` ${convertedAmountString}`;
-                            else
-                                converted.textContent = ` ${convertedAmountString}`;
+                                converted.classList.add('color-highlight');
+                                currencyButton.appendChild(converted);
 
-                            converted.classList.add('color-highlight');
-                            currencyButton.appendChild(converted);
-
-                            /// Add currency symbol with different color
-                            const currencyLabel = document.createElement('span');
-                            currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : targetCurrency}`;
-                            currencyLabel.style.color = 'var(--selection-button-foreground)';
-                            currencyButton.appendChild(currencyLabel);
+                                /// Add currency symbol with different color
+                                const currencyLabel = document.createElement('span');
+                                currencyLabel.textContent = ` ${configs.preferCurrencySymbol ? currencySymbolToUse : targetCurrency}`;
+                                currencyLabel.style.color = 'var(--selection-button-foreground)';
+                                currencyButton.appendChild(currencyLabel);
+                            }
                         }
                     }
                 }
