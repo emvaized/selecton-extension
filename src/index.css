@@ -164,11 +164,6 @@
   padding: 2px !important;
 }
 
-/* Color accent for fetch results panel (translate, dictionary) */
-.selecton-live-translation {
-  color: var(--selecton-secondary-color) !important;
-}
-
 /* Search tooltip with custom search options */
 .custom-search-image-button {
   all: revert;
@@ -492,15 +487,15 @@
 }
 
 /* Automatically resize the translation hover panel according to the context */
-.selecton-hover-panel-container, 
-.selecton-live-translation {
-    width: max-content !important;
-    max-width: 500px !important;
-    min-width: 100px;
-    white-space: pre-wrap !important;
-    line-height: 1.2 !important;
+.selecton-hover-panel-content{
+  width: max-content !important;
+  max-width: 500px !important;
+  min-width: 100px;
+  white-space: pre-wrap !important;
+  line-height: 1.2 !important;
 }
 
-.selecton-entity {
-    max-width: 550px !important;
+/* Color accent for fetch results panel (translate, dictionary) */
+.selecton-hover-panel-content {
+  color: var(--selecton-secondary-color) !important;
 }

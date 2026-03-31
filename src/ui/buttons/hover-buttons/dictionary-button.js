@@ -62,13 +62,13 @@ async function fetchDefinition(text, definitionPanel, wikiButton) {
             /// Set definition view
             // definitionPanel.innerText = resultDefinition;
             definitionPanel.innerText = '';
-            definitionPanel.classList.add('selecton-live-translation');
-            definitionPanel.style.maxWidth = '450%';
+            definitionPanel.classList.add('selecton-hover-panel-content');
+            // definitionPanel.style.maxWidth = '450%';
 
             /// If text contains line breaks, align by the left side
         //     if (resultDefinition.includes(`
         // `)) definitionPanel.style.textAlign = 'start';
-            definitionPanel.style.textAlign = 'start';
+            // definitionPanel.style.textAlign = 'start';
         
             /// Create origin language label
             // let originLabelWidth = configs.fontSize / 1.5;

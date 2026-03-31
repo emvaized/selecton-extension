@@ -149,10 +149,11 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
             //     resultOfLiveTranslation = resultOfLiveTranslation.substring(0, maxLengthForResult - 3) + '...';
 
             if (showResultInButton){
-                let span = translateButton.querySelector('span');
-                if (!span) span = translateButton
+                // let span = translateButton.querySelector('span');
+                // if (!span) 
+                let span = translateButton;
                 span.innerText = resultOfLiveTranslation;
-                span.classList.add('selecton-live-translation');
+                span.classList.add('color-highlight');
                 translateButton.title = 'Source: Google Translate';
             } else {
                 liveTranslationPanel.innerText = '';
@@ -170,7 +171,7 @@ async function fetchTranslation(word, sourceLang, targetLang, liveTranslationPan
                 // container.style.position = 'relative';
 
                 container.innerText = resultOfLiveTranslation;
-                container.classList.add('selecton-live-translation');
+                liveTranslationPanel.classList.add('selecton-hover-panel-content');
                 liveTranslationPanel.appendChild(container);
                 liveTranslationPanel.style.padding = '0';
                 if(tooltipOnBottom) {
