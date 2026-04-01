@@ -407,7 +407,8 @@ function addContextualButtons(callbackOnFinish) {
                 const mapUrl = returnShowOnMapUrl(selectedText);
                 addLinkTooltipButton(
                     showOnMapLabel,
-                    createImageIconForButton(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel),
+                    // createImageIconForButton(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel),
+                    mapButtonIcon,
                     mapUrl
                 );
 
