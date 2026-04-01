@@ -1,8 +1,21 @@
+### 3.9.92
+- Added option for reverse currency conversion (when primary is selected) (by [@fatihayvenli](https://github.com/fatihayvenli))
+- Improved currency detection for prices containing both dots and commas (by [@fatihayvenli](https://github.com/fatihayvenli))
+- Improved automatical resizing of the translation hover panel (by [@fatihayvenli](https://github.com/fatihayvenli))
+- Changed URL for loading live translation (possible fix for #111)
+- Show borders between custom search options
+- Combine text format buttons in one "Text format" button
+- Prevent selection drag handles from going off-screen horizontally
+- Format converted price in locale format when "Prefer currency symbols" is checked
+- Slightly reduced button icons + small fixes for Maps and Email icons
+- Use icons for "Open link" and "Email" buttons when "text only" appearance is selected
+- Small fixes for the Options page
+
 ### 3.9.91
 - Ignore clicks on textarea with readonly param
 - Removed excessive console logging when debug mode enabled
 - Updated zh-TW translations (by [@YheonYeung](https://github.com/YheonYeung))
-- Added 円 keyword for JPY currency (by [NamelessContributor](https://github.com/NamelessContributor))
+- Added 円 keyword for JPY currency (by [@NamelessContributor](https://github.com/NamelessContributor))
 - Small fixes and improvements
 
 ### 3.9.9
