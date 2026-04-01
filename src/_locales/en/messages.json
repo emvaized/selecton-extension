@@ -313,7 +313,7 @@
     }
   },
   "inMonth": {
-    "message": "In month"
+    "message": "In a month"
   },
   "inMonths": {
     "message": "In $MONTHS$ months",
