@@ -6,8 +6,8 @@ function returnTooltipRevealTransform(endPosition = true, customDx) {
         case 'noTooltipEffect': return `translate(${dx},0)`;
         case 'moveUpTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, ${dyPercentOffset}%)`;
         case 'moveDownTooltipEffect': return endPosition ? `translate(${dx},0)` : `translate(${dx}, -${dyPercentOffset}%)`;
-        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},0) scale(0.0)`;
-        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.0)` : `translate(${dx},${dyPercentOffset / 2}%) scale(0.0)`;
+        case 'scaleUpTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.000001)` : `translate(${dx},0) scale(0.0)`;
+        case 'scaleUpFromBottomTooltipEffect': return endPosition ? `translate(${dx},0) scale(1.000001)` : `translate(${dx},${dyPercentOffset / 2}%) scale(0.0)`;
     }
 }
 
