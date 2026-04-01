@@ -167,7 +167,7 @@ function createSearchOptionButton(icon, title, url, buttonPrototype) {
     } else {
         /// No label in horizontal style
         imgButton.style.margin = '3px 6px';
-        imgButton.title = titleText;
+        button.title = titleText;
         button.appendChild(imgButton);
     }
 
