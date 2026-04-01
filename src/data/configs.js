@@ -131,7 +131,7 @@ const configs = {
     "showDictionaryButton": true,
     "showDotForHoverButtons": true,
     "showEmailButton": true,
-    "showInfoPanel": true,
+    "showInfoPanel": false,
     "showOnMapButtonEnabled": true,
     "showPasteContentPreview": false,
     // "showSecondaryTooltipTitleOnHover": false,
