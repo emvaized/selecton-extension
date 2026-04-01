@@ -150,7 +150,7 @@
     "message": "Style to display custom search options"
   },
   "customSearchTooltip": {
-    "message": "Custom search options"
+    "message": "Custom Search Options"
   },
   "customSearchTooltipHint": {
     "message": "Gets revealed on hovering over the 'Search' button. Use %s as a placeholder for search query, %w is a placeholder for current domain (for website search)"
@@ -230,7 +230,7 @@
     "message": "Export"
   },
   "exportImportSettings": {
-    "message": "Export/import settings"
+    "message": "Export/Import settings"
   },
   "exportSettingsLabel": {
     "message": "Export settings"
@@ -508,7 +508,7 @@
     "message": "Center of selection"
   },
   "selectionHeader": {
-    "message": "Text selection"
+    "message": "Text Selection"
   },
   "selectonSettings": {
     "message": "SelectON settings"
