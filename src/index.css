@@ -195,11 +195,11 @@
   filter: none !important;
 }
 
-/* Borders between search options */
-/* .selecton-tooltip:has(.button-with-border) .custom-search-image-button:not(:first-child){
+/* Borders between custom search options */
+.selecton-tooltip:has(.button-with-border) .custom-search-image-button:not(:first-child){
   border-top: 1px solid var(--selecton-outline-color) !important;
   border-left: 1px solid var(--selecton-outline-color) !important;
-} */
+}
 
 .selection-popup-color-preview-circle {
   max-width: 9px;
