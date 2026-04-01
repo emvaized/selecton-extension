@@ -316,7 +316,8 @@ function updateDisabledOptions() {
     document.getElementById("preferredNewEmailMethod").parentNode.className = document.getElementById("showEmailButton").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("preferredMapsService").parentNode.className = document.getElementById("showOnMapButtonEnabled").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("secondaryTooltipIconSize").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
-    document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    // document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.className = document.getElementById("secondaryTooltipEnabled").checked ? 'enabled-option' : 'disabled-option';
+    // document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("preferCurrencySymbol").parentNode.className = document.getElementById("convertCurrencies").checked ? 'enabled-option' : 'disabled-option';
     document.getElementById("disableWordSnappingOnCtrlKey").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
     // document.getElementById("dontSnapTextfieldSelection").parentNode.className = document.getElementById("snapSelectionToWord").checked ? 'enabled-option' : 'disabled-option';
@@ -351,7 +352,6 @@ function updateDisabledOptions() {
     document.getElementById("showButtonLabelOnHover").parentNode.parentNode.className = document.getElementById("buttonsStyle").value == 'onlyicon' ? 'option visible-option' : 'option hidden-option';
     document.getElementById("tooltipInvertedBackground").parentNode.parentNode.className = document.getElementById("invertColorOnDarkWebsite").checked ? 'option visible-option' : 'option hidden-option';
     // document.getElementById("applyConfigsImmediatelyPerformanceTip").className = document.getElementById("applyConfigsImmediately").checked ? 'visible-option' : 'hidden-option';
-    document.getElementById("showSecondaryTooltipTitleOnHover").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("maxIconsInRow").parentNode.parentNode.className = document.getElementById("secondaryTooltipLayout").value == 'verticalLayout' ? 'hidden-option' : 'option visible-option';
     document.getElementById("hoverSearchPanelOptions").className = document.getElementById("customSearchOptionsDisplay").value == 'panelCustomSearchStyle' ? 'hidden-option' : 'visible-option';
 

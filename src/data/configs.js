@@ -134,7 +134,7 @@ const configs = {
     "showInfoPanel": true,
     "showOnMapButtonEnabled": true,
     "showPasteContentPreview": false,
-    "showSecondaryTooltipTitleOnHover": false,
+    // "showSecondaryTooltipTitleOnHover": false,
     "showStatsOnCopyButtonHover": true,
     "showTooltipArrow": true,
     "showTranslateButton": true,
