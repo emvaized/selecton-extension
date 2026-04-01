@@ -643,8 +643,8 @@ function addContextualButtons(callbackOnFinish) {
                             linkText.classList.add('color-highlight');
 
                             /// Add tooltip with full website on hover
-                            if (link.length > linkSymbolsToShow)
-                                linkButton.setAttribute('title', link);
+                            // if (link.length > linkSymbolsToShow)
+                                linkButton.setAttribute('title', openLinkLabel + ' ' + link);
 
                             // if (addButtonIcons)
                                 linkButton.appendChild(createImageIconForButton(openLinkButtonIcon, undefined, true));
