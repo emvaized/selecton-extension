@@ -426,24 +426,25 @@ function addContextualButtons(callbackOnFinish) {
                         onTooltipButtonClick(e, url);
                     })
 
-                    if (configs.buttonsStyle == 'onlylabel') {
-                        emailButton.textContent = chrome.i18n.getMessage('email') + ' ';
+                    // if (configs.buttonsStyle == 'onlylabel') {
+                    //     emailButton.textContent = chrome.i18n.getMessage('email') + ' ';
 
-                        let emailLabel = document.createElement('div');
-                        emailLabel.style.display = 'inline';
-                        emailLabel.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
-                        emailLabel.classList.add('color-highlight');
+                    //     let emailLabel = document.createElement('div');
+                    //     emailLabel.style.display = 'inline';
+                    //     emailLabel.textContent = emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText;
+                    //     emailLabel.classList.add('color-highlight');
 
-                        /// Add tooltip with full text on hover
-                        if (emailText.length > linkSymbolsToShow)
-                            emailButton.setAttribute('title', emailText);
-                        emailButton.appendChild(emailLabel);
-                    }
-                    else {
+                    //     /// Add tooltip with full text on hover
+                    //     if (emailText.length > linkSymbolsToShow)
+                    //         emailButton.setAttribute('title', emailText);
+                    //     emailButton.appendChild(emailLabel);
+                    // }
+                    // else {
                         emailButton.appendChild(createImageIconForButton(emailButtonIcon, (emailText.length > linkSymbolsToShow ? emailText.substring(0, linkSymbolsToShow) + '...' : emailText), true));
                         if (emailText.length > linkSymbolsToShow) emailButton.setAttribute('title', emailText);
                         emailButton.classList.add('color-highlight');
-                    }
+                        emailButton.setAttribute('title', chrome.i18n.getMessage('email') + ' ' + emailText);
+                    // }
 
                 } catch (error) {
                     console.log(error);
@@ -644,9 +645,9 @@ function addContextualButtons(callbackOnFinish) {
                             if (link.length > linkSymbolsToShow)
                                 linkButton.setAttribute('title', link);
 
-                            if (addButtonIcons)
+                            // if (addButtonIcons)
                                 linkButton.appendChild(createImageIconForButton(openLinkButtonIcon, undefined, true));
-                            else linkButton.textContent = openLinkLabel + ' ';
+                            // else linkButton.textContent = openLinkLabel + ' ';
 
                             linkButton.appendChild(linkText);
 
