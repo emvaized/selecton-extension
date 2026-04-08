@@ -1,11 +1,17 @@
-/// Look for these words to find that selected text is address, in order to show "Show on map" button
+/// Look for these words to find that selected text is address, in order to show "Show on map" button. Should start with a lowercase
 const addressKeywords = [
     /// English keywords
     ' street',
-    'broadway',
+    ' broadway',
     ' st.',
     'str.',
     ' city',
+    ' ave.',
+    ' rd.',
+    ' road ',
+    ' boulevard',
+    ' blvd',
+    ' lane ',
 
     /// Russian
     'ул. ',
@@ -36,11 +42,22 @@ const addressKeywords = [
     /// French
     'ville ',
     ' rue',
+    'rue ',
+    'allée ',
 
     /// German
     'straße',
     'strasse',
     ' stadt',
+    'platz ',
+    ' gasse ',
+    ' weg ',
+
+    /// Japan
+    '丁目',
+    '番地',
+    '号室',
+    '〒'
 ];
 
 

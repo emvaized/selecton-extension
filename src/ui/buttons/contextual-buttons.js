@@ -405,13 +405,13 @@ function addContextualButtons(callbackOnFinish) {
 
             if (containsAddress) {
                 const mapUrl = returnShowOnMapUrl(selectedText);
-                addLinkTooltipButton(
+                const showOnMapButton = addLinkTooltipButton(
                     showOnMapLabel,
                     // createImageIconForButton(mapButtonIcon, configs.buttonsStyle == 'onlyicon' ? '' : showOnMapLabel),
                     mapButtonIcon,
                     mapUrl
                 );
-
+                showOnMapButton.classList.add('color-highlight');
             }
         }
 
