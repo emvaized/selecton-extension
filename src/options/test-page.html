@@ -12,18 +12,14 @@
     html {
         padding: 50px;
     }
-
+    body {
+        font-size: 14px;
+        font-family: sans-serif !important;
+    }
     h4 {
         color: grey;
         font-weight: 400;
         margin: 6px 0px;
-    }
-
-    @-moz-document url-prefix() {
-        body {
-            font-family: sans-serif !important;
-            font-size: 15px;
-        }
     }
 
     @media (prefers-color-scheme: dark) {
@@ -41,11 +37,10 @@
 <body>
     <div>
         <img style='display: inline' src='../assets/icons/logo-new.png' width='27px' height='27px' />
-        <h2 style='display: inline'> SelectON test page</h1>
+        <h2 style='display: inline'>Welcome to SelectON test page</h1>
     </div>
 
-    <h4>You can test your current configs here.
-        It may be needed to reload the page to apply updated configs</h4>
+    <h4 style="margin-top: 8px">You can test your current settings here. Select text to see popup with available actions.</h4>
     <br />
 
     <h3>Dummy text</h3>
@@ -79,19 +74,8 @@
         interdum nibh.
         Quisque nec sodales nibh. Cras id nibh aliquam, tempus risus nec, ornare urna.
     </p>
-    <p>
-        Donec elementum pellentesque euismod. Aliquam commodo urna in purus lacinia pulvinar a vel metus. Ut iaculis ante nibh, id viverra lectus placerat
-        vitae.
-        Quisque congue nibh urna, vitae interdum justo varius malesuada. Proin tristique sem dictum massa auctor eleifend. Aenean auctor vitae risus id viverra.
-        Nunc ut
-        sapien non nibh pretium rhoncus ac sed ante. Vivamus sagittis quam lectus, quis vehicula urna tincidunt id. Cras eu nisl eget nisi dignissim maximus eu
-        nec leo.
-        Quisque neque dolor, imperdiet sit amet aliquam sit amet, vestibulum quis justo. Pellentesque non lectus quis diam tincidunt facilisis ut id neque.
-        Fusce
-        dignissim egestas neque rhoncus tincidunt. Proin lacus tellus, mattis id justo vitae, porta tempus nibh.
-    </p>
 
-    <h3>Measure units</h3>
+    <h3>Measure units conversion</h3>
     <ul>
         <li>Mass: 205lbs — 93kg</li>
         <li>Temperature: 102.2°F — 39°C</li>
@@ -101,7 +85,7 @@
         <li>Volume: 4 qt — 3.79 L</li>
     </ul>
 
-    <h3>Currencies</h3>
+    <h3>Currencies conversion</h3>
     <ul>
         <li>71,52 AUD</li>
         <li>$71,52</li>
@@ -111,7 +95,7 @@
         <li>5,000.99 GBP</li>
     </ul>
 
-    <h3>Links</h3>
+    <h3>Open links shown as text</h3>
     <ul>
         <li>https://github.com/emvaized/selecton-extension</li>
         <li>google.com</li>
@@ -128,7 +112,7 @@
     <h3>Text field</h3>
     <div>
         <textarea id="text-input" cols="60" rows="10" style="float: left" placeholder="Typed text will appear on the right..."></textarea>
-        <div id="text-input-result" style="float: left; margin: 10px 0 0 5px; "></div>
+        <div id="text-input-result" style="float: left; margin: 12px 0 0 5px; "></div>
     </div>
 </body>
 

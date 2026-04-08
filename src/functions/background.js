@@ -24,7 +24,9 @@ chrome.runtime.onMessage.addListener(
 
 /// Show notification on extension update
 chrome.runtime.onInstalled.addListener(function (details) {
-    if (details.reason == 'update' && !details.temporary) {
+    if (details.reason == 'install') {
+        window.open(chrome.runtime.getURL('options/test-page.html'));
+    } else if (details.reason == 'update' && !details.temporary) {
         // show notification on extension update
         let shouldShowNotification = true;
         const storageKey = 'showUpdateNotification';
