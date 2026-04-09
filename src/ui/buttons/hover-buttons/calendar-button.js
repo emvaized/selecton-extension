@@ -14,6 +14,7 @@ function checkToAddCalendarButton(text) {
             const mon = dateKeywords.month[j];
             // if (word.includes(mon)) {
             if (word.startsWith(mon) || word.endsWith(mon)) {
+                console.log(mon);
                 month = dateKeywords.month[j % 12];
                 // mayBeDate = true;
                 continue loop;
@@ -24,6 +25,7 @@ function checkToAddCalendarButton(text) {
         for (j in dateKeywords.weekday) {
             const weekd = dateKeywords.weekday[j];
             if (word.includes(weekd)) {
+                console.log(weekd);
                 weekday = dateKeywords.weekday[j % 7];
                 mayBeDate = true;
                 continue loop;
@@ -34,6 +36,8 @@ function checkToAddCalendarButton(text) {
         for (j in dateKeywords.tomorrow) {
             const tomorrowKeyword = dateKeywords.tomorrow[j];
             if (word.includes(tomorrowKeyword)) {
+                                console.log(tomorrowKeyword);
+
                 const tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
                 weekday = dateKeywords.weekday[tomorrow.getDay()];
                 day = tomorrow.getDate();
@@ -103,6 +107,8 @@ function checkToAddCalendarButton(text) {
         } else return;
     }
 
+    console.log(day, month, year, time, weekday);
+
     /// fill non found data
     if (!year) year = todayDate.getFullYear();
     if (!month && !day && weekday) {
@@ -123,6 +129,7 @@ function checkToAddCalendarButton(text) {
     if (month) dateString += `${month} `;
     if (year) dateString += `${year} `;
     if (time) dateString += `${time} `;
+
 
     const returnedDate = new Date(Date.parse(dateString));
     if (isNaN(returnedDate)) return;

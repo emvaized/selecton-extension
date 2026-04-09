@@ -5,13 +5,14 @@ function addContextualButtons(callbackOnFinish) {
     const wordsCount = selectedText.split(' ').length;
     const selectionContainsSpaces = selectedText.includes(' ');
     const selectionLength = selectedText.length;
+    const selectionHasNumbers = /\d/.test(selectedText);
     let isFileName = false;
 
     if (convertWhenOnlyFewWordsSelected == false || wordsCount <= wordsLimitToProccessText) {
         let numberToConvert;
 
         /// Convert currency button
-        if (configs.convertCurrencies) {
+        if (configs.convertCurrencies && selectionHasNumbers) {
             let currency, amount, currencyRate, currencySymbol;
             let match = false;
 
@@ -200,7 +201,7 @@ function addContextualButtons(callbackOnFinish) {
         }
 
         /// Unit conversion button
-        if (configs.convertMetrics) {
+        if (configs.convertMetrics && selectionHasNumbers) {
             let convertedNumber, fromUnit, convertedUnit;
 
             /// Feet ' and inches " handling
@@ -397,13 +398,14 @@ function addContextualButtons(callbackOnFinish) {
         if (configs.showOnMapButtonEnabled) {
             let containsAddress = false;
 
-            for (let i = 0, l = addressKeywords.length; i < l; i++) {
-                if (loweredSelectedText.includes(addressKeywords[i])) {
-                    containsAddress = true; break;
-                }
-            }
+            containsAddress = textContainsAddress(loweredSelectedText);
+            // for (let i = 0, l = addressKeywords.length; i < l; i++) {
+            //     if (loweredSelectedText.includes(addressKeywords[i])) {
+            //         containsAddress = true; break;
+            //     }
+            // }
 
-            if (containsAddress) {
+            if (containsAddress && selectionHasNumbers) {
                 const mapUrl = returnShowOnMapUrl(selectedText);
                 const showOnMapButton = addLinkTooltipButton(
                     showOnMapLabel,
@@ -503,7 +505,7 @@ function addContextualButtons(callbackOnFinish) {
         }
 
         /// Time convert button
-        if (configs.convertTime) {
+        if (configs.convertTime && selectionHasNumbers) {
             try {
                 let textToProccess = selectedText;
 

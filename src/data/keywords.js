@@ -1,66 +1,3 @@
-/// Look for these words to find that selected text is address, in order to show "Show on map" button. Should start with a lowercase
-const addressKeywords = [
-    /// English keywords
-    ' street',
-    ' broadway',
-    ' st.',
-    'str.',
-    ' city',
-    ' ave.',
-    ' rd.',
-    ' road ',
-    ' boulevard',
-    ' blvd',
-    ' lane ',
-
-    /// Russian
-    'ул. ',
-    'пр. ',
-    'улица ',
-    'переулок ',
-    'город ',
-    'проспект ',
-    'жк ',
-    'трц ',
-
-    /// Ukrainian
-    'вулиця ',
-    'вул.',
-    'м. ',
-    'місто ',
-    'трк ',
-
-    /// Belorussian
-    'вуліца ',
-    'горад ',
-    'праспект ',
-
-    /// Spanish
-    'calle ',
-    'ciudad ',
-
-    /// French
-    'ville ',
-    ' rue',
-    'rue ',
-    'allée ',
-
-    /// German
-    'straße',
-    'strasse',
-    ' stadt',
-    'platz ',
-    ' gasse ',
-    ' weg ',
-
-    /// Japan
-    '丁目',
-    '番地',
-    '号室',
-    '〒'
-];
-
-
 /// Literal multipliers for numeric values
 /// With the help of these, "2 thousand" will be converted to "2000"
 const thousandMultipliers = [
@@ -427,3 +364,82 @@ const dateKeywords = {
         'demain',
     ],
 };
+
+/// Look for these words to find that selected text is address, in order to show "Show on map" button. Should start with a lowercase
+// const addressKeywords = [
+//     /// English keywords
+//     ' street',
+//     ' broadway',
+//     ' st.',
+//     'str.',
+//     ' city',
+//     ' ave.',
+//     ' rd.',
+//     ' road ',
+//     ' boulevard',
+//     ' blvd',
+//     ' lane ',
+
+//     /// Russian
+//     'ул. ',
+//     'пр. ',
+//     'улица ',
+//     'переулок ',
+//     'город ',
+//     'проспект ',
+//     'жк ',
+//     'трц ',
+
+//     /// Ukrainian
+//     'вулиця ',
+//     'вул.',
+//     'м. ',
+//     'місто ',
+//     'трк ',
+
+//     /// Belorussian
+//     'вуліца ',
+//     'горад ',
+//     'праспект ',
+
+//     /// Spanish
+//     'calle ',
+//     'ciudad ',
+
+//     /// French
+//     'ville ',
+//     ' rue',
+//     'rue ',
+//     'allée ',
+
+//     /// German
+//     'straße',
+//     'strasse',
+//     ' stadt',
+//     'platz ',
+//     ' gasse ',
+//     ' weg ',
+
+//     /// Japan
+//     '丁目',
+//     '番地',
+//     '号室',
+//     '〒'
+// ];
+
+const addressKeywordsRegex = new RegExp([
+    /// JAPAN
+    '〒?\\d{3}-\\d{4}|丁目|番地|号室|マンション|ビル',
+
+    /// WESTERN (Latin)
+    '\\b(street|st|rd|road|ave|avenue|blvd|lane|drive|calle|rue|straße|strasse|platz)\\b',
+    '\\b(zip|post|code)\\b\\s?\\d{5}',
+
+    /// CYRILLIC (Enhanced for Abbreviations)
+    '(?<![\\p{L}\\p{N}])(улица|ул\\.|ул\\s|пр\\.|вул\\.|вул\\s|вулиця|місто|м\\.|дом|обл\\.|р-н|кв\\.)(?![\\p{L}\\p{N}])',
+
+    /// NORTH AMERICA / UK POSTAL
+    '\\b\\d{5}(-\\d{4})?\\b|\\b[A-Z]\\d[A-Z]\\s?\\d[A-Z]\\d\\b'
+].join('|'), 'iu');
+
+const textContainsAddress = () => addressKeywordsRegex.test(selectedText);
