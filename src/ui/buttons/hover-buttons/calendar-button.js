@@ -4,24 +4,8 @@ function checkToAddCalendarButton(text) {
 
     const todayDate = new Date();
 
-    const escapeRegex = (s) => s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-
-    /// For months, we allow the keyword to be a prefix of a word (like "aug" matching "august")
-    /// EXCEPT for "may" (and translations) where we enforce a strict boundary to prevent matching "maybe", "mayor", etc.
-    const strictMonths = ['may', 'мая', 'mayo'];
-    const monthPatterns = dateKeywords.month.map(m => {
-        let escaped = escapeRegex(m);
-        return strictMonths.includes(m) ? `${escaped}(?![\\p{L}])` : `${escaped}[\\p{L}]*`;
-    });
-
-    /// Create the month regex with our specialized patterns
-    const monthKeywordRegex = new RegExp(`(?:^|[^\\p{L}])(${monthPatterns.join('|')})`, 'iu');
-    /// For weekday and tomorrow we use exact word matches using unicode boundaries
-    const weekdayKeywordRegex = new RegExp(`(?:^|[^\\p{L}])(${dateKeywords.weekday.map(escapeRegex).join('|')})(?:$|[^\\p{L}])`, 'iu');
-    const tomorrowKeywordRegex = new RegExp(`(?:^|[^\\p{L}])(${dateKeywords.tomorrow.map(escapeRegex).join('|')})(?:$|[^\\p{L}])`, 'iu');
-
     /// Check for "tomorrow"
-    const tomorrowMatch = text.match(tomorrowKeywordRegex);
+    const tomorrowMatch = text.match(dateKeywordsRegex.tomorrow);
     if (tomorrowMatch) {
         const tomorrow = new Date(todayDate.getTime() + (24 * 60 * 60 * 1000));
         // Fix index mapping: JS getDay() starts Sunday=0, dateKeywords starts Monday=0
@@ -35,7 +19,7 @@ function checkToAddCalendarButton(text) {
 
     /// Check for month
     if (!month && !tomorrowMatch) {
-        const monthMatch = text.match(monthKeywordRegex);
+        const monthMatch = text.match(dateKeywordsRegex.month);
         if (monthMatch) {
             let matchedPrefix = monthMatch[1].toLowerCase();
             let index = dateKeywords.month.findIndex(m => matchedPrefix.startsWith(m.toLowerCase()));
@@ -45,7 +29,7 @@ function checkToAddCalendarButton(text) {
 
     /// Check for weekday
     if (!weekday && !tomorrowMatch) {
-        const weekdayMatch = text.match(weekdayKeywordRegex);
+        const weekdayMatch = text.match(dateKeywordsRegex.weekday);
         if (weekdayMatch) {
             let matchedWeekday = weekdayMatch[1].toLowerCase();
             let index = dateKeywords.weekday.findIndex(w => w.toLowerCase() === matchedWeekday);
