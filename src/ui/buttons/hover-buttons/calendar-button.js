@@ -167,12 +167,16 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, ti
     let calendarLink;
     if (time) {
         let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
-        calendarLink = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${dateString}&sf=true`;
+        /// Add one hour to end date
+        let endDate = new Date(date);
+        endDate.setHours(endDate.getHours() + 1);
+        let endDateString = endDate.toISOString().replaceAll(':', '').replaceAll('-', '');
+        calendarLink = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${endDateString}&sf=true`;
     } else {
         calendarLink = `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
     }
     const dateButton = addLinkTooltipButton(buttonLabel, calendarIcon, calendarLink);
-    dateButton.title = date.toLocaleDateString();
+    dateButton.title = chrome.i18n.getMessage('addToCalendar') + " (" + date.toLocaleDateString() + ")";
     dateButton.classList.add('color-highlight');
 
     if (configs.buttonsStyle == 'onlyicon') dateButton.innerHTML += ' ' + buttonLabel;

@@ -53,6 +53,9 @@
   "addScaleUpEffect": {
     "message": "Use scale-up effect on reveal"
   },
+  "addToCalendar": {
+    "message": "Add to calendar"
+  },
   "addTooltipShadow": {
     "message": "Add tooltip shadow"
   },
