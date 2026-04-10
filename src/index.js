@@ -131,7 +131,8 @@ function setDocumentStyles(){
 
   switch (configs.buttonsStyle) {
     case 'onlylabel': {
-      document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+      // document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+      document.documentElement.style.setProperty('--selecton-button-padding', '3px 9px');
     } break;
     case 'onlyicon': {
       document.documentElement.style.setProperty('--selecton-button-padding', '3px 10px');
