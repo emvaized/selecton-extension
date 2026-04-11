@@ -149,18 +149,16 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
 
 function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     /// Set border radius for first and last buttons of horizontal tooltip
-    // setTimeout(function () {
     const children = applyOnlyToButtons ? parent.querySelectorAll('.selecton-tooltip > .selection-popup-button') : parent.children;
     const childrenLength = children.length;
-    // if (children[1]) {
+
     if (childrenLength > 1) {
         const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
         children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
         children[childrenLength - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
-    } else {
+    } else if (childrenLength > 0) {
         children[0].style.borderRadius = onlyButtonBorderRadius;
     }
-    // }, 50);
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
