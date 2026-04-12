@@ -123,6 +123,7 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 ## Building
 - `npm install` to install all dependencies
 - `npm run build` to generate `dist` folder with minimized code of the extension
+- (optional) `npm run build.chrome` to generate `dist` folder for Chromium-based browsers (with few chagnes to Manifest)
 
 ## My other browser extensions and projects
 * <img src="https://github.com/emvaized/open-in-popup-window-extension/blob/main/src/assets/icon_new.png?raw=true" width="20"> [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) – quickly open any links and images in a small popup window with no browser controls
