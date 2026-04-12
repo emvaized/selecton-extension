@@ -5,7 +5,7 @@ const ConcatPlugin = require('@mcler/webpack-concat-plugin');
 const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-module.exports = {
+module.exports = env => ({
   /// background script
   entry: {
     background: "./src/functions/background.js"
@@ -70,4 +70,4 @@ module.exports = {
       new JsonMinimizerPlugin(),
     ],
   },
-};
+});
