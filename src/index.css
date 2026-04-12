@@ -117,13 +117,13 @@
   filter: none !important;
 }
 
-.link-button {
+.selecton-link-button {
   text-decoration: none !important;
   height: 100% !important;
   display: inline-block !important;
 }
 
-.link-button .selecton-button-img-icon {
+.selecton-link-button .selecton-button-img-icon {
   vertical-align: middle !important;
 }
 

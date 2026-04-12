@@ -321,7 +321,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
             removeSelectionOnPage();
         }
     }
-    button.classList.add('link-button')
+    button.classList.add('selecton-link-button')
     button.href = url;
     button.target = '_blank';
 
