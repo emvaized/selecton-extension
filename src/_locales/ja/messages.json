@@ -649,7 +649,7 @@
       "message": "垂直レイアウト"
    },
    "verticalLayoutTooltip": {
-      "message": "垂直ツールチップレイアウトを使用（実験的）"
+      "message": "垂直ツールチップレイアウトを使用"
    },
    "verticalSecondaryTooltip": {
       "message": "垂直リストで表示（水平時は無効）"

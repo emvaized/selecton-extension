@@ -649,7 +649,7 @@
     "message": "Vertical"
   },
   "verticalLayoutTooltip": {
-    "message": "Use vertical tooltip layout (experimental)"
+    "message": "Use vertical tooltip layout"
   },
   "verticalSecondaryTooltip": {
     "message": "Display as vertical list (disable for horizontal)"

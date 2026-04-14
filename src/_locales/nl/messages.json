@@ -634,7 +634,7 @@
     "message": "Verticaal"
   },
   "verticalLayoutTooltip": {
-    "message": "Verticale paneelindeling gebruiken (experimenteel)"
+    "message": "Verticale paneelindeling gebruiken"
   },
   "verticalSecondaryTooltip": {
     "message": "Verticale lijst tonen (uitschakelen = horizontaal)"

@@ -643,7 +643,7 @@
         "message": "Vertical"
     },
     "verticalLayoutTooltip": {
-        "message": "Use el diseño del panel vertical (experimental)"
+        "message": "Use el diseño del panel vertical"
     },
     "verticalSecondaryTooltip": {
         "message": "Mostrar como lista vertical (deshabilitar para horizontal)"
