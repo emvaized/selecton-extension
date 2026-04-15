@@ -329,68 +329,6 @@ const dateKeywordsRegex = {
     tomorrow: /(?:^|[^\p{L}])(tomorrow|завтра|mañana|demain)(?:$|[^\p{L}])/iu
 };
 
-/// Look for these words to find that selected text is address, in order to show "Show on map" button. Should start with a lowercase
-// const addressKeywords = [
-//     /// English keywords
-//     ' street',
-//     ' broadway',
-//     ' st.',
-//     'str.',
-//     ' city',
-//     ' ave.',
-//     ' rd.',
-//     ' road ',
-//     ' boulevard',
-//     ' blvd',
-//     ' lane ',
-
-//     /// Russian
-//     'ул. ',
-//     'пр. ',
-//     'улица ',
-//     'переулок ',
-//     'город ',
-//     'проспект ',
-//     'жк ',
-//     'трц ',
-
-//     /// Ukrainian
-//     'вулиця ',
-//     'вул.',
-//     'м. ',
-//     'місто ',
-//     'трк ',
-
-//     /// Belorussian
-//     'вуліца ',
-//     'горад ',
-//     'праспект ',
-
-//     /// Spanish
-//     'calle ',
-//     'ciudad ',
-
-//     /// French
-//     'ville ',
-//     ' rue',
-//     'rue ',
-//     'allée ',
-
-//     /// German
-//     'straße',
-//     'strasse',
-//     ' stadt',
-//     'platz ',
-//     ' gasse ',
-//     ' weg ',
-
-//     /// Japan
-//     '丁目',
-//     '番地',
-//     '号室',
-//     '〒'
-// ];
-
 const addressKeywordsRegex = new RegExp([
     /// JAPAN
     '〒?\\d{3}-\\d{4}|丁目|番地|号室|マンション|ビル',

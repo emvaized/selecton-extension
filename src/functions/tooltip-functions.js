@@ -331,7 +331,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
 /// Hide tooltip when mouse moved far from text selection
 function mouseMoveToHideListener(mouseMoveEvent) {
-    if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false) {
+    if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false || floatingTooltipTop || floatingTooltipBottom) {
         window.removeEventListener('mousemove', mouseMoveToHideListener);
         return;
     }

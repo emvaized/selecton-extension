@@ -357,7 +357,7 @@ function initMouseListeners() {
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
-      window.addEventListener('mousemove', mouseMoveToHideListener);
+      window.addEventListener('mouseover', mouseMoveToHideListener, { passive: true });
     }
 
   }
@@ -374,7 +374,7 @@ function initMouseListeners() {
 
   /// Hide tooltip on scroll
   // document.addEventListener('wheel', hideOnScrollListener);
-  document.addEventListener('scroll', hideOnScrollListener);
+  document.addEventListener('scroll', hideOnScrollListener, { passive: true });
 
   function hideOnScrollListener(e) {
     if (tooltipIsShown == false) return;
