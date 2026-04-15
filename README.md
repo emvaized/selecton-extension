@@ -105,7 +105,7 @@ EOS
 
 ## Contribution
 You can make SelectON better without even knowing how to code:
-- Provide translation for your language: [Base English file](./src/assets/_locales/en/messages.json)
+- Provide translation for your language: [Base English file](./src/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](./src/data/currencies.js)
 - SelectON relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](./src/data/keywords.js)
 
