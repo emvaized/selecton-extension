@@ -1,3 +1,13 @@
+### 3.9.93
+- Improved detection for Show on map and Calendar button
+- Set one hour duration for event on Calendar button click
+- Disabled info panel by default
+- Make tooltip buttons slightly more compact
+- Improved compatibility with other mouse actions extensions
+- Added option to build specifically for Chromium-based browsers
+- Updated project dependencies
+- Other small fixes and improvements
+
 ### 3.9.92
 - Added option for reverse currency conversion (when primary is selected) (by [@fatihayvenli](https://github.com/fatihayvenli))
 - Improved currency detection for prices containing both dots and commas (by [@fatihayvenli](https://github.com/fatihayvenli))
