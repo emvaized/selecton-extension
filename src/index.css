@@ -18,6 +18,7 @@
   border: 0.25px solid var(--selecton-outline-color);
   min-width: fit-content !important;
   white-space: nowrap !important;
+  font-size: var(--selecton-font-size) !important;
   /* backdrop-filter: blur(5px) !important; */
 }
 
@@ -117,13 +118,13 @@
   filter: none !important;
 }
 
-.link-button {
+.selecton-link-button {
   text-decoration: none !important;
   height: 100% !important;
   display: inline-block !important;
 }
 
-.link-button .selecton-button-img-icon {
+.selecton-link-button .selecton-button-img-icon {
   vertical-align: middle !important;
 }
 

@@ -131,7 +131,8 @@ function setDocumentStyles(){
 
   switch (configs.buttonsStyle) {
     case 'onlylabel': {
-      document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+      // document.documentElement.style.setProperty('--selecton-button-padding', '4px 10px');
+      document.documentElement.style.setProperty('--selecton-button-padding', '3px 9px');
     } break;
     case 'onlyicon': {
       document.documentElement.style.setProperty('--selecton-button-padding', '3px 10px');
@@ -356,7 +357,7 @@ function initMouseListeners() {
 
     /// Listener to hide tooltip when cursor moves away
     if (configs.hideTooltipWhenCursorMovesAway && configs.tooltipPosition == 'overCursor') {
-      window.addEventListener('mousemove', mouseMoveToHideListener);
+      window.addEventListener('mouseover', mouseMoveToHideListener, { passive: true });
     }
 
   }
@@ -373,7 +374,7 @@ function initMouseListeners() {
 
   /// Hide tooltip on scroll
   // document.addEventListener('wheel', hideOnScrollListener);
-  document.addEventListener('scroll', hideOnScrollListener);
+  document.addEventListener('scroll', hideOnScrollListener, { passive: true });
 
   function hideOnScrollListener(e) {
     if (tooltipIsShown == false) return;

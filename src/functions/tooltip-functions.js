@@ -149,18 +149,16 @@ function createImageIconForButton(url, title, shouldAlwaysAddSpacing = false, op
 
 function setBorderRadiusForSideButtons(parent, applyOnlyToButtons = true) {
     /// Set border radius for first and last buttons of horizontal tooltip
-    // setTimeout(function () {
     const children = applyOnlyToButtons ? parent.querySelectorAll('.selecton-tooltip > .selection-popup-button') : parent.children;
     const childrenLength = children.length;
-    // if (children[1]) {
+
     if (childrenLength > 1) {
         const revertedVerticalButtons = configs.verticalLayoutTooltip && tooltipOnBottom;
         children[0].style.borderRadius = revertedVerticalButtons ? lastButtonBorderRadius : firstButtonBorderRadius;
         children[childrenLength - 1].style.borderRadius = revertedVerticalButtons ? firstButtonBorderRadius : lastButtonBorderRadius;
-    } else {
+    } else if (childrenLength > 0) {
         children[0].style.borderRadius = onlyButtonBorderRadius;
     }
-    // }, 50);
 }
 
 function setCopyButtonTitle(copyButton, symbols, words) {
@@ -309,8 +307,10 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
     }
 
     button.onmousedown = function(e){
-        e.stopPropagation();
-        e.preventDefault();
+        if (e.button == 0){
+            e.stopPropagation();
+            e.preventDefault();
+        }
     }
     button.onmouseup = function(e){
         if (e.button == 0){
@@ -321,7 +321,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
             removeSelectionOnPage();
         }
     }
-    button.classList.add('link-button')
+    button.classList.add('selecton-link-button')
     button.href = url;
     button.target = '_blank';
 
@@ -331,7 +331,7 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
 
 /// Hide tooltip when mouse moved far from text selection
 function mouseMoveToHideListener(mouseMoveEvent) {
-    if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false) {
+    if (tooltipIsShown == false || configs.hideTooltipWhenCursorMovesAway == false || floatingTooltipTop || floatingTooltipBottom) {
         window.removeEventListener('mousemove', mouseMoveToHideListener);
         return;
     }

@@ -105,7 +105,7 @@ EOS
 
 ## Contribution
 You can make SelectON better without even knowing how to code:
-- Provide translation for your language: [Base English file](./src/assets/_locales/en/messages.json)
+- Provide translation for your language: [Base English file](./src/_locales/en/messages.json)
 - Add your currency to the list of supported currencies: [Currencies list](./src/data/currencies.js)
 - SelectON relies on looking for keywords in the selected text. Enhance them with keywords for your language: [Keywords](./src/data/keywords.js)
 
@@ -123,6 +123,7 @@ Also, you can always write me an [email](mailto:maximtsyba@gmail.com) to share y
 ## Building
 - `npm install` to install all dependencies
 - `npm run build` to generate `dist` folder with minimized code of the extension
+- (optional) `npm run build.chrome` to generate `dist` folder for Chromium-based browsers (with few chagnes to Manifest)
 
 ## My other browser extensions and projects
 * <img src="https://github.com/emvaized/open-in-popup-window-extension/blob/main/src/assets/icon_new.png?raw=true" width="20"> [Open in Popup Window](https://github.com/emvaized/open-in-popup-window-extension) – quickly open any links and images in a small popup window with no browser controls

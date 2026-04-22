@@ -652,7 +652,7 @@
     "message": "垂直的"
   },
   "verticalLayoutTooltip": {
-    "message": "使用垂直工具提示佈局 (試驗性)"
+    "message": "使用垂直工具提示佈局"
   },
   "verticalSecondaryTooltip": {
     "message": "顯示為垂直清單 (停用水平)"

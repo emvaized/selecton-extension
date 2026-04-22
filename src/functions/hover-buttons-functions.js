@@ -72,9 +72,9 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
         if (!configs.verticalLayoutTooltip) {
             if (tooltipOnBottom) {
                 panelOnBottom = true;
-                movePanelToBottom(panel, button);
+                movePanelToBottom(panel, button, staticPanelMode);
             } else {
-                panelOnBottom = checkHoverPanelToOverflowOnTop(panel, button);
+                panelOnBottom = checkHoverPanelToOverflowOnTop(panel, button, staticPanelMode);
             }
 
             /// Clip content on edge for better looking animation
@@ -139,77 +139,76 @@ function createHoverPanelForButton(button, initialHtml, onHoverCallback, reverse
             } catch (e) { }
         })
     }
+    return panel;
+}
 
-    function checkHoverPanelToOverflowOnTop(panel, button) {
-        /// check to hover panel overflow on screen top
-        try {
-            if (panel.getBoundingClientRect().top < 0) {
-                movePanelToBottom(panel, button);
-                return true;
-            } else return false;
-        } catch (e) { return false; }
-    }
+function checkHoverPanelToOverflowOnTop(panel, button, staticPanelMode = false) {
+    /// check to hover panel overflow on screen top
+    try {
+        if (panel.getBoundingClientRect().top < 0) {
+            movePanelToBottom(panel, button, staticPanelMode);
+            return true;
+        } else return false;
+    } catch (e) { return false; }
+}
     
-    function movePanelToBottom(panel, button) {
-        panel.style.bottom = 'unset';
-        panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
-    
-        if (button)
-            button.classList.add('higher-z-index');
-        else if (panel.parentNode)
-            panel.parentNode.classList.add('higher-z-index');
-    }
-    
-    function checkHoverPanelHorizontalOverflow(panel) {
-        try {
-            const panRect = panel.getBoundingClientRect();
-            /// check overflow on right screen edge
-            const rightOverflow = window.innerWidth - panRect.left - (panRect.width * 2);
-            if (rightOverflow < 0) {
-                if (configs.verticalLayoutTooltip){
-                    panel.style.transform = 'translate(-215%, 0)';
-                }
-                return true;
-            } else if(panRect.left < 0){
-                /// check overflow on left screen edge
-                panel.style.right = `${panRect.left}px`;
-            } else return false;
-        } catch (e) { return false; }
-    }
-    
-    
-    function revealHoverPanel(panel, dxTransformValue) {
-        if (panel.style.opacity > 0) return;
-        panel.style.width = 'max-content';
-        panel.style.visibility = 'visible';
-        // panel.style.display = 'block';
-    
-        setTimeout(function () {
-            panel.style.opacity = 1;
-            panel.style.transform = `translate(${dxTransformValue},0)`;
-    
-            // if (configs.verticalLayoutTooltip || staticPanelMode) 
-                checkHoverPanelHorizontalOverflow(panel);
+function movePanelToBottom(panel, button, staticPanelMode = false) {
+    panel.style.bottom = 'unset';
+    panel.style.top = staticPanelMode ? staticPanelVerticalShift : '125%';
 
-            setTimeout(function () {
-                if (!panel || !tooltipIsShown) return;
-                panel.style.pointerEvents = 'all';
-            }, configs.animationDuration);
-        }, 3);
-    }
-    
-    function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
-        panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
-        panel.style.opacity = 0.0;
-        panel.style.pointerEvents = 'none';
-       
+    if (button)
+        button.classList.add('higher-z-index');
+    else if (panel.parentNode)
+        panel.parentNode.classList.add('higher-z-index');
+}
+
+function checkHoverPanelHorizontalOverflow(panel) {
+    try {
+        const panRect = panel.getBoundingClientRect();
+        /// check overflow on right screen edge
+        const rightOverflow = window.innerWidth - panRect.left - (panRect.width * 2);
+        if (rightOverflow < 0) {
+            if (configs.verticalLayoutTooltip){
+                panel.style.transform = 'translate(-215%, 0)';
+            }
+            return true;
+        } else if(panRect.left < 0){
+            /// check overflow on left screen edge
+            panel.style.right = `${panRect.left}px`;
+        } else return false;
+    } catch (e) { return false; }
+}
+
+
+function revealHoverPanel(panel, dxTransformValue) {
+    if (panel.style.opacity > 0) return;
+    panel.style.width = 'max-content';
+    panel.style.visibility = 'visible';
+    // panel.style.display = 'block';
+
+    setTimeout(function () {
+        panel.style.opacity = 1;
+        panel.style.transform = `translate(${dxTransformValue},0)`;
+
+        // if (configs.verticalLayoutTooltip || staticPanelMode) 
+            checkHoverPanelHorizontalOverflow(panel);
+
         setTimeout(function () {
             if (!panel || !tooltipIsShown) return;
-            panel.style.width = '0';
-            panel.style.visibility = 'collapse';
-            // panel.style.display = 'none';
+            panel.style.pointerEvents = 'all';
         }, configs.animationDuration);
-    }
+    }, 3);
+}
 
-    return panel;
+function hideHoverPanel(panel, dxTransformValue, panelOnBottom) {
+    panel.style.transform = configs.verticalLayoutTooltip ? `translate(-100%, 0)` : `translate(${dxTransformValue}, ${panelOnBottom ? -100 : 100}%)`;
+    panel.style.opacity = 0.0;
+    panel.style.pointerEvents = 'none';
+    
+    setTimeout(function () {
+        if (!panel || !tooltipIsShown) return;
+        panel.style.width = '0';
+        panel.style.visibility = 'collapse';
+        // panel.style.display = 'none';
+    }, configs.animationDuration);
 }

@@ -41,7 +41,7 @@ function returnShowOnMapUrl(query, shouldEncode = true) {
     encodedQuery = encodedQuery.replaceAll('&', '%26').replaceAll('+', '%2B');
 
     switch (configs.preferredMapsService) {
-        case 'google': return `https://www.google.com/maps/place/${encodedQuery}`; break;
+        case 'google': return `https://maps.google.com/?q=${encodedQuery}`; break;
         case '2gis': return `https://2gis.ua/search/${encodedQuery}`; break;
         case '2gisRU': return `https://2gis.ru/search/${encodedQuery}`; break;
         case '2gisUA': return `https://2gis.ua/search/${encodedQuery}`; break;

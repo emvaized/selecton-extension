@@ -1,6 +1,6 @@
 /// Currently non user-configurable settings 
 var convertWhenOnlyFewWordsSelected = true;
-var wordsLimitToProccessText = 5;
+var wordsLimitToProccessText = 6;
 var secondaryColor = 'lightBlue';
 var linkSymbolsToShow = 20;
 var selectionHandleLineHeight = 21;

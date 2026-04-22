@@ -644,7 +644,7 @@
         "message": "Verticale"
     },
     "verticalLayoutTooltip": {
-        "message": "Utilisez la disposition vertical (expérimental)"
+        "message": "Utilisez la disposition vertical"
     },
     "verticalSecondaryTooltip": {
         "message": "Afficher sous forme de liste verticale (désactiver pour l'horizontale)"

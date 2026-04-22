@@ -1,49 +1,3 @@
-/// Look for these words to find that selected text is address, in order to show "Show on map" button
-const addressKeywords = [
-    /// English keywords
-    ' street',
-    'broadway',
-    ' st.',
-    'str.',
-    ' city',
-
-    /// Russian
-    'ул. ',
-    'пр. ',
-    'улица ',
-    'переулок ',
-    'город ',
-    'проспект ',
-    'жк ',
-    'трц ',
-
-    /// Ukrainian
-    'вулиця ',
-    'вул.',
-    'м. ',
-    'місто ',
-    'трк ',
-
-    /// Belorussian
-    'вуліца ',
-    'горад ',
-    'праспект ',
-
-    /// Spanish
-    'calle ',
-    'ciudad ',
-
-    /// French
-    'ville ',
-    ' rue',
-
-    /// German
-    'straße',
-    'strasse',
-    ' stadt',
-];
-
-
 /// Literal multipliers for numeric values
 /// With the help of these, "2 thousand" will be converted to "2000"
 const thousandMultipliers = [
@@ -353,60 +307,41 @@ const dateKeywords = {
         'dec',
         ///russian
         'янв',
-        'фев',
-        'март',
-        'апр',
-        'мая',
-        'июн',
-        'июл',
-        'авг',
-        'сен.',
-        'окт.',
-        'ноя.',
-        'дек.',
+        'янв', 'фев', 'март', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен.', 'окт.', 'ноя.', 'дек.',
         ///esp
-        'enero',
-        'feb.',
-        'marzo',
-        'abr.',
-        'mayo',
-        'jun.',
-        'jul.',
-        'agosto',
-        'set.',
-        'oct.',
-        'nov.',
-        'dic.',
+        'enero', 'feb.', 'marzo', 'abr.', 'mayo', 'jun.', 'jul.', 'agosto', 'set.', 'oct.', 'nov.', 'dic.',
     ],
     'weekday': [
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday',
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday',
         ///rus
-        'понедельник',
-        'вторник',
-        'среда',
-        'четверг',
-        'пятница',
-        'суббота',
-        'воскресенье',
+        'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье',
         ///es
-        'lunes',
-        'martes',
-        'miércoles',
-        'jueves',
-        'viernes',
-        'sábado',
-        'domingo',
+        'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo',
     ],
     'tomorrow': [
-        'tomorrow',
-        'завтра',
-        'mañana',
-        'demain',
+        'tomorrow', 'завтра', 'mañana', 'demain',
     ],
 };
+/// Pre-compiled global regular expressions for performant parsing
+const dateKeywordsRegex = {
+    month: /(?:^|[^\p{L}])(jan|feb|mar|apr|may(?![\\p{L}])|june|july|aug|sept|oct|nov|dec|янв|фев|март|апр|мая(?![\\p{L}])|июн|июл|авг|сен\.|окт\.|ноя\.|дек\.|enero|feb\.|marzo|abr\.|mayo(?![\\p{L}])|jun\.|jul\.|agosto|set\.|oct\.|nov\.|dic\.)[\p{L}]*/iu,
+    weekday: /(?:^|[^\p{L}])(monday|tuesday|wednesday|thursday|friday|saturday|sunday|понедельник|вторник|среда|четверг|пятница|суббота|воскресенье|lunes|martes|miércoles|jueves|viernes|sábado|domingo)(?:$|[^\p{L}])/iu,
+    tomorrow: /(?:^|[^\p{L}])(tomorrow|завтра|mañana|demain)(?:$|[^\p{L}])/iu
+};
+
+const addressKeywordsRegex = new RegExp([
+    /// JAPAN
+    '〒?\\d{3}-\\d{4}|丁目|番地|号室|マンション|ビル',
+
+    /// WESTERN (Latin)
+    '\\b(street|st|rd|road|ave|avenue|blvd|lane|drive|calle|rue|straße|strasse|platz)\\b',
+    '\\b(zip|post|code)\\b\\s?\\d{5}',
+
+    /// CYRILLIC (Enhanced for Abbreviations)
+    '(?<![\\p{L}\\p{N}])(улица|ул\\.|ул\\s|пр\\.|вул\\.|вул\\s|вулиця|місто|м\\.|дом|обл\\.|р-н|кв\\.)(?![\\p{L}\\p{N}])',
+
+    /// NORTH AMERICA / UK POSTAL
+    '\\b\\d{5}(-\\d{4})?\\b|\\b[A-Z]\\d[A-Z]\\s?\\d[A-Z]\\d\\b'
+].join('|'), 'iu');
+
+const textContainsAddress = () => addressKeywordsRegex.test(selectedText);

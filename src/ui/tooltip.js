@@ -65,6 +65,7 @@ function createTooltip(e, recreated = false) {
             }
 
             showTooltip(e.clientX, resultDy);
+            document.addEventListener("selectionchange", selectionChangeListener);
             return;
         }
 

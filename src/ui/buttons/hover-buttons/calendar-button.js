@@ -2,78 +2,76 @@ function checkToAddCalendarButton(text) {
     let weekday, day, month, year, time;
     let mayBeDate = false, showDateInsteadOfWeekday = false;
 
-    const words = text.toLowerCase().split(' ');
     const todayDate = new Date();
 
-    loop:
-    for (let i = 0, n = words.length; i < n; i++) {
-        const word = words[i].replaceAll(',','');
+    /// Check for "tomorrow"
+    const tomorrowMatch = text.match(dateKeywordsRegex.tomorrow);
+    if (tomorrowMatch) {
+        const tomorrow = new Date(todayDate.getTime() + (24 * 60 * 60 * 1000));
+        // Fix index mapping: JS getDay() starts Sunday=0, dateKeywords starts Monday=0
+        let dayIndex = tomorrow.getDay() === 0 ? 6 : tomorrow.getDay() - 1;
+        weekday = dateKeywords.weekday[dayIndex];
+        mayBeDate = true;
+        showDateInsteadOfWeekday = true;
+        day = tomorrow.getDate();
+        month = dateKeywords.month[tomorrow.getMonth()];
+    }
 
-        /// month
-        for (j in dateKeywords.month) {
-            const mon = dateKeywords.month[j];
-            // if (word.includes(mon)) {
-            if (word.startsWith(mon) || word.endsWith(mon)) {
-                month = dateKeywords.month[j % 12];
-                // mayBeDate = true;
-                continue loop;
-            }
+    /// Check for month
+    if (!month && !tomorrowMatch) {
+        const monthMatch = text.match(dateKeywordsRegex.month);
+        if (monthMatch) {
+            let matchedPrefix = monthMatch[1].toLowerCase();
+            let index = dateKeywords.month.findIndex(m => matchedPrefix.startsWith(m.toLowerCase()));
+            if (index !== -1) month = dateKeywords.month[index % 12];
         }
+    }
 
-        /// weekday
-        for (j in dateKeywords.weekday) {
-            const weekd = dateKeywords.weekday[j];
-            if (word.includes(weekd)) {
-                weekday = dateKeywords.weekday[j % 7];
-                mayBeDate = true;
-                continue loop;
-            }
-        }
-
-        /// check for 'tomorrow' keywords
-        for (j in dateKeywords.tomorrow) {
-            const tomorrowKeyword = dateKeywords.tomorrow[j];
-            if (word.includes(tomorrowKeyword)) {
-                const tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
-                weekday = dateKeywords.weekday[tomorrow.getDay()];
-                day = tomorrow.getDate();
-                month = dateKeywords.month[todayDate.getMonth()];
-                mayBeDate = true;
-                showDateInsteadOfWeekday = true;
-                continue loop;
-            }
-        }
-
-        const wordLength = word.length;
-        const wordIsNumeric = isStringNumeric(word);
-
-        /// check for day of month
-        if (wordIsNumeric && wordLength >= 1 && wordLength < 3) {
-            /// don't use if it's time in 12-hour format
-            const nextWord = words[i + 1];
-            if (nextWord && (nextWord.toLowerCase() == 'am' || nextWord.toLowerCase() == 'pm'))
-                continue;
-
-            if (day && !year) year = word;
-            else {
-                day = word;
+    /// Check for weekday
+    if (!weekday && !tomorrowMatch) {
+        const weekdayMatch = text.match(dateKeywordsRegex.weekday);
+        if (weekdayMatch) {
+            let matchedWeekday = weekdayMatch[1].toLowerCase();
+            let index = dateKeywords.weekday.findIndex(w => w.toLowerCase() === matchedWeekday);
+            if (index !== -1) {
+                weekday = dateKeywords.weekday[index % 7];
                 mayBeDate = true;
             }
-            continue;
         }
+    }
 
-        /// check for year
-        if (wordIsNumeric && wordLength == 4) {
-            year = word;
-            if (month) mayBeDate = true;
-            continue;
-        }
+    /// Check for time (e.g. 10:30, 2:15pm, 14:00)
+    const timeRegex = /(?:^|\s)([0-2]?[0-9]:[0-5][0-9](?::[0-5][0-9])?)(?:\s?(am|pm))?(?:$|[^a-z0-9:])/i;
+    const timeMatch = text.match(timeRegex);
+    if (timeMatch) {
+        time = timeMatch[1];
+        if (timeMatch[2]) time += ' ' + timeMatch[2]; // attach am/pm
+        // Standardize representation length for parsing
+        if (time.split(':').length == 2 && !timeMatch[2]) time += ':00';
+    }
 
-        /// check for time
-        if (word.includes(':')) {
-            time = word;
-            if (time.split(':').length == 2) time += ':00';
-            continue;
+    // Remove the matched time portion to prevent numeric hours/minutes from being confused as days/years
+    let textWithoutTime = text;
+    if (timeMatch) textWithoutTime = textWithoutTime.replace(timeMatch[0], ' ');
+
+    // Check for year
+    const yearRegex = /(?:^|[^\d])(19\d{2}|20\d{2})(?:$|[^\d])/;
+    const yearMatch = textWithoutTime.match(yearRegex);
+    if (yearMatch) {
+        year = yearMatch[1];
+        if (month) mayBeDate = true;
+    }
+
+    // Check for day of the month
+    const dayRegex = /(?:^|[^\d])(0?[1-9]|[12][0-9]|3[01])(?:st|nd|rd|th)?(?:$|[^a-z0-9])/ig;
+    let dayMatches = [...textWithoutTime.matchAll(dayRegex)];
+    for (let m of dayMatches) {
+        let valStr = m[1];
+        // Ensure the day isn't mistakenly identical to the extracted year
+        if (valStr !== year) {
+            day = valStr;
+            mayBeDate = true;
+            break;
         }
     }
 
@@ -124,6 +122,7 @@ function checkToAddCalendarButton(text) {
     if (year) dateString += `${year} `;
     if (time) dateString += `${time} `;
 
+
     const returnedDate = new Date(Date.parse(dateString));
     if (isNaN(returnedDate)) return;
 
@@ -164,16 +163,20 @@ function addCalendarButtonFromDate(date, todayDate, showDateInsteadOfWeekday, ti
         }
     }
 
-     /// If specific time is provided, create event – otherwise open day in calendar
-     let calendarLink;
-     if (time) {
-         let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
-         calendarLink = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${dateString}&sf=true`;
-     } else {
+    /// If specific time is provided, create event – otherwise open day in calendar
+    let calendarLink;
+    if (time) {
+        let dateString = date.toISOString().replaceAll(':', '').replaceAll('-', '');
+        /// Add one hour to end date
+        let endDate = new Date(date);
+        endDate.setHours(endDate.getHours() + 1);
+        let endDateString = endDate.toISOString().replaceAll(':', '').replaceAll('-', '');
+        calendarLink = `https://calendar.google.com/calendar/u/0/r/eventedit?&dates=${dateString}/${endDateString}&sf=true`;
+    } else {
         calendarLink = `https://calendar.google.com/calendar/u/0/r/day/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-     }
+    }
     const dateButton = addLinkTooltipButton(buttonLabel, calendarIcon, calendarLink);
-    dateButton.title = date.toLocaleDateString();
+    dateButton.title = chrome.i18n.getMessage('addToCalendar') + " (" + date.toLocaleDateString() + ")";
     dateButton.classList.add('color-highlight');
 
     if (configs.buttonsStyle == 'onlyicon') dateButton.innerHTML += ' ' + buttonLabel;

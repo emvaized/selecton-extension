@@ -570,7 +570,7 @@
         "message": "Vertical"
     },
     "verticalLayoutTooltip": {
-        "message": "Use o layout do painel vertical (experimental)"
+        "message": "Use o layout do painel vertical"
     },
     "verticalSecondaryTooltip": {
         "message": "Exibir como lista vertical (desabilitar para horizontal)"
