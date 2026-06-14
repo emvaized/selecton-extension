@@ -51,6 +51,8 @@ const currenciesList = {
     "USD": { name: "United States Dollar", symbol: "$", rate: 1, keywords: ['dollar', 'dolar', 'доллар'] },
     "VND": { name: "Vietnamese Dong", symbol: "₫", rate: 23054.385489 },
     "ZAR": { name: "Rand", rate: 14.856969 },
+    "BDT": { name: "Bangladeshi Taka", symbol: "৳", rate: 122.96, keywords: ['taka', 'bangladeshi taka', '৳'] 
+    },
 
     /// Crypto
     "BTC": { name: "Bitcoin", rate: 0.000018, symbol: "₿", keywords: ['bitcoins', 'биткоин'] },
