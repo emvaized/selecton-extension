@@ -79,6 +79,8 @@ function displayNotification(title, message, link, image) {
 
 /// Load currencies rates in background
 const urlToLoadCurrencyRates = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
+/// Fallback when the primary source fails: keyless, ECB reference rates (~30 currencies) by AllRatesToday (https://allratestoday.com)
+const urlToLoadCurrencyRatesFallback = 'https://allratestoday.com/api/open/latest/USD';
 const urlToLoadCryptoCurrencies = 'https://min-api.cryptocompare.com/data/price?fsym=USD';
 let isUpdating = false;
 
@@ -100,13 +102,21 @@ async function fetchCurrencyRates(debugMode, currenciesList) {
 
     try {
         /// Fetch regular currencies
-        const response = await fetch(urlToFetch,{
-            method: "GET",
-            // mode: "cors"
-        })
+        let jsonObj, usingFallback = false;
+        try {
+            const response = await fetch(urlToFetch,{
+                method: "GET",
+                // mode: "cors"
+            })
 
-        if (!response.ok) throw new Error(`An error has occured: ${response.status}`);
-        const jsonObj = await response.json();
+            if (!response.ok) throw new Error(`An error has occured: ${response.status}`);
+            jsonObj = await response.json();
+            if (!jsonObj['date'] || !jsonObj['usd']) throw new Error('Unexpected response');
+        } catch (e) {
+            if (debugMode) console.log('Primary currency source failed, trying fallback: ' + e.toString());
+            jsonObj = await fetchFallbackCurrencyRates();
+            usingFallback = true;
+        }
         const date = jsonObj['date'];
 
         if (!date) {
@@ -125,7 +135,12 @@ async function fetchCurrencyRates(debugMode, currenciesList) {
                 cryptoCurrencies.push(key);
 
             try {
-                if (val[lowerCaseKey] == null || val[lowerCaseKey] == undefined) continue;
+                if (val[lowerCaseKey] == null || val[lowerCaseKey] == undefined) {
+                    /// Fallback covers fewer currencies: keep the previously stored rate for the rest
+                    if (usingFallback && currenciesList[key]['rate'] != null && !currenciesList[key]['crypto'])
+                        ratesObject[key] = currenciesList[key]['rate'];
+                    continue;
+                }
                 currenciesList[key]['rate'] = val[lowerCaseKey];
                 ratesObject[key] = val[lowerCaseKey];
             } catch (e) {
@@ -184,6 +199,16 @@ async function fetchCurrencyRates(debugMode, currenciesList) {
     }
 
     isUpdating = false;
+}
+
+/// Returns rates from the fallback source in the same shape as the primary one ({ date, usd: { eur: ... } })
+async function fetchFallbackCurrencyRates() {
+    const response = await fetch(urlToLoadCurrencyRatesFallback);
+    if (!response.ok) throw new Error(`An error has occured: ${response.status}`);
+    const fallbackJson = await response.json();
+    const usd = {};
+    for (const code in fallbackJson['rates']) usd[code.toLowerCase()] = fallbackJson['rates'][code];
+    return { date: fallbackJson['date'], usd: usd };
 }
 
 async function backgroundFetch(url, callback){
