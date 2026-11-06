@@ -36,6 +36,7 @@ const currenciesList = {
     "MNT": { name: "Mongolian Tugrik", symbol: "₮", rate: 2849.930035 },
     "MXN": { name: "Mexican Peso", symbol: "peso", rate: 20.655212, keywords: ['peso', 'песо'] },
     "MYR": { name: "Malaysian Ringgit", symbol: "RM", rate: 4.208613, keywords: ['myr'] },
+    "NZD": { name: "New Zealand Dollar", symbol: "NZ$", rate: 1.72, keywords: ['nzd', 'nz dollar'] },
     "NGN": { name: "Nigerian Naira", symbol: "₦", rate: 410.317377 },
     "NOK": { name: "Norwegian Krone", symbol: " kr", rate: 8.51191 },
     "PHP": { name: "Philippine Peso", symbol: "₱", rate: 56.012, keywords: ['pesos', 'php'], searchInText: false},
