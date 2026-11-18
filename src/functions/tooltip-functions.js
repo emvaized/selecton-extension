@@ -291,6 +291,17 @@ function addContextualTooltipButton(onClick, isFirstButton = false) {
     return button;
 }
 
+function openUrlInNewTab(url, focused = true) {
+    if (!url) return;
+    try {
+        const result = chrome.runtime.sendMessage({ type: 'selecton-open-new-tab', url: url, focused: focused });
+        if (result && result.catch) result.catch(function () { });
+    } catch (e) {
+        /// Extension context may be invalidated (e.g. after extension update)
+        window.open(url, '_blank', 'noopener');
+    }
+}
+
 function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpacity) {
     /// Used for links, button with action label + icon, when enabled
     const button = document.createElement('a');
@@ -312,8 +323,17 @@ function addLinkTooltipButton(label, icon, url, isFirstButton = false, iconOpaci
             e.preventDefault();
         }
     }
+    /// Link is opened manually on mouseup, because the native click
+    /// can get lost when the tooltip is hidden during the same gesture
+    button.onclick = function(e){
+        if (e.button == 0) e.preventDefault();
+    }
     button.onmouseup = function(e){
         if (e.button == 0){
+            /// Support nested links (e.g. custom search buttons in hover panel)
+            const link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+            openUrlInNewTab((link || button).href, !(e.ctrlKey || e.metaKey));
+
             if (configs.hideTooltipOnActionButtonClick){
                 hideDragHandles();
                 hideTooltip();

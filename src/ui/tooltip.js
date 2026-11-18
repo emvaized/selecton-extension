@@ -335,12 +335,9 @@ function showTooltip(dx, dy) {
         console.log('Selecton tooltip is shown');
     tooltipIsShown = true;
 
-    /// Make tooltip interactive only after transition ends
-    let currentTooltip = tooltip;
-    setTimeout(function () {
-        if (tooltipIsShown == false || tooltip == null) return;
-        currentTooltip.style.pointerEvents = 'all';
-    }, configs.animationDuration);
+    /// Make tooltip interactive right away, so that quick clicks
+    /// don't fall through to the page and hide the tooltip
+    tooltip.style.pointerEvents = 'all';
 }
 
 let oldTooltips;
