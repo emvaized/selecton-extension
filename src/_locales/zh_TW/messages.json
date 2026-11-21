@@ -123,7 +123,7 @@
     "message": "要轉換為的貨幣 (<a target='_blank' href='https://github.com/emvaized/selecton-extension#currency-conversion'>info</a>)"
   },
   "convertToCurrencySecondary": {
-    "message": "用于反向转换的货币 (当主要货币被选中时)"
+    "message": "用於反向轉換的貨幣 (當主要貨幣被選中時)"
   },
   "convertToCurrencyHint": {
     "message": "檢視「程式碼」 <a target='_blank' href='https://www.iban.com/currency-codes'>這裡</a> 以供參考"
